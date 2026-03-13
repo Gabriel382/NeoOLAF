@@ -9,7 +9,6 @@ from typing import List
 from neoolaf.core.pipeline_state import PipelineState
 from neoolaf.core.base_layer import BaseLayer
 
-
 class Pipeline:
     """
     Ordered execution container for NeoOLAF layers.
