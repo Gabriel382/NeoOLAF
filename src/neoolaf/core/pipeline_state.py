@@ -16,6 +16,9 @@ from neoolaf.domain.candidates import (
     EventCandidate,
 )
 
+
+from neoolaf.domain.relation_assertion import CandidateRelationAssertion
+
 @dataclass
 class PipelineState:
     """
@@ -45,6 +48,9 @@ class PipelineState:
     relation_candidates: List[RelationCandidate] = field(default_factory=list)
     attribute_candidates: List[AttributeCandidate] = field(default_factory=list)
     event_candidates: List[EventCandidate] = field(default_factory=list)
+
+    # Layer 4 outputs
+    candidate_relation_assertions: List[CandidateRelationAssertion] = field(default_factory=list)
 
     # Execution logs
     logs: List[str] = field(default_factory=list)
