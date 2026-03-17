@@ -1,0 +1,422 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 26,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "alarms",
+      "label": "event",
+      "justification": "Refers to events indicating machine state changes.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "messages",
+      "label": "event",
+      "justification": "Refers to events indicating machine state changes.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 51,
+          "chunk_end_char": 59,
+          "doc_start_char": 51,
+          "doc_end_char": 59,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories pr"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "emitted by",
+      "label": "relation-bearing expression",
+      "justification": "Links alarms/messages to their source (PLC).",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "compromises",
+      "label": "relation-bearing expression",
+      "justification": "Describes the effect of an alarm/message on machine operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "CNC",
+      "label": "component",
+      "justification": "Refers to a specific type of machine controller.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 183,
+          "chunk_end_char": 186,
+          "doc_start_char": 183,
+          "doc_end_char": 186,
+          "snippet": "s sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ..."
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "PLC",
+      "label": "component",
+      "justification": "Refers to a Programmable Logic Controller.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 313,
+          "chunk_end_char": 316,
+          "doc_start_char": 313,
+          "doc_end_char": 316,
+          "snippet": "tretien de la CNC Fanuc série ........ 2 les alarmes et messages de l’interface PLC, décrits ci-après. Les messages et les alarmes émises par la PLC indiquent la d"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "machine",
+      "label": "component",
+      "justification": "Generic term for the industrial equipment.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 469,
+          "chunk_end_char": 476,
+          "doc_start_char": 469,
+          "doc_end_char": 476,
+          "snippet": "nt la détection d’un problème qui peut compromettre le bon fonctionnement de la machine et du cycle d’usinage. En fonction de l’effet qu’ils produisent, ils sont class"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "cycle",
+      "label": "process",
+      "justification": "Refers to a typical operational sequence.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 483,
+          "chunk_end_char": 488,
+          "doc_start_char": 483,
+          "doc_end_char": 488,
+          "snippet": "n d’un problème qui peut compromettre le bon fonctionnement de la machine et du cycle d’usinage. En fonction de l’effet qu’ils produisent, ils sont classés dans : •"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "stop",
+      "label": "operational state",
+      "justification": "Describes a machine's non-operational condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "axes",
+      "label": "component",
+      "justification": "Refers to movable parts of the machine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 644,
+          "chunk_end_char": 648,
+          "doc_start_char": 644,
+          "doc_end_char": 648,
+          "snippet": ": • les alarmes avec arrêt immédiat et contrôlé : la machine est arrêtée et les axes et broches bloqués au couple maximum en mode contrôlé ; • les alarmes et messag"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "spindles",
+      "label": "component",
+      "justification": "Refers to rotating parts of the machine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "M01",
+      "label": "action",
+      "justification": "Refers to a specific machine control command.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 811,
+          "chunk_end_char": 814,
+          "doc_start_char": 811,
+          "doc_end_char": 814,
+          "snippet": "avec arrêt en fin de cycle : la machine est arrêtée au lancement de la fonction M01; • les messages de lecture seule : ils servent à attirer l’attention de l’opéra"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "RESET PRG",
+      "label": "action",
+      "justification": "Refers to a specific machine control action.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1156,
+          "chunk_end_char": 1165,
+          "doc_start_char": 1156,
+          "doc_end_char": 1165,
+          "snippet": "ut voir le numéro et le texte : de l’alarme que l’on reconnaît avec la touche « RESET PRG »: ainsi, le programme est rembobiné et l’on pourra faire repar- tir le program"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "Alarme n°1001",
+      "label": "alarm",
+      "justification": "Identifies a specific alarm by number.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 119,
+          "chunk_end_char": 132,
+          "doc_start_char": 1419,
+          "doc_end_char": 1432,
+          "snippet": ".2 Liste des alarmes et description SPRINT32linear-FA-MP-v0.1-fr Page 8-6 8.2.1 Alarme n°1001 8.2.2 Alarme n°1002 8.2.3 Alarme n°1003 Alarme n°: 1001 texte: URGENCE ACTIVE t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "URGENCE ACTIVE",
+      "label": "alarm type",
+      "justification": "Describes the category of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 196,
+          "chunk_end_char": 210,
+          "doc_start_char": 1496,
+          "doc_end_char": 1510,
+          "snippet": ".1 Alarme n°1001 8.2.2 Alarme n°1002 8.2.3 Alarme n°1003 Alarme n°: 1001 texte: URGENCE ACTIVE type: Standard: Optionnel: effet: Alarme avec arrêt immédiate et contrôlée, ouv"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "bouton coup-de-poing",
+      "label": "component",
+      "justification": "Refers to a physical button on the machine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 400,
+          "chunk_end_char": 420,
+          "doc_start_char": 1700,
+          "doc_end_char": 1720,
+          "snippet": "dware à l’alimentateur des axes/broches et CNC en urgence cause: Signale que le bouton coup-de-poing à été enfoncé intervention: Relâcher le bouton et appuyer sur la touche de déma"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "Signale que",
+      "label": "relation-bearing expression",
+      "justification": "Indicates that the alarm signals a condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 385,
+          "chunk_end_char": 396,
+          "doc_start_char": 1685,
+          "doc_end_char": 1696,
+          "snippet": "orisa- tion hardware à l’alimentateur des axes/broches et CNC en urgence cause: Signale que le bouton coup-de-poing à été enfoncé intervention: Relâcher le bouton et appuy"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "Relâcher le bouton et appuyer sur la touche de démarrage",
+      "label": "intervention",
+      "justification": "Describes the action to resolve the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 449,
+          "chunk_end_char": 505,
+          "doc_start_char": 1749,
+          "doc_end_char": 1805,
+          "snippet": "urgence cause: Signale que le bouton coup-de-poing à été enfoncé intervention: Relâcher le bouton et appuyer sur la touche de démarrage de la machine. Voir la page 5 du schéma électrique, entrée X8.4 chargé de l’int"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "Alarme n°1002",
+      "label": "alarm",
+      "justification": "Identifies a specific alarm by number.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 139,
+          "chunk_end_char": 152,
+          "doc_start_char": 1439,
+          "doc_end_char": 1452,
+          "snippet": "et description SPRINT32linear-FA-MP-v0.1-fr Page 8-6 8.2.1 Alarme n°1001 8.2.2 Alarme n°1002 8.2.3 Alarme n°1003 Alarme n°: 1001 texte: URGENCE ACTIVE type: Standard: Optio"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "MACHINE HORS CIRCUIT",
+      "label": "alarm type",
+      "justification": "Describes the category of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 651,
+          "chunk_end_char": 671,
+          "doc_start_char": 1951,
+          "doc_end_char": 1971,
+          "snippet": "hargé de l’intervention: opérateur/chargé de l’entretien Alarme n°: 1002 texte: MACHINE HORS CIRCUIT type: Standard: Optionnel: effet: Alarme avec arrêt immédiat et contrôlé, ouver"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "Indique que",
+      "label": "relation-bearing expression",
+      "justification": "Indicates that the alarm signals a condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 824,
+          "chunk_end_char": 835,
+          "doc_start_char": 2124,
+          "doc_end_char": 2135,
+          "snippet": ", ouverture de l’autorisation hardware à l’alimentateur des axes/broches cause: Indique que les circuits de puissance n’ont pas été activés, dans cette condition la machin"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "circuits de puissance",
+      "label": "component",
+      "justification": "Refers to electrical power circuits in the machine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 840,
+          "chunk_end_char": 861,
+          "doc_start_char": 2140,
+          "doc_end_char": 2161,
+          "snippet": "’autorisation hardware à l’alimentateur des axes/broches cause: Indique que les circuits de puissance n’ont pas été activés, dans cette condition la machine ne peut opérer en aucune"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "Alarme n°1003",
+      "label": "alarm",
+      "justification": "Identifies a specific alarm by number.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 159,
+          "chunk_end_char": 172,
+          "doc_start_char": 1459,
+          "doc_end_char": 1472,
+          "snippet": "NT32linear-FA-MP-v0.1-fr Page 8-6 8.2.1 Alarme n°1001 8.2.2 Alarme n°1002 8.2.3 Alarme n°1003 Alarme n°: 1001 texte: URGENCE ACTIVE type: Standard: Optionnel: effet: Alarme"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "PORTE COULISSANTE OUVERTE",
+      "label": "alarm type",
+      "justification": "Describes the category of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1145,
+          "chunk_end_char": 1170,
+          "doc_start_char": 2445,
+          "doc_end_char": 2470,
+          "snippet": "hargé de l’intervention: opérateur/chargé de l’entretien Alarme n°: 1003 texte: PORTE COULISSANTE OUVERTE type: Standard: Optionnel: effet: Alarme avec arrêt immédiat et contrôlé, ouver"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "Au début du cycle",
+      "label": "temporal context",
+      "justification": "Specifies a time frame for the alarm condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1323,
+          "chunk_end_char": 1340,
+          "doc_start_char": 2623,
+          "doc_end_char": 2640,
+          "snippet": ", ouverture de l’autorisation hardware à l’alimentateur des axes/broches cause: Au début du cycle la porte coulissante est ouverte. intervention: Vérifier que la porte est en un"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "Vérifier que",
+      "label": "relation-bearing expression",
+      "justification": "Indicates an action to check a condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1389,
+          "chunk_end_char": 1401,
+          "doc_start_char": 2689,
+          "doc_end_char": 2701,
+          "snippet": "roches cause: Au début du cycle la porte coulissante est ouverte. intervention: Vérifier que la porte est en une condition admise. Voir la page 19 du schéma électrique, ent"
+        }
+      ]
+    }
+  ]
+}
