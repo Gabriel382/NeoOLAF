@@ -9,7 +9,12 @@ from neoolaf.domain.documents import Document
 from neoolaf.domain.linguistic_expression import LinguisticExpression
 from neoolaf.domain.enriched_expression import EnrichedExpression
 from neoolaf.domain.user_guidance import UserGuidance
-
+from neoolaf.domain.candidates import (
+    EntityCandidate,
+    RelationCandidate,
+    AttributeCandidate,
+    EventCandidate,
+)
 
 @dataclass
 class PipelineState:
@@ -34,6 +39,12 @@ class PipelineState:
 
     # Layer 2 outputs
     enriched_expressions: List[EnrichedExpression] = field(default_factory=list)
+
+    # Layer 3 outputs
+    entity_candidates: List[EntityCandidate] = field(default_factory=list)
+    relation_candidates: List[RelationCandidate] = field(default_factory=list)
+    attribute_candidates: List[AttributeCandidate] = field(default_factory=list)
+    event_candidates: List[EventCandidate] = field(default_factory=list)
 
     # Execution logs
     logs: List[str] = field(default_factory=list)
