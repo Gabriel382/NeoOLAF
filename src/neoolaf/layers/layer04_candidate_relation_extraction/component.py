@@ -3,6 +3,8 @@ from __future__ import annotations
 # Standard library imports
 from collections import defaultdict
 from typing import Dict, List, Tuple
+# Third-party imports
+from tqdm.auto import tqdm
 
 # Local imports
 from neoolaf.core.base_layer import BaseLayer
@@ -34,6 +36,7 @@ class CandidateRelationExtractionLayer(BaseLayer):
         max_relation_mentions: int | None = None,
         temperature: float = 0.0,
         save_intermediate: bool = True,
+        verbose: bool = False,
     ) -> None:
         """
         Initialize Layer 4.
@@ -47,8 +50,10 @@ class CandidateRelationExtractionLayer(BaseLayer):
                 Generation temperature.
             save_intermediate:
                 Whether to save intermediate artifacts.
+            verbose:
+                Wheter to show logs or not.
         """
-        super().__init__(save_intermediate=save_intermediate)
+        super().__init__(save_intermediate=save_intermediate, verbose=verbose)
         self.ollama_backend = ollama_backend
         self.max_relation_mentions = max_relation_mentions
         self.temperature = temperature
@@ -68,7 +73,11 @@ class CandidateRelationExtractionLayer(BaseLayer):
         assertions: List[CandidateRelationAssertion] = []
         assertion_counter = 0
 
-        for relation_mention in relation_mentions:
+        relation_iterator = relation_mentions
+        if self.verbose:
+            relation_iterator = tqdm(relation_mentions, desc="Layer 4 - relation mentions", leave=False)
+
+        for relation_mention in relation_iterator:
             chunk_id = relation_mention["chunk_id"]
             relation_candidate = relation_mention["relation_candidate"]
             relation_evidence = relation_mention["evidence"]

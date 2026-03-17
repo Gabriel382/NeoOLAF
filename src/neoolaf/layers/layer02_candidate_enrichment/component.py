@@ -3,6 +3,8 @@ from __future__ import annotations
 # Standard library imports
 import json
 from typing import List, Dict
+# Third-party imports
+from tqdm.auto import tqdm
 
 # Local imports
 from neoolaf.core.base_layer import BaseLayer
@@ -38,6 +40,7 @@ class CandidateEnrichmentLayer(BaseLayer):
         max_expressions: int | None = None,
         use_web_search: bool = True,
         save_intermediate: bool = True,
+        verbose: bool = False,
     ) -> None:
         """
         Initialize Layer 2.
@@ -59,8 +62,10 @@ class CandidateEnrichmentLayer(BaseLayer):
                 Whether to include internet search.
             save_intermediate:
                 Whether to save intermediate artifacts.
+            verbose:
+                Wheter to show logs or not.
         """
-        super().__init__(save_intermediate=save_intermediate)
+        super().__init__(save_intermediate=save_intermediate, verbose=verbose)
         self.ollama_backend = ollama_backend
         self.wikipedia_source = wikipedia_source or WikipediaSource()
         self.wikidata_source = wikidata_source or WikidataSource()
@@ -79,7 +84,11 @@ class CandidateEnrichmentLayer(BaseLayer):
 
         enriched: List[EnrichedExpression] = []
 
-        for expr in expressions:
+        expression_iterator = expressions
+        if self.verbose:
+            expression_iterator = tqdm(expressions, desc="Layer 2 - expressions", leave=False)
+
+        for expr in expression_iterator:
             graph = Layer02EnrichmentGraphFactory(
                 ollama_backend=self.ollama_backend,
                 model_name=state.llm_model,

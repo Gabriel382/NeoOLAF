@@ -27,6 +27,7 @@ class PreprocessingLayer(BaseLayer):
         source_language: str | None = None,
         target_language: str = "en",
         save_intermediate: bool = True,
+        verbose: bool = False,
     ) -> None:
         """
         Args:
@@ -44,8 +45,10 @@ class PreprocessingLayer(BaseLayer):
                 Target language used if translation is enabled.
             save_intermediate:
                 Whether to save intermediate artifacts.
+            verbose:
+                Wheter to show logs or not.
         """
-        super().__init__(save_intermediate=save_intermediate)
+        super().__init__(save_intermediate=save_intermediate, verbose=verbose)
         self.chunk_size = chunk_size
         self.overlap = overlap
         self.translate = translate
