@@ -3,6 +3,8 @@ from __future__ import annotations
 # Standard library imports
 import re
 from typing import Dict, List
+# Third-party imports
+from tqdm.auto import tqdm
 
 # Local imports
 from neoolaf.core.base_layer import BaseLayer
@@ -40,6 +42,7 @@ class CandidateTypingResolutionLayer(BaseLayer):
         max_expressions: int | None = None,
         temperature: float = 0.0,
         save_intermediate: bool = True,
+        verbose: bool = False,
     ) -> None:
         """
         Initialize Layer 3.
@@ -53,8 +56,10 @@ class CandidateTypingResolutionLayer(BaseLayer):
                 Generation temperature for the typing prompt.
             save_intermediate:
                 Whether to save intermediate artifacts.
+            verbose:
+                Wheter to show logs or not.
         """
-        super().__init__(save_intermediate=save_intermediate)
+        super().__init__(save_intermediate=save_intermediate, verbose=verbose)
         self.ollama_backend = ollama_backend
         self.max_expressions = max_expressions
         self.temperature = temperature
@@ -72,7 +77,11 @@ class CandidateTypingResolutionLayer(BaseLayer):
         # ---------------------------------------------------------
         # Step 1: type each enriched expression independently
         # ---------------------------------------------------------
-        for item in enriched_expressions:
+        typing_iterator = enriched_expressions
+        if self.verbose:
+            typing_iterator = tqdm(enriched_expressions, desc="Layer 3 - typing", leave=False)
+
+        for item in typing_iterator:
             messages = [
                 {"role": "system", "content": build_system_prompt()},
                 {"role": "user", "content": build_user_prompt(item, state.user_guidance)},
