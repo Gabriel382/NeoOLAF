@@ -10,23 +10,27 @@ from datetime import datetime
 
 from neoolaf.core.pipeline import Pipeline
 from neoolaf.core.pipeline_state import PipelineState
-
+# Standard library imports
+import time
 
 class Runner:
     """
     High-level orchestrator for a NeoOLAF pipeline execution.
     """
 
-    def __init__(self, pipeline: Pipeline, runs_root: str = "runs") -> None:
+    def __init__(self, pipeline: Pipeline, runs_root: str = "runs", verbose: bool = False) -> None:
         """
         Args:
             pipeline:
                 The pipeline instance to execute.
             runs_root:
                 Root directory where execution artifacts are stored.
+            verbose:
+                If True, print runner-level information.
         """
         self.pipeline = pipeline
         self.runs_root = Path(runs_root)
+        self.verbose = verbose
 
     def prepare_run_dir(self) -> Path:
         """
@@ -44,4 +48,14 @@ class Runner:
         if state.artifact_dir is None:
             state.artifact_dir = str(self.prepare_run_dir())
 
-        return self.pipeline.run(state)
+        if self.verbose:
+            print(f"[NeoOLAF] Run directory: {state.artifact_dir}")
+
+        start_time = time.time()
+        state = self.pipeline.run(state)
+        elapsed = time.time() - start_time
+
+        if self.verbose:
+            print(f"[NeoOLAF] Total run time: {elapsed:.2f}s")
+
+        return state

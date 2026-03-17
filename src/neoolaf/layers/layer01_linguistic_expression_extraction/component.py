@@ -12,7 +12,8 @@ from neoolaf.layers.layer01_linguistic_expression_extraction.prompt import (
     build_user_prompt,
 )
 from neoolaf.resources.llm_backends.ollama_backend import OllamaBackend
-
+# Third-party imports
+from tqdm.auto import tqdm
 
 class LinguisticExpressionExtractionLayer(BaseLayer):
     """
@@ -34,6 +35,7 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
         max_chunks: int | None = None,
         temperature: float = 0.0,
         save_intermediate: bool = True,
+        verbose: bool = False,
     ) -> None:
         """
         Initialize Layer 1.
@@ -47,8 +49,10 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
                 Generation temperature.
             save_intermediate:
                 Whether to save intermediate artifacts.
+            verbose:
+                Wheter to show logs or not.
         """
-        super().__init__(save_intermediate=save_intermediate)
+        super().__init__(save_intermediate=save_intermediate, verbose=verbose)
         self.ollama_backend = ollama_backend
         self.max_chunks = max_chunks
         self.temperature = temperature
@@ -66,7 +70,11 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
 
         expr_counter = 0
 
-        for chunk in chunks:
+        chunk_iterator = chunks
+        if self.verbose:
+            chunk_iterator = tqdm(chunks, desc="Layer 1 - chunks", leave=False)
+
+        for chunk in chunk_iterator:
             messages = [
                 {"role": "system", "content": build_system_prompt()},
                 {"role": "user", "content": build_user_prompt(chunk, state.user_guidance)},

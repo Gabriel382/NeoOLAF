@@ -18,6 +18,7 @@ from neoolaf.domain.candidates import (
 
 
 from neoolaf.domain.relation_assertion import CandidateRelationAssertion
+from neoolaf.domain.candidate_triple import CandidateTriple
 
 @dataclass
 class PipelineState:
@@ -51,6 +52,9 @@ class PipelineState:
 
     # Layer 4 outputs
     candidate_relation_assertions: List[CandidateRelationAssertion] = field(default_factory=list)
+
+    # Layer 5 outputs
+    candidate_triples: List[CandidateTriple] = field(default_factory=list)
 
     # Execution logs
     logs: List[str] = field(default_factory=list)
