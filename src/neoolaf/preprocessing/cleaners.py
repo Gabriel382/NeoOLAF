@@ -398,6 +398,8 @@ def clean_html(html: str) -> str:
 
 def clean_table_html(html: str) -> str:
     """Public high-level entrypoint for extracted HTML table cleanup."""
+    if html is None:
+        return None
     return clean_html(html)
 
 
@@ -419,7 +421,7 @@ def clean_value(value):
     if isinstance(value, dict):
         cleaned = OrderedDict()
         for key, item in value.items():
-            if key == "table_html":
+            if key in {"table_html", "html"}:
                 cleaned[key] = clean_table_html(item)
             else:
                 cleaned[key] = clean_value(item)
