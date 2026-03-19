@@ -29,6 +29,23 @@ EMPTY_TABLE_HTML = {
     "<table><tr><td></td></tr></table>",
     "<table><tr><td>Aucune donnee</td></tr></table>",
 }
+SOFT_HYPHENS = ("\u00ad", "\u200b", "\ufeff")
+BANNER_LINE_RE = re.compile(
+    r"^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ\s\-–—|]{10,}(?:maintenance|utilisation|installation|sécurité|security)$",
+    re.IGNORECASE,
+)
+FUSED_WORD_FIXES = {
+    "Manueldeprogrammation": "Manuel de programmation",
+    "withCNC-aveccommandenumÃ©rique-decontrolnumÃ©rico": "with CNC - avec commande numÃ©rique - de control numÃ©rico",
+    "aveccommandenumérique": "avec commande numérique",
+    "DocumentazioneMeccanica": "Documentazione Meccanica",
+    "MECHANISCHEDOKUMENTATION": "MECHANISCHE DOKUMENTATION",
+    "MECHANICALDOCUMENTATION": "MECHANICAL DOCUMENTATION",
+    "DOCUMENTATIONMÉCANIQUE": "DOCUMENTATION MÉCANIQUE",
+    "DOCUMENTACIÓNMECÁNICA": "DOCUMENTACIÓN MECÁNICA",
+    "Qualificationdel": "Qualification de l",
+    "Phasedelavietechniquedelamachine": "Phase de la vie technique de la machine",
+}
 
 
 def normalize_compare(text: str) -> str:
@@ -91,6 +108,18 @@ def normalize_unicode(text: str) -> str:
     return unicodedata.normalize("NFKC", text)
 
 
+def fix_mojibake(text: str) -> str:
+    """Repair common UTF-8 decoded-as-Latin-1 mojibake when it is detected."""
+    markers = ("Ã", "â€™", "â€", "Â", "â€¢")
+    if not any(marker in text for marker in markers):
+        return text
+    try:
+        repaired = text.encode("latin-1").decode("utf-8")
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        return text
+    return repaired
+
+
 def fix_whitespace(text: str) -> str:
     """Trim lines and collapse repeated blank lines."""
     lines = [re.sub(r"[ \t]+", " ", line).strip() for line in text.splitlines()]
@@ -105,6 +134,13 @@ def fix_whitespace(text: str) -> str:
         blanks = 0
         result.append(line)
     return "\n".join(result).strip()
+
+
+def remove_soft_hyphens(text: str) -> str:
+    """Remove soft hyphens and zero-width separators introduced by PDFs."""
+    for marker in SOFT_HYPHENS:
+        text = text.replace(marker, "")
+    return text
 
 
 def fix_broken_words(text: str) -> str:
@@ -128,6 +164,94 @@ def collapse_spaced_letters(text: str) -> str:
         return line
 
     return "\n".join(collapse_line(line) for line in text.splitlines())
+
+
+def collapse_doubled_glyph_words(text: str) -> str:
+    """Collapse words where most alphabetic glyphs are duplicated consecutively."""
+
+    def fix_token(token: str) -> str:
+        letters = [ch for ch in token if ch.isalpha()]
+        if len(letters) < 4:
+            return token
+
+        repeated_pairs = 0
+        i = 0
+        while i < len(token) - 1:
+            if token[i].isalpha() and token[i] == token[i + 1]:
+                repeated_pairs += 1
+                i += 2
+            else:
+                i += 1
+
+        if repeated_pairs / len(letters) < 0.35:
+            return token
+
+        collapsed = []
+        i = 0
+        while i < len(token):
+            collapsed.append(token[i])
+            if (
+                i < len(token) - 1
+                and token[i].isalpha()
+                and token[i] == token[i + 1]
+            ):
+                i += 2
+            else:
+                i += 1
+        return "".join(collapsed)
+
+    return " ".join(fix_token(token) for token in text.split(" "))
+
+
+def collapse_alternating_doubled_letters(text: str) -> str:
+    """Collapse alternating doubled letters such as 'MMaaiinn' to 'Main'."""
+
+    def fix_token(token: str) -> str:
+        stripped = re.sub(r"[^A-Za-zÀ-ÿ]", "", token)
+        if len(stripped) < 6 or len(stripped) % 2 != 0:
+            return token
+
+        pair_matches = sum(
+            1 for i in range(0, len(stripped) - 1, 2) if stripped[i] == stripped[i + 1]
+        )
+        if pair_matches / max(len(stripped) // 2, 1) < 0.75:
+            return token
+
+        if re.fullmatch(r"[A-Za-zÀ-ÿ]+", token):
+            return "".join(token[i] for i in range(0, len(token), 2))
+        return token
+
+    return " ".join(fix_token(token) for token in text.split(" "))
+
+
+def repair_known_fused_words(text: str) -> str:
+    """Repair common fused words seen across the exported manuals."""
+    for wrong, right in FUSED_WORD_FIXES.items():
+        text = text.replace(wrong, right)
+    return text
+
+
+def remove_banner_lines(text: str) -> str:
+    """Remove decorative cover-banner lines that are not useful for extraction."""
+    cleaned_lines = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            cleaned_lines.append("")
+            continue
+        normalized = collapse_alternating_doubled_letters(stripped.replace("------", " "))
+        lowered = normalized.lower()
+        if "------" in stripped and (
+            BANNER_LINE_RE.match(normalized)
+            or (
+                "installation" in lowered
+                and "utilisation" in lowered
+                and ("maintenance" in lowered or "sécurité" in lowered or "securite" in lowered)
+            )
+        ):
+            continue
+        cleaned_lines.append(line)
+    return "\n".join(cleaned_lines)
 
 
 def normalize_bullets(text: str) -> str:
@@ -240,11 +364,17 @@ def remove_markup(text: str) -> str:
 def clean_text(text: str) -> str:
     """Run the full cleanup pipeline for plain text."""
     text = CONTROL_CHAR_RE.sub("", text)
+    text = remove_soft_hyphens(text)
     text = remove_markup(text)
+    text = fix_mojibake(text)
     text = normalize_unicode(text)
+    text = collapse_doubled_glyph_words(text)
+    text = collapse_alternating_doubled_letters(text)
+    text = repair_known_fused_words(text)
     text = fix_broken_words(text)
     text = collapse_spaced_letters(text)
     text = normalize_bullets(text)
+    text = remove_banner_lines(text)
     text = remove_header_footer_lines(text)
     text = remove_toc_noise(text)
     text = fix_text_artifacts(text)
@@ -253,12 +383,35 @@ def clean_text(text: str) -> str:
     return fix_whitespace(text)
 
 
+def clean_plain_text(text: str) -> str:
+    """Public high-level entrypoint for plain-text cleanup."""
+    return clean_text(text)
+
+
 def clean_html(html: str) -> str:
     """Clean text content inside extracted HTML tables."""
     soup = BeautifulSoup(html, "html.parser")
     for cell in soup.find_all(["th", "td"]):
-        cell.string = clean_text(cell.get_text("\n"))
+        cell.string = clean_plain_text(cell.get_text("\n"))
     return str(soup).strip()
+
+
+def clean_table_html(html: str) -> str:
+    """Public high-level entrypoint for extracted HTML table cleanup."""
+    return clean_html(html)
+
+
+def table_html_to_text(html: str) -> str:
+    """Flatten cleaned HTML table content into one plain-text string."""
+    soup = BeautifulSoup(html or "", "html.parser")
+    parts = []
+    for cell in soup.find_all(["th", "td"]):
+        text = cell.get_text(" ", strip=True)
+        text = text.replace("\n", " ").replace("\r", " ")
+        text = re.sub(r"\s+", " ", text).strip()
+        if text:
+            parts.append(text)
+    return " ".join(parts).strip()
 
 
 def clean_value(value):
@@ -267,14 +420,14 @@ def clean_value(value):
         cleaned = OrderedDict()
         for key, item in value.items():
             if key == "table_html":
-                cleaned[key] = clean_html(item)
+                cleaned[key] = clean_table_html(item)
             else:
                 cleaned[key] = clean_value(item)
         return cleaned
     if isinstance(value, list):
         return [clean_value(item) for item in value]
     if isinstance(value, str):
-        return clean_text(value)
+        return clean_plain_text(value)
     return value
 
 
@@ -302,6 +455,11 @@ def drop_empty_tables(value):
 def finalize(value):
     """Apply all final postprocessing to the extracted document."""
     return drop_empty_tables(clean_value(value))
+
+
+def finalize_extracted_document(value):
+    """Public high-level entrypoint for final document-tree cleanup."""
+    return finalize(value)
 
 
 # ── OCR-specific postprocessing ──────────────────────────────────────────────
@@ -355,15 +513,18 @@ def postprocess_ocr_text(text: str) -> str:
         else:
             cleaned = remove_html_artifacts(block)
             cleaned = remove_latex_noise(cleaned)
-            cleaned = normalize_unicode(cleaned)
-            cleaned = fix_broken_words(cleaned)
-            cleaned = fix_whitespace(cleaned)
+            cleaned = remove_soft_hyphens(cleaned)
             cleaned = fix_common_ocr_errors(cleaned)
             if cleaned:
-                lines_out.append(cleaned)
+                lines_out.append(clean_plain_text(cleaned))
     result = "\n".join(lines_out)
     result = remove_garbage_lines(result)
     return result
+
+
+def clean_ocr_text_output(text: str) -> str:
+    """Public high-level entrypoint for OCR plain-text cleanup."""
+    return postprocess_ocr_text(text)
 
 
 def postprocess_ocr_tables(tables: list) -> list:
@@ -377,11 +538,14 @@ def postprocess_ocr_tables(tables: list) -> list:
                 raw = cell.get_text()
                 cell_text = remove_html_artifacts(raw)
                 cell_text = remove_latex_noise(cell_text)
-                cell_text = normalize_unicode(cell_text)
-                cell_text = fix_broken_words(cell_text)
-                cell_text = fix_whitespace(cell_text)
+                cell_text = remove_soft_hyphens(cell_text)
                 cell_text = fix_common_ocr_errors(cell_text)
                 cell.string = cell_text
-            html = str(soup).strip()
+            html = clean_table_html(str(soup).strip())
         cleaned.append({**table, "html": html})
     return cleaned
+
+
+def clean_ocr_table_output(tables: list) -> list:
+    """Public high-level entrypoint for OCR table cleanup."""
+    return postprocess_ocr_tables(tables)

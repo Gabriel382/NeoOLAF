@@ -6,6 +6,7 @@ from neoolaf.core.base_layer import BaseLayer
 from neoolaf.core.pipeline_state import PipelineState
 from neoolaf.preprocessing.normalization import normalize_text
 from neoolaf.preprocessing.chunking import chunk_text
+from neoolaf.preprocessing.cleaners import table_html_to_text
 from neoolaf.preprocessing.pdf_parsing import extract_pdf
 from neoolaf.resources.ocr.base_engine import BaseOCREngine
 
@@ -27,6 +28,7 @@ class PreprocessingLayer(BaseLayer):
         self,
         chunk_size: int = 1500,
         overlap: int = 200,
+        enable_chunking: bool = True,
         translate: bool = False,
         translator=None,
         source_language: str | None = None,
@@ -41,6 +43,8 @@ class PreprocessingLayer(BaseLayer):
                 Maximum character length of each chunk.
             overlap:
                 Overlap between consecutive chunks.
+            enable_chunking:
+                Whether to split the document into chunks.
             translate:
                 Whether to apply translation after cleaning.
             translator:
@@ -59,6 +63,7 @@ class PreprocessingLayer(BaseLayer):
         super().__init__(save_intermediate=save_intermediate)
         self.chunk_size = chunk_size
         self.overlap = overlap
+        self.enable_chunking = enable_chunking
         self.translate = translate
         self.translator = translator
         self.source_language = source_language
@@ -122,14 +127,17 @@ class PreprocessingLayer(BaseLayer):
             text_for_chunking = translated
             state.log("[layer00_preprocessing] translation applied")
 
-        # Chunk the final text version used downstream
-        chunks = chunk_text(
-            text_for_chunking,
-            chunk_size=self.chunk_size,
-            overlap=self.overlap,
-        )
-        state.document.chunks = chunks
-        state.log(f"[layer00_preprocessing] produced {len(chunks)} chunks")
+        if self.enable_chunking:
+            chunks = chunk_text(
+                text_for_chunking,
+                chunk_size=self.chunk_size,
+                overlap=self.overlap,
+            )
+            state.document.chunks = chunks
+            state.log(f"[layer00_preprocessing] produced {len(chunks)} chunks")
+        else:
+            state.document.chunks = []
+            state.log("[layer00_preprocessing] chunking disabled")
 
         return state
 
@@ -164,14 +172,21 @@ class PreprocessingLayer(BaseLayer):
         """
         Serialize relevant preprocessing outputs.
         """
-        return {
+        extraction_tables = self._extract_tables_for_export(state.document.extraction_result)
+
+        payload = {
             "layer": self.name,
             "doc_id": state.document.doc_id,
+            "source_path": state.document.source_path,
             "pdf_type": state.document.pdf_type,
-            "cleaned_text_preview": (state.document.cleaned_text or "")[:1000],
-            "translated_text_preview": (state.document.translated_text or "")[:1000],
-            "num_chunks": len(state.document.chunks),
-            "chunks": [
+            "cleaned_text": state.document.cleaned_text or "",
+            "translated_text": state.document.translated_text,
+            "tables": extraction_tables,
+        }
+
+        if self.enable_chunking:
+            payload["num_chunks"] = len(state.document.chunks)
+            payload["chunks"] = [
                 {
                     "chunk_id": c.chunk_id,
                     "start_char": c.start_char,
@@ -179,5 +194,52 @@ class PreprocessingLayer(BaseLayer):
                     "text_preview": c.text[:300],
                 }
                 for c in state.document.chunks
-            ],
-        }
+            ]
+
+        return payload
+
+    @staticmethod
+    def _extract_tables_for_export(extraction_result) -> list[dict]:
+        """
+        Extract table HTML snippets from the raw preprocessing result.
+
+        For textual PDFs, tables are nested under chapter sections.
+        For scanned PDFs, tables are stored page by page.
+        """
+        tables: list[dict] = []
+
+        if isinstance(extraction_result, dict):
+            for doc_key, chapter in extraction_result.items():
+                sections = chapter.get("sections", {})
+                for section_key, section in sections.items():
+                    for subsection_key, subsection in section.get("sous_sections", {}).items():
+                        html = subsection.get("table_html", "")
+                        tables.append(
+                            {
+                                "document_key": doc_key,
+                                "section_key": section_key,
+                                "subsection_key": subsection_key,
+                                "title": subsection.get("titre", ""),
+                                "page": subsection.get("page"),
+                                "html": html,
+                                "html_text": table_html_to_text(html),
+                            }
+                        )
+
+        elif isinstance(extraction_result, list):
+            for page in extraction_result:
+                page_number = page.get("page")
+                page_tables = page.get("content", {}).get("tables", [])
+                for idx, table in enumerate(page_tables):
+                    html = table.get("html", "")
+                    tables.append(
+                        {
+                            "page": page_number,
+                            "table_index": idx,
+                            "html": html,
+                            "html_text": table_html_to_text(html),
+                            "bbox": table.get("bbox"),
+                        }
+                    )
+
+        return tables
