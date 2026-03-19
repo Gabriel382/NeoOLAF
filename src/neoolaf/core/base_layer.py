@@ -78,14 +78,16 @@ class BaseLayer(ABC):
         Save an intermediate JSON snapshot for this layer.
 
         Each layer writes inside:
-            <artifact_dir>/<layer_name>/state.json
+            <artifact_dir>/<layer_name>/<document_name>.json
         """
         layer_dir = Path(state.artifact_dir) / self.name
         layer_dir.mkdir(parents=True, exist_ok=True)
 
         payload = self.build_artifact_payload(state)
+        document_name = Path(state.document.source_path).stem or state.document.doc_id
+        output_path = layer_dir / f"{document_name}.json"
 
-        with open(layer_dir / "state.json", "w", encoding="utf-8") as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             json.dump(payload, f, indent=2, ensure_ascii=False)
 
     def build_artifact_payload(self, state: PipelineState) -> dict[str, Any]:
