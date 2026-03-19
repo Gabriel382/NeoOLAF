@@ -7,7 +7,10 @@ from typing import Optional
 
 import pdfplumber
 
-from neoolaf.preprocessing.cleaners import postprocess_ocr_text, postprocess_ocr_tables
+from neoolaf.preprocessing.cleaners import (
+    clean_ocr_table_output,
+    clean_ocr_text_output,
+)
 from neoolaf.preprocessing.image_conversion import pdf_to_images
 from neoolaf.preprocessing.image_preprocessing import preprocess_page
 from neoolaf.preprocessing.textual_extraction import extract_textual_pdf
@@ -112,8 +115,8 @@ def _extract_scanned_pdf(
                 "page": page_number,
                 "page_size": {"width": w, "height": h, "dpi": dpi},
                 "content": {
-                    "text": postprocess_ocr_text(page_result["text"]),
-                    "tables": postprocess_ocr_tables(page_result.get("tables", [])),
+                    "text": clean_ocr_text_output(page_result["text"]),
+                    "tables": clean_ocr_table_output(page_result.get("tables", [])),
                 },
             })
 

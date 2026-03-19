@@ -10,7 +10,7 @@ from pathlib import Path
 import pdfplumber
 
 from neoolaf.preprocessing.cleaners import (
-    finalize,
+    finalize_extracted_document,
     normalize_compare,
     normalize_line,
     strip_chapter_lines,
@@ -142,6 +142,18 @@ def body_lines(page) -> list[str]:
     return remove_footers(lines)
 
 
+def extract_page_lines(page, body_only: bool = False) -> list[str]:
+    """High-level entrypoint for extracting cleaned lines from one page."""
+    if body_only:
+        return body_lines(page)
+    return split_lines(page.extract_text() or "")
+
+
+def extract_page_text(page, body_only: bool = False) -> str:
+    """High-level entrypoint for extracting cleaned text from one page."""
+    return join_lines(extract_page_lines(page, body_only=body_only))
+
+
 # ── Page classification helpers ──────────────────────────────────────────────
 
 
@@ -219,7 +231,7 @@ def toc_chapters(pdf) -> OrderedDict:
     """Read chapter titles from early TOC pages."""
     chapters = OrderedDict()
     for page in pdf.pages[: min(len(pdf.pages), 12)]:
-        lines = split_lines(page.extract_text() or "")
+        lines = extract_page_lines(page)
         if not toc_page(lines):
             continue
         index = 0
@@ -330,6 +342,11 @@ def tables(page) -> list[list[list[str]]]:
     return result
 
 
+def extract_page_tables(page) -> list[list[list[str]]]:
+    """High-level entrypoint for extracting valid tables from one page."""
+    return tables(page)
+
+
 def html_table(rows: list[list[str]]) -> str:
     """Convert extracted rows into deterministic HTML."""
     parts = []
@@ -381,18 +398,20 @@ def family(pdf) -> str:
     text_size = 0
     toc_pages = 0
     for page in pdf.pages[: min(len(pdf.pages), 15)]:
-        lines = split_lines(page.extract_text() or "")
+        lines = extract_page_lines(page)
         text_size += len(join_lines(lines))
         if toc_page(lines):
             toc_pages += 1
         if chapter_heading(lines):
             chapter_pages += 1
-        page_tables = tables(page)
+        page_tables = extract_page_tables(page)
         if page_tables:
             table_pages += 1
             table_count += len(page_tables)
     if text_size < 120 and table_count == 0:
         return "sparse"
+    if chapter_pages == 0 and table_pages >= 8 and table_count >= 12:
+        return "table"
     if chapter_pages >= 1 or toc_pages >= 1:
         return "manual"
     if table_pages >= 2 or table_count >= 4:
@@ -402,22 +421,46 @@ def family(pdf) -> str:
     return "table"
 
 
+def classify_textual_pdf(pdf) -> str:
+    """High-level entrypoint for classifying a textual PDF family."""
+    return family(pdf)
+
+
 def table_title(rows: list[list[str]], page_lines: list[str], fallback: str) -> str:
     """Pick the best title for one extracted table."""
+    def valid_title(title: str) -> bool:
+        if not title:
+            return False
+        if len(title) < 8 or len(title) > 80:
+            return False
+        if title in {"VER/", "M"}:
+            return False
+        lowered = title.lower()
+        if any(
+            marker in lowered
+            for marker in ("via ", "tel", "fax", "e-mail", "email", "www.", "24030", "brembate", "@", "cliente", "client")
+        ):
+            return False
+        if title.count(",") >= 1 or title.count(":") >= 1:
+            return False
+        if len(title.split()) > 14:
+            return False
+        return True
+
     for line in page_lines:
         title = clean_title(line)
-        if title.lower().startswith("table "):
+        if title.lower().startswith("table ") and valid_title(title):
             return title
     if rows:
         first_row = [cell for cell in rows[0] if cell]
         if first_row:
             title = clean_title(first_row[0])
-            if 2 <= len(title.split()) <= 14 and len(title) <= 120:
+            if valid_title(title):
                 return title
     for line in page_lines[:8]:
         title = clean_title(line)
         if (
-            2 <= len(title.split()) <= 14
+            valid_title(title)
             and not CHAPTER_RE.match(title)
             and not CAP_RE.match(title)
         ):
@@ -485,7 +528,7 @@ def _extract_manual(pdf, pdf_path: Path) -> dict:
     table_counts: dict[str, int] = {}
 
     for page_number, page in enumerate(pdf.pages, start=1):
-        lines = body_lines(page)
+        lines = extract_page_lines(page, body_only=True)
         if not join_lines(lines):
             continue
         if toc_page(lines) or local_index(lines):
@@ -512,10 +555,11 @@ def _extract_manual(pdf, pdf_path: Path) -> dict:
                 current = next(iter(chapters))
                 ensure_section(chapter, current, chapters[current], page_number)
             else:
-                continue
+                current = "1"
+                ensure_section(chapter, current, title, page_number)
 
         section = chapter["sections"][current]
-        page_tables = tables(page)
+        page_tables = extract_page_tables(page)
 
         text_lines = strip_chapter_lines(lines, CHAPTER_RE)
         text_lines = strip_repeated_title(text_lines, current, section["titre"], score)
@@ -566,9 +610,9 @@ def _extract_table_doc(pdf, pdf_path: Path) -> dict:
     section = chapter["sections"]["1"]
     count = 0
     for page_number, page in enumerate(pdf.pages, start=1):
-        lines = split_lines(page.extract_text() or "")
+        lines = extract_page_lines(page)
         text = join_lines(lines)
-        page_tables = tables(page)
+        page_tables = extract_page_tables(page)
         if text and (not page_tables or len(text) < 1200):
             append_text(section, text)
         for rows in page_tables:
@@ -597,6 +641,16 @@ def _extract_sparse(pdf, pdf_path: Path) -> dict:
     return {"numero": "1", "titre": title, "sections": OrderedDict({"1": section})}
 
 
+def extract_textual_document_structure(pdf, pdf_path: Path) -> dict:
+    """High-level entrypoint for extracting one textual PDF into the target schema."""
+    kind = classify_textual_pdf(pdf)
+    if kind == "manual":
+        return _extract_manual(pdf, pdf_path)
+    if kind == "table":
+        return _extract_table_doc(pdf, pdf_path)
+    return _extract_sparse(pdf, pdf_path)
+
+
 # ── Public API ───────────────────────────────────────────────────────────────
 
 
@@ -618,11 +672,7 @@ def extract_textual_pdf(pdf_path: str) -> dict:
         raise FileNotFoundError(f"PDF not found: {pdf_path}")
 
     with pdfplumber.open(path) as pdf:
-        kind = family(pdf)
-        if kind == "manual":
-            chapter = _extract_manual(pdf, path)
-        elif kind == "table":
-            chapter = _extract_table_doc(pdf, path)
-        else:
-            chapter = _extract_sparse(pdf, path)
-        return finalize(OrderedDict({f"document_{slug(path.stem)}": chapter}))
+        chapter = extract_textual_document_structure(pdf, path)
+        return finalize_extracted_document(
+            OrderedDict({f"document_{slug(path.stem)}": chapter})
+        )
