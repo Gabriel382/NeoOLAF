@@ -32,6 +32,9 @@ class Document:
     # Structured extraction result from the PDF pipeline
     extraction_result: Optional[dict] = None
 
+    # Ordered document blocks following PDF reading order
+    content_blocks: List[dict] = field(default_factory=list)
+
     # Cleaned text after normalization
     cleaned_text: Optional[str] = None
 

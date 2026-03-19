@@ -99,13 +99,12 @@ class PreprocessingLayer(BaseLayer):
 
             # Build raw_text from extraction result for downstream layers
             if result["pdf_type"] == "textual":
-                state.document.raw_text = self._flatten_textual_result(
-                    result["content"]
-                )
+                ordered_blocks = self._extract_textual_blocks(result["content"])
             else:
-                state.document.raw_text = self._flatten_scanned_result(
-                    result["content"]
-                )
+                ordered_blocks = self._extract_scanned_blocks(result["content"])
+
+            state.document.content_blocks = ordered_blocks
+            state.document.raw_text = self._flatten_content_blocks(ordered_blocks)
 
         # Normalize the raw text
         cleaned = normalize_text(state.document.raw_text)
@@ -120,12 +119,13 @@ class PreprocessingLayer(BaseLayer):
                     "Translation was requested but no translator backend was provided."
                 )
 
-            translated = self.translator.translate(
-                cleaned,
-                source_language=self.source_language,
-                target_language=self.target_language,
+            state.document.content_blocks = self._translate_content_blocks(
+                state.document.content_blocks
             )
-
+            translated = self._flatten_content_blocks(
+                state.document.content_blocks,
+                use_translated_text=True,
+            )
             state.document.translated_text = translated
             text_for_chunking = translated
             state.log("[layer00_preprocessing] translation applied")
@@ -159,6 +159,67 @@ class PreprocessingLayer(BaseLayer):
         return "\n\n".join(parts)
 
     @staticmethod
+    def _extract_textual_blocks(content: dict) -> list[dict]:
+        """
+        Extract ordered content blocks from textual PDF extraction output.
+        """
+        blocks: list[dict] = []
+        order = 1
+
+        for doc_key, chapter in content.items():
+            sections = chapter.get("sections", {})
+            chapter_blocks = chapter.get("content_blocks", [])
+            if chapter_blocks:
+                for item in chapter_blocks:
+                    block = dict(item)
+                    block.setdefault("document_key", doc_key)
+                    block.setdefault("order", order)
+                    blocks.append(block)
+                    order = max(order, int(block["order"]) + 1)
+                continue
+
+            for section_key, section in sections.items():
+                text = section.get("contenu", "")
+                if text:
+                    blocks.append(
+                        {
+                            "block_id": f"block_{order:05d}",
+                            "type": "text",
+                            "order": order,
+                            "page": section.get("page"),
+                            "document_key": doc_key,
+                            "section_key": section_key,
+                            "html": None,
+                            "text": text,
+                        }
+                    )
+                    order += 1
+
+                for subsection_key, subsection in section.get("sous_sections", {}).items():
+                    html = subsection.get("table_html", "")
+                    blocks.append(
+                        {
+                            "block_id": f"block_{order:05d}",
+                            "type": "table",
+                            "order": order,
+                            "page": subsection.get("page"),
+                            "document_key": doc_key,
+                            "section_key": section_key,
+                            "subsection_key": subsection_key,
+                            "text": None,
+                            "title": subsection.get("titre", ""),
+                            "html": html,
+                            "html_text": table_html_to_text(html),
+                        }
+                    )
+                    order += 1
+
+        return sorted(
+            blocks,
+            key=lambda item: (item.get("page") or 0, item.get("order") or 0),
+        )
+
+    @staticmethod
     def _flatten_scanned_result(content: list) -> str:
         """
         Flatten a scanned extraction result (list of page dicts)
@@ -171,6 +232,100 @@ class PreprocessingLayer(BaseLayer):
                 parts.append(text)
         return "\n\n".join(parts)
 
+    @staticmethod
+    def _extract_scanned_blocks(content: list) -> list[dict]:
+        """
+        Extract ordered content blocks from scanned PDF extraction output.
+        """
+        blocks: list[dict] = []
+
+        for page in content:
+            page_number = page.get("page")
+            page_blocks = page.get("content", {}).get("content_blocks", [])
+            if page_blocks:
+                blocks.extend(page_blocks)
+                continue
+
+            order = 1
+            text = page.get("content", {}).get("text", "")
+            if text:
+                blocks.append(
+                    {
+                        "block_id": f"block_{page_number:05d}_{order:03d}",
+                        "type": "text",
+                        "page": page_number,
+                        "order": order,
+                        "html": None,
+                        "text": text,
+                    }
+                )
+                order += 1
+
+            for idx, table in enumerate(page.get("content", {}).get("tables", [])):
+                html = table.get("html", "")
+                blocks.append(
+                    {
+                        "block_id": f"block_{page_number:05d}_{order:03d}",
+                        "type": "table",
+                        "page": page_number,
+                        "order": order,
+                        "table_index": idx,
+                        "text": None,
+                        "html": html,
+                        "html_text": table_html_to_text(html),
+                        "bbox": table.get("bbox"),
+                    }
+                )
+                order += 1
+
+        return sorted(
+            blocks,
+            key=lambda item: (item.get("page") or 0, item.get("order") or 0),
+        )
+
+    @staticmethod
+    def _flatten_content_blocks(
+        content_blocks: list[dict],
+        use_translated_text: bool = False,
+    ) -> str:
+        """
+        Flatten ordered content blocks into one text stream.
+        """
+        parts = []
+        for block in content_blocks:
+            if use_translated_text:
+                text = block.get("translated_text", "")
+            elif block.get("type") == "text":
+                text = block.get("text", "")
+            else:
+                text = block.get("html_text", "")
+            if text:
+                parts.append(text)
+        return "\n\n".join(parts)
+
+    def _translate_content_blocks(self, content_blocks: list[dict]) -> list[dict]:
+        """
+        Translate each content block independently while preserving PDF order.
+        """
+        translated_blocks: list[dict] = []
+        for block in content_blocks:
+            updated_block = dict(block)
+            source_text = (
+                block.get("text", "")
+                if block.get("type") == "text"
+                else block.get("html_text", "")
+            )
+            translated_text = source_text
+            if source_text:
+                translated_text = self.translator.translate(
+                    source_text,
+                    source_language=self.source_language,
+                    target_language=self.target_language,
+                )
+            updated_block["translated_text"] = translated_text
+            translated_blocks.append(updated_block)
+        return translated_blocks
+
     def build_artifact_payload(self, state: PipelineState) -> dict:
         """
         Serialize relevant preprocessing outputs.
@@ -182,8 +337,7 @@ class PreprocessingLayer(BaseLayer):
             "doc_id": state.document.doc_id,
             "source_path": state.document.source_path,
             "pdf_type": state.document.pdf_type,
-            "cleaned_text": state.document.cleaned_text or "",
-            "translated_text": state.document.translated_text,
+            "content_blocks": state.document.content_blocks,
             "tables": extraction_tables,
         }
 

@@ -10,6 +10,7 @@ import pdfplumber
 from neoolaf.preprocessing.cleaners import (
     clean_ocr_table_output,
     clean_ocr_text_output,
+    table_html_to_text,
 )
 from neoolaf.preprocessing.image_conversion import pdf_to_images
 from neoolaf.preprocessing.image_preprocessing import preprocess_page
@@ -111,12 +112,48 @@ def _extract_scanned_pdf(
             page_result = engine.ocr_page(proc_page)
 
             w, h = raw_page.size
+            cleaned_text = clean_ocr_text_output(page_result["text"])
+            cleaned_tables = clean_ocr_table_output(page_result.get("tables", []))
+            content_blocks = []
+            block_order = 1
+
+            if cleaned_text:
+                content_blocks.append(
+                    {
+                        "block_id": f"block_{page_number:05d}_{block_order:03d}",
+                        "type": "text",
+                        "page": page_number,
+                        "order": block_order,
+                        "html": None,
+                        "text": cleaned_text,
+                    }
+                )
+                block_order += 1
+
+            for table_index, table in enumerate(cleaned_tables):
+                html = table.get("html", "")
+                content_blocks.append(
+                    {
+                        "block_id": f"block_{page_number:05d}_{block_order:03d}",
+                        "type": "table",
+                        "page": page_number,
+                        "order": block_order,
+                        "table_index": table_index,
+                        "text": None,
+                        "html": html,
+                        "html_text": table_html_to_text(html),
+                        "bbox": table.get("bbox"),
+                    }
+                )
+                block_order += 1
+
             results.append({
                 "page": page_number,
                 "page_size": {"width": w, "height": h, "dpi": dpi},
                 "content": {
-                    "text": clean_ocr_text_output(page_result["text"]),
-                    "tables": clean_ocr_table_output(page_result.get("tables", [])),
+                    "text": cleaned_text,
+                    "tables": cleaned_tables,
+                    "content_blocks": content_blocks,
                 },
             })
 

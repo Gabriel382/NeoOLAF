@@ -15,6 +15,7 @@ from neoolaf.preprocessing.cleaners import (
     normalize_line,
     strip_chapter_lines,
     strip_repeated_title,
+    table_html_to_text,
 )
 
 
@@ -504,6 +505,43 @@ def add_table(
     }
 
 
+def append_block(
+    blocks: list[dict],
+    block_type: str,
+    page: int,
+    order: int,
+    *,
+    text: str = "",
+    title: str = "",
+    html: str = "",
+    html_text: str = "",
+    section_key: str | None = None,
+    subsection_key: str | None = None,
+) -> int:
+    """Append one ordered content block and return the next order value."""
+    payload = {
+        "block_id": f"block_{order:05d}",
+        "type": block_type,
+        "page": page,
+        "order": order,
+    }
+    if section_key is not None:
+        payload["section_key"] = section_key
+    if subsection_key is not None:
+        payload["subsection_key"] = subsection_key
+    if block_type == "text":
+        payload["html"] = None
+        payload["text"] = text
+    elif block_type == "table":
+        payload["text"] = None
+        payload["title"] = title
+        payload["html"] = html
+        payload["html_text"] = html_text
+
+    blocks.append(payload)
+    return order + 1
+
+
 def prune_sections(chapter: dict) -> dict:
     """Remove empty sections and keep stable ordering."""
     kept = []
@@ -523,9 +561,15 @@ def _extract_manual(pdf, pdf_path: Path) -> dict:
     """Extract a manual-style PDF into the target schema."""
     chapters = toc_chapters(pdf)
     title = doc_title(pdf, pdf_path)
-    chapter = {"numero": "1", "titre": title, "sections": OrderedDict()}
+    chapter = {
+        "numero": "1",
+        "titre": title,
+        "sections": OrderedDict(),
+        "content_blocks": [],
+    }
     current = None
     table_counts: dict[str, int] = {}
+    block_order = 1
 
     for page_number, page in enumerate(pdf.pages, start=1):
         lines = extract_page_lines(page, body_only=True)
@@ -566,17 +610,39 @@ def _extract_manual(pdf, pdf_path: Path) -> dict:
         text = join_lines(text_lines)
         if text:
             append_text(section, text)
+            block_order = append_block(
+                chapter["content_blocks"],
+                "text",
+                page_number,
+                block_order,
+                text=text,
+                section_key=current,
+            )
 
         if page_tables:
             count = table_counts.get(current, 0)
             for rows in page_tables:
                 count += 1
+                table_key = f"{current}.{count}"
+                table_name = table_title(rows, text_lines, f"Table {count}")
+                html = html_table(rows)
                 add_table(
                     section,
-                    f"{current}.{count}",
-                    table_title(rows, text_lines, f"Table {count}"),
+                    table_key,
+                    table_name,
                     page_number,
                     rows,
+                )
+                block_order = append_block(
+                    chapter["content_blocks"],
+                    "table",
+                    page_number,
+                    block_order,
+                    title=table_name,
+                    html=html,
+                    html_text=table_html_to_text(html),
+                    section_key=current,
+                    subsection_key=table_key,
                 )
             table_counts[current] = count
 
@@ -587,6 +653,7 @@ def _extract_manual(pdf, pdf_path: Path) -> dict:
             "contenu": title,
             "sous_sections": OrderedDict(),
         }
+        append_block(chapter["content_blocks"], "text", 1, block_order, text=title, section_key="1")
     return prune_sections(chapter)
 
 
@@ -596,6 +663,7 @@ def _extract_table_doc(pdf, pdf_path: Path) -> dict:
     chapter = {
         "numero": "1",
         "titre": title,
+        "content_blocks": [],
         "sections": OrderedDict(
             {
                 "1": {
@@ -609,23 +677,47 @@ def _extract_table_doc(pdf, pdf_path: Path) -> dict:
     }
     section = chapter["sections"]["1"]
     count = 0
+    block_order = 1
     for page_number, page in enumerate(pdf.pages, start=1):
         lines = extract_page_lines(page)
         text = join_lines(lines)
         page_tables = extract_page_tables(page)
         if text and (not page_tables or len(text) < 1200):
             append_text(section, text)
+            block_order = append_block(
+                chapter["content_blocks"],
+                "text",
+                page_number,
+                block_order,
+                text=text,
+                section_key="1",
+            )
         for rows in page_tables:
             count += 1
+            table_key = f"1.{count}"
+            table_name = table_title(rows, lines, f"Table {count}")
+            html = html_table(rows)
             add_table(
                 section,
-                f"1.{count}",
-                table_title(rows, lines, f"Table {count}"),
+                table_key,
+                table_name,
                 page_number,
                 rows,
             )
+            block_order = append_block(
+                chapter["content_blocks"],
+                "table",
+                page_number,
+                block_order,
+                title=table_name,
+                html=html,
+                html_text=table_html_to_text(html),
+                section_key="1",
+                subsection_key=table_key,
+            )
     if not section["contenu"]:
         section["contenu"] = title
+        append_block(chapter["content_blocks"], "text", 1, block_order, text=title, section_key="1")
     return chapter
 
 
@@ -638,7 +730,21 @@ def _extract_sparse(pdf, pdf_path: Path) -> dict:
         "contenu": title,
         "sous_sections": OrderedDict(),
     }
-    return {"numero": "1", "titre": title, "sections": OrderedDict({"1": section})}
+    return {
+        "numero": "1",
+        "titre": title,
+        "content_blocks": [
+            {
+                "block_id": "block_00001",
+                "type": "text",
+                "page": 1,
+                "order": 1,
+                "section_key": "1",
+                "text": title,
+            }
+        ],
+        "sections": OrderedDict({"1": section}),
+    }
 
 
 def extract_textual_document_structure(pdf, pdf_path: Path) -> dict:
