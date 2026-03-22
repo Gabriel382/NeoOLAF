@@ -124,7 +124,6 @@ def _extract_scanned_pdf(
                         "type": "text",
                         "page": page_number,
                         "order": block_order,
-                        "html": None,
                         "text": cleaned_text,
                     }
                 )
@@ -139,7 +138,6 @@ def _extract_scanned_pdf(
                         "page": page_number,
                         "order": block_order,
                         "table_index": table_index,
-                        "text": None,
                         "html": html,
                         "html_text": table_html_to_text(html),
                         "bbox": table.get("bbox"),
@@ -172,6 +170,170 @@ def _extract_scanned_pdf(
 
 
 # ── Unified extraction ───────────────────────────────────────────────────────
+
+
+# ── Block extraction utilities ───────────────────────────────────────────────
+
+
+def extract_content_blocks(pdf_type: str, content) -> list[dict]:
+    """
+    Convert raw extraction output into ordered content blocks.
+
+    Args:
+        pdf_type: "textual" or "scanned"
+        content:  The raw extraction result (dict for textual, list for scanned).
+
+    Returns:
+        Sorted list of content block dicts.
+    """
+    if pdf_type == "textual":
+        return _blocks_from_textual(content)
+    return _blocks_from_scanned(content)
+
+
+def _blocks_from_textual(content: dict) -> list[dict]:
+    """Convert textual PDF extraction dict into ordered content blocks."""
+    blocks: list[dict] = []
+    order = 1
+
+    for doc_key, chapter in content.items():
+        chapter_blocks = chapter.get("content_blocks", [])
+        if chapter_blocks:
+            for item in chapter_blocks:
+                block = dict(item)
+                block.setdefault("document_key", doc_key)
+                block.setdefault("order", order)
+                blocks.append(block)
+                order = max(order, int(block["order"]) + 1)
+            continue
+
+        for section_key, section in chapter.get("sections", {}).items():
+            text = section.get("contenu", "")
+            if text:
+                blocks.append({
+                    "block_id": f"block_{order:05d}",
+                    "type": "text",
+                    "order": order,
+                    "page": section.get("page"),
+                    "document_key": doc_key,
+                    "section_key": section_key,
+                    "text": text,
+                })
+                order += 1
+
+            for sub_key, sub in section.get("sous_sections", {}).items():
+                html = sub.get("table_html", "")
+                blocks.append({
+                    "block_id": f"block_{order:05d}",
+                    "type": "table",
+                    "order": order,
+                    "page": sub.get("page"),
+                    "document_key": doc_key,
+                    "section_key": section_key,
+                    "subsection_key": sub_key,
+                    "title": sub.get("titre", ""),
+                    "html": html,
+                    "html_text": table_html_to_text(html),
+                })
+                order += 1
+
+    return sorted(blocks, key=lambda b: (b.get("page") or 0, b.get("order") or 0))
+
+
+def _blocks_from_scanned(content: list) -> list[dict]:
+    """Convert scanned PDF extraction list into ordered content blocks."""
+    blocks: list[dict] = []
+
+    for page in content:
+        page_blocks = page.get("content", {}).get("content_blocks", [])
+        if page_blocks:
+            blocks.extend(page_blocks)
+            continue
+
+        page_number = page.get("page")
+        order = 1
+        text = page.get("content", {}).get("text", "")
+        if text:
+            blocks.append({
+                "block_id": f"block_{page_number:05d}_{order:03d}",
+                "type": "text",
+                "page": page_number,
+                "order": order,
+                "text": text,
+            })
+            order += 1
+
+        for idx, table in enumerate(page.get("content", {}).get("tables", [])):
+            html = table.get("html", "")
+            blocks.append({
+                "block_id": f"block_{page_number:05d}_{order:03d}",
+                "type": "table",
+                "page": page_number,
+                "order": order,
+                "table_index": idx,
+                "html": html,
+                "html_text": table_html_to_text(html),
+                "bbox": table.get("bbox"),
+            })
+            order += 1
+
+    return sorted(blocks, key=lambda b: (b.get("page") or 0, b.get("order") or 0))
+
+
+def flatten_content_blocks(
+    content_blocks: list[dict],
+    use_translated_text: bool = False,
+) -> str:
+    """Flatten ordered content blocks into one plain-text stream."""
+    parts = []
+    for block in content_blocks:
+        if use_translated_text:
+            text = block.get("translated_text") or ""
+        elif block.get("type") == "text":
+            text = block.get("text") or ""
+        else:
+            text = block.get("html_text") or ""
+        if text:
+            parts.append(text)
+    return "\n\n".join(parts)
+
+
+def extract_tables_for_export(extraction_result) -> list[dict]:
+    """Extract table HTML snippets from a raw extraction result."""
+    tables: list[dict] = []
+
+    if isinstance(extraction_result, dict):
+        for doc_key, chapter in extraction_result.items():
+            for sec_key, section in chapter.get("sections", {}).items():
+                for sub_key, sub in section.get("sous_sections", {}).items():
+                    html = sub.get("table_html", "")
+                    tables.append({
+                        "document_key": doc_key,
+                        "section_key": sec_key,
+                        "subsection_key": sub_key,
+                        "title": sub.get("titre", ""),
+                        "page": sub.get("page"),
+                        "html": html,
+                        "html_text": table_html_to_text(html),
+                    })
+
+    elif isinstance(extraction_result, list):
+        for page in extraction_result:
+            page_number = page.get("page")
+            for idx, table in enumerate(page.get("content", {}).get("tables", [])):
+                html = table.get("html", "")
+                tables.append({
+                    "page": page_number,
+                    "table_index": idx,
+                    "html": html,
+                    "html_text": table_html_to_text(html),
+                    "bbox": table.get("bbox"),
+                })
+
+    return tables
+
+
+# ── Unified extraction ───────────────────────────────────────────────────
 
 
 def extract_pdf(
