@@ -13,7 +13,6 @@ class LightOnOCREngine(BaseOCREngine):
     """
     OCR engine powered by LightOnOCR-2-1B.
     """
-
     MODEL_ID = "lightonai/LightOnOCR-2-1B"
     MAX_PX_SIDE = 1540
 
@@ -48,7 +47,6 @@ class LightOnOCREngine(BaseOCREngine):
         self._device = next(self._model.parameters()).device
 
     def release(self):
-        """Delete model and processor references and flush GPU memory."""
         self._model = None
         self._processor = None
         gc.collect()
@@ -59,7 +57,6 @@ class LightOnOCREngine(BaseOCREngine):
 
     @staticmethod
     def _resize_for_model(image: Image.Image) -> Image.Image:
-        """Resize so longest side equals MAX_PX_SIDE, preserving aspect ratio."""
         w, h = image.size
         longest = max(w, h)
         if longest <= LightOnOCREngine.MAX_PX_SIDE:
@@ -69,7 +66,6 @@ class LightOnOCREngine(BaseOCREngine):
 
     @staticmethod
     def _markdown_table_to_html(md_table: str) -> str:
-        """Convert a Markdown pipe table into a valid HTML table string."""
         lines = [l.strip() for l in md_table.strip().splitlines() if l.strip()]
         rows = [l for l in lines if not re.match(r"^\|[-| :]+\|$", l)]
         if not rows:
@@ -86,13 +82,6 @@ class LightOnOCREngine(BaseOCREngine):
 
     @staticmethod
     def _parse_tables(text: str) -> tuple:
-        """
-        Extract tables from raw LightOnOCR output and normalize to HTML.
-        Handles HTML <table> tags and Markdown pipe tables.
-
-        Returns:
-            (plain_text, tables list of dicts with 'bbox' and 'html')
-        """
         tables = []
 
         html_pattern = re.compile(r"<table[\s\S]*?</table>", re.IGNORECASE)
@@ -112,12 +101,6 @@ class LightOnOCREngine(BaseOCREngine):
         return plain_text, tables
 
     def ocr_page(self, image: Image.Image) -> dict:
-        """
-        Run LightOnOCR-2 on a single page.
-
-        Returns:
-            dict with keys: text (str), tables (list of dicts), raw (str)
-        """
         self._load()
 
         if image.mode != "RGB":

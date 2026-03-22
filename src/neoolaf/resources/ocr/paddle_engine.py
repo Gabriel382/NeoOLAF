@@ -11,7 +11,6 @@ class PaddleOCREngine(BaseOCREngine):
     """
     OCR engine powered by PaddleOCR-VL-1.5.
     """
-
     def __init__(
         self,
         use_doc_orientation_classify: bool = True,
@@ -26,7 +25,6 @@ class PaddleOCREngine(BaseOCREngine):
         self._pipeline = None
 
     def _load(self):
-        """Initialize PaddleOCRVL on first use (lazy loading)."""
         if self._pipeline is not None:
             return
         self.free_gpu()
@@ -40,15 +38,6 @@ class PaddleOCREngine(BaseOCREngine):
         )
 
     def ocr_page(self, image: Image.Image) -> dict:
-        """
-        Run PaddleOCR-VL on a single page.
-
-        The image is saved to a temp file because PaddleOCRVL expects
-        a file path, not a PIL Image object.
-
-        Returns:
-            dict with keys: text (str), tables (list of dicts), raw (list)
-        """
         self._load()
 
         if image.mode != "RGB":

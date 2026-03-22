@@ -9,7 +9,6 @@ from neoolaf.domain.documents import Document
 from neoolaf.layers.layer00_preprocessing.component import PreprocessingLayer
 from neoolaf.resources.ocr.paddle_engine import PaddleOCREngine
 
-
 def run(pdf_path: str, use_chunking: bool = True):
     doc = Document(doc_id="doc_0001", source_path=pdf_path, raw_text="")
     state = PipelineState(document=doc, llm_model="none")

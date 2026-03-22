@@ -7,45 +7,16 @@ from collections import OrderedDict
 from bs4 import BeautifulSoup
 
 
-PAGE_REF_RE = re.compile(r"\b\d+-\d+\b")
+from neoolaf.preprocessing.structural_detection import (
+    GENERIC_FOOTER_PATTERNS as HEADER_PATTERNS,
+    PAGE_REF_RE,
+)
 TOC_LINE_RE = re.compile(r"^\s*\d+(?:\.\d+)+(?:\.?[^\n]*)?\s*\d+(?:-\d+)?\s*$")
 CONTROL_CHAR_RE = re.compile(r"[\x00-\x08\x0b-\x1f\x7f]")
-HEADER_PATTERNS = [
-    re.compile(r"^\s*CAP\.?\s*\d+\s*$", re.IGNORECASE),
-    re.compile(r"^\s*CHAPITRE\s+\d+\s*$", re.IGNORECASE),
-    re.compile(r"^\s*Page\s+\d+(?:-\d+)?\s+SPRINT.*$", re.IGNORECASE),
-    re.compile(r"^\s*SPRINT.*\s+Page\s+\d+(?:-\d+)?\s*$", re.IGNORECASE),
-    re.compile(r"^\s*Manuel d['']emploi\s+SPRINT.*\d+\s*$", re.IGNORECASE),
-    re.compile(r"^\s*MANUEL D['']INSTRUCTIONS.*\d+(?:-\d+)?\s*$", re.IGNORECASE),
-    re.compile(r"^\s*Documentazione Meccanica\s*\d*\s*$", re.IGNORECASE),
-    re.compile(r"^\s*[IVXLCDM]+\s+MANUEL.*SPRINT.*$", re.IGNORECASE),
-    re.compile(r"^\s*Manuel d[?'']instruction\s+SPRINT.*\d+\s*$", re.IGNORECASE),
-    re.compile(r"^\s*TABLEAU DES REVISIONS\s*$", re.IGNORECASE),
-    re.compile(r"^\s*VER/\s*PARAGRAPHE.*$", re.IGNORECASE),
-    re.compile(r"^\s*DATE\s*$", re.IGNORECASE),
-    re.compile(r"^\s*SPRINT[\w.-]+.*$", re.IGNORECASE),
-]
 EMPTY_TABLE_HTML = {
     "<table><tr><td></td></tr></table>",
-    "<table><tr><td>Aucune donnee</td></tr></table>",
 }
 SOFT_HYPHENS = ("\u00ad", "\u200b", "\ufeff")
-BANNER_LINE_RE = re.compile(
-    r"^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ\s\-–—|]{10,}(?:maintenance|utilisation|installation|sécurité|security)$",
-    re.IGNORECASE,
-)
-FUSED_WORD_FIXES = {
-    "Manueldeprogrammation": "Manuel de programmation",
-    "withCNC-aveccommandenumÃ©rique-decontrolnumÃ©rico": "with CNC - avec commande numÃ©rique - de control numÃ©rico",
-    "aveccommandenumérique": "avec commande numérique",
-    "DocumentazioneMeccanica": "Documentazione Meccanica",
-    "MECHANISCHEDOKUMENTATION": "MECHANISCHE DOKUMENTATION",
-    "MECHANICALDOCUMENTATION": "MECHANICAL DOCUMENTATION",
-    "DOCUMENTATIONMÉCANIQUE": "DOCUMENTATION MÉCANIQUE",
-    "DOCUMENTACIÓNMECÁNICA": "DOCUMENTACIÓN MECÁNICA",
-    "Qualificationdel": "Qualification de l",
-    "Phasedelavietechniquedelamachine": "Phase de la vie technique de la machine",
-}
 
 
 def normalize_compare(text: str) -> str:
@@ -224,39 +195,16 @@ def collapse_alternating_doubled_letters(text: str) -> str:
     return " ".join(fix_token(token) for token in text.split(" "))
 
 
-def repair_known_fused_words(text: str) -> str:
-    """Repair common fused words seen across the exported manuals."""
-    for wrong, right in FUSED_WORD_FIXES.items():
-        text = text.replace(wrong, right)
+def repair_fused_words(text: str) -> str:
+    """
+    Detect and repair fused words generically.
+
+    Looks for camelCase-like patterns in the middle of text that are
+    likely two words stuck together (e.g., "ManualInstruction" → "Manual Instruction").
+    """
+    # Split camelCase fused words: "ManualInstruction" → "Manual Instruction"
+    text = re.sub(r"([a-zà-ÿ])([A-ZÀ-Ý])", r"\1 \2", text)
     return text
-
-
-def remove_banner_lines(text: str) -> str:
-    """Remove decorative cover-banner lines that are not useful for extraction."""
-    cleaned_lines = []
-    for line in text.splitlines():
-        stripped = line.strip()
-        if not stripped:
-            cleaned_lines.append("")
-            continue
-        normalized = collapse_alternating_doubled_letters(stripped.replace("------", " "))
-        lowered = normalized.lower()
-        if "------" in stripped and (
-            BANNER_LINE_RE.match(normalized)
-            or (
-                "installation" in lowered
-                and "utilisation" in lowered
-                and ("maintenance" in lowered or "sécurité" in lowered or "securite" in lowered)
-            )
-        ):
-            continue
-        cleaned_lines.append(line)
-    return "\n".join(cleaned_lines)
-
-
-def normalize_bullets(text: str) -> str:
-    """Convert legacy bullet markers to one bullet style."""
-    return re.sub(r"(?m)^D\s+", "• ", text)
 
 
 def remove_header_footer_lines(text: str) -> str:
@@ -333,8 +281,7 @@ def remove_garbage_lines(text: str, min_alpha_ratio: float = 0.3) -> str:
 
 def fix_text_artifacts(text: str) -> str:
     """Fix common text-layer extraction artifacts."""
-    text = re.sub(r"\b0([a-zA-Z])", r"O\1", text)
-    text = re.sub(r"\b1([a-z])", r"l\1", text)
+    text = fix_ocr_char_confusions(text)
     text = re.sub(r"(?<=\w)\s*---\s*(?=\w)", "-", text)
     text = re.sub(r"(?<=\w)\s*--\s*(?=\w)", "-", text)
     return text
@@ -342,22 +289,9 @@ def fix_text_artifacts(text: str) -> str:
 
 def remove_markup(text: str) -> str:
     """Remove HTML, markdown, and latex-like fragments."""
-    text = re.sub(r"<div[^>]*>.*?</div>", "", text, flags=re.DOTALL)
-    text = re.sub(r"<svg[^>]*>.*?</svg>", "", text, flags=re.DOTALL)
-    text = re.sub(r"<[^>]+>", "", text)
-    text = re.sub(r"\$\\[a-zA-Z]+\{[^}]*\}\$", "", text)
-    text = re.sub(r"\$\\[a-zA-Z]+\$", "", text)
-    text = re.sub(r"\$[^$]{1,30}\$", "", text)
-    text = re.sub(r"^#{1,6}[ \t]+", "", text, flags=re.MULTILINE)
-    text = re.sub(r"^\s*---\s*$", "", text, flags=re.MULTILINE)
-    text = re.sub(r"\*{1,2}(.+?)\*{1,2}", r"\1", text)
-    text = re.sub(r"_{1,2}(.+?)_{1,2}", r"\1", text)
-    text = re.sub(r"!\[.*?\]\(.*?\)", "", text)
-    text = re.sub(r"\[(.+?)\]\(.*?\)", r"\1", text)
-    text = re.sub(r"`(.+?)`", r"\1", text)
-    text = re.sub(r"^[ \t]*>[ \t]+", "", text, flags=re.MULTILINE)
-    text = re.sub(r"^[ \t]*[-*+][ \t]+", "", text, flags=re.MULTILINE)
-    text = re.sub(r"^[ \t]*\d+\.[ \t]+", "", text, flags=re.MULTILINE)
+    text = remove_html_artifacts(text)
+    text = remove_latex_noise(text)
+    text = remove_markdown_formatting(text)
     return text.strip()
 
 
@@ -370,11 +304,9 @@ def clean_text(text: str) -> str:
     text = normalize_unicode(text)
     text = collapse_doubled_glyph_words(text)
     text = collapse_alternating_doubled_letters(text)
-    text = repair_known_fused_words(text)
+    text = repair_fused_words(text)
     text = fix_broken_words(text)
     text = collapse_spaced_letters(text)
-    text = normalize_bullets(text)
-    text = remove_banner_lines(text)
     text = remove_header_footer_lines(text)
     text = remove_toc_noise(text)
     text = fix_text_artifacts(text)
@@ -468,7 +400,7 @@ def finalize_extracted_document(value):
 
 
 def remove_html_artifacts(text: str) -> str:
-    """Remove raw HTML/SVG tags hallucinated by OCR models into plain text."""
+    """Remove raw HTML/SVG tags from text."""
     text = re.sub(r"<div[^>]*>.*?</div>", "", text, flags=re.DOTALL)
     text = re.sub(r"<svg[^>]*>.*?</svg>", "", text, flags=re.DOTALL)
     text = re.sub(r"<[^>]+>", "", text)
@@ -476,28 +408,40 @@ def remove_html_artifacts(text: str) -> str:
 
 
 def remove_latex_noise(text: str) -> str:
-    """Remove LaTeX math artifacts injected by OCR models into plain text."""
+    """Remove LaTeX math artifacts from text."""
     text = re.sub(r"\$\\[a-zA-Z]+\{[^}]*\}\$", "", text)
     text = re.sub(r"\$\\[a-zA-Z]+\$", "", text)
     text = re.sub(r"\$[^$]{1,30}\$", "", text)
     return text.strip()
 
 
-def fix_common_ocr_errors(text: str) -> str:
-    """Fix OCR character confusions and remove Markdown formatting artifacts."""
-    text = re.sub(r"\b0([a-zA-Z])", r"O\1", text)
-    text = re.sub(r"\b1([a-z])", r"l\1", text)
-    text = re.sub(r"(?<=[a-z])rn(?=[a-z])", "m", text)
-    text = re.sub(r"^#{1,6}\s+", "", text, flags=re.MULTILINE)
+def remove_markdown_formatting(text: str) -> str:
+    """Remove Markdown formatting from text."""
+    text = re.sub(r"^#{1,6}[ \t]+", "", text, flags=re.MULTILINE)
     text = re.sub(r"^\s*---\s*$", "", text, flags=re.MULTILINE)
     text = re.sub(r"\*{1,2}(.+?)\*{1,2}", r"\1", text)
     text = re.sub(r"_{1,2}(.+?)_{1,2}", r"\1", text)
     text = re.sub(r"!\[.*?\]\(.*?\)", "", text)
     text = re.sub(r"\[(.+?)\]\(.*?\)", r"\1", text)
     text = re.sub(r"`(.+?)`", r"\1", text)
-    text = re.sub(r"^\s*>\s+", "", text, flags=re.MULTILINE)
-    text = re.sub(r"^\s*[-*+]\s+", "", text, flags=re.MULTILINE)
-    text = re.sub(r"^\s*\d+\.\s+", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^[ \t]*>[ \t]+", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^[ \t]*[-*+][ \t]+", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^[ \t]*\d+\.[ \t]+", "", text, flags=re.MULTILINE)
+    return text
+
+
+def fix_ocr_char_confusions(text: str) -> str:
+    """Fix OCR character confusions (0→O, 1→l, rn→m)."""
+    text = re.sub(r"\b0([a-zA-Z])", r"O\1", text)
+    text = re.sub(r"\b1([a-z])", r"l\1", text)
+    text = re.sub(r"(?<=[a-z])rn(?=[a-z])", "m", text)
+    return text
+
+
+def fix_common_ocr_errors(text: str) -> str:
+    """Fix OCR character confusions and remove Markdown formatting artifacts."""
+    text = fix_ocr_char_confusions(text)
+    text = remove_markdown_formatting(text)
     return text
 
 

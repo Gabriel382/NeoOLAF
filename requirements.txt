@@ -7,19 +7,33 @@ Pillow
 opencv-python-headless
 numpy<2.0
 matplotlib
+--extra-index-url https://download.pytorch.org/whl/cu121
 torch
 torchvision
-# PyTorch (GPU)
-# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
 transformers
 accelerate
-# Transformers (GPU)
-# pip install git+https://github.com/huggingface/transformers
-paddlepaddle
+sentencepiece
+langdetect
+--find-links https://www.paddlepaddle.org.cn/packages/stable/cu126/
+paddlepaddle-gpu==3.2.1
 paddleocr[doc-parser]
-# PaddleOCR (GPU)
-# pip install paddlepaddle-gpu==3.2.1 -f https://www.paddlepaddle.org.cn/packages/stable/cu126/
 langchain<0.2
 langchain-community<0.2
-# System dependencies (Linux)
-# apt-get install poppler-utils
+# =========================
+# SYSTEM DEPENDENCIES (NOT installed by pip)
+# =========================
+# --- Linux ---
+# Required for pdf2image
+# Run in terminal:
+#   sudo apt-get update
+#   sudo apt-get install -y poppler-utils
+# --- Windows ---
+# Required for pdf2image
+# 1. Download Poppler:
+#    https://github.com/oschwartz10612/poppler-windows/releases
+# 2. Extract to:
+#    C:\poppler\
+# 3. Add to PATH:
+#    C:\poppler\Library\bin
+# 4. Test:
+#    pdftoppm -h
