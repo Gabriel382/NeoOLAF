@@ -19,6 +19,12 @@ from neoolaf.domain.candidates import (
 
 from neoolaf.domain.relation_assertion import CandidateRelationAssertion
 from neoolaf.domain.candidate_triple import CandidateTriple
+from neoolaf.domain.ontology_elements import ConceptCandidate, OntologyRelationCandidate
+from neoolaf.domain.hierarchy import ConceptHierarchyLink, RelationHierarchyLink
+from neoolaf.domain.axiom_schema import AxiomSchemaCandidate
+from neoolaf.domain.general_axiom import GeneralAxiomCandidate
+from neoolaf.domain.validation_reasoning import ValidationReport, ReasoningReport
+from neoolaf.domain.completion import CompletionCandidate
 
 @dataclass
 class PipelineState:
@@ -55,6 +61,27 @@ class PipelineState:
 
     # Layer 5 outputs
     candidate_triples: List[CandidateTriple] = field(default_factory=list)
+
+    # Layer 6 outputs
+    concept_candidates: List[ConceptCandidate] = field(default_factory=list)
+    ontology_relation_candidates: List[OntologyRelationCandidate] = field(default_factory=list)
+
+    # Layer 7 outputs
+    concept_hierarchy_links: List[ConceptHierarchyLink] = field(default_factory=list)
+    relation_hierarchy_links: List[RelationHierarchyLink] = field(default_factory=list)
+
+    # Layer 8 outputs
+    axiom_schema_candidates: List[AxiomSchemaCandidate] = field(default_factory=list)
+
+    # Layer 9 outputs
+    general_axiom_candidates: List[GeneralAxiomCandidate] = field(default_factory=list)
+
+    # Layer 10 outputs
+    validation_report: ValidationReport | None = None
+    reasoning_report: ReasoningReport | None = None
+
+    # Layer 11 outputs
+    completion_candidates: List[CompletionCandidate] = field(default_factory=list)
 
     # Execution logs
     logs: List[str] = field(default_factory=list)
