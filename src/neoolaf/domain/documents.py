@@ -1,7 +1,3 @@
-"""
-Domain objects related to documents and chunks.
-"""
-
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -29,6 +25,15 @@ class Document:
     doc_id: str
     source_path: str
     raw_text: str
+
+    # PDF type detected during preprocessing ("textual" or "scanned")
+    pdf_type: Optional[str] = None
+
+    # Structured extraction result from the PDF pipeline
+    extraction_result: Optional[dict] = None
+
+    # Ordered document blocks following PDF reading order
+    content_blocks: List[dict] = field(default_factory=list)
 
     # Cleaned text after normalization
     cleaned_text: Optional[str] = None
