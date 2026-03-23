@@ -75,7 +75,7 @@ class NLLB200TranslatorBackend(BaseTranslationBackend):
             return text
 
         if source_language is None:
-            source_language = _detect_language(text)
+            source_language = detect_language(text)
 
         src_lang = _resolve_lang(source_language) or "eng_Latn"
         tgt_lang = _resolve_lang(target_language) or "eng_Latn"
