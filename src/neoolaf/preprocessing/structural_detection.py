@@ -30,10 +30,10 @@ TOC_KEYWORDS = [
 # ── Generic page-number footer patterns ──────────────────────────────────────
 
 GENERIC_FOOTER_PATTERNS = [
-    re.compile(r"^\s*\d+\s*/\s*\d+\s*$"),          # "3 / 10"
-    re.compile(r"^\s*-\s*\d+\s*-\s*$"),             # "- 5 -"
+    re.compile(r"^\s*\d+\s*/\s*\d+\s*$"),              # "3 / 10"
+    re.compile(r"^\s*-\s*\d+\s*-\s*$"),                # "- 5 -"
     re.compile(r"^\s*page\s+\d+\s*$", re.IGNORECASE),  # "Page 12"
-    re.compile(r"^\s*\d+\s*$"),                     # bare page number
+    re.compile(r"^\s*\d+\s*$"),                         # bare page number
 ]
 
 # ── Generic contact-info filter ──────────────────────────────────────────────
@@ -78,7 +78,16 @@ PAGE_REF_RE = re.compile(r"\b\d+-\d+\b")
 
 @dataclass
 class PageMargins:
-    """Adaptive top/bottom margins computed from word positions."""
+    """
+    Adaptive top and bottom margins computed from word positions.
+
+    Attributes:
+        top:
+            Y-coordinate (in PDF points) where the body region begins.
+        bottom_offset:
+            Distance in PDF points from the page bottom where the body
+            region ends.
+    """
 
     top: float = 50.0
     bottom_offset: float = 40.0
@@ -86,7 +95,23 @@ class PageMargins:
 
 @dataclass
 class DocumentStructure:
-    """Pre-computed structural information about a PDF."""
+    """
+    Pre-computed structural information about a PDF.
+
+    Produced once by ``analyze_document`` and consumed by extraction and
+    cleaning helpers throughout the preprocessing pipeline.
+
+    Attributes:
+        margins:
+            Adaptive page margins derived from word position distribution.
+        repeated_header_lines:
+            Normalized text of lines detected as repeating page headers.
+        repeated_footer_lines:
+            Normalized text of lines detected as repeating page footers.
+        median_font_size:
+            Most common font size across sampled pages, used as the
+            baseline for heading detection.
+    """
 
     margins: PageMargins = field(default_factory=PageMargins)
     repeated_header_lines: set[str] = field(default_factory=set)
@@ -99,10 +124,22 @@ class DocumentStructure:
 
 def detect_margins(pdf, sample_pages: int = 10) -> PageMargins:
     """
-    Compute adaptive top/bottom margins from word position distribution.
+    Compute adaptive top and bottom margins from word position distribution.
 
-    Looks at where words actually appear on the page and uses percentiles
-    to determine where body content starts and ends.
+    Samples up to ``sample_pages`` pages, collects the top and
+    bottom Y-coordinates of every extracted word, and uses the 5th
+    percentile of each distribution as the margin boundary. Results are
+    clamped to [20, 120] pt (top) and [20, 100] pt (bottom).
+
+    Args:
+        pdf:
+            An open pdfplumber PDF object.
+        sample_pages:
+            Maximum number of pages to sample for margin estimation.
+
+    Returns:
+        ``PageMargins`` instance with estimated top and bottom offsets.
+        Falls back to default values if no words are found.
     """
     tops: list[float] = []
     bottoms: list[float] = []
@@ -140,7 +177,13 @@ def detect_margins(pdf, sample_pages: int = 10) -> PageMargins:
 
 
 def _normalize_for_comparison(text: str) -> str:
-    """Normalize text for repetition comparison."""
+    """
+    Normalize text for repetition comparison.
+
+    Lowercases the input, collapses whitespace, and replaces all digit
+    sequences with ``#`` so that lines differing only in page numbers
+    are treated as identical.
+    """
     return re.sub(r"\d+", "#", re.sub(r"\s+", " ", text.strip().lower()))
 
 
@@ -150,11 +193,26 @@ def detect_repeated_lines(
     min_ratio: float = 0.4,
 ) -> tuple[set[str], set[str]]:
     """
-    Find header/footer text by checking which lines repeat across pages
-    in the top/bottom zones.
+    Find header and footer text by detecting lines that repeat across pages.
+
+    Examines the top three and bottom three lines of each sampled page.
+    Lines whose normalized form appears on at least ``min_ratio`` of
+    sampled pages are classified as repeated headers or footers
+    respectively. Returns empty sets when fewer than three pages are
+    available.
+
+    Args:
+        pdf:
+            An open pdfplumber PDF object.
+        sample_pages:
+            Maximum number of pages to sample.
+        min_ratio:
+            Minimum fraction of sampled pages on which a line must appear
+            to be considered a repeated header or footer.
 
     Returns:
-        (repeated_header_lines, repeated_footer_lines) — sets of normalized text.
+        Tuple of ``(repeated_header_lines, repeated_footer_lines)`` — each
+        a set of normalized text strings.
     """
     pages_to_check = min(sample_pages, len(pdf.pages))
     if pages_to_check < 3:
@@ -192,7 +250,23 @@ def detect_repeated_lines(
 
 
 def compute_median_font_size(pdf, sample_pages: int = 10) -> float:
-    """Compute the median (most common) font size across sampled pages."""
+    """
+    Compute the median (most common) font size across sampled pages.
+
+    Collects font sizes from all words on up to ``sample_pages`` pages
+    using pdfplumber's ``extra_attrs`` API. Returns the most frequent
+    rounded size, or 10.0 if no size information is available.
+
+    Args:
+        pdf:
+            An open pdfplumber PDF object.
+        sample_pages:
+            Maximum number of pages to sample.
+
+    Returns:
+        Most common font size as a float rounded to one decimal place,
+        or 10.0 as a default fallback.
+    """
     size_counts: Counter[float] = Counter()
 
     pages_to_check = min(sample_pages, len(pdf.pages))
@@ -220,11 +294,25 @@ def detect_headings_by_font(
     """
     Detect headings on a page by font size.
 
-    Words with font size > median * heading_ratio are heading candidates.
-    Adjacent large-font words are grouped into heading lines.
+    Words whose font size exceeds ``median_font_size * heading_ratio``
+    are treated as heading candidates. Adjacent large-font words sharing
+    the same Y-coordinate (within 5 pt) are grouped into heading lines
+    and sorted left-to-right.
+
+    Args:
+        page:
+            A pdfplumber page object.
+        median_font_size:
+            Body-text baseline font size as returned by
+            ``compute_median_font_size``.
+        heading_ratio:
+            Multiplier applied to ``median_font_size`` to set the minimum
+            heading font size.
 
     Returns:
-        List of {"text": str, "font_size": float, "top": float}
+        List of heading dicts, each with keys ``text`` (str),
+        ``font_size`` (float), and ``top`` (float). Returns an empty list
+        if no large-font words are found or extraction fails.
     """
     try:
         words = page.extract_words(extra_attrs=["size", "fontname"])
@@ -281,6 +369,24 @@ def detect_toc_by_structure(lines: list[str]) -> bool:
     """
     Detect whether a page is a table-of-contents page using
     language-agnostic structural patterns.
+
+    Checks five independent signals in order of specificity:
+
+    - Presence of a multilingual TOC keyword in the first 12 lines.
+    - Four or more dot-leader lines (``...``).
+    - Three or more multilingual chapter heading matches.
+    - Eight or more page references in the first 20 lines.
+    - Three or more numbered section TOC entries (``1.2 Title ... 45``).
+    - Six or more lines ending with a trailing standalone page number.
+
+    Returns True if any single signal threshold is met.
+
+    Args:
+        lines:
+            Lines extracted from a candidate page.
+
+    Returns:
+        True if the page is identified as a table-of-contents page.
     """
     if not lines:
         return False
@@ -325,13 +431,27 @@ def detect_chapter_heading(
     page_headings: list[dict] | None = None,
 ) -> dict | None:
     """
-    Detect a chapter/section heading on a page.
+    Detect a chapter or section heading on a page.
 
-    First tries font-based headings (if available), then falls back
-    to text-pattern matching with multilingual keywords.
+    Applies two strategies in sequence:
+
+    1. Text-pattern matching against ``HEADING_RE`` — if a match is found,
+       the following non-heading lines are scanned for a title string.
+    2. Font-based heading fallback via ``page_headings`` — looks for a
+       large-font line matching ``NUMBERED_SECTION_RE`` at the top level
+       (no dots in the number beyond the first character).
+
+    Args:
+        lines:
+            Lines extracted from the page.
+        page_headings:
+            Optional list of font-based heading dicts as returned by
+            ``detect_headings_by_font``. Used as a fallback when
+            text-pattern matching finds no match.
 
     Returns:
-        {"number": str, "title": str} or None
+        Dict with keys ``number`` (str) and ``title`` (str) if a heading
+        is detected, or None otherwise.
     """
     # Try text-pattern matching with multilingual heading regex
     for i, line in enumerate(lines):
@@ -363,7 +483,21 @@ def detect_chapter_heading(
 
 
 def clean_heading_title(text: str) -> str:
-    """Remove dot leaders and trailing page numbers from a title."""
+    """
+    Remove dot leaders and trailing page numbers from a heading title.
+
+    Splits on the first dot-leader sequence (three or more dots), takes
+    the left fragment, strips trailing standalone page numbers, and
+    trims surrounding punctuation and whitespace.
+
+    Args:
+        text:
+            Raw heading title string, potentially containing dot leaders
+            or a trailing page reference.
+
+    Returns:
+        Cleaned title string, or an empty string if nothing remains.
+    """
     text = DOTS_RE.split(text)[0]
     text = re.sub(r"\s+\d+(?:-\d+)?\s*$", "", text)
     return text.strip(" .:-|")
@@ -376,10 +510,19 @@ def analyze_document(pdf) -> DocumentStructure:
     """
     Pre-compute structural information about a PDF for use during extraction.
 
-    This runs once when the PDF is opened and provides:
-    - Adaptive margins
-    - Repeated header/footer lines
-    - Median font size
+    Runs margin detection, repeated-line detection, and median font size
+    computation in sequence and returns the results as a single
+    ``DocumentStructure`` instance. This function is intended to be called
+    once when the PDF is opened; its output is then passed to all
+    downstream extraction and cleaning helpers.
+
+    Args:
+        pdf:
+            An open pdfplumber PDF object.
+
+    Returns:
+        ``DocumentStructure`` carrying adaptive margins, repeated header
+        and footer line sets, and the median body font size.
     """
     margins = detect_margins(pdf)
     headers, footers = detect_repeated_lines(pdf)
