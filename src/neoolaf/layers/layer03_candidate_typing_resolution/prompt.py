@@ -6,7 +6,8 @@ import json
 # Local imports
 from neoolaf.domain.enriched_expression import EnrichedExpression
 from neoolaf.domain.user_guidance import UserGuidance
-
+from neoolaf.domain.seed_ontology import SeedOntology
+from neoolaf.ontology.prompt_context import build_seed_ontology_context
 
 def build_system_prompt() -> str:
     """
@@ -70,6 +71,7 @@ Return JSON only in this format:
 def build_user_prompt(
     enriched_expression: EnrichedExpression,
     guidance: UserGuidance | None = None,
+    seed_ontology: SeedOntology | None = None,
 ) -> str:
     """
     Build the user prompt for one enriched expression.
@@ -100,8 +102,14 @@ def build_user_prompt(
         "ontology_hints": enriched_expression.ontology_hints,
     }
 
+    ontology_context = build_seed_ontology_context(
+        seed_ontology=seed_ontology,
+        query=enriched_expression.base_expression.text,
+        top_k_classes=3,
+        top_k_properties=3,
+    )
     return f"""
-{guidance_text}Enriched expression:
+{guidance_text}{ontology_context}Enriched expression:
 {json.dumps(payload, indent=2, ensure_ascii=False)}
 
 Return JSON only.

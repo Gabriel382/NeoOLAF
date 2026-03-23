@@ -3,6 +3,10 @@ from __future__ import annotations
 # Standard library imports
 import json
 
+# Local imports
+from neoolaf.domain.seed_ontology import SeedOntology
+from neoolaf.ontology.prompt_context import build_seed_ontology_context
+
 
 def build_concept_system_prompt() -> str:
     """
@@ -22,6 +26,11 @@ Do not promote when:
 - it is too specific to one occurrence
 - it is only an accidental document mention
 - it is better treated as an instance-like mention later
+
+Use the seed ontology context when available:
+- align with existing classes when relevant
+- avoid inventing concepts that duplicate existing ontology concepts
+- prefer ontology-compatible naming and abstraction levels
 
 Return JSON only in this format:
 {
@@ -50,6 +59,11 @@ Promote when:
 - the label is reusable across documents
 - the relation is meaningful beyond one isolated mention
 
+Use the seed ontology context when available:
+- align with existing ontology relations when relevant
+- avoid inventing relations that duplicate existing ontology properties
+- prefer ontology-compatible naming
+
 Return JSON only in this format:
 {
   "promote": true,
@@ -63,24 +77,48 @@ Return JSON only in this format:
 """
 
 
-def build_concept_user_prompt(candidate_payload: dict) -> str:
+def build_concept_user_prompt(
+    candidate_payload: dict,
+    seed_ontology: SeedOntology | None = None,
+) -> str:
     """
     Build the user prompt for one concept induction candidate.
     """
+    query = candidate_payload.get("canonical_label", "") or candidate_payload.get("label", "")
+
+    ontology_context = build_seed_ontology_context(
+        seed_ontology=seed_ontology,
+        query=query,
+        top_k_classes=5,
+        top_k_properties=3,
+    )
+
     return f"""
-Candidate context:
+{ontology_context}Candidate context:
 {json.dumps(candidate_payload, indent=2, ensure_ascii=False)}
 
 Return JSON only.
 """
 
 
-def build_relation_user_prompt(candidate_payload: dict) -> str:
+def build_relation_user_prompt(
+    candidate_payload: dict,
+    seed_ontology: SeedOntology | None = None,
+) -> str:
     """
     Build the user prompt for one ontology relation induction candidate.
     """
+    query = candidate_payload.get("canonical_label", "") or candidate_payload.get("label", "")
+
+    ontology_context = build_seed_ontology_context(
+        seed_ontology=seed_ontology,
+        query=query,
+        top_k_classes=3,
+        top_k_properties=5,
+    )
+
     return f"""
-Relation candidate context:
+{ontology_context}Relation candidate context:
 {json.dumps(candidate_payload, indent=2, ensure_ascii=False)}
 
 Return JSON only.
