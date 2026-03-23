@@ -116,7 +116,13 @@ class AxiomSchemataExtractionLayer(BaseLayer):
 
             messages = [
                 {"role": "system", "content": build_relation_schema_system_prompt()},
-                {"role": "user", "content": build_relation_schema_user_prompt(payload)},
+                {
+                    "role": "user",
+                    "content": build_relation_schema_user_prompt(
+                        payload=payload,
+                        seed_ontology=state.seed_ontology,
+                    ),
+                },
             ]
 
             raw = self.ollama_backend.chat(
@@ -196,7 +202,13 @@ class AxiomSchemataExtractionLayer(BaseLayer):
 
             messages = [
                 {"role": "system", "content": build_subclass_schema_system_prompt()},
-                {"role": "user", "content": build_subclass_schema_user_prompt(payload)},
+                {
+                    "role": "user",
+                    "content": build_subclass_schema_user_prompt(
+                        payload=payload,
+                        seed_ontology=state.seed_ontology,
+                    ),
+                },
             ]
 
             raw = self.ollama_backend.chat(

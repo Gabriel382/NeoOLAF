@@ -31,6 +31,7 @@ class Layer02EnrichmentGraphFactory:
         web_search_source: WebSearchSource | None = None,
         user_guidance=None,
         use_web_search: bool = True,
+        seed_ontology=None,
     ) -> None:
         self.ollama_backend = ollama_backend
         self.model_name = model_name
@@ -40,6 +41,7 @@ class Layer02EnrichmentGraphFactory:
         self.web_search_source = web_search_source
         self.user_guidance = user_guidance
         self.use_web_search = use_web_search
+        self.seed_ontology = seed_ontology
 
     def build(self):
         """
@@ -133,6 +135,7 @@ class Layer02EnrichmentGraphFactory:
                     expression=expr,
                     gathered_evidence=evidence,
                     guidance=self.user_guidance,
+                    seed_ontology=self.seed_ontology,
                 ),
             },
         ]

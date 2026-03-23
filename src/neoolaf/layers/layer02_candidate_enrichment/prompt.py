@@ -6,7 +6,8 @@ import json
 # Local imports
 from neoolaf.domain.linguistic_expression import LinguisticExpression
 from neoolaf.domain.user_guidance import UserGuidance
-
+from neoolaf.domain.seed_ontology import SeedOntology
+from neoolaf.ontology.prompt_context import build_seed_ontology_context
 
 def build_system_prompt() -> str:
     """
@@ -46,6 +47,7 @@ def build_user_prompt(
     expression: LinguisticExpression,
     gathered_evidence: dict,
     guidance: UserGuidance | None = None,
+    seed_ontology: SeedOntology | None = None,
 ) -> str:
     """
     Build the user prompt for one expression enrichment.
@@ -66,8 +68,16 @@ def build_user_prompt(
         if parts:
             guidance_text = "\n".join(parts) + "\n\n"
 
+
+    ontology_context = build_seed_ontology_context(
+        seed_ontology=seed_ontology,
+        query=expression.text,
+        top_k_classes=3,
+        top_k_properties=3,
+    )
+
     return f"""
-{guidance_text}Expression:
+{guidance_text}{ontology_context}Expression:
 - text: {expression.text}
 - label: {expression.label}
 - justification: {expression.justification}
