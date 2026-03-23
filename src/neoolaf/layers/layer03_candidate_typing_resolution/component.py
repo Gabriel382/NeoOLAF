@@ -84,7 +84,7 @@ class CandidateTypingResolutionLayer(BaseLayer):
         for item in typing_iterator:
             messages = [
                 {"role": "system", "content": build_system_prompt()},
-                {"role": "user", "content": build_user_prompt(item, state.user_guidance)},
+                {"role": "user", "content": build_user_prompt(item, state.user_guidance, state.seed_ontology)},
             ]
 
             raw = self.ollama_backend.chat(

@@ -77,7 +77,7 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
         for chunk in chunk_iterator:
             messages = [
                 {"role": "system", "content": build_system_prompt()},
-                {"role": "user", "content": build_user_prompt(chunk, state.user_guidance)},
+                {"role": "user", "content": build_user_prompt(chunk, state.user_guidance, state.seed_ontology)},
             ]
 
             raw_response = self.ollama_backend.chat(
