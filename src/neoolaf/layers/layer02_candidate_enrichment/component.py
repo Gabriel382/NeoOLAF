@@ -98,6 +98,7 @@ class CandidateEnrichmentLayer(BaseLayer):
                 web_search_source=self.web_search_source,
                 user_guidance=state.user_guidance,
                 use_web_search=self.use_web_search,
+                seed_ontology=state.seed_ontology,
             ).build()
 
             result = graph.invoke({"expression": expr})

@@ -103,7 +103,13 @@ class ConceptRelationInductionLayer(BaseLayer):
 
             messages = [
                 {"role": "system", "content": build_concept_system_prompt()},
-                {"role": "user", "content": build_concept_user_prompt(payload)},
+                {
+                    "role": "user",
+                    "content": build_concept_user_prompt(
+                        candidate_payload=payload,
+                        seed_ontology=state.seed_ontology,
+                    ),
+                },
             ]
 
             raw = self.ollama_backend.chat(
@@ -157,7 +163,13 @@ class ConceptRelationInductionLayer(BaseLayer):
 
             messages = [
                 {"role": "system", "content": build_relation_system_prompt()},
-                {"role": "user", "content": build_relation_user_prompt(payload)},
+                {
+                    "role": "user",
+                    "content": build_relation_user_prompt(
+                        candidate_payload=payload,
+                        seed_ontology=state.seed_ontology,
+                    ),
+                },
             ]
 
             raw = self.ollama_backend.chat(

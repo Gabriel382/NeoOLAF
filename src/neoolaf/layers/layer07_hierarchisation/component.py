@@ -124,6 +124,7 @@ class HierarchisationLayer(BaseLayer):
                     "content": build_concept_hierarchy_user_prompt(
                         child_payload=child_payload,
                         parent_payload=parent_payload,
+                        seed_ontology=state.seed_ontology,
                     ),
                 },
             ]
@@ -204,6 +205,7 @@ class HierarchisationLayer(BaseLayer):
                     "content": build_relation_hierarchy_user_prompt(
                         child_payload=child_payload,
                         parent_payload=parent_payload,
+                        seed_ontology=state.seed_ontology,
                     ),
                 },
             ]
