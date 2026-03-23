@@ -10,11 +10,18 @@ from neoolaf.preprocessing.structural_detection import (
 )
 
 
-# ── Cell / row helpers ──────────────────────────────────────────────────────
+# ── Cell and row helpers ─────────────────────────────────────────────────────
 
 
 def clean_cell(value) -> str:
-    """Normalize whitespace inside one table cell."""
+    """
+    Normalize whitespace inside one table cell.
+
+    Converts the value to a string, replaces carriage returns with
+    newlines, collapses runs of spaces and tabs to a single space,
+    and collapses runs of two or more newlines to one before stripping.
+    Returns an empty string for None inputs.
+    """
     if value is None:
         return ""
     text = str(value).replace("\r", "\n")
@@ -24,21 +31,54 @@ def clean_cell(value) -> str:
 
 
 def row_text(row: list[str]) -> str:
-    """Join a row into one comparable string."""
+    """
+    Join a row into one comparable string.
+
+    Concatenates non-empty cells with a single space and strips the
+    result, producing a canonical representation suitable for noise
+    detection and deduplication.
+    """
     return " ".join(cell for cell in row if cell).strip()
 
 
 def noise_row(row: list[str]) -> bool:
-    """Detect rows that are only revision or layout noise."""
+    """
+    Detect rows that are only revision or layout noise.
+
+    Returns True if the joined row text is non-empty and matches
+    ``REVISION_RE`` (e.g. revision markers, sheet numbers, or ``rev.``
+    annotations).
+
+    Args:
+        row:
+            List of cleaned cell strings for one table row.
+
+    Returns:
+        True if the row is identified as noise and should be discarded.
+    """
     text = row_text(row)
     return bool(text and REVISION_RE.search(text))
 
 
-# ── Table quality filter ────────────────────────────────────────────────────
+# ── Table quality filter ─────────────────────────────────────────────────────
 
 
 def good_table(rows: list[list[str]]) -> bool:
-    """Filter out poor-quality tables."""
+    """
+    Filter out poor-quality tables.
+
+    A table is accepted only if, after removing empty and noise rows,
+    it has at least two rows, at least four non-empty cells in total,
+    no more than two cells exceeding 800 characters, and no revision
+    noise in the first six rows.
+
+    Args:
+        rows:
+            List of cleaned rows, where each row is a list of cell strings.
+
+    Returns:
+        True if the table meets the minimum quality thresholds.
+    """
     rows = [row for row in rows if any(row) and not noise_row(row)]
     if len(rows) < 2:
         return False
@@ -52,11 +92,25 @@ def good_table(rows: list[list[str]]) -> bool:
     return non_empty >= 4
 
 
-# ── Page table extraction ───────────────────────────────────────────────────
+# ── Page table extraction ────────────────────────────────────────────────────
 
 
 def tables(page) -> list[list[list[str]]]:
-    """Extract valid tables from one page."""
+    """
+    Extract valid tables from one page.
+
+    Iterates over all tables found by pdfplumber, cleans each cell via
+    ``clean_cell``, drops empty and noise rows, and retains only tables
+    that pass ``good_table``.
+
+    Args:
+        page:
+            A pdfplumber page object.
+
+    Returns:
+        List of accepted tables, where each table is a list of rows and
+        each row is a list of cleaned cell strings.
+    """
     result = []
     for found in page.find_tables():
         rows = []
@@ -70,15 +124,30 @@ def tables(page) -> list[list[list[str]]]:
 
 
 def extract_page_tables(page) -> list[list[list[str]]]:
-    """High-level entrypoint for extracting valid tables from one page."""
+    """Public high-level entrypoint for extracting valid tables from one page."""
     return tables(page)
 
 
-# ── HTML conversion ─────────────────────────────────────────────────────────
+# ── HTML conversion ──────────────────────────────────────────────────────────
 
 
 def html_table(rows: list[list[str]]) -> str:
-    """Convert extracted rows into deterministic HTML."""
+    """
+    Convert extracted rows into deterministic HTML.
+
+    Empty rows are skipped. Single-cell rows are rendered as a plain
+    ``<td>``; multi-cell rows use the first cell as a ``<th>`` header
+    and the remaining cells as ``<td>`` data cells. Returns a minimal
+    placeholder table if all rows are empty.
+
+    Args:
+        rows:
+            List of rows, where each row is a list of cleaned cell strings.
+
+    Returns:
+        HTML string representing the table, always wrapped in a
+        ``<table>`` element.
+    """
     parts = []
     for row in rows:
         if not any(row):
@@ -94,11 +163,37 @@ def html_table(rows: list[list[str]]) -> str:
     return "<table>" + "".join(parts) + "</table>"
 
 
-# ── Table title detection ───────────────────────────────────────────────────
+# ── Table title detection ────────────────────────────────────────────────────
 
 
 def table_title(rows: list[list[str]], page_lines: list[str], fallback: str) -> str:
-    """Pick the best title for one extracted table."""
+    """
+    Pick the best title for one extracted table.
+
+    Applies three candidate strategies in order of preference:
+
+    1. A page line starting with ``"table "`` that passes ``valid_title``.
+    2. The first non-empty cell of the first row, cleaned via
+       ``clean_heading_title``, if it passes ``valid_title``.
+    3. Any of the first eight page lines that passes ``valid_title`` and
+       does not match ``HEADING_RE`` (to avoid chapter headings).
+
+    Falls back to ``fallback`` if no candidate is found. Titles are
+    rejected if they are shorter than 8 or longer than 80 characters,
+    contain contact-info markers, or exceed 14 words.
+
+    Args:
+        rows:
+            Cleaned rows of the table, used to inspect the first cell.
+        page_lines:
+            All lines extracted from the page, searched for a title
+            appearing above the table.
+        fallback:
+            String returned when no suitable title candidate is found.
+
+    Returns:
+        Best available title string, or ``fallback`` if none qualifies.
+    """
     def valid_title(title: str) -> bool:
         if not title:
             return False

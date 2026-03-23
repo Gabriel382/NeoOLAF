@@ -44,19 +44,44 @@ TOP_NUMBER_RE = re.compile(r"^(?P<number>\d+)\s+(?P<title>.+?)\s*$")
 
 
 def slug(text: str) -> str:
-    """Convert a file stem into a stable JSON key."""
+    """
+    Convert a file stem into a stable JSON key.
+
+    Lowercases the input, replaces all non-alphanumeric character runs
+    with underscores, and strips leading and trailing underscores.
+    Falls back to ``"document"`` if the result is empty.
+    """
     return re.sub(r"[^a-z0-9]+", "_", text.lower()).strip("_") or "document"
 
 
 def score(first: str, second: str) -> float:
-    """Return a fuzzy similarity score for two strings."""
+    """
+    Return a fuzzy similarity score for two strings.
+
+    Normalizes both inputs via ``normalize_compare`` before passing them
+    to ``SequenceMatcher``, so the score is case- and punctuation-agnostic.
+
+    Args:
+        first:
+            First string to compare.
+        second:
+            Second string to compare.
+
+    Returns:
+        Similarity ratio in [0.0, 1.0].
+    """
     return SequenceMatcher(
         None, normalize_compare(first), normalize_compare(second)
     ).ratio()
 
 
 def clean_title(text: str) -> str:
-    """Remove page references and dot leaders from a title."""
+    """
+    Remove page references and dot leaders from a title.
+
+    Delegates to ``clean_heading_title`` from the structural detection
+    module.
+    """
     return clean_heading_title(text)
 
 
@@ -67,7 +92,24 @@ def chapter_heading(
     lines: list[str],
     page_headings: list[dict] | None = None,
 ) -> dict | None:
-    """Extract a chapter heading from the current page if present."""
+    """
+    Extract a chapter heading from the current page if present.
+
+    Delegates to ``detect_chapter_heading`` from the structural detection
+    module, passing through both text lines and optional font-based
+    heading candidates.
+
+    Args:
+        lines:
+            Lines extracted from the current page.
+        page_headings:
+            Optional list of font-based heading dicts as returned by
+            ``detect_headings_by_font``.
+
+    Returns:
+        Dict with keys ``number`` and ``title`` if a heading is found,
+        or None otherwise.
+    """
     return detect_chapter_heading(lines, page_headings)
 
 
@@ -75,7 +117,25 @@ def toc_chapters(
     pdf,
     structure: DocumentStructure | None = None,
 ) -> OrderedDict:
-    """Read chapter titles from early TOC pages."""
+    """
+    Read chapter titles from early TOC pages.
+
+    Scans the first 12 pages for TOC pages, then extracts chapter numbers
+    and titles using ``HEADING_RE`` (multilingual keyword pattern) and
+    ``NUMBERED_SECTION_RE`` (numeric section pattern). Only top-level
+    sections (no dot in the number) are retained.
+
+    Args:
+        pdf:
+            An open pdfplumber PDF object.
+        structure:
+            Optional document-level structure passed to ``extract_page_lines``
+            for header/footer removal.
+
+    Returns:
+        ``OrderedDict`` mapping section number strings to title strings,
+        in the order they appear in the TOC.
+    """
     chapters = OrderedDict()
     for page in pdf.pages[: min(len(pdf.pages), 12)]:
         lines = extract_page_lines(page, structure=structure)
@@ -108,7 +168,34 @@ def toc_chapters(
 def match_chapter(
     lines: list[str], chapters: OrderedDict, current: str | None
 ) -> str | None:
-    """Match the current page to the best chapter from the TOC."""
+    """
+    Match the current page to the best chapter from the TOC.
+
+    Applies two strategies in order:
+
+    1. Exact number match — if one of the first four page lines contains a
+       leading number that exists in ``chapters`` (excluding ``current``)
+       and its title fuzzy-scores ≥ 0.55 against the known chapter title,
+       that chapter key is returned immediately.
+    2. Best fuzzy match — scores all chapter titles against all top lines
+       and the joined line string; returns the best key if its score is
+       ≥ 0.72 and the key differs from ``current``.
+
+    Returns None when ``chapters`` is empty or no candidate meets the
+    threshold.
+
+    Args:
+        lines:
+            Lines extracted from the current page.
+        chapters:
+            TOC chapter map as returned by ``toc_chapters``.
+        current:
+            Chapter key currently active, excluded from matching to avoid
+            false re-assignments.
+
+    Returns:
+        Matched chapter key string, or None if no match qualifies.
+    """
     if not chapters:
         return None
     top_lines = [clean_title(line) for line in lines[:8] if line.strip()]
@@ -150,7 +237,26 @@ def doc_title(
     pdf_path: Path,
     structure: DocumentStructure | None = None,
 ) -> str:
-    """Pick a document title from the first pages using font-based detection."""
+    """
+    Pick a document title from the first pages using font-based detection.
+
+    When a ``DocumentStructure`` is provided, attempts font-based heading
+    detection on the first three pages first. Falls back to scanning raw
+    text lines from the first three pages for the first non-contact,
+    non-empty line. Uses the file stem as a last resort.
+
+    Args:
+        pdf:
+            An open pdfplumber PDF object.
+        pdf_path:
+            Path to the PDF file, used as a fallback title source.
+        structure:
+            Optional document-level structure carrying the median font size
+            needed for font-based heading detection.
+
+    Returns:
+        Cleaned title string truncated to 200 characters.
+    """
     if structure:
         for page in pdf.pages[:3]:
             headings = detect_headings_by_font(page, structure.median_font_size)
@@ -180,7 +286,32 @@ def family(
     pdf,
     structure: DocumentStructure | None = None,
 ) -> str:
-    """Classify a PDF as manual, table-heavy, or sparse."""
+    """
+    Classify a PDF as ``"manual"``, ``"table"``, or ``"sparse"``.
+
+    Samples up to 15 pages and counts chapter headings, table pages,
+    TOC pages, heading pages, and total extracted text size. Classification
+    rules applied in order:
+
+    - ``"sparse"`` — total text under 120 characters and no tables found.
+    - ``"table"`` — no chapter or heading pages, but ≥ 8 table pages and
+      ≥ 12 tables total.
+    - ``"manual"`` — at least one chapter page, one TOC page, or two
+      heading pages.
+    - ``"table"`` — at least two table pages or four tables total.
+    - ``"sparse"`` — total text under 500 characters.
+    - ``"table"`` — default fallback.
+
+    Args:
+        pdf:
+            An open pdfplumber PDF object.
+        structure:
+            Optional document-level structure used for heading detection
+            and page line extraction.
+
+    Returns:
+        Classification string: ``"manual"``, ``"table"``, or ``"sparse"``.
+    """
     chapter_pages = 0
     table_pages = 0
     table_count = 0
@@ -225,7 +356,7 @@ def classify_textual_pdf(
     pdf,
     structure: DocumentStructure | None = None,
 ) -> str:
-    """High-level entrypoint for classifying a textual PDF family."""
+    """Public high-level entrypoint for classifying a textual PDF family."""
     return family(pdf, structure)
 
 
@@ -233,7 +364,18 @@ def classify_textual_pdf(
 
 
 def append_text(section: dict, text: str) -> None:
-    """Append text to a section while keeping order."""
+    """
+    Append text to a section while keeping order.
+
+    Strips the input and no-ops on empty strings. Concatenates with a
+    newline separator if the section already has content.
+
+    Args:
+        section:
+            Section dict carrying a ``contenu`` key.
+        text:
+            Text to append.
+    """
     text = text.strip()
     if not text:
         return
@@ -243,7 +385,26 @@ def append_text(section: dict, text: str) -> None:
 
 
 def ensure_section(chapter: dict, key: str, title: str, page: int) -> dict:
-    """Create a section if it does not exist yet."""
+    """
+    Create a section if it does not exist yet.
+
+    Inserts a new blank section dict under ``key`` in
+    ``chapter["sections"]`` only when the key is absent, leaving any
+    existing section untouched.
+
+    Args:
+        chapter:
+            Chapter dict carrying a ``sections`` OrderedDict.
+        key:
+            Section number string used as the dict key.
+        title:
+            Human-readable section title stored on creation.
+        page:
+            Page number where the section was first detected.
+
+    Returns:
+        The section dict for ``key`` (newly created or pre-existing).
+    """
     if key not in chapter["sections"]:
         chapter["sections"][key] = {
             "titre": title,
@@ -257,7 +418,24 @@ def ensure_section(chapter: dict, key: str, title: str, page: int) -> dict:
 def add_table(
     section: dict, key: str, title: str, page: int, rows: list[list[str]]
 ) -> None:
-    """Attach one table subsection to a section."""
+    """
+    Attach one table subsection to a section.
+
+    Converts ``rows`` to HTML via ``html_table`` and stores the result
+    under ``section["sous_sections"][key]``.
+
+    Args:
+        section:
+            Section dict carrying a ``sous_sections`` OrderedDict.
+        key:
+            Subsection key string (e.g. ``"3.2"``).
+        title:
+            Human-readable table title.
+        page:
+            Page number where the table was found.
+        rows:
+            Cleaned table rows as returned by ``extract_page_tables``.
+    """
     section["sous_sections"][key] = {
         "titre": title,
         "page": page,
@@ -278,7 +456,39 @@ def append_block(
     section_key: str | None = None,
     subsection_key: str | None = None,
 ) -> int:
-    """Append one ordered content block and return the next order value."""
+    """
+    Append one ordered content block and return the next order value.
+
+    Constructs a block dict with a zero-padded ``block_id``, sets
+    type-specific fields (``text`` for text blocks; ``title``, ``html``,
+    and ``html_text`` for table blocks), and appends it to ``blocks``.
+
+    Args:
+        blocks:
+            Mutable list of content block dicts to append to.
+        block_type:
+            ``"text"`` or ``"table"``.
+        page:
+            Page number where the block originates.
+        order:
+            Current sequential order value for the block.
+        text:
+            Text content, used when ``block_type`` is ``"text"``.
+        title:
+            Table title, used when ``block_type`` is ``"table"``.
+        html:
+            Table HTML string, used when ``block_type`` is ``"table"``.
+        html_text:
+            Plain-text representation of the table, used when
+            ``block_type`` is ``"table"``.
+        section_key:
+            Optional section number string to attach as provenance.
+        subsection_key:
+            Optional subsection key string to attach as provenance.
+
+    Returns:
+        ``order + 1``, ready for the next block.
+    """
     payload = {
         "block_id": f"block_{order:05d}",
         "type": block_type,
@@ -301,7 +511,22 @@ def append_block(
 
 
 def prune_sections(chapter: dict) -> dict:
-    """Remove empty sections and keep stable ordering."""
+    """
+    Remove empty sections and keep stable ordering.
+
+    Drops sections that have neither body text nor subsections. If all
+    sections are empty, retains them all to avoid an empty chapter.
+    Remaining sections are sorted numerically (non-numeric keys sort last
+    at 9999).
+
+    Args:
+        chapter:
+            Chapter dict carrying a ``sections`` OrderedDict.
+
+    Returns:
+        The same chapter dict with its ``sections`` replaced by a pruned,
+        sorted ``OrderedDict``.
+    """
     kept = []
     for key, section in chapter["sections"].items():
         if section["contenu"].strip() or section["sous_sections"]:
@@ -320,7 +545,27 @@ def _extract_manual(
     pdf_path: Path,
     structure: DocumentStructure | None = None,
 ) -> dict:
-    """Extract a manual-style PDF into the target schema."""
+    """
+    Extract a manual-style PDF into the target schema.
+
+    Reads the TOC for chapter titles, then iterates over all pages. Each
+    page is matched to a chapter via ``chapter_heading`` and
+    ``match_chapter``. Body text and tables are appended to the active
+    section and recorded as ordered content blocks. TOC and local-index
+    pages are skipped.
+
+    Args:
+        pdf:
+            An open pdfplumber PDF object.
+        pdf_path:
+            Path to the PDF file, used for title detection.
+        structure:
+            Optional document-level structure used throughout extraction.
+
+    Returns:
+        Chapter dict conforming to the target schema, with pruned sections
+        and an ordered ``content_blocks`` list.
+    """
     chapters = toc_chapters(pdf, structure)
     title = doc_title(pdf, pdf_path, structure)
     chapter = {
@@ -427,7 +672,27 @@ def _extract_table_doc(
     pdf_path: Path,
     structure: DocumentStructure | None = None,
 ) -> dict:
-    """Extract a table-heavy PDF into the target schema."""
+    """
+    Extract a table-heavy PDF into the target schema.
+
+    Treats the entire document as a single section and iterates over all
+    pages. Short text blocks (under 1 200 characters) are appended even
+    when tables are present on the same page; longer text blocks on
+    table-heavy pages are suppressed. All tables are recorded as ordered
+    subsections and content blocks.
+
+    Args:
+        pdf:
+            An open pdfplumber PDF object.
+        pdf_path:
+            Path to the PDF file, used for title detection.
+        structure:
+            Optional document-level structure used throughout extraction.
+
+    Returns:
+        Chapter dict conforming to the target schema with a single
+        ``"1"`` section and an ordered ``content_blocks`` list.
+    """
     title = doc_title(pdf, pdf_path, structure)
     chapter = {
         "numero": "1",
@@ -495,7 +760,24 @@ def _extract_sparse(
     pdf_path: Path,
     structure: DocumentStructure | None = None,
 ) -> dict:
-    """Build a minimal structure for sparse PDFs."""
+    """
+    Build a minimal structure for sparse PDFs.
+
+    Creates a single-section chapter whose body text and sole content
+    block both contain only the document title. Used when the PDF yields
+    insufficient text and no tables to warrant a richer extraction.
+
+    Args:
+        pdf:
+            An open pdfplumber PDF object.
+        pdf_path:
+            Path to the PDF file, used for title detection.
+        structure:
+            Optional document-level structure passed to ``doc_title``.
+
+    Returns:
+        Minimal chapter dict conforming to the target schema.
+    """
     title = doc_title(pdf, pdf_path, structure)
     section = {
         "titre": title,
@@ -525,7 +807,25 @@ def extract_textual_document_structure(
     pdf_path: Path,
     structure: DocumentStructure | None = None,
 ) -> dict:
-    """High-level entrypoint for extracting one textual PDF into the target schema."""
+    """
+    High-level entrypoint for extracting one textual PDF into the target schema.
+
+    Classifies the PDF via ``classify_textual_pdf`` and routes to
+    ``_extract_manual``, ``_extract_table_doc``, or ``_extract_sparse``
+    accordingly.
+
+    Args:
+        pdf:
+            An open pdfplumber PDF object.
+        pdf_path:
+            Path to the PDF file.
+        structure:
+            Optional document-level structure passed to the chosen
+            extraction strategy.
+
+    Returns:
+        Chapter dict conforming to the target schema.
+    """
     kind = classify_textual_pdf(pdf, structure)
     if kind == "manual":
         return _extract_manual(pdf, pdf_path, structure)
@@ -541,15 +841,18 @@ def extract_textual_pdf(pdf_path: str) -> dict:
     """
     Extract a textual PDF into a structured, cleaned document dict.
 
-    Analyzes document structure (margins, headers/footers, font sizes)
-    then classifies the PDF by family (manual / table-heavy / sparse)
-    and applies the appropriate extraction strategy.
+    Analyzes document structure (margins, repeated headers/footers, font
+    sizes) then classifies the PDF by family (manual / table-heavy /
+    sparse) and applies the appropriate extraction strategy. The result
+    is finalized via ``finalize_extracted_document`` before being returned.
 
     Args:
-        pdf_path: Path to the PDF file.
+        pdf_path:
+            Path to the PDF file.
 
     Returns:
-        A JSON-serializable dict with the extracted document structure.
+        JSON-serializable dict with the extracted document structure,
+        keyed by a slug derived from the file stem.
     """
     path = Path(pdf_path)
     if not path.exists():

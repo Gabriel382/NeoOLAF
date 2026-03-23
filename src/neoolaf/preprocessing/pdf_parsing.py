@@ -18,6 +18,9 @@ from neoolaf.preprocessing.textual_extraction import extract_textual_pdf
 from neoolaf.resources.ocr.base_engine import BaseOCREngine
 
 
+# ── PDF type detection ───────────────────────────────────────────────────────
+
+
 def is_scanned(
     pdf_path: str,
     sample_pages: int = 5,
@@ -27,10 +30,10 @@ def is_scanned(
     """
     Detect whether a PDF is scanned (image-based) or textual.
 
-    Samples up to `sample_pages` pages and checks if each page yields
-    fewer than `min_chars_per_page` characters of extractable text.
-    If the proportion of low-text pages exceeds `scanned_ratio`, the
-    PDF is classified as scanned.
+    Samples up to ``sample_pages`` pages and checks whether each yields
+    fewer than ``min_chars_per_page`` characters of extractable text.
+    If the proportion of low-text pages meets or exceeds ``scanned_ratio``,
+    the PDF is classified as scanned.
 
     Args:
         pdf_path:
@@ -65,6 +68,17 @@ def is_scanned(
 def extract_text_from_pdf(pdf_path: str) -> str:
     """
     Extract all text from a textual PDF and concatenate the pages.
+
+    Opens the PDF with pdfplumber, extracts text from every page, and
+    joins the results with newlines. Pages that yield no text contribute
+    an empty string to the join.
+
+    Args:
+        pdf_path:
+            Path to the PDF file.
+
+    Returns:
+        Full document text as a single newline-separated string.
     """
     path = Path(pdf_path)
     if not path.exists():
@@ -90,17 +104,27 @@ def _extract_scanned_pdf(
     """
     Extract content from a scanned PDF using OCR.
 
-    Converts pages to images, preprocesses them, runs OCR,
-    and applies postprocessing to the results.
+    Converts each page to a rasterized image at the requested DPI,
+    preprocesses it for cleaner OCR input, runs the OCR engine, and
+    applies postprocessing to both text and table outputs. Page results
+    are assembled into structured content-block dicts. If a page fails,
+    an error entry is appended and processing continues.
 
     Args:
-        pdf_path:   Path to the scanned PDF.
-        engine:     OCR engine instance (PaddleOCR or LightOnOCR).
-        dpi:        Rendering resolution for page images.
-        output_path: Optional path to save results as JSON.
+        pdf_path:
+            Path to the scanned PDF file.
+        engine:
+            Instantiated OCR engine (e.g. PaddleOCR or LightOnOCR).
+        dpi:
+            Rendering resolution used when rasterizing page images.
+        output_path:
+            Optional file path; if provided, the full results list is
+            serialized to JSON at this location.
 
     Returns:
-        List of page result dicts with text, tables, and metadata.
+        List of per-page result dicts, each containing ``page``,
+        ``page_size``, and ``content`` keys. Failed pages contain
+        ``page`` and ``error`` keys instead.
     """
     pages = pdf_to_images(pdf_path, dpi=dpi)
     results = []
@@ -169,9 +193,6 @@ def _extract_scanned_pdf(
     return results
 
 
-# ── Unified extraction ───────────────────────────────────────────────────────
-
-
 # ── Block extraction utilities ───────────────────────────────────────────────
 
 
@@ -179,12 +200,19 @@ def extract_content_blocks(pdf_type: str, content) -> list[dict]:
     """
     Convert raw extraction output into ordered content blocks.
 
+    Routes to ``_blocks_from_textual`` or ``_blocks_from_scanned``
+    depending on ``pdf_type``.
+
     Args:
-        pdf_type: "textual" or "scanned"
-        content:  The raw extraction result (dict for textual, list for scanned).
+        pdf_type:
+            ``"textual"`` or ``"scanned"``, as returned by ``extract_pdf``.
+        content:
+            Raw extraction result — a dict for textual PDFs, a list for
+            scanned PDFs.
 
     Returns:
-        Sorted list of content block dicts.
+        Sorted list of content block dicts ordered by page then insertion
+        order.
     """
     if pdf_type == "textual":
         return _blocks_from_textual(content)
@@ -192,7 +220,21 @@ def extract_content_blocks(pdf_type: str, content) -> list[dict]:
 
 
 def _blocks_from_textual(content: dict) -> list[dict]:
-    """Convert textual PDF extraction dict into ordered content blocks."""
+    """
+    Convert a textual PDF extraction dict into ordered content blocks.
+
+    Iterates over chapters and their sections. If a chapter already carries
+    pre-built ``content_blocks``, those are used directly; otherwise, section
+    text and subsection table HTML are each converted into individual block
+    dicts. All blocks are sorted by page then order before being returned.
+
+    Args:
+        content:
+            Nested extraction dict as produced by ``extract_textual_pdf``.
+
+    Returns:
+        Sorted list of content block dicts.
+    """
     blocks: list[dict] = []
     order = 1
 
@@ -241,7 +283,23 @@ def _blocks_from_textual(content: dict) -> list[dict]:
 
 
 def _blocks_from_scanned(content: list) -> list[dict]:
-    """Convert scanned PDF extraction list into ordered content blocks."""
+    """
+    Convert a scanned PDF extraction list into ordered content blocks.
+
+    Iterates over per-page result dicts. If a page already carries
+    pre-built ``content_blocks``, those are used directly; otherwise,
+    page-level text and table entries are each converted into individual
+    block dicts. All blocks are sorted by page then order before being
+    returned.
+
+    Args:
+        content:
+            List of per-page result dicts as produced by
+            ``_extract_scanned_pdf``.
+
+    Returns:
+        Sorted list of content block dicts.
+    """
     blocks: list[dict] = []
 
     for page in content:
@@ -284,7 +342,24 @@ def flatten_content_blocks(
     content_blocks: list[dict],
     use_translated_text: bool = False,
 ) -> str:
-    """Flatten ordered content blocks into one plain-text stream."""
+    """
+    Flatten ordered content blocks into one plain-text stream.
+
+    When ``use_translated_text`` is True, the ``translated_text`` field
+    is used for every block type. Otherwise, ``text`` is used for text
+    blocks and ``html_text`` for table blocks. Non-empty parts are joined
+    with a double newline.
+
+    Args:
+        content_blocks:
+            Ordered list of content block dicts.
+        use_translated_text:
+            If True, read the ``translated_text`` field instead of the
+            type-specific default field.
+
+    Returns:
+        Single string with block texts joined by ``"\\n\\n"``.
+    """
     parts = []
     for block in content_blocks:
         if use_translated_text:
@@ -299,7 +374,23 @@ def flatten_content_blocks(
 
 
 def extract_tables_for_export(extraction_result) -> list[dict]:
-    """Extract table HTML snippets from a raw extraction result."""
+    """
+    Extract table HTML snippets from a raw extraction result.
+
+    Handles both textual (dict) and scanned (list) extraction results.
+    For textual results, tables are drawn from subsection ``table_html``
+    fields. For scanned results, tables are drawn from per-page
+    ``content.tables`` entries.
+
+    Args:
+        extraction_result:
+            Raw extraction result as returned by ``extract_pdf`` — either
+            a nested dict (textual) or a list of page dicts (scanned).
+
+    Returns:
+        List of table dicts, each containing ``html``, ``html_text``,
+        and provenance keys (``page``, ``document_key``, etc.).
+    """
     tables: list[dict] = []
 
     if isinstance(extraction_result, dict):
@@ -333,7 +424,7 @@ def extract_tables_for_export(extraction_result) -> list[dict]:
     return tables
 
 
-# ── Unified extraction ───────────────────────────────────────────────────
+# ── Unified extraction ───────────────────────────────────────────────────────
 
 
 def extract_pdf(
@@ -342,20 +433,28 @@ def extract_pdf(
     dpi: int = 300,
 ) -> dict:
     """
-    Unified PDF extraction: detects type and routes to the appropriate pipeline.
+    Unified PDF extraction: detect type and route to the appropriate pipeline.
 
-    - Textual PDFs → direct text-layer extraction (pdfplumber)
-    - Scanned PDFs → image conversion + OCR engine
+    Textual PDFs are handled by the direct text-layer extraction path
+    (pdfplumber). Scanned PDFs are rasterized and processed through the
+    provided OCR engine. Raises ``ValueError`` if a scanned PDF is
+    encountered without an engine.
 
     Args:
-        pdf_path:    Path to the PDF file.
-        ocr_engine:  OCR engine for scanned PDFs. Required if PDF is scanned.
-        dpi:         Rendering resolution for scanned page images.
+        pdf_path:
+            Path to the PDF file.
+        ocr_engine:
+            Instantiated OCR engine, required when the PDF is scanned.
+            If None and the PDF is scanned, a ``ValueError`` is raised.
+        dpi:
+            Rendering resolution used when rasterizing scanned page images.
 
     Returns:
-        dict with keys:
-            - pdf_type  (str)  : "textual" or "scanned"
-            - content   (dict | list) : extraction result
+        Dict with keys:
+
+        - ``pdf_type`` (str): ``"textual"`` or ``"scanned"``.
+        - ``content`` (dict | list): extraction result in the format
+          produced by the chosen pipeline.
     """
     path = Path(pdf_path)
     if not path.exists():

@@ -6,7 +6,14 @@ from PIL import Image
 
 
 def binarize_image(image: Image.Image) -> Image.Image:
-    """Enhance contrast and binarize page image for cleaner OCR input."""
+    """
+    Enhance contrast and binarize a page image for cleaner OCR input.
+
+    Converts to grayscale if needed, applies Gaussian blur to suppress
+    high-frequency noise, uses CLAHE for local contrast enhancement, then
+    binarizes with adaptive Gaussian thresholding. A small morphological
+    closing pass merges broken strokes before the result is returned.
+    """
     img_np = np.array(image)
 
     gray = cv2.cvtColor(img_np, cv2.COLOR_RGB2GRAY) if img_np.ndim == 3 else img_np
@@ -32,7 +39,21 @@ def binarize_image(image: Image.Image) -> Image.Image:
 
 
 def remove_noise_artifacts(image: Image.Image) -> Image.Image:
-    """Remove large blobs, tiny dots, and margin artifacts using connected components."""
+    """
+    Remove large blobs, tiny dots, and margin artifacts using connected components.
+
+    Inverts the binary image, runs 8-connectivity component analysis, then
+    suppresses three classes of components:
+
+    - Components with area > 300 000 px and near-square aspect ratio (large
+      background blobs such as dark page borders or scan shadows).
+    - Components with area < 50 px (isolated specks and digitization noise).
+    - Components in the leftmost or rightmost 5 % of the image whose area is
+      below 5 000 px and width below 80 px (binding-edge and margin artifacts).
+
+    The cleaned inverted image is re-inverted before being returned so the
+    output stays in the same polarity as the input.
+    """
     binary = np.array(image)
 
     inverted = cv2.bitwise_not(binary)
@@ -70,11 +91,15 @@ def preprocess_page(page: Image.Image) -> Image.Image:
     """
     Run binarization and noise removal on a single page image.
 
+    Applies ``binarize_image`` followed by ``remove_noise_artifacts`` in
+    sequence, producing a clean binary image ready for OCR ingestion.
+
     Args:
-        page: PIL Image of a scanned page.
+        page:
+            PIL Image of a scanned document page.
 
     Returns:
-        Cleaned PIL Image ready for OCR.
+        Cleaned PIL Image with enhanced contrast and noise suppressed.
     """
     page = binarize_image(page)
     page = remove_noise_artifacts(page)
