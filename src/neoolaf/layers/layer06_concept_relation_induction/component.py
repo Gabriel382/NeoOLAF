@@ -18,7 +18,7 @@ from neoolaf.layers.layer06_concept_relation_induction.prompt import (
     build_relation_user_prompt,
 )
 from neoolaf.resources.llm_backends.ollama_backend import OllamaBackend
-
+from neoolaf.domain.user_guidance_policy import should_promote_confidence
 
 class ConceptRelationInductionLayer(BaseLayer):
     """
@@ -108,6 +108,7 @@ class ConceptRelationInductionLayer(BaseLayer):
                     "content": build_concept_user_prompt(
                         candidate_payload=payload,
                         seed_ontology=state.seed_ontology,
+                        guidance=state.user_guidance,
                     ),
                 },
             ]
@@ -120,6 +121,9 @@ class ConceptRelationInductionLayer(BaseLayer):
             parsed = self.ollama_backend.extract_json(raw)
 
             if not parsed.get("promote", False):
+                continue
+
+            if not should_promote_confidence(parsed.get("confidence"), state.user_guidance):
                 continue
 
             label = parsed["label"].strip()
@@ -168,6 +172,7 @@ class ConceptRelationInductionLayer(BaseLayer):
                     "content": build_relation_user_prompt(
                         candidate_payload=payload,
                         seed_ontology=state.seed_ontology,
+                        guidance=state.user_guidance,
                     ),
                 },
             ]
@@ -180,6 +185,9 @@ class ConceptRelationInductionLayer(BaseLayer):
             parsed = self.ollama_backend.extract_json(raw)
 
             if not parsed.get("promote", False):
+                continue
+
+            if not should_promote_confidence(parsed.get("confidence"), state.user_guidance):
                 continue
 
             label = parsed["label"].strip()

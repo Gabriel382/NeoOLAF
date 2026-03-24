@@ -6,7 +6,8 @@ import json
 # Local imports
 from neoolaf.domain.seed_ontology import SeedOntology
 from neoolaf.ontology.prompt_context import build_seed_ontology_context
-
+from neoolaf.domain.user_guidance import UserGuidance
+from neoolaf.domain.user_guidance_formatting import build_user_guidance_context
 
 def build_concept_system_prompt() -> str:
     """
@@ -80,6 +81,7 @@ Return JSON only in this format:
 def build_concept_user_prompt(
     candidate_payload: dict,
     seed_ontology: SeedOntology | None = None,
+    guidance: UserGuidance | None = None,
 ) -> str:
     """
     Build the user prompt for one concept induction candidate.
@@ -92,9 +94,14 @@ def build_concept_user_prompt(
         top_k_classes=5,
         top_k_properties=3,
     )
+    guidance_text = build_user_guidance_context(
+        guidance,
+        include_promotion_examples=True,
+        include_negative_examples=True,
+    )
 
     return f"""
-{ontology_context}Candidate context:
+{guidance_text}{ontology_context}Candidate context:
 {json.dumps(candidate_payload, indent=2, ensure_ascii=False)}
 
 Return JSON only.
@@ -104,6 +111,7 @@ Return JSON only.
 def build_relation_user_prompt(
     candidate_payload: dict,
     seed_ontology: SeedOntology | None = None,
+    guidance: UserGuidance | None = None,
 ) -> str:
     """
     Build the user prompt for one ontology relation induction candidate.
@@ -117,8 +125,14 @@ def build_relation_user_prompt(
         top_k_properties=5,
     )
 
+    guidance_text = build_user_guidance_context(
+        guidance,
+        include_promotion_examples=True,
+        include_negative_examples=True,
+    )
+
     return f"""
-{ontology_context}Relation candidate context:
+{guidance_text}{ontology_context}Relation candidate context:
 {json.dumps(candidate_payload, indent=2, ensure_ascii=False)}
 
 Return JSON only.
