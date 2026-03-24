@@ -18,7 +18,7 @@ from neoolaf.layers.layer07_hierarchisation.prompt import (
     build_relation_hierarchy_user_prompt,
 )
 from neoolaf.resources.llm_backends.ollama_backend import OllamaBackend
-
+from neoolaf.domain.user_guidance_policy import should_accept_hierarchy_confidence
 
 class HierarchisationLayer(BaseLayer):
     """
@@ -139,6 +139,9 @@ class HierarchisationLayer(BaseLayer):
             if not parsed.get("is_subclass", False):
                 continue
 
+            if not should_accept_hierarchy_confidence(parsed.get("confidence"), state.user_guidance):
+                continue
+
             links.append(
                 ConceptHierarchyLink(
                     link_id=f"concept_h_{counter:05d}",
@@ -218,6 +221,9 @@ class HierarchisationLayer(BaseLayer):
             parsed = self.ollama_backend.extract_json(raw)
 
             if not parsed.get("is_subrelation", False):
+                continue
+
+            if not should_accept_hierarchy_confidence(parsed.get("confidence"), state.user_guidance):
                 continue
 
             links.append(
