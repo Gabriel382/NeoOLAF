@@ -118,6 +118,7 @@ class CandidateRelationExtractionLayer(BaseLayer):
                         chunk_id=chunk_id,
                         relation_candidate=relation_payload,
                         local_candidates=local_candidate_payload,
+                        guidance=state.user_guidance,
                     ),
                 },
             ]
