@@ -18,6 +18,10 @@ from neoolaf.layers.layer08_axiom_schemata_extraction.prompt import (
 )
 from neoolaf.resources.llm_backends.ollama_backend import OllamaBackend
 
+# Grounding imports
+from neoolaf.grounding.rag.types import GroundingRequest
+from neoolaf.grounding.rag.formatting import build_grounding_context
+
 
 class AxiomSchemataExtractionLayer(BaseLayer):
     """
@@ -26,6 +30,7 @@ class AxiomSchemataExtractionLayer(BaseLayer):
     Responsibilities:
     - extract domain/range schemata from ontology relation candidates
     - extract subclass schemata from concept hierarchy links
+    - optionally use SemanticRAG grounding to improve schema extraction
     """
 
     name = "layer08_axiom_schemata_extraction"
@@ -36,6 +41,7 @@ class AxiomSchemataExtractionLayer(BaseLayer):
         max_relation_schema_inputs: int | None = None,
         max_subclass_inputs: int | None = None,
         temperature: float = 0.0,
+        rag_adapter=None,
         save_intermediate: bool = True,
         verbose: bool = False,
     ) -> None:
@@ -51,6 +57,8 @@ class AxiomSchemataExtractionLayer(BaseLayer):
                 Optional debug limit on subclass-schema inputs.
             temperature:
                 Generation temperature.
+            rag_adapter:
+                Optional SemanticRAG adapter.
             save_intermediate:
                 Whether to save intermediate artifacts.
             verbose:
@@ -61,6 +69,7 @@ class AxiomSchemataExtractionLayer(BaseLayer):
         self.max_relation_schema_inputs = max_relation_schema_inputs
         self.max_subclass_inputs = max_subclass_inputs
         self.temperature = temperature
+        self.rag_adapter = rag_adapter
 
     def _run(self, state: PipelineState) -> PipelineState:
         """
@@ -86,6 +95,7 @@ class AxiomSchemataExtractionLayer(BaseLayer):
         schema_counter = 0
 
         for relation in relation_iterator:
+            # Collect related triples using both label and source candidate ids
             related_triples = [
                 triple for triple in state.candidate_triples
                 if triple.predicate_label == relation.label
@@ -114,6 +124,25 @@ class AxiomSchemataExtractionLayer(BaseLayer):
                 ],
             }
 
+            # ---------------------------------------------
+            # Optional SemanticRAG grounding
+            # ---------------------------------------------
+            grounding_context = ""
+            if self.rag_adapter is not None:
+                grounding_result = self.rag_adapter.ground(
+                    GroundingRequest(
+                        layer_name="layer08_axiom_schemata_extraction",
+                        query=relation.label,
+                        payload=payload,
+                        preferred_sources=["ontology", "artifacts", "wikidata", "wikipedia"],
+                        top_k=5,
+                    )
+                )
+                grounding_context = build_grounding_context(grounding_result)
+
+            # ---------------------------------------------
+            # LLM schema extraction
+            # ---------------------------------------------
             messages = [
                 {"role": "system", "content": build_relation_schema_system_prompt()},
                 {
@@ -121,6 +150,7 @@ class AxiomSchemataExtractionLayer(BaseLayer):
                     "content": build_relation_schema_user_prompt(
                         payload=payload,
                         seed_ontology=state.seed_ontology,
+                        grounding_context=grounding_context,
                     ),
                 },
             ]
@@ -200,6 +230,25 @@ class AxiomSchemataExtractionLayer(BaseLayer):
                 "justification": link.justification,
             }
 
+            # ---------------------------------------------
+            # Optional SemanticRAG grounding
+            # ---------------------------------------------
+            grounding_context = ""
+            if self.rag_adapter is not None:
+                grounding_result = self.rag_adapter.ground(
+                    GroundingRequest(
+                        layer_name="layer08_axiom_schemata_extraction",
+                        query=f"{link.child_label} {link.parent_label}",
+                        payload=payload,
+                        preferred_sources=["ontology", "artifacts"],
+                        top_k=5,
+                    )
+                )
+                grounding_context = build_grounding_context(grounding_result)
+
+            # ---------------------------------------------
+            # LLM subclass schema extraction
+            # ---------------------------------------------
             messages = [
                 {"role": "system", "content": build_subclass_schema_system_prompt()},
                 {
@@ -207,6 +256,7 @@ class AxiomSchemataExtractionLayer(BaseLayer):
                     "content": build_subclass_schema_user_prompt(
                         payload=payload,
                         seed_ontology=state.seed_ontology,
+                        grounding_context=grounding_context,
                     ),
                 },
             ]

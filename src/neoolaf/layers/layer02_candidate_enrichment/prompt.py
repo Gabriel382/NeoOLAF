@@ -44,10 +44,11 @@ Return JSON only with this format:
 
 
 def build_user_prompt(
-    expression: LinguisticExpression,
+    expression,
     gathered_evidence: dict,
-    guidance: UserGuidance | None = None,
-    seed_ontology: SeedOntology | None = None,
+    guidance=None,
+    seed_ontology=None,
+    grounding_context: str = "",
 ) -> str:
     """
     Build the user prompt for one expression enrichment.
@@ -77,7 +78,7 @@ def build_user_prompt(
     )
 
     return f"""
-{guidance_text}{ontology_context}Expression:
+{guidance_text}{ontology_context}{grounding_context}Expression:
 - text: {expression.text}
 - label: {expression.label}
 - justification: {expression.justification}

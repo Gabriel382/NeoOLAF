@@ -21,7 +21,8 @@ from neoolaf.layers.layer03_candidate_typing_resolution.prompt import (
     build_user_prompt,
 )
 from neoolaf.resources.llm_backends.ollama_backend import OllamaBackend
-
+from neoolaf.grounding.rag.types import GroundingRequest
+from neoolaf.grounding.rag.formatting import build_grounding_context
 
 class CandidateTypingResolutionLayer(BaseLayer):
     """
@@ -43,6 +44,7 @@ class CandidateTypingResolutionLayer(BaseLayer):
         temperature: float = 0.0,
         save_intermediate: bool = True,
         verbose: bool = False,
+        rag_adapter=None,
     ) -> None:
         """
         Initialize Layer 3.
@@ -63,6 +65,7 @@ class CandidateTypingResolutionLayer(BaseLayer):
         self.ollama_backend = ollama_backend
         self.max_expressions = max_expressions
         self.temperature = temperature
+        self.rag_adapter = rag_adapter
 
     def _run(self, state: PipelineState) -> PipelineState:
         """
@@ -81,10 +84,38 @@ class CandidateTypingResolutionLayer(BaseLayer):
         if self.verbose:
             typing_iterator = tqdm(enriched_expressions, desc="Layer 3 - typing", leave=False)
 
+        grounding_result = None
+        grounding_context = ""
+
+        if self.rag_adapter is not None:
+            grounding_result = self.rag_adapter.ground(
+                GroundingRequest(
+                    layer_name="layer03_candidate_typing_resolution",
+                    query=item.base_expression.text,
+                    payload={
+                        "expression_text": item.base_expression.text,
+                        "aliases": item.aliases,
+                        "synonyms": item.synonyms,
+                        "ontology_hints": item.ontology_hints,
+                    },
+                    preferred_sources=["ontology", "artifacts", "wikidata", "wikipedia", "wordnet"],
+                    top_k=5,
+                )
+            )
+            grounding_context = build_grounding_context(grounding_result)
+
         for item in typing_iterator:
             messages = [
                 {"role": "system", "content": build_system_prompt()},
-                {"role": "user", "content": build_user_prompt(item, state.user_guidance, state.seed_ontology)},
+                                {
+                    "role": "user",
+                    "content": build_user_prompt(
+                        enriched_expression=item,
+                        guidance=state.user_guidance,
+                        seed_ontology=state.seed_ontology,
+                        grounding_context=grounding_context,
+                    ),
+                },
             ]
 
             raw = self.ollama_backend.chat(

@@ -74,7 +74,8 @@ Return JSON only in this format:
 def build_concept_hierarchy_user_prompt(
     child_payload: dict,
     parent_payload: dict,
-    seed_ontology: SeedOntology | None = None,
+    seed_ontology=None,
+    grounding_context: str = "",
 ) -> str:
     """
     Build the user prompt for one concept hierarchy decision.
@@ -94,7 +95,7 @@ def build_concept_hierarchy_user_prompt(
     }
 
     return f"""
-{ontology_context}Evaluate the following candidate concept hierarchy relation.
+{ontology_context}{grounding_context}Evaluate the following candidate concept hierarchy relation.
 
 {json.dumps(payload, indent=2, ensure_ascii=False)}
 
@@ -105,7 +106,8 @@ Return JSON only.
 def build_relation_hierarchy_user_prompt(
     child_payload: dict,
     parent_payload: dict,
-    seed_ontology: SeedOntology | None = None,
+    seed_ontology=None,
+    grounding_context: str = "",
 ) -> str:
     """
     Build the user prompt for one relation hierarchy decision.
@@ -125,7 +127,7 @@ def build_relation_hierarchy_user_prompt(
     }
 
     return f"""
-{ontology_context}Evaluate the following candidate relation hierarchy relation.
+{ontology_context}{grounding_context}Evaluate the following candidate relation hierarchy relation.
 
 {json.dumps(payload, indent=2, ensure_ascii=False)}
 
