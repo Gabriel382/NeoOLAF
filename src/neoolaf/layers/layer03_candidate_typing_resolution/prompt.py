@@ -71,9 +71,10 @@ Return JSON only in this format:
 
 
 def build_user_prompt(
-    enriched_expression: EnrichedExpression,
-    guidance: UserGuidance | None = None,
-    seed_ontology: SeedOntology | None = None,
+    enriched_expression,
+    guidance=None,
+    seed_ontology=None,
+    grounding_context: str = "",
 ) -> str:
     """
     Build the user prompt for one enriched expression.
@@ -103,7 +104,7 @@ def build_user_prompt(
         top_k_properties=3,
     )
     return f"""
-{guidance_text}{ontology_context}Enriched expression:
+{guidance_text}{ontology_context}{grounding_context}Enriched expression:
 {json.dumps(payload, indent=2, ensure_ascii=False)}
 
 Return JSON only.
