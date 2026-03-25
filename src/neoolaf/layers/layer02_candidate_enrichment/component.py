@@ -41,6 +41,7 @@ class CandidateEnrichmentLayer(BaseLayer):
         use_web_search: bool = True,
         save_intermediate: bool = True,
         verbose: bool = False,
+        rag_adapter=None,
     ) -> None:
         """
         Initialize Layer 2.
@@ -73,6 +74,7 @@ class CandidateEnrichmentLayer(BaseLayer):
         self.web_search_source = web_search_source or WebSearchSource()
         self.max_expressions = max_expressions
         self.use_web_search = use_web_search
+        self.rag_adapter = rag_adapter
 
     def _run(self, state: PipelineState) -> PipelineState:
         """
@@ -99,6 +101,7 @@ class CandidateEnrichmentLayer(BaseLayer):
                 user_guidance=state.user_guidance,
                 use_web_search=self.use_web_search,
                 seed_ontology=state.seed_ontology,
+                rag_adapter=self.rag_adapter,
             ).build()
 
             result = graph.invoke({"expression": expr})

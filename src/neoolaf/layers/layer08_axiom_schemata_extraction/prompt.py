@@ -65,6 +65,7 @@ Return JSON only in this format:
 def build_relation_schema_user_prompt(
     payload: dict,
     seed_ontology: SeedOntology | None = None,
+    grounding_context: str = "",
 ) -> str:
     """
     Build the user prompt for relation schema extraction.
@@ -79,7 +80,7 @@ def build_relation_schema_user_prompt(
     )
 
     return f"""
-{ontology_context}Extract reusable structural schemata from the following relation context.
+{ontology_context}{grounding_context}Extract reusable structural schemata from the following relation context.
 
 {json.dumps(payload, indent=2, ensure_ascii=False)}
 
@@ -90,6 +91,7 @@ Return JSON only.
 def build_subclass_schema_user_prompt(
     payload: dict,
     seed_ontology: SeedOntology | None = None,
+    grounding_context: str = "",
 ) -> str:
     """
     Build the user prompt for subclass schema extraction.
@@ -104,7 +106,7 @@ def build_subclass_schema_user_prompt(
     )
 
     return f"""
-{ontology_context}Extract reusable subclass schemata from the following hierarchy context.
+{ontology_context}{grounding_context}Extract reusable subclass schemata from the following hierarchy context.
 
 {json.dumps(payload, indent=2, ensure_ascii=False)}
 

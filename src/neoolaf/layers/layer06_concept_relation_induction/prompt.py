@@ -80,8 +80,9 @@ Return JSON only in this format:
 
 def build_concept_user_prompt(
     candidate_payload: dict,
-    seed_ontology: SeedOntology | None = None,
-    guidance: UserGuidance | None = None,
+    seed_ontology=None,
+    guidance=None,
+    grounding_context: str = "",
 ) -> str:
     """
     Build the user prompt for one concept induction candidate.
@@ -101,7 +102,7 @@ def build_concept_user_prompt(
     )
 
     return f"""
-{guidance_text}{ontology_context}Candidate context:
+{guidance_text}{ontology_context}{grounding_context}Candidate context:
 {json.dumps(candidate_payload, indent=2, ensure_ascii=False)}
 
 Return JSON only.
@@ -110,8 +111,9 @@ Return JSON only.
 
 def build_relation_user_prompt(
     candidate_payload: dict,
-    seed_ontology: SeedOntology | None = None,
-    guidance: UserGuidance | None = None,
+    seed_ontology=None,
+    guidance=None,
+    grounding_context: str = "",
 ) -> str:
     """
     Build the user prompt for one ontology relation induction candidate.
@@ -132,7 +134,7 @@ def build_relation_user_prompt(
     )
 
     return f"""
-{guidance_text}{ontology_context}Relation candidate context:
+{guidance_text}{ontology_context}{grounding_context}Relation candidate context:
 {json.dumps(candidate_payload, indent=2, ensure_ascii=False)}
 
 Return JSON only.

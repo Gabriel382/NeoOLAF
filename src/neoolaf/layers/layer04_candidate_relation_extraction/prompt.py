@@ -58,7 +58,8 @@ def build_user_prompt(
     chunk_id: str,
     relation_candidate: Dict,
     local_candidates: List[Dict],
-    guidance: UserGuidance | None = None,
+    guidance=None,
+    grounding_context: str = "",
 ) -> str:
     """
     Build the user prompt for one relation candidate within one chunk.
@@ -77,7 +78,7 @@ def build_user_prompt(
     )
 
     return f"""
-    {guidance_text}Analyze the following relation extraction context.
+    {guidance_text}{grounding_context}Analyze the following relation extraction context.
 
     {json.dumps(payload, indent=2, ensure_ascii=False)}
 

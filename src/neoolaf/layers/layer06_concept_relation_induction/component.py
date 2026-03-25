@@ -19,6 +19,8 @@ from neoolaf.layers.layer06_concept_relation_induction.prompt import (
 )
 from neoolaf.resources.llm_backends.ollama_backend import OllamaBackend
 from neoolaf.domain.user_guidance_policy import should_promote_confidence
+from neoolaf.grounding.rag.types import GroundingRequest
+from neoolaf.grounding.rag.formatting import build_grounding_context
 
 class ConceptRelationInductionLayer(BaseLayer):
     """
@@ -40,6 +42,7 @@ class ConceptRelationInductionLayer(BaseLayer):
         temperature: float = 0.0,
         save_intermediate: bool = True,
         verbose: bool = False,
+        rag_adapter=None,
     ) -> None:
         """
         Initialize Layer 6.
@@ -63,6 +66,7 @@ class ConceptRelationInductionLayer(BaseLayer):
         self.max_concept_inputs = max_concept_inputs
         self.max_relation_inputs = max_relation_inputs
         self.temperature = temperature
+        self.rag_adapter = rag_adapter
 
     def _run(self, state: PipelineState) -> PipelineState:
         """
@@ -101,16 +105,33 @@ class ConceptRelationInductionLayer(BaseLayer):
                 "mentions": [m.text for m in candidate.mentions],
             }
 
+            grounding_result = None
+            grounding_context = ""
+
+            if self.rag_adapter is not None:
+                grounding_result = self.rag_adapter.ground(
+                    GroundingRequest(
+                        layer_name="layer06_concept_relation_induction",
+                        query=candidate.canonical_label,
+                        payload={
+                            "candidate_type": candidate.candidate_type,
+                            "canonical_label": candidate.canonical_label,
+                            "ontology_hints": candidate.ontology_hints,
+                        },
+                        preferred_sources=["ontology", "artifacts", "wikidata", "wikipedia"],
+                        top_k=5,
+                    )
+                )
+                grounding_context = build_grounding_context(grounding_result)
+
             messages = [
                 {"role": "system", "content": build_concept_system_prompt()},
-                {
-                    "role": "user",
-                    "content": build_concept_user_prompt(
-                        candidate_payload=payload,
-                        seed_ontology=state.seed_ontology,
-                        guidance=state.user_guidance,
-                    ),
-                },
+                {"role": "user", "content": build_concept_user_prompt(
+                    candidate_payload=payload,
+                    seed_ontology=state.seed_ontology,
+                    guidance=state.user_guidance,
+                    grounding_context=grounding_context,
+                )},
             ]
 
             raw = self.ollama_backend.chat(
@@ -165,16 +186,33 @@ class ConceptRelationInductionLayer(BaseLayer):
                 "mentions": [m.text for m in candidate.mentions],
             }
 
+            grounding_result = None
+            grounding_context = ""
+
+            if self.rag_adapter is not None:
+                grounding_result = self.rag_adapter.ground(
+                    GroundingRequest(
+                        layer_name="layer06_concept_relation_induction",
+                        query=candidate.canonical_label,
+                        payload={
+                            "candidate_type": candidate.candidate_type,
+                            "canonical_label": candidate.canonical_label,
+                            "definition": candidate.definition,
+                        },
+                        preferred_sources=["ontology", "artifacts", "wikidata", "wikipedia"],
+                        top_k=5,
+                    )
+                )
+                grounding_context = build_grounding_context(grounding_result)
+
             messages = [
                 {"role": "system", "content": build_relation_system_prompt()},
-                {
-                    "role": "user",
-                    "content": build_relation_user_prompt(
-                        candidate_payload=payload,
-                        seed_ontology=state.seed_ontology,
-                        guidance=state.user_guidance,
-                    ),
-                },
+                {"role": "user", "content": build_relation_user_prompt(
+                    candidate_payload=payload,
+                    seed_ontology=state.seed_ontology,
+                    guidance=state.user_guidance,
+                    grounding_context=grounding_context,
+                )},
             ]
 
             raw = self.ollama_backend.chat(
