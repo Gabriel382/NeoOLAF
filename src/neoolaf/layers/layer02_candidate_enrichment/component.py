@@ -228,7 +228,15 @@ class CandidateEnrichmentLayer(BaseLayer):
         """
         Deduplicate strings while preserving order.
         """
-        cleaned = [x.strip() for x in items if x and x.strip()]
+        cleaned = []
+        for x in items:
+            if isinstance(x, dict):
+                x = str(x)
+            if not isinstance(x, str):
+                continue
+            x = x.strip()
+            if x:
+                cleaned.append(x)
         return list(dict.fromkeys(cleaned))
 
     def _convert_evidence(
