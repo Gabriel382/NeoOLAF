@@ -1,0 +1,55 @@
+============================================================
+NeoOLAF Evaluation Report
+============================================================
+Document:  test-doc-001
+Source:    /fake/path/bearing_report.pdf
+LLM:       gpt-4o-test
+Date:      2026-03-25 09:53
+
+--- Pipeline Stats ---
+Entities: 8  |  Relations: 3  |  Attributes: 1  |  Events: 1
+Triples: 5  |  Concepts: 5  |  Ontology Relations: 3
+Hierarchy Links: 2 concept, 1 relation
+Axiom Schemata: 0  |  General Axioms: 4
+Completions: 2
+
+--- Validation ---
+Status: INVALID
+Issues: 2 errors, 3 warnings (5 total)
+Top issues: missing_domain (1), missing_range (1), orphan_concept (1), low_confidence (1), contradiction (1)
+Dedup ratio:           20.0%
+Avg triple confidence: 0.8120
+
+--- Faithfulness ---
+Provenance coverage:   100.0%
+Textual grounding:     0.0%
+Contradiction rate:    20.0%
+Ungrounded triples:    5
+Contradiction pairs:   1
+
+--- BLEU Scores ---
+Pairs evaluated:       9
+Avg BLEU:              0.3039
+Median BLEU:           0.1122
+Min / Max:             0.0000 / 1.0000
+Low BLEU items:        6
+
+--- Ontology Alignment ---
+Concept alignment:     60.0%
+  (3/5 concepts)
+Relation alignment:    66.7%
+  (2/3 relations)
+Hierarchy alignment:   50.0%
+  (1/2 links)
+Unaligned concepts:    DiagnosticProcess, BearingDefect
+
+--- Completions ---
+  graph_completion: 1
+  ontology_completion: 1
+Avg completion confidence: 0.7750
+
+--- Ontology Health ---
+Orphan concept ratio:  60.0%
+Domain/range coverage: 33.3%
+
+============================================================
