@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 # Standard library imports
-from typing import List
+from typing import List, Any
 
 # Third-party imports
 from tqdm.auto import tqdm
@@ -60,6 +60,37 @@ class GeneralAxiomExtractionLayer(BaseLayer):
         self.max_description_inputs = max_description_inputs
         self.temperature = temperature
 
+    def _normalize_llm_json_dict(self, parsed: Any) -> dict | None:
+        """
+        Normalize LLM JSON outputs so downstream code always receives a dict.
+
+        Some models may return:
+        - a dict
+        - a list containing one dict
+        - an empty list
+        - invalid / unexpected types
+
+        Returns:
+            A dictionary if normalization succeeds, otherwise None.
+        """
+        # Already the expected format
+        if isinstance(parsed, dict):
+            return parsed
+
+        # Sometimes the model returns a list of JSON objects instead of one object
+        if isinstance(parsed, list):
+            if len(parsed) == 0:
+                return None
+
+            first_item = parsed[0]
+            if isinstance(first_item, dict):
+                return first_item
+
+            return None
+
+        # Any other type is considered invalid for this layer
+        return None
+
     def _run(self, state: PipelineState) -> PipelineState:
         """
         Run general axiom extraction from Layer 8 schemata and Layer 6 candidates.
@@ -106,11 +137,17 @@ class GeneralAxiomExtractionLayer(BaseLayer):
             )
             parsed = self.ollama_backend.extract_json(raw)
 
+            # Normalize parsed output so this layer always works with a dictionary.
+            parsed = self._normalize_llm_json_dict(parsed)
+            if parsed is None:
+                continue
+
+            # Skip outputs that explicitly say no axiom should be emitted.
             if not parsed.get("emit_axiom", False):
                 continue
 
-            axiom_type = parsed["axiom_type"].strip()
-            predicate = parsed["predicate"].strip()
+            axiom_type = str(parsed["axiom_type"]).strip()
+            predicate = str(parsed["predicate"]).strip()
             object_label = parsed.get("object_label")
             literal_value = parsed.get("literal_value")
 
@@ -124,7 +161,7 @@ class GeneralAxiomExtractionLayer(BaseLayer):
                     object_id=schema.object_id if object_label is not None else None,
                     object_label=object_label,
                     literal_value=literal_value,
-                    justification=parsed["justification"].strip(),
+                    justification=str(parsed["justification"]).strip(),
                     confidence=parsed.get("confidence"),
                     source_schema_ids=[schema.schema_id],
                     source_concept_ids=schema.source_concept_ids,
@@ -159,8 +196,9 @@ class GeneralAxiomExtractionLayer(BaseLayer):
         for item_type, item in description_iterator:
             # Prefer an existing description if already induced in Layer 6
             literal_value = getattr(item, "description", None)
+
+            # Fallback generic description if none exists
             if literal_value is None or not str(literal_value).strip():
-                # Fallback generic description if none exists
                 if item_type == "concept":
                     literal_value = f"Ontology concept candidate representing {item.label}."
                 else:

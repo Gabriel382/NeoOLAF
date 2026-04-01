@@ -84,27 +84,27 @@ class CandidateTypingResolutionLayer(BaseLayer):
         if self.verbose:
             typing_iterator = tqdm(enriched_expressions, desc="Layer 3 - typing", leave=False)
 
-        grounding_result = None
-        grounding_context = ""
-
-        if self.rag_adapter is not None:
-            grounding_result = self.rag_adapter.ground(
-                GroundingRequest(
-                    layer_name="layer03_candidate_typing_resolution",
-                    query=item.base_expression.text,
-                    payload={
-                        "expression_text": item.base_expression.text,
-                        "aliases": item.aliases,
-                        "synonyms": item.synonyms,
-                        "ontology_hints": item.ontology_hints,
-                    },
-                    preferred_sources=["ontology", "artifacts", "wikidata", "wikipedia", "wordnet"],
-                    top_k=5,
-                )
-            )
-            grounding_context = build_grounding_context(grounding_result)
-
         for item in typing_iterator:
+            grounding_result = None
+            grounding_context = ""
+
+            if self.rag_adapter is not None:
+                grounding_result = self.rag_adapter.ground(
+                    GroundingRequest(
+                        layer_name="layer03_candidate_typing_resolution",
+                        query=item.base_expression.text,
+                        payload={
+                            "expression_text": item.base_expression.text,
+                            "aliases": item.aliases,
+                            "synonyms": item.synonyms,
+                            "ontology_hints": item.ontology_hints,
+                        },
+                        preferred_sources=["ontology", "artifacts", "wikidata", "wikipedia", "wordnet"],
+                        top_k=5,
+                    )
+                )
+                grounding_context = build_grounding_context(grounding_result)
+                
             messages = [
                 {"role": "system", "content": build_system_prompt()},
                                 {
