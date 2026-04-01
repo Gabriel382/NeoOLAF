@@ -6,7 +6,10 @@ import json
 # Local imports
 from neoolaf.domain.enriched_expression import EnrichedExpression
 from neoolaf.domain.user_guidance import UserGuidance
-
+from neoolaf.domain.seed_ontology import SeedOntology
+from neoolaf.ontology.prompt_context import build_seed_ontology_context
+from neoolaf.domain.user_guidance import UserGuidance
+from neoolaf.domain.user_guidance_formatting import build_user_guidance_context
 
 def build_system_prompt() -> str:
     """
@@ -68,27 +71,21 @@ Return JSON only in this format:
 
 
 def build_user_prompt(
-    enriched_expression: EnrichedExpression,
-    guidance: UserGuidance | None = None,
+    enriched_expression,
+    guidance=None,
+    seed_ontology=None,
+    grounding_context: str = "",
 ) -> str:
     """
     Build the user prompt for one enriched expression.
     """
     guidance_text = ""
     if guidance:
-        parts = []
-        if guidance.domain_focus:
-            parts.append(f"Domain focus: {guidance.domain_focus}")
-        if guidance.abstraction_level:
-            parts.append(f"Abstraction level: {guidance.abstraction_level}")
-        if guidance.priority_relations:
-            parts.append(f"Priority relations: {', '.join(guidance.priority_relations)}")
-        if guidance.population_policy:
-            parts.append(f"Population policy: {guidance.population_policy}")
-        if guidance.event_modeling_preference:
-            parts.append(f"Event modeling preference: {guidance.event_modeling_preference}")
-        if parts:
-            guidance_text = "\n".join(parts) + "\n\n"
+        guidance_text = build_user_guidance_context(
+            guidance,
+            include_typing_examples=True,
+            include_negative_examples=True,
+        )
 
     payload = {
         "base_expression_text": enriched_expression.base_expression.text,
@@ -100,8 +97,14 @@ def build_user_prompt(
         "ontology_hints": enriched_expression.ontology_hints,
     }
 
+    ontology_context = build_seed_ontology_context(
+        seed_ontology=seed_ontology,
+        query=enriched_expression.base_expression.text,
+        top_k_classes=3,
+        top_k_properties=3,
+    )
     return f"""
-{guidance_text}Enriched expression:
+{guidance_text}{ontology_context}{grounding_context}Enriched expression:
 {json.dumps(payload, indent=2, ensure_ascii=False)}
 
 Return JSON only.

@@ -3,7 +3,10 @@ from __future__ import annotations
 # Local imports
 from neoolaf.domain.documents import DocumentChunk
 from neoolaf.domain.user_guidance import UserGuidance
-
+from neoolaf.domain.seed_ontology import SeedOntology
+from neoolaf.ontology.prompt_context import build_seed_ontology_context
+from neoolaf.domain.user_guidance import UserGuidance
+from neoolaf.domain.user_guidance_formatting import build_user_guidance_context
 
 def build_system_prompt() -> str:
     """
@@ -90,7 +93,11 @@ Rules:
 """
 
 
-def build_user_prompt(chunk: DocumentChunk, guidance: UserGuidance | None = None) -> str:
+def build_user_prompt(
+    chunk: DocumentChunk,
+    guidance: UserGuidance | None = None,
+    seed_ontology: SeedOntology | None = None,
+) -> str:
     """
     Build the user prompt for one chunk.
 
@@ -98,23 +105,23 @@ def build_user_prompt(chunk: DocumentChunk, guidance: UserGuidance | None = None
     """
     guidance_text = ""
     if guidance:
-        guidance_lines = []
-        if guidance.domain_focus:
-            guidance_lines.append(f"Domain focus: {guidance.domain_focus}")
-        if guidance.abstraction_level:
-            guidance_lines.append(f"Abstraction level: {guidance.abstraction_level}")
-        if guidance.priority_relations:
-            guidance_lines.append(f"Priority relations: {', '.join(guidance.priority_relations)}")
-        if guidance.population_policy:
-            guidance_lines.append(f"Population policy: {guidance.population_policy}")
-        if guidance.event_modeling_preference:
-            guidance_lines.append(f"Event modeling preference: {guidance.event_modeling_preference}")
+        guidance_text = build_user_guidance_context(
+            guidance,
+            include_negative_examples=True,
+        )
 
-        if guidance_lines:
-            guidance_text = "\n".join(guidance_lines) + "\n\n"
+
+    ontology_context = build_seed_ontology_context(
+        seed_ontology=seed_ontology,
+        query=chunk.text[:300],
+        top_k_classes=3,
+        top_k_properties=3,
+    )
+
+    
 
     return f"""
-{guidance_text}Chunk ID: {chunk.chunk_id}
+{guidance_text}{ontology_context}Chunk ID: {chunk.chunk_id}
 
 Text:
 \"\"\"
@@ -126,6 +133,7 @@ Extract the most relevant linguistic expressions from this chunk.
 Important:
 - include entities, events, states, attributes, and relation-bearing expressions
 - relation-bearing expressions should be extracted explicitly when present
+- do not extract expressions similar to the provided negative examples when they are semantically unhelpful
 
 Return JSON only.
 """
