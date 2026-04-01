@@ -16,7 +16,8 @@ from neoolaf.layers.layer04_candidate_relation_extraction.prompt import (
     build_user_prompt,
 )
 from neoolaf.resources.llm_backends.ollama_backend import OllamaBackend
-
+from neoolaf.grounding.rag.types import GroundingRequest
+from neoolaf.grounding.rag.formatting import build_grounding_context
 
 class CandidateRelationExtractionLayer(BaseLayer):
     """
@@ -37,6 +38,7 @@ class CandidateRelationExtractionLayer(BaseLayer):
         temperature: float = 0.0,
         save_intermediate: bool = True,
         verbose: bool = False,
+        rag_adapter=None,
     ) -> None:
         """
         Initialize Layer 4.
@@ -57,6 +59,7 @@ class CandidateRelationExtractionLayer(BaseLayer):
         self.ollama_backend = ollama_backend
         self.max_relation_mentions = max_relation_mentions
         self.temperature = temperature
+        self.rag_adapter = rag_adapter
 
     def _run(self, state: PipelineState) -> PipelineState:
         """
@@ -108,6 +111,24 @@ class CandidateRelationExtractionLayer(BaseLayer):
                 }
                 for cand in local_candidates
             ]
+            grounding_result = None
+            grounding_context = ""
+
+            if self.rag_adapter is not None:
+                grounding_result = self.rag_adapter.ground(
+                    GroundingRequest(
+                        layer_name="layer04_candidate_relation_extraction",
+                        query=relation_candidate.canonical_label,
+                        payload={
+                            "relation_candidate": relation_candidate.canonical_label,
+                            "chunk_text": chunk.text,
+                            "local_candidates": local_candidate_payload,
+                        },
+                        preferred_sources=["ontology", "artifacts", "wikidata", "wikipedia", "web"],
+                        top_k=5,
+                    )
+                )
+                grounding_context = build_grounding_context(grounding_result)
 
             messages = [
                 {"role": "system", "content": build_system_prompt()},
@@ -118,6 +139,8 @@ class CandidateRelationExtractionLayer(BaseLayer):
                         chunk_id=chunk_id,
                         relation_candidate=relation_payload,
                         local_candidates=local_candidate_payload,
+                        guidance=state.user_guidance,
+                        grounding_context=grounding_context,
                     ),
                 },
             ]

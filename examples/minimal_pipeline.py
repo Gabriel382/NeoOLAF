@@ -19,9 +19,9 @@ def run(pdf_path: str):
 
     pipeline = Pipeline(layers=[
         PreprocessingLayer(
-            # chunk_size=1500,
-            # overlap=200,
-            enable_chunking=False,
+            chunk_size=1500,
+            overlap=200,
+            #enable_chunking=False,
             translate=True,
             translator=translator,
             verbose=True,
