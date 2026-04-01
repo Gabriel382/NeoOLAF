@@ -25,6 +25,7 @@ from neoolaf.domain.axiom_schema import AxiomSchemaCandidate
 from neoolaf.domain.general_axiom import GeneralAxiomCandidate
 from neoolaf.domain.validation_reasoning import ValidationReport, ReasoningReport
 from neoolaf.domain.completion import CompletionCandidate
+from neoolaf.domain.seed_ontology import SeedOntology
 
 @dataclass
 class PipelineState:
@@ -40,6 +41,9 @@ class PipelineState:
 
     # Optional semantic guidance
     user_guidance: Optional[UserGuidance] = None
+
+    # Optional seed/source ontology
+    seed_ontology: Optional[SeedOntology] = None
 
     # Directory where intermediate artifacts are stored
     artifact_dir: Optional[str] = None

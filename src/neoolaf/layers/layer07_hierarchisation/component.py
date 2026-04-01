@@ -18,7 +18,9 @@ from neoolaf.layers.layer07_hierarchisation.prompt import (
     build_relation_hierarchy_user_prompt,
 )
 from neoolaf.resources.llm_backends.ollama_backend import OllamaBackend
-
+from neoolaf.domain.user_guidance_policy import should_accept_hierarchy_confidence
+from neoolaf.grounding.rag.types import GroundingRequest
+from neoolaf.grounding.rag.formatting import build_grounding_context
 
 class HierarchisationLayer(BaseLayer):
     """
@@ -39,6 +41,7 @@ class HierarchisationLayer(BaseLayer):
         temperature: float = 0.0,
         save_intermediate: bool = True,
         verbose: bool = False,
+        rag_adapter=None,
     ) -> None:
         """
         Initialize Layer 7.
@@ -62,6 +65,7 @@ class HierarchisationLayer(BaseLayer):
         self.max_concept_pairs = max_concept_pairs
         self.max_relation_pairs = max_relation_pairs
         self.temperature = temperature
+        self.rag_adapter = rag_adapter
 
     def _run(self, state: PipelineState) -> PipelineState:
         """
@@ -117,6 +121,25 @@ class HierarchisationLayer(BaseLayer):
                 "parent_hint": parent.parent_hint,
             }
 
+            grounding_result = None
+            grounding_context = ""
+
+            if self.rag_adapter is not None:
+                grounding_result = self.rag_adapter.ground(
+                    GroundingRequest(
+                        layer_name="layer07_hierarchisation",
+                        query=f"{child.label} {parent.label}",
+                        payload={
+                            "child_label": child.label,
+                            "parent_label": parent.label,
+                            "task": "concept_hierarchy",
+                        },
+                        preferred_sources=["ontology", "artifacts"],
+                        top_k=5,
+                    )
+                )
+                grounding_context = build_grounding_context(grounding_result)
+
             messages = [
                 {"role": "system", "content": build_concept_hierarchy_system_prompt()},
                 {
@@ -124,6 +147,8 @@ class HierarchisationLayer(BaseLayer):
                     "content": build_concept_hierarchy_user_prompt(
                         child_payload=child_payload,
                         parent_payload=parent_payload,
+                        seed_ontology=state.seed_ontology,
+                        grounding_context=grounding_context,
                     ),
                 },
             ]
@@ -136,6 +161,9 @@ class HierarchisationLayer(BaseLayer):
             parsed = self.ollama_backend.extract_json(raw)
 
             if not parsed.get("is_subclass", False):
+                continue
+
+            if not should_accept_hierarchy_confidence(parsed.get("confidence"), state.user_guidance):
                 continue
 
             links.append(
@@ -197,6 +225,25 @@ class HierarchisationLayer(BaseLayer):
                 "range_hint": parent.range_hint,
             }
 
+            grounding_result = None
+            grounding_context = ""
+
+            if self.rag_adapter is not None:
+                grounding_result = self.rag_adapter.ground(
+                    GroundingRequest(
+                        layer_name="layer07_hierarchisation",
+                        query=f"{child.label} {parent.label}",
+                        payload={
+                            "child_label": child.label,
+                            "parent_label": parent.label,
+                            "task": "relation_hierarchy",
+                        },
+                        preferred_sources=["ontology", "artifacts"],
+                        top_k=5,
+                    )
+                )
+                grounding_context = build_grounding_context(grounding_result)
+
             messages = [
                 {"role": "system", "content": build_relation_hierarchy_system_prompt()},
                 {
@@ -204,6 +251,8 @@ class HierarchisationLayer(BaseLayer):
                     "content": build_relation_hierarchy_user_prompt(
                         child_payload=child_payload,
                         parent_payload=parent_payload,
+                        seed_ontology=state.seed_ontology,
+                        grounding_context=grounding_context,
                     ),
                 },
             ]
@@ -216,6 +265,9 @@ class HierarchisationLayer(BaseLayer):
             parsed = self.ollama_backend.extract_json(raw)
 
             if not parsed.get("is_subrelation", False):
+                continue
+
+            if not should_accept_hierarchy_confidence(parsed.get("confidence"), state.user_guidance):
                 continue
 
             links.append(

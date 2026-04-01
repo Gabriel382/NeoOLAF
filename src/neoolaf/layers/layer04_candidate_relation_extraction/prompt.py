@@ -3,7 +3,8 @@ from __future__ import annotations
 # Standard library imports
 import json
 from typing import List, Dict
-
+from neoolaf.domain.user_guidance import UserGuidance
+from neoolaf.domain.user_guidance_formatting import build_user_guidance_context
 
 def build_system_prompt() -> str:
     """
@@ -57,6 +58,8 @@ def build_user_prompt(
     chunk_id: str,
     relation_candidate: Dict,
     local_candidates: List[Dict],
+    guidance=None,
+    grounding_context: str = "",
 ) -> str:
     """
     Build the user prompt for one relation candidate within one chunk.
@@ -68,10 +71,16 @@ def build_user_prompt(
         "chunk_text": chunk_text,
     }
 
+    guidance_text = build_user_guidance_context(
+        guidance,
+        include_relation_examples=True,
+        include_negative_examples=True,
+    )
+
     return f"""
-Analyze the following relation extraction context.
+    {guidance_text}{grounding_context}Analyze the following relation extraction context.
 
-{json.dumps(payload, indent=2, ensure_ascii=False)}
+    {json.dumps(payload, indent=2, ensure_ascii=False)}
 
-Return JSON only.
-"""
+    Return JSON only.
+    """
