@@ -14,7 +14,8 @@ from neoolaf.resources.knowledge_sources.wordnet_source import WordNetSource
 from neoolaf.resources.knowledge_sources.wikipedia_source import WikipediaSource
 from neoolaf.resources.knowledge_sources.wikidata_source import WikidataSource
 from neoolaf.resources.knowledge_sources.web_search_source import WebSearchSource
-
+from neoolaf.grounding.rag.types import GroundingRequest
+from neoolaf.grounding.rag.formatting import build_grounding_context
 
 class Layer02EnrichmentGraphFactory:
     """
@@ -31,6 +32,8 @@ class Layer02EnrichmentGraphFactory:
         web_search_source: WebSearchSource | None = None,
         user_guidance=None,
         use_web_search: bool = True,
+        seed_ontology=None,
+        rag_adapter=None,
     ) -> None:
         self.ollama_backend = ollama_backend
         self.model_name = model_name
@@ -40,6 +43,8 @@ class Layer02EnrichmentGraphFactory:
         self.web_search_source = web_search_source
         self.user_guidance = user_guidance
         self.use_web_search = use_web_search
+        self.seed_ontology = seed_ontology
+        self.rag_adapter = rag_adapter
 
     def build(self):
         """
@@ -124,6 +129,23 @@ class Layer02EnrichmentGraphFactory:
         """
         expr = state["expression"]
         evidence = state.get("gathered_evidence", {})
+        grounding_result = None
+        grounding_context = ""
+
+        if self.rag_adapter is not None:
+            grounding_result = self.rag_adapter.ground(
+                GroundingRequest(
+                    layer_name="layer02_candidate_enrichment",
+                    query=expr.text,
+                    payload={
+                        "expression_text": expr.text,
+                        "expression_label": expr.label,
+                    },
+                    preferred_sources=["ontology", "artifacts", "wikidata", "wikipedia", "wordnet", "web"],
+                    top_k=5,
+                )
+            )
+            grounding_context = build_grounding_context(grounding_result)
 
         messages = [
             {"role": "system", "content": build_system_prompt()},
@@ -133,6 +155,8 @@ class Layer02EnrichmentGraphFactory:
                     expression=expr,
                     gathered_evidence=evidence,
                     guidance=self.user_guidance,
+                    seed_ontology=self.seed_ontology,
+                    grounding_context=grounding_context,
                 ),
             },
         ]
