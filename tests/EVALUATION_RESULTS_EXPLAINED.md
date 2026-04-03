@@ -169,7 +169,13 @@ DiagnosticProcess) have no parent in the hierarchy. This is high -- ideally
 only the root concept should be an orphan.
 
 **Domain/range coverage = 33.3%**: only 1 relation out of 3 (causes) has both
-domain AND range axioms. "detects" and "partOf" do not.
+domain AND range axioms. The code inspects each axiom's `axiom_type` and
+`predicate` field to classify it: an axiom with `axiom_type="relation_domain"`
+and a predicate containing "domain" (e.g., `"rdfs:domain"` or `"domain"`)
+counts as a domain axiom, while `axiom_type="relation_domain"` with a predicate
+containing "range" or `axiom_type="relation_range"` counts as a range axiom.
+Here, `causes` has ax-1 (domain) and ax-2 (range), so it is fully specified.
+"detects" and "partOf" have neither domain nor range axioms.
 
 ---
 

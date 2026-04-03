@@ -33,7 +33,17 @@
       "LubricationPump"
     ],
     "per_type": {
+      "event": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
       "symptom": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "process": {
         "precision": 1.0,
         "recall": 1.0,
         "f1": 1.0
@@ -42,16 +52,6 @@
         "precision": 0.75,
         "recall": 0.75,
         "f1": 0.75
-      },
-      "process": {
-        "precision": 1.0,
-        "recall": 1.0,
-        "f1": 1.0
-      },
-      "event": {
-        "precision": 1.0,
-        "recall": 1.0,
-        "f1": 1.0
       }
     }
   },
@@ -123,11 +123,11 @@
       "recall": 0.8333,
       "f1": 0.9091,
       "matched": [
-        "MechanicalComponent",
-        "FailureEvent",
+        "Symptom",
         "DiagnosticProcess",
+        "MechanicalComponent",
         "BearingDefect",
-        "Symptom"
+        "FailureEvent"
       ],
       "unmatched": [],
       "missing": [
@@ -190,7 +190,7 @@
       "total_relations": 3,
       "total_axioms": 4,
       "orphan_concept_ratio": 0.6,
-      "domain_range_coverage": 0.3333333333333333
+      "domain_range_coverage": 0.0
     }
   },
   "faithfulness": {

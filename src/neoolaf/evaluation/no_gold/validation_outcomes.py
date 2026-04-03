@@ -131,7 +131,15 @@ def compute_validation_outcomes(state: PipelineState) -> ValidationOutcomes:
         relations_with_range = set()
 
         for axiom in state.general_axiom_candidates:
-            if axiom.axiom_type == "relation_domain":
+            pred = (axiom.predicate or "").lower()
+            is_domain = "domain" in pred
+            is_range = "range" in pred
+
+            if axiom.axiom_type == "relation_domain" and is_range:
+                relations_with_range.add(axiom.subject_id)
+            elif axiom.axiom_type == "relation_domain" and is_domain:
+                relations_with_domain.add(axiom.subject_id)
+            elif axiom.axiom_type == "relation_domain" and not is_domain and not is_range:
                 relations_with_domain.add(axiom.subject_id)
             elif axiom.axiom_type == "relation_range":
                 relations_with_range.add(axiom.subject_id)
