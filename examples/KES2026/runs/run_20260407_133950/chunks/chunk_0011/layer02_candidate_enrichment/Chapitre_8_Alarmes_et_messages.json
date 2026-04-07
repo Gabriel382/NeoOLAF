@@ -1,0 +1,2190 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 39,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "MAINTENANCE NOTICE",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "maintenance notice"
+      ],
+      "synonyms": [
+        "maintenance alert",
+        "maintenance warning"
+      ],
+      "lexical_variants": [
+        "maintenance notice",
+        "maintenance alert"
+      ],
+      "alias_sources": {
+        "maintenance notice": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "maintenance alert": [
+          "llm"
+        ],
+        "maintenance warning": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "maintenance notice": [
+          "llm"
+        ],
+        "maintenance alert": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm event indicating that maintenance is required on a machine or one of its features.",
+      "ontology_hints": [
+        "AlarmType",
+        "MaintenanceEvent",
+        "MaintenanceAlarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"maintenance notice\"], \"synonyms\": [\"maintenance alert\", \"maintenance warning\"], \"lexical_variants\": [\"maintenance notice\", \"maintenance alert\"], \"definition\": \"An alarm event indicating that maintenance is required on a machine or one of its features.\", \"ontology_hints\": [\"AlarmType\", \"MaintenanceEvent\", \"MaintenanceAlarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "CONFIGURED PRODUCTION REACHED",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "Configured Production Target Reached",
+        "Production Target Met"
+      ],
+      "synonyms": [
+        "Production Target Met",
+        "Production Limit Reached"
+      ],
+      "lexical_variants": [
+        "Configured Production Reached",
+        "Configured Production Target Reached",
+        "Configured Production Achieved"
+      ],
+      "alias_sources": {
+        "Configured Production Target Reached": [
+          "llm"
+        ],
+        "Production Target Met": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Production Target Met": [
+          "llm"
+        ],
+        "Production Limit Reached": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Configured Production Reached": [
+          "llm"
+        ],
+        "Configured Production Target Reached": [
+          "llm"
+        ],
+        "Configured Production Achieved": [
+          "llm"
+        ]
+      },
+      "definition": "Alarm indicating that a production line has achieved its configured production target.",
+      "ontology_hints": [
+        "Production Line",
+        "Manufacturing Process",
+        "Product",
+        "Feature of Interest",
+        "Situation S1"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Configured Production Target Reached\", \"Production Target Met\"], \"synonyms\": [\"Production Target Met\", \"Production Limit Reached\"], \"lexical_variants\": [\"Configured Production Reached\", \"Configured Production Target Reached\", \"Configured Production Achieved\"], \"definition\": \"Alarm indicating that a production line has achieved its configured production target.\", \"ontology_hints\": [\"Production Line\", \"Manufacturing Process\", \"Product\", \"Feature of Interest\", \"Situation S1\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00002",
+        "text": "AUTOMATIC STOP: MACHINE IN ALARM",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm event that indicates the machine has automatically stopped due to an alarm condition, typically observed as a feature of interest on the machine within a manufacturing facility.",
+      "ontology_hints": [
+        "Alarm type",
+        "Feature of Interest",
+        "Machine",
+        "Manufacturing Facility"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm event that indicates the machine has automatically stopped due to an alarm condition, typically observed as a feature of interest on the machine within a manufacturing facility.\", \"ontology_hints\": [\"Alarm type\", \"Feature of Interest\", \"Machine\", \"Manufacturing Facility\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00003",
+        "text": "WRONG TORQUE REDUCTION",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that the torque reduction applied to a product or part is incorrect, typically occurring at a workstation on a production line and requiring corrective action to adjust the torque setting.",
+      "ontology_hints": [
+        "Production Line",
+        "Workstation",
+        "Product",
+        "Situation",
+        "Action",
+        "requires action",
+        "is in situation",
+        "has duration"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that the torque reduction applied to a product or part is incorrect, typically occurring at a workstation on a production line and requiring corrective action to adjust the torque setting.\", \"ontology_hints\": [\"Production Line\", \"Workstation\", \"Product\", \"Situation\", \"Action\", \"requires action\", \"is in situation\", \"has duration\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00004",
+        "text": "CAUTION VERTICAL AXIS",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating a warning related to torque on the vertical axis.",
+      "ontology_hints": [
+        "alarm type",
+        "vertical axis torque warning"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating a warning related to torque on the vertical axis.\", \"ontology_hints\": [\"alarm type\", \"vertical axis torque warning\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00005",
+        "text": "AXIS NOT PRESENT",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that a required machine axis is missing or not detected during operation.",
+      "ontology_hints": [
+        "ManufacturingProcess",
+        "LogisticProcess",
+        "HumanProcess",
+        "FeatureOfInterest",
+        "Result"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that a required machine axis is missing or not detected during operation.\", \"ontology_hints\": [\"ManufacturingProcess\", \"LogisticProcess\", \"HumanProcess\", \"FeatureOfInterest\", \"Result\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00006",
+        "text": "AXIS NOT IN POSITION",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "Axis misaligned"
+      ],
+      "synonyms": [
+        "Axis misalignment",
+        "Axis out of alignment",
+        "Axis position error"
+      ],
+      "lexical_variants": [
+        "Axis not in position",
+        "Axis mispositioned"
+      ],
+      "alias_sources": {
+        "Axis misaligned": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Axis misalignment": [
+          "llm"
+        ],
+        "Axis out of alignment": [
+          "llm"
+        ],
+        "Axis position error": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Axis not in position": [
+          "llm"
+        ],
+        "Axis mispositioned": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that signals a machine axis is not in its expected position, indicating a potential misalignment or mechanical fault that requires corrective action.",
+      "ontology_hints": [
+        "AlarmType",
+        "ManufacturingProcess",
+        "FeatureOfInterest: Axis",
+        "Action: CorrectAxisPosition",
+        "TRIGGERS: CorrectAxisPositionAction",
+        "CAUSES: AxisMisalignment",
+        "HANDLED_BY: MaintenanceTeam",
+        "part-of: MachineOperation",
+        "affects: Axis",
+        "observed-by: AxisPositionSensor",
+        "temporal: Immediate"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Axis misaligned\"], \"synonyms\": [\"Axis misalignment\", \"Axis out of alignment\", \"Axis position error\"], \"lexical_variants\": [\"Axis not in position\", \"Axis mispositioned\"], \"definition\": \"An alarm that signals a machine axis is not in its expected position, indicating a potential misalignment or mechanical fault that requires corrective action.\", \"ontology_hints\": [\"AlarmType\", \"ManufacturingProcess\", \"FeatureOfInterest: Axis\", \"Action: CorrectAxisPosition\", \"TRIGGERS: CorrectAxisPositionAction\", \"CAUSES: AxisMisalignment\", \"HANDLED_BY: MaintenanceTeam\", \"part-of: MachineOperation\", \"affects: Axis\", \"observed-by: AxisPositionSensor\", \"temporal: Immediate\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00007",
+        "text": "AXIS NOT IN STOP",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm indicating that an axis is not in the stop state, typically triggered when a machine axis fails to reach or maintain a stop position during operation.",
+      "ontology_hints": [
+        "Feature of Interest: Axis",
+        "Situation: S1",
+        "Situation: S2",
+        "Situation: S3",
+        "Situation: S4"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm indicating that an axis is not in the stop state, typically triggered when a machine axis fails to reach or maintain a stop position during operation.\", \"ontology_hints\": [\"Feature of Interest: Axis\", \"Situation: S1\", \"Situation: S2\", \"Situation: S3\", \"Situation: S4\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00008",
+        "text": "WRONG OR MISSING FEED",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "Wrong feed",
+        "Missing feed",
+        "Feed error"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "Wrong feed": [
+          "llm"
+        ],
+        "Missing feed": [
+          "llm"
+        ],
+        "Feed error": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating that the feed material or feed parameter is incorrect or absent, violating a constraint in the manufacturing process.",
+      "ontology_hints": [
+        "Constraint",
+        "Production Line",
+        "Manufacturing Cell",
+        "Machine",
+        "Feature of Interest: feed material",
+        "TRIGGERS",
+        "CAUSES",
+        "REQUIRES",
+        "HANDLED_BY",
+        "REFERENCES",
+        "part-of",
+        "affects",
+        "observed-by",
+        "temporal"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"Wrong feed\", \"Missing feed\", \"Feed error\"], \"definition\": \"An alarm indicating that the feed material or feed parameter is incorrect or absent, violating a constraint in the manufacturing process.\", \"ontology_hints\": [\"Constraint\", \"Production Line\", \"Manufacturing Cell\", \"Machine\", \"Feature of Interest: feed material\", \"TRIGGERS\", \"CAUSES\", \"REQUIRES\", \"HANDLED_BY\", \"REFERENCES\", \"part-of\", \"affects\", \"observed-by\", \"temporal\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00009",
+        "text": "program interruption",
+        "label": "event/state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An interruption in the execution of a computer program, causing the program to pause or stop temporarily.",
+      "ontology_hints": [
+        "InterruptionEvent",
+        "ExecutionState",
+        "SoftwareProcess",
+        "TemporalEntity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An interruption in the execution of a computer program, causing the program to pause or stop temporarily.\", \"ontology_hints\": [\"InterruptionEvent\", \"ExecutionState\", \"SoftwareProcess\", \"TemporalEntity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00010",
+        "text": "stopping of axes and spindles",
+        "label": "event/state"
+      },
+      "aliases": [
+        "axes and spindle stop",
+        "axes and spindle shutdown"
+      ],
+      "synonyms": [
+        "shutdown of axes and spindles",
+        "axes and spindle shutdown"
+      ],
+      "lexical_variants": [
+        "stopping of axes and spindles",
+        "stopping of axes & spindles",
+        "stop of axes and spindles"
+      ],
+      "alias_sources": {
+        "axes and spindle stop": [
+          "llm"
+        ],
+        "axes and spindle shutdown": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "shutdown of axes and spindles": [
+          "llm"
+        ],
+        "axes and spindle shutdown": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "stopping of axes and spindles": [
+          "llm"
+        ],
+        "stopping of axes & spindles": [
+          "llm"
+        ],
+        "stop of axes and spindles": [
+          "llm"
+        ]
+      },
+      "definition": "The event where the machine’s axes and spindles cease operation, typically as part of a shutdown or fault response.",
+      "ontology_hints": [
+        "MachineShutdownEvent",
+        "AxisStopEvent",
+        "SpindleStopEvent",
+        "ManufacturingProcessEvent",
+        "ManufacturingFacility",
+        "ManufacturingCell",
+        "SituationS1",
+        "SituationS2",
+        "EventState"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"axes and spindle stop\", \"axes and spindle shutdown\"], \"synonyms\": [\"shutdown of axes and spindles\", \"axes and spindle shutdown\"], \"lexical_variants\": [\"stopping of axes and spindles\", \"stopping of axes & spindles\", \"stop of axes and spindles\"], \"definition\": \"The event where the machine’s axes and spindles cease operation, typically as part of a shutdown or fault response.\", \"ontology_hints\": [\"MachineShutdownEvent\", \"AxisStopEvent\", \"SpindleStopEvent\", \"ManufacturingProcessEvent\", \"ManufacturingFacility\", \"ManufacturingCell\", \"SituationS1\", \"SituationS2\", \"EventState\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00011",
+        "text": "The quantity of pieces established in the “PRODUCTION DATA” page has been reached",
+        "label": "cause statement"
+      },
+      "aliases": [
+        "PRODUCTION DATA page quantity reached",
+        "Production target met",
+        "Output goal achieved"
+      ],
+      "synonyms": [
+        "target quantity achieved",
+        "production target met",
+        "output goal reached"
+      ],
+      "lexical_variants": [
+        "pieces count reached",
+        "quantity of items achieved",
+        "production quantity attained"
+      ],
+      "alias_sources": {
+        "PRODUCTION DATA page quantity reached": [
+          "llm"
+        ],
+        "Production target met": [
+          "llm"
+        ],
+        "Output goal achieved": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "target quantity achieved": [
+          "llm"
+        ],
+        "production target met": [
+          "llm"
+        ],
+        "output goal reached": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "pieces count reached": [
+          "llm"
+        ],
+        "quantity of items achieved": [
+          "llm"
+        ],
+        "production quantity attained": [
+          "llm"
+        ]
+      },
+      "definition": "A statement indicating that the target number of pieces produced, as recorded on the production data page, has been achieved, thereby triggering a production‑completion alarm.",
+      "ontology_hints": [
+        "Production Line",
+        "Observable Property (quantity of pieces)",
+        "Human Process (monitoring/triggering)",
+        "Manufacturing Process",
+        "Alarm Trigger (ProductionTargetReached)"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"PRODUCTION DATA page quantity reached\", \"Production target met\", \"Output goal achieved\"], \"synonyms\": [\"target quantity achieved\", \"production target met\", \"output goal reached\"], \"lexical_variants\": [\"pieces count reached\", \"quantity of items achieved\", \"production quantity attained\"], \"definition\": \"A statement indicating that the target number of pieces produced, as recorded on the production data page, has been achieved, thereby triggering a production‑completion alarm.\", \"ontology_hints\": [\"Production Line\", \"Observable Property (quantity of pieces)\", \"Human Process (monitoring/triggering)\", \"Manufacturing Process\", \"Alarm Trigger (ProductionTargetReached)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00012",
+        "text": "The AUTOMATIC STOP function has been activated using the corresponding user page, the configured time has been reached, or an alarm has occurred",
+        "label": "cause statement"
+      },
+      "aliases": [
+        "AUTOMATIC STOP",
+        "Auto Stop",
+        "Auto-Stop",
+        "Automatic Shutdown"
+      ],
+      "synonyms": [
+        "automatic stop",
+        "auto-stop",
+        "automatic shutdown",
+        "auto shutdown"
+      ],
+      "lexical_variants": [
+        "automatic stop function",
+        "auto stop function",
+        "automatic shutdown function",
+        "auto shutdown function"
+      ],
+      "alias_sources": {
+        "AUTOMATIC STOP": [
+          "llm"
+        ],
+        "Auto Stop": [
+          "llm"
+        ],
+        "Auto-Stop": [
+          "llm"
+        ],
+        "Automatic Shutdown": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "automatic stop": [
+          "llm"
+        ],
+        "auto-stop": [
+          "llm"
+        ],
+        "automatic shutdown": [
+          "llm"
+        ],
+        "auto shutdown": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "automatic stop function": [
+          "llm"
+        ],
+        "auto stop function": [
+          "llm"
+        ],
+        "automatic shutdown function": [
+          "llm"
+        ],
+        "auto shutdown function": [
+          "llm"
+        ]
+      },
+      "definition": "The automatic stop function is activated when a user initiates it via the control page, when a pre‑configured time limit is reached, or when an alarm occurs, causing the manufacturing process to halt.",
+      "ontology_hints": [
+        "has feature of interest: automatic stop function",
+        "triggers: user page, configured time, alarm",
+        "part-of: manufacturing process",
+        "occurs-in: manufacturing facility or cell",
+        "causes: shutdown",
+        "requires: user page, time threshold, alarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"AUTOMATIC STOP\", \"Auto Stop\", \"Auto-Stop\", \"Automatic Shutdown\"], \"synonyms\": [\"automatic stop\", \"auto-stop\", \"automatic shutdown\", \"auto shutdown\"], \"lexical_variants\": [\"automatic stop function\", \"auto stop function\", \"automatic shutdown function\", \"auto shutdown function\"], \"definition\": \"The automatic stop function is activated when a user initiates it via the control page, when a pre‑configured time limit is reached, or when an alarm occurs, causing the manufacturing process to halt.\", \"ontology_hints\": [\"has feature of interest: automatic stop function\", \"triggers: user page, configured time, alarm\", \"part-of: manufacturing process\", \"occurs-in: manufacturing facility or cell\", \"causes: shutdown\", \"requires: user page, time threshold, alarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00013",
+        "text": "Warns that some maintenance parameters are about to run out",
+        "label": "cause statement"
+      },
+      "aliases": [
+        "maintenance warning",
+        "maintenance alert",
+        "maintenance notification"
+      ],
+      "synonyms": [
+        "alerts",
+        "notifies",
+        "signals"
+      ],
+      "lexical_variants": [
+        "warning",
+        "alert",
+        "notification"
+      ],
+      "alias_sources": {
+        "maintenance warning": [
+          "llm"
+        ],
+        "maintenance alert": [
+          "llm"
+        ],
+        "maintenance notification": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "alerts": [
+          "llm"
+        ],
+        "notifies": [
+          "llm"
+        ],
+        "signals": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "warning": [
+          "llm"
+        ],
+        "alert": [
+          "llm"
+        ],
+        "notification": [
+          "llm"
+        ]
+      },
+      "definition": "A warning indicating that maintenance‑related observable properties are approaching a constraint threshold, signaling impending depletion of maintenance parameters.",
+      "ontology_hints": [
+        "causes",
+        "triggers",
+        "observed-by",
+        "part-of"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"maintenance warning\", \"maintenance alert\", \"maintenance notification\"], \"synonyms\": [\"alerts\", \"notifies\", \"signals\"], \"lexical_variants\": [\"warning\", \"alert\", \"notification\"], \"definition\": \"A warning indicating that maintenance‑related observable properties are approaching a constraint threshold, signaling impending depletion of maintenance parameters.\", \"ontology_hints\": [\"causes\", \"triggers\", \"observed-by\", \"part-of\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00014",
+        "text": "The torque reduction requested at the indicated axis is beyond the limits",
+        "label": "cause statement"
+      },
+      "aliases": [
+        "Torque Reduction Limit Breach",
+        "Torque Reduction Constraint Violation"
+      ],
+      "synonyms": [
+        "exceeds torque limit",
+        "torque reduction out of bounds",
+        "torque reduction beyond permissible limits"
+      ],
+      "lexical_variants": [
+        "requested torque reduction exceeds limits",
+        "torque reduction beyond limits",
+        "torque reduction outside limits"
+      ],
+      "alias_sources": {
+        "Torque Reduction Limit Breach": [
+          "llm"
+        ],
+        "Torque Reduction Constraint Violation": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "exceeds torque limit": [
+          "llm"
+        ],
+        "torque reduction out of bounds": [
+          "llm"
+        ],
+        "torque reduction beyond permissible limits": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "requested torque reduction exceeds limits": [
+          "llm"
+        ],
+        "torque reduction beyond limits": [
+          "llm"
+        ],
+        "torque reduction outside limits": [
+          "llm"
+        ]
+      },
+      "definition": "A statement indicating that the requested reduction in torque on a specified axis surpasses the defined operational limits, constituting a constraint violation in a manufacturing process.",
+      "ontology_hints": [
+        "ConstraintViolation",
+        "TorqueReductionEvent",
+        "Axis",
+        "ManufacturingCell",
+        "ProductionLine",
+        "violates_constraint"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Torque Reduction Limit Breach\", \"Torque Reduction Constraint Violation\"], \"synonyms\": [\"exceeds torque limit\", \"torque reduction out of bounds\", \"torque reduction beyond permissible limits\"], \"lexical_variants\": [\"requested torque reduction exceeds limits\", \"torque reduction beyond limits\", \"torque reduction outside limits\"], \"definition\": \"A statement indicating that the requested reduction in torque on a specified axis surpasses the defined operational limits, constituting a constraint violation in a manufacturing process.\", \"ontology_hints\": [\"ConstraintViolation\", \"TorqueReductionEvent\", \"Axis\", \"ManufacturingCell\", \"ProductionLine\", \"violates_constraint\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00015",
+        "text": "It is requested to reduce the torque to a vertical axis, this is not allowed",
+        "label": "cause statement"
+      },
+      "aliases": [],
+      "synonyms": [
+        "reducing torque on a vertical axis is prohibited",
+        "decreasing torque on a vertical axis is disallowed",
+        "lowering torque on a vertical axis is not permitted"
+      ],
+      "lexical_variants": [
+        "torque reduction on vertical axis",
+        "vertical axis torque reduction",
+        "decrease torque to vertical axis",
+        "lower torque to vertical axis"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {
+        "reducing torque on a vertical axis is prohibited": [
+          "llm"
+        ],
+        "decreasing torque on a vertical axis is disallowed": [
+          "llm"
+        ],
+        "lowering torque on a vertical axis is not permitted": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "torque reduction on vertical axis": [
+          "llm"
+        ],
+        "vertical axis torque reduction": [
+          "llm"
+        ],
+        "decrease torque to vertical axis": [
+          "llm"
+        ],
+        "lower torque to vertical axis": [
+          "llm"
+        ]
+      },
+      "definition": "An instruction or request to lower the torque applied to a vertical axis that is disallowed within the manufacturing process, typically triggering a caution or alarm.",
+      "ontology_hints": [
+        "requires action: do not reduce torque",
+        "causes: vertical axis caution alarm",
+        "part-of: production line",
+        "affects: machine operation",
+        "observed-by: technician"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [\"reducing torque on a vertical axis is prohibited\", \"decreasing torque on a vertical axis is disallowed\", \"lowering torque on a vertical axis is not permitted\"], \"lexical_variants\": [\"torque reduction on vertical axis\", \"vertical axis torque reduction\", \"decrease torque to vertical axis\", \"lower torque to vertical axis\"], \"definition\": \"An instruction or request to lower the torque applied to a vertical axis that is disallowed within the manufacturing process, typically triggering a caution or alarm.\", \"ontology_hints\": [\"requires action: do not reduce torque\", \"causes: vertical axis caution alarm\", \"part-of: production line\", \"affects: machine operation\", \"observed-by: technician\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00016",
+        "text": "It is requested to reduce the torque to an axis which is not present in the Path",
+        "label": "cause statement"
+      },
+      "aliases": [
+        "torque reduction request"
+      ],
+      "synonyms": [
+        "decrease torque",
+        "lower torque"
+      ],
+      "lexical_variants": [
+        "torque reduction",
+        "torque decrease"
+      ],
+      "alias_sources": {
+        "torque reduction request": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "decrease torque": [
+          "llm"
+        ],
+        "lower torque": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "torque reduction": [
+          "llm"
+        ],
+        "torque decrease": [
+          "llm"
+        ]
+      },
+      "definition": "An instruction to lower the torque applied to a component when the target axis is missing from the specified path, in order to prevent or mitigate an alarm triggered by the absence of that axis.",
+      "ontology_hints": [
+        "Intervention",
+        "Cause",
+        "Alarm",
+        "Axis",
+        "Path",
+        "Torque"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"torque reduction request\"], \"synonyms\": [\"decrease torque\", \"lower torque\"], \"lexical_variants\": [\"torque reduction\", \"torque decrease\"], \"definition\": \"An instruction to lower the torque applied to a component when the target axis is missing from the specified path, in order to prevent or mitigate an alarm triggered by the absence of that axis.\", \"ontology_hints\": [\"Intervention\", \"Cause\", \"Alarm\", \"Axis\", \"Path\", \"Torque\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00017",
+        "text": "The axis subject to torque reduction, HAS NOT reached the position causing",
+        "label": "cause statement"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An axis that is experiencing a reduction in torque has not yet reached the critical position that would trigger an alarm.",
+      "ontology_hints": [
+        "Production Line",
+        "Logistic Process",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "has observable property",
+        "has observation",
+        "TRIGGERS"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An axis that is experiencing a reduction in torque has not yet reached the critical position that would trigger an alarm.\", \"ontology_hints\": [\"Production Line\", \"Logistic Process\", \"Situation S1\", \"Situation S2\", \"Situation S3\", \"has observable property\", \"has observation\", \"TRIGGERS\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00018",
+        "text": "The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in contact with the part",
+        "label": "cause statement"
+      },
+      "aliases": [
+        "torqued axis"
+      ],
+      "synonyms": [
+        "axis",
+        "shaft",
+        "spindle",
+        "torque reduction",
+        "torque decrease",
+        "torque lowering",
+        "tracking error",
+        "position error",
+        "alignment error",
+        "contact",
+        "touch",
+        "collision"
+      ],
+      "lexical_variants": [
+        "no tracking error",
+        "not in contact",
+        "does not present tracking error",
+        "cannot be in contact"
+      ],
+      "alias_sources": {
+        "torqued axis": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "axis": [
+          "llm"
+        ],
+        "shaft": [
+          "llm"
+        ],
+        "spindle": [
+          "llm"
+        ],
+        "torque reduction": [
+          "llm"
+        ],
+        "torque decrease": [
+          "llm"
+        ],
+        "torque lowering": [
+          "llm"
+        ],
+        "tracking error": [
+          "llm"
+        ],
+        "position error": [
+          "llm"
+        ],
+        "alignment error": [
+          "llm"
+        ],
+        "contact": [
+          "llm"
+        ],
+        "touch": [
+          "llm"
+        ],
+        "collision": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "no tracking error": [
+          "llm"
+        ],
+        "not in contact": [
+          "llm"
+        ],
+        "does not present tracking error": [
+          "llm"
+        ],
+        "cannot be in contact": [
+          "llm"
+        ]
+      },
+      "definition": "A statement indicating that because the axis, after undergoing torque reduction and reaching its target position, shows no tracking error, it is inferred that the axis is not physically contacting the part.",
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "ObservableProperty",
+        "ManufacturingProcess",
+        "Contact",
+        "TrackingError",
+        "AlarmTrigger"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"torqued axis\"], \"synonyms\": [\"axis\", \"shaft\", \"spindle\", \"torque reduction\", \"torque decrease\", \"torque lowering\", \"tracking error\", \"position error\", \"alignment error\", \"contact\", \"touch\", \"collision\"], \"lexical_variants\": [\"no tracking error\", \"not in contact\", \"does not present tracking error\", \"cannot be in contact\"], \"definition\": \"A statement indicating that because the axis, after undergoing torque reduction and reaching its target position, shows no tracking error, it is inferred that the axis is not physically contacting the part.\", \"ontology_hints\": [\"FeatureOfInterest\", \"ObservableProperty\", \"ManufacturingProcess\", \"Contact\", \"TrackingError\", \"AlarmTrigger\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00019",
+        "text": "G84, G88, G188 have been programmed without parameter F which indicates",
+        "label": "cause statement"
+      },
+      "aliases": [
+        "G84 process",
+        "G88 process",
+        "G188 process",
+        "G84",
+        "G88",
+        "G188"
+      ],
+      "synonyms": [
+        "missing parameter",
+        "parameter omission",
+        "unconfigured parameter",
+        "parameter not set"
+      ],
+      "lexical_variants": [
+        "without parameter F",
+        "parameter F absent",
+        "parameter F not configured",
+        "parameter F omitted"
+      ],
+      "alias_sources": {
+        "G84 process": [
+          "llm"
+        ],
+        "G88 process": [
+          "llm"
+        ],
+        "G188 process": [
+          "llm"
+        ],
+        "G84": [
+          "llm"
+        ],
+        "G88": [
+          "llm"
+        ],
+        "G188": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "missing parameter": [
+          "llm"
+        ],
+        "parameter omission": [
+          "llm"
+        ],
+        "unconfigured parameter": [
+          "llm"
+        ],
+        "parameter not set": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "without parameter F": [
+          "llm"
+        ],
+        "parameter F absent": [
+          "llm"
+        ],
+        "parameter F not configured": [
+          "llm"
+        ],
+        "parameter F omitted": [
+          "llm"
+        ]
+      },
+      "definition": "A cause statement indicating that processes G84, G88, and G188 were programmed without the required configuration parameter F, which may lead to incorrect or missing feed alarms.",
+      "ontology_hints": [
+        "Process",
+        "ProductionLine",
+        "ObservableProperty",
+        "HumanProcess",
+        "LogisticProcess",
+        "ConfigurationParameter",
+        "MissingParameter"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"G84 process\", \"G88 process\", \"G188 process\", \"G84\", \"G88\", \"G188\"], \"synonyms\": [\"missing parameter\", \"parameter omission\", \"unconfigured parameter\", \"parameter not set\"], \"lexical_variants\": [\"without parameter F\", \"parameter F absent\", \"parameter F not configured\", \"parameter F omitted\"], \"definition\": \"A cause statement indicating that processes G84, G88, and G188 were programmed without the required configuration parameter F, which may lead to incorrect or missing feed alarms.\", \"ontology_hints\": [\"Process\", \"ProductionLine\", \"ObservableProperty\", \"HumanProcess\", \"LogisticProcess\", \"ConfigurationParameter\", \"MissingParameter\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00020",
+        "text": "Modify the programmed reduction value",
+        "label": "action"
+      },
+      "aliases": [
+        "Modify the programmed reduction value"
+      ],
+      "synonyms": [
+        "Adjust the programmed reduction value",
+        "Change the programmed reduction value"
+      ],
+      "lexical_variants": [
+        "programmed reduction value",
+        "reduction value",
+        "torque reduction setting"
+      ],
+      "alias_sources": {
+        "Modify the programmed reduction value": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Adjust the programmed reduction value": [
+          "llm"
+        ],
+        "Change the programmed reduction value": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "programmed reduction value": [
+          "llm"
+        ],
+        "reduction value": [
+          "llm"
+        ],
+        "torque reduction setting": [
+          "llm"
+        ]
+      },
+      "definition": "An action that changes the configured reduction value in a manufacturing system to adjust torque during operation.",
+      "ontology_hints": [
+        "applies to Production Line",
+        "applies to Manufacturing Cell",
+        "affects torque reduction setting",
+        "is a corrective action",
+        "modifies a control parameter"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Modify the programmed reduction value\"], \"synonyms\": [\"Adjust the programmed reduction value\", \"Change the programmed reduction value\"], \"lexical_variants\": [\"programmed reduction value\", \"reduction value\", \"torque reduction setting\"], \"definition\": \"An action that changes the configured reduction value in a manufacturing system to adjust torque during operation.\", \"ontology_hints\": [\"applies to Production Line\", \"applies to Manufacturing Cell\", \"affects torque reduction setting\", \"is a corrective action\", \"modifies a control parameter\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00021",
+        "text": "Modify the program",
+        "label": "action"
+      },
+      "aliases": [
+        "Program modification",
+        "Program adjustment",
+        "Program update"
+      ],
+      "synonyms": [
+        "Alter the program",
+        "Change the program",
+        "Adjust the program",
+        "Reprogram"
+      ],
+      "lexical_variants": [
+        "program modification",
+        "program alteration",
+        "program adjustment",
+        "program update"
+      ],
+      "alias_sources": {
+        "Program modification": [
+          "llm"
+        ],
+        "Program adjustment": [
+          "llm"
+        ],
+        "Program update": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Alter the program": [
+          "llm"
+        ],
+        "Change the program": [
+          "llm"
+        ],
+        "Adjust the program": [
+          "llm"
+        ],
+        "Reprogram": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "program modification": [
+          "llm"
+        ],
+        "program alteration": [
+          "llm"
+        ],
+        "program adjustment": [
+          "llm"
+        ],
+        "program update": [
+          "llm"
+        ]
+      },
+      "definition": "The act of changing or updating a software program to correct errors or improve performance within a manufacturing or logistic process.",
+      "ontology_hints": [
+        "Human Process",
+        "Manufacturing Process",
+        "Logistic Process",
+        "Interval",
+        "Observable Property",
+        "Intervention",
+        "Corrective Action"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Program modification\", \"Program adjustment\", \"Program update\"], \"synonyms\": [\"Alter the program\", \"Change the program\", \"Adjust the program\", \"Reprogram\"], \"lexical_variants\": [\"program modification\", \"program alteration\", \"program adjustment\", \"program update\"], \"definition\": \"The act of changing or updating a software program to correct errors or improve performance within a manufacturing or logistic process.\", \"ontology_hints\": [\"Human Process\", \"Manufacturing Process\", \"Logistic Process\", \"Interval\", \"Observable Property\", \"Intervention\", \"Corrective Action\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00022",
+        "text": "Check the machining and remove the obstacle",
+        "label": "action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An action to inspect machining operations and remove any obstacles that may be causing axis position issues.",
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Machine",
+        "Feature of Interest",
+        "Manufacturing Facility",
+        "Manufacturing Cell"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An action to inspect machining operations and remove any obstacles that may be causing axis position issues.\", \"ontology_hints\": [\"Manufacturing Process\", \"Machine\", \"Feature of Interest\", \"Manufacturing Facility\", \"Manufacturing Cell\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00023",
+        "text": "Check the machining, and review the program",
+        "label": "action"
+      },
+      "aliases": [
+        "Check machining and review program",
+        "Inspect machining and review program"
+      ],
+      "synonyms": [
+        "Inspect machining",
+        "Review program",
+        "Examine machining process",
+        "Audit program"
+      ],
+      "lexical_variants": [
+        "Check the machining, and review the program",
+        "Check machining, and review program",
+        "Check the machining and review the program"
+      ],
+      "alias_sources": {
+        "Check machining and review program": [
+          "llm"
+        ],
+        "Inspect machining and review program": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Inspect machining": [
+          "llm"
+        ],
+        "Review program": [
+          "llm"
+        ],
+        "Examine machining process": [
+          "llm"
+        ],
+        "Audit program": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Check the machining, and review the program": [
+          "llm"
+        ],
+        "Check machining, and review program": [
+          "llm"
+        ],
+        "Check the machining and review the program": [
+          "llm"
+        ]
+      },
+      "definition": "An action performed by operators to inspect the machining process and evaluate the associated machine program in order to diagnose and correct axis stop issues.",
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Machine",
+        "Human Process",
+        "Feature of Interest",
+        "has feature of interest",
+        "part-of",
+        "observed-by",
+        "triggers",
+        "causes"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Check machining and review program\", \"Inspect machining and review program\"], \"synonyms\": [\"Inspect machining\", \"Review program\", \"Examine machining process\", \"Audit program\"], \"lexical_variants\": [\"Check the machining, and review the program\", \"Check machining, and review program\", \"Check the machining and review the program\"], \"definition\": \"An action performed by operators to inspect the machining process and evaluate the associated machine program in order to diagnose and correct axis stop issues.\", \"ontology_hints\": [\"Manufacturing Process\", \"Machine\", \"Human Process\", \"Feature of Interest\", \"has feature of interest\", \"part-of\", \"observed-by\", \"triggers\", \"causes\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00024",
+        "text": "Check the program and modify the instruction",
+        "label": "action"
+      },
+      "aliases": [
+        "program review and instruction update",
+        "code inspection and modification",
+        "software check and command adjustment"
+      ],
+      "synonyms": [
+        "inspect the program and adjust the instruction",
+        "examine the code and alter the directive",
+        "review the software and change the command"
+      ],
+      "lexical_variants": [
+        "check program",
+        "modify instruction",
+        "review code",
+        "adjust command"
+      ],
+      "alias_sources": {
+        "program review and instruction update": [
+          "llm"
+        ],
+        "code inspection and modification": [
+          "llm"
+        ],
+        "software check and command adjustment": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "inspect the program and adjust the instruction": [
+          "llm"
+        ],
+        "examine the code and alter the directive": [
+          "llm"
+        ],
+        "review the software and change the command": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "check program": [
+          "llm"
+        ],
+        "modify instruction": [
+          "llm"
+        ],
+        "review code": [
+          "llm"
+        ],
+        "adjust command": [
+          "llm"
+        ]
+      },
+      "definition": "An action that involves inspecting a software program to identify issues and then modifying a specific instruction within that program to correct errors or improve performance.",
+      "ontology_hints": [
+        "relates to Constraint enforcement",
+        "applies to Production Line processes",
+        "affects Product quality",
+        "occurs within a Temporal Entity",
+        "targets a Feature of Interest (instruction)"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"program review and instruction update\", \"code inspection and modification\", \"software check and command adjustment\"], \"synonyms\": [\"inspect the program and adjust the instruction\", \"examine the code and alter the directive\", \"review the software and change the command\"], \"lexical_variants\": [\"check program\", \"modify instruction\", \"review code\", \"adjust command\"], \"definition\": \"An action that involves inspecting a software program to identify issues and then modifying a specific instruction within that program to correct errors or improve performance.\", \"ontology_hints\": [\"relates to Constraint enforcement\", \"applies to Production Line processes\", \"affects Product quality\", \"occurs within a Temporal Entity\", \"targets a Feature of Interest (instruction)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00025",
+        "text": "Wait for the main switch to trip, then turn it on and turn on the machine",
+        "label": "action"
+      },
+      "aliases": [
+        "reset main switch and start machine"
+      ],
+      "synonyms": [
+        "await main switch trip, reset, power on machine"
+      ],
+      "lexical_variants": [
+        "wait for main breaker to trip, then reset and power on the machine"
+      ],
+      "alias_sources": {
+        "reset main switch and start machine": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "await main switch trip, reset, power on machine": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "wait for main breaker to trip, then reset and power on the machine": [
+          "llm"
+        ]
+      },
+      "definition": "An action performed by a technician in a manufacturing facility where the technician waits for the main switch to trip, then resets the switch and powers on the machine.",
+      "ontology_hints": [
+        "performed_by: Technician",
+        "located_in: Manufacturing Facility",
+        "involves: Main Switch, Machine",
+        "part_of: Manufacturing Cell",
+        "requires: Main Switch Trip",
+        "affects: Machine Power State",
+        "temporal_sequence: Wait -> Reset -> Power On"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"reset main switch and start machine\"], \"synonyms\": [\"await main switch trip, reset, power on machine\"], \"lexical_variants\": [\"wait for main breaker to trip, then reset and power on the machine\"], \"definition\": \"An action performed by a technician in a manufacturing facility where the technician waits for the main switch to trip, then resets the switch and powers on the machine.\", \"ontology_hints\": [\"performed_by: Technician\", \"located_in: Manufacturing Facility\", \"involves: Main Switch, Machine\", \"part_of: Manufacturing Cell\", \"requires: Main Switch Trip\", \"affects: Machine Power State\", \"temporal_sequence: Wait -> Reset -> Power On\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00026",
+        "text": "responsible for the intervention: programmer",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Indicates that the programmer is accountable for carrying out the intervention.",
+      "ontology_hints": [
+        "responsible_for",
+        "intervention",
+        "programmer"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Indicates that the programmer is accountable for carrying out the intervention.\", \"ontology_hints\": [\"responsible_for\", \"intervention\", \"programmer\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00027",
+        "text": "responsible for the intervention: toolmaker-adjuster",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "toolmaker-adjuster"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "toolmaker-adjuster": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An agent, specifically a toolmaker-adjuster, who is accountable for carrying out an intervention within an industrial maintenance context.",
+      "ontology_hints": [
+        "Agent",
+        "Intervention",
+        "ResponsibleFor"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"toolmaker-adjuster\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An agent, specifically a toolmaker-adjuster, who is accountable for carrying out an intervention within an industrial maintenance context.\", \"ontology_hints\": [\"Agent\", \"Intervention\", \"ResponsibleFor\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00028",
+        "text": "responsible for the maintenance",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "responsible for maintenance",
+        "responsible for upkeep"
+      ],
+      "synonyms": [
+        "accountable for",
+        "liable for",
+        "in charge of"
+      ],
+      "lexical_variants": [
+        "responsible for the maintenance",
+        "responsible for maintenance",
+        "responsible for upkeep"
+      ],
+      "alias_sources": {
+        "responsible for maintenance": [
+          "llm"
+        ],
+        "responsible for upkeep": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "accountable for": [
+          "llm"
+        ],
+        "liable for": [
+          "llm"
+        ],
+        "in charge of": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for the maintenance": [
+          "llm"
+        ],
+        "responsible for maintenance": [
+          "llm"
+        ],
+        "responsible for upkeep": [
+          "llm"
+        ]
+      },
+      "definition": "A relation indicating that a Resource is accountable for ensuring that a maintenance constraint is satisfied for a Feature of Interest.",
+      "ontology_hints": [
+        "Resource",
+        "Constraint",
+        "Feature of Interest",
+        "Observable Property",
+        "Instant",
+        "has responsibility",
+        "ensures compliance with constraint"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"responsible for maintenance\", \"responsible for upkeep\"], \"synonyms\": [\"accountable for\", \"liable for\", \"in charge of\"], \"lexical_variants\": [\"responsible for the maintenance\", \"responsible for maintenance\", \"responsible for upkeep\"], \"definition\": \"A relation indicating that a Resource is accountable for ensuring that a maintenance constraint is satisfied for a Feature of Interest.\", \"ontology_hints\": [\"Resource\", \"Constraint\", \"Feature of Interest\", \"Observable Property\", \"Instant\", \"has responsibility\", \"ensures compliance with constraint\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00029",
+        "text": "Only display of the message",
+        "label": "effect"
+      },
+      "aliases": [
+        "message display only"
+      ],
+      "synonyms": [
+        "display-only message",
+        "visual notification only"
+      ],
+      "lexical_variants": [
+        "only message display",
+        "display-only alert"
+      ],
+      "alias_sources": {
+        "message display only": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "display-only message": [
+          "llm"
+        ],
+        "visual notification only": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "only message display": [
+          "llm"
+        ],
+        "display-only alert": [
+          "llm"
+        ]
+      },
+      "definition": "An effect in which the system presents a message to the operator without initiating any additional actions or interventions.",
+      "ontology_hints": [
+        "observes",
+        "part of",
+        "located in"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"message display only\"], \"synonyms\": [\"display-only message\", \"visual notification only\"], \"lexical_variants\": [\"only message display\", \"display-only alert\"], \"definition\": \"An effect in which the system presents a message to the operator without initiating any additional actions or interventions.\", \"ontology_hints\": [\"observes\", \"part of\", \"located in\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00030",
+        "text": "Alarm with program interruption, stopping of axes and spindles",
+        "label": "effect"
+      },
+      "aliases": [
+        "fault alarm",
+        "shutdown alarm"
+      ],
+      "synonyms": [
+        "program interruption alarm",
+        "machine stop alarm",
+        "axis/spindle stop alarm"
+      ],
+      "lexical_variants": [
+        "alarm causing program interruption and stopping axes and spindles"
+      ],
+      "alias_sources": {
+        "fault alarm": [
+          "llm"
+        ],
+        "shutdown alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "program interruption alarm": [
+          "llm"
+        ],
+        "machine stop alarm": [
+          "llm"
+        ],
+        "axis/spindle stop alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "alarm causing program interruption and stopping axes and spindles": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that interrupts the running program of a machine, causing the mechanical axes and spindle motors to stop.",
+      "ontology_hints": [
+        "Alarm",
+        "FaultEvent",
+        "MachineStopEvent",
+        "ProductionLine",
+        "ManufacturingProcess",
+        "FeatureOfInterest",
+        "ManufacturingFacility",
+        "triggers",
+        "causes",
+        "requires",
+        "handled_by"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"fault alarm\", \"shutdown alarm\"], \"synonyms\": [\"program interruption alarm\", \"machine stop alarm\", \"axis/spindle stop alarm\"], \"lexical_variants\": [\"alarm causing program interruption and stopping axes and spindles\"], \"definition\": \"An alarm that interrupts the running program of a machine, causing the mechanical axes and spindle motors to stop.\", \"ontology_hints\": [\"Alarm\", \"FaultEvent\", \"MachineStopEvent\", \"ProductionLine\", \"ManufacturingProcess\", \"FeatureOfInterest\", \"ManufacturingFacility\", \"triggers\", \"causes\", \"requires\", \"handled_by\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00031",
+        "text": "has been reached",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "reached",
+        "achieved",
+        "attained"
+      ],
+      "synonyms": [
+        "has been achieved",
+        "has been attained",
+        "has been completed",
+        "has been fulfilled"
+      ],
+      "lexical_variants": [
+        "reached",
+        "achieved",
+        "attained",
+        "completed",
+        "fulfilled"
+      ],
+      "alias_sources": {
+        "reached": [
+          "llm"
+        ],
+        "achieved": [
+          "llm"
+        ],
+        "attained": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "has been achieved": [
+          "llm"
+        ],
+        "has been attained": [
+          "llm"
+        ],
+        "has been completed": [
+          "llm"
+        ],
+        "has been fulfilled": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "reached": [
+          "llm"
+        ],
+        "achieved": [
+          "llm"
+        ],
+        "attained": [
+          "llm"
+        ],
+        "completed": [
+          "llm"
+        ],
+        "fulfilled": [
+          "llm"
+        ]
+      },
+      "definition": "Indicates that an entity has attained a specified state or target, marking a state transition to a reached condition.",
+      "ontology_hints": [
+        "Applicable to Human Process, Machine, Resource, Sensor, and Spatial Object",
+        "Denotes completion or attainment of a target state",
+        "Used as a relation-bearing expression indicating a state transition"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"reached\", \"achieved\", \"attained\"], \"synonyms\": [\"has been achieved\", \"has been attained\", \"has been completed\", \"has been fulfilled\"], \"lexical_variants\": [\"reached\", \"achieved\", \"attained\", \"completed\", \"fulfilled\"], \"definition\": \"Indicates that an entity has attained a specified state or target, marking a state transition to a reached condition.\", \"ontology_hints\": [\"Applicable to Human Process, Machine, Resource, Sensor, and Spatial Object\", \"Denotes completion or attainment of a target state\", \"Used as a relation-bearing expression indicating a state transition\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00032",
+        "text": "has been activated",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A state change indicating that a function, resource, or process has transitioned from an inactive to an active condition, typically occurring at a specific time.",
+      "ontology_hints": [
+        "Temporal Entity",
+        "Manufacturing Facility",
+        "Manufacturing Cell",
+        "Human Process",
+        "Spatial Object",
+        "activation event",
+        "state transition",
+        "start of process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A state change indicating that a function, resource, or process has transitioned from an inactive to an active condition, typically occurring at a specific time.\", \"ontology_hints\": [\"Temporal Entity\", \"Manufacturing Facility\", \"Manufacturing Cell\", \"Human Process\", \"Spatial Object\", \"activation event\", \"state transition\", \"start of process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00033",
+        "text": "is beyond the limits",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "exceeds limits",
+        "surpasses limits",
+        "goes beyond bounds",
+        "oversteps limits",
+        "violates constraints"
+      ],
+      "synonyms": [
+        "exceeds limits",
+        "surpasses limits",
+        "goes beyond bounds",
+        "oversteps limits",
+        "violates constraints"
+      ],
+      "lexical_variants": [
+        "beyond limits",
+        "outside limits",
+        "outside bounds",
+        "over limits",
+        "exceeding limits"
+      ],
+      "alias_sources": {
+        "exceeds limits": [
+          "llm"
+        ],
+        "surpasses limits": [
+          "llm"
+        ],
+        "goes beyond bounds": [
+          "llm"
+        ],
+        "oversteps limits": [
+          "llm"
+        ],
+        "violates constraints": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "exceeds limits": [
+          "llm"
+        ],
+        "surpasses limits": [
+          "llm"
+        ],
+        "goes beyond bounds": [
+          "llm"
+        ],
+        "oversteps limits": [
+          "llm"
+        ],
+        "violates constraints": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "beyond limits": [
+          "llm"
+        ],
+        "outside limits": [
+          "llm"
+        ],
+        "outside bounds": [
+          "llm"
+        ],
+        "over limits": [
+          "llm"
+        ],
+        "exceeding limits": [
+          "llm"
+        ]
+      },
+      "definition": "Indicates that an entity’s value or state surpasses the permissible or defined limits set by a constraint, thereby violating the acceptable bounds of the system.",
+      "ontology_hints": [
+        "exceeds",
+        "violates",
+        "oversteps",
+        "outside bounds",
+        "constraint violation"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"exceeds limits\", \"surpasses limits\", \"goes beyond bounds\", \"oversteps limits\", \"violates constraints\"], \"synonyms\": [\"exceeds limits\", \"surpasses limits\", \"goes beyond bounds\", \"oversteps limits\", \"violates constraints\"], \"lexical_variants\": [\"beyond limits\", \"outside limits\", \"outside bounds\", \"over limits\", \"exceeding limits\"], \"definition\": \"Indicates that an entity’s value or state surpasses the permissible or defined limits set by a constraint, thereby violating the acceptable bounds of the system.\", \"ontology_hints\": [\"exceeds\", \"violates\", \"oversteps\", \"outside bounds\", \"constraint violation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00034",
+        "text": "is not allowed",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "not allowed"
+      ],
+      "synonyms": [
+        "is prohibited",
+        "is forbidden",
+        "is disallowed",
+        "is not permitted"
+      ],
+      "lexical_variants": [
+        "is not permitted",
+        "is disallowed",
+        "is forbidden"
+      ],
+      "alias_sources": {
+        "not allowed": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "is prohibited": [
+          "llm"
+        ],
+        "is forbidden": [
+          "llm"
+        ],
+        "is disallowed": [
+          "llm"
+        ],
+        "is not permitted": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "is not permitted": [
+          "llm"
+        ],
+        "is disallowed": [
+          "llm"
+        ],
+        "is forbidden": [
+          "llm"
+        ]
+      },
+      "definition": "A phrase indicating that a particular action, state, or condition is not permitted or is prohibited within a given context.",
+      "ontology_hints": [
+        "prohibition",
+        "negative permission",
+        "constraint"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"not allowed\"], \"synonyms\": [\"is prohibited\", \"is forbidden\", \"is disallowed\", \"is not permitted\"], \"lexical_variants\": [\"is not permitted\", \"is disallowed\", \"is forbidden\"], \"definition\": \"A phrase indicating that a particular action, state, or condition is not permitted or is prohibited within a given context.\", \"ontology_hints\": [\"prohibition\", \"negative permission\", \"constraint\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00035",
+        "text": "is not present",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "is not present"
+      ],
+      "synonyms": [
+        "is absent",
+        "is missing",
+        "does not exist",
+        "is not available"
+      ],
+      "lexical_variants": [
+        "not present",
+        "absent",
+        "missing"
+      ],
+      "alias_sources": {
+        "is not present": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "is absent": [
+          "llm"
+        ],
+        "is missing": [
+          "llm"
+        ],
+        "does not exist": [
+          "llm"
+        ],
+        "is not available": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "not present": [
+          "llm"
+        ],
+        "absent": [
+          "llm"
+        ],
+        "missing": [
+          "llm"
+        ]
+      },
+      "definition": "Indicates that a component, element, or expected item is absent or not present in the specified context or location.",
+      "ontology_hints": [
+        "absence",
+        "missing",
+        "not available",
+        "negation",
+        "state of absence"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"is not present\"], \"synonyms\": [\"is absent\", \"is missing\", \"does not exist\", \"is not available\"], \"lexical_variants\": [\"not present\", \"absent\", \"missing\"], \"definition\": \"Indicates that a component, element, or expected item is absent or not present in the specified context or location.\", \"ontology_hints\": [\"absence\", \"missing\", \"not available\", \"negation\", \"state of absence\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00036",
+        "text": "has not reached the position",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A relation indicating that an action, process, or human operator did not achieve a specified positional target within a manufacturing process.",
+      "ontology_hints": [
+        "Model as a negated assertion of a positional property, e.g., hasReachedPosition = false.",
+        "Can be represented as a relation between an Action (or Technician) and a ManufacturingProcess.",
+        "This relation is part of a Situation that captures a failure to attain the desired state.",
+        "It may trigger downstream failure chains and require intervention actions."
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A relation indicating that an action, process, or human operator did not achieve a specified positional target within a manufacturing process.\", \"ontology_hints\": [\"Model as a negated assertion of a positional property, e.g., hasReachedPosition = false.\", \"Can be represented as a relation between an Action (or Technician) and a ManufacturingProcess.\", \"This relation is part of a Situation that captures a failure to attain the desired state.\", \"It may trigger downstream failure chains and require intervention actions.\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00037",
+        "text": "does not present any tracking error",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "tracking error-free",
+        "free of tracking errors"
+      ],
+      "synonyms": [
+        "no tracking errors",
+        "does not have any tracking error"
+      ],
+      "lexical_variants": [
+        "does not present tracking errors",
+        "does not present any tracking error"
+      ],
+      "alias_sources": {
+        "tracking error-free": [
+          "llm"
+        ],
+        "free of tracking errors": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "no tracking errors": [
+          "llm"
+        ],
+        "does not have any tracking error": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "does not present tracking errors": [
+          "llm"
+        ],
+        "does not present any tracking error": [
+          "llm"
+        ]
+      },
+      "definition": "Indicates that a manufacturing or logistic process satisfies a constraint by exhibiting no tracking errors, thereby meeting the required quality or operational standard.",
+      "ontology_hints": [
+        "applies to Manufacturing Process",
+        "applies to Logistic Process",
+        "relates to Constraint",
+        "ensured by Manager"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"tracking error-free\", \"free of tracking errors\"], \"synonyms\": [\"no tracking errors\", \"does not have any tracking error\"], \"lexical_variants\": [\"does not present tracking errors\", \"does not present any tracking error\"], \"definition\": \"Indicates that a manufacturing or logistic process satisfies a constraint by exhibiting no tracking errors, thereby meeting the required quality or operational standard.\", \"ontology_hints\": [\"applies to Manufacturing Process\", \"applies to Logistic Process\", \"relates to Constraint\", \"ensured by Manager\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00038",
+        "text": "has been programmed without parameter F",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "programmed without parameter F",
+        "configured without parameter F",
+        "set up without parameter F",
+        "missing parameter F in program"
+      ],
+      "synonyms": [
+        "programmed lacking parameter F",
+        "configured lacking parameter F"
+      ],
+      "lexical_variants": [
+        "programmed without F",
+        "configured without F",
+        "set up without F"
+      ],
+      "alias_sources": {
+        "programmed without parameter F": [
+          "llm"
+        ],
+        "configured without parameter F": [
+          "llm"
+        ],
+        "set up without parameter F": [
+          "llm"
+        ],
+        "missing parameter F in program": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "programmed lacking parameter F": [
+          "llm"
+        ],
+        "configured lacking parameter F": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "programmed without F": [
+          "llm"
+        ],
+        "configured without F": [
+          "llm"
+        ],
+        "set up without F": [
+          "llm"
+        ]
+      },
+      "definition": "A statement indicating that a process or configuration has been programmed but the parameter F is not specified or omitted.",
+      "ontology_hints": [
+        "has missing parameter",
+        "programmed configuration",
+        "parameter omission",
+        "HumanProcess configuration",
+        "ObservableProperty setting"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"programmed without parameter F\", \"configured without parameter F\", \"set up without parameter F\", \"missing parameter F in program\"], \"synonyms\": [\"programmed lacking parameter F\", \"configured lacking parameter F\"], \"lexical_variants\": [\"programmed without F\", \"configured without F\", \"set up without F\"], \"definition\": \"A statement indicating that a process or configuration has been programmed but the parameter F is not specified or omitted.\", \"ontology_hints\": [\"has missing parameter\", \"programmed configuration\", \"parameter omission\", \"HumanProcess configuration\", \"ObservableProperty setting\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

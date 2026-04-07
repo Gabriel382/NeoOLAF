@@ -1,74 +1,36 @@
 from __future__ import annotations
 
-# Standard library imports
 import json
 import os
 import re
 import time
 from typing import Any, Dict, List, Optional
 
-# Third-party imports
 import requests
 from requests.exceptions import RequestException, ReadTimeout, ConnectionError
 
 
 class OpenAIBackend:
-    """
-    Generic OpenAI-compatible backend.
-
-    Supports:
-    - OpenRouter
-    - OpenAI
-    - local OpenAI-compatible servers
-    - vLLM-style endpoints if needed
-
-    Notes:
-    - For OpenRouter, use host="https://openrouter.ai/api"
-    - For OpenAI, use host="https://api.openai.com"
-    - This backend expects /v1/chat/completions under the host
-    """
-
     def __init__(
         self,
         host: str,
         api_key: Optional[str] = None,
         timeout: int = 900,
-        max_retries: int = 3,
-        retry_wait_seconds: float = 3.0,
+        max_retries: int = 5,
+        retry_wait_seconds: float = 4.0,
         referer: Optional[str] = None,
         title: Optional[str] = None,
         env_var_name: Optional[str] = None,
+        retry_on_empty: bool = True,
     ) -> None:
-        """
-        Initialize the backend.
-
-        Args:
-            host:
-                Base URL of the OpenAI-compatible server, without trailing slash.
-            api_key:
-                Explicit API key. If None, try env_var_name, then OPENROUTER_API_KEY,
-                then OPENAI_API_KEY.
-            timeout:
-                Default request timeout in seconds.
-            max_retries:
-                Number of retry attempts for transient failures.
-            retry_wait_seconds:
-                Wait time between retries.
-            referer:
-                Optional HTTP-Referer header, useful for OpenRouter.
-            title:
-                Optional X-Title header, useful for OpenRouter.
-            env_var_name:
-                Optional environment variable name to resolve the API key from.
-        """
         self.host = host.rstrip("/")
         self.timeout = timeout
         self.max_retries = max_retries
         self.retry_wait_seconds = retry_wait_seconds
         self.referer = referer
         self.title = title
+        self.retry_on_empty = retry_on_empty
 
-        # Resolve API key with fallback order.
         if api_key:
             self.api_key = api_key
         elif env_var_name and os.getenv(env_var_name):
@@ -79,9 +41,7 @@ class OpenAIBackend:
             self.api_key = os.getenv("OPENAI_API_KEY", "")
 
         if not self.api_key:
-            raise ValueError(
-                "No API key found. Provide api_key explicitly or set an environment variable."
-            )
+            raise ValueError("No API key found.")
 
     def chat(
         self,
@@ -91,28 +51,6 @@ class OpenAIBackend:
         timeout: Optional[int] = None,
         max_tokens: Optional[int] = None,
     ) -> str:
-        """
-        Send a chat completion request to an OpenAI-compatible endpoint.
-
-        Args:
-            model:
-                Model name to use.
-            messages:
-                OpenAI-style message list.
-            temperature:
-                Sampling temperature.
-            timeout:
-                Optional per-call timeout override.
-            max_tokens:
-                Optional max completion tokens.
-
-        Returns:
-            The generated assistant text.
-
-        Raises:
-            RuntimeError:
-                If all retry attempts fail.
-        """
         url = f"{self.host}/v1/chat/completions"
 
         payload: Dict[str, Any] = {
@@ -120,7 +58,6 @@ class OpenAIBackend:
             "messages": messages,
             "temperature": temperature,
         }
-
         if max_tokens is not None:
             payload["max_tokens"] = max_tokens
 
@@ -128,8 +65,6 @@ class OpenAIBackend:
             "Content-Type": "application/json",
             "Authorization": f"Bearer {self.api_key}",
         }
-
-        # Add optional OpenRouter-friendly headers.
         if self.referer:
             headers["HTTP-Referer"] = self.referer
         if self.title:
@@ -149,11 +84,24 @@ class OpenAIBackend:
                 response.raise_for_status()
 
                 data = response.json()
-                return data["choices"][0]["message"]["content"]
+                choices = data.get("choices")
 
-            except (ReadTimeout, ConnectionError, RequestException) as exc:
+                if not choices:
+                    raise RuntimeError(f"No choices in response: {data}")
+
+                message = choices[0].get("message", {})
+                content = message.get("content")
+
+                # Retry if empty content and retry_on_empty is enabled
+                if content is None or not isinstance(content, str) or not content.strip():
+                    if self.retry_on_empty:
+                        raise RuntimeError(f"Empty or missing message content: {data}")
+                    return ""
+
+                return content
+
+            except (ReadTimeout, ConnectionError, RequestException, RuntimeError, ValueError) as exc:
                 last_error = exc
-
                 if attempt < self.max_retries:
                     time.sleep(self.retry_wait_seconds)
                     continue
@@ -166,15 +114,8 @@ class OpenAIBackend:
 
     @staticmethod
     def extract_json(text: str) -> Any:
-        """
-        Extract JSON from raw model output.
-
-        Supports:
-        - fenced ```json ... ```
-        - fenced ``` ... ```
-        - direct JSON object or array
-        - first array/object found in text
-        """
+        if text is None:
+            raise ValueError("extract_json received None from backend.chat().")
         text = text.strip()
 
         fenced = re.search(r"```json\s*(.*?)\s*```", text, re.DOTALL)
@@ -198,4 +139,4 @@ class OpenAIBackend:
         if obj_match:
             return json.loads(obj_match.group(1))
 
-        raise ValueError("Could not parse JSON from OpenAI-compatible output.")
+        raise ValueError(f"Could not parse JSON from output:\n{text[:1000]}")

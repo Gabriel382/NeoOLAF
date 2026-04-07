@@ -1,0 +1,1142 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 71,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "Alarms and messages of the CNC",
+      "label": "alarm source",
+      "justification": "Identifies the CNC as the origin of alarms and messages.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 81,
+          "chunk_end_char": 111,
+          "doc_start_char": 81,
+          "doc_end_char": 111,
+          "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "alarms and messages from the PLC interface",
+      "label": "alarm source",
+      "justification": "Identifies the PLC interface as the origin of alarms and messages.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 192,
+          "chunk_end_char": 234,
+          "doc_start_char": 192,
+          "doc_end_char": 234,
+          "snippet": "for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "messages and alarms issued by the PLC indicate the detection of a problem",
+      "label": "relation-bearing expression",
+      "justification": "Shows the PLC’s alarms as indicators of a detected problem.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "may compromise the proper functioning of the machine and the machining cycle",
+      "label": "relation-bearing expression",
+      "justification": "Describes the potential impact of the detected problem on machine operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "alarms with immediate and controlled stop",
+      "label": "alarm type",
+      "justification": "Defines a class of alarms that trigger an immediate controlled stop.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 481,
+          "chunk_end_char": 522,
+          "doc_start_char": 481,
+          "doc_end_char": 522,
+          "snippet": "hining cycle. Depending on the effect they produce, they are classified into:\n• alarms with immediate and controlled stop: the machine is stopped and the\naxes and spindles blocked at maximum torque in"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "machine is stopped and the axes and spindles blocked at maximum torque in controlled mode",
+      "label": "state",
+      "justification": "Describes the machine’s operational state during an immediate stop.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "alarms and messages with stop at end of cycle",
+      "label": "alarm type",
+      "justification": "Defines alarms that trigger a stop only after the cycle ends.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 621,
+          "chunk_end_char": 666,
+          "doc_start_char": 621,
+          "doc_end_char": 666,
+          "snippet": "opped and the\naxes and spindles blocked at maximum torque in controlled mode;\n• alarms and messages with stop at end of cycle: the machine is stopped\nwhen launching function M01;\n• read-only messages: thes"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "read-only messages",
+      "label": "alarm type",
+      "justification": "Describes messages that draw attention without changing machine status.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 722,
+          "chunk_end_char": 740,
+          "doc_start_char": 722,
+          "doc_end_char": 740,
+          "snippet": "ith stop at end of cycle: the machine is stopped\nwhen launching function M01;\n• read-only messages: these are used to draw the operator's attention to a particular circumstance w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "pressing the 'MESSAGE' key",
+      "label": "action",
+      "justification": "Action performed by the operator to view alarm details.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "screen page",
+      "label": "resource",
+      "justification": "The interface page where alarm information is displayed.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 919,
+          "chunk_end_char": 930,
+          "doc_start_char": 919,
+          "doc_end_char": 930,
+          "snippet": "operating status of the machine.\nBy pressing the “MESSAGE” key, you access the screen page where you can\ncan see the number and text: of the alarm which can be recognized"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "number and text of the alarm",
+      "label": "attribute",
+      "justification": "Key information displayed for each alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "RESET PRG",
+      "label": "action",
+      "justification": "Command to reset the program after an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1025,
+          "chunk_end_char": 1034,
+          "doc_start_char": 1025,
+          "doc_end_char": 1034,
+          "snippet": "can see the number and text: of the alarm which can be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginnin"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "program is rewound",
+      "label": "action",
+      "justification": "Resulting action when the program is reset.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1047,
+          "chunk_end_char": 1065,
+          "doc_start_char": 1047,
+          "doc_end_char": 1065,
+          "snippet": "text: of the alarm which can be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not per"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "program can be restarted at the beginning only if the causes do not persist",
+      "label": "condition",
+      "justification": "Condition that must be met before restarting the program.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1074,
+          "chunk_end_char": 1149,
+          "doc_start_char": 1074,
+          "doc_end_char": 1149,
+          "snippet": "an be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with i"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "ACTIVE EMERGENCY",
+      "label": "alarm type",
+      "justification": "Specific alarm identifier for an emergency condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1174,
+          "chunk_end_char": 1190,
+          "doc_start_char": 1174,
+          "doc_end_char": 1190,
+          "snippet": "rted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "Alarm with immediate and controlled shutdown, opening of the authorization effect: hardware operation to the axis/spindle feeder and CNC in emergency",
+      "label": "effect",
+      "justification": "Describes the effect of the ACTIVE EMERGENCY alarm on machine hardware.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "Indicates that the punch button has been pressed",
+      "label": "cause",
+      "justification": "Cause of the ACTIVE EMERGENCY alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1373,
+          "chunk_end_char": 1421,
+          "doc_start_char": 1373,
+          "doc_end_char": 1421,
+          "snippet": "fect: hardware operation to the axis/spindle feeder and CNC in\nemergency\ncause: Indicates that the punch button has been pressed\nRelease the button and press the start button on the\nintervention: machine.\nSee"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "Release the button and press the machine start button",
+      "label": "action",
+      "justification": "Intervention required to recover from the ACTIVE EMERGENCY alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2723,
+          "chunk_end_char": 2776,
+          "doc_start_char": 2723,
+          "doc_end_char": 2776,
+          "snippet": "n emergency cause: Signals that the punch button has been pressed intervention: Release the button and press the machine start button. See page 5 of the electrical diagram, entry X8.4 responsible for the intervent"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "input X8.4",
+      "label": "location",
+      "justification": "Electrical diagram reference for the punch button.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1536,
+          "chunk_end_char": 1546,
+          "doc_start_char": 1536,
+          "doc_end_char": 1546,
+          "snippet": "tart button on the\nintervention: machine.\nSee page 5 of the electrical diagram, input X8.4\nresponsible for\noperator/maintenance officer\nAlarm No.: 1002\ntext: OFF-CIRCUIT"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "operator/maintenance officer",
+      "label": "responsible actor",
+      "justification": "Person responsible for handling the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1563,
+          "chunk_end_char": 1591,
+          "doc_start_char": 1563,
+          "doc_end_char": 1591,
+          "snippet": "tion: machine.\nSee page 5 of the electrical diagram, input X8.4\nresponsible for\noperator/maintenance officer\nAlarm No.: 1002\ntext: OFF-CIRCUIT MACHINE\ntype: Standard: Optional:\nAlarm with"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "OFF-CIRCUIT MACHINE",
+      "label": "alarm type",
+      "justification": "Specific alarm identifier for an off‑circuit condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1614,
+          "chunk_end_char": 1633,
+          "doc_start_char": 1614,
+          "doc_end_char": 1633,
+          "snippet": ", input X8.4\nresponsible for\noperator/maintenance officer\nAlarm No.: 1002\ntext: OFF-CIRCUIT MACHINE\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "hardware to the axis/spindle power supply",
+      "label": "effect",
+      "justification": "Effect of the OFF‑CIRCUIT MACHINE alarm on power supply.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1739,
+          "chunk_end_char": 1780,
+          "doc_start_char": 1739,
+          "doc_end_char": 1780,
+          "snippet": "Alarm with immediate and controlled shutdown, opening of authorization\neffect:\nhardware to the axis/spindle power supply\nIndicates that the power circuits have not been activated, in\ncause:\nThis condi"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "This condition the machine cannot operate in any way.",
+      "label": "cause",
+      "justification": "Cause description for the OFF‑CIRCUIT MACHINE alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1850,
+          "chunk_end_char": 1903,
+          "doc_start_char": 1850,
+          "doc_end_char": 1903,
+          "snippet": "wer supply\nIndicates that the power circuits have not been activated, in\ncause:\nThis condition the machine cannot operate in any way.\nPress the machine start button.\nintervention:\nSee page 5 of the electrical diag"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "Press the machine start button.",
+      "label": "action",
+      "justification": "Intervention to restart the machine after OFF‑CIRCUIT MACHINE alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1904,
+          "chunk_end_char": 1935,
+          "doc_start_char": 1904,
+          "doc_end_char": 1935,
+          "snippet": "been activated, in\ncause:\nThis condition the machine cannot operate in any way.\nPress the machine start button.\nintervention:\nSee page 5 of the electrical diagram, input X2.0\nresponsible for"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "input X2.0",
+      "label": "location",
+      "justification": "Electrical diagram reference for the power supply.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1988,
+          "chunk_end_char": 1998,
+          "doc_start_char": 1988,
+          "doc_end_char": 1998,
+          "snippet": "s the machine start button.\nintervention:\nSee page 5 of the electrical diagram, input X2.0\nresponsible for\noperator/maintenance officer\nAlarm No.: 1003\ntext: SLIDING DOOR"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "SLIDING DOOR OPEN",
+      "label": "alarm type",
+      "justification": "Specific alarm identifier for a sliding door open condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2066,
+          "chunk_end_char": 2083,
+          "doc_start_char": 2066,
+          "doc_end_char": 2083,
+          "snippet": ", input X2.0\nresponsible for\noperator/maintenance officer\nAlarm No.: 1003\ntext: SLIDING DOOR OPEN\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "At the start of the cycle the sliding door is open.",
+      "label": "cause",
+      "justification": "Cause of the SLIDING DOOR OPEN alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2238,
+          "chunk_end_char": 2289,
+          "doc_start_char": 2238,
+          "doc_end_char": 2289,
+          "snippet": "ening of authorization\neffect:\nhardware to the axis/spindle power supply\ncause: At the start of the cycle the sliding door is open.\nCheck that the door is in an acceptable condition.\nintervention:\nSee page 19 of"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "Check that the door is in an acceptable condition.",
+      "label": "action",
+      "justification": "Intervention to resolve the SLIDING DOOR OPEN alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2290,
+          "chunk_end_char": 2340,
+          "doc_start_char": 2290,
+          "doc_end_char": 2340,
+          "snippet": "spindle power supply\ncause: At the start of the cycle the sliding door is open.\nCheck that the door is in an acceptable condition.\nintervention:\nSee page 19 of the electrical diagram, input X3.3\nresponsible for"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "input X3.3",
+      "label": "location",
+      "justification": "Electrical diagram reference for the sliding door.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2394,
+          "chunk_end_char": 2404,
+          "doc_start_char": 2394,
+          "doc_end_char": 2404,
+          "snippet": "n an acceptable condition.\nintervention:\nSee page 19 of the electrical diagram, input X3.3\nresponsible for\noperator/maintenance officer\n\nAlarm n°: 1001 text: EMERGENCY AC"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "SLIDING DOOR UNLOCKED",
+      "label": "alarm type",
+      "justification": "Specific alarm identifier for an unlocked sliding door.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 3799,
+          "chunk_end_char": 3820,
+          "doc_start_char": 3799,
+          "doc_end_char": 3820,
+          "snippet": "nsible for the intervention: operator/maintenance person\n\nAlarm No.: 1004\ntext: SLIDING DOOR UNLOCKED\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00030",
+      "text": "security.",
+      "label": "cause",
+      "justification": "Cause description for the SLIDING DOOR UNLOCKED alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 3979,
+          "chunk_end_char": 3988,
+          "doc_start_char": 3979,
+          "doc_end_char": 3988,
+          "snippet": "At the start of the cycle the sliding door is not in working condition.\ncause:\nsecurity.\nRelease the door release button before ordering\nintervention: the start of the"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00031",
+      "text": "Release the door release button before ordering the start of the cycle.",
+      "label": "action",
+      "justification": "Intervention required for the SLIDING DOOR UNLOCKED alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00032",
+      "text": "input X3.2",
+      "label": "location",
+      "justification": "Electrical diagram reference for the door release button.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4114,
+          "chunk_end_char": 4124,
+          "doc_start_char": 4114,
+          "doc_end_char": 4124,
+          "snippet": "ng\nintervention: the start of the cycle.\nSee page 19 of the electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00033",
+      "text": "OPEN SIDE GUARDS",
+      "label": "alarm type",
+      "justification": "Specific alarm identifier for open side guards.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4172,
+          "chunk_end_char": 4188,
+          "doc_start_char": 4172,
+          "doc_end_char": 4188,
+          "snippet": "e electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00034",
+      "text": "The side protections are open.",
+      "label": "cause",
+      "justification": "Cause of the OPEN SIDE GUARDS alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4343,
+          "chunk_end_char": 4373,
+          "doc_start_char": 4343,
+          "doc_end_char": 4373,
+          "snippet": "ening of authorization\neffect:\nhardware to the axis/spindle power supply\ncause: The side protections are open.\nCheck that the side protections are closed, check for any possible rusting.\nSee"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00035",
+      "text": "Check that the side protections are closed, check for any possible rusting.",
+      "label": "action",
+      "justification": "Intervention to resolve the OPEN SIDE GUARDS alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4374,
+          "chunk_end_char": 4449,
+          "doc_start_char": 4374,
+          "doc_end_char": 4449,
+          "snippet": "hardware to the axis/spindle power supply\ncause: The side protections are open.\nCheck that the side protections are closed, check for any possible rusting.\nSee page 7 of the electrical diagram, input X2.5\nresponsible for\noperator/maint"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00036",
+      "text": "input X2.5",
+      "label": "location",
+      "justification": "Electrical diagram reference for the side guards.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4488,
+          "chunk_end_char": 4498,
+          "doc_start_char": 4488,
+          "doc_end_char": 4498,
+          "snippet": "e closed, check for any possible rusting.\nSee page 7 of the electrical diagram, input X2.5\nresponsible for\noperator/maintenance officer\nAlarm No.: 1008\ntext: THERMOMAGNET"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00037",
+      "text": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+      "label": "alarm type",
+      "justification": "Specific alarm identifier for thermomagnet switches at cycle end.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4566,
+          "chunk_end_char": 4606,
+          "doc_start_char": 4566,
+          "doc_end_char": 4606,
+          "snippet": ", input X2.5\nresponsible for\noperator/maintenance officer\nAlarm No.: 1008\ntext: THERMOMAGNET SWITCHES. END OF CYCLE STOP\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00038",
+      "text": "A thermal switch on the motors was triggered",
+      "label": "cause",
+      "justification": "Cause of the THERMOMAGNET SWITCHES alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4685,
+          "chunk_end_char": 4729,
+          "doc_start_char": 4685,
+          "doc_end_char": 4729,
+          "snippet": "P\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA thermal switch on the motors was triggered\ncause:\nauxiliaries, with low priority.\nCheck and reset circuit breakers and/or"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00039",
+      "text": "Check and reset circuit breakers and/or thermomagnetic switches.",
+      "label": "action",
+      "justification": "Intervention to resolve the THERMOMAGNET SWITCHES alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4769,
+          "chunk_end_char": 4833,
+          "doc_start_char": 4769,
+          "doc_end_char": 4833,
+          "snippet": "ermal switch on the motors was triggered\ncause:\nauxiliaries, with low priority.\nCheck and reset circuit breakers and/or thermomagnetic switches.\nintervention:\nSee page 7 of the electrical diagram, input X2.4\n(0 = ALARM, 1 ="
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00040",
+      "text": "input X2.4",
+      "label": "location",
+      "justification": "Electrical diagram reference for the thermomagnet switches.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4886,
+          "chunk_end_char": 4896,
+          "doc_start_char": 4886,
+          "doc_end_char": 4896,
+          "snippet": "or thermomagnetic switches.\nintervention:\nSee page 7 of the electrical diagram, input X2.4\n(0 = ALARM, 1 = OK)\nresponsible for\n\nAlarm n°: 1004 text: SLIDING DOOR UNLOCKED"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00041",
+      "text": "machine",
+      "label": "component",
+      "justification": "Primary machine entity.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 382,
+          "chunk_end_char": 389,
+          "doc_start_char": 382,
+          "doc_end_char": 389,
+          "snippet": "e the detection of a\nproblem which may compromise the proper functioning of the machine and the\nmachining cycle. Depending on the effect they produce, they are classif"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00042",
+      "text": "axes",
+      "label": "component",
+      "justification": "Machine component involved in many alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 555,
+          "chunk_end_char": 559,
+          "doc_start_char": 555,
+          "doc_end_char": 559,
+          "snippet": "to:\n• alarms with immediate and controlled stop: the machine is stopped and the\naxes and spindles blocked at maximum torque in controlled mode;\n• alarms and message"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00043",
+      "text": "spindles",
+      "label": "component",
+      "justification": "Machine component involved in many alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 564,
+          "chunk_end_char": 572,
+          "doc_start_char": 564,
+          "doc_end_char": 572,
+          "snippet": "rms with immediate and controlled stop: the machine is stopped and the\naxes and spindles blocked at maximum torque in controlled mode;\n• alarms and messages with stop a"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00044",
+      "text": "spindle feeder",
+      "label": "component",
+      "justification": "Machine component involved in many alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1330,
+          "chunk_end_char": 1344,
+          "doc_start_char": 1330,
+          "doc_end_char": 1344,
+          "snippet": "ed shutdown, opening of the authorizationeffect: hardware operation to the axis/spindle feeder and CNC in\nemergency\ncause: Indicates that the punch button has been pressed\nRe"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00045",
+      "text": "CNC",
+      "label": "component",
+      "justification": "Computer Numerical Control system.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 108,
+          "chunk_end_char": 111,
+          "doc_start_char": 108,
+          "doc_end_char": 111,
+          "snippet": "messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00046",
+      "text": "PLC",
+      "label": "component",
+      "justification": "Programmable Logic Controller.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 221,
+          "chunk_end_char": 224,
+          "doc_start_char": 221,
+          "doc_end_char": 224,
+          "snippet": "intenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00047",
+      "text": "punch button",
+      "label": "component",
+      "justification": "Control button that can trigger an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1392,
+          "chunk_end_char": 1404,
+          "doc_start_char": 1392,
+          "doc_end_char": 1404,
+          "snippet": "ation to the axis/spindle feeder and CNC in\nemergency\ncause: Indicates that the punch button has been pressed\nRelease the button and press the start button on the\nintervent"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00048",
+      "text": "machine start button",
+      "label": "component",
+      "justification": "Control button used to start the machine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1914,
+          "chunk_end_char": 1934,
+          "doc_start_char": 1914,
+          "doc_end_char": 1934,
+          "snippet": "ated, in\ncause:\nThis condition the machine cannot operate in any way.\nPress the machine start button.\nintervention:\nSee page 5 of the electrical diagram, input X2.0\nresponsible for"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00049",
+      "text": "door release button",
+      "label": "component",
+      "justification": "Button that releases the sliding door.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4001,
+          "chunk_end_char": 4020,
+          "doc_start_char": 4001,
+          "doc_end_char": 4020,
+          "snippet": "ycle the sliding door is not in working condition.\ncause:\nsecurity.\nRelease the door release button before ordering\nintervention: the start of the cycle.\nSee page 19 of the electr"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00050",
+      "text": "door",
+      "label": "component",
+      "justification": "Sliding door component.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2074,
+          "chunk_end_char": 2078,
+          "doc_start_char": 2074,
+          "doc_end_char": 2078,
+          "snippet": "X2.0\nresponsible for\noperator/maintenance officer\nAlarm No.: 1003\ntext: SLIDING DOOR OPEN\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, op"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00051",
+      "text": "side guards",
+      "label": "component",
+      "justification": "Protective guards on the machine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4177,
+          "chunk_end_char": 4188,
+          "doc_start_char": 4177,
+          "doc_end_char": 4188,
+          "snippet": "ctrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00052",
+      "text": "thermal switch",
+      "label": "component",
+      "justification": "Switch that triggers on overheating.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4687,
+          "chunk_end_char": 4701,
+          "doc_start_char": 4687,
+          "doc_end_char": 4701,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA thermal switch on the motors was triggered\ncause:\nauxiliaries, with low priority.\nCheck and re"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00053",
+      "text": "circuit breakers",
+      "label": "component",
+      "justification": "Electrical protection devices.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4785,
+          "chunk_end_char": 4801,
+          "doc_start_char": 4785,
+          "doc_end_char": 4801,
+          "snippet": "the motors was triggered\ncause:\nauxiliaries, with low priority.\nCheck and reset circuit breakers and/or thermomagnetic switches.\nintervention:\nSee page 7 of the electrical diag"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00054",
+      "text": "motor",
+      "label": "component",
+      "justification": "Motor driving the machine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4709,
+          "chunk_end_char": 4714,
+          "doc_start_char": 4709,
+          "doc_end_char": 4714,
+          "snippet": "al:\neffect: Alarm with shutdown at the end of the cycle\nA thermal switch on the motors was triggered\ncause:\nauxiliaries, with low priority.\nCheck and reset circuit b"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00055",
+      "text": "electrical diagram",
+      "label": "resource",
+      "justification": "Reference diagram for electrical inputs.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1516,
+          "chunk_end_char": 1534,
+          "doc_start_char": 1516,
+          "doc_end_char": 1534,
+          "snippet": "tton and press the start button on the\nintervention: machine.\nSee page 5 of the electrical diagram, input X8.4\nresponsible for\noperator/maintenance officer\nAlarm No.: 1002\ntext:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00056",
+      "text": "cycle",
+      "label": "process",
+      "justification": "General machining cycle.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 408,
+          "chunk_end_char": 413,
+          "doc_start_char": 408,
+          "doc_end_char": 413,
+          "snippet": "em which may compromise the proper functioning of the machine and the\nmachining cycle. Depending on the effect they produce, they are classified into:\n• alarms with"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00057",
+      "text": "machining cycle",
+      "label": "process",
+      "justification": "Specific machining cycle.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 398,
+          "chunk_end_char": 413,
+          "doc_start_char": 398,
+          "doc_end_char": 413,
+          "snippet": "of a\nproblem which may compromise the proper functioning of the machine and the\nmachining cycle. Depending on the effect they produce, they are classified into:\n• alarms with"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00058",
+      "text": "maximum torque",
+      "label": "attribute",
+      "justification": "Torque level during controlled stop.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 584,
+          "chunk_end_char": 598,
+          "doc_start_char": 584,
+          "doc_end_char": 598,
+          "snippet": "nd controlled stop: the machine is stopped and the\naxes and spindles blocked at maximum torque in controlled mode;\n• alarms and messages with stop at end of cycle: the machin"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00059",
+      "text": "controlled mode",
+      "label": "state",
+      "justification": "Operational mode during controlled stop.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 602,
+          "chunk_end_char": 617,
+          "doc_start_char": 602,
+          "doc_end_char": 617,
+          "snippet": ": the machine is stopped and the\naxes and spindles blocked at maximum torque in controlled mode;\n• alarms and messages with stop at end of cycle: the machine is stopped\nwhen l"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00060",
+      "text": "authorization effect",
+      "label": "effect",
+      "justification": "Effect of an alarm on authorization.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00061",
+      "text": "rusting",
+      "label": "symptom",
+      "justification": "Potential issue identified during side guard check.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4441,
+          "chunk_end_char": 4448,
+          "doc_start_char": 4441,
+          "doc_end_char": 4448,
+          "snippet": "ns are open.\nCheck that the side protections are closed, check for any possible rusting.\nSee page 7 of the electrical diagram, input X2.5\nresponsible for\noperator/main"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00062",
+      "text": "accepted condition",
+      "label": "state",
+      "justification": "Condition considered acceptable for door operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 3644,
+          "chunk_end_char": 3662,
+          "doc_start_char": 3644,
+          "doc_end_char": 3662,
+          "snippet": "the cycle the sliding door is open. intervention: Check that the door is in an accepted condition. See page 19 of the electrical diagram, entry X3.3 responsible for the interven"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00063",
+      "text": "machine cannot operate",
+      "label": "state",
+      "justification": "State of the machine when power circuits are inactive.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1869,
+          "chunk_end_char": 1891,
+          "doc_start_char": 1869,
+          "doc_end_char": 1891,
+          "snippet": "s that the power circuits have not been activated, in\ncause:\nThis condition the machine cannot operate in any way.\nPress the machine start button.\nintervention:\nSee page 5 of the ele"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00064",
+      "text": "machine is stopped",
+      "label": "state",
+      "justification": "General stopped state of the machine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 528,
+          "chunk_end_char": 546,
+          "doc_start_char": 528,
+          "doc_end_char": 546,
+          "snippet": "uce, they are classified into:\n• alarms with immediate and controlled stop: the machine is stopped and the\naxes and spindles blocked at maximum torque in controlled mode;\n• alarm"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00065",
+      "text": "axes and spindles blocked",
+      "label": "state",
+      "justification": "State during immediate controlled stop.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 555,
+          "chunk_end_char": 580,
+          "doc_start_char": 555,
+          "doc_end_char": 580,
+          "snippet": "to:\n• alarms with immediate and controlled stop: the machine is stopped and the\naxes and spindles blocked at maximum torque in controlled mode;\n• alarms and messages with stop at end of"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00066",
+      "text": "door is open",
+      "label": "state",
+      "justification": "State of the sliding door during an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2276,
+          "chunk_end_char": 2288,
+          "doc_start_char": 2276,
+          "doc_end_char": 2288,
+          "snippet": "e to the axis/spindle power supply\ncause: At the start of the cycle the sliding door is open.\nCheck that the door is in an acceptable condition.\nintervention:\nSee page 19 o"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00067",
+      "text": "door is not in working condition",
+      "label": "state",
+      "justification": "State of the sliding door when not functional.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 3938,
+          "chunk_end_char": 3970,
+          "doc_start_char": 3938,
+          "doc_end_char": 3970,
+          "snippet": "rm with immediate and controlled shutdown\nAt the start of the cycle the sliding door is not in working condition.\ncause:\nsecurity.\nRelease the door release button before ordering\nintervention:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00068",
+      "text": "side protections are open",
+      "label": "state",
+      "justification": "State of side guards during an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4347,
+          "chunk_end_char": 4372,
+          "doc_start_char": 4347,
+          "doc_end_char": 4372,
+          "snippet": "g of authorization\neffect:\nhardware to the axis/spindle power supply\ncause: The side protections are open.\nCheck that the side protections are closed, check for any possible rusting.\nSe"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00069",
+      "text": "machine is stopped when launching function M01",
+      "label": "event",
+      "justification": "Event that stops the machine at function M01.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00070",
+      "text": "operator's attention",
+      "label": "effect",
+      "justification": "Effect of read‑only messages on operator focus.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 769,
+          "chunk_end_char": 789,
+          "doc_start_char": 769,
+          "doc_end_char": 789,
+          "snippet": "d\nwhen launching function M01;\n• read-only messages: these are used to draw the operator's attention to a particular circumstance without changing the operating status of the machi"
+        }
+      ]
+    }
+  ]
+}
