@@ -1,0 +1,470 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 29,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "alarms and messages",
+      "label": "alarm category",
+      "justification": "Refers to the group of alerts issued by the system.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 17,
+          "chunk_end_char": 36,
+          "doc_start_char": 17,
+          "doc_end_char": 36,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "CNC",
+      "label": "machine component",
+      "justification": "Identifies the computer numerical control machine involved.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 108,
+          "chunk_end_char": 111,
+          "doc_start_char": 108,
+          "doc_end_char": 111,
+          "snippet": "messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "PLC interface",
+      "label": "control interface",
+      "justification": "Source of alarms and messages.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 221,
+          "chunk_end_char": 234,
+          "doc_start_char": 221,
+          "doc_end_char": 234,
+          "snippet": "intenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "machine",
+      "label": "machine",
+      "justification": "The industrial equipment being monitored.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 382,
+          "chunk_end_char": 389,
+          "doc_start_char": 382,
+          "doc_end_char": 389,
+          "snippet": "e the detection of a\nproblem which may compromise the proper functioning of the machine and the\nmachining cycle. Depending on the effect they produce, they are classif"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "machining cycle",
+      "label": "manufacturing process",
+      "justification": "The operational cycle of the machine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 398,
+          "chunk_end_char": 413,
+          "doc_start_char": 398,
+          "doc_end_char": 413,
+          "snippet": "of a\nproblem which may compromise the proper functioning of the machine and the\nmachining cycle. Depending on the effect they produce, they are classified into:\n• alarms with"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "immediate and controlled stop",
+      "label": "alarm effect",
+      "justification": "Describes the effect of certain alarms on machine operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 493,
+          "chunk_end_char": 522,
+          "doc_start_char": 493,
+          "doc_end_char": 522,
+          "snippet": ". Depending on the effect they produce, they are classified into:\n• alarms with immediate and controlled stop: the machine is stopped and the\naxes and spindles blocked at maximum torque in"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "axes and spindles blocked at maximum torque in controlled mode",
+      "label": "component state",
+      "justification": "State of machine components during an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 555,
+          "chunk_end_char": 617,
+          "doc_start_char": 555,
+          "doc_end_char": 617,
+          "snippet": "to:\n• alarms with immediate and controlled stop: the machine is stopped and the\naxes and spindles blocked at maximum torque in controlled mode;\n• alarms and messages with stop at end of cycle: the machine is stopped\nwhen l"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "stop at end of cycle",
+      "label": "alarm effect",
+      "justification": "Effect of alarms that stop the machine after the cycle.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 646,
+          "chunk_end_char": 666,
+          "doc_start_char": 646,
+          "doc_end_char": 666,
+          "snippet": "indles blocked at maximum torque in controlled mode;\n• alarms and messages with stop at end of cycle: the machine is stopped\nwhen launching function M01;\n• read-only messages: thes"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "function M01",
+      "label": "machine function",
+      "justification": "Operation that triggers a stop at end of cycle.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 706,
+          "chunk_end_char": 718,
+          "doc_start_char": 706,
+          "doc_end_char": 718,
+          "snippet": "s and messages with stop at end of cycle: the machine is stopped\nwhen launching function M01;\n• read-only messages: these are used to draw the operator's attention to a par"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "read-only messages",
+      "label": "message type",
+      "justification": "Messages that do not change machine status.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 722,
+          "chunk_end_char": 740,
+          "doc_start_char": 722,
+          "doc_end_char": 740,
+          "snippet": "ith stop at end of cycle: the machine is stopped\nwhen launching function M01;\n• read-only messages: these are used to draw the operator's attention to a particular circumstance w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "operator's attention",
+      "label": "symptom",
+      "justification": "Draws operator awareness without changing status.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 769,
+          "chunk_end_char": 789,
+          "doc_start_char": 769,
+          "doc_end_char": 789,
+          "snippet": "d\nwhen launching function M01;\n• read-only messages: these are used to draw the operator's attention to a particular circumstance without changing the operating status of the machi"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "screen page",
+      "label": "interface element",
+      "justification": "UI element where alarm information is displayed.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 919,
+          "chunk_end_char": 930,
+          "doc_start_char": 919,
+          "doc_end_char": 930,
+          "snippet": "operating status of the machine.\nBy pressing the “MESSAGE” key, you access the screen page where you can\ncan see the number and text: of the alarm which can be recognized"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "alarm number 1001",
+      "label": "alarm instance",
+      "justification": "Specific identifier for an alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "ACTIVE EMERGENCY",
+      "label": "alarm text",
+      "justification": "Descriptive text of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1174,
+          "chunk_end_char": 1190,
+          "doc_start_char": 1174,
+          "doc_end_char": 1190,
+          "snippet": "rted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "immediate and controlled shutdown",
+      "label": "alarm effect",
+      "justification": "Effect of the alarm on machine operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1228,
+          "chunk_end_char": 1261,
+          "doc_start_char": 1228,
+          "doc_end_char": 1261,
+          "snippet": "t.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening of the authorizationeffect: hardware operation to the axis/spindle fee"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "opening of the authorization effect",
+      "label": "authorization effect",
+      "justification": "Effect related to authorization during an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "hardware operation to the axis/spindle feeder and CNC in emergency",
+      "label": "hardware operation",
+      "justification": "Action performed on components during an emergency.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "are divided into",
+      "label": "relation-bearing expression",
+      "justification": "Indicates the division of alarms and messages into categories.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 37,
+          "chunk_end_char": 53,
+          "doc_start_char": 37,
+          "doc_end_char": 53,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "issued by",
+      "label": "relation-bearing expression",
+      "justification": "Links alarms to the PLC interface.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 277,
+          "chunk_end_char": 286,
+          "doc_start_char": 277,
+          "doc_end_char": 286,
+          "snippet": "s and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper fun"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "indicate the detection of a problem",
+      "label": "relation-bearing expression",
+      "justification": "Shows that alarms signal a detected issue.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "may compromise",
+      "label": "relation-bearing expression",
+      "justification": "Expresses potential negative impact on machine function.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 337,
+          "chunk_end_char": 351,
+          "doc_start_char": 337,
+          "doc_end_char": 351,
+          "snippet": "messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper functioning of the machine and the\nmachining cycle. Depending on the"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "classified into",
+      "label": "relation-bearing expression",
+      "justification": "Shows classification of alarms by effect.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 462,
+          "chunk_end_char": 477,
+          "doc_start_char": 462,
+          "doc_end_char": 477,
+          "snippet": "machine and the\nmachining cycle. Depending on the effect they produce, they are classified into:\n• alarms with immediate and controlled stop: the machine is stopped and the\nax"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "pressing the MESSAGE key",
+      "label": "action",
+      "justification": "User action to view alarm details.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "access the screen page",
+      "label": "action",
+      "justification": "User action to view alarm information.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 908,
+          "chunk_end_char": 930,
+          "doc_start_char": 908,
+          "doc_end_char": 930,
+          "snippet": "hanging the operating status of the machine.\nBy pressing the “MESSAGE” key, you access the screen page where you can\ncan see the number and text: of the alarm which can be recognized"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "see the number and text",
+      "label": "action",
+      "justification": "User action to read alarm details.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 949,
+          "chunk_end_char": 972,
+          "doc_start_char": 949,
+          "doc_end_char": 972,
+          "snippet": "ne.\nBy pressing the “MESSAGE” key, you access the screen page where you can\ncan see the number and text: of the alarm which can be recognized with the key\n“RESET PRG”: thus, the progr"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "recognized with the key RESET PRG",
+      "label": "relation-bearing expression",
+      "justification": "Indicates how the alarm is acknowledged.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "program is rewound",
+      "label": "event",
+      "justification": "Resulting action after alarm reset.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1047,
+          "chunk_end_char": 1065,
+          "doc_start_char": 1047,
+          "doc_end_char": 1065,
+          "snippet": "text: of the alarm which can be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not per"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "program can be restarted",
+      "label": "event",
+      "justification": "Possible subsequent action after reset.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1074,
+          "chunk_end_char": 1098,
+          "doc_start_char": 1074,
+          "doc_end_char": 1098,
+          "snippet": "an be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTI"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "if the causes do not persist",
+      "label": "condition",
+      "justification": "Condition required for program restart.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1121,
+          "chunk_end_char": 1149,
+          "doc_start_char": 1121,
+          "doc_end_char": 1149,
+          "snippet": ", the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with i"
+        }
+      ]
+    }
+  ]
+}
