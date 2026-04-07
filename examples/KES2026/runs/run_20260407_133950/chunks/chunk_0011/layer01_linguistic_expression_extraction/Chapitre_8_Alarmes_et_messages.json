@@ -1,0 +1,630 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 39,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "MAINTENANCE NOTICE",
+      "label": "alarm type",
+      "justification": "Identifies a specific maintenance alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 41,
+          "chunk_end_char": 59,
+          "doc_start_char": 55041,
+          "doc_end_char": 55059,
+          "snippet": ".\nresponsible for\nmessage no: 2065\ntext: MAINTENANCE NOTICE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns that some m"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "CONFIGURED PRODUCTION REACHED",
+      "label": "alarm type",
+      "justification": "Identifies a production limit alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 334,
+          "chunk_end_char": 363,
+          "doc_start_char": 55334,
+          "doc_end_char": 55363,
+          "snippet": "sted\nintervention:\nrequest an interview\nresponsible for\n\nmessage n°: 2061 text: CONFIGURED PRODUCTION REACHED type: Standard: Optional: effect: Only display of the message cause: The quanti"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "AUTOMATIC STOP: MACHINE IN ALARM",
+      "label": "alarm type",
+      "justification": "Identifies an automatic stop alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 871,
+          "chunk_end_char": 903,
+          "doc_start_char": 55871,
+          "doc_end_char": 55903,
+          "snippet": ". responsible for the intervention: toolmaker-adjuster\n\nmessage no.: 2062 text: AUTOMATIC STOP: MACHINE IN ALARM type: Standard: Optional: effect: Only display of the message cause: The AUTOMA"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "WRONG TORQUE REDUCTION",
+      "label": "alarm type",
+      "justification": "Identifies a torque reduction error alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1655,
+          "chunk_end_char": 1677,
+          "doc_start_char": 56655,
+          "doc_end_char": 56677,
+          "snippet": "e intervention: responsible for the maintenance\n\nmessage no: 3001 to 3003\ntext: WRONG TORQUE REDUCTION\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "CAUTION VERTICAL AXIS",
+      "label": "alarm type",
+      "justification": "Identifies a vertical axis torque warning alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1962,
+          "chunk_end_char": 1983,
+          "doc_start_char": 56962,
+          "doc_end_char": 56983,
+          "snippet": "e programmed reduction value.\nresponsible for\nprogrammer\nmessage no: 3004\ntext: CAUTION VERTICAL AXIS\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "AXIS NOT PRESENT",
+      "label": "alarm type",
+      "justification": "Identifies an axis presence error alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 2247,
+          "chunk_end_char": 2263,
+          "doc_start_char": 57247,
+          "doc_end_char": 57263,
+          "snippet": "ervention: Modify the program\nresponsible for\nprogrammer\nmessage no: 3005\ntext: AXIS NOT PRESENT\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "AXIS NOT IN POSITION",
+      "label": "alarm type",
+      "justification": "Identifies an axis position error alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 3491,
+          "chunk_end_char": 3511,
+          "doc_start_char": 58491,
+          "doc_end_char": 58511,
+          "snippet": "ram responsible for the intervention: programmer\n\nmessage no: 3006 - 3008\ntext: AXIS NOT IN POSITION\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "AXIS NOT IN STOP",
+      "label": "alarm type",
+      "justification": "Identifies an axis stop error alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 3849,
+          "chunk_end_char": 3865,
+          "doc_start_char": 58849,
+          "doc_end_char": 58865,
+          "snippet": "d remove the obstacle.\nresponsible for\nprogrammer\nmessage no: 3009 - 3011\ntext: AXIS NOT IN STOP\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "WRONG OR MISSING FEED",
+      "label": "alarm type",
+      "justification": "Identifies a feed parameter error alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4216,
+          "chunk_end_char": 4237,
+          "doc_start_char": 59216,
+          "doc_end_char": 59237,
+          "snippet": "ning, and review the program.\nresponsible for\nprogrammer\nmessage no: 3012\ntext: WRONG OR MISSING FEED\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "program interruption",
+      "label": "event/state",
+      "justification": "Describes the interruption of program execution.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1715,
+          "chunk_end_char": 1735,
+          "doc_start_char": 56715,
+          "doc_end_char": 56735,
+          "snippet": "3001 to 3003\ntext: WRONG TORQUE REDUCTION\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nThe torque reduction requested at the indicate"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "stopping of axes and spindles",
+      "label": "event/state",
+      "justification": "Describes the shutdown of axes and spindles.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 2628,
+          "chunk_end_char": 2657,
+          "doc_start_char": 57628,
+          "doc_end_char": 57657,
+          "snippet": "UE REDUCTION type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The torque reduction requested at the indicated axis is outside the agr"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "The quantity of pieces established in the “PRODUCTION DATA” page has been reached",
+      "label": "cause statement",
+      "justification": "Explains the cause of the production reached alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 433,
+          "chunk_end_char": 514,
+          "doc_start_char": 55433,
+          "doc_end_char": 55514,
+          "snippet": "ON REACHED type: Standard: Optional: effect: Only display of the message cause: The quantity of pieces established in the “PRODUCTION DATA” page has been reached; if the condition persists, the programs will be stopped at the same time as fu"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "The AUTOMATIC STOP function has been activated using the corresponding user page, the configured time has been reached, or an alarm has occurred",
+      "label": "cause statement",
+      "justification": "Explains the cause of the automatic stop alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 973,
+          "chunk_end_char": 1117,
+          "doc_start_char": 55973,
+          "doc_end_char": 56117,
+          "snippet": "E IN ALARM type: Standard: Optional: effect: Only display of the message cause: The AUTOMATIC STOP function has been activated using the corresponding user page, the configured time has been reached, or an alarm has occurred, therefore the machine shutdown phase has started. intervention: Wait for the m"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "Warns that some maintenance parameters are about to run out",
+      "label": "cause statement",
+      "justification": "Explains the cause of the maintenance notice alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1404,
+          "chunk_end_char": 1463,
+          "doc_start_char": 56404,
+          "doc_end_char": 56463,
+          "snippet": "NCE NOTICE type: Standard: Optional: effect: Only display of the message cause: Warns that some maintenance parameters are about to run out intervention: Check in the “MAINTENANCE” page which of the listed items require"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "The torque reduction requested at the indicated axis is beyond the limits",
+      "label": "cause statement",
+      "justification": "Explains the cause of the wrong torque reduction alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1769,
+          "chunk_end_char": 1842,
+          "doc_start_char": 56769,
+          "doc_end_char": 56842,
+          "snippet": "ard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nThe torque reduction requested at the indicated axis is beyond the limits:\nyour consents.\nintervention: Modify the programmed reduction value.\nresponsibl"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "It is requested to reduce the torque to a vertical axis, this is not allowed",
+      "label": "cause statement",
+      "justification": "Explains the cause of the caution vertical axis alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 2998,
+          "chunk_end_char": 3074,
+          "doc_start_char": 57998,
+          "doc_end_char": 58074,
+          "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: It is requested to reduce the torque to a vertical axis, this is not allowed. intervention: Modify the program responsible for the intervention: programmer"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "It is requested to reduce the torque to an axis which is not present in the Path",
+      "label": "cause statement",
+      "justification": "Explains the cause of the axis not present alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 3300,
+          "chunk_end_char": 3380,
+          "doc_start_char": 58300,
+          "doc_end_char": 58380,
+          "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: It is requested to reduce the torque to an axis which is not present in the Path. intervention: Modify the program responsible for the intervention: programmer"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "The axis subject to torque reduction, HAS NOT reached the position causing",
+      "label": "cause statement",
+      "justification": "Explains the cause of the axis not in position alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 3603,
+          "chunk_end_char": 3677,
+          "doc_start_char": 58603,
+          "doc_end_char": 58677,
+          "snippet": "ard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nThe axis subject to torque reduction, HAS NOT reached the position causing:\ngrammed because of an obstacle he found on his route.\nintervention: Check the"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in contact with the part",
+      "label": "cause statement",
+      "justification": "Explains the cause of the axis not in stop alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nresponsible for\nmessage no: 2065\ntext: MAINTENANCE NOTICE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns that some maintenance settings are about to be\ncause:\nto exhaust oneself\nCheck on the “MAINTENANCE” page which of the items listed\nintervention:\nrequest an interview\nrespon"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "G84, G88, G188 have been programmed without parameter F which indicates",
+      "label": "cause statement",
+      "justification": "Explains the cause of the wrong or missing feed alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4329,
+          "chunk_end_char": 4400,
+          "doc_start_char": 59329,
+          "doc_end_char": 59400,
+          "snippet": "ard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nG84, G88, G188 have been programmed without parameter F which indicates:\nthan the feed, or it was indicated with an incorrect value.\nintervention: Chec"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "Modify the programmed reduction value",
+      "label": "action",
+      "justification": "Specifies the corrective action for torque reduction.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1873,
+          "chunk_end_char": 1910,
+          "doc_start_char": 56873,
+          "doc_end_char": 56910,
+          "snippet": "uested at the indicated axis is beyond the limits:\nyour consents.\nintervention: Modify the programmed reduction value.\nresponsible for\nprogrammer\nmessage no: 3004\ntext: CAUTION VERTICAL AXIS\ntype:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "Modify the program",
+      "label": "action",
+      "justification": "Specifies the corrective action for program errors.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1873,
+          "chunk_end_char": 1891,
+          "doc_start_char": 56873,
+          "doc_end_char": 56891,
+          "snippet": "uested at the indicated axis is beyond the limits:\nyour consents.\nintervention: Modify the programmed reduction value.\nresponsible for\nprogrammer\nmessage no: 3004\ntext: CAUTION V"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "Check the machining and remove the obstacle",
+      "label": "action",
+      "justification": "Specifies the corrective action for axis position issues.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 3747,
+          "chunk_end_char": 3790,
+          "doc_start_char": 58747,
+          "doc_end_char": 58790,
+          "snippet": "on causing:\ngrammed because of an obstacle he found on his route.\nintervention: Check the machining and remove the obstacle.\nresponsible for\nprogrammer\nmessage no: 3009 - 3011\ntext: AXIS NOT IN STOP\ntype"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "Check the machining, and review the program",
+      "label": "action",
+      "justification": "Specifies the corrective action for axis stop issues.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4121,
+          "chunk_end_char": 4164,
+          "doc_start_char": 59121,
+          "doc_end_char": 59164,
+          "snippet": "sent any tracking error, so it cannot\nbe in contact with the part\nintervention: Check the machining, and review the program.\nresponsible for\nprogrammer\nmessage no: 3012\ntext: WRONG OR MISSING FEED\ntype:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "Check the program and modify the instruction",
+      "label": "action",
+      "justification": "Specifies the corrective action for feed errors.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4476,
+          "chunk_end_char": 4520,
+          "doc_start_char": 59476,
+          "doc_end_char": 59520,
+          "snippet": "ates:\nthan the feed, or it was indicated with an incorrect value.\nintervention: Check the program and modify the instruction.\nresponsible for\nprogrammer\n\nmessage n°: 3006 - 3008 text: AXIS NOT IN POSITION"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "Wait for the main switch to trip, then turn it on and turn on the machine",
+      "label": "action",
+      "justification": "Specifies the corrective action for automatic stop.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1183,
+          "chunk_end_char": 1256,
+          "doc_start_char": 56183,
+          "doc_end_char": 56256,
+          "snippet": "m has occurred, therefore the machine shutdown phase has started. intervention: Wait for the main switch to trip, then turn it on and turn on the machine. responsible for the intervention:\n\nmessage n°: 2065 text: MAINTENANCE NOTICE t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "responsible for the intervention: programmer",
+      "label": "relation-bearing expression",
+      "justification": "Links the programmer to the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 2802,
+          "chunk_end_char": 2846,
+          "doc_start_char": 57802,
+          "doc_end_char": 57846,
+          "snippet": "outside the agreed limits. intervention: Modify the programmed reduction value. responsible for the intervention: programmer\n\nmessage n°: 3004 text: CAUTION VERTICAL AXIS type: Standard: Optional: effect:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "responsible for the intervention: toolmaker-adjuster",
+      "label": "relation-bearing expression",
+      "justification": "Links the toolmaker-adjuster to the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 793,
+          "chunk_end_char": 845,
+          "doc_start_char": 55793,
+          "doc_end_char": 55845,
+          "snippet": "hutdown phase changing the number of set pieces from the appropriate user page. responsible for the intervention: toolmaker-adjuster\n\nmessage no.: 2062 text: AUTOMATIC STOP: MACHINE IN ALARM type: Standard: Optio"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "responsible for the maintenance",
+      "label": "relation-bearing expression",
+      "justification": "Links the maintenance actor to the maintenance activity.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1591,
+          "chunk_end_char": 1622,
+          "doc_start_char": 56591,
+          "doc_end_char": 56622,
+          "snippet": "hich of the listed items requires maintenance responsible for the intervention: responsible for the maintenance\n\nmessage no: 3001 to 3003\ntext: WRONG TORQUE REDUCTION\ntype: Standard: Optional"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "Only display of the message",
+      "label": "effect",
+      "justification": "Describes the effect of the maintenance notice alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 94,
+          "chunk_end_char": 121,
+          "doc_start_char": 55094,
+          "doc_end_char": 55121,
+          "snippet": "for\nmessage no: 2065\ntext: MAINTENANCE NOTICE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns that some maintenance settings are about to be\ncause:\nto exhaust oneself"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00030",
+      "text": "Alarm with program interruption, stopping of axes and spindles",
+      "label": "effect",
+      "justification": "Describes the effect of the wrong torque reduction alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 2595,
+          "chunk_end_char": 2657,
+          "doc_start_char": 57595,
+          "doc_end_char": 57657,
+          "snippet": "n°: 3001 to 3003 text: WRONG TORQUE REDUCTION type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The torque reduction requested at the indicated axis is outside the agr"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00031",
+      "text": "has been reached",
+      "label": "relation-bearing expression",
+      "justification": "Indicates a state transition to a reached condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 498,
+          "chunk_end_char": 514,
+          "doc_start_char": 55498,
+          "doc_end_char": 55514,
+          "snippet": "message cause: The quantity of pieces established in the “PRODUCTION DATA” page has been reached; if the condition persists, the programs will be stopped at the same time as fu"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00032",
+      "text": "has been activated",
+      "label": "relation-bearing expression",
+      "justification": "Indicates activation of a function.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1001,
+          "chunk_end_char": 1019,
+          "doc_start_char": 56001,
+          "doc_end_char": 56019,
+          "snippet": "ptional: effect: Only display of the message cause: The AUTOMATIC STOP function has been activated using the corresponding user page, the configured time has been reached, or an"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00033",
+      "text": "is beyond the limits",
+      "label": "relation-bearing expression",
+      "justification": "Indicates a value exceeding limits.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1822,
+          "chunk_end_char": 1842,
+          "doc_start_char": 56822,
+          "doc_end_char": 56842,
+          "snippet": "and bro-effect stop:\nches.\nThe torque reduction requested at the indicated axis is beyond the limits:\nyour consents.\nintervention: Modify the programmed reduction value.\nresponsibl"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00034",
+      "text": "is not allowed",
+      "label": "relation-bearing expression",
+      "justification": "Indicates a prohibited action.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 3060,
+          "chunk_end_char": 3074,
+          "doc_start_char": 58060,
+          "doc_end_char": 58074,
+          "snippet": "spindles. cause: It is requested to reduce the torque to a vertical axis, this is not allowed. intervention: Modify the program responsible for the intervention: programmer"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00035",
+      "text": "is not present",
+      "label": "relation-bearing expression",
+      "justification": "Indicates absence of an expected component.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 2249,
+          "chunk_end_char": 2263,
+          "doc_start_char": 57249,
+          "doc_end_char": 57263,
+          "snippet": "vention: Modify the program\nresponsible for\nprogrammer\nmessage no: 3005\ntext: AXIS NOT PRESENT\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00036",
+      "text": "has not reached the position",
+      "label": "relation-bearing expression",
+      "justification": "Indicates failure to reach a target position.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 3641,
+          "chunk_end_char": 3669,
+          "doc_start_char": 58641,
+          "doc_end_char": 58669,
+          "snippet": "rruption, axis and bro-effect stop:\nches.\nThe axis subject to torque reduction, HAS NOT reached the position causing:\ngrammed because of an obstacle he found on his route.\nintervention: Ch"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00037",
+      "text": "does not present any tracking error",
+      "label": "relation-bearing expression",
+      "justification": "Indicates lack of tracking error.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4029,
+          "chunk_end_char": 4064,
+          "doc_start_char": 59029,
+          "doc_end_char": 59064,
+          "snippet": ":\nches.\nThe axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot\nbe in contact with the part\nintervention: Check the machining, an"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00038",
+      "text": "has been programmed without parameter F",
+      "label": "relation-bearing expression",
+      "justification": "Indicates missing parameter in program.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nresponsible for\nmessage no: 2065\ntext: MAINTENANCE NOTICE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns that some maintenance settings are about to be\ncause:\nto exhaust oneself\nCheck on the “MAINTENANCE” page which of the items listed\nintervention:\nrequest an interview\nrespon"
+        }
+      ]
+    }
+  ]
+}

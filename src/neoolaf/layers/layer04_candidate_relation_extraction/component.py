@@ -61,6 +61,78 @@ class CandidateRelationExtractionLayer(BaseLayer):
         self.temperature = temperature
         self.rag_adapter = rag_adapter
 
+        
+        def _call_model_with_retries(
+            self,
+            state: PipelineState,
+            messages: List[Dict[str, str]],
+            max_attempts: int = 5,
+            retry_wait_seconds: float = 3.0,
+        ) -> dict:
+            """
+            Call the LLM backend with retries for:
+            - empty / missing responses
+            - malformed JSON
+            - transient backend errors
+
+            Args:
+                state:
+                    Current pipeline state.
+                messages:
+                    OpenAI-style prompt messages.
+                max_attempts:
+                    Maximum number of tries.
+                retry_wait_seconds:
+                    Delay between attempts.
+
+            Returns:
+                Parsed JSON dictionary.
+
+            Raises:
+                RuntimeError:
+                    If all attempts fail.
+            """
+            import time
+
+            last_error = None
+
+            for attempt in range(1, max_attempts + 1):
+                try:
+                    raw = self.ollama_backend.chat(
+                        model=state.llm_model,
+                        messages=messages,
+                        temperature=self.temperature,
+                    )
+
+                    if raw is None or not isinstance(raw, str) or not raw.strip():
+                        raise RuntimeError(
+                            f"{self.name}: backend returned empty response on attempt {attempt}/{max_attempts}"
+                        )
+
+                    parsed = self.ollama_backend.extract_json(raw)
+
+                    if not isinstance(parsed, dict):
+                        raise RuntimeError(
+                            f"{self.name}: parsed response is not a dictionary on attempt {attempt}/{max_attempts}"
+                        )
+
+                    return parsed
+
+                except Exception as exc:
+                    last_error = exc
+
+                    if self.verbose:
+                        print(
+                            f"[NeoOLAF] {self.name} retry {attempt}/{max_attempts} failed: {exc}"
+                        )
+
+                    if attempt < max_attempts:
+                        time.sleep(retry_wait_seconds)
+
+            raise RuntimeError(
+                f"{self.name}: failed after {max_attempts} attempts. Last error: {last_error}"
+            )
+        
     def _run(self, state: PipelineState) -> PipelineState:
         """
         Extract candidate relation assertions from relation candidates and local chunk context.
@@ -145,12 +217,12 @@ class CandidateRelationExtractionLayer(BaseLayer):
                 },
             ]
 
-            raw = self.ollama_backend.chat(
-                model=state.llm_model,
+            parsed = self._call_model_with_retries(
+                state=state,
                 messages=messages,
-                temperature=self.temperature,
+                max_attempts=5,
+                retry_wait_seconds=3.0,
             )
-            parsed = self.ollama_backend.extract_json(raw)
 
             if not parsed.get("found", False):
                 continue

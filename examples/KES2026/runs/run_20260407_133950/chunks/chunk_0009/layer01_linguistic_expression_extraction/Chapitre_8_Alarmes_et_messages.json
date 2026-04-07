@@ -1,0 +1,582 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 36,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "CNC BATTERY EXHAUSTED",
+      "label": "alarm type",
+      "justification": "This is a distinct alarm indicating a battery failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 106,
+          "chunk_end_char": 127,
+          "doc_start_char": 45106,
+          "doc_end_char": 45127,
+          "snippet": "sponsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype: Standard: Optional:\neffect: Only display of the message\nThe buffer batter"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "MACHINE IN TOOLING MODE",
+      "label": "alarm type",
+      "justification": "Alarm that signals the machine is in tooling mode.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 418,
+          "chunk_end_char": 441,
+          "doc_start_char": 45418,
+          "doc_end_char": 45441,
+          "snippet": "avoid unnecessary intervention:\ndisplay the stored data.\nmessage no: 2002\ntext: MACHINE IN TOOLING MODE\ntype: Standard: Optional:\neffect: Only display of the message\ncause: Tooling mo"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "LOW LUBRICATION OIL LEVEL",
+      "label": "alarm type",
+      "justification": "Alarm for low lubrication oil level.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 1697,
+          "chunk_end_char": 1722,
+          "doc_start_char": 46697,
+          "doc_end_char": 46722,
+          "snippet": "l. responsible for the intervention: toolmaker-adjuster\n\nmessage n°: 2020 text: LOW LUBRICATION OIL LEVEL type: Standard: Optional: effect: Only display of the message cause: Indicates"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "LUBRICATION AT LOSS: PRESSURE NOT REACHED",
+      "label": "alarm type",
+      "justification": "Alarm indicating lubrication pressure not reached.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 2109,
+          "chunk_end_char": 2150,
+          "doc_start_char": 47109,
+          "doc_end_char": 47150,
+          "snippet": "sible for the intervention: responsible for maintenance\n\nmessage no: 2021\ntext: LUBRICATION AT LOSS: PRESSURE NOT REACHED\ntype: Standard: Optional:\neffect: Only display of the message\nIndicates that th"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "CHIP CONVEYOR OVERLOAD",
+      "label": "alarm type",
+      "justification": "Alarm for overload of the chip conveyor.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 2531,
+          "chunk_end_char": 2553,
+          "doc_start_char": 47531,
+          "doc_end_char": 47553,
+          "snippet": "X2.7 page 14 of the electrical diagram.\nresponsible for\nmessage no: 2022\ntext: CHIP CONVEYOR OVERLOAD\ntype: Standard: Optional:\neffect: Only display of the message\nExcessive machini"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "CHIP CONVEYOR BLOCKED",
+      "label": "alarm type",
+      "justification": "Alarm for blocked chip conveyor.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 2847,
+          "chunk_end_char": 2868,
+          "doc_start_char": 47847,
+          "doc_end_char": 47868,
+          "snippet": "e 13 of the electrical diagram.\nresponsible for\noperator\nmessage no: 2023\ntext: CHIP CONVEYOR BLOCKED\ntype: Standard: Optional:\neffect: Only display of the message\nDespite attempts"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "OVERLOAD CONTROL DEVICE FAILURE",
+      "label": "alarm type",
+      "justification": "Alarm indicating failure of the overload control device.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 4467,
+          "chunk_end_char": 4498,
+          "doc_start_char": 49467,
+          "doc_end_char": 49498,
+          "snippet": "cal diagram. responsible for the intervention: operator\n\nmessage no: 2024\ntext: OVERLOAD CONTROL DEVICE FAILURE\ntype: Standard: Optional:\neffect: Only display of the message\nThe behavior of t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "FEEDER: BAR CHANGE PHASE",
+      "label": "alarm type",
+      "justification": "Alarm that warns of bar change phase.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 4799,
+          "chunk_end_char": 4823,
+          "doc_start_char": 49799,
+          "doc_end_char": 49823,
+          "snippet": "e sure that this device works correctly.\nresponsible for\nmessage no: 2040\ntext: FEEDER: BAR CHANGE PHASE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns the operato"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "buffer battery",
+      "label": "component",
+      "justification": "Component that powers the CNC memory.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 194,
+          "chunk_end_char": 208,
+          "doc_start_char": 45194,
+          "doc_end_char": 45208,
+          "snippet": "ERY EXHAUSTED\ntype: Standard: Optional:\neffect: Only display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nRe"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "CNC memory",
+      "label": "component",
+      "justification": "Component whose memory is affected by the battery.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 226,
+          "chunk_end_char": 236,
+          "doc_start_char": 45226,
+          "doc_end_char": 45236,
+          "snippet": "tional:\neffect: Only display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nReplace the battery with the m"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "machine off",
+      "label": "state",
+      "justification": "Operational state of the machine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 1236,
+          "chunk_end_char": 1247,
+          "doc_start_char": 46236,
+          "doc_end_char": 46247,
+          "snippet": "y of the message cause: The buffer battery which powers the CNC memory with the machine off is exhausted. intervention: Replace the battery with the machine switched on to"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "tooling mode",
+      "label": "state",
+      "justification": "Operational state selected by the user.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 429,
+          "chunk_end_char": 441,
+          "doc_start_char": 45429,
+          "doc_end_char": 45441,
+          "snippet": "essary intervention:\ndisplay the stored data.\nmessage no: 2002\ntext: MACHINE IN TOOLING MODE\ntype: Standard: Optional:\neffect: Only display of the message\ncause: Tooling mo"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "lubrication oil level",
+      "label": "measurement",
+      "justification": "Quantitative attribute monitored for low level.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 719,
+          "chunk_end_char": 740,
+          "doc_start_char": 45719,
+          "doc_end_char": 45740,
+          "snippet": "and control.\nresponsible for\ntoolmaker-adjuster\nmessage no: 2020\ntext: LOW LOSS LUBRICATION OIL LEVEL\ntype: Standard: Optional:\neffect: Only display of the message\nIndicates that th"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "pressure",
+      "label": "measurement",
+      "justification": "Quantitative attribute monitored for pressure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 2130,
+          "chunk_end_char": 2138,
+          "doc_start_char": 47130,
+          "doc_end_char": 47138,
+          "snippet": "ntion: responsible for maintenance\n\nmessage no: 2021\ntext: LUBRICATION AT LOSS: PRESSURE NOT REACHED\ntype: Standard: Optional:\neffect: Only display of the message\nIndic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "chip conveyor",
+      "label": "component",
+      "justification": "Machine component involved in chip evacuation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 2531,
+          "chunk_end_char": 2544,
+          "doc_start_char": 47531,
+          "doc_end_char": 47544,
+          "snippet": "X2.7 page 14 of the electrical diagram.\nresponsible for\nmessage no: 2022\ntext: CHIP CONVEYOR OVERLOAD\ntype: Standard: Optional:\neffect: Only display of the message\nExcessiv"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "overload control device",
+      "label": "component",
+      "justification": "Device that controls overload conditions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 4467,
+          "chunk_end_char": 4490,
+          "doc_start_char": 49467,
+          "doc_end_char": 49490,
+          "snippet": "cal diagram. responsible for the intervention: operator\n\nmessage no: 2024\ntext: OVERLOAD CONTROL DEVICE FAILURE\ntype: Standard: Optional:\neffect: Only display of the message\nThe behav"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "feeder",
+      "label": "component",
+      "justification": "Machine component that feeds material.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 4799,
+          "chunk_end_char": 4805,
+          "doc_start_char": 49799,
+          "doc_end_char": 49805,
+          "snippet": "e sure that this device works correctly.\nresponsible for\nmessage no: 2040\ntext: FEEDER: BAR CHANGE PHASE\ntype: Standard: Optional:\neffect: Only display of the message"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "bar change phase",
+      "label": "event",
+      "justification": "Event that triggers the feeder alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 4807,
+          "chunk_end_char": 4823,
+          "doc_start_char": 49807,
+          "doc_end_char": 49823,
+          "snippet": "hat this device works correctly.\nresponsible for\nmessage no: 2040\ntext: FEEDER: BAR CHANGE PHASE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns the operato"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "excessive machining residue",
+      "label": "attribute",
+      "justification": "Condition causing conveyor overload.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 2616,
+          "chunk_end_char": 2643,
+          "doc_start_char": 47616,
+          "doc_end_char": 47643,
+          "snippet": "CONVEYOR OVERLOAD\ntype: Standard: Optional:\neffect: Only display of the message\nExcessive machining residue prevents the operation of the\ncause:\nchip conveyor.\nRemove material from chip e"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "machining cycle suspended on hold",
+      "label": "state",
+      "justification": "Operational state when the cycle is paused.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "e to restart the cycle. responsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype: Standard: Optional:\neffect: Only display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nReplace the ba"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "two-hand control",
+      "label": "control method",
+      "justification": "Method used to move axes during tooling mode.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 634,
+          "chunk_end_char": 650,
+          "doc_start_char": 45634,
+          "doc_end_char": 45650,
+          "snippet": "oved as well with the door closed\nintervention:\nonly with the door open, by the two-hand control.\nresponsible for\ntoolmaker-adjuster\nmessage no: 2020\ntext: LOW LOSS LUBRICATION"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "operator",
+      "label": "actor",
+      "justification": "Human responsible for interventions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 2815,
+          "chunk_end_char": 2823,
+          "doc_start_char": 47815,
+          "doc_end_char": 47823,
+          "snippet": "ea.\nintervention:\nEntry X4.4 page 13 of the electrical diagram.\nresponsible for\noperator\nmessage no: 2023\ntext: CHIP CONVEYOR BLOCKED\ntype: Standard: Optional:\neffect:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "maintenance",
+      "label": "actor",
+      "justification": "Entity responsible for maintenance tasks.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 70,
+          "chunk_end_char": 81,
+          "doc_start_char": 45070,
+          "doc_end_char": 45081,
+          "snippet": "e to restart the cycle. responsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype: Standard: Optional:\neffect:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "toolmaker-adjuster",
+      "label": "actor",
+      "justification": "Specialist responsible for tooling adjustments.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 668,
+          "chunk_end_char": 686,
+          "doc_start_char": 45668,
+          "doc_end_char": 45686,
+          "snippet": "intervention:\nonly with the door open, by the two-hand control.\nresponsible for\ntoolmaker-adjuster\nmessage no: 2020\ntext: LOW LOSS LUBRICATION OIL LEVEL\ntype: Standard: Optional:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "cause:",
+      "label": "relation-bearing expression",
+      "justification": "Prefix indicating the cause of an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 246,
+          "chunk_end_char": 252,
+          "doc_start_char": 45246,
+          "doc_end_char": 45252,
+          "snippet": "display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nReplace the battery with the machine switched"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "intervention:",
+      "label": "relation-bearing expression",
+      "justification": "Prefix indicating the recommended intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 40,
+          "chunk_end_char": 53,
+          "doc_start_char": 45040,
+          "doc_end_char": 45053,
+          "snippet": "e to restart the cycle. responsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "responsible for",
+      "label": "relation-bearing expression",
+      "justification": "Phrase linking an actor to a task.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 24,
+          "chunk_end_char": 39,
+          "doc_start_char": 45024,
+          "doc_end_char": 45039,
+          "snippet": "e to restart the cycle. responsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY E"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "only display of the message",
+      "label": "relation-bearing expression",
+      "justification": "Describes the effect of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 162,
+          "chunk_end_char": 189,
+          "doc_start_char": 45162,
+          "doc_end_char": 45189,
+          "snippet": "message no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype: Standard: Optional:\neffect: Only display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned o"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "indicates that",
+      "label": "relation-bearing expression",
+      "justification": "Phrase used to describe the meaning of a measurement.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 803,
+          "chunk_end_char": 817,
+          "doc_start_char": 45803,
+          "doc_end_char": 45817,
+          "snippet": "ICATION OIL LEVEL\ntype: Standard: Optional:\neffect: Only display of the message\nIndicates that the lubricating oil level is lower than the minimum cause:\nmum.\nAdd oil. If thi"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "warns the operator that",
+      "label": "relation-bearing expression",
+      "justification": "Phrase indicating an alarm’s effect on the operator.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 4886,
+          "chunk_end_char": 4909,
+          "doc_start_char": 49886,
+          "doc_end_char": 49909,
+          "snippet": "BAR CHANGE PHASE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns the operator that the machining cycle is suspended on hold\ncause:\nof the completion of the bar ch"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00030",
+      "text": "behavior of the overload control device is abnormal",
+      "label": "relation-bearing expression",
+      "justification": "Describes the abnormal state of the device.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "e to restart the cycle. responsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype: Standard: Optional:\neffect: Only display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nReplace the ba"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00031",
+      "text": "logic system considers it to be faulty",
+      "label": "relation-bearing expression",
+      "justification": "Statement of the system’s assessment.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 4662,
+          "chunk_end_char": 4700,
+          "doc_start_char": 49662,
+          "doc_end_char": 49700,
+          "snippet": "concause overload control device: chip voyeur” is abnormal, for this reason the logic system considers it to be faulty.\nintervention: Make sure that this device works correctly.\nresponsible for\nmess"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00032",
+      "text": "the completion of the bar change",
+      "label": "relation-bearing expression",
+      "justification": "Phrase indicating the cause of the feeder alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 4961,
+          "chunk_end_char": 4993,
+          "doc_start_char": 49961,
+          "doc_end_char": 49993,
+          "snippet": "sage\nWarns the operator that the machining cycle is suspended on hold\ncause:\nof the completion of the bar change.\nWhen"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00033",
+      "text": "input X2.6 page 14 of the electrical diagram",
+      "label": "reference",
+      "justification": "Reference to a specific diagram location.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 941,
+          "chunk_end_char": 985,
+          "doc_start_char": 45941,
+          "doc_end_char": 45985,
+          "snippet": "minimum cause:\nmum.\nAdd oil. If this was not insufficient, check\nintervention: input X2.6 page 14 of the electrical diagram (0 = level lower than\nminimum, 1 = level greater than minimum)\nresponsible for"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00034",
+      "text": "Entry X4.4 page 13 of the electrical diagram",
+      "label": "reference",
+      "justification": "Reference to a specific diagram location.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 2753,
+          "chunk_end_char": 2797,
+          "doc_start_char": 47753,
+          "doc_end_char": 47797,
+          "snippet": "cause:\nchip conveyor.\nRemove material from chip evacuation area.\nintervention:\nEntry X4.4 page 13 of the electrical diagram.\nresponsible for\noperator\nmessage no: 2023\ntext: CHIP CONVEYOR BLOCKED\ntype: St"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00035",
+      "text": "Input X2.7 page 14 of the electrical diagram",
+      "label": "reference",
+      "justification": "Reference to a specific diagram location.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 2446,
+          "chunk_end_char": 2490,
+          "doc_start_char": 47446,
+          "doc_end_char": 47490,
+          "snippet": "k the operation of the pump or any faults\nintervention: of the pressure switch.\nInput X2.7 page 14 of the electrical diagram.\nresponsible for\nmessage no: 2022\ntext: CHIP CONVEYOR OVERLOAD\ntype: Standard:"
+        }
+      ]
+    }
+  ]
+}

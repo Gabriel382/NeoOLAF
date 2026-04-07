@@ -4,6 +4,7 @@ from __future__ import annotations
 import copy
 import time
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Local imports
 from neoolaf.core.pipeline import Pipeline
@@ -17,6 +18,8 @@ class Runner:
     Execute a NeoOLAF pipeline in either:
     - document mode
     - chunk iterative mode
+
+    This version supports parallel chunk execution in chunk_iterative_mode.
     """
 
     def __init__(
@@ -25,6 +28,7 @@ class Runner:
         runs_root: str = "runs",
         verbose: bool = False,
         execution_config: ExecutionConfig | None = None,
+        max_workers: int = 1,
     ) -> None:
         """
         Initialize the runner.
@@ -38,12 +42,16 @@ class Runner:
                 Whether to print runner-level progress.
             execution_config:
                 Optional execution configuration.
+            max_workers:
+                Number of workers for parallel chunk execution.
+                Use 1 for sequential mode.
         """
         self.pipeline = pipeline
         self.runs_root = Path(runs_root)
         self.verbose = verbose
         self.execution_config = execution_config or ExecutionConfig()
         self.state_merger = StateMerger()
+        self.max_workers = max_workers
 
     def prepare_run_dir(self) -> Path:
         """
@@ -69,7 +77,10 @@ class Runner:
         # ---------------------------------------------------------
         # Dispatch by execution mode
         # ---------------------------------------------------------
-        if self.execution_config.mode == "chunk_iterative_mode" and self.execution_config.chunk_loop_enabled:
+        if (
+            self.execution_config.mode == "chunk_iterative_mode"
+            and self.execution_config.chunk_loop_enabled
+        ):
             state = self._run_chunk_iterative_mode(state)
         else:
             state = self.pipeline.run(state)
@@ -120,6 +131,7 @@ class Runner:
         preprocessing_pipeline = Pipeline(
             layers=preprocessing_layers,
             verbose=self.pipeline.verbose,
+            continue_from_last=self.pipeline.continue_from_last,
         )
         preprocessed_state = preprocessing_pipeline.run(state)
 
@@ -129,39 +141,28 @@ class Runner:
 
         if self.verbose:
             print(f"[NeoOLAF] Chunk iterative mode will process {len(chunks)} chunks")
+            print(f"[NeoOLAF] Parallel workers: {self.max_workers}")
 
         # ---------------------------------------------------------
         # 2. Run selected chunk layers per chunk
         # ---------------------------------------------------------
-        chunk_states = []
-
-        for idx, chunk in enumerate(chunks, start=1):
-            if self.verbose:
-                print(f"[NeoOLAF] Processing chunk {idx}/{len(chunks)}: {chunk.chunk_id}")
-
-            # Deep copy the preprocessed document-level state
-            chunk_state = copy.deepcopy(preprocessed_state)
-
-            # Restrict the document chunks to the current chunk only
-            chunk_state.document.chunks = [chunk]
-
-            # Optional: reset chunk-level outputs so they don't carry over
-            chunk_state.linguistic_expressions = []
-            chunk_state.enriched_expressions = []
-            chunk_state.entity_candidates = []
-            chunk_state.relation_candidates = []
-            chunk_state.attribute_candidates = []
-            chunk_state.event_candidates = []
-            chunk_state.candidate_relation_assertions = []
-            chunk_state.candidate_triples = []
-
-            # Run the chunk-layer subpipeline
-            chunk_pipeline = Pipeline(
-                layers=chunk_layers,
-                verbose=self.pipeline.verbose,
+        if self.max_workers <= 1:
+            chunk_states = []
+            for idx, chunk in enumerate(chunks, start=1):
+                chunk_state = self._run_single_chunk(
+                    base_state=preprocessed_state,
+                    chunk=chunk,
+                    chunk_layers=chunk_layers,
+                    chunk_index=idx,
+                    total_chunks=len(chunks),
+                )
+                chunk_states.append(chunk_state)
+        else:
+            chunk_states = self._run_chunks_in_parallel(
+                base_state=preprocessed_state,
+                chunks=chunks,
+                chunk_layers=chunk_layers,
             )
-            chunk_state = chunk_pipeline.run(chunk_state)
-            chunk_states.append(chunk_state)
 
         # ---------------------------------------------------------
         # 3. Merge chunk-level states into one document-level state
@@ -181,7 +182,86 @@ class Runner:
             global_pipeline = Pipeline(
                 layers=global_layers,
                 verbose=self.pipeline.verbose,
+                continue_from_last=self.pipeline.continue_from_last,
             )
             merged_state = global_pipeline.run(merged_state)
 
         return merged_state
+
+    def _run_chunks_in_parallel(
+        self,
+        base_state: PipelineState,
+        chunks: list,
+        chunk_layers: list,
+    ) -> list:
+        """
+        Run chunk subpipelines in parallel and preserve original chunk order.
+        """
+        chunk_results = [None] * len(chunks)
+
+        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+            future_to_index = {
+                executor.submit(
+                    self._run_single_chunk,
+                    base_state,
+                    chunk,
+                    chunk_layers,
+                    idx + 1,
+                    len(chunks),
+                ): idx
+                for idx, chunk in enumerate(chunks)
+            }
+
+            for future in as_completed(future_to_index):
+                idx = future_to_index[future]
+                chunk_results[idx] = future.result()
+
+        return chunk_results
+
+    def _run_single_chunk(
+        self,
+        base_state: PipelineState,
+        chunk,
+        chunk_layers: list,
+        chunk_index: int,
+        total_chunks: int,
+    ) -> PipelineState:
+        """
+        Run the chunk-layer subpipeline for one chunk.
+        """
+        if self.verbose:
+            print(
+                f"[NeoOLAF] Processing chunk {chunk_index}/{total_chunks}: {chunk.chunk_id}"
+            )
+
+        # Deep copy the preprocessed document-level state
+        chunk_state = copy.deepcopy(base_state)
+
+        # Restrict the document chunks to the current chunk only
+        chunk_state.document.chunks = [chunk]
+
+        # Give each chunk its own artifact subdirectory to avoid write collisions
+        if chunk_state.artifact_dir is not None:
+            chunk_dir = Path(chunk_state.artifact_dir) / "chunks" / chunk.chunk_id
+            chunk_dir.mkdir(parents=True, exist_ok=True)
+            chunk_state.artifact_dir = str(chunk_dir)
+
+        # Reset chunk-level outputs so they do not carry over
+        chunk_state.linguistic_expressions = []
+        chunk_state.enriched_expressions = []
+        chunk_state.entity_candidates = []
+        chunk_state.relation_candidates = []
+        chunk_state.attribute_candidates = []
+        chunk_state.event_candidates = []
+        chunk_state.candidate_relation_assertions = []
+        chunk_state.candidate_triples = []
+
+        # Run the chunk-layer subpipeline
+        chunk_pipeline = Pipeline(
+            layers=chunk_layers,
+            verbose=self.pipeline.verbose,
+            continue_from_last=self.pipeline.continue_from_last,
+        )
+        chunk_state = chunk_pipeline.run(chunk_state)
+
+        return chunk_state

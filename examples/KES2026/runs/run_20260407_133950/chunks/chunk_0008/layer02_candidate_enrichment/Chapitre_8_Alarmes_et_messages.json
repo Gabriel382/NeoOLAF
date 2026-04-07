@@ -1,0 +1,2056 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 35,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "LOAD MONITOR: IMMEDIATE STOP",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "LOAD MONITOR IMMEDIATE STOP"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "LOAD MONITOR IMMEDIATE STOP": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm event that occurs on a platform when the load monitor detects that the load exceeds safe limits, triggering an immediate stop of the platform.",
+      "ontology_hints": [
+        "Platform",
+        "Feature of Interest",
+        "Production Line",
+        "Operator",
+        "Logistic Process",
+        "Alarm Type",
+        "Event"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"LOAD MONITOR IMMEDIATE STOP\"], \"definition\": \"An alarm event that occurs on a platform when the load monitor detects that the load exceeds safe limits, triggering an immediate stop of the platform.\", \"ontology_hints\": [\"Platform\", \"Feature of Interest\", \"Production Line\", \"Operator\", \"Logistic Process\", \"Alarm Type\", \"Event\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "Alarm with immediate and controlled shutdown",
+        "label": "effect"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An operational state in which an alarm triggers an immediate and controlled shutdown of the affected machinery or process.",
+      "ontology_hints": [
+        "TRIGGERS: Alarm",
+        "REQUIRES: Shutdown procedure",
+        "HANDLED_BY: Maintenance crew",
+        "REFERENCES: Situation S1–S5 (specialized operational states)"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An operational state in which an alarm triggers an immediate and controlled shutdown of the affected machinery or process.\", \"ontology_hints\": [\"TRIGGERS: Alarm\", \"REQUIRES: Shutdown procedure\", \"HANDLED_BY: Maintenance crew\", \"REFERENCES: Situation S1–S5 (specialized operational states)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00002",
+        "text": "tool breakage",
+        "label": "failure symptom"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A malfunction of a machine component, specifically a tool, resulting in its breakage.",
+      "ontology_hints": [
+        "Tool breakage involves a Spatial Object (the tool).",
+        "The event occurs within a Production Line.",
+        "The time of breakage is a Temporal Entity.",
+        "A Manager may be responsible for responding to the breakage."
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A malfunction of a machine component, specifically a tool, resulting in its breakage.\", \"ontology_hints\": [\"Tool breakage involves a Spatial Object (the tool).\", \"The event occurs within a Production Line.\", \"The time of breakage is a Temporal Entity.\", \"A Manager may be responsible for responding to the breakage.\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00003",
+        "text": "Replace the tool",
+        "label": "intervention"
+      },
+      "aliases": [
+        "tool substitution"
+      ],
+      "synonyms": [
+        "swap the tool",
+        "change the tool",
+        "substitute the tool"
+      ],
+      "lexical_variants": [
+        "replace tool",
+        "tool replacement"
+      ],
+      "alias_sources": {
+        "tool substitution": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "swap the tool": [
+          "llm"
+        ],
+        "change the tool": [
+          "llm"
+        ],
+        "substitute the tool": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "replace tool": [
+          "llm"
+        ],
+        "tool replacement": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention action that involves removing a tool and installing a new or different tool to resolve a failure or maintain machine operation.",
+      "ontology_hints": [
+        "Action",
+        "Resource",
+        "Platform",
+        "Operator",
+        "requires action",
+        "performed by",
+        "part-of"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"tool substitution\"], \"synonyms\": [\"swap the tool\", \"change the tool\", \"substitute the tool\"], \"lexical_variants\": [\"replace tool\", \"tool replacement\"], \"definition\": \"An intervention action that involves removing a tool and installing a new or different tool to resolve a failure or maintain machine operation.\", \"ontology_hints\": [\"Action\", \"Resource\", \"Platform\", \"Operator\", \"requires action\", \"performed by\", \"part-of\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00004",
+        "text": "system calibrations",
+        "label": "intervention"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Maintenance activity that adjusts or corrects system settings to ensure accurate operation.",
+      "ontology_hints": [
+        "intervention",
+        "maintenance activity",
+        "system adjustment",
+        "calibration event"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Maintenance activity that adjusts or corrects system settings to ensure accurate operation.\", \"ontology_hints\": [\"intervention\", \"maintenance activity\", \"system adjustment\", \"calibration event\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00005",
+        "text": "responsible for operator",
+        "label": "responsible actor"
+      },
+      "aliases": [
+        "responsible actor",
+        "operator's supervisor"
+      ],
+      "synonyms": [
+        "responsible person",
+        "accountable person",
+        "person in charge"
+      ],
+      "lexical_variants": [
+        "responsible for operator",
+        "responsible for the operator"
+      ],
+      "alias_sources": {
+        "responsible actor": [
+          "llm"
+        ],
+        "operator's supervisor": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "responsible person": [
+          "llm"
+        ],
+        "accountable person": [
+          "llm"
+        ],
+        "person in charge": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for operator": [
+          "llm"
+        ],
+        "responsible for the operator": [
+          "llm"
+        ]
+      },
+      "definition": "The individual who is accountable for overseeing the operator’s activities and ensuring proper intervention.",
+      "ontology_hints": [
+        "hasRole",
+        "supervises",
+        "responsibleFor",
+        "Staff",
+        "Supervisor",
+        "Manager"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"responsible actor\", \"operator's supervisor\"], \"synonyms\": [\"responsible person\", \"accountable person\", \"person in charge\"], \"lexical_variants\": [\"responsible for operator\", \"responsible for the operator\"], \"definition\": \"The individual who is accountable for overseeing the operator’s activities and ensuring proper intervention.\", \"ontology_hints\": [\"hasRole\", \"supervises\", \"responsibleFor\", \"Staff\", \"Supervisor\", \"Manager\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00006",
+        "text": "responsible for toolmaker-adjuster",
+        "label": "responsible actor"
+      },
+      "aliases": [
+        "responsible actor"
+      ],
+      "synonyms": [
+        "accountable for toolmaker‑adjuster",
+        "person responsible for toolmaker‑adjuster",
+        "responsible party for toolmaker‑adjuster"
+      ],
+      "lexical_variants": [
+        "responsible for toolmaker‑adjuster"
+      ],
+      "alias_sources": {
+        "responsible actor": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "accountable for toolmaker‑adjuster": [
+          "llm"
+        ],
+        "person responsible for toolmaker‑adjuster": [
+          "llm"
+        ],
+        "responsible party for toolmaker‑adjuster": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for toolmaker‑adjuster": [
+          "llm"
+        ]
+      },
+      "definition": "The individual or role that holds accountability for the toolmaker‑adjuster intervention within a manufacturing platform.",
+      "ontology_hints": [
+        "Staff",
+        "Platform",
+        "ResponsibleActor",
+        "Role"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"responsible actor\"], \"synonyms\": [\"accountable for toolmaker‑adjuster\", \"person responsible for toolmaker‑adjuster\", \"responsible party for toolmaker‑adjuster\"], \"lexical_variants\": [\"responsible for toolmaker‑adjuster\"], \"definition\": \"The individual or role that holds accountability for the toolmaker‑adjuster intervention within a manufacturing platform.\", \"ontology_hints\": [\"Staff\", \"Platform\", \"ResponsibleActor\", \"Role\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00007",
+        "text": "LOAD MONITOR: STOP AT END OF CYCLE",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "LOAD MONITOR STOP AT END OF CYCLE"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "LOAD MONITOR STOP AT END OF CYCLE": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating that a load monitor has stopped at the end of a cycle, representing a constraint violation in a logistic process.",
+      "ontology_hints": [
+        "Constraint on logistic process",
+        "Triggered by load monitor stop",
+        "Occurs at end of cycle",
+        "Observed by maintenance system",
+        "Part of spatial object (machine)"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"LOAD MONITOR STOP AT END OF CYCLE\"], \"definition\": \"An alarm indicating that a load monitor has stopped at the end of a cycle, representing a constraint violation in a logistic process.\", \"ontology_hints\": [\"Constraint on logistic process\", \"Triggered by load monitor stop\", \"Occurs at end of cycle\", \"Observed by maintenance system\", \"Part of spatial object (machine)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00008",
+        "text": "Alarms or messages with shutdown at the end of the cycle",
+        "label": "effect"
+      },
+      "aliases": [
+        "shutdown alarm",
+        "end‑of‑cycle alert",
+        "cycle termination message"
+      ],
+      "synonyms": [
+        "shutdown notification",
+        "cycle completion warning",
+        "shutdown warning"
+      ],
+      "lexical_variants": [
+        "end‑of‑cycle shutdown",
+        "shutdown at cycle end",
+        "shutdown message at cycle conclusion"
+      ],
+      "alias_sources": {
+        "shutdown alarm": [
+          "llm"
+        ],
+        "end‑of‑cycle alert": [
+          "llm"
+        ],
+        "cycle termination message": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "shutdown notification": [
+          "llm"
+        ],
+        "cycle completion warning": [
+          "llm"
+        ],
+        "shutdown warning": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "end‑of‑cycle shutdown": [
+          "llm"
+        ],
+        "shutdown at cycle end": [
+          "llm"
+        ],
+        "shutdown message at cycle conclusion": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm or message that triggers a shutdown at the conclusion of a manufacturing cycle, indicating that the process has reached its end and the machine or workstation must be stopped.",
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "Situation",
+        "Workstation",
+        "ManufacturingProcess",
+        "ProductionLine",
+        "hasObservation",
+        "occursAt",
+        "partOf",
+        "belongsTo"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"shutdown alarm\", \"end‑of‑cycle alert\", \"cycle termination message\"], \"synonyms\": [\"shutdown notification\", \"cycle completion warning\", \"shutdown warning\"], \"lexical_variants\": [\"end‑of‑cycle shutdown\", \"shutdown at cycle end\", \"shutdown message at cycle conclusion\"], \"definition\": \"An alarm or message that triggers a shutdown at the conclusion of a manufacturing cycle, indicating that the process has reached its end and the machine or workstation must be stopped.\", \"ontology_hints\": [\"FeatureOfInterest\", \"Situation\", \"Workstation\", \"ManufacturingProcess\", \"ProductionLine\", \"hasObservation\", \"occursAt\", \"partOf\", \"belongsTo\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00009",
+        "text": "tool wear",
+        "label": "failure symptom"
+      },
+      "aliases": [
+        "Tool wear"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "Tool wear": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Tool wear is the gradual failure of cutting tools in machining, manifested as erosion or damage to the tool’s flank, rake face, or cutting edge. It includes types such as flank wear, crater wear, notch wear, and built‑up edge, and is influenced by operational parameters like spindle speed, feed rate, and cutting depth.",
+      "ontology_hints": [
+        "Tool wear is a failure symptom and a degradation event affecting spatial objects (cutting tools) in a manufacturing environment.",
+        "It is a temporal process (TemporalEntity) that can be monitored or acted upon by operators.",
+        "Tool wear can be caused by high feed rates, low spindle speeds, or excessive cutting depth, and may trigger shutdowns or maintenance interventions.",
+        "Relevant properties: TRIGGERS (e.g., tool failure), CAUSES (operational parameters), REQUIRES (maintenance action), HANDLED_BY (operator), AFFECTS (cutting tool, machining quality)."
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "In machining, tool wear is the gradual failure of cutting tools due to regular operation. Tools affected include tipped tools, tool bits, and drill bits that are used with machine tools.\nTypes of wear include:\n\nflank wear in which the portion of the tool in contact with the finished part erodes.  Can be described using the Tool Life Expectancy equation.\ncrater wear in which contact with chips erodes the rake face. This is somewhat normal for tool wear, and does not seriously degrade the use of a tool until it becomes serious enough to cause a cutting edge failure. Can be caused by spindle speed that is too low or a feed rate that is too high. In orthogonal cutting this typically occurs where the tool temperature is highest. Crater wear occurs approximately at a height equalling the cutting depth of the material. Crater wear depth (t0) = cutting depth\nNotch wear which happens on both the insert rake and flank face along the depth of cut line causing localised damage to it primarily due to pressure welding of the chips. The chips literally get welded to the insert.\nbuilt-up edge in which material being machined builds up on the cutting edge. Some materials (notably aluminium and copp",
+          "reference": "https://en.wikipedia.org/wiki/Tool_wear"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Tool wear\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Tool wear is the gradual failure of cutting tools in machining, manifested as erosion or damage to the tool’s flank, rake face, or cutting edge. It includes types such as flank wear, crater wear, notch wear, and built‑up edge, and is influenced by operational parameters like spindle speed, feed rate, and cutting depth.\", \"ontology_hints\": [\"Tool wear is a failure symptom and a degradation event affecting spatial objects (cutting tools) in a manufacturing environment.\", \"It is a temporal process (TemporalEntity) that can be monitored or acted upon by operators.\", \"Tool wear can be caused by high feed rates, low spindle speeds, or excessive cutting depth, and may trigger shutdowns or maintenance interventions.\", \"Relevant properties: TRIGGERS (e.g., tool failure), CAUSES (operational parameters), REQUIRES (maintenance action), HANDLED_BY (operator), AFFECTS (cutting tool, machining quality).\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00010",
+        "text": "LOAD MONITOR: FEED DIFFERENT FROM 100%",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "Feed rate alarm",
+        "Load monitor alarm",
+        "Feed deviation alarm"
+      ],
+      "synonyms": [
+        "Feed rate deviation alarm",
+        "Load monitor feed deviation",
+        "Feed rate non‑100% alarm"
+      ],
+      "lexical_variants": [
+        "LOAD MONITOR: FEED NOT 100%",
+        "LOAD MONITOR: FEED ≠ 100%",
+        "Load monitor: feed rate differs from 100%"
+      ],
+      "alias_sources": {
+        "Feed rate alarm": [
+          "llm"
+        ],
+        "Load monitor alarm": [
+          "llm"
+        ],
+        "Feed deviation alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Feed rate deviation alarm": [
+          "llm"
+        ],
+        "Load monitor feed deviation": [
+          "llm"
+        ],
+        "Feed rate non‑100% alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "LOAD MONITOR: FEED NOT 100%": [
+          "llm"
+        ],
+        "LOAD MONITOR: FEED ≠ 100%": [
+          "llm"
+        ],
+        "Load monitor: feed rate differs from 100%": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that is triggered when the feed rate measured by a load monitor deviates from the expected 100% value, indicating a potential issue with the feed mechanism.",
+      "ontology_hints": [
+        "has feature of interest: feed mechanism",
+        "has observable property: feed rate",
+        "observed by: load monitor sensor",
+        "occurs in: Situation S10",
+        "TRIGGERS: feed rate deviation",
+        "HANDLED_BY: maintenance crew",
+        "REFERENCES: load monitor platform"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Feed rate alarm\", \"Load monitor alarm\", \"Feed deviation alarm\"], \"synonyms\": [\"Feed rate deviation alarm\", \"Load monitor feed deviation\", \"Feed rate non‑100% alarm\"], \"lexical_variants\": [\"LOAD MONITOR: FEED NOT 100%\", \"LOAD MONITOR: FEED ≠ 100%\", \"Load monitor: feed rate differs from 100%\"], \"definition\": \"An alarm that is triggered when the feed rate measured by a load monitor deviates from the expected 100% value, indicating a potential issue with the feed mechanism.\", \"ontology_hints\": [\"has feature of interest: feed mechanism\", \"has observable property: feed rate\", \"observed by: load monitor sensor\", \"occurs in: Situation S10\", \"TRIGGERS: feed rate deviation\", \"HANDLED_BY: maintenance crew\", \"REFERENCES: load monitor platform\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00011",
+        "text": "feed rate trimmer is set to a percentage other than 100%",
+        "label": "cause"
+      },
+      "aliases": [
+        "feed rate trimmer setting",
+        "feed rate trim",
+        "feed rate adjustment"
+      ],
+      "synonyms": [
+        "feed rate trim not at nominal",
+        "feed rate adjustment not at 100%",
+        "feed rate trimmer set to a non‑100% value"
+      ],
+      "lexical_variants": [
+        "feed rate trimmer set to a percentage other than 100%",
+        "feed rate trimmer set to a non‑100% value",
+        "feed rate trimmer set to less than or greater than 100%"
+      ],
+      "alias_sources": {
+        "feed rate trimmer setting": [
+          "llm"
+        ],
+        "feed rate trim": [
+          "llm"
+        ],
+        "feed rate adjustment": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "feed rate trim not at nominal": [
+          "llm"
+        ],
+        "feed rate adjustment not at 100%": [
+          "llm"
+        ],
+        "feed rate trimmer set to a non‑100% value": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "feed rate trimmer set to a percentage other than 100%": [
+          "llm"
+        ],
+        "feed rate trimmer set to a non‑100% value": [
+          "llm"
+        ],
+        "feed rate trimmer set to less than or greater than 100%": [
+          "llm"
+        ]
+      },
+      "definition": "A condition in which the feed rate trimmer device is configured to a value other than the nominal 100%, which can trigger an alarm indicating a potential deviation in the manufacturing process.",
+      "ontology_hints": [
+        "ObservableProperty",
+        "FeatureOfInterest",
+        "ManufacturingProcess",
+        "TemporalEntity",
+        "AlarmTrigger"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"feed rate trimmer setting\", \"feed rate trim\", \"feed rate adjustment\"], \"synonyms\": [\"feed rate trim not at nominal\", \"feed rate adjustment not at 100%\", \"feed rate trimmer set to a non‑100% value\"], \"lexical_variants\": [\"feed rate trimmer set to a percentage other than 100%\", \"feed rate trimmer set to a non‑100% value\", \"feed rate trimmer set to less than or greater than 100%\"], \"definition\": \"A condition in which the feed rate trimmer device is configured to a value other than the nominal 100%, which can trigger an alarm indicating a potential deviation in the manufacturing process.\", \"ontology_hints\": [\"ObservableProperty\", \"FeatureOfInterest\", \"ManufacturingProcess\", \"TemporalEntity\", \"AlarmTrigger\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00012",
+        "text": "different current absorption compared to the nominal",
+        "label": "effect"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An effect in which the current absorbed by a machine or component differs from its nominal (expected) current value.",
+      "ontology_hints": [
+        "current absorption",
+        "nominal current",
+        "deviation",
+        "effect"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An effect in which the current absorbed by a machine or component differs from its nominal (expected) current value.\", \"ontology_hints\": [\"current absorption\", \"nominal current\", \"deviation\", \"effect\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00013",
+        "text": "Set the priority (override) to 100% and repeat the cycle",
+        "label": "intervention"
+      },
+      "aliases": [
+        "Priority override",
+        "Priority reset",
+        "Set priority to maximum"
+      ],
+      "synonyms": [
+        "Override priority",
+        "Force priority to 100%",
+        "Reset priority to full",
+        "Reapply priority"
+      ],
+      "lexical_variants": [
+        "Set the priority (override) to 100% and repeat the cycle",
+        "Set priority to 100% (override) and repeat cycle",
+        "Set priority to 100% and repeat cycle"
+      ],
+      "alias_sources": {
+        "Priority override": [
+          "llm"
+        ],
+        "Priority reset": [
+          "llm"
+        ],
+        "Set priority to maximum": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Override priority": [
+          "llm"
+        ],
+        "Force priority to 100%": [
+          "llm"
+        ],
+        "Reset priority to full": [
+          "llm"
+        ],
+        "Reapply priority": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Set the priority (override) to 100% and repeat the cycle": [
+          "llm"
+        ],
+        "Set priority to 100% (override) and repeat cycle": [
+          "llm"
+        ],
+        "Set priority to 100% and repeat cycle": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention that sets the alarm priority observable property to its maximum value (100%) and restarts the operational cycle, effectively overriding the current alarm state and resuming normal operation.",
+      "ontology_hints": [
+        "hasPriority",
+        "overrides",
+        "repeats",
+        "intervention",
+        "alarm override",
+        "Observable Property: priority",
+        "Situation S1 / S10 / S11 / S12: cycle context"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Priority override\", \"Priority reset\", \"Set priority to maximum\"], \"synonyms\": [\"Override priority\", \"Force priority to 100%\", \"Reset priority to full\", \"Reapply priority\"], \"lexical_variants\": [\"Set the priority (override) to 100% and repeat the cycle\", \"Set priority to 100% (override) and repeat cycle\", \"Set priority to 100% and repeat cycle\"], \"definition\": \"An intervention that sets the alarm priority observable property to its maximum value (100%) and restarts the operational cycle, effectively overriding the current alarm state and resuming normal operation.\", \"ontology_hints\": [\"hasPriority\", \"overrides\", \"repeats\", \"intervention\", \"alarm override\", \"Observable Property: priority\", \"Situation S1 / S10 / S11 / S12: cycle context\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00014",
+        "text": "LOAD MONITOR: STOP AT END OF BLOCK",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that a load monitoring process has stopped at the end of a load block, signaling a constraint violation within the logistic process.",
+      "ontology_hints": [
+        "AlarmType",
+        "ConstraintViolation",
+        "LogisticProcess",
+        "SpatialObject",
+        "TemporalEntity",
+        "FeatureOfInterest"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that a load monitoring process has stopped at the end of a load block, signaling a constraint violation within the logistic process.\", \"ontology_hints\": [\"AlarmType\", \"ConstraintViolation\", \"LogisticProcess\", \"SpatialObject\", \"TemporalEntity\", \"FeatureOfInterest\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00015",
+        "text": "absence of a tool",
+        "label": "cause"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "The condition where a required tool is not present or available, leading to a failure or triggering an alarm in an industrial maintenance context.",
+      "ontology_hints": [
+        "Manufacturing Facility",
+        "Manufacturing Cell",
+        "Sensor",
+        "Feature of Interest"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"The condition where a required tool is not present or available, leading to a failure or triggering an alarm in an industrial maintenance context.\", \"ontology_hints\": [\"Manufacturing Facility\", \"Manufacturing Cell\", \"Sensor\", \"Feature of Interest\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00016",
+        "text": "Mount the tool",
+        "label": "intervention"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Action to resolve the absence of a tool.",
+      "ontology_hints": [
+        "intervention",
+        "maintenance action",
+        "tool installation",
+        "performed_by Operator",
+        "occurs_in Manufacturing Cell",
+        "occurs_during Interval"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Action to resolve the absence of a tool.\", \"ontology_hints\": [\"intervention\", \"maintenance action\", \"tool installation\", \"performed_by Operator\", \"occurs_in Manufacturing Cell\", \"occurs_during Interval\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00017",
+        "text": "AUTOMATIC STOP IN PROGRESS",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "Automatic Stop In Progress",
+        "automatic stop in progress",
+        "AUTOMATIC STOP IN PROGRESS"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "Automatic Stop In Progress": [
+          "llm"
+        ],
+        "automatic stop in progress": [
+          "llm"
+        ],
+        "AUTOMATIC STOP IN PROGRESS": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating that a machine or process has automatically halted and is currently in a stopped state.",
+      "ontology_hints": [
+        "AlarmType",
+        "ManufacturingProcess",
+        "Machine",
+        "FeatureOfInterest",
+        "ShutdownEvent",
+        "ProcessEvent"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"Automatic Stop In Progress\", \"automatic stop in progress\", \"AUTOMATIC STOP IN PROGRESS\"], \"definition\": \"An alarm indicating that a machine or process has automatically halted and is currently in a stopped state.\", \"ontology_hints\": [\"AlarmType\", \"ManufacturingProcess\", \"Machine\", \"FeatureOfInterest\", \"ShutdownEvent\", \"ProcessEvent\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00018",
+        "text": "established time or the target production has been reached",
+        "label": "cause"
+      },
+      "aliases": [
+        "time threshold reached",
+        "production target achieved",
+        "target output reached",
+        "time limit met"
+      ],
+      "synonyms": [
+        "time limit met",
+        "production target achieved",
+        "target output reached"
+      ],
+      "lexical_variants": [
+        "established time reached",
+        "target production reached",
+        "time limit reached"
+      ],
+      "alias_sources": {
+        "time threshold reached": [
+          "llm"
+        ],
+        "production target achieved": [
+          "llm"
+        ],
+        "target output reached": [
+          "llm"
+        ],
+        "time limit met": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "time limit met": [
+          "llm"
+        ],
+        "production target achieved": [
+          "llm"
+        ],
+        "target output reached": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "established time reached": [
+          "llm"
+        ],
+        "target production reached": [
+          "llm"
+        ],
+        "time limit reached": [
+          "llm"
+        ]
+      },
+      "definition": "A situation in which a predefined time limit or production target has been met, thereby triggering an automatic stop of the manufacturing process.",
+      "ontology_hints": [
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Production Line",
+        "Observable Property",
+        "TRIGGERS",
+        "CAUSES"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"time threshold reached\", \"production target achieved\", \"target output reached\", \"time limit met\"], \"synonyms\": [\"time limit met\", \"production target achieved\", \"target output reached\"], \"lexical_variants\": [\"established time reached\", \"target production reached\", \"time limit reached\"], \"definition\": \"A situation in which a predefined time limit or production target has been met, thereby triggering an automatic stop of the manufacturing process.\", \"ontology_hints\": [\"Situation S1\", \"Situation S2\", \"Situation S3\", \"Production Line\", \"Observable Property\", \"TRIGGERS\", \"CAUSES\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00019",
+        "text": "lathe is in alarm condition with automatic stop activated",
+        "label": "cause"
+      },
+      "aliases": [
+        "lathe in alarm",
+        "lathe in fault state",
+        "lathe in emergency stop"
+      ],
+      "synonyms": [
+        "lathe alarm",
+        "lathe fault",
+        "lathe shutdown due to alarm"
+      ],
+      "lexical_variants": [
+        "lathe alarm condition",
+        "lathe in alarm state with automatic stop",
+        "lathe in fault condition with automatic stop"
+      ],
+      "alias_sources": {
+        "lathe in alarm": [
+          "llm"
+        ],
+        "lathe in fault state": [
+          "llm"
+        ],
+        "lathe in emergency stop": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "lathe alarm": [
+          "llm"
+        ],
+        "lathe fault": [
+          "llm"
+        ],
+        "lathe shutdown due to alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "lathe alarm condition": [
+          "llm"
+        ],
+        "lathe in alarm state with automatic stop": [
+          "llm"
+        ],
+        "lathe in fault condition with automatic stop": [
+          "llm"
+        ]
+      },
+      "definition": "A state in which a lathe machine has detected an alarm condition and has triggered its automatic stop mechanism, thereby halting operation.",
+      "ontology_hints": [
+        "MachineAlarm",
+        "AutomaticStopEvent",
+        "LatheMachine",
+        "AlarmCondition",
+        "ShutdownEvent"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"lathe in alarm\", \"lathe in fault state\", \"lathe in emergency stop\"], \"synonyms\": [\"lathe alarm\", \"lathe fault\", \"lathe shutdown due to alarm\"], \"lexical_variants\": [\"lathe alarm condition\", \"lathe in alarm state with automatic stop\", \"lathe in fault condition with automatic stop\"], \"definition\": \"A state in which a lathe machine has detected an alarm condition and has triggered its automatic stop mechanism, thereby halting operation.\", \"ontology_hints\": [\"MachineAlarm\", \"AutomaticStopEvent\", \"LatheMachine\", \"AlarmCondition\", \"ShutdownEvent\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00020",
+        "text": "power supply will be cut off to the lathe",
+        "label": "effect"
+      },
+      "aliases": [
+        "lathe power cut",
+        "lathe power shutdown",
+        "lathe power outage"
+      ],
+      "synonyms": [
+        "power cut",
+        "power shutdown",
+        "power outage",
+        "power interruption",
+        "power loss",
+        "electrical supply cut"
+      ],
+      "lexical_variants": [
+        "the power supply to the lathe will be cut off",
+        "the lathe will lose power",
+        "the lathe will be powered down",
+        "power supply cut to the lathe"
+      ],
+      "alias_sources": {
+        "lathe power cut": [
+          "llm"
+        ],
+        "lathe power shutdown": [
+          "llm"
+        ],
+        "lathe power outage": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "power cut": [
+          "llm"
+        ],
+        "power shutdown": [
+          "llm"
+        ],
+        "power outage": [
+          "llm"
+        ],
+        "power interruption": [
+          "llm"
+        ],
+        "power loss": [
+          "llm"
+        ],
+        "electrical supply cut": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "the power supply to the lathe will be cut off": [
+          "llm"
+        ],
+        "the lathe will lose power": [
+          "llm"
+        ],
+        "the lathe will be powered down": [
+          "llm"
+        ],
+        "power supply cut to the lathe": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which the electrical power supplied to a lathe machine is interrupted, causing the machine to stop operating.",
+      "ontology_hints": [
+        "FeatureOfInterest: lathe",
+        "ObservableProperty: power supply status",
+        "TemporalEntity: interval of power cut",
+        "SpatialObject: lathe location",
+        "ProductionLine: cell containing lathe",
+        "causes: lathe shutdown",
+        "affects: lathe operation"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"lathe power cut\", \"lathe power shutdown\", \"lathe power outage\"], \"synonyms\": [\"power cut\", \"power shutdown\", \"power outage\", \"power interruption\", \"power loss\", \"electrical supply cut\"], \"lexical_variants\": [\"the power supply to the lathe will be cut off\", \"the lathe will lose power\", \"the lathe will be powered down\", \"power supply cut to the lathe\"], \"definition\": \"An event in which the electrical power supplied to a lathe machine is interrupted, causing the machine to stop operating.\", \"ontology_hints\": [\"FeatureOfInterest: lathe\", \"ObservableProperty: power supply status\", \"TemporalEntity: interval of power cut\", \"SpatialObject: lathe location\", \"ProductionLine: cell containing lathe\", \"causes: lathe shutdown\", \"affects: lathe operation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00021",
+        "text": "R.A.Z. (RESET) and deactivate the scheduled shutdown",
+        "label": "intervention"
+      },
+      "aliases": [
+        "R.A.Z. command",
+        "reset command",
+        "reset and cancel shutdown"
+      ],
+      "synonyms": [
+        "reset",
+        "deactivate shutdown",
+        "cancel scheduled shutdown",
+        "abort shutdown"
+      ],
+      "lexical_variants": [
+        "R.A.Z. (RESET)",
+        "reset and deactivate the scheduled shutdown",
+        "reset and cancel the scheduled shutdown"
+      ],
+      "alias_sources": {
+        "R.A.Z. command": [
+          "llm"
+        ],
+        "reset command": [
+          "llm"
+        ],
+        "reset and cancel shutdown": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "reset": [
+          "llm"
+        ],
+        "deactivate shutdown": [
+          "llm"
+        ],
+        "cancel scheduled shutdown": [
+          "llm"
+        ],
+        "abort shutdown": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "R.A.Z. (RESET)": [
+          "llm"
+        ],
+        "reset and deactivate the scheduled shutdown": [
+          "llm"
+        ],
+        "reset and cancel the scheduled shutdown": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention that issues a reset command to a manufacturing process or component and cancels a scheduled shutdown event, thereby preventing the automatic shutdown from occurring.",
+      "ontology_hints": [
+        "requires action",
+        "affects Temporal Entity (shutdown interval)",
+        "part-of Manufacturing Cell",
+        "handled by Operator",
+        "observed-by Monitoring System"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"R.A.Z. command\", \"reset command\", \"reset and cancel shutdown\"], \"synonyms\": [\"reset\", \"deactivate shutdown\", \"cancel scheduled shutdown\", \"abort shutdown\"], \"lexical_variants\": [\"R.A.Z. (RESET)\", \"reset and deactivate the scheduled shutdown\", \"reset and cancel the scheduled shutdown\"], \"definition\": \"An intervention that issues a reset command to a manufacturing process or component and cancels a scheduled shutdown event, thereby preventing the automatic shutdown from occurring.\", \"ontology_hints\": [\"requires action\", \"affects Temporal Entity (shutdown interval)\", \"part-of Manufacturing Cell\", \"handled by Operator\", \"observed-by Monitoring System\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00022",
+        "text": "MANDATORY MAINTENANCE",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "mandatory maintenance",
+        "mandatory maintenance alarm"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "mandatory maintenance": [
+          "llm"
+        ],
+        "mandatory maintenance alarm": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating that a maintenance task is required or overdue, prompting a maintenance event within a manufacturing cell or process.",
+      "ontology_hints": [
+        "Manufacturing Facility",
+        "Manufacturing Cell",
+        "Constraint",
+        "Maintenance Event",
+        "Maintenance Action",
+        "Maintenance Team",
+        "TRIGGERS",
+        "REQUIRES",
+        "HANDLED_BY",
+        "part-of",
+        "affects",
+        "observed-by",
+        "temporal"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"mandatory maintenance\", \"mandatory maintenance alarm\"], \"definition\": \"An alarm indicating that a maintenance task is required or overdue, prompting a maintenance event within a manufacturing cell or process.\", \"ontology_hints\": [\"Manufacturing Facility\", \"Manufacturing Cell\", \"Constraint\", \"Maintenance Event\", \"Maintenance Action\", \"Maintenance Team\", \"TRIGGERS\", \"REQUIRES\", \"HANDLED_BY\", \"part-of\", \"affects\", \"observed-by\", \"temporal\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00023",
+        "text": "time set by one or more counters concerning the maintenance has elapsed",
+        "label": "cause"
+      },
+      "aliases": [
+        "maintenance timer expiration",
+        "maintenance time‑out",
+        "maintenance countdown completion"
+      ],
+      "synonyms": [
+        "elapsed maintenance timer",
+        "maintenance timer elapsed",
+        "maintenance time limit reached",
+        "maintenance countdown finished"
+      ],
+      "lexical_variants": [
+        "maintenance timer",
+        "maintenance countdown timer",
+        "time counter for maintenance",
+        "maintenance time counter"
+      ],
+      "alias_sources": {
+        "maintenance timer expiration": [
+          "llm"
+        ],
+        "maintenance time‑out": [
+          "llm"
+        ],
+        "maintenance countdown completion": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "elapsed maintenance timer": [
+          "llm"
+        ],
+        "maintenance timer elapsed": [
+          "llm"
+        ],
+        "maintenance time limit reached": [
+          "llm"
+        ],
+        "maintenance countdown finished": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "maintenance timer": [
+          "llm"
+        ],
+        "maintenance countdown timer": [
+          "llm"
+        ],
+        "time counter for maintenance": [
+          "llm"
+        ],
+        "maintenance time counter": [
+          "llm"
+        ]
+      },
+      "definition": "The moment when the maintenance timer, set by one or more counters, has elapsed, thereby triggering a mandatory maintenance alarm.",
+      "ontology_hints": [
+        "Constraint",
+        "Manufacturing Process",
+        "Manufacturing Cell",
+        "Technician",
+        "Alarm",
+        "Maintenance Event",
+        "TRIGGERS",
+        "CAUSES",
+        "REQUIRES",
+        "HANDLED_BY"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"maintenance timer expiration\", \"maintenance time‑out\", \"maintenance countdown completion\"], \"synonyms\": [\"elapsed maintenance timer\", \"maintenance timer elapsed\", \"maintenance time limit reached\", \"maintenance countdown finished\"], \"lexical_variants\": [\"maintenance timer\", \"maintenance countdown timer\", \"time counter for maintenance\", \"maintenance time counter\"], \"definition\": \"The moment when the maintenance timer, set by one or more counters, has elapsed, thereby triggering a mandatory maintenance alarm.\", \"ontology_hints\": [\"Constraint\", \"Manufacturing Process\", \"Manufacturing Cell\", \"Technician\", \"Alarm\", \"Maintenance Event\", \"TRIGGERS\", \"CAUSES\", \"REQUIRES\", \"HANDLED_BY\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00024",
+        "text": "Carry out the maintenance operations for the applications concerned",
+        "label": "intervention"
+      },
+      "aliases": [
+        "maintenance execution",
+        "maintenance operation",
+        "maintenance activity"
+      ],
+      "synonyms": [
+        "perform maintenance tasks on the relevant applications",
+        "execute maintenance procedures for the concerned applications",
+        "carry out maintenance activities for the affected applications"
+      ],
+      "lexical_variants": [
+        "carry out maintenance operations",
+        "perform maintenance operations",
+        "execute maintenance operations"
+      ],
+      "alias_sources": {
+        "maintenance execution": [
+          "llm"
+        ],
+        "maintenance operation": [
+          "llm"
+        ],
+        "maintenance activity": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "perform maintenance tasks on the relevant applications": [
+          "llm"
+        ],
+        "execute maintenance procedures for the concerned applications": [
+          "llm"
+        ],
+        "carry out maintenance activities for the affected applications": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "carry out maintenance operations": [
+          "llm"
+        ],
+        "perform maintenance operations": [
+          "llm"
+        ],
+        "execute maintenance operations": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention that involves executing maintenance tasks on specified applications to resolve maintenance alarms within a manufacturing environment.",
+      "ontology_hints": [
+        "performed_by: Operator",
+        "applies_to: Feature of Interest",
+        "occurs_in: Production Line or Manufacturing Facility",
+        "triggered_by: Maintenance Alarm",
+        "handled_by: Maintenance Team",
+        "references: Maintenance Manual",
+        "references: Maintenance Schedule",
+        "references: Maintenance Log",
+        "affects: Application",
+        "observed_by: Observation",
+        "requires: Maintenance Plan",
+        "part_of: Maintenance Process",
+        "causes: Resolved Alarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"maintenance execution\", \"maintenance operation\", \"maintenance activity\"], \"synonyms\": [\"perform maintenance tasks on the relevant applications\", \"execute maintenance procedures for the concerned applications\", \"carry out maintenance activities for the affected applications\"], \"lexical_variants\": [\"carry out maintenance operations\", \"perform maintenance operations\", \"execute maintenance operations\"], \"definition\": \"An intervention that involves executing maintenance tasks on specified applications to resolve maintenance alarms within a manufacturing environment.\", \"ontology_hints\": [\"performed_by: Operator\", \"applies_to: Feature of Interest\", \"occurs_in: Production Line or Manufacturing Facility\", \"triggered_by: Maintenance Alarm\", \"handled_by: Maintenance Team\", \"references: Maintenance Manual\", \"references: Maintenance Schedule\", \"references: Maintenance Log\", \"affects: Application\", \"observed_by: Observation\", \"requires: Maintenance Plan\", \"part_of: Maintenance Process\", \"causes: Resolved Alarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00025",
+        "text": "has detected",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "has detected"
+      ],
+      "synonyms": [
+        "has identified",
+        "has observed",
+        "has sensed"
+      ],
+      "lexical_variants": [
+        "detects",
+        "detected",
+        "detecting"
+      ],
+      "alias_sources": {
+        "has detected": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "has identified": [
+          "llm"
+        ],
+        "has observed": [
+          "llm"
+        ],
+        "has sensed": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "detects": [
+          "llm"
+        ],
+        "detected": [
+          "llm"
+        ],
+        "detecting": [
+          "llm"
+        ]
+      },
+      "definition": "The relation \"has detected\" indicates that an observing system (e.g., a sensor or monitoring process) has observed, identified, or sensed a feature of interest, cause, or product within a manufacturing environment.",
+      "ontology_hints": [
+        "detection",
+        "observation",
+        "monitoring",
+        "sensor",
+        "alarm",
+        "event",
+        "cause",
+        "feature of interest",
+        "spatial object",
+        "product"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"has detected\"], \"synonyms\": [\"has identified\", \"has observed\", \"has sensed\"], \"lexical_variants\": [\"detects\", \"detected\", \"detecting\"], \"definition\": \"The relation \\\"has detected\\\" indicates that an observing system (e.g., a sensor or monitoring process) has observed, identified, or sensed a feature of interest, cause, or product within a manufacturing environment.\", \"ontology_hints\": [\"detection\", \"observation\", \"monitoring\", \"sensor\", \"alarm\", \"event\", \"cause\", \"feature of interest\", \"spatial object\", \"product\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00026",
+        "text": "causes",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa",
+        "Causes"
+      ],
+      "synonyms": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa"
+      ],
+      "lexical_variants": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa"
+      ],
+      "alias_sources": {
+        "cause": [
+          "wordnet",
+          "llm"
+        ],
+        "reason": [
+          "wordnet",
+          "llm"
+        ],
+        "grounds": [
+          "wordnet",
+          "llm"
+        ],
+        "campaign": [
+          "wordnet"
+        ],
+        "crusade": [
+          "wordnet"
+        ],
+        "drive": [
+          "wordnet"
+        ],
+        "movement": [
+          "wordnet"
+        ],
+        "effort": [
+          "wordnet"
+        ],
+        "causal agent": [
+          "wordnet",
+          "llm"
+        ],
+        "causal agency": [
+          "wordnet",
+          "llm"
+        ],
+        "lawsuit": [
+          "wordnet"
+        ],
+        "suit": [
+          "wordnet"
+        ],
+        "case": [
+          "wordnet"
+        ],
+        "causa": [
+          "wordnet"
+        ],
+        "Causes": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "cause": [
+          "wordnet",
+          "llm"
+        ],
+        "reason": [
+          "wordnet",
+          "llm"
+        ],
+        "grounds": [
+          "wordnet",
+          "llm"
+        ],
+        "campaign": [
+          "wordnet"
+        ],
+        "crusade": [
+          "wordnet"
+        ],
+        "drive": [
+          "wordnet"
+        ],
+        "movement": [
+          "wordnet"
+        ],
+        "effort": [
+          "wordnet"
+        ],
+        "causal agent": [
+          "wordnet",
+          "llm"
+        ],
+        "causal agency": [
+          "wordnet",
+          "llm"
+        ],
+        "lawsuit": [
+          "wordnet"
+        ],
+        "suit": [
+          "wordnet"
+        ],
+        "case": [
+          "wordnet"
+        ],
+        "causa": [
+          "wordnet"
+        ]
+      },
+      "lexical_variant_sources": {
+        "cause": [
+          "wordnet",
+          "llm"
+        ],
+        "reason": [
+          "wordnet",
+          "llm"
+        ],
+        "grounds": [
+          "wordnet",
+          "llm"
+        ],
+        "campaign": [
+          "wordnet"
+        ],
+        "crusade": [
+          "wordnet"
+        ],
+        "drive": [
+          "wordnet"
+        ],
+        "movement": [
+          "wordnet"
+        ],
+        "effort": [
+          "wordnet"
+        ],
+        "causal agent": [
+          "wordnet",
+          "llm"
+        ],
+        "causal agency": [
+          "wordnet",
+          "llm"
+        ],
+        "lawsuit": [
+          "wordnet"
+        ],
+        "suit": [
+          "wordnet"
+        ],
+        "case": [
+          "wordnet"
+        ],
+        "causa": [
+          "wordnet"
+        ]
+      },
+      "definition": "An event or factor that produces an effect or is responsible for a situation in a manufacturing system.",
+      "ontology_hints": [
+        "<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause>",
+        "has cause property",
+        "Cause class"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "events that provide the generative force that is the origin of something",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a justification for something existing or happening",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a series of actions advancing a principle or tending toward a particular end",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "any entity that produces an effect or is responsible for events or results",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a comprehensive term for any proceeding in a court of law whereby an individual seeks a legal remedy",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Causes, or causality, is the relationship between one event and another. It may also refer to:\n\nCauses (band), an indie band based in the Netherlands\nCauses (company), an online company",
+          "reference": "https://en.wikipedia.org/wiki/Causes"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"cause\", \"reason\", \"grounds\", \"causal agent\", \"causal agency\"], \"synonyms\": [\"cause\", \"reason\", \"grounds\", \"causal agent\", \"causal agency\"], \"lexical_variants\": [\"cause\", \"reason\", \"grounds\", \"causal agent\", \"causal agency\"], \"definition\": \"An event or factor that produces an effect or is responsible for a situation in a manufacturing system.\", \"ontology_hints\": [\"<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause>\", \"has cause property\", \"Cause class\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00027",
+        "text": "responsible for",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "in charge of"
+      ],
+      "synonyms": [
+        "accountable for",
+        "liable for"
+      ],
+      "lexical_variants": [
+        "responsible for"
+      ],
+      "alias_sources": {
+        "in charge of": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "accountable for": [
+          "llm"
+        ],
+        "liable for": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for": [
+          "llm"
+        ]
+      },
+      "definition": "A relation indicating that an entity has the duty or obligation to perform or oversee a particular action, outcome, or intervention.",
+      "ontology_hints": [
+        "Links an actor (e.g., Resource, Platform, Sensor) to the responsibility for an intervention or outcome.",
+        "In SOSA/SSN, a Platform hosts a Sensor, which performs observations producing Results; the Platform is responsible for the Sensor, and the Sensor is responsible for the Result.",
+        "A Resource can be responsible for a Platform or a manufacturing process.",
+        "A Sensor is responsible for observing an Observable Property."
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"in charge of\"], \"synonyms\": [\"accountable for\", \"liable for\"], \"lexical_variants\": [\"responsible for\"], \"definition\": \"A relation indicating that an entity has the duty or obligation to perform or oversee a particular action, outcome, or intervention.\", \"ontology_hints\": [\"Links an actor (e.g., Resource, Platform, Sensor) to the responsibility for an intervention or outcome.\", \"In SOSA/SSN, a Platform hosts a Sensor, which performs observations producing Results; the Platform is responsible for the Sensor, and the Sensor is responsible for the Result.\", \"A Resource can be responsible for a Platform or a manufacturing process.\", \"A Sensor is responsible for observing an Observable Property.\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00028",
+        "text": "has detected that the feed rate trimmer is set to a percentage other than 100%",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An observation indicating that the feed rate trimmer, an observable property of a feature of interest, is configured to a value other than 100%.",
+      "ontology_hints": [
+        "ObservationEvent",
+        "SensorDetection",
+        "DeviationFromNominal",
+        "NonStandardSetting",
+        "ObservableProperty",
+        "FeatureOfInterest",
+        "ManufacturingProcess",
+        "SituationS10",
+        "TemporalEntity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An observation indicating that the feed rate trimmer, an observable property of a feature of interest, is configured to a value other than 100%.\", \"ontology_hints\": [\"ObservationEvent\", \"SensorDetection\", \"DeviationFromNominal\", \"NonStandardSetting\", \"ObservableProperty\", \"FeatureOfInterest\", \"ManufacturingProcess\", \"SituationS10\", \"TemporalEntity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00029",
+        "text": "has detected a tool breakage",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "tool breakage detection",
+        "tool breakage identified",
+        "tool failure detected"
+      ],
+      "synonyms": [
+        "detected tool failure",
+        "identified tool breakage",
+        "tool breakage detected"
+      ],
+      "lexical_variants": [
+        "has detected a tool breakage",
+        "has detected tool breakage",
+        "detected a tool breakage",
+        "detected tool breakage"
+      ],
+      "alias_sources": {
+        "tool breakage detection": [
+          "llm"
+        ],
+        "tool breakage identified": [
+          "llm"
+        ],
+        "tool failure detected": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "detected tool failure": [
+          "llm"
+        ],
+        "identified tool breakage": [
+          "llm"
+        ],
+        "tool breakage detected": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "has detected a tool breakage": [
+          "llm"
+        ],
+        "has detected tool breakage": [
+          "llm"
+        ],
+        "detected a tool breakage": [
+          "llm"
+        ],
+        "detected tool breakage": [
+          "llm"
+        ]
+      },
+      "definition": "An action performed by a monitoring system or operator in which a tool is observed to have broken, typically triggering maintenance or shutdown procedures.",
+      "ontology_hints": [
+        "Action",
+        "FeatureOfInterest",
+        "TemporalEntity",
+        "ManufacturingFacility",
+        "SpatialObject"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"tool breakage detection\", \"tool breakage identified\", \"tool failure detected\"], \"synonyms\": [\"detected tool failure\", \"identified tool breakage\", \"tool breakage detected\"], \"lexical_variants\": [\"has detected a tool breakage\", \"has detected tool breakage\", \"detected a tool breakage\", \"detected tool breakage\"], \"definition\": \"An action performed by a monitoring system or operator in which a tool is observed to have broken, typically triggering maintenance or shutdown procedures.\", \"ontology_hints\": [\"Action\", \"FeatureOfInterest\", \"TemporalEntity\", \"ManufacturingFacility\", \"SpatialObject\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00030",
+        "text": "has detected tool wear",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An event where a sensor observes wear on a tool, indicating a potential failure condition.",
+      "ontology_hints": [
+        "ToolWearDetection is an Observation event.",
+        "Observed by Sensor.",
+        "Occurs at a TemporalEntity.",
+        "Involves SpatialObject (tool).",
+        "Triggers Action (maintenance) by Operator."
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An event where a sensor observes wear on a tool, indicating a potential failure condition.\", \"ontology_hints\": [\"ToolWearDetection is an Observation event.\", \"Observed by Sensor.\", \"Occurs at a TemporalEntity.\", \"Involves SpatialObject (tool).\", \"Triggers Action (maintenance) by Operator.\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00031",
+        "text": "has detected the absence of a tool",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "tool absence detection",
+        "missing tool detection"
+      ],
+      "synonyms": [
+        "identified missing tool",
+        "detected tool not present",
+        "noticed tool absence"
+      ],
+      "lexical_variants": [
+        "has detected the absence of a tool",
+        "has detected that a tool is missing",
+        "has observed the tool is absent"
+      ],
+      "alias_sources": {
+        "tool absence detection": [
+          "llm"
+        ],
+        "missing tool detection": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "identified missing tool": [
+          "llm"
+        ],
+        "detected tool not present": [
+          "llm"
+        ],
+        "noticed tool absence": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "has detected the absence of a tool": [
+          "llm"
+        ],
+        "has detected that a tool is missing": [
+          "llm"
+        ],
+        "has observed the tool is absent": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which a technician observes that a required tool is missing from a manufacturing cell, recording the absence as an observable property at a specific time.",
+      "ontology_hints": [
+        "Technician --detects--> Absence of Tool",
+        "Tool --isFeatureOf--> Manufacturing Cell",
+        "Absence --isObservablePropertyOf--> Tool",
+        "Detection --occursAt--> Temporal Entity",
+        "Detection --triggers--> Maintenance Intervention"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"tool absence detection\", \"missing tool detection\"], \"synonyms\": [\"identified missing tool\", \"detected tool not present\", \"noticed tool absence\"], \"lexical_variants\": [\"has detected the absence of a tool\", \"has detected that a tool is missing\", \"has observed the tool is absent\"], \"definition\": \"An event in which a technician observes that a required tool is missing from a manufacturing cell, recording the absence as an observable property at a specific time.\", \"ontology_hints\": [\"Technician --detects--> Absence of Tool\", \"Tool --isFeatureOf--> Manufacturing Cell\", \"Absence --isObservablePropertyOf--> Tool\", \"Detection --occursAt--> Temporal Entity\", \"Detection --triggers--> Maintenance Intervention\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00032",
+        "text": "has detected that the established time or the target production has been reached",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "time or target production reached detection"
+      ],
+      "synonyms": [
+        "has observed that the scheduled time or target production has been met",
+        "has detected that the set time or target output has been achieved"
+      ],
+      "lexical_variants": [
+        "has detected that the established time or target production has been reached"
+      ],
+      "alias_sources": {
+        "time or target production reached detection": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "has observed that the scheduled time or target production has been met": [
+          "llm"
+        ],
+        "has detected that the set time or target output has been achieved": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "has detected that the established time or target production has been reached": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which a monitoring system records that the scheduled time or the production target for a process on a production line has been achieved.",
+      "ontology_hints": [
+        "TRIGGERS: production completion event",
+        "REQUIRES: sensor monitoring",
+        "HANDLED_BY: operator",
+        "REFERENCES: scheduled time, target production",
+        "part-of: manufacturing process",
+        "affects: production line",
+        "observed-by: monitoring system",
+        "temporal: scheduled time",
+        "causes: production completion",
+        "has observable property: time, production count"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"time or target production reached detection\"], \"synonyms\": [\"has observed that the scheduled time or target production has been met\", \"has detected that the set time or target output has been achieved\"], \"lexical_variants\": [\"has detected that the established time or target production has been reached\"], \"definition\": \"An event in which a monitoring system records that the scheduled time or the production target for a process on a production line has been achieved.\", \"ontology_hints\": [\"TRIGGERS: production completion event\", \"REQUIRES: sensor monitoring\", \"HANDLED_BY: operator\", \"REFERENCES: scheduled time, target production\", \"part-of: manufacturing process\", \"affects: production line\", \"observed-by: monitoring system\", \"temporal: scheduled time\", \"causes: production completion\", \"has observable property: time, production count\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00033",
+        "text": "has detected that the lathe is in alarm condition with automatic stop activated",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "has detected"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "has detected": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An event where a monitoring system records that a lathe has entered an alarm state, triggering an automatic shutdown.",
+      "ontology_hints": [
+        "TRIGGERS: alarm condition",
+        "REQUIRES: automatic stop",
+        "HANDLED_BY: technician",
+        "PART_OF: production line",
+        "OBSERVED_BY: monitoring system",
+        "AFFECTS: lathe operation",
+        "TEMPORAL: timestamp",
+        "ASSOCIATED_CONSTRAINT: safe operating limits",
+        "LOGISTIC_PROCESS: maintenance"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"has detected\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An event where a monitoring system records that a lathe has entered an alarm state, triggering an automatic shutdown.\", \"ontology_hints\": [\"TRIGGERS: alarm condition\", \"REQUIRES: automatic stop\", \"HANDLED_BY: technician\", \"PART_OF: production line\", \"OBSERVED_BY: monitoring system\", \"AFFECTS: lathe operation\", \"TEMPORAL: timestamp\", \"ASSOCIATED_CONSTRAINT: safe operating limits\", \"LOGISTIC_PROCESS: maintenance\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00034",
+        "text": "has detected that the time set by one or more counters concerning the maintenance has elapsed",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "maintenance timer expiration detection",
+        "maintenance counter expiration detection"
+      ],
+      "synonyms": [
+        "maintenance timer expiration detection",
+        "maintenance counter expiration detection"
+      ],
+      "lexical_variants": [
+        "maintenance timer elapsed",
+        "maintenance counter expired",
+        "maintenance due time reached"
+      ],
+      "alias_sources": {
+        "maintenance timer expiration detection": [
+          "llm"
+        ],
+        "maintenance counter expiration detection": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "maintenance timer expiration detection": [
+          "llm"
+        ],
+        "maintenance counter expiration detection": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "maintenance timer elapsed": [
+          "llm"
+        ],
+        "maintenance counter expired": [
+          "llm"
+        ],
+        "maintenance due time reached": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which a monitoring system detects that one or more maintenance timers (counters) have reached their elapsed time, indicating that maintenance is due or overdue.",
+      "ontology_hints": [
+        "triggers MaintenanceAlarm",
+        "causes MaintenanceDueEvent",
+        "requires MaintenanceIntervention",
+        "handled_by Technician",
+        "part_of ManufacturingProcess",
+        "affects ProductionLine",
+        "observed_by MaintenanceSystem"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"maintenance timer expiration detection\", \"maintenance counter expiration detection\"], \"synonyms\": [\"maintenance timer expiration detection\", \"maintenance counter expiration detection\"], \"lexical_variants\": [\"maintenance timer elapsed\", \"maintenance counter expired\", \"maintenance due time reached\"], \"definition\": \"An event in which a monitoring system detects that one or more maintenance timers (counters) have reached their elapsed time, indicating that maintenance is due or overdue.\", \"ontology_hints\": [\"triggers MaintenanceAlarm\", \"causes MaintenanceDueEvent\", \"requires MaintenanceIntervention\", \"handled_by Technician\", \"part_of ManufacturingProcess\", \"affects ProductionLine\", \"observed_by MaintenanceSystem\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}
