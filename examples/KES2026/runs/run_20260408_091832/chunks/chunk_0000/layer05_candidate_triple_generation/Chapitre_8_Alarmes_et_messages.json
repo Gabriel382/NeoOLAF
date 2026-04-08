@@ -1,0 +1,126 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 4,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "ActiveEmergencyEvent",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00001",
+        "label": "alarms and messages of the CNC"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "Open side guard alarm",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text indicates that the alarms listed (including ActiveEmergencyEvent and Open side guard alarm) are part of the category \"alarms and messages of the CNC\", implying a grouping relation between them.",
+      "confidence": 0.75,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 81,
+          "chunk_end_char": 111,
+          "doc_start_char": 81,
+          "doc_end_char": 111,
+          "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "ActiveEmergencyEvent",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00012",
+        "label": "recognized with the key 'RESET PRG'"
+      },
+      "object": {
+        "id": "cand_s_00000",
+        "label": "program rewind",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that an alarm can be recognized with the key 'RESET PRG', which triggers a program rewind event.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00002",
+      "subject": {
+        "id": "cand_r_00038",
+        "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00038",
+        "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP"
+      },
+      "object": {
+        "id": "cand_s_00003",
+        "label": "Check and reset circuit breakers and/or thermomagnetic switches",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that the alarm THERMOMAGNET SWITCHES. END OF CYCLE STOP triggers the intervention \"Check and reset circuit breakers and/or thermomagnetic switches\".",
+      "confidence": 0.9,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4566,
+          "chunk_end_char": 4606,
+          "doc_start_char": 4566,
+          "doc_end_char": 4606,
+          "snippet": ", input X2.5\nresponsible for\noperator/maintenance officer\nAlarm No.: 1008\ntext: THERMOMAGNET SWITCHES. END OF CYCLE STOP\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00003",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "ActiveEmergencyEvent",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00043",
+        "label": "causes"
+      },
+      "object": {
+        "id": "cand_s_00000",
+        "label": "program rewind",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that the ACTIVE EMERGENCY alarm triggers a program rewind (RESET PRG) when the alarm is displayed, indicating that the alarm causes the program to be rewound.",
+      "confidence": 0.88,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    }
+  ]
+}

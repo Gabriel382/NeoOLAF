@@ -1,0 +1,1695 @@
+{
+  "layer": "layer03_candidate_typing_resolution",
+  "entity_candidates": [
+    {
+      "candidate_id": "cand_e_00000",
+      "canonical_label": "alarm identifier",
+      "normalized_label": "alarm identifier",
+      "candidate_type": "entity",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm identifier",
+        "Platform",
+        "Situation S10",
+        "Manufacturing Process",
+        "Spatial Object",
+        "Manager",
+        "is a Situation S10",
+        "occurs on a Platform",
+        "occurs during a Manufacturing Process",
+        "located on a Spatial Object",
+        "handled by a Manager",
+        "Alarm",
+        "AlarmIdentifier",
+        "HighWateringLiquidTemperatureAlarm",
+        "ManufacturingProcessEvent",
+        "PlatformComponent",
+        "SituationS10",
+        "SituationS11",
+        "SituationS12",
+        "PSM feeder fault alarm",
+        "Situation S11",
+        "Situation S13"
+      ],
+      "definition": "Unique identifier for the sliding door alarm.",
+      "aliases": [
+        "Alarm 1008",
+        "Alarm No. 1008",
+        "Alarm #1008",
+        "Alarm 1012",
+        "Alarm #1012",
+        "Alarm 1013",
+        "Alarm No. 1013"
+      ],
+      "synonyms": [
+        "Thermomagnet Switches End of Cycle Stop Alarm",
+        "High watering liquid temperature alarm",
+        "PSM feeder fault alarm",
+        "feeder fault alarm"
+      ],
+      "lexical_variants": [
+        "Alarm No. 1008",
+        "Alarm #1008",
+        "Alarm 1008",
+        "Alarm No. 1012",
+        "Alarm No: 1012",
+        "Alarm No.: 1012",
+        "Alarm No.: 1013",
+        "Alarm No. 1013",
+        "Alarm No: 1013",
+        "Alarm No.1013",
+        "Alarm No:1013",
+        "Alarm 1013"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00025",
+          "text": "Alarm No.: 1005",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. intervention: Release the door release button before ordering the start of the cycle. See page 19 of the electrical diagram, entry X3.2 responsible for the intervention: "
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00026",
+          "text": "Alarm No.: 1008",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 719,
+              "chunk_end_char": 734,
+              "doc_start_char": 5719,
+              "doc_end_char": 5734,
+              "snippet": "gram, entry X2.5 responsible for the intervention: operator/maintenance person\n\nAlarm no.: 1008 text: THERMOMAGNET SWITCHES. END OF CYCLE STOP type: Standard: Optional: effect"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00029",
+          "text": "Alarm No.: 1012",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 1943,
+              "chunk_end_char": 1958,
+              "doc_start_char": 6943,
+              "doc_end_char": 6958,
+              "snippet": "ctrical diagram and\nthe indication on the refrigerator display.\nresponsible for\nAlarm No.: 1012\ntext: HIGH WATERING FLUID TEMPERATURE\ntype: Standard: Optional:\neffect: Alarm w"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00030",
+          "text": "Alarm No.: 1013",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. intervention: Release the door release button before ordering the start of the cycle. See page 19 of the electrical diagram, entry X3.2 responsible for the intervention: "
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "relation_candidates": [
+    {
+      "candidate_id": "cand_r_00000",
+      "canonical_label": "Alarm with immediate and controlled stop",
+      "normalized_label": "alarm with immediate and controlled stop",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "hasFeatureOfInterest",
+        "inSituationS1",
+        "inSituationS2",
+        "inSituationS3",
+        "inSituationS4",
+        "immediateStop"
+      ],
+      "definition": "An alarm event that triggers an immediate, controlled shutdown of the machine.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00000",
+          "text": "Alarm with immediate and controlled stop",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 11,
+              "chunk_end_char": 51,
+              "doc_start_char": 5011,
+              "doc_end_char": 5051,
+              "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00001",
+      "canonical_label": "Alarm with stop at the end of the cycle",
+      "normalized_label": "alarm with stop at the end of the cycle",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmEvent",
+        "CycleCompletionEvent",
+        "ManufacturingCell",
+        "Workstation",
+        "ObservableProperty",
+        "TemporalEntity",
+        "has feature of interest",
+        "detected by",
+        "references",
+        "requires shutdown procedure"
+      ],
+      "definition": "An alarm event that is triggered when a manufacturing cycle finishes, indicating that the machine has stopped.",
+      "aliases": [
+        "End‑of‑cycle stop alarm",
+        "Cycle completion stop alarm",
+        "Alarm on cycle termination"
+      ],
+      "synonyms": [
+        "Cycle end alarm",
+        "Stop alarm at cycle end"
+      ],
+      "lexical_variants": [
+        "stop alarm at end of cycle",
+        "alarm triggered by cycle stop",
+        "alarm upon cycle completion"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00001",
+          "text": "Alarm with stop at the end of the cycle",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 816,
+              "chunk_end_char": 855,
+              "doc_start_char": 5816,
+              "doc_end_char": 5855,
+              "snippet": "ext: THERMOMAGNET SWITCHES. END OF CYCLE STOP type: Standard: Optional: effect: Alarm with stop at the end of the cycle cause: A thermal switch for the auxiliary motors has been triggered, with low p"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00002",
+      "canonical_label": "Alarm with immediate and controlled shutdown",
+      "normalized_label": "alarm with immediate and controlled shutdown",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmEvent",
+        "ShutdownEvent",
+        "ImmediateShutdown",
+        "ControlledShutdown",
+        "EmergencyShutdown",
+        "TRIGGERS: ShutdownState",
+        "REQUIRES: EmergencyShutdownProcedure",
+        "HANDLED_BY: Operator",
+        "REFERENCES: MachineManualSectionX"
+      ],
+      "definition": "An alarm event that initiates an immediate, controlled shutdown of a machine or process to prevent damage, protect personnel, or comply with safety regulations.",
+      "aliases": [
+        "Alarm with immediate and controlled shutdown"
+      ],
+      "synonyms": [
+        "Immediate shutdown alarm",
+        "Controlled shutdown alarm",
+        "Emergency shutdown alarm",
+        "Alarm-triggered shutdown"
+      ],
+      "lexical_variants": [
+        "Alarm with immediate controlled shutdown",
+        "Alarm with immediate and controlled shutdown",
+        "Alarm that triggers immediate controlled shutdown"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00002",
+          "text": "Alarm with immediate and controlled shutdown",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 1254,
+              "chunk_end_char": 1298,
+              "doc_start_char": 6254,
+              "doc_end_char": 6298,
+              "snippet": "text: THERMOMAGNETIC SWITCHES IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nA thermal switch on the motors was triggered\ncause:\nauxiliaries, with high prio"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00003",
+      "canonical_label": "Alarm with shutdown at the end of the cycle",
+      "normalized_label": "alarm with shutdown at the end of the cycle",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm event is an ObservableProperty observed on a FeatureOfInterest within a ManufacturingCell, occurring at a TemporalEntity representing cycle end, and is part of a Situation describing shutdown context.",
+        "TRIGGERS shutdown",
+        "CAUSED by cycle end",
+        "REFERENCES cycle end",
+        "has feature of interest: machine or process",
+        "interval finished by: cycle end interval",
+        "situation time: time of shutdown"
+      ],
+      "definition": "An alarm event that triggers a shutdown at the conclusion of a manufacturing cycle.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "shutdown alarm at cycle end",
+        "cycle end shutdown alarm",
+        "alarm indicating shutdown at cycle end"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00003",
+          "text": "Alarm with shutdown at the end of the cycle",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 1629,
+              "chunk_end_char": 1672,
+              "doc_start_char": 6629,
+              "doc_end_char": 6672,
+              "snippet": "larm No.: 1011\ntext: LOW WATERING LIQUID FLOW\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle.\nInsufficient quantity of coolant in the water circuit:\nwise of the linear moto"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00004",
+      "canonical_label": "Alarm with immediate and controlled shutdown, deactivation of authorization",
+      "normalized_label": "alarm with immediate and controlled shutdown deactivation of authorization",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Production Line",
+        "Manufacturing Facility",
+        "Manufacturing Cell",
+        "Manufacturing Process",
+        "Feature of Interest"
+      ],
+      "definition": "An alarm that triggers an immediate and controlled shutdown of the machine and deactivates authorization.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00004",
+          "text": "Alarm with immediate and controlled shutdown, deactivation of authorization",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 3730,
+              "chunk_end_char": 3805,
+              "doc_start_char": 8730,
+              "doc_end_char": 8805,
+              "snippet": "or maintenance\n\nalarm no: 1013\ntext: PSM FEEDER FAULT\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, deactivation of authorizationeffect:\nhardware installation of the axes/spindles feeder\ncause: Hardware proble"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00005",
+      "canonical_label": "opening of the hardware authorization to the axis/spindle feeder",
+      "normalized_label": "opening of the hardware authorization to the axisspindle feeder",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Event type within a Production Line context",
+        "Transition or state change in a specialized Situation (e.g., Situation S3)",
+        "Related to machine authorization and control systems"
+      ],
+      "definition": "The event of granting or enabling hardware authorization for the axis/spindle feeder, allowing it to operate within a production line.",
+      "aliases": [
+        "hardware authorization opening for axis/spindle feeder",
+        "unlocking hardware authorization for axis/spindle feeder"
+      ],
+      "synonyms": [
+        "opening of hardware authorization to axis/spindle feeder",
+        "granting hardware authorization to axis/spindle feeder"
+      ],
+      "lexical_variants": [
+        "opening of the hardware authorization to the axis/spindle feeder",
+        "opening of the hardware authorization for the axis/spindle feeder"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00005",
+          "text": "opening of the hardware authorization to the axis/spindle feeder",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 429,
+              "chunk_end_char": 493,
+              "doc_start_char": 5429,
+              "doc_end_char": 5493,
+              "snippet": "PEN type: Standard: Optional: effect: Alarm with immediate and controlled stop, opening of the hardware authorization to the axis/spindle feeder cause: The side protections are open. intervention: Check that the side protect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00006",
+      "canonical_label": "deactivation of authorization",
+      "normalized_label": "deactivation of authorization",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Action",
+        "Feature of Interest",
+        "Observation",
+        "Situation S1",
+        "Production Line",
+        "Manufacturing Facility"
+      ],
+      "definition": "The process of disabling or revoking authorization, resulting in the loss of access or permission within a manufacturing system.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00006",
+          "text": "deactivation of authorization",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 3776,
+              "chunk_end_char": 3805,
+              "doc_start_char": 8776,
+              "doc_end_char": 8805,
+              "snippet": "R FAULT\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, deactivation of authorizationeffect:\nhardware installation of the axes/spindles feeder\ncause: Hardware proble"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00007",
+      "canonical_label": "thermal switch for the auxiliary motors has been triggered",
+      "normalized_label": "thermal switch for the auxiliary motors has been triggered",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observable Property: thermal switch",
+        "Feature of Interest: auxiliary motors",
+        "Event: trigger",
+        "Requires: Technician",
+        "Temporal Entity: time of trigger"
+      ],
+      "definition": "An event in which the thermal switch monitoring the auxiliary motors activates due to excessive temperature, indicating a temperature‑related fault affecting those motors.",
+      "aliases": [
+        "auxiliary motor thermal switch activation",
+        "thermal switch activation on auxiliary motors",
+        "auxiliary motor overheating switch triggered"
+      ],
+      "synonyms": [
+        "thermal switch triggered",
+        "thermal switch activation",
+        "thermal switch alarm"
+      ],
+      "lexical_variants": [
+        "thermal switch for auxiliary motors has been triggered",
+        "auxiliary motors thermal switch has been triggered",
+        "thermal switch for the auxiliary motors has been triggered"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00007",
+          "text": "thermal switch for the auxiliary motors has been triggered",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 865,
+              "chunk_end_char": 923,
+              "doc_start_char": 5865,
+              "doc_end_char": 5923,
+              "snippet": "e: Standard: Optional: effect: Alarm with stop at the end of the cycle cause: A thermal switch for the auxiliary motors has been triggered, with low priority. intervention: Check and reset the circuit breakers and/or t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00008",
+      "canonical_label": "thermal switch on the motors was triggered",
+      "normalized_label": "thermal switch on the motors was triggered",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest: motor",
+        "ObservableProperty: thermal switch",
+        "HumanProcess: shutdown or maintenance",
+        "Manager: supervisor",
+        "TemporalEntity: event time",
+        "TRIGGERS: alarm",
+        "CAUSES: overheating",
+        "REQUIRES: maintenance action",
+        "HANDLED_BY: operator",
+        "DETECTED_BY: temperature sensor"
+      ],
+      "definition": "An event in which the thermal switch installed on a motor is activated, indicating that the motor has exceeded its temperature threshold and a fault condition has been detected.",
+      "aliases": [
+        "thermal switch activation",
+        "motor thermal switch tripped",
+        "motor thermal switch triggered"
+      ],
+      "synonyms": [
+        "thermal switch activation",
+        "motor thermal switch tripped",
+        "motor thermal switch triggered"
+      ],
+      "lexical_variants": [
+        "thermal switch on motor",
+        "motor thermal switch",
+        "thermal switch of motor"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00008",
+          "text": "thermal switch on the motors was triggered",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 1301,
+              "chunk_end_char": 1343,
+              "doc_start_char": 6301,
+              "doc_end_char": 6343,
+              "snippet": "ype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nA thermal switch on the motors was triggered\ncause:\nauxiliaries, with high priority.\nCheck and reset circuit breakers and/or"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00009",
+      "canonical_label": "Insufficient quantity of coolant in the water circuit",
+      "normalized_label": "insufficient quantity of coolant in the water circuit",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "SituationS1",
+        "SituationS2",
+        "SituationS3",
+        "SituationS4",
+        "FailureSymptom"
+      ],
+      "definition": "A condition where the coolant level in the water circuit is below the required threshold, potentially triggering a low coolant flow alarm and risking overheating or malfunction.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00009",
+          "text": "Insufficient quantity of coolant in the water circuit",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 1674,
+              "chunk_end_char": 1727,
+              "doc_start_char": 6674,
+              "doc_end_char": 6727,
+              "snippet": "type: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle.\nInsufficient quantity of coolant in the water circuit:\nwise of the linear motor.\nCheck the liquid level in the watering circuit.\ninte"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00010",
+      "canonical_label": "Insufficient quantity of coolant in the linear motor coolant circuit",
+      "normalized_label": "insufficient quantity of coolant in the linear motor coolant circuit",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Production Line",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4",
+        "Failure symptom"
+      ],
+      "definition": "A failure symptom indicating that the coolant level in the linear motor circuit is below the required threshold.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00010",
+          "text": "Insufficient quantity of coolant in the linear motor coolant circuit",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 2915,
+              "chunk_end_char": 2983,
+              "doc_start_char": 7915,
+              "doc_end_char": 7983,
+              "snippet": "Standard: Optional: effect: Alarm with shutdown at the end of the cycle. cause: Insufficient quantity of coolant in the linear motor coolant circuit. intervention: Check the liquid level in the watering circuit. Check the PLC X4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00011",
+      "canonical_label": "The refrigerator cannot lower the engine temperature",
+      "normalized_label": "the refrigerator cannot lower the engine temperature",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "failure symptom",
+        "Feature (refrigerator)",
+        "Observable Property (engine temperature)",
+        "Production Line",
+        "Manufacturing Cell",
+        "Temporal Entity (time of observation)"
+      ],
+      "definition": "A failure symptom indicating that the refrigeration system is unable to reduce the temperature of the engine, resulting in a high temperature alarm.",
+      "aliases": [
+        "Refrigerator fails to lower engine temperature",
+        "Refrigerator unable to reduce engine temperature",
+        "Refrigerator not lowering engine temperature"
+      ],
+      "synonyms": [
+        "Refrigerator cannot reduce engine temperature",
+        "Refrigerator fails to decrease engine temperature",
+        "Refrigerator is unable to lower engine temperature"
+      ],
+      "lexical_variants": [
+        "Refrigerator not reducing engine temperature",
+        "Refrigerator cannot lower the engine temperature",
+        "Refrigerator fails to lower the engine temperature"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00011",
+          "text": "The refrigerator cannot lower the engine temperature",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 2076,
+              "chunk_end_char": 2128,
+              "doc_start_char": 7076,
+              "doc_end_char": 7128,
+              "snippet": "type: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle.\nThe refrigerator cannot lower the engine temperature\ncause:\nlinear.\nCheck the correct operation of the refrigerator compressor.\ninte"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00012",
+      "canonical_label": "The refrigerator cannot lower the temperature of the linear motor",
+      "normalized_label": "the refrigerator cannot lower the temperature of the linear motor",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "has_feature_of_interest: linear motor",
+        "causes: overheating",
+        "requires: cooling system inspection",
+        "triggers: motor temperature alarm",
+        "handled_by: maintenance technician"
+      ],
+      "definition": "A failure symptom indicating that the refrigerator (cooling unit) is unable to reduce the temperature of the linear motor, potentially leading to overheating and triggering an alarm.",
+      "aliases": [
+        "refrigerator cooling failure",
+        "linear motor overheating due to cooling failure"
+      ],
+      "synonyms": [
+        "refrigerator fails to cool linear motor",
+        "cooling unit cannot lower temperature of linear motor"
+      ],
+      "lexical_variants": [
+        "refrigerator cannot lower temperature of linear motor",
+        "refrigerator fails to lower temperature of linear motor"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00012",
+          "text": "The refrigerator cannot lower the temperature of the linear motor",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 3356,
+              "chunk_end_char": 3421,
+              "doc_start_char": 8356,
+              "doc_end_char": 8421,
+              "snippet": "Standard: Optional: effect: Alarm with shutdown at the end of the cycle. cause: The refrigerator cannot lower the temperature of the linear motor. intervention: Check the correct operation of the refrigerator compressor. Chec"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00013",
+      "canonical_label": "Hardware problems with axes and spindles",
+      "normalized_label": "hardware problems with axes and spindles",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ObservableProperty",
+        "FailureSymptom",
+        "HardwareFault",
+        "MachineComponent",
+        "Axis",
+        "Spindle",
+        "ManufacturingProcess",
+        "HumanProcess",
+        "Situation S1",
+        "Situation S2"
+      ],
+      "definition": "Mechanical failures that affect the machine’s axes and spindle components, causing operational faults and triggering related alarms.",
+      "aliases": [
+        "Axis and spindle hardware problems",
+        "Hardware issues with axes and spindles"
+      ],
+      "synonyms": [
+        "Axis and spindle malfunctions",
+        "Mechanical issues with axes and spindles",
+        "Hardware faults in axes and spindles"
+      ],
+      "lexical_variants": [
+        "Hardware problems with axes and spindles",
+        "Hardware problems affecting axes and spindles"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00013",
+          "text": "Hardware problems with axes and spindles",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 3870,
+              "chunk_end_char": 3910,
+              "doc_start_char": 8870,
+              "doc_end_char": 8910,
+              "snippet": "f authorizationeffect:\nhardware installation of the axes/spindles feeder\ncause: Hardware problems with axes and spindles.\nNote the power supply error code marked A2831 and consult\nintervention: the Fa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00014",
+      "canonical_label": "power supply error code marked A2831",
+      "normalized_label": "power supply error code marked a2831",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ObservableProperty",
+        "TemporalEntity",
+        "Process",
+        "Operator",
+        "Platform",
+        "observedBy",
+        "occursAt",
+        "performedBy",
+        "hosts"
+      ],
+      "definition": "An error code (A2831) that indicates a fault in the power supply system of a machine.",
+      "aliases": [
+        "A2831",
+        "Power supply error code A2831"
+      ],
+      "synonyms": [
+        "power supply fault",
+        "power supply error"
+      ],
+      "lexical_variants": [
+        "error code A2831",
+        "A2831 error"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00014",
+          "text": "power supply error code marked A2831",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 3921,
+              "chunk_end_char": 3957,
+              "doc_start_char": 8921,
+              "doc_end_char": 8957,
+              "snippet": "axes/spindles feeder\ncause: Hardware problems with axes and spindles.\nNote the power supply error code marked A2831 and consult\nintervention: the Fanuc 160i-TB CNC service manual for more informa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00015",
+      "canonical_label": "fan or conditioner",
+      "normalized_label": "fan or conditioner",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine",
+        "Workstation",
+        "ProductionLine",
+        "ComponentOfMachine",
+        "CoolingDevice"
+      ],
+      "definition": "A device used to circulate air or provide cooling to prevent overheating of equipment, typically installed in cabinets or machinery.",
+      "aliases": [
+        "fan",
+        "air conditioner",
+        "cooling fan",
+        "air conditioning unit"
+      ],
+      "synonyms": [
+        "blower",
+        "ventilator"
+      ],
+      "lexical_variants": [
+        "fan",
+        "air conditioner",
+        "cooling unit"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00015",
+          "text": "fan or conditioner",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 4317,
+              "chunk_end_char": 4335,
+              "doc_start_char": 9317,
+              "doc_end_char": 9335,
+              "snippet": "editor does not work, the electrical cabinet is too hot.\nCheck the thermostat, fan or conditioner.\nintervention: See page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1\n="
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00016",
+      "canonical_label": "pressure of the pneumatic installation is not sufficient",
+      "normalized_label": "pressure of the pneumatic installation is not sufficient",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "belongs to Production Line context",
+        "observed in Situation S1, S2, or S3",
+        "associated with Feature of Interest: pneumatic installation",
+        "triggers low pressure alarm",
+        "requires maintenance intervention"
+      ],
+      "definition": "A failure symptom indicating that the pressure within the pneumatic installation is below the required threshold, potentially triggering a low pressure alarm.",
+      "aliases": [
+        "pneumatic pressure alarm",
+        "low pressure alarm"
+      ],
+      "synonyms": [
+        "low pneumatic pressure",
+        "insufficient pneumatic pressure",
+        "pneumatic pressure too low"
+      ],
+      "lexical_variants": [
+        "pneumatic installation pressure insufficient",
+        "pneumatic system pressure inadequate",
+        "pressure of pneumatic installation is inadequate"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00017",
+          "text": "pressure of the pneumatic installation is not sufficient",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 4553,
+              "chunk_end_char": 4609,
+              "doc_start_char": 9553,
+              "doc_end_char": 9609,
+              "snippet": "e: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe pressure of the pneumatic installation is not sufficient to\ncause: normal operation of the machine, or the pressure switch\nline is not s"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00017",
+      "canonical_label": "pressure switch line is not set correctly",
+      "normalized_label": "pressure switch line is not set correctly",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "belongs to: Production Line",
+        "part of: Manufacturing Cell",
+        "is a: Resource",
+        "has feature of interest: pressure switch line",
+        "has geometry representation",
+        "triggers alarm",
+        "causes abnormal state",
+        "requires intervention",
+        "handled by maintenance staff"
+      ],
+      "definition": "A failure symptom indicating that the pressure switch line is configured incorrectly, potentially leading to abnormal machine operation or safety hazards.",
+      "aliases": [
+        "pressure switch line misconfiguration",
+        "pressure switch line incorrectly set"
+      ],
+      "synonyms": [
+        "pressure switch line misconfigured",
+        "pressure switch line incorrectly set"
+      ],
+      "lexical_variants": [
+        "pressure switch line misconfigured",
+        "pressure switch line incorrectly set"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00018",
+          "text": "pressure switch line is not set correctly",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. intervention: Release the door release button before ordering the start of the cycle. See page 19 of the electrical diagram, entry X3.2 responsible for the intervention: "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00018",
+      "canonical_label": "cause",
+      "normalized_label": "cause",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Cause",
+        "Alarm",
+        "Failure",
+        "Machine",
+        "Sensor",
+        "Manager",
+        "has cause",
+        "TRIGGERS",
+        "CAUSES",
+        "REQUIRES",
+        "HANDLED_BY",
+        "REFERENCES",
+        "DETECTED_BY"
+      ],
+      "definition": "A factor or event responsible for the occurrence of a situation in a manufacturing system.",
+      "aliases": [
+        "cause",
+        "causes"
+      ],
+      "synonyms": [
+        "reason",
+        "origin",
+        "trigger"
+      ],
+      "lexical_variants": [
+        "cause",
+        "causes",
+        "caused by"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00019",
+          "text": "cause:",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 52,
+              "chunk_end_char": 58,
+              "doc_start_char": 5052,
+              "doc_end_char": 5058,
+              "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. interven"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00019",
+      "canonical_label": "effect",
+      "normalized_label": "effect",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Action",
+        "Result",
+        "requires action"
+      ],
+      "definition": "A relation indicating the outcome or result produced by an action performed in response to a detected situation.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00020",
+          "text": "effect:",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 3,
+              "chunk_end_char": 10,
+              "doc_start_char": 5003,
+              "doc_end_char": 5010,
+              "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the s"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00020",
+      "canonical_label": "intervention:",
+      "normalized_label": "intervention",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observation",
+        "Situation",
+        "Interval",
+        "Instant"
+      ],
+      "definition": "An action taken to address or resolve an alarm or failure condition in a machine.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00021",
+          "text": "intervention:",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 130,
+              "chunk_end_char": 143,
+              "doc_start_char": 5130,
+              "doc_end_char": 5143,
+              "snippet": "p cause: At the start of the cycle the sliding door is not in a safe condition. intervention: Release the door release button before ordering the start of the cycle. See pag"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00021",
+      "canonical_label": "responsible for",
+      "normalized_label": "responsible for",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Sensor is responsible for producing Result",
+        "Platform is responsible for hosting Sensor",
+        "Resource is responsible for Platform",
+        "Observable Property is responsible for Result"
+      ],
+      "definition": "A relation indicating that a particular entity or role has the duty, obligation, or authority to perform a specified action, intervention, or to produce a specific outcome.",
+      "aliases": [
+        "in charge of",
+        "accountable for",
+        "liable for"
+      ],
+      "synonyms": [
+        "in charge of",
+        "accountable for",
+        "liable for"
+      ],
+      "lexical_variants": [
+        "responsible for"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00022",
+          "text": "responsible for",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 266,
+              "chunk_end_char": 281,
+              "doc_start_char": 5266,
+              "doc_end_char": 5281,
+              "snippet": "ering the start of the cycle. See page 19 of the electrical diagram, entry X3.2 responsible for the intervention: operator\n\nAlarm n°: 1005 text: SIDE PROTECTIONS OPEN type: St"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00022",
+      "canonical_label": "references",
+      "normalized_label": "references",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "references",
+        "page reference",
+        "document reference"
+      ],
+      "definition": "A reference expression used in documentation to direct the reader to a specific page where detailed information can be found.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00023",
+          "text": "see page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 216,
+              "chunk_end_char": 224,
+              "doc_start_char": 5216,
+              "doc_end_char": 5224,
+              "snippet": "ention: Release the door release button before ordering the start of the cycle. See page 19 of the electrical diagram, entry X3.2 responsible for the intervention: oper"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00023",
+      "canonical_label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+      "normalized_label": "thermomagnet switches end of cycle stop",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: cycle end stop event",
+        "CAUSED_BY: thermomagnet switch activation",
+        "HANDLED_BY: operator or maintenance staff",
+        "REFERENCES: machine manual page reference for cycle stop procedures",
+        "DETECTED_BY: sensor monitoring thermomagnet switches",
+        "FEATURE_OF_INTEREST: thermomagnet switches",
+        "OBSERVABLE_PROPERTY: switch state (active/inactive)",
+        "TEMPORAL_ENTITY: time instant of cycle completion"
+      ],
+      "definition": "An alarm that is triggered when thermomagnet switches detect the end of a production cycle, causing the machine to stop operation.",
+      "aliases": [
+        "Thermomagnet Switches Cycle End Stop",
+        "Thermomagnet Switches End-of-Cycle Stop",
+        "Thermomagnet Switches End of Cycle Alarm"
+      ],
+      "synonyms": [
+        "Thermomagnet Switches End-of-Cycle Alarm",
+        "Thermomagnet Switches Cycle End Alarm",
+        "Thermomagnet Switches Stop at Cycle End"
+      ],
+      "lexical_variants": [
+        "THERMOMAGNET SWITCHES END OF CYCLE STOP",
+        "Thermomagnet Switches End of Cycle Stop",
+        "Thermomagnet Switches End‑of‑Cycle Stop"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00034",
+          "text": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 741,
+              "chunk_end_char": 781,
+              "doc_start_char": 5741,
+              "doc_end_char": 5781,
+              "snippet": "nsible for the intervention: operator/maintenance person\n\nAlarm no.: 1008 text: THERMOMAGNET SWITCHES. END OF CYCLE STOP type: Standard: Optional: effect: Alarm with stop at the end of the cycle cause"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00024",
+      "canonical_label": "THERMOMAGNETIC SWITCHES IMMEDIATE STOP",
+      "normalized_label": "thermomagnetic switches immediate stop",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Process",
+        "Logistic Process",
+        "Human Process",
+        "Temporal Entity",
+        "Technician",
+        "Alarm",
+        "TRIGGERS: immediate stop",
+        "REQUIRES: Technician intervention",
+        "HANDLED_BY: Technician",
+        "DETECTED_BY: Thermomagnetic Switches"
+      ],
+      "definition": "An alarm that indicates the thermomagnetic switches have triggered an immediate halt of the machine’s operation.",
+      "aliases": [
+        "Thermomagnetic Switches Stop Alarm",
+        "Thermomagnetic Switches Immediate Stop Alarm"
+      ],
+      "synonyms": [
+        "Thermomagnetic Switches Stop",
+        "Thermomagnetic Switches Immediate Stop"
+      ],
+      "lexical_variants": [
+        "Thermomagnetic Switches Immediate Stop Alarm",
+        "Thermomagnetic Switches Immediate Stop"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00035",
+          "text": "THERMOMAGNETIC SWITCHES IMMEDIATE STOP",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 1181,
+              "chunk_end_char": 1219,
+              "doc_start_char": 6181,
+              "doc_end_char": 6219,
+              "snippet": "nsible for the intervention: responsible for maintenance\n\nAlarm No.: 1009\ntext: THERMOMAGNETIC SWITCHES IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00025",
+      "canonical_label": "LOW WATERING LIQUID FLOW",
+      "normalized_label": "low watering liquid flow",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "Workstation",
+        "Production Line",
+        "Manufacturing Cell",
+        "Liquid Flow",
+        "Cooling System"
+      ],
+      "definition": "Alarm indicating that the flow of liquid used for cooling or watering is below the required threshold, potentially leading to overheating or interruption of the manufacturing process.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00036",
+          "text": "LOW WATERING LIQUID FLOW",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 1570,
+              "chunk_end_char": 1594,
+              "doc_start_char": 6570,
+              "doc_end_char": 6594,
+              "snippet": "l diagram, input X2.3\n(0 = ALARM, 1 = OK)\nresponsible for\nAlarm No.: 1011\ntext: LOW WATERING LIQUID FLOW\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00026",
+      "canonical_label": "HIGH WATERING LIQUID TEMPERATURE",
+      "normalized_label": "high watering liquid temperature",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm",
+        "TemperatureSensor",
+        "Coolant",
+        "ManufacturingProcess"
+      ],
+      "definition": "Alarm triggered when the temperature of the liquid coolant exceeds a predefined threshold.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00037",
+          "text": "HIGH WATERING LIQUID TEMPERATURE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 3237,
+              "chunk_end_char": 3269,
+              "doc_start_char": 8237,
+              "doc_end_char": 8269,
+              "snippet": "responsible for intervention: responsible for maintenance\n\nAlarm n°: 1012 text: HIGH WATERING LIQUID TEMPERATURE type: Standard: Optional: effect: Alarm with shutdown at the end of the cycle."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00027",
+      "canonical_label": "PSM FEEDER FAULT",
+      "normalized_label": "psm feeder fault",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm",
+        "FeederComponent",
+        "PSMSystem",
+        "FaultEvent"
+      ],
+      "definition": "An alarm indicating a fault in the PSM feeder component of a manufacturing system.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00038",
+          "text": "PSM FEEDER FAULT",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 3687,
+              "chunk_end_char": 3703,
+              "doc_start_char": 8687,
+              "doc_end_char": 8703,
+              "snippet": "responsible for intervention: responsible for maintenance\n\nalarm no: 1013\ntext: PSM FEEDER FAULT\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, deactiv"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00028",
+      "canonical_label": "CABINET OVERHEATING",
+      "normalized_label": "cabinet overheating",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observation",
+        "Observable Property (temperature)",
+        "Situation S1",
+        "Alarm",
+        "Cabinet",
+        "Temperature"
+      ],
+      "definition": "An alarm indicating that the cabinet temperature has risen above a safe threshold, as detected by a sensor measuring the cabinet's temperature.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00039",
+          "text": "CABINET OVERHEATING",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 4080,
+              "chunk_end_char": 4099,
+              "doc_start_char": 9080,
+              "doc_end_char": 9099,
+              "snippet": "B CNC service manual for more information\nresponsible for\nAlarm No.: 1017\ntext: CABINET OVERHEATING\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00029",
+      "canonical_label": "LOW PRESSURE",
+      "normalized_label": "low pressure",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Result of a Process (e.g., Logistic Process or Human Process)",
+        "Alarm type indicating a low‑pressure condition",
+        "Related to Resource (pneumatic system) and Process (pressure regulation)",
+        "Detected by pressure sensors and handled by maintenance staff"
+      ],
+      "definition": "An alarm indicating that the pneumatic pressure supplied to a machine is below the required threshold, triggering a low‑pressure condition.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00040",
+          "text": "LOW PRESSURE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 4457,
+              "chunk_end_char": 4469,
+              "doc_start_char": 9457,
+              "doc_end_char": 9469,
+              "snippet": "al diagram, input X4.3 (0 = ALARM, 1\n=OK)\nresponsible for\nAlarm No.: 1018\ntext: LOW PRESSURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00030",
+      "canonical_label": "PSM FEEDER FAILURE",
+      "normalized_label": "psm feeder failure",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observation of feeder failure",
+        "Feature: feeder component",
+        "Manufacturing Facility: cell or facility",
+        "Manufacturing Cell: group of workstations",
+        "Operator: responsible for handling the alarm"
+      ],
+      "definition": "An observation event indicating that a feeder component within a process safety management system has failed, recorded as an alarm in a manufacturing facility.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00041",
+          "text": "PSM FEEDER FAILURE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 4878,
+              "chunk_end_char": 4896,
+              "doc_start_char": 9878,
+              "doc_end_char": 9896,
+              "snippet": "l diagram, input X3.5\n(0 = ALARM, 1 = OK)\nresponsible for\n\nalarm n°: 1013 text: PSM FEEDER FAILURE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown,"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attribute_candidates": [
+    {
+      "candidate_id": "cand_v_00000",
+      "canonical_label": "alarm type classification",
+      "normalized_label": "alarm type classification",
+      "candidate_type": "attribute",
+      "confidence": 0.85,
+      "ontology_hints": [
+        "classification phrase",
+        "alarm classification",
+        "standard optional type"
+      ],
+      "definition": "A classification indicating that the alarm is standard and optional.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00024",
+          "text": "type: Standard: Optional:",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 353,
+              "chunk_end_char": 378,
+              "doc_start_char": 5353,
+              "doc_end_char": 5378,
+              "snippet": "ible for the intervention: operator\n\nAlarm n°: 1005 text: SIDE PROTECTIONS OPEN type: Standard: Optional: effect: Alarm with immediate and controlled stop, opening of the hardware autho"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_v_00001",
+      "canonical_label": "alarm identifier",
+      "normalized_label": "alarm identifier",
+      "candidate_type": "attribute",
+      "confidence": 0.92,
+      "ontology_hints": [
+        "Alarm identifier",
+        "Situation S10",
+        "Platform",
+        "Manufacturing Process",
+        "Manager"
+      ],
+      "definition": "Unique identifier for the thermomagnet switches immediate stop alarm.",
+      "aliases": [
+        "Alarm 1009",
+        "Alarm No. 1009",
+        "Alarm #1009"
+      ],
+      "synonyms": [
+        "Immediate Stop Alarm",
+        "Thermomagnet Switch Alarm"
+      ],
+      "lexical_variants": [
+        "Alarm No. 1009",
+        "Alarm #1009",
+        "Alarm No: 1009"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00027",
+          "text": "Alarm No.: 1009",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 1159,
+              "chunk_end_char": 1174,
+              "doc_start_char": 6159,
+              "doc_end_char": 6174,
+              "snippet": "= ALARM, 1 = OK) responsible for the intervention: responsible for maintenance\n\nAlarm No.: 1009\ntext: THERMOMAGNETIC SWITCHES IMMEDIATE STOP\ntype: Standard: Optional:\neffect:"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event_candidates": [
+    {
+      "candidate_id": "cand_s_00000",
+      "canonical_label": "failure symptom",
+      "normalized_label": "failure symptom",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Thermostat",
+        "TemperatureSensor",
+        "HVACSystem",
+        "ManufacturingCell",
+        "SpatialObject",
+        "TemporalEntity",
+        "SituationS1",
+        "FailureSymptom"
+      ],
+      "definition": "A failure symptom where the thermostat’s setpoint or configuration deviates from the intended value, causing improper temperature control and potential overheating of the cabinet.",
+      "aliases": [
+        "incorrect thermostat setting",
+        "thermostat misconfigured",
+        "thermostat improperly set"
+      ],
+      "synonyms": [
+        "thermostat not set correctly",
+        "thermostat incorrectly set"
+      ],
+      "lexical_variants": [
+        "thermostat is not set correctly",
+        "thermostat not set correctly",
+        "thermostat incorrectly set"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00016",
+          "text": "thermostat is not set correctly",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 4183,
+              "chunk_end_char": 4214,
+              "doc_start_char": 9183,
+              "doc_end_char": 9214,
+              "snippet": "e: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe thermostat is not set correctly, the fan or the cause:\neditor does not work, the electrical cabinet is too hot."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00001",
+      "canonical_label": "Alarm",
+      "normalized_label": "alarm",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm",
+        "Situation S10",
+        "Situation S11",
+        "Platform",
+        "Manufacturing Process"
+      ],
+      "definition": "An alarm indicating that the liquid flow used for watering is below the required threshold, triggering a low‑flow condition.",
+      "aliases": [
+        "Low Watering Liquid Flow Alarm",
+        "Low Liquid Flow Alarm",
+        "Watering Flow Alarm"
+      ],
+      "synonyms": [
+        "Low Flow Alarm",
+        "Liquid Flow Low Alarm"
+      ],
+      "lexical_variants": [
+        "Alarm 1011",
+        "Alarm No 1011",
+        "Alarm #1011"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00028",
+          "text": "Alarm No.: 1011",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 1548,
+              "chunk_end_char": 1563,
+              "doc_start_char": 6548,
+              "doc_end_char": 6563,
+              "snippet": "age 7 of the electrical diagram, input X2.3\n(0 = ALARM, 1 = OK)\nresponsible for\nAlarm No.: 1011\ntext: LOW WATERING LIQUID FLOW\ntype: Standard: Optional:\neffect: Alarm with shu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00002",
+      "canonical_label": "Cabinet Overheating Alarm",
+      "normalized_label": "cabinet overheating alarm",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm",
+        "Cabinet",
+        "Overheating",
+        "Manufacturing Process",
+        "Spatial Object",
+        "Platform",
+        "Situation S10",
+        "Situation S11"
+      ],
+      "definition": "An alarm that signals the overheating of a cabinet within a manufacturing system, typically indicating a fault condition that may trigger a shutdown or maintenance intervention.",
+      "aliases": [
+        "Alarm 1017",
+        "Alarm No. 1017",
+        "Alarm #1017"
+      ],
+      "synonyms": [
+        "Cabinet Overheating Alarm",
+        "Cabinet Overheat Alarm",
+        "Cabinet Overheat Warning"
+      ],
+      "lexical_variants": [
+        "Alarm No. 1017",
+        "Alarm #1017",
+        "Alarm 1017"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00031",
+          "text": "Alarm No.: 1017",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 4058,
+              "chunk_end_char": 4073,
+              "doc_start_char": 9058,
+              "doc_end_char": 9073,
+              "snippet": "tion: the Fanuc 160i-TB CNC service manual for more information\nresponsible for\nAlarm No.: 1017\ntext: CABINET OVERHEATING\ntype: Standard: Optional:\neffect: Alarm with immediat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00003",
+      "canonical_label": "Alarm event",
+      "normalized_label": "alarm event",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm identifier",
+        "Alarm event",
+        "Platform sensor",
+        "Manufacturing Process"
+      ],
+      "definition": "A unique identifier for the low pressure alarm in a manufacturing system.",
+      "aliases": [
+        "Alarm 1018",
+        "Alarm No. 1018",
+        "Alarm #1018"
+      ],
+      "synonyms": [
+        "low pressure alarm"
+      ],
+      "lexical_variants": [
+        "Alarm No. 1018",
+        "Alarm #1018",
+        "Alarm 1018"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00032",
+          "text": "Alarm No.: 1018",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 4435,
+              "chunk_end_char": 4450,
+              "doc_start_char": 9435,
+              "doc_end_char": 9450,
+              "snippet": "page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1\n=OK)\nresponsible for\nAlarm No.: 1018\ntext: LOW PRESSURE\ntype: Standard: Optional:\neffect: Alarm with immediate and c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00004",
+      "canonical_label": "SIDE PROTECTIONS OPEN",
+      "normalized_label": "side protections open",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Production Line",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4"
+      ],
+      "definition": "Alarm indicating that side protection guards are open, potentially compromising safety or operation.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00033",
+          "text": "SIDE PROTECTIONS OPEN",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0001",
+              "chunk_start_char": 331,
+              "chunk_end_char": 352,
+              "doc_start_char": 5331,
+              "doc_end_char": 5352,
+              "snippet": "am, entry X3.2 responsible for the intervention: operator\n\nAlarm n°: 1005 text: SIDE PROTECTIONS OPEN type: Standard: Optional: effect: Alarm with immediate and controlled stop, ope"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

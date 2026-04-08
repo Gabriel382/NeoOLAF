@@ -1,0 +1,102 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 2,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "operating status of the machine",
+        "label": "machine state"
+      },
+      "aliases": [
+        "operating status",
+        "machine status",
+        "operational status"
+      ],
+      "synonyms": [
+        "operational condition",
+        "machine operating condition",
+        "machine operating status"
+      ],
+      "lexical_variants": [
+        "operating status of the machine",
+        "machine operating status",
+        "operational status of the machine"
+      ],
+      "alias_sources": {
+        "operating status": [
+          "llm"
+        ],
+        "machine status": [
+          "llm"
+        ],
+        "operational status": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "operational condition": [
+          "llm"
+        ],
+        "machine operating condition": [
+          "llm"
+        ],
+        "machine operating status": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "operating status of the machine": [
+          "llm"
+        ],
+        "machine operating status": [
+          "llm"
+        ],
+        "operational status of the machine": [
+          "llm"
+        ]
+      },
+      "definition": "The current operational condition of a machine, indicating whether it is running, idle, stopped, or in maintenance.",
+      "ontology_hints": [
+        "Machine",
+        "FeatureOfInterest",
+        "Workstation",
+        "Operator",
+        "SpatialObject"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"operating status\", \"machine status\", \"operational status\"], \"synonyms\": [\"operational condition\", \"machine operating condition\", \"machine operating status\"], \"lexical_variants\": [\"operating status of the machine\", \"machine operating status\", \"operational status of the machine\"], \"definition\": \"The current operational condition of a machine, indicating whether it is running, idle, stopped, or in maintenance.\", \"ontology_hints\": [\"Machine\", \"FeatureOfInterest\", \"Workstation\", \"Operator\", \"SpatialObject\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "pressing the “MESSAGE” key",
+        "label": "action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A user-initiated action where the MESSAGE key is pressed to open or access the alarm screen.",
+      "ontology_hints": [
+        "HumanProcess",
+        "KeyPress",
+        "AlarmScreenAccess"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A user-initiated action where the MESSAGE key is pressed to open or access the alarm screen.\", \"ontology_hints\": [\"HumanProcess\", \"KeyPress\", \"AlarmScreenAccess\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

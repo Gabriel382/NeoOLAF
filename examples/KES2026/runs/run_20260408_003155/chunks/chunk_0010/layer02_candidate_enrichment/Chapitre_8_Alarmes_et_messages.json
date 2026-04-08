@@ -1,0 +1,3789 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 64,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "BARRIER: EMPTY BAR STORE",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "BARRIER: EMPTY BAR STORE"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "BARRIER_EMPTY_BAR_STORE",
+        "BARRIER-EMPTY-BAR-STORE"
+      ],
+      "alias_sources": {
+        "BARRIER: EMPTY BAR STORE": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "BARRIER_EMPTY_BAR_STORE": [
+          "llm"
+        ],
+        "BARRIER-EMPTY-BAR-STORE": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that is triggered when the bar store inventory reaches zero, indicating that a barrier should be activated to prevent further operation.",
+      "ontology_hints": [
+        "AlarmType",
+        "Observation",
+        "FeatureOfInterest",
+        "ObservableProperty",
+        "Operator",
+        "MachineState: BarStoreEmpty"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"BARRIER: EMPTY BAR STORE\"], \"synonyms\": [], \"lexical_variants\": [\"BARRIER_EMPTY_BAR_STORE\", \"BARRIER-EMPTY-BAR-STORE\"], \"definition\": \"An alarm that is triggered when the bar store inventory reaches zero, indicating that a barrier should be activated to prevent further operation.\", \"ontology_hints\": [\"AlarmType\", \"Observation\", \"FeatureOfInterest\", \"ObservableProperty\", \"Operator\", \"MachineState: BarStoreEmpty\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "OVERLOAD CONTROL DEVICE FAILURE",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "Overload Control Device Failure Alarm"
+      ],
+      "synonyms": [
+        "Overload control device fault",
+        "Overload control device malfunction",
+        "Overload control device error"
+      ],
+      "lexical_variants": [
+        "Overload control device failure",
+        "Overload control device fault",
+        "Overload control device malfunction"
+      ],
+      "alias_sources": {
+        "Overload Control Device Failure Alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Overload control device fault": [
+          "llm"
+        ],
+        "Overload control device malfunction": [
+          "llm"
+        ],
+        "Overload control device error": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Overload control device failure": [
+          "llm"
+        ],
+        "Overload control device fault": [
+          "llm"
+        ],
+        "Overload control device malfunction": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating that the overload control device has failed, representing a violation of the device’s operational constraint within a production line.",
+      "ontology_hints": [
+        "Observable Property of Overload Control Device",
+        "Violation of Overload Control Device Constraint",
+        "Feature: Overload Control Device",
+        "Part of Production Line",
+        "Related to Logistic Process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Overload Control Device Failure Alarm\"], \"synonyms\": [\"Overload control device fault\", \"Overload control device malfunction\", \"Overload control device error\"], \"lexical_variants\": [\"Overload control device failure\", \"Overload control device fault\", \"Overload control device malfunction\"], \"definition\": \"An alarm indicating that the overload control device has failed, representing a violation of the device’s operational constraint within a production line.\", \"ontology_hints\": [\"Observable Property of Overload Control Device\", \"Violation of Overload Control Device Constraint\", \"Feature: Overload Control Device\", \"Part of Production Line\", \"Related to Logistic Process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00002",
+        "text": "FEEDER: BAR CHANGE PHASE",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm indicating the bar change phase in a feeder machine.",
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "ObservableProperty",
+        "HumanProcess",
+        "Machine",
+        "Technician",
+        "AlarmType"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm indicating the bar change phase in a feeder machine.\", \"ontology_hints\": [\"FeatureOfInterest\", \"ObservableProperty\", \"HumanProcess\", \"Machine\", \"Technician\", \"AlarmType\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00003",
+        "text": "FEEDER: EMPTY BAR MAGAZINE",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "Feeder: Empty Bar Magazine",
+        "Feeder Empty Bar Magazine"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "Feeder: Empty Bar Magazine": [
+          "llm"
+        ],
+        "Feeder Empty Bar Magazine": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that is triggered when the feeder’s bar magazine is empty or nearly empty, indicating that the feeder cannot supply bars and maintenance or refilling is required.",
+      "ontology_hints": [
+        "FeatureOfInterest: BarMagazine",
+        "Machine: Feeder",
+        "Observation: EmptyMagazineObservation",
+        "AlarmType: FeederEmptyBarMagazineAlarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"Feeder: Empty Bar Magazine\", \"Feeder Empty Bar Magazine\"], \"definition\": \"An alarm that is triggered when the feeder’s bar magazine is empty or nearly empty, indicating that the feeder cannot supply bars and maintenance or refilling is required.\", \"ontology_hints\": [\"FeatureOfInterest: BarMagazine\", \"Machine: Feeder\", \"Observation: EmptyMagazineObservation\", \"AlarmType: FeederEmptyBarMagazineAlarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00004",
+        "text": "CDS: SIGNALING A MESSAGE OR NOTICE",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "CDS message alarm",
+        "CDS notice alarm",
+        "CDS notification alarm"
+      ],
+      "synonyms": [
+        "message alert",
+        "notice alert",
+        "notification alert"
+      ],
+      "lexical_variants": [
+        "signaling a message",
+        "signaling a notice",
+        "signaling a notification"
+      ],
+      "alias_sources": {
+        "CDS message alarm": [
+          "llm"
+        ],
+        "CDS notice alarm": [
+          "llm"
+        ],
+        "CDS notification alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "message alert": [
+          "llm"
+        ],
+        "notice alert": [
+          "llm"
+        ],
+        "notification alert": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "signaling a message": [
+          "llm"
+        ],
+        "signaling a notice": [
+          "llm"
+        ],
+        "signaling a notification": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm type that indicates the system has generated a message or notice, typically used to inform operators of status updates or required actions within a manufacturing environment.",
+      "ontology_hints": [
+        "AlarmType",
+        "ObservableProperty",
+        "Constraint",
+        "ManufacturingProcess",
+        "Resource",
+        "SpatialObject",
+        "hasObservableProperty",
+        "triggers",
+        "references"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"CDS message alarm\", \"CDS notice alarm\", \"CDS notification alarm\"], \"synonyms\": [\"message alert\", \"notice alert\", \"notification alert\"], \"lexical_variants\": [\"signaling a message\", \"signaling a notice\", \"signaling a notification\"], \"definition\": \"An alarm type that indicates the system has generated a message or notice, typically used to inform operators of status updates or required actions within a manufacturing environment.\", \"ontology_hints\": [\"AlarmType\", \"ObservableProperty\", \"Constraint\", \"ManufacturingProcess\", \"Resource\", \"SpatialObject\", \"hasObservableProperty\", \"triggers\", \"references\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00005",
+        "text": "CDS: ATTESA ABILITAZIONE AVANZAMENTO",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "CDS: ATTESA ABILITAZIONE AVANZAMENTO"
+      ],
+      "synonyms": [
+        "Waiting for activation advancement",
+        "Awaiting activation advancement"
+      ],
+      "lexical_variants": [
+        "CDS: ATTESA ABILITAZIONE AVANZAMENTO"
+      ],
+      "alias_sources": {
+        "CDS: ATTESA ABILITAZIONE AVANZAMENTO": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Waiting for activation advancement": [
+          "llm"
+        ],
+        "Awaiting activation advancement": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "CDS: ATTESA ABILITAZIONE AVANZAMENTO": [
+          "llm"
+        ]
+      },
+      "definition": "Alarm indicating that the system is waiting for authorization from the CDS to proceed with advancement.",
+      "ontology_hints": [
+        "Observable Property",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"CDS: ATTESA ABILITAZIONE AVANZAMENTO\"], \"synonyms\": [\"Waiting for activation advancement\", \"Awaiting activation advancement\"], \"lexical_variants\": [\"CDS: ATTESA ABILITAZIONE AVANZAMENTO\"], \"definition\": \"Alarm indicating that the system is waiting for authorization from the CDS to proceed with advancement.\", \"ontology_hints\": [\"Observable Property\", \"Situation S1\", \"Situation S2\", \"Situation S3\", \"Situation S4\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00006",
+        "text": "AUTOMATIC OFF: SET TIME REACHED",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm indicating that the scheduled automatic shutdown time has been reached, causing the machine to power off automatically.",
+      "ontology_hints": [
+        "Situation S1",
+        "FeatureOfInterest"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm indicating that the scheduled automatic shutdown time has been reached, causing the machine to power off automatically.\", \"ontology_hints\": [\"Situation S1\", \"FeatureOfInterest\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00007",
+        "text": "AUTOMATIC STOP: CONFIGURED TIME REACHED",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "Automatic stop due to time limit",
+        "Time-based automatic stop",
+        "Configured time stop"
+      ],
+      "synonyms": [
+        "Automatic stop due to time limit",
+        "Time-based automatic stop",
+        "Configured time stop"
+      ],
+      "lexical_variants": [
+        "AUTOMATIC STOP: CONFIGURED TIME REACHED",
+        "Automatic stop: configured time reached"
+      ],
+      "alias_sources": {
+        "Automatic stop due to time limit": [
+          "llm"
+        ],
+        "Time-based automatic stop": [
+          "llm"
+        ],
+        "Configured time stop": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Automatic stop due to time limit": [
+          "llm"
+        ],
+        "Time-based automatic stop": [
+          "llm"
+        ],
+        "Configured time stop": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "AUTOMATIC STOP: CONFIGURED TIME REACHED": [
+          "llm"
+        ],
+        "Automatic stop: configured time reached": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that signals the machine has automatically stopped because the pre‑set stop time has been reached.",
+      "ontology_hints": [
+        "TRIGGERS: time limit reached",
+        "CAUSES: scheduled stop",
+        "HANDLED_BY: operator",
+        "REFERENCES: manual section",
+        "DETECTED_BY: machine sensor",
+        "REQUIRES: shutdown procedure",
+        "SITUATION: automatic stop due to configured time reached",
+        "FEATURE_OF_INTEREST: machine process",
+        "MANUFACTURING_FACILITY: plant",
+        "PRODUCTION_LINE: line",
+        "MANUFACTURING_CELL: cell"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Automatic stop due to time limit\", \"Time-based automatic stop\", \"Configured time stop\"], \"synonyms\": [\"Automatic stop due to time limit\", \"Time-based automatic stop\", \"Configured time stop\"], \"lexical_variants\": [\"AUTOMATIC STOP: CONFIGURED TIME REACHED\", \"Automatic stop: configured time reached\"], \"definition\": \"An alarm that signals the machine has automatically stopped because the pre‑set stop time has been reached.\", \"ontology_hints\": [\"TRIGGERS: time limit reached\", \"CAUSES: scheduled stop\", \"HANDLED_BY: operator\", \"REFERENCES: manual section\", \"DETECTED_BY: machine sensor\", \"REQUIRES: shutdown procedure\", \"SITUATION: automatic stop due to configured time reached\", \"FEATURE_OF_INTEREST: machine process\", \"MANUFACTURING_FACILITY: plant\", \"PRODUCTION_LINE: line\", \"MANUFACTURING_CELL: cell\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00008",
+        "text": "CONFIGURED PRODUCTION REACHED",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm indicating that the configured production quantity has been reached within the manufacturing system.",
+      "ontology_hints": [
+        "Production Line",
+        "Manufacturing Process",
+        "Product",
+        "Feature of Interest",
+        "Situation S1"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm indicating that the configured production quantity has been reached within the manufacturing system.\", \"ontology_hints\": [\"Production Line\", \"Manufacturing Process\", \"Product\", \"Feature of Interest\", \"Situation S1\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00009",
+        "text": "AUTOMATIC STOP: MACHINE IN ALARM",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm that indicates the machine has entered an alarm state and has automatically stopped.",
+      "ontology_hints": [
+        "Machine",
+        "Manufacturing Facility",
+        "Manufacturing Cell",
+        "Production Line",
+        "Feature of Interest"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm that indicates the machine has entered an alarm state and has automatically stopped.\", \"ontology_hints\": [\"Machine\", \"Manufacturing Facility\", \"Manufacturing Cell\", \"Production Line\", \"Feature of Interest\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00010",
+        "text": "bar feeder bar magazine",
+        "label": "component"
+      },
+      "aliases": [
+        "bar feeder",
+        "bar magazine"
+      ],
+      "synonyms": [
+        "bar feeding unit",
+        "bar feeder device",
+        "bar magazine storage",
+        "bar supply magazine"
+      ],
+      "lexical_variants": [
+        "bar feeder",
+        "bar feeder unit",
+        "bar magazine",
+        "bar magazine storage"
+      ],
+      "alias_sources": {
+        "bar feeder": [
+          "llm"
+        ],
+        "bar magazine": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "bar feeding unit": [
+          "llm"
+        ],
+        "bar feeder device": [
+          "llm"
+        ],
+        "bar magazine storage": [
+          "llm"
+        ],
+        "bar supply magazine": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "bar feeder": [
+          "llm"
+        ],
+        "bar feeder unit": [
+          "llm"
+        ],
+        "bar magazine": [
+          "llm"
+        ],
+        "bar magazine storage": [
+          "llm"
+        ]
+      },
+      "definition": "A bar feeder is a machine that supplies bars to a process; a bar magazine is a storage component that holds bars for the feeder.",
+      "ontology_hints": [
+        "BarFeeder is a Machine",
+        "BarMagazine is a Feature of Interest",
+        "BarFeeder is located in a Manufacturing Cell",
+        "BarMagazine is located in a Manufacturing Cell",
+        "BarFeeder has observable property BarCount",
+        "BarMagazine has observable property BarCount",
+        "BarFeeder is monitored by a sensor",
+        "BarMagazine is monitored by a sensor",
+        "BarFeeder triggers an alarm when BarCount is low",
+        "BarMagazine triggers an alarm when empty",
+        "BarFeeder requires intervention when jammed",
+        "BarMagazine requires intervention when empty",
+        "BarFeeder is handled by an operator",
+        "BarMagazine is handled by an operator",
+        "BarFeeder references a manual page",
+        "BarMagazine references a manual page"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"bar feeder\", \"bar magazine\"], \"synonyms\": [\"bar feeding unit\", \"bar feeder device\", \"bar magazine storage\", \"bar supply magazine\"], \"lexical_variants\": [\"bar feeder\", \"bar feeder unit\", \"bar magazine\", \"bar magazine storage\"], \"definition\": \"A bar feeder is a machine that supplies bars to a process; a bar magazine is a storage component that holds bars for the feeder.\", \"ontology_hints\": [\"BarFeeder is a Machine\", \"BarMagazine is a Feature of Interest\", \"BarFeeder is located in a Manufacturing Cell\", \"BarMagazine is located in a Manufacturing Cell\", \"BarFeeder has observable property BarCount\", \"BarMagazine has observable property BarCount\", \"BarFeeder is monitored by a sensor\", \"BarMagazine is monitored by a sensor\", \"BarFeeder triggers an alarm when BarCount is low\", \"BarMagazine triggers an alarm when empty\", \"BarFeeder requires intervention when jammed\", \"BarMagazine requires intervention when empty\", \"BarFeeder is handled by an operator\", \"BarMagazine is handled by an operator\", \"BarFeeder references a manual page\", \"BarMagazine references a manual page\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00011",
+        "text": "chip conveyor overload control device",
+        "label": "component"
+      },
+      "aliases": [
+        "overload control device",
+        "overload protection device",
+        "load limiter",
+        "conveyor overload sensor",
+        "conveyor overload controller"
+      ],
+      "synonyms": [
+        "overload control device",
+        "overload protection device",
+        "load limiter",
+        "conveyor overload sensor",
+        "conveyor overload controller"
+      ],
+      "lexical_variants": [
+        "chip conveyor overload control device"
+      ],
+      "alias_sources": {
+        "overload control device": [
+          "llm"
+        ],
+        "overload protection device": [
+          "llm"
+        ],
+        "load limiter": [
+          "llm"
+        ],
+        "conveyor overload sensor": [
+          "llm"
+        ],
+        "conveyor overload controller": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "overload control device": [
+          "llm"
+        ],
+        "overload protection device": [
+          "llm"
+        ],
+        "load limiter": [
+          "llm"
+        ],
+        "conveyor overload sensor": [
+          "llm"
+        ],
+        "conveyor overload controller": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "chip conveyor overload control device": [
+          "llm"
+        ]
+      },
+      "definition": "A device installed on a chip conveyor that monitors the load or speed of the conveyor and enforces a predefined constraint to prevent overload. When the monitored observable property exceeds the allowed threshold, the device triggers an alarm and may initiate a shutdown or other protective action.",
+      "ontology_hints": [
+        "Component of a Manufacturing Cell",
+        "Part of a Logistic Process (conveyor operation)",
+        "Monitors an Observable Property (load, speed)",
+        "Enforces a Constraint (maximum load/speed)",
+        "Triggers an Alarm when the constraint is violated"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"overload control device\", \"overload protection device\", \"load limiter\", \"conveyor overload sensor\", \"conveyor overload controller\"], \"synonyms\": [\"overload control device\", \"overload protection device\", \"load limiter\", \"conveyor overload sensor\", \"conveyor overload controller\"], \"lexical_variants\": [\"chip conveyor overload control device\", \"chip conveyor overload control device\", \"chip conveyor overload control device\"], \"definition\": \"A device installed on a chip conveyor that monitors the load or speed of the conveyor and enforces a predefined constraint to prevent overload. When the monitored observable property exceeds the allowed threshold, the device triggers an alarm and may initiate a shutdown or other protective action.\", \"ontology_hints\": [\"Component of a Manufacturing Cell\", \"Part of a Logistic Process (conveyor operation)\", \"Monitors an Observable Property (load, speed)\", \"Enforces a Constraint (maximum load/speed)\", \"Triggers an Alarm when the constraint is violated\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00012",
+        "text": "CDS",
+        "label": "component"
+      },
+      "aliases": [
+        "cadmium",
+        "Cd",
+        "atomic number 48",
+        "candle",
+        "candela",
+        "cd",
+        "standard candle",
+        "certificate of deposit",
+        "CD",
+        "compact disk",
+        "compact disc",
+        "CDS"
+      ],
+      "synonyms": [
+        "cadmium",
+        "Cd",
+        "atomic number 48",
+        "candle",
+        "candela",
+        "cd",
+        "standard candle",
+        "certificate of deposit",
+        "CD",
+        "compact disk",
+        "compact disc"
+      ],
+      "lexical_variants": [
+        "cadmium",
+        "Cd",
+        "atomic number 48",
+        "candle",
+        "candela",
+        "cd",
+        "standard candle",
+        "certificate of deposit",
+        "CD",
+        "compact disk",
+        "compact disc"
+      ],
+      "alias_sources": {
+        "cadmium": [
+          "wordnet",
+          "llm"
+        ],
+        "Cd": [
+          "wordnet",
+          "llm"
+        ],
+        "atomic number 48": [
+          "wordnet",
+          "llm"
+        ],
+        "candle": [
+          "wordnet",
+          "llm"
+        ],
+        "candela": [
+          "wordnet",
+          "llm"
+        ],
+        "cd": [
+          "wordnet",
+          "llm"
+        ],
+        "standard candle": [
+          "wordnet",
+          "llm"
+        ],
+        "certificate of deposit": [
+          "wordnet",
+          "llm"
+        ],
+        "CD": [
+          "wordnet",
+          "llm"
+        ],
+        "compact disk": [
+          "wordnet",
+          "llm"
+        ],
+        "compact disc": [
+          "wordnet",
+          "llm"
+        ],
+        "CDS": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "cadmium": [
+          "wordnet",
+          "llm"
+        ],
+        "Cd": [
+          "wordnet",
+          "llm"
+        ],
+        "atomic number 48": [
+          "wordnet",
+          "llm"
+        ],
+        "candle": [
+          "wordnet",
+          "llm"
+        ],
+        "candela": [
+          "wordnet",
+          "llm"
+        ],
+        "cd": [
+          "wordnet",
+          "llm"
+        ],
+        "standard candle": [
+          "wordnet",
+          "llm"
+        ],
+        "certificate of deposit": [
+          "wordnet",
+          "llm"
+        ],
+        "CD": [
+          "wordnet",
+          "llm"
+        ],
+        "compact disk": [
+          "wordnet",
+          "llm"
+        ],
+        "compact disc": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "cadmium": [
+          "wordnet",
+          "llm"
+        ],
+        "Cd": [
+          "wordnet",
+          "llm"
+        ],
+        "atomic number 48": [
+          "wordnet",
+          "llm"
+        ],
+        "candle": [
+          "wordnet",
+          "llm"
+        ],
+        "candela": [
+          "wordnet",
+          "llm"
+        ],
+        "cd": [
+          "wordnet",
+          "llm"
+        ],
+        "standard candle": [
+          "wordnet",
+          "llm"
+        ],
+        "certificate of deposit": [
+          "wordnet",
+          "llm"
+        ],
+        "CD": [
+          "wordnet",
+          "llm"
+        ],
+        "compact disk": [
+          "wordnet",
+          "llm"
+        ],
+        "compact disc": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "a digitally encoded recording on an optical disk that is smaller than a phonograph record; played back by a laser",
+      "ontology_hints": [
+        "component",
+        "compact disk",
+        "data storage device"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a soft bluish-white ductile malleable toxic bivalent metallic element; occurs in association with zinc ores",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "the basic unit of luminous intensity adopted under the Systeme International d'Unites; equal to 1/60 of the luminous intensity per square centimeter of a black body radiating at the temperature of 2,046 degrees Kelvin",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a debt instrument issued by a bank; usually pays interest",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a digitally encoded recording on an optical disk that is smaller than a phonograph record; played back by a laser",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "CDS, CDs, Cds, etc. may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/CDS"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"cadmium\", \"Cd\", \"atomic number 48\", \"candle\", \"candela\", \"cd\", \"standard candle\", \"certificate of deposit\", \"CD\", \"compact disk\", \"compact disc\"], \"synonyms\": [\"cadmium\", \"Cd\", \"atomic number 48\", \"candle\", \"candela\", \"cd\", \"standard candle\", \"certificate of deposit\", \"CD\", \"compact disk\", \"compact disc\"], \"lexical_variants\": [\"cadmium\", \"Cd\", \"atomic number 48\", \"candle\", \"candela\", \"cd\", \"standard candle\", \"certificate of deposit\", \"CD\", \"compact disk\", \"compact disc\"], \"definition\": \"a digitally encoded recording on an optical disk that is smaller than a phonograph record; played back by a laser\", \"ontology_hints\": [\"component\", \"compact disk\", \"data storage device\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00013",
+        "text": "machine shutdown time",
+        "label": "attribute"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "The specific instant at which a machine initiates its shutdown sequence.",
+      "ontology_hints": [
+        "Machine hasShutdownTime Instant",
+        "Machine shutdown time is an attribute of Machine",
+        "Shutdown time is an Instant"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"The specific instant at which a machine initiates its shutdown sequence.\", \"ontology_hints\": [\"Machine hasShutdownTime Instant\", \"Machine shutdown time is an attribute of Machine\", \"Shutdown time is an Instant\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00014",
+        "text": "programs",
+        "label": "component"
+      },
+      "aliases": [
+        "plan",
+        "program",
+        "programme",
+        "broadcast",
+        "platform",
+        "political platform",
+        "political program",
+        "Program"
+      ],
+      "synonyms": [
+        "plan",
+        "program",
+        "programme",
+        "broadcast",
+        "platform",
+        "political platform",
+        "political program"
+      ],
+      "lexical_variants": [
+        "plan",
+        "program",
+        "programme",
+        "broadcast",
+        "platform",
+        "political platform",
+        "political program"
+      ],
+      "alias_sources": {
+        "plan": [
+          "wordnet"
+        ],
+        "program": [
+          "wordnet",
+          "llm"
+        ],
+        "programme": [
+          "wordnet",
+          "llm"
+        ],
+        "broadcast": [
+          "wordnet"
+        ],
+        "platform": [
+          "wordnet"
+        ],
+        "political platform": [
+          "wordnet"
+        ],
+        "political program": [
+          "wordnet"
+        ],
+        "Program": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "plan": [
+          "wordnet"
+        ],
+        "program": [
+          "wordnet",
+          "llm"
+        ],
+        "programme": [
+          "wordnet",
+          "llm"
+        ],
+        "broadcast": [
+          "wordnet"
+        ],
+        "platform": [
+          "wordnet"
+        ],
+        "political platform": [
+          "wordnet"
+        ],
+        "political program": [
+          "wordnet"
+        ]
+      },
+      "lexical_variant_sources": {
+        "plan": [
+          "wordnet"
+        ],
+        "program": [
+          "wordnet",
+          "llm"
+        ],
+        "programme": [
+          "wordnet",
+          "llm"
+        ],
+        "broadcast": [
+          "wordnet"
+        ],
+        "platform": [
+          "wordnet"
+        ],
+        "political platform": [
+          "wordnet"
+        ],
+        "political program": [
+          "wordnet"
+        ]
+      },
+      "definition": "Software programs that can be stopped by alarms in industrial machinery.",
+      "ontology_hints": [
+        "Process",
+        "Human Process",
+        "Operator",
+        "Product"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a series of steps to be carried out or goals to be accomplished",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a system of projects or services intended to meet a public need",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a radio or television show",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a document stating the aims and principles of a political party",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "an announcement of the events that will occur as part of a theatrical or sporting event",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Program (American English; also Commonwealth English in terms of computer programming and related activities) or programme (Commonwealth English in all other meanings), programmer, or programming may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/Program"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"program\", \"programme\"], \"synonyms\": [\"program\", \"programme\"], \"lexical_variants\": [\"program\", \"programme\"], \"definition\": \"Software programs that can be stopped by alarms in industrial machinery.\", \"ontology_hints\": [\"Process\", \"Human Process\", \"Operator\", \"Product\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00015",
+        "text": "function M01",
+        "label": "component"
+      },
+      "aliases": [
+        "M01 function"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "function M01",
+        "M01 function"
+      ],
+      "alias_sources": {
+        "M01 function": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "function M01": [
+          "llm"
+        ],
+        "M01 function": [
+          "llm"
+        ]
+      },
+      "definition": "A specific machine function identified as M01, referenced in the shutdown logic of the equipment.",
+      "ontology_hints": [
+        "component",
+        "machine function",
+        "shutdown logic"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"M01 function\"], \"synonyms\": [], \"lexical_variants\": [\"function M01\", \"M01 function\"], \"definition\": \"A specific machine function identified as M01, referenced in the shutdown logic of the equipment.\", \"ontology_hints\": [\"component\", \"machine function\", \"shutdown logic\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00016",
+        "text": "lathe",
+        "label": "machine"
+      },
+      "aliases": [
+        "lathe",
+        "Lathe"
+      ],
+      "synonyms": [
+        "lathe"
+      ],
+      "lexical_variants": [
+        "lathe"
+      ],
+      "alias_sources": {
+        "lathe": [
+          "wordnet",
+          "llm"
+        ],
+        "Lathe": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "lathe": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "lathe": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "machine tool for shaping metal or wood; the workpiece turns about a horizontal axis against a fixed tool",
+      "ontology_hints": [
+        "subclass of Machine",
+        "spatial Feature",
+        "used in woodturning, metalworking, metal spinning, thermal spraying, reclamation, glass-working, pottery",
+        "rotates workpiece about an axis"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "machine tool for shaping metal or wood; the workpiece turns about a horizontal axis against a fixed tool",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "A lathe () is a machine tool that rotates a workpiece about an axis of rotation to perform various operations such as cutting, sanding, knurling, drilling, deformation, facing, threading and turning, with tools that are applied to the workpiece to create an object with symmetry about that axis. \nLathes are used in woodturning,  metalworking, metal spinning, thermal spraying, reclamation, and glass-working. Lathes can be used to shape pottery, the best-known such design being the potter's wheel. Most suitably equipped metalworking lathes can be used to produce most solids of revolution, plane surfaces, and screw threads or helices. Ornamental lathes can produce more complex three-dimensional solids. The workpiece is usually held in place by either one or two centers, at least one of which can typically be moved horizontally to accommodate varying workpiece lengths. Other work-holding methods include clamping the work about the axis of rotation using a chuck or collet, or attaching it to a faceplate using clamps or dog clutch. Lathes equipped with special lathe milling fixtures can be used to complete milling operations.\nExamples of objects that can be produced on a lathe include scr",
+          "reference": "https://en.wikipedia.org/wiki/Lathe"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"lathe\", \"Lathe\"], \"synonyms\": [\"lathe\"], \"lexical_variants\": [\"lathe\"], \"definition\": \"machine tool for shaping metal or wood; the workpiece turns about a horizontal axis against a fixed tool\", \"ontology_hints\": [\"subclass of Machine\", \"spatial Feature\", \"used in woodturning, metalworking, metal spinning, thermal spraying, reclamation, glass-working, pottery\", \"rotates workpiece about an axis\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00017",
+        "text": "axes",
+        "label": "component"
+      },
+      "aliases": [
+        "ax",
+        "axe",
+        "axis",
+        "Axis",
+        "bloc",
+        "Axes",
+        "axes"
+      ],
+      "synonyms": [
+        "ax",
+        "axe",
+        "axis",
+        "Axis",
+        "bloc"
+      ],
+      "lexical_variants": [
+        "ax",
+        "axe",
+        "axis",
+        "Axis",
+        "bloc",
+        "axes"
+      ],
+      "alias_sources": {
+        "ax": [
+          "wordnet"
+        ],
+        "axe": [
+          "wordnet"
+        ],
+        "axis": [
+          "wordnet",
+          "llm"
+        ],
+        "Axis": [
+          "wordnet"
+        ],
+        "bloc": [
+          "wordnet"
+        ],
+        "Axes": [
+          "wikipedia"
+        ],
+        "axes": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "ax": [
+          "wordnet"
+        ],
+        "axe": [
+          "wordnet"
+        ],
+        "axis": [
+          "wordnet",
+          "llm"
+        ],
+        "Axis": [
+          "wordnet"
+        ],
+        "bloc": [
+          "wordnet"
+        ]
+      },
+      "lexical_variant_sources": {
+        "ax": [
+          "wordnet"
+        ],
+        "axe": [
+          "wordnet"
+        ],
+        "axis": [
+          "wordnet",
+          "llm"
+        ],
+        "Axis": [
+          "wordnet"
+        ],
+        "bloc": [
+          "wordnet"
+        ],
+        "axes": [
+          "llm"
+        ]
+      },
+      "definition": "A mechanical axis is a straight line around which a machine component rotates or moves, often used in machine tools and manufacturing equipment.",
+      "ontology_hints": [
+        "Component",
+        "MechanicalAxis",
+        "MachinePart",
+        "TimerControlledComponent",
+        "MachineComponent"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "an edge tool with a heavy bladed head mounted across a handle",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a straight line through a body or figure that satisfies certain conditions",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "the main stem or central part about which plant organs or plant parts such as branches are arranged",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "in World War II the alliance of Germany and Italy in 1936 which later included Japan and other nations",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a group of countries in special alliance",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Axes, plural of axe and of axis, may refer to\n\nAxes (album), a 2005 rock album by the British band Electrelane\na possibly still empty plot (graphics)",
+          "reference": "https://en.wikipedia.org/wiki/Axes"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"axis\", \"axes\"], \"synonyms\": [\"axis\"], \"lexical_variants\": [\"axis\", \"axes\"], \"definition\": \"A mechanical axis is a straight line around which a machine component rotates or moves, often used in machine tools and manufacturing equipment.\", \"ontology_hints\": [\"Component\", \"MechanicalAxis\", \"MachinePart\", \"TimerControlledComponent\", \"MachineComponent\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00018",
+        "text": "timer",
+        "label": "component"
+      },
+      "aliases": [
+        "timer",
+        "timekeeper",
+        "Timer"
+      ],
+      "synonyms": [
+        "timer",
+        "timekeeper"
+      ],
+      "lexical_variants": [
+        "timer",
+        "timekeeper"
+      ],
+      "alias_sources": {
+        "timer": [
+          "wordnet",
+          "llm"
+        ],
+        "timekeeper": [
+          "wordnet",
+          "llm"
+        ],
+        "Timer": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "timer": [
+          "wordnet",
+          "llm"
+        ],
+        "timekeeper": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "timer": [
+          "wordnet",
+          "llm"
+        ],
+        "timekeeper": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "A device or software component that measures a time interval and signals its end, often triggering an alarm or controlling a mechanism at a set time.",
+      "ontology_hints": [
+        "Timer is a type of Sensor that monitors time intervals",
+        "Timer is a component that triggers alarms when its interval elapses",
+        "Timer is a regulator that activates or deactivates a mechanism at set times",
+        "Timer is a type of Clock or Timepiece",
+        "Timer is a type of Time Switch"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a timepiece that measures a time interval and signals its end",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "(sports) an official who keeps track of the time elapsed",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a regulator that activates or deactivates a mechanism at set times",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "A timer or countdown timer is a type of clock that starts from a specified time duration and stops upon reaching 00:00. It can also usually be stopped manually before the whole duration has elapsed. An example of a simple timer is an hourglass. Commonly, a timer triggers an alarm when it ends. A timer can be implemented through hardware or software.\nStopwatches operate in the opposite direction, upwards from 00:00, measuring elapsed time since a given time instant. \nTime switches are timers that control an electric switch.",
+          "reference": "https://en.wikipedia.org/wiki/Timer"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"timer\", \"timekeeper\"], \"synonyms\": [\"timer\", \"timekeeper\"], \"lexical_variants\": [\"timer\", \"timekeeper\"], \"definition\": \"A device or software component that measures a time interval and signals its end, often triggering an alarm or controlling a mechanism at a set time.\", \"ontology_hints\": [\"Timer is a type of Sensor that monitors time intervals\", \"Timer is a component that triggers alarms when its interval elapses\", \"Timer is a regulator that activates or deactivates a mechanism at set times\", \"Timer is a type of Clock or Timepiece\", \"Timer is a type of Time Switch\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00019",
+        "text": "external watering device",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A device that applies water externally to a surface or area, typically used for irrigation or cooling purposes.",
+      "ontology_hints": [
+        "Manufacturing Cell component",
+        "Manufacturing Process equipment"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A device that applies water externally to a surface or area, typically used for irrigation or cooling purposes.\", \"ontology_hints\": [\"Manufacturing Cell component\", \"Manufacturing Process equipment\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00020",
+        "text": "shutdown phase",
+        "label": "state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Operational state entered after shutdown conditions are met.",
+      "ontology_hints": [
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4",
+        "Situation S5"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Operational state entered after shutdown conditions are met.\", \"ontology_hints\": [\"Situation S1\", \"Situation S2\", \"Situation S3\", \"Situation S4\", \"Situation S5\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00021",
+        "text": "configured time",
+        "label": "attribute"
+      },
+      "aliases": [
+        "time setting",
+        "time configuration"
+      ],
+      "synonyms": [
+        "scheduled time",
+        "preset time"
+      ],
+      "lexical_variants": [
+        "configured time",
+        "configured-time",
+        "configured_time"
+      ],
+      "alias_sources": {
+        "time setting": [
+          "llm"
+        ],
+        "time configuration": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "scheduled time": [
+          "llm"
+        ],
+        "preset time": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "configured time": [
+          "llm"
+        ],
+        "configured-time": [
+          "llm"
+        ],
+        "configured_time": [
+          "llm"
+        ]
+      },
+      "definition": "A time value set in a system that determines when a specific action, such as an automatic stop or shutdown, should occur.",
+      "ontology_hints": [
+        "hasTime",
+        "configuredAt",
+        "timeConstraint",
+        "scheduledOperationTime",
+        "FeatureOfInterest"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"time setting\", \"time configuration\"], \"synonyms\": [\"scheduled time\", \"preset time\"], \"lexical_variants\": [\"configured time\", \"configured-time\", \"configured_time\"], \"definition\": \"A time value set in a system that determines when a specific action, such as an automatic stop or shutdown, should occur.\", \"ontology_hints\": [\"hasTime\", \"configuredAt\", \"timeConstraint\", \"scheduledOperationTime\", \"FeatureOfInterest\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00022",
+        "text": "quantity of pieces",
+        "label": "attribute"
+      },
+      "aliases": [
+        "piece count",
+        "item count"
+      ],
+      "synonyms": [
+        "number of items",
+        "count of parts",
+        "product count"
+      ],
+      "lexical_variants": [
+        "piece quantity",
+        "pieces quantity"
+      ],
+      "alias_sources": {
+        "piece count": [
+          "llm"
+        ],
+        "item count": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "number of items": [
+          "llm"
+        ],
+        "count of parts": [
+          "llm"
+        ],
+        "product count": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "piece quantity": [
+          "llm"
+        ],
+        "pieces quantity": [
+          "llm"
+        ]
+      },
+      "definition": "The number of individual items or parts produced, processed, or present in a manufacturing operation.",
+      "ontology_hints": [
+        "hasQuantityOfPieces",
+        "producedItemCount",
+        "productionQuantity",
+        "triggerAlarmWhenThresholdReached"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"piece count\", \"item count\"], \"synonyms\": [\"number of items\", \"count of parts\", \"product count\"], \"lexical_variants\": [\"piece quantity\", \"pieces quantity\"], \"definition\": \"The number of individual items or parts produced, processed, or present in a manufacturing operation.\", \"ontology_hints\": [\"hasQuantityOfPieces\", \"producedItemCount\", \"productionQuantity\", \"triggerAlarmWhenThresholdReached\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00023",
+        "text": "PRODUCTION DATA page",
+        "label": "resource"
+      },
+      "aliases": [
+        "Prod Data Page",
+        "Production Data Interface",
+        "Production Data Screen",
+        "Production Data Form"
+      ],
+      "synonyms": [
+        "Production Data Page",
+        "Production Data Interface"
+      ],
+      "lexical_variants": [
+        "production data page",
+        "Production Data Page",
+        "PRODUCTION DATA page"
+      ],
+      "alias_sources": {
+        "Prod Data Page": [
+          "llm"
+        ],
+        "Production Data Interface": [
+          "llm"
+        ],
+        "Production Data Screen": [
+          "llm"
+        ],
+        "Production Data Form": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Production Data Page": [
+          "llm"
+        ],
+        "Production Data Interface": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "production data page": [
+          "llm"
+        ],
+        "Production Data Page": [
+          "llm"
+        ],
+        "PRODUCTION DATA page": [
+          "llm"
+        ]
+      },
+      "definition": "An interface page within a manufacturing system where production quantity and related production data are entered, displayed, or modified.",
+      "ontology_hints": [
+        "resource for setting production quantity",
+        "linked to Production Line and Product entities",
+        "supports actions such as scheduling or adjusting production runs",
+        "may trigger or reference Situations and Actions in the manufacturing workflow"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Prod Data Page\", \"Production Data Interface\", \"Production Data Screen\", \"Production Data Form\"], \"synonyms\": [\"Production Data Page\", \"Production Data Interface\"], \"lexical_variants\": [\"production data page\", \"Production Data Page\", \"PRODUCTION DATA page\"], \"definition\": \"An interface page within a manufacturing system where production quantity and related production data are entered, displayed, or modified.\", \"ontology_hints\": [\"resource for setting production quantity\", \"linked to Production Line and Product entities\", \"supports actions such as scheduling or adjusting production runs\", \"may trigger or reference Situations and Actions in the manufacturing workflow\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00024",
+        "text": "deposit documents",
+        "label": "resource"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "depositing documents"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "depositing documents": [
+          "llm"
+        ]
+      },
+      "definition": "The act of placing documents into a storage location or repository, typically as part of a process to preserve or record information.",
+      "ontology_hints": [
+        "Process",
+        "Resource",
+        "TemporalEntity",
+        "Situation"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"depositing documents\"], \"definition\": \"The act of placing documents into a storage location or repository, typically as part of a process to preserve or record information.\", \"ontology_hints\": [\"Process\", \"Resource\", \"TemporalEntity\", \"Situation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00025",
+        "text": "general switch",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Switch that must trip to allow machine restart.",
+      "ontology_hints": [
+        "component"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Switch that must trip to allow machine restart.\", \"ontology_hints\": [\"component\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00026",
+        "text": "automatic off function",
+        "label": "function"
+      },
+      "aliases": [
+        "auto-off function"
+      ],
+      "synonyms": [
+        "automatic shutdown function"
+      ],
+      "lexical_variants": [
+        "automatic off",
+        "auto-off"
+      ],
+      "alias_sources": {
+        "auto-off function": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "automatic shutdown function": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "automatic off": [
+          "llm"
+        ],
+        "auto-off": [
+          "llm"
+        ]
+      },
+      "definition": "An action that automatically turns off a target entity—typically a feature of interest or spatial object—within a manufacturing facility, usually triggered by a detected situation such as a time limit or abnormal condition.",
+      "ontology_hints": [
+        "Action",
+        "Feature of Interest",
+        "Spatial Object",
+        "Manufacturing Facility",
+        "Logistic Process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"auto-off function\"], \"synonyms\": [\"automatic shutdown function\"], \"lexical_variants\": [\"automatic off\", \"auto-off\"], \"definition\": \"An action that automatically turns off a target entity—typically a feature of interest or spatial object—within a manufacturing facility, usually triggered by a detected situation such as a time limit or abnormal condition.\", \"ontology_hints\": [\"Action\", \"Feature of Interest\", \"Spatial Object\", \"Manufacturing Facility\", \"Logistic Process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00027",
+        "text": "user page",
+        "label": "resource"
+      },
+      "aliases": [
+        "User profile"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "User profile": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An interface page that allows a user to view and modify settings, such as shutdown parameters, typically part of a user profile or account management system.",
+      "ontology_hints": [
+        "resource",
+        "user interface",
+        "shutdown parameters",
+        "operator settings",
+        "user profile"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "A user profile is a collection of settings and information associated with a user. It contains critical information that is used to identify an individual, such as their name, age, portrait photograph and individual characteristics such as knowledge or expertise. User profiles are most commonly present on social media websites such as Facebook, Instagram, and LinkedIn; and serve as voluntary digital identity of an individual, highlighting their key features and traits. In personal computing and operating systems, user profiles serve to categorise files, settings, and documents by individual user environments, known as 'accounts', allowing the operating system to be more friendly and catered to the user. Physical user profiles serve as identity documents such as passports, driving licenses and legal documents that are used to identify an individual under the legal system.\nA user profile can also be considered as the computer representation of a user model. A user model is a (data) structure that is used to capture certain characteristics about an individual user, and the process of obtaining the user profile is called user modeling or profiling.",
+          "reference": "https://en.wikipedia.org/wiki/User_profile"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"User profile\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An interface page that allows a user to view and modify settings, such as shutdown parameters, typically part of a user profile or account management system.\", \"ontology_hints\": [\"resource\", \"user interface\", \"shutdown parameters\", \"operator settings\", \"user profile\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00028",
+        "text": "bar change is completed",
+        "label": "event"
+      },
+      "aliases": [
+        "bar change finished",
+        "bar change complete",
+        "bar change done"
+      ],
+      "synonyms": [
+        "bar change finished",
+        "bar change complete",
+        "bar change done"
+      ],
+      "lexical_variants": [
+        "bar change completed",
+        "bar change is finished"
+      ],
+      "alias_sources": {
+        "bar change finished": [
+          "llm"
+        ],
+        "bar change complete": [
+          "llm"
+        ],
+        "bar change done": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "bar change finished": [
+          "llm"
+        ],
+        "bar change complete": [
+          "llm"
+        ],
+        "bar change done": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "bar change completed": [
+          "llm"
+        ],
+        "bar change is finished": [
+          "llm"
+        ]
+      },
+      "definition": "An event indicating that the process of changing a bar has been finished.",
+      "ontology_hints": [
+        "Machine",
+        "Feature of Interest (bar)",
+        "Observable Property (change)",
+        "Result (completed)"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"bar change finished\", \"bar change complete\", \"bar change done\"], \"synonyms\": [\"bar change finished\", \"bar change complete\", \"bar change done\"], \"lexical_variants\": [\"bar change completed\", \"bar change is finished\"], \"definition\": \"An event indicating that the process of changing a bar has been finished.\", \"ontology_hints\": [\"Machine\", \"Feature of Interest (bar)\", \"Observable Property (change)\", \"Result (completed)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00029",
+        "text": "message clears",
+        "label": "event"
+      },
+      "aliases": [
+        "clears message",
+        "clears alarm",
+        "clears notification"
+      ],
+      "synonyms": [
+        "alarm cleared",
+        "message cleared",
+        "notification cleared"
+      ],
+      "lexical_variants": [
+        "clears message",
+        "clears alarm",
+        "clears notification",
+        "message clears",
+        "alarm clears"
+      ],
+      "alias_sources": {
+        "clears message": [
+          "llm"
+        ],
+        "clears alarm": [
+          "llm"
+        ],
+        "clears notification": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "alarm cleared": [
+          "llm"
+        ],
+        "message cleared": [
+          "llm"
+        ],
+        "notification cleared": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "clears message": [
+          "llm"
+        ],
+        "clears alarm": [
+          "llm"
+        ],
+        "clears notification": [
+          "llm"
+        ],
+        "message clears": [
+          "llm"
+        ],
+        "alarm clears": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which an alarm or status message disappears from the display or log, typically after being acknowledged or resolved by a responsible person such as a manager or operator.",
+      "ontology_hints": [
+        "Event type: AlarmClearingEvent",
+        "HANDLED_BY: Manager",
+        "TRIGGERS: Observable Property cleared",
+        "REQUIRES: Acknowledgement",
+        "REFERENCES: Alarm message",
+        "Result: Observable Property reset to normal state"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"clears message\", \"clears alarm\", \"clears notification\"], \"synonyms\": [\"alarm cleared\", \"message cleared\", \"notification cleared\"], \"lexical_variants\": [\"clears message\", \"clears alarm\", \"clears notification\", \"message clears\", \"alarm clears\"], \"definition\": \"An event in which an alarm or status message disappears from the display or log, typically after being acknowledged or resolved by a responsible person such as a manager or operator.\", \"ontology_hints\": [\"Event type: AlarmClearingEvent\", \"HANDLED_BY: Manager\", \"TRIGGERS: Observable Property cleared\", \"REQUIRES: Acknowledgement\", \"REFERENCES: Alarm message\", \"Result: Observable Property reset to normal state\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00030",
+        "text": "bar change to be completed",
+        "label": "event"
+      },
+      "aliases": [
+        "bar change to be completed"
+      ],
+      "synonyms": [
+        "bar change pending",
+        "bar change awaiting completion",
+        "bar adjustment pending"
+      ],
+      "lexical_variants": [
+        "bar change pending",
+        "bar change awaiting completion",
+        "bar adjustment pending"
+      ],
+      "alias_sources": {
+        "bar change to be completed": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "bar change pending": [
+          "llm"
+        ],
+        "bar change awaiting completion": [
+          "llm"
+        ],
+        "bar adjustment pending": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "bar change pending": [
+          "llm"
+        ],
+        "bar change awaiting completion": [
+          "llm"
+        ],
+        "bar adjustment pending": [
+          "llm"
+        ]
+      },
+      "definition": "An event indicating that a bar change operation has been scheduled but has not yet been finished, typically requiring maintenance intervention within a manufacturing cell.",
+      "ontology_hints": [
+        "ManufacturingCell",
+        "Machine",
+        "FeatureOfInterest",
+        "TemporalEntity",
+        "hasFeatureOfInterest",
+        "occursIn",
+        "scheduledAt",
+        "requires",
+        "handledBy",
+        "references"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"bar change to be completed\"], \"synonyms\": [\"bar change pending\", \"bar change awaiting completion\", \"bar adjustment pending\"], \"lexical_variants\": [\"bar change pending\", \"bar change awaiting completion\", \"bar adjustment pending\"], \"definition\": \"An event indicating that a bar change operation has been scheduled but has not yet been finished, typically requiring maintenance intervention within a manufacturing cell.\", \"ontology_hints\": [\"ManufacturingCell\", \"Machine\", \"FeatureOfInterest\", \"TemporalEntity\", \"hasFeatureOfInterest\", \"occursIn\", \"scheduledAt\", \"requires\", \"handledBy\", \"references\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00031",
+        "text": "bar feeder bar magazine is almost empty",
+        "label": "symptom"
+      },
+      "aliases": [
+        "bar magazine nearly empty",
+        "bar feeder magazine almost empty",
+        "bar magazine low"
+      ],
+      "synonyms": [
+        "nearly empty",
+        "almost depleted",
+        "low stock"
+      ],
+      "lexical_variants": [
+        "bar feeder bar magazine is almost empty",
+        "bar feeder magazine is almost empty",
+        "bar magazine is almost empty"
+      ],
+      "alias_sources": {
+        "bar magazine nearly empty": [
+          "llm"
+        ],
+        "bar feeder magazine almost empty": [
+          "llm"
+        ],
+        "bar magazine low": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "nearly empty": [
+          "llm"
+        ],
+        "almost depleted": [
+          "llm"
+        ],
+        "low stock": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "bar feeder bar magazine is almost empty": [
+          "llm"
+        ],
+        "bar feeder magazine is almost empty": [
+          "llm"
+        ],
+        "bar magazine is almost empty": [
+          "llm"
+        ]
+      },
+      "definition": "An abnormal condition indicating that the bar magazine in a bar feeder is nearly depleted of bars, requiring replenishment.",
+      "ontology_hints": [
+        "Observable Property",
+        "Feature of Interest",
+        "Manufacturing Facility",
+        "Manufacturing Process",
+        "Inventory component"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"bar magazine nearly empty\", \"bar feeder magazine almost empty\", \"bar magazine low\"], \"synonyms\": [\"nearly empty\", \"almost depleted\", \"low stock\"], \"lexical_variants\": [\"bar feeder bar magazine is almost empty\", \"bar feeder magazine is almost empty\", \"bar magazine is almost empty\"], \"definition\": \"An abnormal condition indicating that the bar magazine in a bar feeder is nearly depleted of bars, requiring replenishment.\", \"ontology_hints\": [\"Observable Property\", \"Feature of Interest\", \"Manufacturing Facility\", \"Manufacturing Process\", \"Inventory component\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00032",
+        "text": "behavior of the chip conveyor overload control device is abnormal",
+        "label": "symptom"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "chip conveyor overload control device abnormal behavior",
+        "abnormal behavior of the chip conveyor overload control device"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "chip conveyor overload control device abnormal behavior": [
+          "llm"
+        ],
+        "abnormal behavior of the chip conveyor overload control device": [
+          "llm"
+        ]
+      },
+      "definition": "An abnormal behavior of the chip conveyor overload control device indicates that the device is operating outside its normal parameters, potentially triggering an alarm and requiring intervention.",
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "ObservableProperty",
+        "HumanProcess",
+        "ManufacturingProcess",
+        "Technician"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"chip conveyor overload control device abnormal behavior\", \"abnormal behavior of the chip conveyor overload control device\"], \"definition\": \"An abnormal behavior of the chip conveyor overload control device indicates that the device is operating outside its normal parameters, potentially triggering an alarm and requiring intervention.\", \"ontology_hints\": [\"FeatureOfInterest\", \"ObservableProperty\", \"HumanProcess\", \"ManufacturingProcess\", \"Technician\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00033",
+        "text": "machine shutdown time has been reached",
+        "label": "state"
+      },
+      "aliases": [
+        "shutdown time reached",
+        "shutdown time achieved",
+        "shutdown time attained"
+      ],
+      "synonyms": [
+        "shutdown time reached",
+        "shutdown time achieved",
+        "shutdown time attained"
+      ],
+      "lexical_variants": [
+        "machine shutdown time reached",
+        "machine shutdown time has been reached",
+        "shutdown time reached",
+        "shutdown time achieved",
+        "shutdown time attained"
+      ],
+      "alias_sources": {
+        "shutdown time reached": [
+          "llm"
+        ],
+        "shutdown time achieved": [
+          "llm"
+        ],
+        "shutdown time attained": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "shutdown time reached": [
+          "llm"
+        ],
+        "shutdown time achieved": [
+          "llm"
+        ],
+        "shutdown time attained": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "machine shutdown time reached": [
+          "llm"
+        ],
+        "machine shutdown time has been reached": [
+          "llm"
+        ],
+        "shutdown time reached": [
+          "llm"
+        ],
+        "shutdown time achieved": [
+          "llm"
+        ],
+        "shutdown time attained": [
+          "llm"
+        ]
+      },
+      "definition": "The point in time at which a machine is scheduled to transition into a shutdown state, triggering shutdown logic.",
+      "ontology_hints": [
+        "Machine",
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "Instant",
+        "Human Process",
+        "Shutdown event",
+        "Shutdown state",
+        "Scheduled shutdown",
+        "Shutdown logic",
+        "Shutdown condition"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"shutdown time reached\", \"shutdown time achieved\", \"shutdown time attained\"], \"synonyms\": [\"shutdown time reached\", \"shutdown time achieved\", \"shutdown time attained\"], \"lexical_variants\": [\"machine shutdown time reached\", \"machine shutdown time has been reached\", \"shutdown time reached\", \"shutdown time achieved\", \"shutdown time attained\"], \"definition\": \"The point in time at which a machine is scheduled to transition into a shutdown state, triggering shutdown logic.\", \"ontology_hints\": [\"Machine\", \"Manufacturing Process\", \"Manufacturing Facility\", \"Instant\", \"Human Process\", \"Shutdown event\", \"Shutdown state\", \"Scheduled shutdown\", \"Shutdown logic\", \"Shutdown condition\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00034",
+        "text": "quantity of pieces established in the PRODUCTION DATA page has been reached",
+        "label": "state"
+      },
+      "aliases": [
+        "production target reached",
+        "output quantity met",
+        "quantity achieved"
+      ],
+      "synonyms": [
+        "production completion",
+        "target quantity achieved"
+      ],
+      "lexical_variants": [
+        "target quantity reached",
+        "production quantity met"
+      ],
+      "alias_sources": {
+        "production target reached": [
+          "llm"
+        ],
+        "output quantity met": [
+          "llm"
+        ],
+        "quantity achieved": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "production completion": [
+          "llm"
+        ],
+        "target quantity achieved": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "target quantity reached": [
+          "llm"
+        ],
+        "production quantity met": [
+          "llm"
+        ]
+      },
+      "definition": "A state indicating that the target quantity of pieces recorded in the production data page has been achieved, typically triggering a production completion alarm.",
+      "ontology_hints": [
+        "Production Line",
+        "Manufacturing Process",
+        "Observable Property"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"production target reached\", \"output quantity met\", \"quantity achieved\"], \"synonyms\": [\"production completion\", \"target quantity achieved\"], \"lexical_variants\": [\"target quantity reached\", \"production quantity met\"], \"definition\": \"A state indicating that the target quantity of pieces recorded in the production data page has been achieved, typically triggering a production completion alarm.\", \"ontology_hints\": [\"Production Line\", \"Manufacturing Process\", \"Observable Property\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00035",
+        "text": "programs will be stopped",
+        "label": "event"
+      },
+      "aliases": [
+        "program termination",
+        "program halt"
+      ],
+      "synonyms": [
+        "halt",
+        "terminate"
+      ],
+      "lexical_variants": [
+        "programs stop",
+        "programs are stopped",
+        "program will stop"
+      ],
+      "alias_sources": {
+        "program termination": [
+          "llm"
+        ],
+        "program halt": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "halt": [
+          "llm"
+        ],
+        "terminate": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "programs stop": [
+          "llm"
+        ],
+        "programs are stopped": [
+          "llm"
+        ],
+        "program will stop": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which one or more computer programs cease execution, typically as part of a shutdown or maintenance procedure.",
+      "ontology_hints": [
+        "Process",
+        "Temporal Entity",
+        "Property (stopped status)",
+        "Operator"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"program termination\", \"program halt\"], \"synonyms\": [\"halt\", \"terminate\"], \"lexical_variants\": [\"programs stop\", \"programs are stopped\", \"program will stop\"], \"definition\": \"An event in which one or more computer programs cease execution, typically as part of a shutdown or maintenance procedure.\", \"ontology_hints\": [\"Process\", \"Temporal Entity\", \"Property (stopped status)\", \"Operator\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00036",
+        "text": "shutdown phase will be started",
+        "label": "event"
+      },
+      "aliases": [
+        "shutdown phase initiation",
+        "shutdown phase commencement"
+      ],
+      "synonyms": [
+        "shutdown phase start",
+        "shutdown phase beginning"
+      ],
+      "lexical_variants": [
+        "shutdown phase will commence",
+        "shutdown phase will begin"
+      ],
+      "alias_sources": {
+        "shutdown phase initiation": [
+          "llm"
+        ],
+        "shutdown phase commencement": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "shutdown phase start": [
+          "llm"
+        ],
+        "shutdown phase beginning": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "shutdown phase will commence": [
+          "llm"
+        ],
+        "shutdown phase will begin": [
+          "llm"
+        ]
+      },
+      "definition": "The initiation of the shutdown phase, marking the start of a period during which the machine is being powered down or brought to a safe state.",
+      "ontology_hints": [
+        "TemporalEntity",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "SpatialObject",
+        "Event"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"shutdown phase initiation\", \"shutdown phase commencement\"], \"synonyms\": [\"shutdown phase start\", \"shutdown phase beginning\"], \"lexical_variants\": [\"shutdown phase will commence\", \"shutdown phase will begin\"], \"definition\": \"The initiation of the shutdown phase, marking the start of a period during which the machine is being powered down or brought to a safe state.\", \"ontology_hints\": [\"TemporalEntity\", \"Situation S1\", \"Situation S2\", \"Situation S3\", \"SpatialObject\", \"Event\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00037",
+        "text": "message clears automatically",
+        "label": "event"
+      },
+      "aliases": [
+        "auto-clear event",
+        "automatic clearance",
+        "alarm auto-clears"
+      ],
+      "synonyms": [
+        "message auto-clears",
+        "alarm clears automatically",
+        "notification auto-clears"
+      ],
+      "lexical_variants": [
+        "message clears automatically",
+        "message auto-clears",
+        "alarm clears automatically",
+        "alarm auto-clears"
+      ],
+      "alias_sources": {
+        "auto-clear event": [
+          "llm"
+        ],
+        "automatic clearance": [
+          "llm"
+        ],
+        "alarm auto-clears": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "message auto-clears": [
+          "llm"
+        ],
+        "alarm clears automatically": [
+          "llm"
+        ],
+        "notification auto-clears": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "message clears automatically": [
+          "llm"
+        ],
+        "message auto-clears": [
+          "llm"
+        ],
+        "alarm clears automatically": [
+          "llm"
+        ],
+        "alarm auto-clears": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which an alarm or notification message is cleared without manual intervention, typically triggered by a sensor or system condition within a manufacturing cell or facility.",
+      "ontology_hints": [
+        "TRIGGERS: Observable Property",
+        "REQUIRES: no human intervention",
+        "HANDLED_BY: automated control system",
+        "DETECTED_BY: sensor or monitoring system",
+        "REFERENCES: alarm message",
+        "BELONGS_TO: AlarmClearance event category"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"auto-clear event\", \"automatic clearance\", \"alarm auto-clears\"], \"synonyms\": [\"message auto-clears\", \"alarm clears automatically\", \"notification auto-clears\"], \"lexical_variants\": [\"message clears automatically\", \"message auto-clears\", \"alarm clears automatically\", \"alarm auto-clears\"], \"definition\": \"An event in which an alarm or notification message is cleared without manual intervention, typically triggered by a sensor or system condition within a manufacturing cell or facility.\", \"ontology_hints\": [\"TRIGGERS: Observable Property\", \"REQUIRES: no human intervention\", \"HANDLED_BY: automated control system\", \"DETECTED_BY: sensor or monitoring system\", \"REFERENCES: alarm message\", \"BELONGS_TO: AlarmClearance event category\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00038",
+        "text": "AUTOMATIC OFF function activated",
+        "label": "event"
+      },
+      "aliases": [
+        "Auto-Off Activation",
+        "Automatic Off Activation",
+        "Auto Off Function Activated"
+      ],
+      "synonyms": [
+        "automatic shutdown",
+        "auto-off",
+        "automatic power-down",
+        "automatic deactivation"
+      ],
+      "lexical_variants": [
+        "automatic off function activation",
+        "automatic off function triggered",
+        "automatic off function engaged"
+      ],
+      "alias_sources": {
+        "Auto-Off Activation": [
+          "llm"
+        ],
+        "Automatic Off Activation": [
+          "llm"
+        ],
+        "Auto Off Function Activated": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "automatic shutdown": [
+          "llm"
+        ],
+        "auto-off": [
+          "llm"
+        ],
+        "automatic power-down": [
+          "llm"
+        ],
+        "automatic deactivation": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "automatic off function activation": [
+          "llm"
+        ],
+        "automatic off function triggered": [
+          "llm"
+        ],
+        "automatic off function engaged": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which the automatic off function of a machine or system is activated, causing the equipment to shut down or power off automatically.",
+      "ontology_hints": [
+        "Production Line",
+        "Manufacturing Cell",
+        "Manufacturing Facility",
+        "Logistic Process",
+        "Feature of Interest",
+        "Shutdown State",
+        "Control Action"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Auto-Off Activation\", \"Automatic Off Activation\", \"Auto Off Function Activated\"], \"synonyms\": [\"automatic shutdown\", \"auto-off\", \"automatic power-down\", \"automatic deactivation\"], \"lexical_variants\": [\"automatic off function activation\", \"automatic off function triggered\", \"automatic off function engaged\"], \"definition\": \"An event in which the automatic off function of a machine or system is activated, causing the equipment to shut down or power off automatically.\", \"ontology_hints\": [\"Production Line\", \"Manufacturing Cell\", \"Manufacturing Facility\", \"Logistic Process\", \"Feature of Interest\", \"Shutdown State\", \"Control Action\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00039",
+        "text": "configured time has been reached",
+        "label": "state"
+      },
+      "aliases": [
+        "time limit reached",
+        "time threshold met",
+        "scheduled time reached"
+      ],
+      "synonyms": [
+        "configured time reached",
+        "configured duration elapsed",
+        "time-based trigger activated"
+      ],
+      "lexical_variants": [
+        "configured time has elapsed",
+        "configured time limit reached",
+        "time limit has been reached"
+      ],
+      "alias_sources": {
+        "time limit reached": [
+          "llm"
+        ],
+        "time threshold met": [
+          "llm"
+        ],
+        "scheduled time reached": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "configured time reached": [
+          "llm"
+        ],
+        "configured duration elapsed": [
+          "llm"
+        ],
+        "time-based trigger activated": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "configured time has elapsed": [
+          "llm"
+        ],
+        "configured time limit reached": [
+          "llm"
+        ],
+        "time limit has been reached": [
+          "llm"
+        ]
+      },
+      "definition": "A state indicating that a pre‑set time interval has elapsed, thereby satisfying a time‑based constraint and triggering a subsequent action such as stopping or turning off a process.",
+      "ontology_hints": [
+        "Constraint",
+        "Feature of Interest",
+        "Human Process",
+        "Machine",
+        "has observable property",
+        "TRIGGERS"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"time limit reached\", \"time threshold met\", \"scheduled time reached\"], \"synonyms\": [\"configured time reached\", \"configured duration elapsed\", \"time-based trigger activated\"], \"lexical_variants\": [\"configured time has elapsed\", \"configured time limit reached\", \"time limit has been reached\"], \"definition\": \"A state indicating that a pre‑set time interval has elapsed, thereby satisfying a time‑based constraint and triggering a subsequent action such as stopping or turning off a process.\", \"ontology_hints\": [\"Constraint\", \"Feature of Interest\", \"Human Process\", \"Machine\", \"has observable property\", \"TRIGGERS\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00040",
+        "text": "alarm has occurred",
+        "label": "event"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An event in which an alarm signal is generated on a manufacturing resource, indicating a fault or abnormal condition that may trigger a shutdown or other intervention.",
+      "ontology_hints": [
+        "has cause",
+        "has result",
+        "has end",
+        "references",
+        "detected by",
+        "Feature of Interest",
+        "Resource",
+        "Manufacturing Process",
+        "Manufacturing Cell"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An event in which an alarm signal is generated on a manufacturing resource, indicating a fault or abnormal condition that may trigger a shutdown or other intervention.\", \"ontology_hints\": [\"has cause\", \"has result\", \"has end\", \"references\", \"detected by\", \"Feature of Interest\", \"Resource\", \"Manufacturing Process\", \"Manufacturing Cell\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00041",
+        "text": "shutdown phase started",
+        "label": "event"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Event indicating the start of the shutdown phase.",
+      "ontology_hints": [
+        "Situation S1"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Event indicating the start of the shutdown phase.\", \"ontology_hints\": [\"Situation S1\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00042",
+        "text": "engage general switch",
+        "label": "action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An action performed to turn on the general switch, enabling the machine to restart.",
+      "ontology_hints": [
+        "engage general switch is an action performed by a Manager on a FeatureOfInterest (the general switch).",
+        "engage general switch references a FeatureOfInterest and is detected by an ObservableProperty (switch state).",
+        "engage general switch occurs within a TemporalEntity (interval).",
+        "engage general switch is required to restart the machine."
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An action performed to turn on the general switch, enabling the machine to restart.\", \"ontology_hints\": [\"engage general switch is an action performed by a Manager on a FeatureOfInterest (the general switch).\", \"engage general switch references a FeatureOfInterest and is detected by an ObservableProperty (switch state).\", \"engage general switch occurs within a TemporalEntity (interval).\", \"engage general switch is required to restart the machine.\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00043",
+        "text": "turn on the machine",
+        "label": "action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Action to resume machine operation.",
+      "ontology_hints": [
+        "Machine",
+        "Technician",
+        "Production Line",
+        "Feature of Interest",
+        "Constraint"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Action to resume machine operation.\", \"ontology_hints\": [\"Machine\", \"Technician\", \"Production Line\", \"Feature of Interest\", \"Constraint\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00044",
+        "text": "Add new bars to the store",
+        "label": "action"
+      },
+      "aliases": [
+        "bar magazine refill",
+        "bar replenishment",
+        "bar magazine restock"
+      ],
+      "synonyms": [
+        "replenish the bar magazine",
+        "refill the bar magazine"
+      ],
+      "lexical_variants": [
+        "add bars to the store",
+        "add new bars to the bar magazine"
+      ],
+      "alias_sources": {
+        "bar magazine refill": [
+          "llm"
+        ],
+        "bar replenishment": [
+          "llm"
+        ],
+        "bar magazine restock": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "replenish the bar magazine": [
+          "llm"
+        ],
+        "refill the bar magazine": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "add bars to the store": [
+          "llm"
+        ],
+        "add new bars to the bar magazine": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention performed by a human operator to add new bars to the bar magazine in a machine, thereby replenishing the supply of bars for the machine's operation.",
+      "ontology_hints": [
+        "HumanProcess",
+        "Workstation",
+        "FeatureOfInterest",
+        "Sensor",
+        "Manager"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"bar magazine refill\", \"bar replenishment\", \"bar magazine restock\"], \"synonyms\": [\"replenish the bar magazine\", \"refill the bar magazine\"], \"lexical_variants\": [\"add bars to the store\", \"add new bars to the bar magazine\"], \"definition\": \"An intervention performed by a human operator to add new bars to the bar magazine in a machine, thereby replenishing the supply of bars for the machine's operation.\", \"ontology_hints\": [\"HumanProcess\", \"Workstation\", \"FeatureOfInterest\", \"Sensor\", \"Manager\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00045",
+        "text": "Make sure device works correctly",
+        "label": "action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "Make sure device works correctly"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "Make sure device works correctly": [
+          "llm"
+        ]
+      },
+      "definition": "An action performed by a human operator to verify that a device is operating correctly, ensuring its observable property of proper functioning.",
+      "ontology_hints": [
+        "HumanProcess",
+        "ManufacturingProcess",
+        "FeatureOfInterest",
+        "ObservableProperty"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"Make sure device works correctly\"], \"definition\": \"An action performed by a human operator to verify that a device is operating correctly, ensuring its observable property of proper functioning.\", \"ontology_hints\": [\"HumanProcess\", \"ManufacturingProcess\", \"FeatureOfInterest\", \"ObservableProperty\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00046",
+        "text": "consult documentation",
+        "label": "action"
+      },
+      "aliases": [
+        "consult docs",
+        "consult manual"
+      ],
+      "synonyms": [
+        "review documentation",
+        "examine documentation",
+        "study documentation",
+        "read documentation"
+      ],
+      "lexical_variants": [
+        "consulting documentation",
+        "consult docs"
+      ],
+      "alias_sources": {
+        "consult docs": [
+          "llm"
+        ],
+        "consult manual": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "review documentation": [
+          "llm"
+        ],
+        "examine documentation": [
+          "llm"
+        ],
+        "study documentation": [
+          "llm"
+        ],
+        "read documentation": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "consulting documentation": [
+          "llm"
+        ],
+        "consult docs": [
+          "llm"
+        ]
+      },
+      "definition": "To examine or refer to official documents or manuals in order to obtain information, guidance, or verify procedures.",
+      "ontology_hints": [
+        "action",
+        "information_retrieval",
+        "maintenance_procedure_verification",
+        "documentation_reference"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"consult docs\", \"consult manual\"], \"synonyms\": [\"review documentation\", \"examine documentation\", \"study documentation\", \"read documentation\"], \"lexical_variants\": [\"consulting documentation\", \"consult docs\"], \"definition\": \"To examine or refer to official documents or manuals in order to obtain information, guidance, or verify procedures.\", \"ontology_hints\": [\"action\", \"information_retrieval\", \"maintenance_procedure_verification\", \"documentation_reference\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00047",
+        "text": "check connections with tower",
+        "label": "action"
+      },
+      "aliases": [
+        "tower connection check"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "check tower connections",
+        "verify tower connections",
+        "inspect tower wiring",
+        "test tower connectivity"
+      ],
+      "alias_sources": {
+        "tower connection check": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "check tower connections": [
+          "llm"
+        ],
+        "verify tower connections": [
+          "llm"
+        ],
+        "inspect tower wiring": [
+          "llm"
+        ],
+        "test tower connectivity": [
+          "llm"
+        ]
+      },
+      "definition": "An action performed to verify the electrical or mechanical connections of a tower structure when signals are absent, typically involving inspection or testing of wiring or structural links.",
+      "ontology_hints": [
+        "Action",
+        "Sensor",
+        "Feature of Interest",
+        "Manufacturing Facility",
+        "Production Line",
+        "Maintenance"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"tower connection check\"], \"synonyms\": [], \"lexical_variants\": [\"check tower connections\", \"verify tower connections\", \"inspect tower wiring\", \"test tower connectivity\"], \"definition\": \"An action performed to verify the electrical or mechanical connections of a tower structure when signals are absent, typically involving inspection or testing of wiring or structural links.\", \"ontology_hints\": [\"Action\", \"Sensor\", \"Feature of Interest\", \"Manufacturing Facility\", \"Production Line\", \"Maintenance\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00048",
+        "text": "shutdown from user page",
+        "label": "action"
+      },
+      "aliases": [
+        "shutdown via UI",
+        "user-initiated shutdown",
+        "shutdown command from user interface"
+      ],
+      "synonyms": [
+        "user-triggered shutdown",
+        "UI shutdown"
+      ],
+      "lexical_variants": [
+        "shutdown from user page",
+        "shutdown via user page"
+      ],
+      "alias_sources": {
+        "shutdown via UI": [
+          "llm"
+        ],
+        "user-initiated shutdown": [
+          "llm"
+        ],
+        "shutdown command from user interface": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "user-triggered shutdown": [
+          "llm"
+        ],
+        "UI shutdown": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "shutdown from user page": [
+          "llm"
+        ],
+        "shutdown via user page": [
+          "llm"
+        ]
+      },
+      "definition": "An action in which a user initiates a system shutdown through the user interface page, typically to safely power down or reset the machine.",
+      "ontology_hints": [
+        "belongs to Situation S1 (shutdown context)",
+        "TRIGGERS: user action",
+        "REQUIRES: shutdown procedure",
+        "HANDLED_BY: maintenance staff or system operator"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"shutdown via UI\", \"user-initiated shutdown\", \"shutdown command from user interface\"], \"synonyms\": [\"user-triggered shutdown\", \"UI shutdown\"], \"lexical_variants\": [\"shutdown from user page\", \"shutdown via user page\"], \"definition\": \"An action in which a user initiates a system shutdown through the user interface page, typically to safely power down or reset the machine.\", \"ontology_hints\": [\"belongs to Situation S1 (shutdown context)\", \"TRIGGERS: user action\", \"REQUIRES: shutdown procedure\", \"HANDLED_BY: maintenance staff or system operator\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00049",
+        "text": "change shutdown time from user page",
+        "label": "action"
+      },
+      "aliases": [
+        "shutdown time update",
+        "shutdown time edit"
+      ],
+      "synonyms": [
+        "modify shutdown time",
+        "adjust shutdown schedule",
+        "update shutdown timing",
+        "change shutdown duration"
+      ],
+      "lexical_variants": [
+        "shutdown time change",
+        "shutdown timing adjustment",
+        "shutdown schedule modification"
+      ],
+      "alias_sources": {
+        "shutdown time update": [
+          "llm"
+        ],
+        "shutdown time edit": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "modify shutdown time": [
+          "llm"
+        ],
+        "adjust shutdown schedule": [
+          "llm"
+        ],
+        "update shutdown timing": [
+          "llm"
+        ],
+        "change shutdown duration": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "shutdown time change": [
+          "llm"
+        ],
+        "shutdown timing adjustment": [
+          "llm"
+        ],
+        "shutdown schedule modification": [
+          "llm"
+        ]
+      },
+      "definition": "An action performed by a user through a web interface to modify the scheduled shutdown time of a manufacturing process.",
+      "ontology_hints": [
+        "HumanProcess",
+        "ProductionLine",
+        "LogisticProcess",
+        "shutdownTime property",
+        "UserInterface"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"shutdown time update\", \"shutdown time edit\"], \"synonyms\": [\"modify shutdown time\", \"adjust shutdown schedule\", \"update shutdown timing\", \"change shutdown duration\"], \"lexical_variants\": [\"shutdown time change\", \"shutdown timing adjustment\", \"shutdown schedule modification\"], \"definition\": \"An action performed by a user through a web interface to modify the scheduled shutdown time of a manufacturing process.\", \"ontology_hints\": [\"HumanProcess\", \"ProductionLine\", \"LogisticProcess\", \"shutdownTime property\", \"UserInterface\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00050",
+        "text": "change number of deposit documents from user page",
+        "label": "action"
+      },
+      "aliases": [
+        "modify deposit document count",
+        "adjust deposit document quantity"
+      ],
+      "synonyms": [
+        "update deposit document number",
+        "alter deposit document quantity"
+      ],
+      "lexical_variants": [
+        "change number of deposit documents from user page",
+        "change number of deposit documents via user page"
+      ],
+      "alias_sources": {
+        "modify deposit document count": [
+          "llm"
+        ],
+        "adjust deposit document quantity": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "update deposit document number": [
+          "llm"
+        ],
+        "alter deposit document quantity": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "change number of deposit documents from user page": [
+          "llm"
+        ],
+        "change number of deposit documents via user page": [
+          "llm"
+        ]
+      },
+      "definition": "An action performed by a human operator to modify the quantity of deposit documents recorded in the system through the user interface.",
+      "ontology_hints": [
+        "HumanProcess",
+        "FeatureOfInterest",
+        "LogisticProcess",
+        "TemporalEntity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"modify deposit document count\", \"adjust deposit document quantity\"], \"synonyms\": [\"update deposit document number\", \"alter deposit document quantity\"], \"lexical_variants\": [\"change number of deposit documents from user page\", \"change number of deposit documents via user page\"], \"definition\": \"An action performed by a human operator to modify the quantity of deposit documents recorded in the system through the user interface.\", \"ontology_hints\": [\"HumanProcess\", \"FeatureOfInterest\", \"LogisticProcess\", \"TemporalEntity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00051",
+        "text": "engage and turn on machine",
+        "label": "action"
+      },
+      "aliases": [
+        "machine start",
+        "machine activation",
+        "machine power‑on",
+        "machine engage"
+      ],
+      "synonyms": [
+        "start machine",
+        "activate machine",
+        "power on machine",
+        "turn on machine"
+      ],
+      "lexical_variants": [
+        "engage and power on machine",
+        "engage and start machine",
+        "engage and activate machine",
+        "engage and turn on the machine"
+      ],
+      "alias_sources": {
+        "machine start": [
+          "llm"
+        ],
+        "machine activation": [
+          "llm"
+        ],
+        "machine power‑on": [
+          "llm"
+        ],
+        "machine engage": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "start machine": [
+          "llm"
+        ],
+        "activate machine": [
+          "llm"
+        ],
+        "power on machine": [
+          "llm"
+        ],
+        "turn on machine": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "engage and power on machine": [
+          "llm"
+        ],
+        "engage and start machine": [
+          "llm"
+        ],
+        "engage and activate machine": [
+          "llm"
+        ],
+        "engage and turn on the machine": [
+          "llm"
+        ]
+      },
+      "definition": "An action that initiates operation of a machine after a shutdown, involving engaging the machine and turning it on.",
+      "ontology_hints": [
+        "Machine",
+        "Feature of Interest",
+        "Manufacturing Facility",
+        "Production Line",
+        "Manufacturing Cell"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"machine start\", \"machine activation\", \"machine power‑on\", \"machine engage\"], \"synonyms\": [\"start machine\", \"activate machine\", \"power on machine\", \"turn on machine\"], \"lexical_variants\": [\"engage and power on machine\", \"engage and start machine\", \"engage and activate machine\", \"engage and turn on the machine\"], \"definition\": \"An action that initiates operation of a machine after a shutdown, involving engaging the machine and turning it on.\", \"ontology_hints\": [\"Machine\", \"Feature of Interest\", \"Manufacturing Facility\", \"Production Line\", \"Manufacturing Cell\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00052",
+        "text": "intervention: automatically",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "auto intervention"
+      ],
+      "synonyms": [
+        "automatic intervention",
+        "self-initiated intervention"
+      ],
+      "lexical_variants": [
+        "intervention automatically",
+        "automated intervention"
+      ],
+      "alias_sources": {
+        "auto intervention": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "automatic intervention": [
+          "llm"
+        ],
+        "self-initiated intervention": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "intervention automatically": [
+          "llm"
+        ],
+        "automated intervention": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention that is performed automatically by the system without human intervention.",
+      "ontology_hints": [
+        "Observation",
+        "Interval",
+        "Situation",
+        "Automated intervention"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"auto intervention\"], \"synonyms\": [\"automatic intervention\", \"self-initiated intervention\"], \"lexical_variants\": [\"intervention automatically\", \"automated intervention\"], \"definition\": \"An intervention that is performed automatically by the system without human intervention.\", \"ontology_hints\": [\"Observation\", \"Interval\", \"Situation\", \"Automated intervention\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00053",
+        "text": "intervention: shutdown from the appropriate user page",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "shutdown command",
+        "operator shutdown",
+        "system shutdown command"
+      ],
+      "synonyms": [
+        "operator-initiated shutdown",
+        "shutdown via user interface",
+        "shutdown through user page"
+      ],
+      "lexical_variants": [
+        "shutdown from the appropriate user page",
+        "shutdown via the appropriate user page",
+        "shutdown through the designated user interface"
+      ],
+      "alias_sources": {
+        "shutdown command": [
+          "llm"
+        ],
+        "operator shutdown": [
+          "llm"
+        ],
+        "system shutdown command": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "operator-initiated shutdown": [
+          "llm"
+        ],
+        "shutdown via user interface": [
+          "llm"
+        ],
+        "shutdown through user page": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "shutdown from the appropriate user page": [
+          "llm"
+        ],
+        "shutdown via the appropriate user page": [
+          "llm"
+        ],
+        "shutdown through the designated user interface": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention in which a human operator initiates a system shutdown by selecting the shutdown option on the appropriate user interface page.",
+      "ontology_hints": [
+        "HumanProcess",
+        "ObservableProperty",
+        "ShutdownEvent",
+        "UserInterface",
+        "ShutdownCommand",
+        "ShutdownProcedure",
+        "Situation S1",
+        "Situation S2",
+        "TRIGGERS",
+        "CAUSES",
+        "REQUIRES",
+        "HANDLED_BY",
+        "REFERENCES",
+        "DETECTED_BY"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"shutdown command\", \"operator shutdown\", \"system shutdown command\"], \"synonyms\": [\"operator-initiated shutdown\", \"shutdown via user interface\", \"shutdown through user page\"], \"lexical_variants\": [\"shutdown from the appropriate user page\", \"shutdown via the appropriate user page\", \"shutdown through the designated user interface\"], \"definition\": \"An intervention in which a human operator initiates a system shutdown by selecting the shutdown option on the appropriate user interface page.\", \"ontology_hints\": [\"HumanProcess\", \"ObservableProperty\", \"ShutdownEvent\", \"UserInterface\", \"ShutdownCommand\", \"ShutdownProcedure\", \"Situation S1\", \"Situation S2\", \"TRIGGERS\", \"CAUSES\", \"REQUIRES\", \"HANDLED_BY\", \"REFERENCES\", \"DETECTED_BY\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00054",
+        "text": "intervention: of deposit documents from the appropriate user page",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "document deposition",
+        "document upload"
+      ],
+      "synonyms": [
+        "deposit documents",
+        "upload documents"
+      ],
+      "lexical_variants": [
+        "intervention: deposit documents",
+        "intervention of deposit documents"
+      ],
+      "alias_sources": {
+        "document deposition": [
+          "llm"
+        ],
+        "document upload": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "deposit documents": [
+          "llm"
+        ],
+        "upload documents": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "intervention: deposit documents": [
+          "llm"
+        ],
+        "intervention of deposit documents": [
+          "llm"
+        ]
+      },
+      "definition": "The act of depositing or uploading documents from the appropriate user page, typically performed by a human operator as part of a logistic process to update the system's observable properties.",
+      "ontology_hints": [
+        "HumanProcess",
+        "LogisticProcess",
+        "ObservableProperty",
+        "Situation S1",
+        "Situation S2"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"document deposition\", \"document upload\"], \"synonyms\": [\"deposit documents\", \"upload documents\"], \"lexical_variants\": [\"intervention: deposit documents\", \"intervention of deposit documents\"], \"definition\": \"The act of depositing or uploading documents from the appropriate user page, typically performed by a human operator as part of a logistic process to update the system's observable properties.\", \"ontology_hints\": [\"HumanProcess\", \"LogisticProcess\", \"ObservableProperty\", \"Situation S1\", \"Situation S2\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00055",
+        "text": "intervention: engage it and turn on the machine",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "machine activation",
+        "machine start-up"
+      ],
+      "synonyms": [
+        "activate machine",
+        "start machine",
+        "power on machine"
+      ],
+      "lexical_variants": [
+        "engage it and turn on the machine",
+        "engage and turn on the machine",
+        "engage and power on the machine"
+      ],
+      "alias_sources": {
+        "machine activation": [
+          "llm"
+        ],
+        "machine start-up": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "activate machine": [
+          "llm"
+        ],
+        "start machine": [
+          "llm"
+        ],
+        "power on machine": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "engage it and turn on the machine": [
+          "llm"
+        ],
+        "engage and turn on the machine": [
+          "llm"
+        ],
+        "engage and power on the machine": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention action that involves engaging (activating) and powering on a machine within a manufacturing setting.",
+      "ontology_hints": [
+        "Machine",
+        "Manufacturing Facility",
+        "Production Line",
+        "Temporal Entity",
+        "Interval",
+        "Intervention"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"machine activation\", \"machine start-up\"], \"synonyms\": [\"activate machine\", \"start machine\", \"power on machine\"], \"lexical_variants\": [\"engage it and turn on the machine\", \"engage and turn on the machine\", \"engage and power on the machine\"], \"definition\": \"An intervention action that involves engaging (activating) and powering on a machine within a manufacturing setting.\", \"ontology_hints\": [\"Machine\", \"Manufacturing Facility\", \"Production Line\", \"Temporal Entity\", \"Interval\", \"Intervention\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00056",
+        "text": "responsible for",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Indicates that one entity is accountable for or manages another entity or process.",
+      "ontology_hints": [
+        "observes",
+        "hosts",
+        "produces",
+        "usedIn"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Indicates that one entity is accountable for or manages another entity or process.\", \"ontology_hints\": [\"observes\", \"hosts\", \"produces\", \"usedIn\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00057",
+        "text": "responsible for intervention",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "accountable for intervention",
+        "in charge of intervention"
+      ],
+      "synonyms": [
+        "responsible for intervention",
+        "liable for intervention"
+      ],
+      "lexical_variants": [
+        "responsible for intervention",
+        "responsible for the intervention"
+      ],
+      "alias_sources": {
+        "accountable for intervention": [
+          "llm"
+        ],
+        "in charge of intervention": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "responsible for intervention": [
+          "llm"
+        ],
+        "liable for intervention": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for intervention": [
+          "llm"
+        ],
+        "responsible for the intervention": [
+          "llm"
+        ]
+      },
+      "definition": "The entity that has the duty or authority to carry out an intervention.",
+      "ontology_hints": [
+        "Intervention",
+        "ResponsibleParty",
+        "hasResponsibleParty",
+        "requiresIntervention"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"accountable for intervention\", \"in charge of intervention\"], \"synonyms\": [\"responsible for intervention\", \"liable for intervention\"], \"lexical_variants\": [\"responsible for intervention\", \"responsible for the intervention\"], \"definition\": \"The entity that has the duty or authority to carry out an intervention.\", \"ontology_hints\": [\"Intervention\", \"ResponsibleParty\", \"hasResponsibleParty\", \"requiresIntervention\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00058",
+        "text": "responsible for maintenance",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "responsible for maintenance"
+      ],
+      "synonyms": [
+        "accountable for maintenance",
+        "in charge of maintenance",
+        "liable for maintenance"
+      ],
+      "lexical_variants": [
+        "responsible for maintenance tasks",
+        "responsible for maintenance activities"
+      ],
+      "alias_sources": {
+        "responsible for maintenance": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "accountable for maintenance": [
+          "llm"
+        ],
+        "in charge of maintenance": [
+          "llm"
+        ],
+        "liable for maintenance": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for maintenance tasks": [
+          "llm"
+        ],
+        "responsible for maintenance activities": [
+          "llm"
+        ]
+      },
+      "definition": "A relation indicating that a resource or platform is accountable for performing maintenance tasks on a feature of interest.",
+      "ontology_hints": [
+        "responsible_for_maintenance (relation between Resource/Platform and MaintenanceTask)",
+        "Resource",
+        "Platform",
+        "MaintenanceTask",
+        "FeatureOfInterest",
+        "Constraint (maintenance schedule or maintenance condition)",
+        "has responsibility (property linking Resource/Platform to MaintenanceTask)",
+        "associated constraint (links MaintenanceTask to acceptable maintenance schedules)"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"responsible for maintenance\"], \"synonyms\": [\"accountable for maintenance\", \"in charge of maintenance\", \"liable for maintenance\"], \"lexical_variants\": [\"responsible for maintenance tasks\", \"responsible for maintenance activities\"], \"definition\": \"A relation indicating that a resource or platform is accountable for performing maintenance tasks on a feature of interest.\", \"ontology_hints\": [\"responsible_for_maintenance (relation between Resource/Platform and MaintenanceTask)\", \"Resource\", \"Platform\", \"MaintenanceTask\", \"FeatureOfInterest\", \"Constraint (maintenance schedule or maintenance condition)\", \"has responsibility (property linking Resource/Platform to MaintenanceTask)\", \"associated constraint (links MaintenanceTask to acceptable maintenance schedules)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00059",
+        "text": "responsible for operator",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "responsible for operator"
+      ],
+      "synonyms": [
+        "supervises operator",
+        "manages operator",
+        "oversees operator"
+      ],
+      "lexical_variants": [
+        "responsible for operator"
+      ],
+      "alias_sources": {
+        "responsible for operator": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "supervises operator": [
+          "llm"
+        ],
+        "manages operator": [
+          "llm"
+        ],
+        "oversees operator": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for operator": [
+          "llm"
+        ]
+      },
+      "definition": "A supervisory or managerial relationship indicating that a higher‑level role or constraint is accountable for the operator’s actions or responsibilities.",
+      "ontology_hints": [
+        "Operator",
+        "Staff",
+        "Constraint",
+        "supervises",
+        "manages",
+        "oversees"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"responsible for operator\"], \"synonyms\": [\"supervises operator\", \"manages operator\", \"oversees operator\"], \"lexical_variants\": [\"responsible for operator\"], \"definition\": \"A supervisory or managerial relationship indicating that a higher‑level role or constraint is accountable for the operator’s actions or responsibilities.\", \"ontology_hints\": [\"Operator\", \"Staff\", \"Constraint\", \"supervises\", \"manages\", \"oversees\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00060",
+        "text": "requires no maintenance",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Indicates that the component does not need maintenance.",
+      "ontology_hints": [
+        "Can be used as a property linking a FeatureOfInterest, Machine, ProductionLine, or Resource to a maintenance‑free status.",
+        "Applicable to entities within manufacturing processes.",
+        "May be verified or enforced by a Manager."
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Indicates that the component does not need maintenance.\", \"ontology_hints\": [\"Can be used as a property linking a FeatureOfInterest, Machine, ProductionLine, or Resource to a maintenance‑free status.\", \"Applicable to entities within manufacturing processes.\", \"May be verified or enforced by a Manager.\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00061",
+        "text": "requires non-immediate maintenance",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "requires maintenance",
+        "requires deferred maintenance"
+      ],
+      "synonyms": [
+        "requires scheduled maintenance",
+        "requires maintenance at a later time"
+      ],
+      "lexical_variants": [
+        "requires maintenance not immediately",
+        "requires maintenance at a later date"
+      ],
+      "alias_sources": {
+        "requires maintenance": [
+          "llm"
+        ],
+        "requires deferred maintenance": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "requires scheduled maintenance": [
+          "llm"
+        ],
+        "requires maintenance at a later time": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "requires maintenance not immediately": [
+          "llm"
+        ],
+        "requires maintenance at a later date": [
+          "llm"
+        ]
+      },
+      "definition": "Indicates that maintenance is required but not immediately; the maintenance action can be scheduled for a future time.",
+      "ontology_hints": [
+        "Constraint",
+        "requires action",
+        "maintenance",
+        "Machine",
+        "Resource",
+        "Production Line"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"requires maintenance\", \"requires deferred maintenance\"], \"synonyms\": [\"requires scheduled maintenance\", \"requires maintenance at a later time\"], \"lexical_variants\": [\"requires maintenance not immediately\", \"requires maintenance at a later date\"], \"definition\": \"Indicates that maintenance is required but not immediately; the maintenance action can be scheduled for a future time.\", \"ontology_hints\": [\"Constraint\", \"requires action\", \"maintenance\", \"Machine\", \"Resource\", \"Production Line\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00062",
+        "text": "cause:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "cause",
+        "Cause"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "cause": [
+          "llm"
+        ],
+        "Cause": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system.",
+      "ontology_hints": [
+        "<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause>",
+        "has cause property"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"cause\", \"Cause\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system.\", \"ontology_hints\": [\"<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause>\", \"has cause property\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00063",
+        "text": "effect:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "effect"
+      ],
+      "synonyms": [
+        "result",
+        "outcome",
+        "consequence",
+        "impact"
+      ],
+      "lexical_variants": [
+        "effect",
+        "effects"
+      ],
+      "alias_sources": {
+        "effect": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "result": [
+          "llm"
+        ],
+        "outcome": [
+          "llm"
+        ],
+        "consequence": [
+          "llm"
+        ],
+        "impact": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "effect": [
+          "llm"
+        ],
+        "effects": [
+          "llm"
+        ]
+      },
+      "definition": "The outcome or result produced by an action or event.",
+      "ontology_hints": [
+        "hasEffect",
+        "causes",
+        "produces",
+        "Result",
+        "Action"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"effect\"], \"synonyms\": [\"result\", \"outcome\", \"consequence\", \"impact\"], \"lexical_variants\": [\"effect\", \"effects\"], \"definition\": \"The outcome or result produced by an action or event.\", \"ontology_hints\": [\"hasEffect\", \"causes\", \"produces\", \"Result\", \"Action\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

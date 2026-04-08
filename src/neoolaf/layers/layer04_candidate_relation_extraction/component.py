@@ -2,7 +2,8 @@ from __future__ import annotations
 
 # Standard library imports
 from collections import defaultdict
-from typing import Dict, List, Tuple
+from typing import Dict, List
+
 # Third-party imports
 from tqdm.auto import tqdm
 
@@ -10,7 +11,6 @@ from tqdm.auto import tqdm
 from neoolaf.core.base_layer import BaseLayer
 from neoolaf.core.pipeline_state import PipelineState
 from neoolaf.domain.relation_assertion import CandidateRelationAssertion
-from neoolaf.domain.linguistic_expression import Evidence
 from neoolaf.layers.layer04_candidate_relation_extraction.prompt import (
     build_system_prompt,
     build_user_prompt,
@@ -18,6 +18,7 @@ from neoolaf.layers.layer04_candidate_relation_extraction.prompt import (
 from neoolaf.resources.llm_backends.ollama_backend import OllamaBackend
 from neoolaf.grounding.rag.types import GroundingRequest
 from neoolaf.grounding.rag.formatting import build_grounding_context
+
 
 class CandidateRelationExtractionLayer(BaseLayer):
     """
@@ -40,108 +41,73 @@ class CandidateRelationExtractionLayer(BaseLayer):
         verbose: bool = False,
         rag_adapter=None,
     ) -> None:
-        """
-        Initialize Layer 4.
-
-        Args:
-            ollama_backend:
-                LLM backend used for relation extraction.
-            max_relation_mentions:
-                Optional debug limit on how many relation mentions are tested.
-            temperature:
-                Generation temperature.
-            save_intermediate:
-                Whether to save intermediate artifacts.
-            verbose:
-                Wheter to show logs or not.
-        """
         super().__init__(save_intermediate=save_intermediate, verbose=verbose)
         self.ollama_backend = ollama_backend
         self.max_relation_mentions = max_relation_mentions
         self.temperature = temperature
         self.rag_adapter = rag_adapter
 
-        
-        def _call_model_with_retries(
-            self,
-            state: PipelineState,
-            messages: List[Dict[str, str]],
-            max_attempts: int = 5,
-            retry_wait_seconds: float = 3.0,
-        ) -> dict:
-            """
-            Call the LLM backend with retries for:
-            - empty / missing responses
-            - malformed JSON
-            - transient backend errors
+    def _call_model_with_retries(
+        self,
+        state: PipelineState,
+        messages: List[Dict[str, str]],
+        max_attempts: int = 5,
+        retry_wait_seconds: float = 3.0,
+    ) -> dict:
+        """
+        Call the backend with retries for:
+        - empty responses
+        - malformed JSON
+        - transient request failures
+        """
+        import time
 
-            Args:
-                state:
-                    Current pipeline state.
-                messages:
-                    OpenAI-style prompt messages.
-                max_attempts:
-                    Maximum number of tries.
-                retry_wait_seconds:
-                    Delay between attempts.
+        last_error = None
 
-            Returns:
-                Parsed JSON dictionary.
+        for attempt in range(1, max_attempts + 1):
+            try:
+                raw = self.ollama_backend.chat(
+                    model=state.llm_model,
+                    messages=messages,
+                    temperature=self.temperature,
+                )
 
-            Raises:
-                RuntimeError:
-                    If all attempts fail.
-            """
-            import time
-
-            last_error = None
-
-            for attempt in range(1, max_attempts + 1):
-                try:
-                    raw = self.ollama_backend.chat(
-                        model=state.llm_model,
-                        messages=messages,
-                        temperature=self.temperature,
+                if raw is None or not isinstance(raw, str) or not raw.strip():
+                    raise RuntimeError(
+                        f"{self.name}: backend returned empty response on attempt {attempt}/{max_attempts}"
                     )
 
-                    if raw is None or not isinstance(raw, str) or not raw.strip():
-                        raise RuntimeError(
-                            f"{self.name}: backend returned empty response on attempt {attempt}/{max_attempts}"
-                        )
+                parsed = self.ollama_backend.extract_json(raw)
 
-                    parsed = self.ollama_backend.extract_json(raw)
+                if not isinstance(parsed, dict):
+                    raise RuntimeError(
+                        f"{self.name}: parsed response is not a dictionary on attempt {attempt}/{max_attempts}"
+                    )
 
-                    if not isinstance(parsed, dict):
-                        raise RuntimeError(
-                            f"{self.name}: parsed response is not a dictionary on attempt {attempt}/{max_attempts}"
-                        )
+                return parsed
 
-                    return parsed
+            except Exception as exc:
+                last_error = exc
 
-                except Exception as exc:
-                    last_error = exc
+                if self.verbose:
+                    print(
+                        f"[NeoOLAF] {self.name} retry {attempt}/{max_attempts} failed: {exc}"
+                    )
 
-                    if self.verbose:
-                        print(
-                            f"[NeoOLAF] {self.name} retry {attempt}/{max_attempts} failed: {exc}"
-                        )
+                if attempt < max_attempts:
+                    time.sleep(retry_wait_seconds)
 
-                    if attempt < max_attempts:
-                        time.sleep(retry_wait_seconds)
+        raise RuntimeError(
+            f"{self.name}: failed after {max_attempts} attempts. Last error: {last_error}"
+        )
 
-            raise RuntimeError(
-                f"{self.name}: failed after {max_attempts} attempts. Last error: {last_error}"
-            )
-        
     def _run(self, state: PipelineState) -> PipelineState:
         """
         Extract candidate relation assertions from relation candidates and local chunk context.
         """
-        # Build chunk-level indices for entities/events and relations
         chunk_to_local_candidates = self._index_local_entity_event_candidates(state)
         relation_mentions = self._index_relation_mentions(state)
 
-        # Optional debug limit
         if self.max_relation_mentions is not None:
             relation_mentions = relation_mentions[: self.max_relation_mentions]
 
@@ -150,23 +116,29 @@ class CandidateRelationExtractionLayer(BaseLayer):
 
         relation_iterator = relation_mentions
         if self.verbose:
-            relation_iterator = tqdm(relation_mentions, desc="Layer 4 - relation mentions", leave=False)
+            relation_iterator = tqdm(
+                relation_mentions,
+                desc="Layer 4 - relation mentions",
+                leave=False,
+            )
 
         for relation_mention in relation_iterator:
             chunk_id = relation_mention["chunk_id"]
             relation_candidate = relation_mention["relation_candidate"]
             relation_evidence = relation_mention["evidence"]
 
-            # Retrieve chunk text
             chunk = self._get_chunk_by_id(state, chunk_id)
             if chunk is None:
                 continue
 
-            # Local participants available in this chunk
             local_candidates = chunk_to_local_candidates.get(chunk_id, [])
 
-            # Need at least two local participants to form a relation
             if len(local_candidates) < 2:
+                if self.verbose:
+                    print(
+                        f"[NeoOLAF] {self.name}: chunk {chunk_id} skipped because only "
+                        f"{len(local_candidates)} local entity/event candidates were available."
+                    )
                 continue
 
             relation_payload = {
@@ -183,6 +155,7 @@ class CandidateRelationExtractionLayer(BaseLayer):
                 }
                 for cand in local_candidates
             ]
+
             grounding_result = None
             grounding_context = ""
 
@@ -257,7 +230,6 @@ class CandidateRelationExtractionLayer(BaseLayer):
             )
             assertion_counter += 1
 
-        # Deduplicate by relation + source + target + chunk
         dedup = {}
         for item in assertions:
             key = (
@@ -282,10 +254,7 @@ class CandidateRelationExtractionLayer(BaseLayer):
         """
         chunk_map: Dict[str, List[Dict]] = defaultdict(list)
 
-        all_candidates = (
-            state.entity_candidates
-            + state.event_candidates
-        )
+        all_candidates = state.entity_candidates + state.event_candidates
 
         for candidate in all_candidates:
             for mention in candidate.mentions:

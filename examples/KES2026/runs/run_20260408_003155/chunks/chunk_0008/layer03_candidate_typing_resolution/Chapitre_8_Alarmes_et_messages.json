@@ -1,0 +1,1266 @@
+{
+  "layer": "layer03_candidate_typing_resolution",
+  "entity_candidates": [],
+  "relation_candidates": [
+    {
+      "candidate_id": "cand_r_00000",
+      "canonical_label": "LOAD MONITOR: IMMEDIATE STOP",
+      "normalized_label": "load monitor immediate stop",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: Operator or logistic process",
+        "CAUSES: Overload detected by load sensor",
+        "REQUIRES: Immediate shutdown of platform",
+        "HANDLED_BY: Operator",
+        "REFERENCES: Load sensor (Feature of Interest)",
+        "DETECTED_BY: Load monitoring sensor on Platform"
+      ],
+      "definition": "An alarm triggered by a load‑monitoring sensor indicating that the machine or production line must halt immediately to prevent equipment damage or safety incidents.",
+      "aliases": [
+        "Load Monitor Immediate Stop",
+        "Immediate Stop due to Load Monitor",
+        "Load Monitor: Immediate Stop Alarm"
+      ],
+      "synonyms": [
+        "Load Monitor Stop",
+        "Immediate Stop Alarm",
+        "Load Stop Alert"
+      ],
+      "lexical_variants": [
+        "LOAD MONITOR: IMMEDIATE STOP",
+        "Load Monitor: Immediate Stop"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00000",
+          "text": "LOAD MONITOR: IMMEDIATE STOP",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 127,
+              "chunk_end_char": 155,
+              "doc_start_char": 40127,
+              "doc_end_char": 40155,
+              "snippet": "e) to 100% and repeat the cycle.\nresponsible for\noperator\nAlarm No.: 1080\ntext: LOAD MONITOR: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00001",
+      "canonical_label": "Alarm with immediate and controlled shutdown",
+      "normalized_label": "alarm with immediate and controlled shutdown",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm effect",
+        "Shutdown event",
+        "Immediate shutdown",
+        "Controlled shutdown"
+      ],
+      "definition": "An alarm that triggers an immediate and controlled shutdown of the machine.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00001",
+          "text": "Alarm with immediate and controlled shutdown",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 190,
+              "chunk_end_char": 234,
+              "doc_start_char": 40190,
+              "doc_end_char": 40234,
+              "snippet": "No.: 1080\ntext: LOAD MONITOR: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe Load Monitor tool monitoring system has detected a breakage\ncause:\ntool.\nRe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00002",
+      "canonical_label": "DETECTED_BY",
+      "normalized_label": "detected_by",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: breakage",
+        "DETECTED_BY: Load Monitor tool",
+        "REFERENCES: monitoring system"
+      ],
+      "definition": "An event in which the Load Monitor system observes a breakage occurring within the manufacturing process.",
+      "aliases": [
+        "Load Monitor",
+        "Load Monitor tool",
+        "monitoring system"
+      ],
+      "synonyms": [
+        "identified",
+        "observed",
+        "detected",
+        "break",
+        "failure"
+      ],
+      "lexical_variants": [
+        "Load Monitor tool monitoring system",
+        "Load Monitor tool",
+        "monitoring system"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00002",
+          "text": "The Load Monitor tool monitoring system has detected a breakage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 235,
+              "chunk_end_char": 298,
+              "doc_start_char": 40235,
+              "doc_end_char": 40298,
+              "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe Load Monitor tool monitoring system has detected a breakage\ncause:\ntool.\nReplace the tool, or if it is not broken, check the\nintervention:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00003",
+      "canonical_label": "tool breakage",
+      "normalized_label": "tool breakage",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature (tool)",
+        "Spatial Object",
+        "Temporal Entity (occurrence)",
+        "Production Line (location)",
+        "Manager (observer)"
+      ],
+      "definition": "A failure symptom indicating that a manufacturing tool has broken or fractured, typically triggering an alarm in the system.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00003",
+          "text": "tool breakage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 1581,
+              "chunk_end_char": 1594,
+              "doc_start_char": 41581,
+              "doc_end_char": 41594,
+              "snippet": "ntrolled shutdown cause: The Load Monitor tool monitoring system has detected a tool breakage. intervention: Replace the tool, or if it is not broken, check the system calib"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00004",
+      "canonical_label": "Replace the tool",
+      "normalized_label": "replace the tool",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Action",
+        "Operator",
+        "Resource",
+        "Platform"
+      ],
+      "definition": "An action performed by an operator to replace a tool used in a manufacturing process.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00004",
+          "text": "Replace the tool",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 312,
+              "chunk_end_char": 328,
+              "doc_start_char": 40312,
+              "doc_end_char": 40328,
+              "snippet": "wn\nThe Load Monitor tool monitoring system has detected a breakage\ncause:\ntool.\nReplace the tool, or if it is not broken, check the\nintervention: system calibrations which are"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00005",
+      "canonical_label": "responsible for",
+      "normalized_label": "responsible for",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "role assignment",
+        "responsible for operator",
+        "Operator (class)",
+        "Staff (parent class of Operator)",
+        "Constraint (possible rule defining responsibility)",
+        "hasResponsible (Agent -> Result/ObservableProperty)",
+        "isResponsibleFor (Agent -> Result/ObservableProperty)",
+        "responsibleFor (Agent -> Outcome)",
+        "Agent classes: Sensor, Platform, Resource",
+        "Outcome classes: Result, ObservableProperty"
+      ],
+      "definition": "A role‑assignment relation indicating that an entity (e.g., a manager or supervisor) is responsible for an individual classified as an Operator.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00006",
+          "text": "responsible for operator",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "ominal.\nintervention: Set the priority (override) to 100% and repeat the cycle.\nresponsible for\noperator\nAlarm No.: 1080\ntext: LOAD MONITOR: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe Load Monitor tool monitoring system has detected a breakage\nc"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00029",
+          "text": "responsible for",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 80,
+              "chunk_end_char": 95,
+              "doc_start_char": 40080,
+              "doc_end_char": 40095,
+              "snippet": "ominal.\nintervention: Set the priority (override) to 100% and repeat the cycle.\nresponsible for\noperator\nAlarm No.: 1080\ntext: LOAD MONITOR: IMMEDIATE STOP\ntype: Standard: Opt"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00006",
+      "canonical_label": "LOAD MONITOR: STOP AT END OF CYCLE",
+      "normalized_label": "load monitor stop at end of cycle",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Constraint on logistic process",
+        "Feature of interest: Load Monitor",
+        "Temporal entity: cycle end",
+        "Spatial object: machine component",
+        "Event type: alarm trigger"
+      ],
+      "definition": "An alarm that signals the load monitor has ceased operation precisely at the conclusion of a production cycle, indicating that a predefined constraint on the logistic process has been violated.",
+      "aliases": [
+        "End‑of‑cycle load monitor stop",
+        "Load monitor stop at cycle end"
+      ],
+      "synonyms": [
+        "Stop at end of cycle alarm",
+        "End‑cycle load monitor halt",
+        "Load monitor cycle‑end stop"
+      ],
+      "lexical_variants": [
+        "LOAD MONITOR STOP AT END OF CYCLE",
+        "Load monitor: stop at end of cycle",
+        "Load monitor – stop at end of cycle"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00007",
+          "text": "LOAD MONITOR: STOP AT END OF CYCLE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 521,
+              "chunk_end_char": 555,
+              "doc_start_char": 40521,
+              "doc_end_char": 40555,
+              "snippet": "ation\nthe application.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1081\ntext: LOAD MONITOR: STOP AT END OF CYCLE\ntype: Standard: Optional:\neffect: Alarms or messages with shutdown at the end o"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00007",
+      "canonical_label": "Alarms or messages with shutdown at the end of the cycle",
+      "normalized_label": "alarms or messages with shutdown at the end of the cycle",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Situation: shutdown",
+        "FeatureOfInterest: machine or component",
+        "Workstation: production cell",
+        "ManufacturingProcess: production cycle",
+        "ProductionLine: line",
+        "TRIGGERS: shutdown",
+        "HANDLED_BY: operator or maintenance staff",
+        "DETECTED_BY: machine control system"
+      ],
+      "definition": "An alarm or message that indicates the machine will shut down automatically at the conclusion of the current production cycle.",
+      "aliases": [
+        "End‑of‑cycle shutdown alarm",
+        "Cycle completion shutdown message",
+        "Shutdown notification at cycle end"
+      ],
+      "synonyms": [
+        "cycle‑end shutdown alert",
+        "shutdown after cycle",
+        "end‑of‑cycle shutdown alert"
+      ],
+      "lexical_variants": [
+        "shutdown at cycle end",
+        "shutdown after cycle",
+        "shutdown upon cycle completion"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00008",
+          "text": "Alarms or messages with shutdown at the end of the cycle",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 590,
+              "chunk_end_char": 646,
+              "doc_start_char": 40590,
+              "doc_end_char": 40646,
+              "snippet": "1081\ntext: LOAD MONITOR: STOP AT END OF CYCLE\ntype: Standard: Optional:\neffect: Alarms or messages with shutdown at the end of the cycle.\nThe Load Monitor tool monitoring system has detected wear\ncause:\nof a tool.\nRe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00008",
+      "canonical_label": "The Load Monitor tool monitoring system has detected wear",
+      "normalized_label": "the load monitor tool monitoring system has detected wear",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "DETECTED_BY: Load Monitor tool monitoring system",
+        "TRIGGERS: wear",
+        "CAUSES: wear",
+        "REQUIRES: maintenance intervention",
+        "FeatureOfInterest: machine part",
+        "Constraint: wear",
+        "TemporalEntity: detection time",
+        "SpatialObject: machine part"
+      ],
+      "definition": "An event in which the Load Monitor tool monitoring system observes wear on a machine component, indicating a constraint violation of the component’s acceptable condition.",
+      "aliases": [
+        "Load Monitor tool",
+        "Load Monitor system",
+        "load monitoring system"
+      ],
+      "synonyms": [
+        "wear detection",
+        "wear monitoring"
+      ],
+      "lexical_variants": [
+        "wear detected by the Load Monitor",
+        "wear detected by the load monitoring system",
+        "wear detected by the Load Monitor tool"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00009",
+          "text": "The Load Monitor tool monitoring system has detected wear",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 648,
+              "chunk_end_char": 705,
+              "doc_start_char": 40648,
+              "doc_end_char": 40705,
+              "snippet": "rd: Optional:\neffect: Alarms or messages with shutdown at the end of the cycle.\nThe Load Monitor tool monitoring system has detected wear\ncause:\nof a tool.\nReplace the tool, or in the case of insufficient wear, check"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00009",
+      "canonical_label": "tool wear",
+      "normalized_label": "tool wear",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TemporalEntity",
+        "Feature",
+        "Platform",
+        "Operator",
+        "FailureSymptom"
+      ],
+      "definition": "Gradual degradation of cutting tools during machining, manifested as flank wear, crater wear, notch wear, or built‑up edge.",
+      "aliases": [
+        "Tool wear"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00010",
+          "text": "tool wear",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 1998,
+              "chunk_end_char": 2007,
+              "doc_start_char": 41998,
+              "doc_end_char": 42007,
+              "snippet": "e end of the cycle. cause: The Load Monitor tool monitoring system has detected tool wear. intervention: Replace the tool, or in the case of insufficient wear, check the"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00010",
+      "canonical_label": "LOAD MONITOR: FEED DIFFERENT FROM 100%",
+      "normalized_label": "load monitor feed different from 100",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest: load",
+        "ObservableProperty: feed level",
+        "Platform: monitoring device",
+        "TemporalEntity: time of observation",
+        "Situation: S10"
+      ],
+      "definition": "An alarm indicating that the feed level of a load deviates from the expected 100% threshold.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00011",
+          "text": "LOAD MONITOR: FEED DIFFERENT FROM 100%",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 946,
+              "chunk_end_char": 984,
+              "doc_start_char": 40946,
+              "doc_end_char": 40984,
+              "snippet": "ation\nthe application.\nresponsible for\ntoolmaker-adjuster\n\nAlarm n°: 1079 text: LOAD MONITOR: FEED DIFFERENT FROM 100% type: Standard: Optional: effect: Alarms or messages with shutdown at the end o"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00011",
+      "canonical_label": "feed rate trimmer is set to a percentage other than 100%",
+      "normalized_label": "feed rate trimmer is set to a percentage other than 100",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "has feature of interest: feed rate trimmer",
+        "has observable property: feed rate",
+        "causes: machine alarm",
+        "inXSDDateTimeStamp: timestamp of the setting change",
+        "belongs to: Manufacturing Process"
+      ],
+      "definition": "A condition in which the feed rate trimmer device is configured to a value other than the default 100%, indicating a deliberate adjustment of the feed rate observable property within the manufacturing process.",
+      "aliases": [
+        "feed rate trimmer non‑default setting",
+        "feed rate adjustment",
+        "feed rate trimmer set to non‑100%"
+      ],
+      "synonyms": [
+        "feed rate trimmer set to a non‑default value",
+        "feed rate trimmer set to a non‑100% value",
+        "feed rate trimmer adjusted from default"
+      ],
+      "lexical_variants": [
+        "feed rate trimmer set to a percentage other than 100%",
+        "feed rate trimmer set to a non‑100% value",
+        "feed rate trimmer at a non‑100% setting"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00012",
+          "text": "feed rate trimmer is set to a percentage other than 100%",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 1146,
+              "chunk_end_char": 1202,
+              "doc_start_char": 41146,
+              "doc_end_char": 41202,
+              "snippet": "the cycle. cause: The Load Monitor tool monitoring system has detected that the feed rate trimmer is set to a percentage other than 100%, which causes a different current absorption compared to the nominal. intervent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00012",
+      "canonical_label": "different current absorption compared to the nominal",
+      "normalized_label": "different current absorption compared to the nominal",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4",
+        "Situation S5",
+        "current absorption",
+        "nominal current",
+        "deviation",
+        "effect"
+      ],
+      "definition": "An effect where the amount of electrical current absorbed by a machine component differs from its expected nominal value, indicating a deviation in operating conditions.",
+      "aliases": [
+        "non-nominal current absorption",
+        "current absorption deviation",
+        "current absorption variance"
+      ],
+      "synonyms": [
+        "abnormal current absorption",
+        "current absorption difference",
+        "current absorption anomaly"
+      ],
+      "lexical_variants": [
+        "current absorption differs from nominal",
+        "current absorption is different from nominal",
+        "current absorption deviates from nominal"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00013",
+          "text": "different current absorption compared to the nominal",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 1219,
+              "chunk_end_char": 1271,
+              "doc_start_char": 41219,
+              "doc_end_char": 41271,
+              "snippet": "at the feed rate trimmer is set to a percentage other than 100%, which causes a different current absorption compared to the nominal. intervention: Set the priority (override) to 100% and repeat the cycle. respon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00013",
+      "canonical_label": "Set the priority (override) to 100% and repeat the cycle",
+      "normalized_label": "set the priority override to 100 and repeat the cycle",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "hasPriority",
+        "overrides",
+        "repeats",
+        "Observable Property",
+        "Situation S10",
+        "Situation S1",
+        "Situation S11",
+        "Situation S12",
+        "control action",
+        "priority setting",
+        "cycle repetition"
+      ],
+      "definition": "An intervention that sets the priority level of a process or alarm to 100% (maximum) and triggers a repetition of the operational cycle to mitigate the alarm.",
+      "aliases": [
+        "Set priority to 100% (override) and repeat cycle"
+      ],
+      "synonyms": [
+        "Override priority to 100% and repeat cycle",
+        "Set priority to maximum and restart cycle"
+      ],
+      "lexical_variants": [
+        "Set priority (override) to 100% and repeat cycle",
+        "Set priority to 100% (override) and repeat cycle"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00014",
+          "text": "Set the priority (override) to 100% and repeat the cycle",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 22,
+              "chunk_end_char": 78,
+              "doc_start_char": 40022,
+              "doc_end_char": 40078,
+              "snippet": "ominal.\nintervention: Set the priority (override) to 100% and repeat the cycle.\nresponsible for\noperator\nAlarm No.: 1080\ntext: LOAD MONITOR: IMMEDIATE STOP\nty"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00014",
+      "canonical_label": "LOAD MONITOR: STOP AT END OF BLOCK",
+      "normalized_label": "load monitor stop at end of block",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Constraint",
+        "LogisticProcess",
+        "TemporalEntity",
+        "SpatialObject",
+        "FeatureOfInterest"
+      ],
+      "definition": "An alarm that signals the load‑monitoring system to stop operation when the end of a block is reached during a logistic process, representing a constraint on the process within a defined spatial and temporal context.",
+      "aliases": [
+        "LOAD MONITOR: STOP AT END OF BLOCK"
+      ],
+      "synonyms": [
+        "Load monitor stop at block end",
+        "End‑of‑block stop by load monitor"
+      ],
+      "lexical_variants": [
+        "LOAD MONITOR: STOP AT END OF BLOCK",
+        "LOAD MONITOR: STOP AT BLOCK END"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00015",
+          "text": "LOAD MONITOR: STOP AT END OF BLOCK",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 2238,
+              "chunk_end_char": 2272,
+              "doc_start_char": 42238,
+              "doc_end_char": 42272,
+              "snippet": "on. responsible for the intervention: toolmaker-adjuster\n\nAlarm No.: 1082\ntext: LOAD MONITOR: STOP AT END OF BLOCK\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the block."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00015",
+      "canonical_label": "absence of a tool",
+      "normalized_label": "absence of a tool",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "has feature of interest",
+        "observed property",
+        "has observable property",
+        "Sensor",
+        "Manufacturing Cell",
+        "Manufacturing Facility",
+        "missing component",
+        "tool missing",
+        "sensor absent"
+      ],
+      "definition": "The failure symptom \"absence of a tool\" indicates that a required component—most likely a sensor or machine—has not been detected or is missing within a manufacturing context, thereby affecting the observable property of a feature of interest.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00016",
+          "text": "absence of a tool",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 2416,
+              "chunk_end_char": 2433,
+              "doc_start_char": 42416,
+              "doc_end_char": 42433,
+              "snippet": "d of the block.\nThe Load Monitor tool monitoring system has detected\ncause:\nthe absence of a tool.\nMount the tool or, if present, check the system calibrations\nintervention:\nwhi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00016",
+      "canonical_label": "Mount the tool",
+      "normalized_label": "mount the tool",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Performed by Operator",
+        "Occurs within Manufacturing Cell",
+        "During Interval",
+        "Part of Production Line",
+        "Temporal Entity"
+      ],
+      "definition": "The act of attaching a tool to a machine or workpiece to enable operation.",
+      "aliases": [
+        "Tool mounting"
+      ],
+      "synonyms": [
+        "install the tool",
+        "attach the tool"
+      ],
+      "lexical_variants": [
+        "Mounting the tool",
+        "Mount tool"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00017",
+          "text": "Mount the tool",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 2435,
+              "chunk_end_char": 2449,
+              "doc_start_char": 42435,
+              "doc_end_char": 42449,
+              "snippet": "Load Monitor tool monitoring system has detected\ncause:\nthe absence of a tool.\nMount the tool or, if present, check the system calibrations\nintervention:\nwhich are described"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00017",
+      "canonical_label": "AUTOMATIC STOP IN PROGRESS",
+      "normalized_label": "automatic stop in progress",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine",
+        "ManufacturingProcess",
+        "HumanProcess",
+        "FeatureOfInterest",
+        "AlarmEvent",
+        "ShutdownState"
+      ],
+      "definition": "An alarm indicating that a machine or manufacturing process has automatically halted and is currently in a stopped state.",
+      "aliases": [
+        "Auto Stop",
+        "Auto Halt"
+      ],
+      "synonyms": [
+        "automatic halt",
+        "auto stop",
+        "machine stop",
+        "process stop"
+      ],
+      "lexical_variants": [
+        "automatic stop in progress",
+        "automatic stop ongoing",
+        "auto stop in progress"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00018",
+          "text": "AUTOMATIC STOP IN PROGRESS",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 2621,
+              "chunk_end_char": 2647,
+              "doc_start_char": 42621,
+              "doc_end_char": 42647,
+              "snippet": "ication documentation.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1083\ntext: AUTOMATIC STOP IN PROGRESS\ntype: Standard: Optional:\neffect: Alarms or messages with shutdown at the end o"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00018",
+      "canonical_label": "established time or the target production has been reached",
+      "normalized_label": "established time or the target production has been reached",
+      "candidate_type": "relation",
+      "confidence": 0.92,
+      "ontology_hints": [
+        "Production Line",
+        "Observable Property",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Automatic Stop",
+        "Shutdown Event",
+        "Trigger Condition"
+      ],
+      "definition": "A condition where a pre‑defined time limit or production quantity target has been met, triggering an automatic stop of the production line.",
+      "aliases": [
+        "time limit reached",
+        "production target met"
+      ],
+      "synonyms": [
+        "production quota met",
+        "scheduled stop",
+        "end of production run"
+      ],
+      "lexical_variants": [
+        "established time",
+        "target production reached",
+        "time threshold reached"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00019",
+          "text": "established time or the target production has been reached",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 2743,
+              "chunk_end_char": 2801,
+              "doc_start_char": 42743,
+              "doc_end_char": 42801,
+              "snippet": "Optional:\neffect: Alarms or messages with shutdown at the end of the cycle\nThe established time or the target production has been reached, or\nthe lathe is in alarm condition with automatic stop activated; to\ncause:\nth"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00019",
+      "canonical_label": "lathe is in alarm condition with automatic stop activated",
+      "normalized_label": "lathe is in alarm condition with automatic stop activated",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest: lathe",
+        "Production Line: part_of",
+        "Spatial Object: lathe",
+        "Temporal Entity: alarm interval",
+        "Logistic Process: automatic stop",
+        "has_state",
+        "activates_process",
+        "belongs_to_production_line"
+      ],
+      "definition": "The state of a lathe machine when an alarm condition is triggered, causing the machine to automatically stop.",
+      "aliases": [
+        "lathe alarm state",
+        "lathe automatic stop",
+        "lathe in alarm condition"
+      ],
+      "synonyms": [
+        "alarm state",
+        "stop state",
+        "automatic shutdown"
+      ],
+      "lexical_variants": [
+        "lathe in alarm",
+        "lathe in stop condition",
+        "lathe alarmed"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00020",
+          "text": "lathe is in alarm condition with automatic stop activated",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 2810,
+              "chunk_end_char": 2867,
+              "doc_start_char": 42810,
+              "doc_end_char": 42867,
+              "snippet": "he cycle\nThe established time or the target production has been reached, or\nthe lathe is in alarm condition with automatic stop activated; to\ncause:\nthe expiration of the time specified in the user page for the shutdo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00020",
+      "canonical_label": "power supply will be cut off to the lathe",
+      "normalized_label": "power supply will be cut off to the lathe",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest: power supply",
+        "Spatial Object: lathe",
+        "Observable Property: power state",
+        "Temporal Entity: event interval",
+        "Production Line: component of production line",
+        "Effect: lathe shutdown",
+        "TRIGGERS: power cut triggers lathe stop",
+        "REQUIRES: safety interlock",
+        "HANDLED_BY: maintenance staff"
+      ],
+      "definition": "The power supply to the lathe is disconnected, causing the lathe to stop operating.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00021",
+          "text": "power supply will be cut off to the lathe",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 2969,
+              "chunk_end_char": 3010,
+              "doc_start_char": 42969,
+              "doc_end_char": 43010,
+              "snippet": "tion of the time specified in the user page for the shutdown\nautomatically, the power supply will be cut off to the lathe.\nIf you want to stop the shutdown sequence, press\nintervention: R.A.Z. (RESET)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00021",
+      "canonical_label": "MANDATORY MAINTENANCE",
+      "normalized_label": "mandatory maintenance",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Constraint",
+        "Manufacturing Process",
+        "Manufacturing Facility"
+      ],
+      "definition": "Alarm event indicating required maintenance.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00023",
+          "text": "MANDATORY MAINTENANCE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 3193,
+              "chunk_end_char": 3214,
+              "doc_start_char": 43193,
+              "doc_end_char": 43214,
+              "snippet": "duled shutdown in the user page.\nresponsible for\noperator\nAlarm No.: 1084\ntext: MANDATORY MAINTENANCE\ntype: Standard: Optional:\neffect: Alarms or messages with shutdown at the end o"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00022",
+      "canonical_label": "time set by one or more counters concerning the maintenance has elapsed",
+      "normalized_label": "time set by one or more counters concerning the maintenance has elapsed",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Constraint",
+        "Manufacturing Process",
+        "Manufacturing Cell",
+        "Technician",
+        "Feature of Interest"
+      ],
+      "definition": "A condition where one or more maintenance counters have reached their set time, triggering a maintenance alarm.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00024",
+          "text": "time set by one or more counters concerning the maintenance has elapsed",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 4723,
+              "chunk_end_char": 4794,
+              "doc_start_char": 44723,
+              "doc_end_char": 44794,
+              "snippet": "tional: effect: Alarms or messages with stop at the end of the cycle cause: The time set by one or more counters concerning the maintenance has elapsed, therefore the cycle cannot continue. intervention: Carry out the maintenance o"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00023",
+      "canonical_label": "maintenance operations",
+      "normalized_label": "maintenance operations",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Intervention",
+        "Observation",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4"
+      ],
+      "definition": "Action required to satisfy the maintenance alarm.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00025",
+          "text": "maintenance operations",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 3441,
+              "chunk_end_char": 3463,
+              "doc_start_char": 43441,
+              "doc_end_char": 43463,
+              "snippet": "the inter-cause:\nYour time has elapsed, so the cycle cannot continue.\nCarry out maintenance operations for inter-intervention applications and confirm the operation in the “MAINTENAN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00024",
+      "canonical_label": "confirm the operation in the “MAINTENANCE” user page",
+      "normalized_label": "confirm the operation in the maintenance user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention",
+        "maintenance",
+        "operation verification",
+        "Feature of Interest",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4"
+      ],
+      "definition": "An intervention that involves checking or verifying that a specific operation has been performed correctly within the context of a maintenance user page.",
+      "aliases": [
+        "operation confirmation in maintenance page",
+        "maintenance operation verification"
+      ],
+      "synonyms": [
+        "verify the operation",
+        "check the operation",
+        "validate the operation"
+      ],
+      "lexical_variants": [
+        "confirm operation",
+        "operation confirmation",
+        "maintenance confirmation"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00026",
+          "text": "confirm the operation in the “MAINTENANCE” user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 3504,
+              "chunk_end_char": 3556,
+              "doc_start_char": 43504,
+              "doc_end_char": 43556,
+              "snippet": "tinue.\nCarry out maintenance operations for inter-intervention applications and confirm the operation in the “MAINTENANCE” user page;\nat this point it is possible to restart the cycle.\nresponsible for\n\nAlarm n°:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00025",
+      "canonical_label": "has detected",
+      "normalized_label": "has detected",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Detection",
+        "Observation",
+        "Sensor",
+        "Platform"
+      ],
+      "definition": "A detection relation indicating that a platform or sensor has observed a feature of interest within the manufacturing environment.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00027",
+          "text": "has detected",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 275,
+              "chunk_end_char": 287,
+              "doc_start_char": 40275,
+              "doc_end_char": 40287,
+              "snippet": "with immediate and controlled shutdown\nThe Load Monitor tool monitoring system has detected a breakage\ncause:\ntool.\nReplace the tool, or if it is not broken, check the\nint"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00026",
+      "canonical_label": "causes",
+      "normalized_label": "causes",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Cause",
+        "has cause",
+        "has result",
+        "Process",
+        "Result"
+      ],
+      "definition": "An entity or event that produces an effect or is responsible for events or results.",
+      "aliases": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa",
+        "Causes"
+      ],
+      "synonyms": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa"
+      ],
+      "lexical_variants": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00028",
+          "text": "causes",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 1210,
+              "chunk_end_char": 1216,
+              "doc_start_char": 41210,
+              "doc_end_char": 41216,
+              "snippet": "tected that the feed rate trimmer is set to a percentage other than 100%, which causes a different current absorption compared to the nominal. intervention: Set the p"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attribute_candidates": [],
+  "event_candidates": [
+    {
+      "candidate_id": "cand_s_00000",
+      "canonical_label": "system calibrations",
+      "normalized_label": "system calibrations",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Intervention",
+        "Observation",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4",
+        "has observation",
+        "triggers Observation"
+      ],
+      "definition": "An intervention that involves adjusting or verifying system parameters to ensure accurate operation, typically performed when the tool is not broken.",
+      "aliases": [
+        "system calibration"
+      ],
+      "synonyms": [
+        "calibration"
+      ],
+      "lexical_variants": [
+        "system calibration",
+        "system calibrations"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00005",
+          "text": "system calibrations",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 378,
+              "chunk_end_char": 397,
+              "doc_start_char": 40378,
+              "doc_end_char": 40397,
+              "snippet": "cause:\ntool.\nReplace the tool, or if it is not broken, check the\nintervention: system calibrations which are described in the product documentation\nthe application.\nresponsible f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00001",
+      "canonical_label": "R.A.Z. (RESET)",
+      "normalized_label": "raz reset",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Result",
+        "Resource",
+        "Feature of Interest",
+        "Temporal Entity",
+        "Cause",
+        "has result",
+        "has geometry",
+        "interval meets"
+      ],
+      "definition": "An intervention that stops the shutdown sequence by resetting the system.",
+      "aliases": [
+        "R.A.Z.",
+        "R.A.Z. (RESET)"
+      ],
+      "synonyms": [
+        "reset",
+        "reboot"
+      ],
+      "lexical_variants": [
+        "R.A.Z.",
+        "R.A.Z. (RESET)"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00022",
+          "text": "R.A.Z. (RESET)",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0008",
+              "chunk_start_char": 3075,
+              "chunk_end_char": 3089,
+              "doc_start_char": 43075,
+              "doc_end_char": 43089,
+              "snippet": "ff to the lathe.\nIf you want to stop the shutdown sequence, press\nintervention: R.A.Z. (RESET) and deactivate the scheduled shutdown in the user page.\nresponsible for\noperato"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

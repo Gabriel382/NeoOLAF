@@ -1,0 +1,150 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 6,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00007",
+      "relation_label": "WRONG OR MISSING FEED",
+      "source_candidate_id": "cand_r_00007",
+      "source_candidate_label": "WRONG OR MISSING FEED",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_e_00000",
+      "target_candidate_label": "Programmer",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0011",
+      "justification": "The text states that the alarm 'WRONG OR MISSING FEED' is responsible for the programmer.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4216,
+          "chunk_end_char": 4237,
+          "doc_start_char": 59216,
+          "doc_end_char": 59237,
+          "snippet": "ning, and review the program.\nresponsible for\nprogrammer\nmessage no: 3012\ntext: WRONG OR MISSING FEED\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00010",
+      "relation_label": "intervention:",
+      "source_candidate_id": "cand_s_00000",
+      "source_candidate_label": "Vertical Axis Caution Alarm",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "Modify the program",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0011",
+      "justification": "The chunk text contains the message \"CAUTION VERTICAL AXIS\" (cand_s_00000) followed by \"intervention: Modify the program\" (cand_s_00001), indicating that the alarm triggers the intervention.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 259,
+          "chunk_end_char": 272,
+          "doc_start_char": 55259,
+          "doc_end_char": 55272,
+          "snippet": "e:\nto exhaust oneself\nCheck on the “MAINTENANCE” page which of the items listed\nintervention:\nrequest an interview\nresponsible for\n\nmessage n°: 2061 text: CONFIGURED PRODUCT"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00011",
+      "relation_label": "responsible for",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "Programmer",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "Modify the program",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0011",
+      "justification": "The chunk text contains the phrase 'responsible for\nprogrammer' following the intervention 'Modify the program', indicating that the Programmer is responsible for the event 'Modify the program'.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 2,
+          "chunk_end_char": 17,
+          "doc_start_char": 55002,
+          "doc_end_char": 55017,
+          "snippet": ".\nresponsible for\nmessage no: 2065\ntext: MAINTENANCE NOTICE\ntype: Standard: Optional:\neffect: Onl"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00003",
+      "relation_candidate_id": "cand_r_00011",
+      "relation_label": "responsible for",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "Modify the program",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00000",
+      "target_candidate_label": "Programmer",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0011",
+      "justification": "In the chunk, the line \"intervention: Modify the program\" is immediately followed by \"responsible for the intervention: programmer\", indicating that the programmer is responsible for the intervention event \"Modify the program\".",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1591,
+          "chunk_end_char": 1622,
+          "doc_start_char": 56591,
+          "doc_end_char": 56622,
+          "snippet": "hich of the listed items requires maintenance responsible for the intervention: responsible for the maintenance\n\nmessage no: 3001 to 3003\ntext: WRONG TORQUE REDUCTION\ntype: Standard: Optional"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00004",
+      "relation_candidate_id": "cand_r_00021",
+      "relation_label": "the torque reduction requested at the indicated axis is beyond the limits",
+      "source_candidate_id": "cand_r_00021",
+      "source_candidate_label": "the torque reduction requested at the indicated axis is beyond the limits",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "Modify the program",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0011",
+      "justification": "The text states that the torque reduction requested at the indicated axis is beyond the limits, which triggers the intervention to modify the program.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1769,
+          "chunk_end_char": 1842,
+          "doc_start_char": 56769,
+          "doc_end_char": 56842,
+          "snippet": "ard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nThe torque reduction requested at the indicated axis is beyond the limits:\nyour consents.\nintervention: Modify the programmed reduction value.\nresponsibl"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00005",
+      "relation_candidate_id": "cand_r_00032",
+      "relation_label": "Check the program and modify the instruction",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "Programmer",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "Modify the program",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0011",
+      "justification": "The chunk text states that the intervention \"Check the program and modify the instruction\" is performed by the programmer, which is equivalent to the event \"Modify the program\". Thus the relation connects the entity Programmer to the event Modify the program.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4476,
+          "chunk_end_char": 4520,
+          "doc_start_char": 59476,
+          "doc_end_char": 59520,
+          "snippet": "ates:\nthan the feed, or it was indicated with an incorrect value.\nintervention: Check the program and modify the instruction.\nresponsible for\nprogrammer\n\nmessage n°: 3006 - 3008 text: AXIS NOT IN POSITION"
+        }
+      ]
+    }
+  ]
+}

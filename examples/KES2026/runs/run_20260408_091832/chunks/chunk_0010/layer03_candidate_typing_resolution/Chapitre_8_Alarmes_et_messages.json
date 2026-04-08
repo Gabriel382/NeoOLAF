@@ -1,0 +1,1475 @@
+{
+  "layer": "layer03_candidate_typing_resolution",
+  "entity_candidates": [],
+  "relation_candidates": [
+    {
+      "candidate_id": "cand_r_00000",
+      "canonical_label": "bar change is completed",
+      "normalized_label": "bar change is completed",
+      "candidate_type": "relation",
+      "confidence": 0.97,
+      "ontology_hints": [
+        "Machine",
+        "Feature of Interest",
+        "Observable Property",
+        "Result",
+        "Geometry",
+        "Event"
+      ],
+      "definition": "An event indicating that a bar change operation performed by a machine has been finished, resulting in a completed state of the bar.",
+      "aliases": [
+        "bar change complete"
+      ],
+      "synonyms": [
+        "bar change finished",
+        "bar change done"
+      ],
+      "lexical_variants": [
+        "bar change completed",
+        "bar change finished"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00000",
+          "text": "bar change is completed",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 4,
+              "chunk_end_char": 27,
+              "doc_start_char": 50004,
+              "doc_end_char": 50027,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno interventi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00001",
+      "canonical_label": "self-intervention message clears",
+      "normalized_label": "self-intervention message clears",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "action",
+        "system-generated event",
+        "message clearance",
+        "occurs within a manufacturing situation (S1–S5)"
+      ],
+      "definition": "The system automatically clears a self‑intervention message, indicating that the self‑intervention has been resolved and the message is no longer displayed.",
+      "aliases": [
+        "self-intervention message cleared",
+        "self-intervention message auto-clears"
+      ],
+      "synonyms": [
+        "automatic message clearance",
+        "self-intervention message reset"
+      ],
+      "lexical_variants": [
+        "self-intervention message clears",
+        "self-intervention message cleared"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00001",
+          "text": "self-intervention message clears",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 33,
+              "chunk_end_char": 65,
+              "doc_start_char": 50033,
+              "doc_end_char": 50065,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00002",
+      "canonical_label": "responsible for",
+      "normalized_label": "responsible for",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "hasResponsible",
+        "isResponsibleFor",
+        "responsibleFor",
+        "hasAccountability"
+      ],
+      "definition": "A relational expression indicating that an entity (such as a sensor, platform, resource, or person) is accountable for, oversees, or manages a particular outcome, process, or component within an industrial maintenance context.",
+      "aliases": [
+        "has responsibility for",
+        "is responsible for"
+      ],
+      "synonyms": [
+        "accounts for",
+        "is accountable for"
+      ],
+      "lexical_variants": [
+        "has responsibility for",
+        "is responsible for",
+        "takes responsibility for"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00002",
+          "text": "responsible for",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 78,
+              "chunk_end_char": 93,
+              "doc_start_char": 50078,
+              "doc_end_char": 50093,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00003",
+      "canonical_label": "BARRIER: EMPTY BAR STORE",
+      "normalized_label": "barrier empty bar store",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmType",
+        "ObservationEvent",
+        "FeatureOfInterest",
+        "ObservableProperty"
+      ],
+      "definition": "An alarm that signals the bar store has become empty, indicating that the stock level of the bar store has reached a critical low threshold.",
+      "aliases": [
+        "Empty Bar Store Alarm"
+      ],
+      "synonyms": [
+        "Bar Store Empty Alarm"
+      ],
+      "lexical_variants": [
+        "BARRIER_EMPTY_BAR_STORE"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00003",
+          "text": "BARRIER: EMPTY BAR STORE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 143,
+              "chunk_end_char": 167,
+              "doc_start_char": 50143,
+              "doc_end_char": 50167,
+              "snippet": "rs:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the opera"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00004",
+      "canonical_label": "effect: Only display of the message",
+      "normalized_label": "effect only display of the message",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmEffect",
+        "NotificationEffect",
+        "DisplayOnlyEffect",
+        "AlarmMessage",
+        "hasEffect"
+      ],
+      "definition": "An effect of an alarm that results solely in the display of a message to the operator, without initiating other actions such as shutdown, mechanical intervention, or additional notifications.",
+      "aliases": [
+        "message display effect",
+        "display-only effect"
+      ],
+      "synonyms": [
+        "message-only display",
+        "display-only effect",
+        "visual notification only"
+      ],
+      "lexical_variants": [
+        "only display message",
+        "display message only",
+        "message-only display"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00004",
+          "text": "effect: Only display of the message",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 194,
+              "chunk_end_char": 229,
+              "doc_start_char": 50194,
+              "doc_end_char": 50229,
+              "snippet": "ested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost empty.\ni"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00005",
+      "canonical_label": "Informs the operator that the bar feeder bar magazine is almost empty.",
+      "normalized_label": "informs the operator that the bar feeder bar magazine is almost empty",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observation",
+        "FeatureOfInterest (bar feeder magazine)",
+        "ObservableProperty (level)",
+        "Operator",
+        "Workstation",
+        "state"
+      ],
+      "definition": "A notification to the operator indicating that the bar feeder magazine is nearly empty.",
+      "aliases": [
+        "bar feeder magazine low level alert"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "bar feeder magazine almost empty",
+        "bar feeder magazine near empty"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00005",
+          "text": "Informs the operator that the bar feeder bar magazine is almost empty.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 1233,
+              "chunk_end_char": 1303,
+              "doc_start_char": 51233,
+              "doc_end_char": 51303,
+              "snippet": "R MAGAZINE type: Standard: Optional: effect: Only display of the message cause: Informs the operator that the bar feeder bar magazine is almost empty. intervention: Add new bars to the store. responsible for the intervention: oper"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00006",
+      "canonical_label": "causes",
+      "normalized_label": "causes",
+      "candidate_type": "relation",
+      "confidence": 0.9499999999999998,
+      "ontology_hints": [
+        "Cause",
+        "ObservableProperty",
+        "Constraint",
+        "Feature of Interest",
+        "Feature of Interest: outdoor watering device (CDS)",
+        "Manufacturing Process: watering operation",
+        "Logistic Process: material handling related to watering",
+        "has feature of interest: outdoor watering device (CDS)",
+        "cause: lack of authorization from the device",
+        "Production Line",
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "Observable Property",
+        "Alarm 1083",
+        "Function M01"
+      ],
+      "definition": "The alarm is triggered because the bar magazine is almost empty.",
+      "aliases": [
+        "authorization deficiency",
+        "missing authorization"
+      ],
+      "synonyms": [
+        "lack of authorization",
+        "absence of permission",
+        "no authorization"
+      ],
+      "lexical_variants": [
+        "absence of authorization",
+        "no authorization granted",
+        "authorization not provided"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00006",
+          "text": "cause: almost empty.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00020",
+          "text": "cause: further authorization from the outdoor watering device (CDS)",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00029",
+          "text": "cause: The machine shutdown time has been reached; if the condition persists, the programs will be stopped at the same time as function M01 and the shutdown phase will be started (see alarm no. 1083)",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 3700,
+              "chunk_end_char": 3899,
+              "doc_start_char": 53700,
+              "doc_end_char": 53899,
+              "snippet": "URED TIME REACHED type: Standard: Optional: effect: Only display of the message cause: The machine shutdown time has been reached; if the condition persists, the programs will be stopped at the same time as function M01 and the shutdown phase will be started (see alarm no. 1083) intervention: It is possible to interrupt the shutdown phase changing the shutd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00007",
+      "canonical_label": "intervention: Add new bars to the store.",
+      "normalized_label": "intervention add new bars to the store",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention",
+        "store",
+        "bars"
+      ],
+      "definition": "An action recommended to resolve the alarm by adding new bars to the store.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00007",
+          "text": "intervention: Add new bars to the store.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 308,
+              "chunk_end_char": 348,
+              "doc_start_char": 50308,
+              "doc_end_char": 50348,
+              "snippet": "e\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost empty.\nintervention: Add new bars to the store.\nresponsible for\noperator\n\nmessage n°: 2024 text: OVERLOAD CONTROL DEVICE FAILUR"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00008",
+      "canonical_label": "OVERLOAD CONTROL DEVICE FAILURE",
+      "normalized_label": "overload control device failure",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observable Property of the Overload Control Device",
+        "Violation of a Constraint on the Overload Control Device",
+        "Feature: Overload Control Device within a Production Line",
+        "Alarm type relevant to Logistic Processes in the manufacturing facility"
+      ],
+      "definition": "An alarm indicating that the overload control device has failed to perform its function, thereby allowing an overload condition to occur.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00008",
+          "text": "OVERLOAD CONTROL DEVICE FAILURE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 398,
+              "chunk_end_char": 429,
+              "doc_start_char": 50398,
+              "doc_end_char": 50429,
+              "snippet": "on: Add new bars to the store.\nresponsible for\noperator\n\nmessage n°: 2024 text: OVERLOAD CONTROL DEVICE FAILURE type: Standard: Optional: effect: Only display of the message cause: The behavi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00009",
+      "canonical_label": "TRIGGERS",
+      "normalized_label": "triggers",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest: chip conveyor overload control device",
+        "Observable Property: abnormal behavior of the device",
+        "Manufacturing Facility: the facility where the device operates",
+        "Manufacturing Process: logic system that processes the observable property",
+        "Technician: entity responsible for handling the resulting fault",
+        "TRIGGERS: abnormal behavior triggers fault detection",
+        "REQUIRES: logic system requires detection of abnormal behavior",
+        "HANDLED_BY: Technician handles the fault"
+      ],
+      "definition": "The abnormal behavior of the chip conveyor overload control device triggers the logic system to classify the device as faulty.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00009",
+          "text": "cause: The behavior of the “chip conveyor overload control device” is abnormal, for this reason the logic system considers it to be faulty.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 492,
+              "chunk_end_char": 631,
+              "doc_start_char": 50492,
+              "doc_end_char": 50631,
+              "snippet": "OL DEVICE FAILURE type: Standard: Optional: effect: Only display of the message cause: The behavior of the “chip conveyor overload control device” is abnormal, for this reason the logic system considers it to be faulty. intervention: Make sure that this device works correctly. responsible for inter"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00010",
+      "canonical_label": "intervention: Make sure that this device works correctly.",
+      "normalized_label": "intervention make sure that this device works correctly",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "requires: device",
+        "handled_by: maintenance technician",
+        "references: device manual",
+        "interval: maintenance interval",
+        "situation: S1"
+      ],
+      "definition": "An action performed to confirm that a device is operating correctly, typically undertaken after a failure to restore normal operation.",
+      "aliases": [
+        "Ensure device functionality",
+        "Verify device operation",
+        "Confirm device is functioning properly"
+      ],
+      "synonyms": [
+        "Check device operation",
+        "Validate device performance"
+      ],
+      "lexical_variants": [
+        "Make sure this device works correctly",
+        "Ensure that this device works correctly",
+        "Verify that this device is functioning properly"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00010",
+          "text": "intervention: Make sure that this device works correctly.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 632,
+              "chunk_end_char": 689,
+              "doc_start_char": 50632,
+              "doc_end_char": 50689,
+              "snippet": "evice” is abnormal, for this reason the logic system considers it to be faulty. intervention: Make sure that this device works correctly. responsible for intervention: responsible for maintenance\n\nmessage n°: 2040 tex"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00011",
+      "canonical_label": "cause",
+      "normalized_label": "cause",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observable Property",
+        "Manufacturing Process",
+        "Manufacturing Cell",
+        "Manufacturing Facility",
+        "Constraint"
+      ],
+      "definition": "An alarm cause that informs the operator that the machining cycle has been suspended because a bar change is pending.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00012",
+          "text": "cause: Warns the operator that the machining cycle is suspended waiting for the bar change to be completed.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 859,
+              "chunk_end_char": 966,
+              "doc_start_char": 50859,
+              "doc_end_char": 50966,
+              "snippet": "BAR CHANGE PHASE type: Standard: Optional: effect: Only display of the message cause: Warns the operator that the machining cycle is suspended waiting for the bar change to be completed. intervention: When the bar change is completed, the message is automatically cl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00012",
+      "canonical_label": "intervention: When the bar change is completed, the message is automatically cleared.",
+      "normalized_label": "intervention when the bar change is completed the message is automatically cleared",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Spatial Object (bar)",
+        "Observable Property (bar change)",
+        "Temporal Entity (interval of completion)",
+        "Interval",
+        "Situation S1"
+      ],
+      "definition": "An intervention event in which the completion of a bar change automatically clears an alarm message.",
+      "aliases": [
+        "bar change completion",
+        "bar adjustment completion"
+      ],
+      "synonyms": [
+        "automatic alarm reset",
+        "alarm clearance after bar change",
+        "message auto-clearance"
+      ],
+      "lexical_variants": [
+        "bar change",
+        "bar adjustment",
+        "bar replacement"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00013",
+          "text": "intervention: When the bar change is completed, the message is automatically cleared.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 967,
+              "chunk_end_char": 1052,
+              "doc_start_char": 50967,
+              "doc_end_char": 51052,
+              "snippet": "at the machining cycle is suspended waiting for the bar change to be completed. intervention: When the bar change is completed, the message is automatically cleared. responsible for the intervention: no intervention requested\n\nmessage n°: 2041 t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00013",
+      "canonical_label": "FEEDER: EMPTY BAR MAGAZINE",
+      "normalized_label": "feeder empty bar magazine",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observation event",
+        "Feature of Interest: feeder",
+        "Machine: feeder",
+        "Alarm type: empty magazine"
+      ],
+      "definition": "An alarm indicating that the feeder’s bar magazine is empty, requiring replenishment of bars before operation can continue.",
+      "aliases": [
+        "Feeder empty magazine alarm",
+        "Empty bar magazine alarm"
+      ],
+      "synonyms": [
+        "Empty magazine alarm"
+      ],
+      "lexical_variants": [
+        "FEEDER: BAR MAGAZINE EMPTY",
+        "FEEDER: EMPTY BAR MAGAZINE"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00014",
+          "text": "FEEDER: EMPTY BAR MAGAZINE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 1137,
+              "chunk_end_char": 1163,
+              "doc_start_char": 51137,
+              "doc_end_char": 51163,
+              "snippet": "onsible for the intervention: no intervention requested\n\nmessage n°: 2041 text: FEEDER: EMPTY BAR MAGAZINE type: Standard: Optional: effect: Only display of the message cause: Informs th"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00014",
+      "canonical_label": "informs",
+      "normalized_label": "informs",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest: bar feeder magazine",
+        "ObservableProperty: near-empty state",
+        "ManufacturingFacility: Workstation",
+        "Operator: operator",
+        "Alarm: bar feeder low stock alarm"
+      ],
+      "definition": "The alarm is triggered because the bar feeder's magazine is nearly empty, indicating a low stock condition that requires operator attention.",
+      "aliases": [
+        "bar feeder magazine low level",
+        "bar feeder magazine low stock"
+      ],
+      "synonyms": [
+        "nearly empty",
+        "low stock",
+        "depleted"
+      ],
+      "lexical_variants": [
+        "bar feeder magazine almost empty",
+        "bar feeder magazine low",
+        "bar feeder magazine near empty"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00015",
+          "text": "cause: Informs the operator that the bar feeder bar magazine is almost empty.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 1226,
+              "chunk_end_char": 1303,
+              "doc_start_char": 51226,
+              "doc_end_char": 51303,
+              "snippet": "MPTY BAR MAGAZINE type: Standard: Optional: effect: Only display of the message cause: Informs the operator that the bar feeder bar magazine is almost empty. intervention: Add new bars to the store. responsible for the intervention: oper"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00015",
+      "canonical_label": "CDS: SIGNALING A MESSAGE OR NOTICE",
+      "normalized_label": "cds signaling a message or notice",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ObservableProperty",
+        "Constraint",
+        "Resource"
+      ],
+      "definition": "An alarm type that indicates the CDS (Exterior Watering System) is transmitting a message or notice, typically used to alert operators of system status or required actions.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00016",
+          "text": "CDS: SIGNALING A MESSAGE OR NOTICE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 1412,
+              "chunk_end_char": 1446,
+              "doc_start_char": 51412,
+              "doc_end_char": 51446,
+              "snippet": "o the store. responsible for the intervention: operator\n\nmessage no: 2050\ntext: CDS: SIGNALING A MESSAGE OR NOTICE\ntype: Standard: Optional:\neffect: Only display of the message\nThe exterior wate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00016",
+      "canonical_label": "has cause",
+      "normalized_label": "has cause",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Cause class",
+        "has cause",
+        "immediate cause"
+      ],
+      "definition": "An immediate cause is a direct factor that triggers an event or situation without intermediate steps.",
+      "aliases": [
+        "immediate",
+        "immediate cause"
+      ],
+      "synonyms": [
+        "direct",
+        "instantaneous"
+      ],
+      "lexical_variants": [
+        "immediately"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00017",
+          "text": "cause: immediate.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00017",
+      "canonical_label": "intervention: consult the documentation, in the absence of signals check connections with the tower.",
+      "normalized_label": "intervention consult the documentation in the absence of signals check connections with the tower",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "belongs to Production Line context",
+        "may correspond to Situation S1–S4",
+        "requires documentation",
+        "requires checking tower connections",
+        "handled by maintenance staff",
+        "references machine manual",
+        "detected by alarm system"
+      ],
+      "definition": "A specific action taken to address a machine alarm, such as consulting documentation and checking connections with the tower.",
+      "aliases": [
+        "maintenance action",
+        "troubleshooting step"
+      ],
+      "synonyms": [
+        "action",
+        "step",
+        "procedure",
+        "measure"
+      ],
+      "lexical_variants": [
+        "intervention step",
+        "intervention procedure",
+        "intervention action"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00018",
+          "text": "intervention: consult the documentation, in the absence of signals check connections with the tower.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00018",
+      "canonical_label": "CDS: ATTESA ABILITAZIONE AVANZAMENTO",
+      "normalized_label": "cds attesa abilitazione avanzamento",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ObservableProperty",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4"
+      ],
+      "definition": "Alarm indicating that the system is awaiting the activation of an advancement process.",
+      "aliases": [
+        "CDS: Waiting for Activation Advancement"
+      ],
+      "synonyms": [
+        "waiting for activation",
+        "pending activation"
+      ],
+      "lexical_variants": [
+        "ATTESA ABILITAZIONE AVANZAMENTO",
+        "CDS: ATTESA ABILITAZIONE AVANZAMENTO"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00019",
+          "text": "CDS: ATTESA ABILITAZIONE AVANZAMENTO",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 1797,
+              "chunk_end_char": 1833,
+              "doc_start_char": 51797,
+              "doc_end_char": 51833,
+              "snippet": "ignals check\nconnections with the tower.\nresponsible for\nmessage no: 2051\ntext: CDS: ATTESA ABILITAZIONE AVANZAMENTO\ntype: Standard: Optional:\neffect: Only display of the message\nThis message indi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00019",
+      "canonical_label": "intervention: automatically.",
+      "normalized_label": "intervention automatically",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Intervention",
+        "Automatic",
+        "Temporal Interval",
+        "Observation",
+        "Situation S1",
+        "Situation S2"
+      ],
+      "definition": "An intervention that occurs automatically, typically following an observation or alarm, without manual initiation, and often within a defined temporal interval.",
+      "aliases": [
+        "automatic intervention",
+        "auto-intervention"
+      ],
+      "synonyms": [
+        "self-initiated intervention",
+        "auto-triggered intervention"
+      ],
+      "lexical_variants": [
+        "intervention automatically",
+        "automatic intervention"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00021",
+          "text": "intervention: automatically.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00020",
+      "canonical_label": "AUTOMATIC OFF: SET TIME REACHED",
+      "normalized_label": "automatic off set time reached",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Situation S1",
+        "FeatureOfInterest",
+        "has time",
+        "has feature of interest"
+      ],
+      "definition": "Alarm indicating that the automatic off time has been reached, triggering an automatic shutdown of the monitored machine or process.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00022",
+          "text": "AUTOMATIC OFF: SET TIME REACHED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 2234,
+              "chunk_end_char": 2265,
+              "doc_start_char": 52234,
+              "doc_end_char": 52265,
+              "snippet": "sage clears\nintervention:\nautomatically.\nresponsible for\nmessage no: 2060\ntext: AUTOMATIC OFF: SET TIME REACHED\ntype: Standard: Optional:\neffect: Only display of the message\nThe machine shutd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00021",
+      "canonical_label": "cause: the programs will be stopped at the same time as function M01 and the shutdown phase will be started (see alarm no. 1083)",
+      "normalized_label": "cause the programs will be stopped at the same time as function m01 and the shutdown phase will be started see alarm no 1083",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Production Line",
+        "Temporal Entity",
+        "Observable Property",
+        "Situation S10",
+        "Spatial Object",
+        "TRIGGERS",
+        "CAUSES",
+        "REQUIRES",
+        "HANDLED_BY",
+        "REFERENCES",
+        "DETECTED_BY"
+      ],
+      "definition": "The cause indicates that production programs and function M01 will stop simultaneously, initiating a shutdown phase that is associated with alarm 1083.",
+      "aliases": [
+        "alarm 1083",
+        "alarm no. 1083"
+      ],
+      "synonyms": [
+        "shutdown",
+        "halt",
+        "stop"
+      ],
+      "lexical_variants": [
+        "simultaneous halt of programs",
+        "simultaneous stop of programs",
+        "shutdown of production programs",
+        "simultaneous shutdown of function M01 and programs"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00023",
+          "text": "cause: the programs will be stopped at the same time as function M01 and the shutdown phase will be started (see alarm no. 1083)",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00022",
+      "canonical_label": "intervention: shutdown from the appropriate user page.",
+      "normalized_label": "intervention shutdown from the appropriate user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "HumanProcess",
+        "ShutdownEvent",
+        "UserInterfaceInteraction",
+        "SystemStateChange",
+        "Situation S1",
+        "Situation S2"
+      ],
+      "definition": "An intervention in which a human operator initiates a system shutdown by selecting the appropriate option on a dedicated user interface page.",
+      "aliases": [
+        "shutdown intervention",
+        "user-initiated shutdown"
+      ],
+      "synonyms": [
+        "shutdown via user page",
+        "shutdown command",
+        "system shutdown"
+      ],
+      "lexical_variants": [
+        "shutdown through user interface",
+        "shutdown via UI",
+        "shutdown from the user page"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00024",
+          "text": "intervention: shutdown from the appropriate user page.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00023",
+      "canonical_label": "CDS: MESSAGE OR NOTICE SIGNALING",
+      "normalized_label": "cds message or notice signaling",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmType"
+      ],
+      "definition": "An alarm type that indicates a message or notice signaling within a manufacturing system.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00025",
+          "text": "CDS: MESSAGE OR NOTICE SIGNALING",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 2700,
+              "chunk_end_char": 2732,
+              "doc_start_char": 52700,
+              "doc_end_char": 52732,
+              "snippet": "rom the appropriate user page.\nresponsible for\noperator\n\nmessage n°: 2050 text: CDS: MESSAGE OR NOTICE SIGNALING type: Standard: Optional: effect: Only display of the message cause: The exteri"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00024",
+      "canonical_label": "cause: The exterior watering system (CDS) requires non-immediate maintenance.",
+      "normalized_label": "cause the exterior watering system cds requires non-immediate maintenance",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest: exterior watering system (CDS)",
+        "Constraint: maintenance requirement",
+        "requires action: maintenance activity",
+        "hasConstraint: links Feature of Interest to Constraint"
+      ],
+      "definition": "A condition indicating that the exterior watering system (CDS) must undergo maintenance at a future time, not immediately.",
+      "aliases": [
+        "CDS maintenance requirement",
+        "exterior watering system maintenance need"
+      ],
+      "synonyms": [
+        "maintenance requirement",
+        "maintenance need",
+        "maintenance necessity"
+      ],
+      "lexical_variants": [
+        "requires maintenance",
+        "needs maintenance",
+        "maintenance required"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00026",
+          "text": "cause: The exterior watering system (CDS) requires non-immediate maintenance.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 2795,
+              "chunk_end_char": 2872,
+              "doc_start_char": 52795,
+              "doc_end_char": 52872,
+              "snippet": "NOTICE SIGNALING type: Standard: Optional: effect: Only display of the message cause: The exterior watering system (CDS) requires non-immediate maintenance. intervention: Check the type of maintenance requested on the CDS operator panel"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00025",
+      "canonical_label": "intervention: Check the type of maintenance requested on the CDS operator panel and consult the documentation, in the absence of signals check the connections with the lathe.",
+      "normalized_label": "intervention check the type of maintenance requested on the cds operator panel and consult the documentation in the absence of signals check the connections with the lathe",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ObservableProperty",
+        "ProductionLine",
+        "SituationS1",
+        "SituationS2",
+        "SituationS3"
+      ],
+      "definition": "An action taken to diagnose and address a machine alarm by checking the maintenance type requested on the CDS operator panel, consulting relevant documentation, and, if no diagnostic signals are present, verifying the electrical and mechanical connections to the lathe.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00027",
+          "text": "intervention: Check the type of maintenance requested on the CDS operator panel and consult the documentation, in the absence of signals check the connections with the lathe.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 2873,
+              "chunk_end_char": 3047,
+              "doc_start_char": 52873,
+              "doc_end_char": 53047,
+              "snippet": "e cause: The exterior watering system (CDS) requires non-immediate maintenance. intervention: Check the type of maintenance requested on the CDS operator panel and consult the documentation, in the absence of signals check the connections with the lathe. responsible for intervention: responsible for maintenance\n\nmessage n°: 2051 tex"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00026",
+      "canonical_label": "AUTOMATIC STOP: CONFIGURED TIME REACHED",
+      "normalized_label": "automatic stop configured time reached",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: machine shutdown event",
+        "CAUSES: configured time limit reached",
+        "HANDLED_BY: operator or maintenance staff",
+        "REFERENCES: manual section on automatic stop procedures",
+        "DETECTED_BY: internal time counter or scheduler"
+      ],
+      "definition": "An alarm that signals the machine has reached a pre‑configured stop time, causing an automatic shutdown of the equipment.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00028",
+          "text": "AUTOMATIC STOP: CONFIGURED TIME REACHED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 3598,
+              "chunk_end_char": 3637,
+              "doc_start_char": 53598,
+              "doc_end_char": 53637,
+              "snippet": "utomatically cleared. responsible for the intervention:\n\nmessage n°: 2060 text: AUTOMATIC STOP: CONFIGURED TIME REACHED type: Standard: Optional: effect: Only display of the message cause: The machin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00027",
+      "canonical_label": "intervention: It is possible to interrupt the shutdown phase changing the shutdown time from the appropriate user page.",
+      "normalized_label": "intervention it is possible to interrupt the shutdown phase changing the shutdown time from the appropriate user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Human Process",
+        "Manufacturing Process",
+        "Observable Property",
+        "Feature of Interest"
+      ],
+      "definition": "An intervention is an action performed by a human operator, typically via a user interface, to modify the shutdown time and thereby interrupt the shutdown phase of a manufacturing process.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00030",
+          "text": "intervention: It is possible to interrupt the shutdown phase changing the shutdown time from the appropriate user page.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 3900,
+              "chunk_end_char": 4019,
+              "doc_start_char": 53900,
+              "doc_end_char": 54019,
+              "snippet": "ime as function M01 and the shutdown phase will be started (see alarm no. 1083) intervention: It is possible to interrupt the shutdown phase changing the shutdown time from the appropriate user page. responsible for the intervention: operator\n\nmessage no: 2061\ntext: CONFIGURED P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00028",
+      "canonical_label": "CONFIGURED PRODUCTION REACHED",
+      "normalized_label": "configured production reached",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ProductionLine",
+        "ManufacturingProcess",
+        "Product",
+        "SituationS1",
+        "AlarmType",
+        "ConfiguredProductionReached"
+      ],
+      "definition": "Alarm indicating that the configured production quantity has been reached during a manufacturing process on a production line, resulting in a new situation state.",
+      "aliases": [
+        "Configured Production Reached"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "CONFIGURED_PRODUCTION_REACHED",
+        "Configured Production Reached",
+        "configured production reached"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00031",
+          "text": "CONFIGURED PRODUCTION REACHED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 4087,
+              "chunk_end_char": 4116,
+              "doc_start_char": 54087,
+              "doc_end_char": 54116,
+              "snippet": "e user page. responsible for the intervention: operator\n\nmessage no: 2061\ntext: CONFIGURED PRODUCTION REACHED\ntype: Standard: Optional:\neffect: Only display of the message\nThe quantity of p"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00029",
+      "canonical_label": "cause: will be stopped at the same time as function M01 and phase shutdown will be started (see alarm no. 1083).",
+      "normalized_label": "cause will be stopped at the same time as function m01 and phase shutdown will be started see alarm no 1083",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Observable Property",
+        "Situation S10",
+        "Production Line",
+        "Logistic Process",
+        "Alarm 1083",
+        "Shutdown Event",
+        "Function M01",
+        "Phase Shutdown"
+      ],
+      "definition": "The cause of alarm 1083 is the planned simultaneous stopping of function M01 and the initiation of a phase shutdown, marking the end of the manufacturing process.",
+      "aliases": [
+        "planned shutdown",
+        "scheduled shutdown",
+        "shutdown initiation",
+        "process termination",
+        "function M01 termination",
+        "phase shutdown"
+      ],
+      "synonyms": [
+        "planned shutdown",
+        "scheduled shutdown",
+        "shutdown initiation",
+        "process termination",
+        "function M01 termination",
+        "phase shutdown"
+      ],
+      "lexical_variants": [
+        "will be stopped",
+        "will cease",
+        "will terminate",
+        "will be halted",
+        "will be discontinued"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00032",
+          "text": "cause: will be stopped at the same time as function M01 and phase shutdown will be started (see alarm no. 1083).",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00030",
+      "canonical_label": "intervention: of deposit documents from the appropriate user page.",
+      "normalized_label": "intervention of deposit documents from the appropriate user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Human Process",
+        "Logistic Process",
+        "Observable Property",
+        "Situation S1",
+        "Situation S2",
+        "intervention"
+      ],
+      "definition": "An action performed to deposit documents onto a user page, typically to interrupt a shutdown.",
+      "aliases": [
+        "deposit documents"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00033",
+          "text": "intervention: of deposit documents from the appropriate user page.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00031",
+      "canonical_label": "AUTOMATIC STOP: MACHINE IN ALARM",
+      "normalized_label": "automatic stop machine in alarm",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine",
+        "Alarm",
+        "Automatic Stop",
+        "Alarm State",
+        "Manufacturing Facility",
+        "Manufacturing Cell",
+        "Production Line",
+        "Feature of Interest"
+      ],
+      "definition": "An alarm indicating that the machine has triggered an automatic stop because it is in an alarm state.",
+      "aliases": [
+        "AUTOMATIC STOP: MACHINE IN ALARM"
+      ],
+      "synonyms": [
+        "Automatic stop alarm",
+        "Machine alarm stop",
+        "Alarm-triggered automatic stop",
+        "Machine in alarm state"
+      ],
+      "lexical_variants": [
+        "Automatic stop: machine in alarm",
+        "Automatic stop – machine in alarm",
+        "Automatic stop: machine alarm"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00034",
+          "text": "AUTOMATIC STOP: MACHINE IN ALARM",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 4607,
+              "chunk_end_char": 4639,
+              "doc_start_char": 54607,
+              "doc_end_char": 54639,
+              "snippet": "ppropriate user page.\nresponsible for\ntoolmaker-adjuster\nmessage no: 2062\ntext: AUTOMATIC STOP: MACHINE IN ALARM\ntype: Standard: Optional:\neffect: Only display of the message\nThe AUTOMATIC OFF"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00032",
+      "canonical_label": "cause: or an alarm has occurred, therefore the shutdown phase of the machine has started.",
+      "normalized_label": "cause or an alarm has occurred therefore the shutdown phase of the machine has started",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest (alarm) TRIGGERS TemporalEntity (shutdown) in ManufacturingFacility",
+        "Alarm DETECTED_BY sensor",
+        "Shutdown REQUIRES HumanProcess (operator intervention)",
+        "Shutdown REFERENCES shutdown procedure documentation",
+        "Shutdown is a TemporalEntity within ManufacturingCell"
+      ],
+      "definition": "An event in which the detection of an alarm causes the machine to enter its shutdown phase.",
+      "aliases": [
+        "alarm-triggered shutdown",
+        "alarm-induced shutdown",
+        "shutdown due to alarm"
+      ],
+      "synonyms": [
+        "alarm-triggered shutdown",
+        "alarm-induced shutdown",
+        "shutdown due to alarm"
+      ],
+      "lexical_variants": [
+        "alarm causes shutdown",
+        "alarm triggers shutdown",
+        "shutdown initiated by alarm"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00035",
+          "text": "cause: or an alarm has occurred, therefore the shutdown phase of the machine has started.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00033",
+      "canonical_label": "intervention: engage it and turn on the machine",
+      "normalized_label": "intervention engage it and turn on the machine",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine activation event",
+        "Machine start",
+        "Production Line operation",
+        "Manufacturing Facility operation",
+        "Temporal Entity (Interval)"
+      ],
+      "definition": "An intervention that resumes machine operation after an alarm by engaging the machine and turning it on.",
+      "aliases": [
+        "engage and turn on machine",
+        "engage machine and power on"
+      ],
+      "synonyms": [
+        "activate machine",
+        "start machine"
+      ],
+      "lexical_variants": [
+        "engage it and turn on the machine",
+        "engage and power on the machine"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00036",
+          "text": "intervention: engage it and turn on the machine",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attribute_candidates": [],
+  "event_candidates": [
+    {
+      "candidate_id": "cand_s_00000",
+      "canonical_label": "bar change phase alarm",
+      "normalized_label": "bar change phase alarm",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest: bar",
+        "ObservableProperty: bar change status",
+        "HumanProcess: bar change phase",
+        "Machine: feeder",
+        "Technician: operator/maintainer"
+      ],
+      "definition": "Alarm indicating that the bar change phase is in progress.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00011",
+          "text": "FEEDER: BAR CHANGE PHASE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0010",
+              "chunk_start_char": 772,
+              "chunk_end_char": 796,
+              "doc_start_char": 50772,
+              "doc_end_char": 50796,
+              "snippet": "sponsible for intervention: responsible for maintenance\n\nmessage n°: 2040 text: FEEDER: BAR CHANGE PHASE type: Standard: Optional: effect: Only display of the message cause: Warns the"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

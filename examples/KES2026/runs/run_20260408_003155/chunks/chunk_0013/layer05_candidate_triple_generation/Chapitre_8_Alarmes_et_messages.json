@@ -1,0 +1,306 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 10,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_e_00001",
+        "label": "machine component",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00007",
+        "label": "high pressure unit has not been configured correctly"
+      },
+      "object": {
+        "id": "cand_s_00003",
+        "label": "CDS configuration error",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk states that the CDS configuration error (cand_s_00003) is caused by the high pressure unit not being configured correctly, which is a machine component (cand_e_00001).",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 362,
+          "chunk_end_char": 414,
+          "doc_start_char": 65362,
+          "doc_end_char": 65414,
+          "snippet": "ect: Alarm with program interruption, stopping of axes and spindles. cause: The high pressure unit has not been configured correctly on the user page. intervention: Configure the CDS device in the user page. resp"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "function G188",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00009",
+        "label": "function G188 was programmed in a machine model that does not have the Y2 axis"
+      },
+      "object": {
+        "id": "cand_e_00001",
+        "label": "machine component",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk states that function G188 was programmed in a machine model that does not have the Y2 axis, linking function G188 to the machine component.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1041,
+          "chunk_end_char": 1119,
+          "doc_start_char": 66041,
+          "doc_end_char": 66119,
+          "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: Function G188 was programmed in a machine model that does not have the Y2 axis. intervention: Delete function G188 from the program. responsible for the inter"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00002",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "function G188",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00010",
+        "label": "causes"
+      },
+      "object": {
+        "id": "cand_s_00000",
+        "label": "OPTIONS 9000",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk states that Function G188 was programmed in a machine model that does not have the Y2 axis, which causes the OPTIONS 9000 NOT ACTIVATED alarm.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ", axis and bro-effect stop:\nches.\nFunction G188 is programmed in a machine model that is not\ncause:\nnot having the Y2 axis.\nintervention: Delete function G188 from the program.\nresponsible for\nprogrammer\n\nmessage no.: 3030 text: CDS CONFIGURATION ERROR type: Standard: Optional: effect: Alarm with pr"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00003",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "G300 function",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00011",
+        "label": "cannot reach the required dimension"
+      },
+      "object": {
+        "id": "cand_e_00006",
+        "label": "MachineAxis",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk text states that the G300 function reduces torque so much that the axis cannot reach the required dimension, linking the G300 function to the MachineAxis.",
+      "confidence": 0.93,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1784,
+          "chunk_end_char": 1819,
+          "doc_start_char": 66784,
+          "doc_end_char": 66819,
+          "snippet": "cause: With the G300 function we have reduced the torque so much that the axis cannot reach the required dimension. intervention: Increase the cut of the indicated axis responsible for the inter"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00004",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "AXIS CHASE ERROR",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00014",
+        "label": "Activate cart 2 from the user page"
+      },
+      "object": {
+        "id": "cand_e_00001",
+        "label": "machine component",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk states that the CARRIAGE DISABLED alarm is caused by cart 2 being deactivated in the user page, and the intervention is to activate cart 2 from the user page, directly addressing the machine component.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 804,
+          "chunk_end_char": 838,
+          "doc_start_char": 65804,
+          "doc_end_char": 65838,
+          "snippet": "G303 cannot work if cart 2 has been deactivated in the user page. intervention: Activate cart 2 from the user page. responsible for the intervention: programmer\n\nmessage n°: 3035 text: OPTIONS 9"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00005",
+      "subject": {
+        "id": "cand_s_00003",
+        "label": "CDS configuration error",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00016",
+        "label": "has cause"
+      },
+      "object": {
+        "id": "cand_e_00001",
+        "label": "machine component",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk text states that the CDS CONFIGURATION ERROR event has a cause: \"The high pressure unit has not been configured correctly on the user page.\" The high pressure unit is a machine component, matching cand_e_00001.",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 93,
+          "chunk_end_char": 99,
+          "doc_start_char": 65093,
+          "doc_end_char": 65099,
+          "snippet": "o-effect stop:\nches.\nFunction G188 is programmed in a machine model that is not\ncause:\nnot having the Y2 axis.\nintervention: Delete function G188 from the program.\nre"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00006",
+      "subject": {
+        "id": "cand_e_00002",
+        "label": "SoftwareEngineer",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00018",
+        "label": "responsible for"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "function G188",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk states that the programmer is responsible for the intervention to delete function G188, implying responsibility for function G188.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 177,
+          "chunk_end_char": 192,
+          "doc_start_char": 65177,
+          "doc_end_char": 65192,
+          "snippet": "e:\nnot having the Y2 axis.\nintervention: Delete function G188 from the program.\nresponsible for\nprogrammer\n\nmessage no.: 3030 text: CDS CONFIGURATION ERROR type: Standard: Opt"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00007",
+      "subject": {
+        "id": "cand_e_00001",
+        "label": "machine component",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00021",
+        "label": "has not been configured correctly on the user page"
+      },
+      "object": {
+        "id": "cand_s_00003",
+        "label": "CDS configuration error",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk states that the high pressure unit (a machine component) has not been configured correctly on the user page, which is the cause of the CDS configuration error event.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 381,
+          "chunk_end_char": 431,
+          "doc_start_char": 65381,
+          "doc_end_char": 65431,
+          "snippet": "gram interruption, stopping of axes and spindles. cause: The high pressure unit has not been configured correctly on the user page. intervention: Configure the CDS device in the user page. responsible for the i"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00008",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "G300 function",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00022",
+        "label": "triggers"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "AXIS CHASE ERROR",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk text states that the G300 function causes the AXIS CHASE ERROR, implying a trigger relationship.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 729,
+          "chunk_end_char": 788,
+          "doc_start_char": 65729,
+          "doc_end_char": 65788,
+          "snippet": "n, stopping of axes and spindles. cause: The hidden time recharge function G303 cannot work if cart 2 has been deactivated in the user page. intervention: Activate cart 2 from the user page. responsible for the interven"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00009",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "function G188",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00023",
+        "label": "programmed in"
+      },
+      "object": {
+        "id": "cand_e_00001",
+        "label": "machine component",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk text explicitly states that Function G188 is programmed in a machine model that does not have the Y2 axis, linking the function to the machine component.",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1055,
+          "chunk_end_char": 1119,
+          "doc_start_char": 66055,
+          "doc_end_char": 66119,
+          "snippet": "with program interruption, stopping of axes and spindles. cause: Function G188 was programmed in a machine model that does not have the Y2 axis. intervention: Delete function G188 from the program. responsible for the inter"
+        }
+      ]
+    }
+  ]
+}

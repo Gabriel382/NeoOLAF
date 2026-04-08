@@ -1,0 +1,870 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 54,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "Alarm with immediate and controlled stop",
+      "label": "alarm type",
+      "justification": "Describes the operational state of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 150,
+          "chunk_end_char": 190,
+          "doc_start_char": 15150,
+          "doc_end_char": 15190,
+          "snippet": "ator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "function M for orientation of the pins (M19, M219)",
+      "label": "component function",
+      "justification": "Identifies the function causing the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 260,
+          "chunk_end_char": 310,
+          "doc_start_char": 15260,
+          "doc_end_char": 15310,
+          "snippet": "olled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins (M19, M219) without having designated the argument “B” concerning the positioning angle. in"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "argument “B” concerning the positioning angle",
+      "label": "parameter",
+      "justification": "Specifies the missing argument that triggers the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 341,
+          "chunk_end_char": 386,
+          "doc_start_char": 15341,
+          "doc_end_char": 15386,
+          "snippet": "unction M for orientation of the pins (M19, M219) without having designated the argument “B” concerning the positioning angle. intervention: Correct the program so as to insert the argument “B” responsible"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "Correct the program so as to insert the argument “B”",
+      "label": "intervention action",
+      "justification": "Action required to resolve the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 402,
+          "chunk_end_char": 454,
+          "doc_start_char": 15402,
+          "doc_end_char": 15454,
+          "snippet": "ing designated the argument “B” concerning the positioning angle. intervention: Correct the program so as to insert the argument “B” responsible for the intervention: programmer\n\nAlarm n°: 1026 text: DIFFERENT TR"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "programmer",
+      "label": "role",
+      "justification": "Person responsible for the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 489,
+          "chunk_end_char": 499,
+          "doc_start_char": 15489,
+          "doc_end_char": 15499,
+          "snippet": "the program so as to insert the argument “B” responsible for the intervention: programmer\n\nAlarm n°: 1026 text: DIFFERENT TROLLEY PROGRAM N° type: Standard: Optional: ef"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "without having designated the argument “B”",
+      "label": "relation-bearing expression",
+      "justification": "Shows the missing designation that caused the failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 311,
+          "chunk_end_char": 353,
+          "doc_start_char": 15311,
+          "doc_end_char": 15353,
+          "snippet": "program block containing the function M for orientation of the pins (M19, M219) without having designated the argument “B” concerning the positioning angle. intervention: Correct the program so as to in"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "responsible for the intervention: programmer",
+      "label": "relation-bearing expression",
+      "justification": "Links the role to the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 455,
+          "chunk_end_char": 499,
+          "doc_start_char": 15455,
+          "doc_end_char": 15499,
+          "snippet": "oning angle. intervention: Correct the program so as to insert the argument “B” responsible for the intervention: programmer\n\nAlarm n°: 1026 text: DIFFERENT TROLLEY PROGRAM N° type: Standard: Optional: ef"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "different trolley program",
+      "label": "alarm type",
+      "justification": "Describes the alarm condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 522,
+          "chunk_end_char": 547,
+          "doc_start_char": 15522,
+          "doc_end_char": 15547,
+          "snippet": "argument “B” responsible for the intervention: programmer\n\nAlarm n°: 1026 text: DIFFERENT TROLLEY PROGRAM N° type: Standard: Optional: effect: Alarm with immediate and controlled stop c"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "program selected in the channel",
+      "label": "program selection",
+      "justification": "Context of the program causing the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 707,
+          "chunk_end_char": 738,
+          "doc_start_char": 15707,
+          "doc_end_char": 15738,
+          "snippet": "ause: At the start of the cycle execution it was noticed that the number of the program selected in the channel is different. intervention: Check the program numbers or, if it is necessary to"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "Check the program numbers",
+      "label": "intervention action",
+      "justification": "Action to verify program consistency.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 767,
+          "chunk_end_char": 792,
+          "doc_start_char": 15767,
+          "doc_end_char": 15792,
+          "snippet": "t the number of the program selected in the channel is different. intervention: Check the program numbers or, if it is necessary to execute different programs, deactivate the control in"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "deactivate the control in the user page “GESTIÓN DES CHARIOTS”",
+      "label": "intervention action",
+      "justification": "Action to modify control settings.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 847,
+          "chunk_end_char": 909,
+          "doc_start_char": 15847,
+          "doc_end_char": 15909,
+          "snippet": "Check the program numbers or, if it is necessary to execute different programs, deactivate the control in the user page “GESTIÓN DES CHARIOTS” responsible for the intervention: tool maker-adjuster\n\nAlarm n°: 1027 text: PRO"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "tool maker-adjuster",
+      "label": "role",
+      "justification": "Person responsible for the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 944,
+          "chunk_end_char": 963,
+          "doc_start_char": 15944,
+          "doc_end_char": 15963,
+          "snippet": "ntrol in the user page “GESTIÓN DES CHARIOTS” responsible for the intervention: tool maker-adjuster\n\nAlarm n°: 1027 text: PROGRAM NOT REWOUND type: Standard: Optional: effect: Ala"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "program not rewound",
+      "label": "alarm type",
+      "justification": "Describes the alarm condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 986,
+          "chunk_end_char": 1005,
+          "doc_start_char": 15986,
+          "doc_end_char": 16005,
+          "snippet": "TS” responsible for the intervention: tool maker-adjuster\n\nAlarm n°: 1027 text: PROGRAM NOT REWOUND type: Standard: Optional: effect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "Reset key",
+      "label": "control key",
+      "justification": "Key that triggers the alarm when pressed.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1101,
+          "chunk_end_char": 1110,
+          "doc_start_char": 16101,
+          "doc_end_char": 16110,
+          "snippet": "Optional: effect: Alarm with immediate and controlled shutdown cause: When the Reset key was pressed. or automatic mode has been selected, rewinding has not been carrie"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "automatic mode",
+      "label": "mode",
+      "justification": "Operational mode relevant to the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1127,
+          "chunk_end_char": 1141,
+          "doc_start_char": 16127,
+          "doc_end_char": 16141,
+          "snippet": "ith immediate and controlled shutdown cause: When the Reset key was pressed. or automatic mode has been selected, rewinding has not been carried out correctly. intervention:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "Press the R.A.Z. key",
+      "label": "intervention action",
+      "justification": "Action to reset the system.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1221,
+          "chunk_end_char": 1241,
+          "doc_start_char": 16221,
+          "doc_end_char": 16241,
+          "snippet": "has been selected, rewinding has not been carried out correctly. intervention: Press the R.A.Z. key. and check that the programs start from the first sentence. responsible for the"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "operator",
+      "label": "role",
+      "justification": "Person responsible for the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 66,
+          "chunk_end_char": 74,
+          "doc_start_char": 15066,
+          "doc_end_char": 15074,
+          "snippet": "rvention programs:\nstart from the first sentence.\nresponsible for\noperator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alar"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "R.A.Z. key was pressed while X2 axis had migrated",
+      "label": "relation-bearing expression",
+      "justification": "Links the key press event to the axis migration.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "rvention programs:\nstart from the first sentence.\nresponsible for\noperator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins ("
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "X2 axis migrated into channel 1",
+      "label": "machine state",
+      "justification": "Describes the state of the axis during the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "rvention programs:\nstart from the first sentence.\nresponsible for\noperator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins ("
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "channel 1",
+      "label": "channel",
+      "justification": "Location of the axis migration.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1529,
+          "chunk_end_char": 1538,
+          "doc_start_char": 16529,
+          "doc_end_char": 16538,
+          "snippet": "d shutdown\nThe R.A.Z. key. was pressed while the X2 axis had migrated\ncause: in channel 1; in this case the axis is returned to channel 2 without\nthe tool correctors are"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "channel 2",
+      "label": "channel",
+      "justification": "Alternate location after migration.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1577,
+          "chunk_end_char": 1586,
+          "doc_start_char": 16577,
+          "doc_end_char": 16586,
+          "snippet": "X2 axis had migrated\ncause: in channel 1; in this case the axis is returned to channel 2 without\nthe tool correctors are first reset to zero,\nProgram the M560 function"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "tool correctors",
+      "label": "component",
+      "justification": "Part of the machine involved in the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1599,
+          "chunk_end_char": 1614,
+          "doc_start_char": 16599,
+          "doc_end_char": 16614,
+          "snippet": "cause: in channel 1; in this case the axis is returned to channel 2 without\nthe tool correctors are first reset to zero,\nProgram the M560 function in both channels to restore"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "reset to zero",
+      "label": "action",
+      "justification": "Operation performed on the tool correctors.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1625,
+          "chunk_end_char": 1638,
+          "doc_start_char": 16625,
+          "doc_end_char": 16638,
+          "snippet": "is case the axis is returned to channel 2 without\nthe tool correctors are first reset to zero,\nProgram the M560 function in both channels to restore the\nintervention:\ncorrec"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "Program the M560 function",
+      "label": "intervention action",
+      "justification": "Action to program the machine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1640,
+          "chunk_end_char": 1665,
+          "doc_start_char": 16640,
+          "doc_end_char": 16665,
+          "snippet": "s is returned to channel 2 without\nthe tool correctors are first reset to zero,\nProgram the M560 function in both channels to restore the\nintervention:\ncorrect operation of the T functi"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "T function",
+      "label": "function",
+      "justification": "Function to restore correct operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1737,
+          "chunk_end_char": 1747,
+          "doc_start_char": 16737,
+          "doc_end_char": 16747,
+          "snippet": "function in both channels to restore the\nintervention:\ncorrect operation of the T function.\nresponsible for\ntoolmaker-adjuster\nAlarm number: 1031\ntext: TURN THE CNC OFF A"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "emergency stop button",
+      "label": "control",
+      "justification": "Control that triggers the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1916,
+          "chunk_end_char": 1937,
+          "doc_start_char": 16916,
+          "doc_end_char": 16937,
+          "snippet": "e: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe emergency stop button was pressed while the axis\ncause: X2 had migrated into channel 1, or the migrat"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "migration signal fell",
+      "label": "event",
+      "justification": "Signal change contributing to the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "rvention programs:\nstart from the first sentence.\nresponsible for\noperator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins ("
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "Turn the CNC off and on again",
+      "label": "intervention action",
+      "justification": "Action to restore normal operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2067,
+          "chunk_end_char": 2096,
+          "doc_start_char": 17067,
+          "doc_end_char": 17096,
+          "snippet": "into channel 1, or the migration signal in\nprices suddenly fell.\nintervention: Turn the CNC off and on again to restore normal operation.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1034"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "X-AXIS BRAKE BLOCKED",
+      "label": "alarm type",
+      "justification": "Describes the alarm condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2183,
+          "chunk_end_char": 2203,
+          "doc_start_char": 17183,
+          "doc_end_char": 17203,
+          "snippet": "tore normal operation.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1034\ntext: X-AXIS BRAKE BLOCKED\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "Insufficient air pressure",
+      "label": "condition",
+      "justification": "Cause of the brake blockage.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2283,
+          "chunk_end_char": 2308,
+          "doc_start_char": 17283,
+          "doc_end_char": 17308,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nInsufficient air pressure for pneumatic release of\ncause:\nthe X1 axis, the movement of which is prohibite"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00030",
+      "text": "pneumatic release",
+      "label": "action",
+      "justification": "Mechanism involved in the brake system.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2313,
+          "chunk_end_char": 2330,
+          "doc_start_char": 17313,
+          "doc_end_char": 17330,
+          "snippet": "ect: Alarm with immediate and controlled shutdown\nInsufficient air pressure for pneumatic release of\ncause:\nthe X1 axis, the movement of which is prohibited.\nCheck line pressure"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00031",
+      "text": "X1 axis",
+      "label": "component",
+      "justification": "Axis affected by the brake blockage.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2345,
+          "chunk_end_char": 2352,
+          "doc_start_char": 17345,
+          "doc_end_char": 17352,
+          "snippet": "ntrolled shutdown\nInsufficient air pressure for pneumatic release of\ncause:\nthe X1 axis, the movement of which is prohibited.\nCheck line pressure and pressure switch c"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00032",
+      "text": "movement prohibited",
+      "label": "state",
+      "justification": "Resulting state of the axis.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "rvention programs:\nstart from the first sentence.\nresponsible for\noperator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins ("
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00033",
+      "text": "Check line pressure and pressure switch calibration",
+      "label": "intervention action",
+      "justification": "Action to verify pneumatic conditions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2391,
+          "chunk_end_char": 2442,
+          "doc_start_char": 17391,
+          "doc_end_char": 17442,
+          "snippet": "r pneumatic release of\ncause:\nthe X1 axis, the movement of which is prohibited.\nCheck line pressure and pressure switch calibration;\nintervention: See page 65 of the electrical diagram, input X3.5\n(0 = ALARM, 1"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00034",
+      "text": "input X3.5 (0 = ALARM, 1 = OK)",
+      "label": "sensor input",
+      "justification": "Sensor reading indicating alarm status.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3546,
+          "chunk_end_char": 3576,
+          "doc_start_char": 18546,
+          "doc_end_char": 18576,
+          "snippet": "ressure and pressure switch calibration; See page 65 of the electrical diagram, input X3.5 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenance\n\nAlarm number: 10"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00035",
+      "text": "SPINDLE ORIENTATION FAULT",
+      "label": "alarm type",
+      "justification": "Describes the alarm condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3665,
+          "chunk_end_char": 3690,
+          "doc_start_char": 18665,
+          "doc_end_char": 18690,
+          "snippet": "ble for the intervention: responsible for maintenance\n\nAlarm number: 1039\ntext: SPINDLE ORIENTATION FAULT\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00036",
+      "text": "main spindle",
+      "label": "component",
+      "justification": "Component involved in the fault.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3809,
+          "chunk_end_char": 3821,
+          "doc_start_char": 18809,
+          "doc_end_char": 18821,
+          "snippet": "m with immediate and controlled shutdown\nAfter programming the orientation, the main spindle did not\ncause:\nreaches the set position within the time limit of 1 second.\nChec"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00037",
+      "text": "set position",
+      "label": "target",
+      "justification": "Desired position of the spindle.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3849,
+          "chunk_end_char": 3861,
+          "doc_start_char": 18849,
+          "doc_end_char": 18861,
+          "snippet": "After programming the orientation, the main spindle did not\ncause:\nreaches the set position within the time limit of 1 second.\nCheck any mechanical resistance to the rotat"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00038",
+      "text": "time limit 1 second",
+      "label": "time constraint",
+      "justification": "Operational constraint for spindle movement.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "rvention programs:\nstart from the first sentence.\nresponsible for\noperator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins ("
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00039",
+      "text": "Check any mechanical resistance to the rotation of the spindle",
+      "label": "intervention action",
+      "justification": "Action to diagnose the fault.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "rvention programs:\nstart from the first sentence.\nresponsible for\noperator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins ("
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00040",
+      "text": "error code A2721",
+      "label": "error code",
+      "justification": "Specific error code referenced.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "rvention programs:\nstart from the first sentence.\nresponsible for\noperator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins ("
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00041",
+      "text": "Fanuc 160i-TB maintenance manual",
+      "label": "manual reference",
+      "justification": "Reference for troubleshooting.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4062,
+          "chunk_end_char": 4094,
+          "doc_start_char": 19062,
+          "doc_end_char": 19094,
+          "snippet": "e error code on the actuation identified with the\nacronym A2721 and consult the Fanuc 160i-TB maintenance manual\nresponsible for\nAlarm No.: 1040\ntext: OPEN FORCEPS\ntype: Standard: Optional:\nef"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00042",
+      "text": "OPEN FORCEPS",
+      "label": "alarm type",
+      "justification": "Describes the alarm condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4133,
+          "chunk_end_char": 4145,
+          "doc_start_char": 19133,
+          "doc_end_char": 19145,
+          "snippet": "sult the Fanuc 160i-TB maintenance manual\nresponsible for\nAlarm No.: 1040\ntext: OPEN FORCEPS\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00043",
+      "text": "automatic cycle",
+      "label": "process",
+      "justification": "Process context for the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4247,
+          "chunk_end_char": 4262,
+          "doc_start_char": 19247,
+          "doc_end_char": 19262,
+          "snippet": "nal:\neffect: Alarm with immediate and controlled shutdown\nWe tried to start the automatic cycle with the pliers of the\ncause:\nmain pin open.\nintervention: Exit automatic mode"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00044",
+      "text": "pliers of the main pin open",
+      "label": "component state",
+      "justification": "State of the pliers causing the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "rvention programs:\nstart from the first sentence.\nresponsible for\noperator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins ("
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00045",
+      "text": "Exit automatic mode and close the clamp",
+      "label": "intervention action",
+      "justification": "Action to restore normal operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4322,
+          "chunk_end_char": 4361,
+          "doc_start_char": 19322,
+          "doc_end_char": 19361,
+          "snippet": "the automatic cycle with the pliers of the\ncause:\nmain pin open.\nintervention: Exit automatic mode and close the clamp.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1041\ntext: CLAMP OPENING FAILURE"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00046",
+      "text": "CLAMP OPENING FAILURE",
+      "label": "alarm type",
+      "justification": "Describes the alarm condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4420,
+          "chunk_end_char": 4441,
+          "doc_start_char": 19420,
+          "doc_end_char": 19441,
+          "snippet": "e and close the clamp.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1041\ntext: CLAMP OPENING FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00047",
+      "text": "clamp",
+      "label": "component",
+      "justification": "Component involved in the failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4356,
+          "chunk_end_char": 4361,
+          "doc_start_char": 19356,
+          "doc_end_char": 19361,
+          "snippet": "rs of the\ncause:\nmain pin open.\nintervention: Exit automatic mode and close the clamp.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1041\ntext: CLAMP OPENING FAILURE"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00048",
+      "text": "time limit 5 seconds",
+      "label": "time constraint",
+      "justification": "Operational constraint for clamp opening.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "rvention programs:\nstart from the first sentence.\nresponsible for\noperator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins ("
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00049",
+      "text": "Check any mechanical resistance",
+      "label": "intervention action",
+      "justification": "Action to diagnose the failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3897,
+          "chunk_end_char": 3928,
+          "doc_start_char": 18897,
+          "doc_end_char": 18928,
+          "snippet": "ndle did not\ncause:\nreaches the set position within the time limit of 1 second.\nCheck any mechanical resistance to the rotation of the\nintervention: spindle, note the error code on the actuat"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00050",
+      "text": "microdetector entry X3.0",
+      "label": "sensor input",
+      "justification": "Sensor involved in the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "rvention programs:\nstart from the first sentence.\nresponsible for\noperator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins ("
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00051",
+      "text": "page 15 of the electrical diagram",
+      "label": "reference",
+      "justification": "Reference to the electrical diagram.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4759,
+          "chunk_end_char": 4792,
+          "doc_start_char": 19759,
+          "doc_end_char": 19792,
+          "snippet": "tion: open despite the alarm, check the setting of the microdetector\nentry X3.0 page 15 of the electrical diagram.\nresponsible for\n\nAlarm no.: 1039 text: SPINDLE ORIENTATION ANOMALY type: Stand"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00052",
+      "text": "SPINDLE ORIENTATION ANOMALY",
+      "label": "alarm type",
+      "justification": "Describes the alarm condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4833,
+          "chunk_end_char": 4860,
+          "doc_start_char": 19833,
+          "doc_end_char": 19860,
+          "snippet": "X3.0 page 15 of the electrical diagram.\nresponsible for\n\nAlarm no.: 1039 text: SPINDLE ORIENTATION ANOMALY type: Standard: Optional: effect: Alarm with immediate and controlled stop caus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00053",
+      "text": "responsible for maintenance",
+      "label": "relation-bearing expression",
+      "justification": "Links maintenance responsibility to the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3611,
+          "chunk_end_char": 3638,
+          "doc_start_char": 18611,
+          "doc_end_char": 18638,
+          "snippet": "rical diagram, input X3.5 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenance\n\nAlarm number: 1039\ntext: SPINDLE ORIENTATION FAULT\ntype: Standard: Optional:\ne"
+        }
+      ]
+    }
+  ]
+}

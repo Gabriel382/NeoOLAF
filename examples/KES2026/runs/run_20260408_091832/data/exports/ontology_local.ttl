@@ -1,0 +1,847 @@
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/concept/concept_00003> a owl:Class ;
+    rdfs:label "ThermomagneticSwitchComponent" ;
+    neo:conceptKind "component" ;
+    neo:parentHint "Switch" ;
+    rdfs:comment "A thermally activated magnetic switch used as a temperature sensor and circuit interrupter in industrial machinery, typically reset during maintenance." ;
+    rdfs:subClassOf <http://neoolaf.org/resource/concept/concept_00001>,
+        <http://neoolaf.org/resource/concept/concept_00002> .
+
+<http://neoolaf.org/resource/concept/concept_00004> a owl:Class ;
+    rdfs:label "ProgrammableLogicController" ;
+    neo:conceptKind "entity" ;
+    neo:parentHint "Platform" ;
+    rdfs:comment "A digital computer used for automation of electromechanical processes, controlling machinery in industrial settings." .
+
+<http://neoolaf.org/resource/concept/concept_00005> a owl:Class ;
+    rdfs:label "CoolantResource" ;
+    neo:conceptKind "resource" ;
+    neo:parentHint "Resource" ;
+    rdfs:comment "A fluid or liquid substance used to transfer heat away from a system, typically with high thermal capacity, low viscosity, and chemical inertness, employed in industrial processing and machine cooling." ;
+    rdfs:subClassOf <http://neoolaf.org/resource/concept/concept_00011> .
+
+<http://neoolaf.org/resource/concept/concept_00006> a owl:Class ;
+    rdfs:label "Compressor" ;
+    neo:conceptKind "equipment" ;
+    neo:parentHint "MechanicalDevice" ;
+    rdfs:comment "A mechanical device that compresses gases by reducing their volume, thereby increasing pressure (and temperature if not intercoolled)." ;
+    rdfs:subClassOf <http://neoolaf.org/resource/concept/concept_00007> .
+
+<http://neoolaf.org/resource/concept/concept_00008> a owl:Class ;
+    rdfs:label "AlarmIdentifier" ;
+    neo:conceptKind "identifier" ;
+    neo:parentHint "AlarmInstance" ;
+    rdfs:comment "A unique identifier that distinguishes a specific alarm instance within a manufacturing system, typically expressed as a numeric or alphanumeric code." .
+
+<http://neoolaf.org/resource/concept/concept_00009> a owl:Class ;
+    rdfs:label "MechanicalComponent" ;
+    neo:conceptKind "entity" ;
+    neo:parentHint "Machine" ;
+    rdfs:comment "A mechanical component that provides rotational or translational motion, such as an axis or pivot point." .
+
+<http://neoolaf.org/resource/concept/concept_00010> a owl:Class ;
+    rdfs:label "Obstacle" ;
+    neo:conceptKind "entity" ;
+    neo:parentHint "Constraint" ;
+    rdfs:comment "An obstruction that blocks or hinders progress, often causing a machine axis to fail to reach its intended position. Obstacles can be physical or abstract and act as constraints on machine operation." .
+
+<http://neoolaf.org/resource/concept/concept_00012> a owl:Class ;
+    rdfs:label "GCodeCommandAction" ;
+    neo:conceptKind "action" ;
+    neo:parentHint "Action" ;
+    rdfs:comment "A G‑code command used in CNC machine control, typically referenced in feed alarms." .
+
+<http://neoolaf.org/resource/concept/concept_00013> a owl:Class ;
+    rdfs:label "ProgramRewindEvent" ;
+    neo:conceptKind "event" ;
+    neo:parentHint "Process" ;
+    rdfs:comment "An event where a machine program is reversed to a previous state, typically as part of a reset operation." ;
+    rdfs:subClassOf <http://neoolaf.org/resource/concept/concept_00016> .
+
+<http://neoolaf.org/resource/concept/concept_00015> a owl:Class ;
+    rdfs:label "OpenSideGuardAlarmEvent" ;
+    neo:conceptKind "event" ;
+    neo:parentHint "AlarmEvent" ;
+    rdfs:comment "An alarm event indicating that the side guards of a machine or production line are open, creating a safety hazard for operators and potentially disrupting the production process." ;
+    rdfs:subClassOf <http://neoolaf.org/resource/concept/concept_00000>,
+        <http://neoolaf.org/resource/concept/concept_00014>,
+        <http://neoolaf.org/resource/concept/concept_00016> .
+
+<http://neoolaf.org/resource/concept/concept_00018> a owl:Class ;
+    rdfs:label "PneumaticReleaseEvent" ;
+    neo:conceptKind "event" ;
+    neo:parentHint "LogisticProcess" ;
+    rdfs:comment "An event that releases pressure in a pneumatic system, typically used to disengage or reset a brake mechanism." ;
+    rdfs:subClassOf <http://neoolaf.org/resource/concept/concept_00016>,
+        <http://neoolaf.org/resource/concept/concept_00017> .
+
+<http://neoolaf.org/resource/concept/concept_00019> a owl:Class ;
+    rdfs:label "PositioningState" ;
+    neo:conceptKind "event" ;
+    neo:parentHint "Event" ;
+    rdfs:comment "A machine state event representing the intended or target position of a component, such as a spindle, that the system aims to achieve during operation." ;
+    rdfs:subClassOf <http://neoolaf.org/resource/concept/concept_00017> .
+
+<http://neoolaf.org/resource/concept/concept_00020> a owl:Class ;
+    rdfs:label "OpenForcepsEvent" ;
+    neo:conceptKind "event" ;
+    neo:parentHint "AlarmEvent" ;
+    rdfs:comment "An alarm indicating that forceps are in an open state, typically triggered by a sensor detecting the open position." ;
+    rdfs:subClassOf <http://neoolaf.org/resource/concept/concept_00000>,
+        <http://neoolaf.org/resource/concept/concept_00011>,
+        <http://neoolaf.org/resource/concept/concept_00016> .
+
+<http://neoolaf.org/resource/concept/concept_00021> a owl:Class ;
+    rdfs:label "CheckMechanicalResistanceEvent" ;
+    neo:conceptKind "event" ;
+    neo:parentHint "HumanProcess" ;
+    rdfs:comment "An intervention event where a technician inspects, measures, or verifies the mechanical resistance of a component or system as part of routine maintenance or fault diagnosis." ;
+    rdfs:subClassOf <http://neoolaf.org/resource/concept/concept_00016> .
+
+<http://neoolaf.org/resource/relation/ont_rel_00000> a owl:ObjectProperty ;
+    rdfs:label "hasCNCAlarm" ;
+    neo:domainHint "FeatureOfInterest" ;
+    neo:rangeHint "AlarmEvent" ;
+    rdfs:comment "Relates a CNC machine (Feature of Interest) to the alarms and messages it generates, representing abnormal operating conditions, faults, or required actions." ;
+    rdfs:domain "Platform" ;
+    rdfs:range "AlarmEvent" ;
+    rdfs:subPropertyOf <http://neoolaf.org/resource/relation/ont_rel_00001>,
+        <http://neoolaf.org/resource/relation/ont_rel_00002> .
+
+<http://neoolaf.org/resource/relation/ont_rel_00003> a owl:ObjectProperty ;
+    rdfs:label "detectedBy" ;
+    neo:domainHint "AlarmEvent" ;
+    neo:rangeHint "MonitoringSystem" ;
+    rdfs:comment "Relates an alarm or abnormal condition event to the monitoring system (e.g., PLC, sensor) that identifies or senses it." ;
+    rdfs:domain "AlarmEvent" ;
+    rdfs:range "MonitoringSystem" ;
+    rdfs:subPropertyOf <http://neoolaf.org/resource/relation/ont_rel_00002>,
+        <http://neoolaf.org/resource/relation/ont_rel_00012> .
+
+<http://neoolaf.org/resource/relation/ont_rel_00004> a owl:ObjectProperty ;
+    rdfs:label "triggersReset" ;
+    neo:domainHint "OperatorAction" ;
+    neo:rangeHint "LogisticProcess" ;
+    rdfs:comment "Relates an operator action, such as pressing a designated key, to the reset of a program or process." ;
+    rdfs:domain "OperatorAction" ;
+    rdfs:range "LogisticProcess" ;
+    rdfs:subPropertyOf <http://neoolaf.org/resource/relation/ont_rel_00012> .
+
+<http://neoolaf.org/resource/relation/ont_rel_00005> a owl:ObjectProperty ;
+    rdfs:label "requiresNoPersistingCauses" ;
+    neo:domainHint "ManufacturingProcess" ;
+    neo:rangeHint "Condition" ;
+    rdfs:comment "Relates a manufacturing process to the condition that it can be restarted only when the underlying causes of failure are no longer present." ;
+    rdfs:domain "ManufacturingProcess" ;
+    rdfs:range "Condition" .
+
+<http://neoolaf.org/resource/relation/ont_rel_00006> a owl:ObjectProperty ;
+    rdfs:label "punchButtonPress" ;
+    neo:domainHint "HumanProcess" ;
+    neo:rangeHint "AlarmEvent" ;
+    rdfs:comment "Relates a human-initiated punch button press to the alarm event it triggers." ;
+    rdfs:domain "HumanProcess" ;
+    rdfs:range "AlarmEvent" .
+
+<http://neoolaf.org/resource/relation/ont_rel_00007> a owl:ObjectProperty ;
+    rdfs:label "referencesDiagram" ;
+    neo:domainHint "AlarmEvent" ;
+    neo:rangeHint "DiagramPage" ;
+    rdfs:comment "Relates an alarm or event to a specific page and input within an electrical diagram used for troubleshooting." ;
+    rdfs:domain "AlarmEvent" ;
+    rdfs:range "DiagramPage" .
+
+<http://neoolaf.org/resource/relation/ont_rel_00008> a owl:ObjectProperty ;
+    rdfs:label "hasResponsibility" ;
+    neo:domainHint "AlarmEvent" ;
+    neo:rangeHint "Staff" ;
+    rdfs:comment "Relates an alarm or emitted signal to the personnel responsible for handling it." ;
+    rdfs:domain "AlarmEvent" ;
+    rdfs:range "Staff" .
+
+<http://neoolaf.org/resource/relation/ont_rel_00009> a owl:ObjectProperty ;
+    rdfs:label "references" ;
+    neo:domainHint "Resource" ;
+    neo:rangeHint "FeatureOfInterest" ;
+    rdfs:comment "Relates a resource such as a document, diagram, or page to a feature of interest or specific reference point within that resource." ;
+    rdfs:domain "Resource" ;
+    rdfs:range "FeatureOfInterest" .
+
+<http://neoolaf.org/resource/relation/ont_rel_00010> a owl:ObjectProperty ;
+    rdfs:label "triggersShutdownAtCycleEnd" ;
+    neo:domainHint "AlarmEvent" ;
+    neo:rangeHint "ShutdownEvent" ;
+    rdfs:comment "Relates an alarm event to a shutdown event that is initiated at the conclusion of a production cycle." ;
+    rdfs:domain "AlarmEvent" ;
+    rdfs:range "ShutdownEvent" ;
+    rdfs:subPropertyOf <http://neoolaf.org/resource/relation/ont_rel_00012> .
+
+<http://neoolaf.org/resource/relation/ont_rel_00011> a owl:ObjectProperty ;
+    rdfs:label "immediateAndControlledShutdown" ;
+    neo:domainHint "AlarmEvent" ;
+    neo:rangeHint "Machine" ;
+    rdfs:comment "Relates an alarm to a machine or system that triggers an immediate and controlled shutdown." ;
+    rdfs:domain "AlarmEvent" ;
+    rdfs:range "Machine" ;
+    rdfs:subPropertyOf <http://neoolaf.org/resource/relation/ont_rel_00002>,
+        <http://neoolaf.org/resource/relation/ont_rel_00012> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4> a owl:Ontology ;
+    rdfs:label "COInd Context Ontology for Industrial Situations" ;
+    rdfs:comment "Ontology describing contextual situations in industrial environments, integrating sensor observations (SOSA/SSN), spatial context (GeoSPARQL), and temporal relations (OWL-Time)." .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cell> a owl:Class ;
+    rdfs:label "Manufacturing Cell" ;
+    rdfs:comment "A manufacturing cell is a group of workstations organized to perform a particular manufacturing task." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#HumanProcess> a owl:Class ;
+    rdfs:label "Human Process" ;
+    rdfs:comment "A human process is a process primarily performed by human operators within the manufacturing environment." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Line> a owl:Class ;
+    rdfs:label "Production Line" ;
+    rdfs:comment "A production line is a group of manufacturing cells arranged to carry out a sequence of production tasks." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#LogisticProcess> a owl:Class ;
+    rdfs:label "Logistic Process" ;
+    rdfs:comment "A logistic process is a process related to the movement, storage, or management of materials or products." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Machine> a owl:Class ;
+    rdfs:label "Machine" ;
+    rdfs:comment "A machine is a device used to perform a manufacturing task, either autonomously or with human intervention." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Manager> a owl:Class ;
+    rdfs:label "Manager" ;
+    rdfs:comment "A manager is a person responsible for supervising manufacturing operations and responding to detected situations." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Staff> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingProcess> a owl:Class ;
+    rdfs:label "Manufacturing Process" ;
+    rdfs:comment "A manufacturing process is an industrial process carried out within a manufacturing facility to produce or transform products." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Operator> a owl:Class ;
+    rdfs:label "Operator" ;
+    rdfs:comment "An operator is a worker responsible for operating machines or performing production tasks." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Staff> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Part> a owl:Class ;
+    rdfs:label "Part" ;
+    rdfs:comment "A part is a component or piece used in the assembly or production of a product." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Product> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S1> a owl:Class ;
+    rdfs:label "Situation S1" ;
+    rdfs:comment "Situation S1 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S10> a owl:Class ;
+    rdfs:label "Situation S10" ;
+    rdfs:comment "Situation S10 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S11> a owl:Class ;
+    rdfs:label "Situation S11" ;
+    rdfs:comment "Situation S11 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S12> a owl:Class ;
+    rdfs:label "Situation S12" ;
+    rdfs:comment "Situation S12 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S13> a owl:Class ;
+    rdfs:label "Situation S13" ;
+    rdfs:comment "Situation S13 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S14> a owl:Class ;
+    rdfs:label "Situation S14" ;
+    rdfs:comment "Situation S14 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S2> a owl:Class ;
+    rdfs:label "Situation S2" ;
+    rdfs:comment "Situation S2 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S3> a owl:Class ;
+    rdfs:label "Situation S3" ;
+    rdfs:comment "Situation S3 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S4> a owl:Class ;
+    rdfs:label "Situation S4" ;
+    rdfs:comment "Situation S4 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S5> a owl:Class ;
+    rdfs:label "Situation S5" ;
+    rdfs:comment "Situation S5 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S6> a owl:Class ;
+    rdfs:label "Situation S6" ;
+    rdfs:comment "Situation S6 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S7> a owl:Class ;
+    rdfs:label "Situation S7" ;
+    rdfs:comment "Situation S7 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S8> a owl:Class ;
+    rdfs:label "Situation S8" ;
+    rdfs:comment "Situation S8 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S9> a owl:Class ;
+    rdfs:label "Situation S9" ;
+    rdfs:comment "Situation S9 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Technician> a owl:Class ;
+    rdfs:label "Technician" ;
+    rdfs:comment "A technician is a technical specialist responsible for maintaining or repairing equipment." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Staff> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#WorkStation> a owl:Class ;
+    rdfs:label "Workstation" ;
+    rdfs:comment "A workstation is a physical area in the manufacturing environment where one or more machines or resources are organized to perform a specific task." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#associatedConstraint> a owl:ObjectProperty ;
+    rdfs:label "associated constraint" ;
+    rdfs:comment "Relates a process, resource, or situation to a constraint that defines acceptable operational conditions." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Constraint> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#concernBy> a owl:ObjectProperty ;
+    rdfs:label "concerned by" ;
+    rdfs:comment "Relates a situation or event to an entity, such as a machine, process, or product, that it concerns." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#definedOn> a owl:ObjectProperty ;
+    rdfs:label "defined on" ;
+    rdfs:comment "Relates a situation or property to the entity or context element on which it is defined." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Constraint> ;
+    rdfs:range sosa:ObservableProperty .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#definedOn_1> a owl:ObjectProperty ;
+    rdfs:label "is defined for" ;
+    rdfs:comment "Relates an entity or context element to the situation or property for which it is defined." .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasCause> a owl:ObjectProperty ;
+    rdfs:label "has cause" ;
+    rdfs:comment "Relates a situation to the cause responsible for triggering or explaining it." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasDescription> a owl:DatatypeProperty ;
+    rdfs:label "hasDescription" ;
+    rdfs:comment "Links a constraint to its description." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Constraint> ;
+    rdfs:range xsd:string .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasDuration> a owl:ObjectProperty ;
+    rdfs:label "has duration" ;
+    rdfs:comment "Relates an event, process, or situation to the temporal interval during which it occurs." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process> ;
+    rdfs:range time:TemporalEntity .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasObservableProperty> a owl:ObjectProperty ;
+    rdfs:label "has observable property" ;
+    rdfs:comment "Relates an entity in the manufacturing system to a property that can be observed by sensors." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource> ;
+    rdfs:range sosa:ObservableProperty .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasObservation> a owl:ObjectProperty ;
+    rdfs:label "has observation" ;
+    rdfs:comment "Relates a situation to an observation associated with it." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> ;
+    rdfs:range sosa:Observation .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasTime> a owl:ObjectProperty ;
+    rdfs:label "has time" ;
+    rdfs:comment "Relates an observation to the temporal entity that represents when it occurred." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range time:TemporalEntity .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#isInSituation> a owl:ObjectProperty ;
+    rdfs:label "is in situation" ;
+    rdfs:comment "Relates an observation to the situation with which it is associated." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#isInlocation> a owl:ObjectProperty ;
+    rdfs:label "is in location" ;
+    rdfs:comment "Relates a resource to the spatial object in which it is located." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource> ;
+    rdfs:range geo:SpatialObject .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#isPartOf> a owl:ObjectProperty ;
+    rdfs:label "is part of" ;
+    rdfs:comment "Relates an entity to a larger entity of which it is a component." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#locatedIn> a owl:ObjectProperty ;
+    rdfs:label "located in" ;
+    rdfs:comment "Relates a sensor to the spatial object in which it is located." ;
+    rdfs:domain sosa:Sensor ;
+    rdfs:range geo:SpatialObject .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#operates> a owl:ObjectProperty ;
+    rdfs:label "operates" ;
+    rdfs:comment "Relates a staff member or operator to the machine or workstation that they operate." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Staff> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#performsPorcess> a owl:ObjectProperty ;
+    rdfs:label "performs process" ;
+    rdfs:comment "Relates a resource to a process that it performs or supports." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#requiresAction> a owl:ObjectProperty ;
+    rdfs:label "requires action" ;
+    rdfs:comment "Relates a situation to an action that should be performed in response to it." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Action> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#situationTime> a owl:ObjectProperty ;
+    rdfs:label "situation time" ;
+    rdfs:comment "Relates a situation to the temporal entity that represents when it occurs." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> ;
+    rdfs:range time:Interval .
+
+geo:asGML a owl:DatatypeProperty ;
+    rdfs:label "asGML" ;
+    rdfs:comment "Links a geometry to its GML serialization." ;
+    rdfs:domain geo:Geometry ;
+    rdfs:range geo:gmlLiteral .
+
+geo:asWKT a owl:DatatypeProperty ;
+    rdfs:label "asWKT" ;
+    rdfs:comment "Links a geometry to its WKT serialization." ;
+    rdfs:domain geo:Geometry ;
+    rdfs:range geo:wktLiteral .
+
+geo:hasGeometry a owl:ObjectProperty ;
+    rdfs:label "has geometry" ;
+    rdfs:comment "Relates a feature to the geometry that represents its spatial extent." ;
+    rdfs:domain geo:Feature ;
+    rdfs:range geo:Geometry .
+
+geo:rcc8dc a owl:ObjectProperty ;
+    rdfs:label "disconnected" ;
+    rdfs:comment "Relates two spatial regions that are disconnected and share no common point." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8ec a owl:ObjectProperty ;
+    rdfs:label "externally connected" ;
+    rdfs:comment "Relates two spatial regions that touch along their boundary but whose interiors do not overlap." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8eq a owl:ObjectProperty ;
+    rdfs:label "equals" ;
+    rdfs:comment "Relates two spatial regions that have exactly the same spatial extent." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8ntpp a owl:ObjectProperty ;
+    rdfs:label "non-tangential proper part" ;
+    rdfs:comment "Relates a spatial region that is completely inside another region without touching its boundary." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8ntppi a owl:ObjectProperty ;
+    rdfs:label "non-tangential proper part inverse" ;
+    rdfs:comment "Relates a spatial region that completely contains another region whose boundary it does not touch." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8po a owl:ObjectProperty ;
+    rdfs:label "partially overlapping" ;
+    rdfs:comment "Relates two spatial regions whose interiors overlap, while neither region contains the other." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8tpp a owl:ObjectProperty ;
+    rdfs:label "tangential proper part" ;
+    rdfs:comment "Relates a spatial region that is inside another region and touches its boundary." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8tppi a owl:ObjectProperty ;
+    rdfs:label "tangential proper part inverse" ;
+    rdfs:comment "Relates a spatial region that contains another region and touches its boundary." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+time:after a owl:ObjectProperty ;
+    rdfs:label "after" ;
+    rdfs:comment "Relates a temporal entity that occurs after another temporal entity." ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:TemporalEntity .
+
+time:before a owl:ObjectProperty ;
+    rdfs:label "before" ;
+    rdfs:comment "Relates a temporal entity that occurs before another temporal entity." ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:TemporalEntity .
+
+time:hasBeginning a owl:ObjectProperty ;
+    rdfs:label "has beginning" ;
+    rdfs:comment "Relates a temporal interval to the instant that marks its beginning." ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:Instant .
+
+time:hasEnd a owl:ObjectProperty ;
+    rdfs:label "has end" ;
+    rdfs:comment "Relates a temporal interval to the instant that marks its end." ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:Instant .
+
+time:inXSDDateTimeStamp a owl:DatatypeProperty ;
+    rdfs:label "inXSDDateTimeStamp" ;
+    rdfs:comment "Position of an instant in which the time-zone field is mandatory." ;
+    rdfs:domain time:Instant ;
+    rdfs:range <https://www.w3.org/TR/xmlschema11-2/#dateTimeStamp> .
+
+time:inside a owl:ObjectProperty ;
+    rdfs:label "inside" ;
+    rdfs:comment "Relates a temporal instant or interval that occurs within another interval." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Instant .
+
+time:intervalAfter a owl:ObjectProperty ;
+    rdfs:label "interval after" ;
+    rdfs:comment "Relates a time interval that occurs completely after another interval." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalBefore a owl:ObjectProperty ;
+    rdfs:label "interval before" ;
+    rdfs:comment "Relates a time interval that occurs completely before another interval." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalContains a owl:ObjectProperty ;
+    rdfs:label "interval contains" ;
+    rdfs:comment "Relates a time interval that fully contains another interval." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalDisjoint a owl:ObjectProperty ;
+    rdfs:label "interval disjoint" ;
+    rdfs:comment "Relates two temporal intervals that do not overlap in time." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalDuring a owl:ObjectProperty ;
+    rdfs:label "interval during" ;
+    rdfs:comment "Relates an interval that starts after another interval begins and ends before it ends." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalEquals a owl:ObjectProperty ;
+    rdfs:label "interval equals" ;
+    rdfs:comment "Relates two time intervals that have exactly the same temporal extent." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalFinishedBy a owl:ObjectProperty ;
+    rdfs:label "interval finished by" ;
+    rdfs:comment "Relates an interval that ends at the same time as another interval but starts earlier." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalFinishes a owl:ObjectProperty ;
+    rdfs:label "interval finishes" ;
+    rdfs:comment "Relates an interval that ends at the same time as another interval but starts later." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalIn a owl:ObjectProperty ;
+    rdfs:label "interval in" ;
+    rdfs:comment "Relates an interval that is contained within another interval, without requiring both boundaries to coincide." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalMeets a owl:ObjectProperty ;
+    rdfs:label "interval meets" ;
+    rdfs:comment "Relates an interval that ends exactly when another interval begins." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalMetBy a owl:ObjectProperty ;
+    rdfs:label "interval met by" ;
+    rdfs:comment "Relates an interval that begins exactly when another interval ends." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalOverlaps a owl:ObjectProperty ;
+    rdfs:label "interval overlaps" ;
+    rdfs:comment "Relates an interval that overlaps another interval without either interval containing the other." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalStartedBy a owl:ObjectProperty ;
+    rdfs:label "interval started by" ;
+    rdfs:comment "Relates an interval that starts at the same time as another interval but ends later." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalStarts a owl:ObjectProperty ;
+    rdfs:label "interval starts" ;
+    rdfs:comment "Relates an interval that starts at the same time as another interval but ends sooner." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+sosa:hasFeatureOfInterest a owl:ObjectProperty ;
+    rdfs:label "has feature of interest" ;
+    rdfs:comment "Relates an observation to the entity whose property is being observed." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:FeatureOfInterest .
+
+sosa:hasResult a owl:ObjectProperty ;
+    rdfs:label "has result" ;
+    rdfs:comment "Relates an observation to the result that it produced." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:Result .
+
+sosa:hasSimpleResult a owl:DatatypeProperty ;
+    rdfs:label "hasSimpleResult" ;
+    rdfs:comment "Links an obervation to its result, which contains a value representing the value associated with the observed Property." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range xsd:integer .
+
+sosa:hosts a owl:ObjectProperty ;
+    rdfs:label "hosts" ;
+    rdfs:comment "Relates a platform to a sensor, actuator, sampler, or platform that it hosts." ;
+    rdfs:domain sosa:Platform ;
+    rdfs:range sosa:Sensor .
+
+sosa:madeObservation a owl:ObjectProperty ;
+    rdfs:label "made observation" ;
+    rdfs:comment "Relates a sensor to an observation that it made." ;
+    rdfs:domain sosa:Sensor ;
+    rdfs:range sosa:Observation .
+
+sosa:observedProperty a owl:ObjectProperty ;
+    rdfs:label "observed property" ;
+    rdfs:comment "Relates an observation to the property that it observes." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:ObservableProperty .
+
+ssn:hasProperty a owl:ObjectProperty ;
+    rdfs:label "has property" ;
+    rdfs:comment "Relates an entity to one of its properties." ;
+    rdfs:domain sosa:FeatureOfInterest ;
+    rdfs:range ssn:Property .
+
+<http://neoolaf.org/resource/concept/concept_00001> a owl:Class ;
+    rdfs:label "ThermalCutoffDevice" ;
+    neo:conceptKind "component" ;
+    neo:parentHint "Component" ;
+    rdfs:comment "An electrical safety device that interrupts current when a set temperature is reached, and can be reset manually or automatically." ;
+    rdfs:subClassOf <http://neoolaf.org/resource/concept/concept_00002> .
+
+<http://neoolaf.org/resource/concept/concept_00014> a owl:Class ;
+    rdfs:label "ActiveEmergencyEvent" ;
+    neo:conceptKind "event" ;
+    neo:parentHint "AlarmEvent" ;
+    rdfs:comment "An alarm event indicating an active emergency condition in a manufacturing system." ;
+    rdfs:subClassOf <http://neoolaf.org/resource/concept/concept_00016> .
+
+<http://neoolaf.org/resource/relation/ont_rel_00001> a owl:ObjectProperty ;
+    rdfs:label "generatesAlarmMessage" ;
+    neo:domainHint "Resource" ;
+    neo:rangeHint "AlarmEvent" ;
+    rdfs:comment "Relates a PLC interface (resource) to the alarm messages or alerts it generates, indicating abnormal conditions or events within a manufacturing system." ;
+    rdfs:domain "Resource" ;
+    rdfs:range "AlarmEvent" .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Action> a owl:Class ;
+    rdfs:label "Action" ;
+    rdfs:comment "An action is an operation or intervention performed in response to a detected situation in the manufacturing system." ;
+    rdfs:subClassOf owl:Thing .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause> a owl:Class ;
+    rdfs:label "Cause" ;
+    rdfs:comment "A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system." ;
+    rdfs:subClassOf owl:Thing .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Product> a owl:Class ;
+    rdfs:label "Product" ;
+    rdfs:comment "A product is an item produced or processed during manufacturing operations." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource>,
+        sosa:Platform .
+
+sosa:Result a owl:Class ;
+    rdfs:label "Result" ;
+    rdfs:comment "A result is the outcome or value produced by an observation." ;
+    rdfs:subClassOf owl:Thing .
+
+<http://neoolaf.org/resource/concept/concept_00000> a owl:Class ;
+    rdfs:label "InformationalAlarmEvent" ;
+    neo:conceptKind "alarm" ;
+    neo:parentHint "AlarmType" ;
+    rdfs:comment "An alarm type that delivers messages to operators indicating a condition without triggering a change in machine status." .
+
+<http://neoolaf.org/resource/concept/concept_00002> a owl:Class ;
+    rdfs:label "CircuitBreakerComponent" ;
+    neo:conceptKind "component" ;
+    neo:parentHint "Component" ;
+    rdfs:comment "An electrical safety device that interrupts overcurrent to protect equipment and prevent fire, and can be reset manually or automatically." ;
+    rdfs:subClassOf <http://neoolaf.org/resource/concept/concept_00007> .
+
+<http://neoolaf.org/resource/concept/concept_00007> a owl:Class ;
+    rdfs:label "FanMachine" ;
+    neo:conceptKind "machine" ;
+    neo:parentHint "Machine" ;
+    rdfs:comment "A device that creates airflow for cooling purposes in industrial equipment." .
+
+<http://neoolaf.org/resource/concept/concept_00011> a owl:Class ;
+    rdfs:label "FeedResource" ;
+    neo:conceptKind "entity" ;
+    neo:parentHint "Resource" ;
+    rdfs:comment "A material or substance supplied to a machine or animal to sustain operation or nutrition, commonly used as a manufacturing resource." .
+
+<http://neoolaf.org/resource/concept/concept_00017> a owl:Class ;
+    rdfs:label "NormalOperationEvent" ;
+    neo:conceptKind "event" ;
+    neo:parentHint "Observation" ;
+    rdfs:comment "The state in which a machine operates as intended, without alarms or faults, representing the desired operational condition." .
+
+sosa:FeatureOfInterest a owl:Class ;
+    rdfs:label "Feature of Interest" ;
+    rdfs:comment "A feature of interest is the entity whose property is being observed." ;
+    rdfs:subClassOf owl:Thing .
+
+ssn:Property a owl:Class ;
+    rdfs:label "Property" ;
+    rdfs:comment "A property is a characteristic of an entity that can be observed or measured." ;
+    rdfs:subClassOf owl:Thing .
+
+<http://neoolaf.org/resource/relation/ont_rel_00002> a owl:ObjectProperty ;
+    rdfs:label "issuedBy" ;
+    neo:domainHint "Result" ;
+    neo:rangeHint "Resource" ;
+    rdfs:comment "Relates an alarm, result, or sensor to the entity that issues or generates it." ;
+    rdfs:domain "Result" ;
+    rdfs:range "Resource" .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Constraint> a owl:Class ;
+    rdfs:label "Constraint" ;
+    rdfs:comment "A constraint is a condition or rule that restricts or defines acceptable states of a process, resource, or situation." ;
+    rdfs:subClassOf owl:Thing .
+
+geo:Feature a owl:Class ;
+    rdfs:label "Feature" ;
+    rdfs:comment "A feature is a spatial entity representing a physical object or location in the manufacturing environment." ;
+    rdfs:subClassOf geo:SpatialObject .
+
+geo:Geometry a owl:Class ;
+    rdfs:label "Geometry" ;
+    rdfs:comment "A geometry is the geometric representation of a spatial feature." ;
+    rdfs:subClassOf geo:SpatialObject .
+
+sosa:ObservableProperty a owl:Class ;
+    rdfs:label "Observable Property" ;
+    rdfs:comment "An observable property is a property of a feature of interest that can be observed by a sensor." ;
+    rdfs:subClassOf ssn:Property .
+
+sosa:Sensor a owl:Class ;
+    rdfs:label "Sensor" ;
+    rdfs:comment "A sensor is a device, agent, or software component that performs observations." ;
+    rdfs:subClassOf owl:Thing .
+
+<http://neoolaf.org/resource/relation/ont_rel_00012> a owl:ObjectProperty ;
+    rdfs:label "causes" ;
+    neo:domainHint "AlarmEvent" ;
+    neo:rangeHint "MachineComponent" ;
+    rdfs:comment "Relates a source event or entity (e.g., an alarm, sensor reading, or failure) to the resulting effect or disabling of machine components." ;
+    rdfs:domain "AlarmEvent" ;
+    rdfs:range "MachineComponent" .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Staff> a owl:Class ;
+    rdfs:label "Staff" ;
+    rdfs:comment "Staff is a human agent involved in the operation or supervision of manufacturing processes." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource>,
+        sosa:Platform .
+
+time:Instant a owl:Class ;
+    rdfs:label "Instant" ;
+    rdfs:comment "An instant is a specific point in time." ;
+    rdfs:subClassOf time:TemporalEntity .
+
+sosa:Platform a owl:Class ;
+    rdfs:label "Platform" ;
+    rdfs:comment "A platform is an entity that hosts sensors, actuators, samplers, or other platforms." ;
+    rdfs:subClassOf geo:Feature .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process> a owl:Class ;
+    rdfs:label "Process" ;
+    rdfs:comment "A process is an activity that transforms inputs into outputs." ;
+    rdfs:subClassOf owl:Thing .
+
+<http://neoolaf.org/resource/concept/concept_00016> a owl:Class ;
+    rdfs:label "TriggeredEvent" ;
+    neo:conceptKind "event" ;
+    neo:parentHint "Event" ;
+    rdfs:comment "An event representing the activation or initiation of a component, system, or personnel action, typically triggered by an alarm or control signal." .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> a owl:Class ;
+    rdfs:label "Manufacturing Facility" ;
+    rdfs:comment "A manufacturing facility is a physical environment where manufacturing processes take place." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource>,
+        sosa:Platform .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource> a owl:Class ;
+    rdfs:label "Resource" ;
+    rdfs:comment "A resource is an entity used during manufacturing processes, such as a machine, material, or human resource." ;
+    rdfs:subClassOf geo:Feature .
+
+sosa:Observation a owl:Class ;
+    rdfs:label "Observation" ;
+    rdfs:comment "An observation is an event in which a sensor measures or estimates the value of an observable property of a feature of interest." ;
+    rdfs:subClassOf owl:Thing .
+
+time:TemporalEntity a owl:Class ;
+    rdfs:label "Temporal Entity" ;
+    rdfs:comment "A temporal entity is a temporal interval or instant used to represent the time of an observation or situation." ;
+    rdfs:subClassOf owl:Thing .
+
+geo:SpatialObject a owl:Class ;
+    rdfs:label "Spatial Object" ;
+    rdfs:comment "A spatial object is an entity with a spatial extent in the manufacturing environment." ;
+    rdfs:subClassOf owl:Thing .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> a owl:Class ;
+    rdfs:label "Situation" ;
+    rdfs:comment "A situation is a contextual state describing conditions in a manufacturing environment based on observations, processes, and contextual factors." ;
+    rdfs:subClassOf owl:Thing .
+
+time:Interval a owl:Class ;
+    rdfs:label "Interval" ;
+    rdfs:comment "An interval is a temporal extent with a beginning and an end." ;
+    rdfs:subClassOf time:TemporalEntity .
+

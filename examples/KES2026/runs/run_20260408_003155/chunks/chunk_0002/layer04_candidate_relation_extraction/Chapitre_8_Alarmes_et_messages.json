@@ -1,0 +1,174 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 7,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00004",
+      "relation_label": "CABINET OVERHEATING",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "thermostat not set correctly",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_r_00004",
+      "target_candidate_label": "CABINET OVERHEATING",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0002",
+      "justification": "The text states that the thermostat not set correctly causes the CABINET OVERHEATING alarm.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 337,
+          "chunk_end_char": 356,
+          "doc_start_char": 10337,
+          "doc_end_char": 10356,
+          "snippet": "ble for the intervention: responsible for the maintenance\n\nAlarm n°: 1017 text: CABINET OVERHEATING type: Standard: Optional: effect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00011",
+      "relation_label": "pressure of the pneumatic installation is not sufficient",
+      "source_candidate_id": "cand_r_00011",
+      "source_candidate_label": "pressure of the pneumatic installation is not sufficient",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_s_00005",
+      "target_candidate_label": "immediate arrest",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0002",
+      "justification": "The chunk states that the pressure of the pneumatic installation is not sufficient, which is the cause of the immediate arrest event.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 867,
+          "chunk_end_char": 923,
+          "doc_start_char": 10867,
+          "doc_end_char": 10923,
+          "snippet": "Standard: Optional: effect: Alarm with immediate and controlled stop cause: The pressure of the pneumatic installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adj"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00017",
+      "relation_label": "spindle removal when the bypass function is activated",
+      "source_candidate_id": "cand_r_00017",
+      "source_candidate_label": "spindle removal when the bypass function is activated",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_s_00005",
+      "target_candidate_label": "immediate arrest",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0002",
+      "justification": "The text states that executing a spindle removal while the bypass function is activated triggers an immediate arrest.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1474,
+          "chunk_end_char": 1527,
+          "doc_start_char": 11474,
+          "doc_end_char": 11527,
+          "snippet": "ning a function M in one of the following situations which are not permitted:\n• spindle removal when the bypass function is activated;\n• spindle orientation when the rigid tapping function or\npin synchronization i"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00003",
+      "relation_candidate_id": "cand_r_00018",
+      "relation_label": "causes",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "thermostat not set correctly",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00005",
+      "target_candidate_label": "immediate arrest",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0002",
+      "justification": "The chunk states that the thermostat is not set correctly, which causes the alarm with immediate and controlled shutdown, i.e., an immediate arrest.",
+      "confidence": 0.72,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00005",
+      "relation_candidate_id": "cand_r_00023",
+      "relation_label": "Correct the program so as to insert the argument “S”",
+      "source_candidate_id": "cand_s_00002",
+      "source_candidate_label": "Modify the program",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00002",
+      "target_candidate_label": "programmer",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0002",
+      "justification": "The relation candidate \"Correct the program so as to insert the argument “S”\" is an intervention that requires the programmer to perform it, linking the event \"Modify the program\" to the entity \"programmer\".",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 2437,
+          "chunk_end_char": 2489,
+          "doc_start_char": 12437,
+          "doc_end_char": 12489,
+          "snippet": "3,\nM274) without having designated the “S” argument of the speed.\nintervention: Correct the program so as to insert the argument “S”\nresponsible for\nprogrammer\n\nAlarm n°: 1020 text: PROGRAMMING ERROR type: Standa"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00006",
+      "relation_candidate_id": "cand_r_00026",
+      "relation_label": "Correct the program so as to insert the argument “B”",
+      "source_candidate_id": "cand_s_00002",
+      "source_candidate_label": "Modify the program",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00002",
+      "target_candidate_label": "programmer",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0002",
+      "justification": "The chunk states that the intervention \"Correct the program so as to insert the argument ‘B’\" is performed by the programmer.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 4189,
+          "chunk_end_char": 4241,
+          "doc_start_char": 14189,
+          "doc_end_char": 14241,
+          "snippet": "ing designated\nthe argument “B” concerning the positioning angle.\nintervention: Correct the program so as to insert the argument “B”\nresponsible for\nprogrammer\nAlarm No.: 1026\ntext: DIFFERENT TROLLEY PROGRAM NUMB"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00007",
+      "relation_candidate_id": "cand_r_00034",
+      "relation_label": "misconfigured",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "Feeder",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00000",
+      "target_candidate_label": "error code A2831",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0002",
+      "justification": "The chunk describes an error code A2831 associated with the feeder, implying the feeder is misconfigured.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 458,
+          "chunk_end_char": 478,
+          "doc_start_char": 10458,
+          "doc_end_char": 10478,
+          "snippet": "nal: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 30,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "LOAD MONITOR: IMMEDIATE STOP",
+      "label": "alarm type",
+      "justification": "This is a specific alarm event indicating an immediate stop.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 127,
+          "chunk_end_char": 155,
+          "doc_start_char": 40127,
+          "doc_end_char": 40155,
+          "snippet": "e) to 100% and repeat the cycle.\nresponsible for\noperator\nAlarm No.: 1080\ntext: LOAD MONITOR: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "Alarm with immediate and controlled shutdown",
+      "label": "alarm effect",
+      "justification": "Describes the effect of the alarm on the machine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 190,
+          "chunk_end_char": 234,
+          "doc_start_char": 40190,
+          "doc_end_char": 40234,
+          "snippet": "No.: 1080\ntext: LOAD MONITOR: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe Load Monitor tool monitoring system has detected a breakage\ncause:\ntool.\nRe"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "The Load Monitor tool monitoring system has detected a breakage",
+      "label": "relation-bearing expression",
+      "justification": "Links the monitoring system to the detection of a breakage.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 235,
+          "chunk_end_char": 298,
+          "doc_start_char": 40235,
+          "doc_end_char": 40298,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe Load Monitor tool monitoring system has detected a breakage\ncause:\ntool.\nReplace the tool, or if it is not broken, check the\nintervention:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "tool breakage",
+      "label": "failure symptom",
+      "justification": "Identifies the failure causing the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 1581,
+          "chunk_end_char": 1594,
+          "doc_start_char": 41581,
+          "doc_end_char": 41594,
+          "snippet": "ntrolled shutdown cause: The Load Monitor tool monitoring system has detected a tool breakage. intervention: Replace the tool, or if it is not broken, check the system calib"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "Replace the tool",
+      "label": "intervention",
+      "justification": "Action required to resolve the failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 312,
+          "chunk_end_char": 328,
+          "doc_start_char": 40312,
+          "doc_end_char": 40328,
+          "snippet": "wn\nThe Load Monitor tool monitoring system has detected a breakage\ncause:\ntool.\nReplace the tool, or if it is not broken, check the\nintervention: system calibrations which are"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "system calibrations",
+      "label": "intervention",
+      "justification": "Secondary action if the tool is not broken.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 378,
+          "chunk_end_char": 397,
+          "doc_start_char": 40378,
+          "doc_end_char": 40397,
+          "snippet": "cause:\ntool.\nReplace the tool, or if it is not broken, check the\nintervention: system calibrations which are described in the product documentation\nthe application.\nresponsible f"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "responsible for operator",
+      "label": "role assignment",
+      "justification": "Specifies the person responsible for the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ominal.\nintervention: Set the priority (override) to 100% and repeat the cycle.\nresponsible for\noperator\nAlarm No.: 1080\ntext: LOAD MONITOR: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe Load Monitor tool monitoring system has detected a breakage\nc"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "LOAD MONITOR: STOP AT END OF CYCLE",
+      "label": "alarm type",
+      "justification": "Alarm event indicating a stop at cycle end.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 521,
+          "chunk_end_char": 555,
+          "doc_start_char": 40521,
+          "doc_end_char": 40555,
+          "snippet": "ation\nthe application.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1081\ntext: LOAD MONITOR: STOP AT END OF CYCLE\ntype: Standard: Optional:\neffect: Alarms or messages with shutdown at the end o"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "Alarms or messages with shutdown at the end of the cycle",
+      "label": "alarm effect",
+      "justification": "Describes the effect of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 590,
+          "chunk_end_char": 646,
+          "doc_start_char": 40590,
+          "doc_end_char": 40646,
+          "snippet": "1081\ntext: LOAD MONITOR: STOP AT END OF CYCLE\ntype: Standard: Optional:\neffect: Alarms or messages with shutdown at the end of the cycle.\nThe Load Monitor tool monitoring system has detected wear\ncause:\nof a tool.\nRe"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "The Load Monitor tool monitoring system has detected wear",
+      "label": "relation-bearing expression",
+      "justification": "Links detection to tool wear.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 648,
+          "chunk_end_char": 705,
+          "doc_start_char": 40648,
+          "doc_end_char": 40705,
+          "snippet": "rd: Optional:\neffect: Alarms or messages with shutdown at the end of the cycle.\nThe Load Monitor tool monitoring system has detected wear\ncause:\nof a tool.\nReplace the tool, or in the case of insufficient wear, check"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "tool wear",
+      "label": "failure symptom",
+      "justification": "Failure causing the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 1998,
+          "chunk_end_char": 2007,
+          "doc_start_char": 41998,
+          "doc_end_char": 42007,
+          "snippet": "e end of the cycle. cause: The Load Monitor tool monitoring system has detected tool wear. intervention: Replace the tool, or in the case of insufficient wear, check the"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "LOAD MONITOR: FEED DIFFERENT FROM 100%",
+      "label": "alarm type",
+      "justification": "Alarm event indicating feed rate deviation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 946,
+          "chunk_end_char": 984,
+          "doc_start_char": 40946,
+          "doc_end_char": 40984,
+          "snippet": "ation\nthe application.\nresponsible for\ntoolmaker-adjuster\n\nAlarm n°: 1079 text: LOAD MONITOR: FEED DIFFERENT FROM 100% type: Standard: Optional: effect: Alarms or messages with shutdown at the end o"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "feed rate trimmer is set to a percentage other than 100%",
+      "label": "cause",
+      "justification": "Specific cause of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 1146,
+          "chunk_end_char": 1202,
+          "doc_start_char": 41146,
+          "doc_end_char": 41202,
+          "snippet": "the cycle. cause: The Load Monitor tool monitoring system has detected that the feed rate trimmer is set to a percentage other than 100%, which causes a different current absorption compared to the nominal. intervent"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "different current absorption compared to the nominal",
+      "label": "effect",
+      "justification": "Resulting effect of the feed rate deviation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 1219,
+          "chunk_end_char": 1271,
+          "doc_start_char": 41219,
+          "doc_end_char": 41271,
+          "snippet": "at the feed rate trimmer is set to a percentage other than 100%, which causes a different current absorption compared to the nominal. intervention: Set the priority (override) to 100% and repeat the cycle. respon"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "Set the priority (override) to 100% and repeat the cycle",
+      "label": "intervention",
+      "justification": "Action to mitigate the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 22,
+          "chunk_end_char": 78,
+          "doc_start_char": 40022,
+          "doc_end_char": 40078,
+          "snippet": "ominal.\nintervention: Set the priority (override) to 100% and repeat the cycle.\nresponsible for\noperator\nAlarm No.: 1080\ntext: LOAD MONITOR: IMMEDIATE STOP\nty"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "LOAD MONITOR: STOP AT END OF BLOCK",
+      "label": "alarm type",
+      "justification": "Alarm event indicating a stop at block end.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 2238,
+          "chunk_end_char": 2272,
+          "doc_start_char": 42238,
+          "doc_end_char": 42272,
+          "snippet": "on. responsible for the intervention: toolmaker-adjuster\n\nAlarm No.: 1082\ntext: LOAD MONITOR: STOP AT END OF BLOCK\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the block."
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "absence of a tool",
+      "label": "failure symptom",
+      "justification": "Failure causing the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 2416,
+          "chunk_end_char": 2433,
+          "doc_start_char": 42416,
+          "doc_end_char": 42433,
+          "snippet": "d of the block.\nThe Load Monitor tool monitoring system has detected\ncause:\nthe absence of a tool.\nMount the tool or, if present, check the system calibrations\nintervention:\nwhi"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "Mount the tool",
+      "label": "intervention",
+      "justification": "Action to resolve the absence of a tool.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 2435,
+          "chunk_end_char": 2449,
+          "doc_start_char": 42435,
+          "doc_end_char": 42449,
+          "snippet": "Load Monitor tool monitoring system has detected\ncause:\nthe absence of a tool.\nMount the tool or, if present, check the system calibrations\nintervention:\nwhich are described"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "AUTOMATIC STOP IN PROGRESS",
+      "label": "alarm type",
+      "justification": "Alarm event indicating an automatic stop.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 2621,
+          "chunk_end_char": 2647,
+          "doc_start_char": 42621,
+          "doc_end_char": 42647,
+          "snippet": "ication documentation.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1083\ntext: AUTOMATIC STOP IN PROGRESS\ntype: Standard: Optional:\neffect: Alarms or messages with shutdown at the end o"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "established time or the target production has been reached",
+      "label": "cause",
+      "justification": "Condition that triggers the automatic stop.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 2743,
+          "chunk_end_char": 2801,
+          "doc_start_char": 42743,
+          "doc_end_char": 42801,
+          "snippet": "Optional:\neffect: Alarms or messages with shutdown at the end of the cycle\nThe established time or the target production has been reached, or\nthe lathe is in alarm condition with automatic stop activated; to\ncause:\nth"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "lathe is in alarm condition with automatic stop activated",
+      "label": "state",
+      "justification": "Describes the machine state during the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 2810,
+          "chunk_end_char": 2867,
+          "doc_start_char": 42810,
+          "doc_end_char": 42867,
+          "snippet": "he cycle\nThe established time or the target production has been reached, or\nthe lathe is in alarm condition with automatic stop activated; to\ncause:\nthe expiration of the time specified in the user page for the shutdo"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "power supply will be cut off to the lathe",
+      "label": "effect",
+      "justification": "Resulting effect of the automatic stop.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 2969,
+          "chunk_end_char": 3010,
+          "doc_start_char": 42969,
+          "doc_end_char": 43010,
+          "snippet": "tion of the time specified in the user page for the shutdown\nautomatically, the power supply will be cut off to the lathe.\nIf you want to stop the shutdown sequence, press\nintervention: R.A.Z. (RESET)"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "R.A.Z. (RESET)",
+      "label": "intervention",
+      "justification": "Action to stop the shutdown sequence.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 3075,
+          "chunk_end_char": 3089,
+          "doc_start_char": 43075,
+          "doc_end_char": 43089,
+          "snippet": "ff to the lathe.\nIf you want to stop the shutdown sequence, press\nintervention: R.A.Z. (RESET) and deactivate the scheduled shutdown in the user page.\nresponsible for\noperato"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "MANDATORY MAINTENANCE",
+      "label": "alarm type",
+      "justification": "Alarm event indicating required maintenance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 3193,
+          "chunk_end_char": 3214,
+          "doc_start_char": 43193,
+          "doc_end_char": 43214,
+          "snippet": "duled shutdown in the user page.\nresponsible for\noperator\nAlarm No.: 1084\ntext: MANDATORY MAINTENANCE\ntype: Standard: Optional:\neffect: Alarms or messages with shutdown at the end o"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "time set by one or more counters concerning the maintenance has elapsed",
+      "label": "cause",
+      "justification": "Condition that triggers the maintenance alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 4723,
+          "chunk_end_char": 4794,
+          "doc_start_char": 44723,
+          "doc_end_char": 44794,
+          "snippet": "tional: effect: Alarms or messages with stop at the end of the cycle cause: The time set by one or more counters concerning the maintenance has elapsed, therefore the cycle cannot continue. intervention: Carry out the maintenance o"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "maintenance operations",
+      "label": "intervention",
+      "justification": "Action required to satisfy the maintenance alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 3441,
+          "chunk_end_char": 3463,
+          "doc_start_char": 43441,
+          "doc_end_char": 43463,
+          "snippet": "the inter-cause:\nYour time has elapsed, so the cycle cannot continue.\nCarry out maintenance operations for inter-intervention applications and confirm the operation in the “MAINTENAN"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "confirm the operation in the “MAINTENANCE” user page",
+      "label": "intervention",
+      "justification": "Additional action to complete the maintenance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 3504,
+          "chunk_end_char": 3556,
+          "doc_start_char": 43504,
+          "doc_end_char": 43556,
+          "snippet": "tinue.\nCarry out maintenance operations for inter-intervention applications and confirm the operation in the “MAINTENANCE” user page;\nat this point it is possible to restart the cycle.\nresponsible for\n\nAlarm n°:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "has detected",
+      "label": "relation-bearing expression",
+      "justification": "General detection relation used throughout the text.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 275,
+          "chunk_end_char": 287,
+          "doc_start_char": 40275,
+          "doc_end_char": 40287,
+          "snippet": "with immediate and controlled shutdown\nThe Load Monitor tool monitoring system has detected a breakage\ncause:\ntool.\nReplace the tool, or if it is not broken, check the\nint"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "causes",
+      "label": "relation-bearing expression",
+      "justification": "Used to link causes to effects.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 1210,
+          "chunk_end_char": 1216,
+          "doc_start_char": 41210,
+          "doc_end_char": 41216,
+          "snippet": "tected that the feed rate trimmer is set to a percentage other than 100%, which causes a different current absorption compared to the nominal. intervention: Set the p"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "responsible for",
+      "label": "relation-bearing expression",
+      "justification": "Links a role to an action or responsibility.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 80,
+          "chunk_end_char": 95,
+          "doc_start_char": 40080,
+          "doc_end_char": 40095,
+          "snippet": "ominal.\nintervention: Set the priority (override) to 100% and repeat the cycle.\nresponsible for\noperator\nAlarm No.: 1080\ntext: LOAD MONITOR: IMMEDIATE STOP\ntype: Standard: Opt"
+        }
+      ]
+    }
+  ]
+}

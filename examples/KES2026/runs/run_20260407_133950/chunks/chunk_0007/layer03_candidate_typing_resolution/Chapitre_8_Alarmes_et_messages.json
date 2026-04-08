@@ -1,0 +1,2220 @@
+{
+  "layer": "layer03_candidate_typing_resolution",
+  "entity_candidates": [],
+  "relation_candidates": [
+    {
+      "candidate_id": "cand_r_00000",
+      "canonical_label": "POINT 4: CONTROL FAILURE",
+      "normalized_label": "point 4 control failure",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmType",
+        "ControlFailure",
+        "Instant",
+        "Manufacturing Facility"
+      ],
+      "definition": "An alarm type that signals a failure in the control system of a manufacturing process, typically occurring at a specific instant within a manufacturing facility.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00001",
+          "text": "POINT 4: CONTROL FAILURE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 178,
+              "chunk_end_char": 202,
+              "doc_start_char": 35178,
+              "doc_end_char": 35202,
+              "snippet": "responsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00001",
+      "canonical_label": "Alarm with immediate and controlled shutdown",
+      "normalized_label": "alarm with immediate and controlled shutdown",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS shutdown event",
+        "CAUSES immediate shutdown",
+        "REQUIRES controlled shutdown procedure",
+        "HANDLED_BY safety interlock system",
+        "part-of shutdown safety scenario",
+        "affects machine operation",
+        "observed-by monitoring system",
+        "temporal: occurs at alarm activation",
+        "related to Situation S1 (shutdown context)"
+      ],
+      "definition": "An alarm that, when triggered, initiates an immediate and controlled shutdown of a machine, process, or system to prevent damage or ensure safety.",
+      "aliases": [
+        "Alarm with immediate and controlled shutdown"
+      ],
+      "synonyms": [
+        "shutdown alarm",
+        "immediate shutdown alarm",
+        "controlled shutdown alarm",
+        "alarm triggering immediate shutdown"
+      ],
+      "lexical_variants": [
+        "alarm that initiates immediate controlled shutdown",
+        "alarm causing immediate and controlled shutdown",
+        "alarm leading to immediate shutdown"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00002",
+          "text": "Alarm with immediate and controlled shutdown",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 237,
+              "chunk_end_char": 281,
+              "doc_start_char": 35237,
+              "doc_end_char": 35281,
+              "snippet": "m number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, th"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00002",
+      "canonical_label": "Tool control device no. 4 does not work",
+      "normalized_label": "tool control device no 4 does not work",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest: Tool control device 4",
+        "Constraint: operational requirement violated",
+        "TemporalEntity: time of observation",
+        "LogisticProcess: repair or replacement",
+        "Technician: responsible for intervention",
+        "part-of: machine or tool system"
+      ],
+      "definition": "An observed malfunction of the fourth tool control device, indicating that it is not operating as required by the machine’s operational constraints.",
+      "aliases": [
+        "Tool control device 4",
+        "TC device 4",
+        "Tool control unit 4"
+      ],
+      "synonyms": [
+        "Tool control device 4 malfunction",
+        "Tool control device 4 failure",
+        "Tool control device 4 not functioning"
+      ],
+      "lexical_variants": [
+        "Tool control device #4 not working",
+        "Tool control device no. 4 not working",
+        "Tool control device 4 is not operational"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00003",
+          "text": "Tool control device no. 4 does not work",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 289,
+              "chunk_end_char": 328,
+              "doc_start_char": 35289,
+              "doc_end_char": 35328,
+              "snippet": "Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention documen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00003",
+      "canonical_label": "Check the core of the probe, the connections, consult the intervention document",
+      "normalized_label": "check the core of the probe the connections consult the intervention document",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention is a concept within Manufacturing Process",
+        "intervention requires an intervention document",
+        "intervention is part of a maintenance procedure",
+        "intervention is observed by maintenance personnel",
+        "intervention affects the production line",
+        "intervention is a temporal entity"
+      ],
+      "definition": "An action taken to resolve a failure by inspecting the probe core, checking its connections, and consulting the intervention document.",
+      "aliases": [
+        "intervention document"
+      ],
+      "synonyms": [
+        "maintenance action",
+        "corrective action"
+      ],
+      "lexical_variants": [
+        "inspect probe core",
+        "verify probe core",
+        "check probe connections"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00004",
+          "text": "Check the core of the probe, the connections, consult the intervention document",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 330,
+              "chunk_end_char": 409,
+              "doc_start_char": 35330,
+              "doc_end_char": 35409,
+              "snippet": "mediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention document:\ntation of the device for details of the anomaly.\nresponsible for\noperator/main"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00004",
+      "canonical_label": "responsible for",
+      "normalized_label": "responsible for",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Operator (subclass of Staff)",
+        "Responsible Party",
+        "Sensor is responsible for producing a Result",
+        "Resource (e.g., machine or human) is responsible for a Platform or for a Result",
+        "Platform is responsible for hosting Sensors and for the Observations it gathers",
+        "Observable Property may be the target of responsibility by a Sensor or Platform"
+      ],
+      "definition": "A worker who operates machines or performs maintenance tasks and is accountable for the alarm or related system state.",
+      "aliases": [
+        "operator",
+        "maintenance officer"
+      ],
+      "synonyms": [
+        "operator",
+        "maintenance officer"
+      ],
+      "lexical_variants": [
+        "operator/maintenance officer"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00005",
+          "text": "responsible for operator/maintenance officer",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00050",
+          "text": "responsible for",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 98,
+              "chunk_end_char": 113,
+              "doc_start_char": 35098,
+              "doc_end_char": 35113,
+              "snippet": ". If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTRO"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00005",
+      "canonical_label": "CDS: IMMEDIATE STOP",
+      "normalized_label": "cds immediate stop",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmType",
+        "ImmediateStopAlarm",
+        "ShutdownEvent"
+      ],
+      "definition": "An alarm indicating that the machine must stop immediately.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "immediate stop"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00007",
+          "text": "CDS: IMMEDIATE STOP",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 530,
+              "chunk_end_char": 549,
+              "doc_start_char": 35530,
+              "doc_end_char": 35549,
+              "snippet": "anomaly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1070\ntext: CDS: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00006",
+      "canonical_label": "cause",
+      "normalized_label": "cause",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest",
+        "Observable Property",
+        "Logistic Process",
+        "Manufacturing Process"
+      ],
+      "definition": "An outdoor sprinkler system is a feature of interest that distributes water for fire suppression or irrigation in an outdoor environment, monitored by sensors for properties such as flow and pressure.",
+      "aliases": [
+        "CDS",
+        "sprinkler system"
+      ],
+      "synonyms": [
+        "outdoor sprinkler system",
+        "sprinkler system"
+      ],
+      "lexical_variants": [
+        "sprinkler system",
+        "outdoor sprinkler system"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00008",
+          "text": "The outdoor sprinkler system (CDS) has had a problem that is preventing",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 629,
+              "chunk_end_char": 700,
+              "doc_start_char": 35629,
+              "doc_end_char": 35700,
+              "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe outdoor sprinkler system (CDS) has had a problem that is preventing:\nche to continue the operation.\nCheck the anomaly on the CDS operator panel and"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00007",
+      "canonical_label": "Check the anomaly on the CDS operator panel and consult the intervention: documentation",
+      "normalized_label": "check the anomaly on the cds operator panel and consult the intervention documentation",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention is a concept related to Observation of an anomaly (Feature of Interest).",
+        "intervention occurs within a Manufacturing Process at a Workstation.",
+        "intervention is associated with a Temporal Entity indicating when the action is performed.",
+        "intervention may be linked to the property REQUIRES or HANDLED_BY in the ontology."
+      ],
+      "definition": "An action taken to resolve an anomaly observed on the CDS operator panel within a manufacturing process.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00009",
+          "text": "Check the anomaly on the CDS operator panel and consult the intervention: documentation",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00008",
+      "canonical_label": "If there is no signage, check the connections with the tower.",
+      "normalized_label": "if there is no signage check the connections with the tower",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Production Line",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4",
+        "intervention",
+        "requires",
+        "handled_by",
+        "triggered_by_missing_signage"
+      ],
+      "definition": "An intervention step that involves inspecting or verifying the connections to a tower when no signage is present, intended to resolve a failure or prevent a shutdown in a production line.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00010",
+          "text": "If there is no signage, check the connections with the tower.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 822,
+              "chunk_end_char": 883,
+              "doc_start_char": 35822,
+              "doc_end_char": 35883,
+              "snippet": "anomaly on the CDS operator panel and consult the\nintervention: documentation. If there is no signage, check the connections with the tower.\nresponsible for\n\nAlarm n°: 1067 text: TIP 4: BREAKAGE type: Standard: Optional:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00009",
+      "canonical_label": "Tool control device no. 4 has detected tip breakage",
+      "normalized_label": "tool control device no 4 has detected tip breakage",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest: tip breakage",
+        "Spatial Object: Tool control device no. 4",
+        "Constraint: tip integrity constraint",
+        "Temporal Entity: detection time",
+        "causes: alarm",
+        "part-of: tool control device no. 4",
+        "concerned by: tool control device no. 4",
+        "observed-by: tool control device no. 4",
+        "affects: tool tip",
+        "intervention: replace tip",
+        "responsible actor: maintenance team",
+        "Logistic Process: tip inspection process"
+      ],
+      "definition": "An event in which Tool control device number 4 identifies a breakage in the tip of a tool, constituting a failure that triggers an alarm within the logistic process.",
+      "aliases": [
+        "Tool control device 4",
+        "Device 4",
+        "Tool controller 4"
+      ],
+      "synonyms": [
+        "Device 4 detected tip breakage",
+        "Tool control device 4 reports tip fracture",
+        "Tip breakage detected by tool controller 4"
+      ],
+      "lexical_variants": [
+        "tip breakage",
+        "tip fracture",
+        "tip failure",
+        "tip damage"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00013",
+          "text": "Tool control device no. 4 has detected tip breakage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 1024,
+              "chunk_end_char": 1075,
+              "doc_start_char": 36024,
+              "doc_end_char": 36075,
+              "snippet": "Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibrati"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00010",
+      "canonical_label": "Replace the tool. If the tool is not broken, check the calibration of the device.",
+      "normalized_label": "replace the tool if the tool is not broken check the calibration of the device",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention",
+        "manufacturing cell",
+        "production line",
+        "temporal entity",
+        "feature of interest",
+        "observable property"
+      ],
+      "definition": "An intervention that involves replacing a tool and, if the tool is not broken, performing a calibration check on a device.",
+      "aliases": [
+        "tool replacement",
+        "device calibration check"
+      ],
+      "synonyms": [
+        "tool substitution",
+        "device calibration verification"
+      ],
+      "lexical_variants": [
+        "replace the tool",
+        "check the calibration of the device"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00014",
+          "text": "Replace the tool. If the tool is not broken, check the calibration of the device.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 1091,
+              "chunk_end_char": 1172,
+              "doc_start_char": 36091,
+              "doc_end_char": 36172,
+              "snippet": "tdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibration of the device. in charge of the intervention: toolmaker-adjuster/in charge of maintenance\n\nAla"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00011",
+      "canonical_label": "toolmaker-adjuster/in charge of maintenance",
+      "normalized_label": "toolmaker-adjusterin charge of maintenance",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Human Process",
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "Feature of Interest",
+        "Constraint",
+        "Responsible party"
+      ],
+      "definition": "A human operator who is responsible for performing maintenance tasks on manufacturing equipment, ensuring proper tool operation and adjustment.",
+      "aliases": [
+        "toolmaker-adjuster",
+        "maintenance in charge"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "toolmaker-adjuster",
+        "toolmaker/adjuster",
+        "toolmaker in charge of maintenance"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00015",
+          "text": "toolmaker-adjuster/in charge of maintenance",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 1204,
+              "chunk_end_char": 1247,
+              "doc_start_char": 36204,
+              "doc_end_char": 36247,
+              "snippet": "not broken, check the calibration of the device. in charge of the intervention: toolmaker-adjuster/in charge of maintenance\n\nAlarm no.: 1068 text: POINT 4: CONTROL ANOMALY type: Standard: Optional: effec"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00012",
+      "canonical_label": "POINT 4: CONTROL ANOMALY",
+      "normalized_label": "point 4 control anomaly",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmType",
+        "ControlAnomaly",
+        "ManufacturingCell",
+        "TemporalEntity",
+        "Situation"
+      ],
+      "definition": "An alarm indicating an anomaly in the control system of a manufacturing cell, representing a situation that occurs at a specific point or interval of time within the cell.",
+      "aliases": [
+        "CONTROL ANOMALY"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00016",
+          "text": "POINT 4: CONTROL ANOMALY",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 1271,
+              "chunk_end_char": 1295,
+              "doc_start_char": 36271,
+              "doc_end_char": 36295,
+              "snippet": "ntervention: toolmaker-adjuster/in charge of maintenance\n\nAlarm no.: 1068 text: POINT 4: CONTROL ANOMALY type: Standard: Optional: effect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00013",
+      "canonical_label": "Check the probe core, the connections, consult the device documentation for details of the anomaly.",
+      "normalized_label": "check the probe core the connections consult the device documentation for details of the anomaly",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention",
+        "Inspection",
+        "DocumentationConsultation",
+        "Feature of Interest",
+        "Observation",
+        "Temporal Entity",
+        "Manufacturing Facility",
+        "Production Line"
+      ],
+      "definition": "An intervention that involves inspecting the probe core and its connections, and consulting the device documentation to diagnose and resolve an anomaly.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00017",
+          "text": "Check the probe core, the connections, consult the device documentation for details of the anomaly.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 1437,
+              "chunk_end_char": 1536,
+              "doc_start_char": 36437,
+              "doc_end_char": 36536,
+              "snippet": "ntrolled shutdown cause: Tool control device no. 4 does not work, intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm no.: 1070 text: CDS:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00014",
+      "canonical_label": "intervention manager: operator/maintenance manager",
+      "normalized_label": "intervention manager operatormaintenance manager",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "supervises",
+        "responsible_for",
+        "part_of",
+        "related_to Operator",
+        "related_to Maintenance Manager",
+        "part_of Manufacturing Cell",
+        "part_of Production Line",
+        "related_to Manufacturing Process"
+      ],
+      "definition": "A personnel role responsible for coordinating and overseeing interventions on production equipment, supervising operators and maintenance activities within a manufacturing cell or production line.",
+      "aliases": [
+        "intervention manager",
+        "intervention supervisor",
+        "maintenance supervisor",
+        "operator supervisor"
+      ],
+      "synonyms": [
+        "intervention supervisor",
+        "maintenance supervisor",
+        "operator supervisor"
+      ],
+      "lexical_variants": [
+        "intervention manager",
+        "maintenance manager",
+        "operator manager"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00018",
+          "text": "intervention manager: operator/maintenance manager",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 1537,
+              "chunk_end_char": 1587,
+              "doc_start_char": 36537,
+              "doc_end_char": 36587,
+              "snippet": ", the connections, consult the device documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm no.: 1070 text: CDS: IMMEDIATE STOP type: Standard: Optional: effect: Al"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00015",
+      "canonical_label": "CDS: STOP AT END OF CYCLE",
+      "normalized_label": "cds stop at end of cycle",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Constraint",
+        "Temporal Entity",
+        "Situation",
+        "Alarm Type"
+      ],
+      "definition": "An alarm that triggers when a manufacturing cycle reaches its end, indicating that the process should stop or that a constraint has been violated.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00019",
+          "text": "CDS: STOP AT END OF CYCLE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 2048,
+              "chunk_end_char": 2073,
+              "doc_start_char": 37048,
+              "doc_end_char": 37073,
+              "snippet": "onsible for intervention: responsible for maintenance\n\nAlarm number: 1071\ntext: CDS: STOP AT END OF CYCLE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00016",
+      "canonical_label": "does not require immediate intervention",
+      "normalized_label": "does not require immediate intervention",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Situation",
+        "has observation",
+        "constraint satisfied",
+        "no immediate action required",
+        "This expression can be modeled as a Constraint instance that is a child of a Situation or FeatureOfInterest.",
+        "It negates the property 'requires action' for the associated Situation.",
+        "It indicates a non‑critical state that may be linked to a Workstation or machine component.",
+        "It can be used to trigger a 'safe' or 'stable' status flag in the system."
+      ],
+      "definition": "A contextual state in which the observed feature of interest remains within acceptable limits, so no urgent or immediate action is necessary.",
+      "aliases": [
+        "no immediate intervention needed",
+        "no urgent action required",
+        "no immediate action required",
+        "no urgent intervention needed",
+        "not urgent to intervene",
+        "no immediate response required"
+      ],
+      "synonyms": [
+        "no immediate action needed",
+        "no urgent intervention required",
+        "no immediate action required",
+        "doesn't require immediate intervention",
+        "does not need immediate intervention"
+      ],
+      "lexical_variants": [
+        "does not require immediate intervention",
+        "does not require immediate action",
+        "does not require urgent intervention",
+        "doesn't require immediate intervention",
+        "does not need immediate intervention",
+        "no immediate action required"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00020",
+          "text": "does not require immediate intervention.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 2222,
+              "chunk_end_char": 2262,
+              "doc_start_char": 37222,
+              "doc_end_char": 37262,
+              "snippet": "d shutdown\nThe outdoor sprinkler system (CDS) had a problem that did not\ncause:\ndoes not require immediate intervention.\nCheck the anomaly in the CDS operation panel and consult\nintervention: document"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00041",
+          "text": "does not require immediate intervention",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 2222,
+              "chunk_end_char": 2261,
+              "doc_start_char": 37222,
+              "doc_end_char": 37261,
+              "snippet": "d shutdown\nThe outdoor sprinkler system (CDS) had a problem that did not\ncause:\ndoes not require immediate intervention.\nCheck the anomaly in the CDS operation panel and consult\nintervention: documen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00017",
+      "canonical_label": "CDS: WAITING FOR EXCESSIVE FEED",
+      "normalized_label": "cds waiting for excessive feed",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Logistic Process",
+        "Spatial Object",
+        "Manufacturing Facility",
+        "Manufacturing Cell"
+      ],
+      "definition": "An alarm type indicating that the system is waiting for an excessive amount of feed, signaling a delay in material or product supply within a manufacturing or logistic process.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00021",
+          "text": "CDS: WAITING FOR EXCESSIVE FEED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 2452,
+              "chunk_end_char": 2483,
+              "doc_start_char": 37452,
+              "doc_end_char": 37483,
+              "snippet": "check the connections with the tower.\nresponsible for\nAlarm number: 1072\ntext: CDS: WAITING FOR EXCESSIVE FEED\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00018",
+      "canonical_label": "The outdoor sprinkler system (CDS) delayed more than a minute",
+      "normalized_label": "the outdoor sprinkler system cds delayed more than a minute",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "TemporalEntity",
+        "has feature of interest",
+        "causes",
+        "triggers",
+        "ManufacturingCell",
+        "Workstation",
+        "Instant"
+      ],
+      "definition": "An event in which the outdoor sprinkler system (CDS) experiences a delay that lasts longer than one minute, thereby triggering an alarm.",
+      "aliases": [
+        "outdoor sprinkler system",
+        "CDS",
+        "sprinkler system"
+      ],
+      "synonyms": [
+        "delayed",
+        "lagged",
+        "experienced delay"
+      ],
+      "lexical_variants": [
+        "more than a minute",
+        "over a minute",
+        "exceeding one minute"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00022",
+          "text": "The outdoor sprinkler system (CDS) delayed more than a minute",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 2563,
+              "chunk_end_char": 2624,
+              "doc_start_char": 37563,
+              "doc_end_char": 37624,
+              "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe outdoor sprinkler system (CDS) delayed more than a minute\ncause: in the validation of the authorization of the advance of the axes; in th"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00019",
+      "canonical_label": "causes",
+      "normalized_label": "causes",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "has_feature_of_interest: axes",
+        "is_in_situation: Situation S1",
+        "causes: work cycle stop",
+        "requires: shutdown",
+        "Cause",
+        "has cause",
+        "causes",
+        "causal agent",
+        "causal agency",
+        "has result",
+        "part-of",
+        "affects",
+        "observed-by"
+      ],
+      "definition": "The act of verifying the authorization to advance machine axes, which, when confirmed, necessitates stopping the work cycle.",
+      "aliases": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa",
+        "Causes"
+      ],
+      "synonyms": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa"
+      ],
+      "lexical_variants": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00023",
+          "text": "in the validation of the authorization of the advance of the axes; in this situation the work cycle must be stopped.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00047",
+          "text": "causes",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 3076,
+              "chunk_end_char": 3082,
+              "doc_start_char": 38076,
+              "doc_end_char": 38082,
+              "snippet": "of the proeffect:\ngram.\nThe paired tool management program found that the name causes:\nnumber of spare parts for one or more tools is completed.\nCheck the page dedic"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00020",
+      "canonical_label": "SISTER TOOL: STOP AT END OF CYCLE",
+      "normalized_label": "sister tool stop at end of cycle",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest: sister tool",
+        "TemporalEntity: end of cycle",
+        "Situation: S1/S2/S3",
+        "Alarm type"
+      ],
+      "definition": "Alarm indicating that the sister tool should stop at the end of a production cycle.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00024",
+          "text": "SISTER TOOL: STOP AT END OF CYCLE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 2876,
+              "chunk_end_char": 2909,
+              "doc_start_char": 37876,
+              "doc_end_char": 37909,
+              "snippet": "consult the\nintervention:\ndocumentation.\nresponsible for\nAlarm No.: 1078\ntext: SISTER TOOL: STOP AT END OF CYCLE\ntype: Standard: Optional:\nAt the end of the cycle (M01), stops the automatic ex"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00021",
+      "canonical_label": "At the end of the cycle (M01), stops the automatic execution of the program.",
+      "normalized_label": "at the end of the cycle m01 stops the automatic execution of the program",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Human Process",
+        "Feature of Interest"
+      ],
+      "definition": "The event where the automated program ceases operation upon completion of cycle M01.",
+      "aliases": [
+        "cycle M01 termination",
+        "program stop at cycle end"
+      ],
+      "synonyms": [
+        "terminates",
+        "halts",
+        "stops"
+      ],
+      "lexical_variants": [
+        "automatic execution stops at cycle end",
+        "program halts after cycle M01"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00025",
+          "text": "At the end of the cycle (M01), stops the automatic execution of the program.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 4281,
+              "chunk_end_char": 4357,
+              "doc_start_char": 39281,
+              "doc_end_char": 39357,
+              "snippet": "1078 text: SISTER TOOL: STOP AT END OF CYCLE type: Standard: Optional: effect: At the end of the cycle (M01), stops the automatic execution of the program. cause: The paired tool management program has found that the set number of part"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00022",
+      "canonical_label": "The paired tool management program found that the name causes number of spare parts for one or more tools is completed.",
+      "normalized_label": "the paired tool management program found that the name causes number of spare parts for one or more tools is completed",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Logistic Process",
+        "Temporal Entity",
+        "Manufacturing Cell",
+        "Tool Management Program",
+        "causes",
+        "part-of",
+        "affects"
+      ],
+      "definition": "The event in which the required number of spare parts for one or more tools is finalized as part of a paired tool management program, typically recorded as a temporal entity within a manufacturing cell.",
+      "aliases": [
+        "Tool Spare Parts Completion",
+        "Spare Parts Inventory Finalization"
+      ],
+      "synonyms": [
+        "Spare Parts Count Completion",
+        "Spare Parts Finalization",
+        "Spare Parts Inventory Completion"
+      ],
+      "lexical_variants": [
+        "spare parts number completed",
+        "spare parts count finished",
+        "spare parts inventory finished"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00026",
+          "text": "The paired tool management program found that the name causes number of spare parts for one or more tools is completed.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00023",
+      "canonical_label": "Check the page dedicated to SISTER TOOL for the expired tool, replace the wafer and reload the defined number of pieces.",
+      "normalized_label": "check the page dedicated to sister tool for the expired tool replace the wafer and reload the defined number of pieces",
+      "candidate_type": "relation",
+      "confidence": 0.92,
+      "ontology_hints": [
+        "intervention is a type of Logistic Process",
+        "intervention is a Temporal Entity",
+        "intervention addresses a Constraint on a Feature of Interest (the SISTER TOOL)",
+        "intervention is performed by a responsible actor (e.g., maintenance technician)",
+        "intervention requires the replacement of a component and the reload of parts"
+      ],
+      "definition": "An intervention is a maintenance action taken to resolve a failure, involving inspection of documentation, replacement of an expired component (e.g., a wafer), and reloading of specified parts.",
+      "aliases": [
+        "maintenance action",
+        "repair procedure",
+        "tool replacement action"
+      ],
+      "synonyms": [
+        "intervention",
+        "maintenance intervention",
+        "repair intervention"
+      ],
+      "lexical_variants": [
+        "check the SISTER TOOL page",
+        "inspect the SISTER TOOL page",
+        "review the SISTER TOOL page",
+        "replace the wafer",
+        "reload the defined number of pieces"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00027",
+          "text": "Check the page dedicated to SISTER TOOL for the expired tool, replace the wafer and reload the defined number of pieces.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00024",
+      "canonical_label": "LOAD MONITOR: FEED DIFFERENT FROM 100%",
+      "normalized_label": "load monitor feed different from 100",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Situation S10",
+        "Platform",
+        "Feature of Interest: load feed",
+        "Observable Property: feed percentage",
+        "Alarm type: load monitor alarm",
+        "Triggers: feed deviation from 100%"
+      ],
+      "definition": "An alarm that is triggered when the load feed percentage deviates from the expected value of 100%.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00028",
+          "text": "LOAD MONITOR: FEED DIFFERENT FROM 100%",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 4677,
+              "chunk_end_char": 4715,
+              "doc_start_char": 39677,
+              "doc_end_char": 39715,
+              "snippet": "of parts. responsible for the intervention: operator\n\nAlarm number: 1079\ntext: LOAD MONITOR: FEED DIFFERENT FROM 100%\ntype: Standard: Optional:\neffect: Alarms or messages with shutdown at the end o"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00025",
+      "canonical_label": "Alarms or messages with shutdown at the end of the cycle.",
+      "normalized_label": "alarms or messages with shutdown at the end of the cycle",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "has feature of interest: alarm",
+        "is in situation: shutdown state",
+        "associated with: manufacturing process (cycle)",
+        "located at: workstation or production line",
+        "triggers: shutdown event",
+        "causes: end‑of‑cycle shutdown"
+      ],
+      "definition": "An alarm or message that signals a shutdown event occurring at the conclusion of a manufacturing cycle.",
+      "aliases": [
+        "Shutdown at cycle end alarm",
+        "End‑of‑cycle shutdown alert"
+      ],
+      "synonyms": [
+        "Cycle completion shutdown message",
+        "Shutdown notification at cycle conclusion"
+      ],
+      "lexical_variants": [
+        "shutdown at the end of the cycle",
+        "shutdown at cycle completion",
+        "shutdown at cycle end"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00029",
+          "text": "Alarms or messages with shutdown at the end of the cycle.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 4750,
+              "chunk_end_char": 4807,
+              "doc_start_char": 39750,
+              "doc_end_char": 39807,
+              "snippet": "text: LOAD MONITOR: FEED DIFFERENT FROM 100%\ntype: Standard: Optional:\neffect: Alarms or messages with shutdown at the end of the cycle.\nThe Load Monitor tool monitoring system has detected that the\nfeedrate trimmer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00026",
+      "canonical_label": "The Load Monitor tool monitoring system has detected that the feedrate trimmer is set to a different percentage",
+      "normalized_label": "the load monitor tool monitoring system has detected that the feedrate trimmer is set to a different percentage",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "has feature of interest: feedrate trimmer",
+        "has observable property: feedrate percentage",
+        "inXSDDateTimeStamp: timestamp of detection",
+        "causes: alarm",
+        "part-of: ManufacturingProcess",
+        "FeatureOfInterest",
+        "ManufacturingProcess",
+        "TemporalEntity"
+      ],
+      "definition": "An event where the Load Monitor tool detects that the feedrate trimmer is set to a different percentage, indicating a deviation from the expected feedrate setting and triggering an alarm.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00030",
+          "text": "The Load Monitor tool monitoring system has detected that the feedrate trimmer is set to a different percentage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00027",
+      "canonical_label": "immediate and controlled shutdown",
+      "normalized_label": "immediate and controlled shutdown",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "HumanProcess",
+        "FeatureOfInterest",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "terminates",
+        "controlled",
+        "immediate"
+      ],
+      "definition": "An instantaneous, human‑initiated termination of a feature of interest within a specific manufacturing situation, performed in a controlled manner.",
+      "aliases": [
+        "shutdown"
+      ],
+      "synonyms": [
+        "instant shutdown",
+        "prompt shutdown"
+      ],
+      "lexical_variants": [
+        "immediate shutdown",
+        "controlled shutdown",
+        "shutdown"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00031",
+          "text": "immediate and controlled shutdown",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 248,
+              "chunk_end_char": 281,
+              "doc_start_char": 35248,
+              "doc_end_char": 35281,
+              "snippet": "068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, th"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00028",
+      "canonical_label": "immediate stop",
+      "normalized_label": "immediate stop",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Links an action (stop) to a Situation instance (S1–S4).",
+        "May affect a Feature of Interest whose properties are being observed.",
+        "Can be used as a relation-bearing expression linking an effect to an alarm."
+      ],
+      "definition": "An action that halts a process or activity immediately within a specific contextual state.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00032",
+          "text": "immediate stop",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 535,
+              "chunk_end_char": 549,
+              "doc_start_char": 35535,
+              "doc_end_char": 35549,
+              "snippet": "aly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1070\ntext: CDS: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00029",
+      "canonical_label": "immediate and controlled stop",
+      "normalized_label": "immediate and controlled stop",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "HumanProcess",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Feature of Interest"
+      ],
+      "definition": "A human‑performed process that promptly and under controlled conditions stops a machine or operation.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00033",
+          "text": "immediate and controlled stop",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 3842,
+              "chunk_end_char": 3871,
+              "doc_start_char": 38842,
+              "doc_end_char": 38871,
+              "snippet": "t: CDS: WAITING FOR EXCESSIVE FEED type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The external watering system (CDS) delayed more than one minute in valid"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00030",
+      "canonical_label": "stop at end of cycle",
+      "normalized_label": "stop at end of cycle",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Temporal Entity: end of production cycle",
+        "Spatial Object: workstation or machine",
+        "Feature of Interest: machine/process being observed",
+        "Situation: context of production cycle completion"
+      ],
+      "definition": "An event where a machine or process halts at the conclusion of a production cycle.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00034",
+          "text": "stop at end of cycle",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 2053,
+              "chunk_end_char": 2073,
+              "doc_start_char": 37053,
+              "doc_end_char": 37073,
+              "snippet": "le for intervention: responsible for maintenance\n\nAlarm number: 1071\ntext: CDS: STOP AT END OF CYCLE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00031",
+      "canonical_label": "consult",
+      "normalized_label": "consult",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "consult (relation) linking an agent to a Documentation resource",
+        "Documentation can be accessed at a Workstation",
+        "Consulting documentation may lead to a new Situation",
+        "Consult action may be part of a Constraint or Procedure"
+      ],
+      "definition": "To read or refer to documentation in order to obtain information or instructions.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00036",
+          "text": "consult the documentation",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 1878,
+              "chunk_end_char": 1903,
+              "doc_start_char": 36878,
+              "doc_end_char": 36903,
+              "snippet": "from continuing. intervention: Check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the lathe. responsible for int"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00032",
+      "canonical_label": "replace the tool",
+      "normalized_label": "replace the tool",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Action",
+        "Operator",
+        "Resource",
+        "Platform",
+        "Result",
+        "requires action",
+        "has time",
+        "part-of",
+        "affects",
+        "observed-by",
+        "temporal"
+      ],
+      "definition": "An action performed by an operator to replace a tool used in a machine or process, typically to resolve a failure or degradation.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00038",
+          "text": "replace the tool",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 2,
+              "chunk_end_char": 18,
+              "doc_start_char": 35002,
+              "doc_end_char": 35018,
+              "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00033",
+      "canonical_label": "replacement action",
+      "normalized_label": "replacement action",
+      "candidate_type": "relation",
+      "confidence": 0.92,
+      "ontology_hints": [
+        "intervention",
+        "maintenance operation",
+        "failure resolution",
+        "replacement action"
+      ],
+      "definition": "The action of removing a wafer from a manufacturing process and inserting a new wafer to replace it, typically performed by a manager or a platform, to resolve a failure or maintain process integrity.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "replace wafer",
+        "replace the wafer"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00039",
+          "text": "replace the wafer",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00034",
+      "canonical_label": "reload the defined number of pieces",
+      "normalized_label": "reload the defined number of pieces",
+      "candidate_type": "relation",
+      "confidence": 0.85,
+      "ontology_hints": [
+        "LogisticProcess",
+        "ManufacturingProcess",
+        "HumanProcess",
+        "Resource",
+        "FeatureOfInterest"
+      ],
+      "definition": "The action of replenishing a specified quantity of resource items (pieces) to resolve a failure or maintain operational continuity.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "reload the defined number of pieces"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00040",
+          "text": "reload the defined number of pieces",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 3240,
+              "chunk_end_char": 3275,
+              "doc_start_char": 38240,
+              "doc_end_char": 38275,
+              "snippet": "icated to SISTER TOOL for the expired tool, replace\nintervention:\nthe wafer and reload the defined number of pieces.\nresponsible for\noperator\n\nAlarm no.: 1071 text: CDS: STOP AT END OF CYCLE type"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00035",
+      "canonical_label": "has had a problem",
+      "normalized_label": "has had a problem",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Relates a Process (or ObservableProperty) to a ProblemEvent",
+        "Can be used to express a past issue in manufacturing or logistic processes",
+        "Associated with the property has cause",
+        "Applicable to HumanProcess, ManufacturingProcess, LogisticProcess"
+      ],
+      "definition": "Indicates that a process or its observable property has experienced a problem event in the past.",
+      "aliases": [
+        "has had a problem"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00042",
+          "text": "has had a problem",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 664,
+              "chunk_end_char": 681,
+              "doc_start_char": 35664,
+              "doc_end_char": 35681,
+              "snippet": "Alarm with immediate and controlled shutdown\nThe outdoor sprinkler system (CDS) has had a problem that is preventing:\nche to continue the operation.\nCheck the anomaly on the CDS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00036",
+      "canonical_label": "has detected tip breakage",
+      "normalized_label": "has detected tip breakage",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "has detected tip breakage is a detection event linking a Technician to a FeatureOfInterest via an Action.",
+        "tip breakage is a defect or failure type that can be part of a failure chain.",
+        "has detected tip breakage is an Action performed by a Technician during a logistic process or maintenance activity."
+      ],
+      "definition": "An event in which a technician observes and records the breakage of a tip, indicating a defect in a machine component.",
+      "aliases": [
+        "detected tip breakage",
+        "identified tip breakage",
+        "found tip breakage"
+      ],
+      "synonyms": [
+        "detected tip breakage",
+        "identified tip breakage",
+        "found tip breakage"
+      ],
+      "lexical_variants": [
+        "has detected tip breakage"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00043",
+          "text": "has detected tip breakage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 1050,
+              "chunk_end_char": 1075,
+              "doc_start_char": 36050,
+              "doc_end_char": 36075,
+              "snippet": ": Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibrati"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00037",
+      "canonical_label": "has detected",
+      "normalized_label": "has detected",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "has observable property: feedrate trimmer setting",
+        "has feature of interest: machine component",
+        "inXSDDateTimeStamp: detection time",
+        "TRIGGERS: alarm event"
+      ],
+      "definition": "An observation indicating that the setting of the feedrate trimmer deviates from the standard or expected percentage.",
+      "aliases": [
+        "feedrate trimmer",
+        "feed rate trimmer",
+        "feed rate trim"
+      ],
+      "synonyms": [
+        "has observed that the feedrate trimmer is set to a different percentage",
+        "has detected that the feedrate trimmer is set to a non‑standard percentage",
+        "has detected that the feedrate trimmer is set to an abnormal percentage"
+      ],
+      "lexical_variants": [
+        "feedrate trimmer",
+        "feed rate trimmer",
+        "feed rate trim"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00044",
+          "text": "has detected that the feedrate trimmer is set to a different percentage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00038",
+      "canonical_label": "delayed more than a minute",
+      "normalized_label": "delayed more than a minute",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Temporal Entity",
+        "Feature of Interest",
+        "Production Line",
+        "Machine",
+        "Manager",
+        "TRIGGERS"
+      ],
+      "definition": "A delay that lasts longer than one minute.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "delayed more than a minute",
+        "delay exceeding one minute",
+        "over a minute delay"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00045",
+          "text": "delayed more than a minute",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 2598,
+              "chunk_end_char": 2624,
+              "doc_start_char": 37598,
+              "doc_end_char": 37624,
+              "snippet": "Alarm with immediate and controlled shutdown\nThe outdoor sprinkler system (CDS) delayed more than a minute\ncause: in the validation of the authorization of the advance of the axes; in th"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00039",
+      "canonical_label": "prevents",
+      "normalized_label": "prevents",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Prevention",
+        "TemporalEntity",
+        "Observation",
+        "Property",
+        "Part",
+        "ProductionLine",
+        "requires action"
+      ],
+      "definition": "keep from happening or arising; make impossible",
+      "aliases": [
+        "prevent",
+        "forestall",
+        "foreclose",
+        "preclude",
+        "forbid",
+        "keep",
+        "Prevention"
+      ],
+      "synonyms": [
+        "prevent",
+        "forestall",
+        "foreclose",
+        "preclude",
+        "forbid",
+        "keep"
+      ],
+      "lexical_variants": [
+        "prevent",
+        "forestall",
+        "foreclose",
+        "preclude",
+        "forbid",
+        "keep"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00046",
+          "text": "preventing",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 690,
+              "chunk_end_char": 700,
+              "doc_start_char": 35690,
+              "doc_end_char": 35700,
+              "snippet": "ontrolled shutdown\nThe outdoor sprinkler system (CDS) has had a problem that is preventing:\nche to continue the operation.\nCheck the anomaly on the CDS operator panel and"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00040",
+      "canonical_label": "intervention",
+      "normalized_label": "intervention",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Intervention is an Observation event that occurs within a Situation and is temporally situated by a Temporal Entity (Interval or Instant).",
+        "Intervention can be linked to alarms, failures, and shutdowns via properties such as TRIGGERS, CAUSES, REQUIRES, and HANDLED_BY.",
+        "Intervention is a multi‑faceted concept denoting an act of intervening, often performed by maintenance personnel to address machine alarms or failures."
+      ],
+      "definition": "the act of intervening (as to mediate a dispute, etc.)",
+      "aliases": [
+        "intervention",
+        "intercession",
+        "interference",
+        "interposition",
+        "treatment",
+        "Intervention"
+      ],
+      "synonyms": [
+        "intervention",
+        "intercession",
+        "interference",
+        "interposition",
+        "treatment"
+      ],
+      "lexical_variants": [
+        "intervention",
+        "intercession",
+        "interference",
+        "interposition",
+        "treatment"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00049",
+          "text": "intervention",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 76,
+              "chunk_end_char": 88,
+              "doc_start_char": 35076,
+              "doc_end_char": 35088,
+              "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attribute_candidates": [],
+  "event_candidates": [
+    {
+      "candidate_id": "cand_s_00000",
+      "canonical_label": "Alarm 1068",
+      "normalized_label": "alarm 1068",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm number: 1068 is an instance of the concept Alarm",
+        "Alarm number: 1068 is associated with a Platform, a Feature of Interest, a Manager, and a Cause",
+        "Alarm number: 1068 triggers an observation event",
+        "Alarm number: 1068 is a specific instance of a failure event"
+      ],
+      "definition": "A specific alarm instance identified by the number 1068, indicating a detected situation on a platform within a manufacturing environment.",
+      "aliases": [
+        "Alarm 1068",
+        "Alarm #1068",
+        "Alarm number 1068"
+      ],
+      "synonyms": [
+        "Alarm 1068",
+        "Alarm #1068"
+      ],
+      "lexical_variants": [
+        "Alarm number 1068",
+        "Alarm 1068"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00000",
+          "text": "Alarm number: 1068",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 153,
+              "chunk_end_char": 171,
+              "doc_start_char": 35153,
+              "doc_end_char": 35171,
+              "snippet": "he\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with imm"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00001",
+      "canonical_label": "Alarm 1070",
+      "normalized_label": "alarm 1070",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "instance of Alarm",
+        "triggers a Cause",
+        "observed by Manager",
+        "associated with Platform",
+        "monitors a Feature of Interest",
+        "located within a Spatial Object"
+      ],
+      "definition": "An identifier for a specific alarm event in a manufacturing environment, indicating a detected condition that requires attention.",
+      "aliases": [
+        "Alarm 1070",
+        "Alarm #1070"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "Alarm 1070",
+        "Alarm #1070"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00006",
+          "text": "Alarm number: 1070",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 505,
+              "chunk_end_char": 523,
+              "doc_start_char": 35505,
+              "doc_end_char": 35523,
+              "snippet": "device for details of the anomaly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1070\ntext: CDS: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00002",
+      "canonical_label": "Alarm",
+      "normalized_label": "alarm",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "instance of Situation S10",
+        "occurs on Platform",
+        "observed by Feature of Interest",
+        "timestamped by Temporal Entity",
+        "triggers Manager response",
+        "hasAlarmNumber 1067",
+        "hasLabel 'Alarm n°: 1067'",
+        "hasEventType Alarm",
+        "hasEventClass Situation S10",
+        "hasEventPlatform Platform",
+        "hasEventFeatureOfInterest Feature of Interest",
+        "hasEventTemporalEntity Temporal Entity",
+        "hasEventTrigger Manager",
+        "hasEventObservedBy Feature of Interest",
+        "hasEventTimestamp Temporal Entity",
+        "hasEventNumber 1067",
+        "hasEventLabel 'Alarm n°: 1067'",
+        "hasEventDescription 'Specific alarm instance identified by number 1067'",
+        "Alarm",
+        "Event",
+        "Individual",
+        "Instance of the concept Alarm (an event/state).",
+        "Has identifier 1078.",
+        "Generated by a Platform that hosts the sensor.",
+        "Observes a FeatureOfInterest.",
+        "Located within a SpatialObject.",
+        "Handled by a Manager.",
+        "Instance of the concept Alarm",
+        "Triggered by a Cause",
+        "Observed by a Platform",
+        "Managed by a Manager",
+        "Associated with a SpatialObject",
+        "Part of a failure chain",
+        "Related to a specific alarm event"
+      ],
+      "definition": "A specific alarm instance identified by number 1067, representing a Situation S10 occurring on a Platform, observed by a Feature of Interest, timestamped by a Temporal Entity, and triggering a Manager response.",
+      "aliases": [
+        "Alarm 1067",
+        "Alarm #1067",
+        "Alarm 1078",
+        "Alarm #1078",
+        "Alarm ID 1078",
+        "Alarm 1079",
+        "Alarm #1079"
+      ],
+      "synonyms": [
+        "Alarm 1067",
+        "Alarm 1079"
+      ],
+      "lexical_variants": [
+        "Alarm number 1067",
+        "Alarm #1067",
+        "Alarm number 1078",
+        "Alarm 1078 (instance)",
+        "Alarm 1078",
+        "Alarm number 1079",
+        "Alarm #1079"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00011",
+          "text": "Alarm n°: 1067",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 901,
+              "chunk_end_char": 915,
+              "doc_start_char": 35901,
+              "doc_end_char": 35915,
+              "snippet": "If there is no signage, check the connections with the tower.\nresponsible for\n\nAlarm n°: 1067 text: TIP 4: BREAKAGE type: Standard: Optional: effect: Alarm with immediate an"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00052",
+          "text": "Alarm number: 1072",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 2427,
+              "chunk_end_char": 2445,
+              "doc_start_char": 37427,
+              "doc_end_char": 37445,
+              "snippet": ". If there is no signage, check the connections with the tower.\nresponsible for\nAlarm number: 1072\ntext: CDS: WAITING FOR EXCESSIVE FEED\ntype: Standard: Optional:\neffect: Alarm w"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00053",
+          "text": "Alarm number: 1078",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00054",
+          "text": "Alarm number: 1079",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 4652,
+              "chunk_end_char": 4670,
+              "doc_start_char": 39652,
+              "doc_end_char": 39670,
+              "snippet": "reload the defined number of parts. responsible for the intervention: operator\n\nAlarm number: 1079\ntext: LOAD MONITOR: FEED DIFFERENT FROM 100%\ntype: Standard: Optional:\neffect:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00003",
+      "canonical_label": "breakage alarm",
+      "normalized_label": "breakage alarm",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Situation S4",
+        "Situation S14",
+        "handled_by: Manager",
+        "occurs_in: Spatial Object",
+        "affects: Logistic Process",
+        "alarm_type"
+      ],
+      "definition": "An alarm type that signals a breakage event within a manufacturing system, indicating that a machine or component has failed or been damaged.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00012",
+          "text": "TIP 4: BREAKAGE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 922,
+              "chunk_end_char": 937,
+              "doc_start_char": 35922,
+              "doc_end_char": 35937,
+              "snippet": "ge, check the connections with the tower.\nresponsible for\n\nAlarm n°: 1067 text: TIP 4: BREAKAGE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00004",
+      "canonical_label": "check anomaly",
+      "normalized_label": "check anomaly",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "performed_by Technician",
+        "performed_at Workstation",
+        "performed_during Temporal Entity",
+        "checks Constraint",
+        "addresses anomaly",
+        "located_in Geometry"
+      ],
+      "definition": "An action performed by a technician to inspect or verify an anomaly at a workstation, potentially within a specific time and spatial context.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00035",
+          "text": "check the anomaly",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 733,
+              "chunk_end_char": 750,
+              "doc_start_char": 35733,
+              "doc_end_char": 35750,
+              "snippet": "stem (CDS) has had a problem that is preventing:\nche to continue the operation.\nCheck the anomaly on the CDS operator panel and consult the\nintervention: documentation. If there"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00005",
+      "canonical_label": "check the connections",
+      "normalized_label": "check the connections",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Action: check the connections is a type of Action that is triggered by a Situation (e.g., S1 or S2).",
+        "The Feature of Interest in this action is the set of connections (wiring, mechanical joints, fluid lines) between machines or components.",
+        "The Workstation hosting the Feature of Interest is the location where the connections are inspected.",
+        "This action may be part of a maintenance or troubleshooting workflow and can be linked to the property 'requires' or 'handled_by' in the ontology."
+      ],
+      "definition": "An action to examine or verify the integrity of connections between components or subsystems within a manufacturing environment, typically performed to diagnose or resolve a failure.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00037",
+          "text": "check the connections",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 846,
+              "chunk_end_char": 867,
+              "doc_start_char": 35846,
+              "doc_end_char": 35867,
+              "snippet": "ator panel and consult the\nintervention: documentation. If there is no signage, check the connections with the tower.\nresponsible for\n\nAlarm n°: 1067 text: TIP 4: BREAKAGE type: Sta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00006",
+      "canonical_label": "Effect",
+      "normalized_label": "effect",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Result",
+        "Outcome",
+        "Consequence",
+        "Event",
+        "SOSA Result",
+        "Outcome of Action",
+        "Effect of Alarm"
+      ],
+      "definition": "a phenomenon that follows and is caused by some previous phenomenon",
+      "aliases": [
+        "consequence",
+        "effect",
+        "outcome",
+        "result",
+        "event",
+        "issue",
+        "upshot",
+        "impression",
+        "essence",
+        "burden",
+        "core",
+        "gist",
+        "force",
+        "Effect"
+      ],
+      "synonyms": [
+        "consequence",
+        "effect",
+        "outcome",
+        "result",
+        "event",
+        "issue",
+        "upshot",
+        "impression",
+        "essence",
+        "burden",
+        "core",
+        "gist",
+        "force"
+      ],
+      "lexical_variants": [
+        "consequence",
+        "effect",
+        "outcome",
+        "result",
+        "event",
+        "issue",
+        "upshot",
+        "impression",
+        "essence",
+        "burden",
+        "core",
+        "gist",
+        "force"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00048",
+          "text": "effect",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 229,
+              "chunk_end_char": 235,
+              "doc_start_char": 35229,
+              "doc_end_char": 35235,
+              "snippet": "cer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00007",
+      "canonical_label": "Alarm 1071",
+      "normalized_label": "alarm 1071",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm",
+        "hasCause",
+        "hasFeatureOfInterest",
+        "locatedOn",
+        "managedBy",
+        "observedBy",
+        "instanceOf Alarm"
+      ],
+      "definition": "A specific alarm event in a manufacturing system identified by the unique number 1071.",
+      "aliases": [
+        "Alarm 1071",
+        "Alarm #1071"
+      ],
+      "synonyms": [
+        "Alarm 1071"
+      ],
+      "lexical_variants": [
+        "Alarm 1071",
+        "Alarm #1071"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00051",
+          "text": "Alarm number: 1071",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0007",
+              "chunk_start_char": 2023,
+              "chunk_end_char": 2041,
+              "doc_start_char": 37023,
+              "doc_end_char": 37041,
+              "snippet": "ions with the lathe. responsible for intervention: responsible for maintenance\n\nAlarm number: 1071\ntext: CDS: STOP AT END OF CYCLE\ntype: Standard: Optional:\neffect: Alarm with im"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

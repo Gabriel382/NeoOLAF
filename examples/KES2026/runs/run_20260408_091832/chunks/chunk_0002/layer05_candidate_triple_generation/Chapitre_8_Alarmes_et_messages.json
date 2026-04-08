@@ -1,0 +1,66 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 2,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "AlarmType",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00003",
+        "label": "causes"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "Press the Reset key",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0002",
+      "justification": "The alarm event described in the chunk triggers the action to press the reset key.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "AlarmType",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00006",
+        "label": "intervention:"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "Press the Reset key",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0002",
+      "justification": "The chunk text contains the phrase \"intervention: Press the Reset key.\" which indicates that pressing the reset key is the intervention performed in response to the alarm event represented by the candidate AlarmType.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 107,
+          "chunk_end_char": 120,
+          "doc_start_char": 10107,
+          "doc_end_char": 10120,
+          "snippet": "axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manu"
+        }
+      ]
+    }
+  ]
+}

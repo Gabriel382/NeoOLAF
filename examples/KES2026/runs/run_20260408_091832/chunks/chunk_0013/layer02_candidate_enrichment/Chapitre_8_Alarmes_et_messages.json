@@ -1,0 +1,1490 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 28,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "Alarm with program interruption, stopping of axes and spindles",
+        "label": "alarm effect"
+      },
+      "aliases": [
+        "Program interruption alarm",
+        "Axis and spindle stop alarm",
+        "Machine shutdown alarm"
+      ],
+      "synonyms": [
+        "Alarm causing program halt",
+        "Alarm that stops axes and spindles",
+        "Shutdown-triggering alarm"
+      ],
+      "lexical_variants": [
+        "Alarm with program interruption and stopping of axes and spindles",
+        "Alarm that interrupts the program and halts machine axes and spindles",
+        "Program interruption leading to axis and spindle stop"
+      ],
+      "alias_sources": {
+        "Program interruption alarm": [
+          "llm"
+        ],
+        "Axis and spindle stop alarm": [
+          "llm"
+        ],
+        "Machine shutdown alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Alarm causing program halt": [
+          "llm"
+        ],
+        "Alarm that stops axes and spindles": [
+          "llm"
+        ],
+        "Shutdown-triggering alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm with program interruption and stopping of axes and spindles": [
+          "llm"
+        ],
+        "Alarm that interrupts the program and halts machine axes and spindles": [
+          "llm"
+        ],
+        "Program interruption leading to axis and spindle stop": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm event that interrupts the ongoing manufacturing program and causes the machine’s axes and spindles to stop operating.",
+      "ontology_hints": [
+        "TRIGGERS: program interruption",
+        "CAUSES: stopping of axes and spindles",
+        "REFERENCES: machine axes, spindles",
+        "HANDLED_BY: maintenance staff",
+        "REQUIRES: shutdown procedure"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Program interruption alarm\", \"Axis and spindle stop alarm\", \"Machine shutdown alarm\"], \"synonyms\": [\"Alarm causing program halt\", \"Alarm that stops axes and spindles\", \"Shutdown-triggering alarm\"], \"lexical_variants\": [\"Alarm with program interruption and stopping of axes and spindles\", \"Alarm that interrupts the program and halts machine axes and spindles\", \"Program interruption leading to axis and spindle stop\"], \"definition\": \"An alarm event that interrupts the ongoing manufacturing program and causes the machine’s axes and spindles to stop operating.\", \"ontology_hints\": [\"TRIGGERS: program interruption\", \"CAUSES: stopping of axes and spindles\", \"REFERENCES: machine axes, spindles\", \"HANDLED_BY: maintenance staff\", \"REQUIRES: shutdown procedure\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "Alarm with program interruption, axis and bro-effect stop",
+        "label": "alarm effect"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm that interrupts the manufacturing program and stops the machine axis, resulting in a break effect on the operation.",
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "ProductionLine",
+        "ManufacturingProcess",
+        "SituationS1"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm that interrupts the manufacturing program and stops the machine axis, resulting in a break effect on the operation.\", \"ontology_hints\": [\"FeatureOfInterest\", \"ProductionLine\", \"ManufacturingProcess\", \"SituationS1\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00002",
+        "text": "CARRIAGE DISABLED",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that the carriage component is disabled or not operational within a manufacturing cell.",
+      "ontology_hints": [
+        "Result",
+        "Feature of Interest",
+        "Manufacturing Cell",
+        "Manager",
+        "Manufacturing Process",
+        "Alarm Type"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that the carriage component is disabled or not operational within a manufacturing cell.\", \"ontology_hints\": [\"Result\", \"Feature of Interest\", \"Manufacturing Cell\", \"Manager\", \"Manufacturing Process\", \"Alarm Type\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00003",
+        "text": "OPTIONS 9000 NOT ACTIVATED",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm indicating that the Options 9000 feature is not activated on the machine.",
+      "ontology_hints": [
+        "Situation S9",
+        "Situation S10",
+        "Production Line",
+        "Instant",
+        "Spatial Object"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm indicating that the Options 9000 feature is not activated on the machine.\", \"ontology_hints\": [\"Situation S9\", \"Situation S10\", \"Production Line\", \"Instant\", \"Spatial Object\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00004",
+        "text": "AXIS TRACKING ERROR",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that the machine’s axis tracking deviates from its expected alignment, representing a constraint violation in the machine control system during a manufacturing process.",
+      "ontology_hints": [
+        "Machine",
+        "Manufacturing Process",
+        "Manufacturing Cell",
+        "Constraint",
+        "Manager"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that the machine’s axis tracking deviates from its expected alignment, representing a constraint violation in the machine control system during a manufacturing process.\", \"ontology_hints\": [\"Machine\", \"Manufacturing Process\", \"Manufacturing Cell\", \"Constraint\", \"Manager\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00005",
+        "text": "AXIS CHASE ERROR",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating a malfunction on a machine axis, typically detected by a sensor and requiring operator or manager intervention.",
+      "ontology_hints": [
+        "AlarmType",
+        "MachineFailureEvent",
+        "AxisMalfunction"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating a malfunction on a machine axis, typically detected by a sensor and requiring operator or manager intervention.\", \"ontology_hints\": [\"AlarmType\", \"MachineFailureEvent\", \"AxisMalfunction\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00006",
+        "text": "The high pressure unit has not been configured correctly on the user page",
+        "label": "causality phrase"
+      },
+      "aliases": [
+        "high pressure unit misconfigured",
+        "HPU misconfigured",
+        "high pressure unit incorrectly configured"
+      ],
+      "synonyms": [
+        "misconfigured high pressure unit",
+        "incorrectly configured high pressure unit",
+        "high pressure unit not configured correctly"
+      ],
+      "lexical_variants": [
+        "The high pressure unit has not been configured correctly on the user page",
+        "The high pressure unit is incorrectly configured on the user page",
+        "The high pressure unit is misconfigured on the user page"
+      ],
+      "alias_sources": {
+        "high pressure unit misconfigured": [
+          "llm"
+        ],
+        "HPU misconfigured": [
+          "llm"
+        ],
+        "high pressure unit incorrectly configured": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "misconfigured high pressure unit": [
+          "llm"
+        ],
+        "incorrectly configured high pressure unit": [
+          "llm"
+        ],
+        "high pressure unit not configured correctly": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "The high pressure unit has not been configured correctly on the user page": [
+          "llm"
+        ],
+        "The high pressure unit is incorrectly configured on the user page": [
+          "llm"
+        ],
+        "The high pressure unit is misconfigured on the user page": [
+          "llm"
+        ]
+      },
+      "definition": "A statement indicating that the high pressure unit has been set up incorrectly on the user interface, which is a configuration error that can trigger an alarm or abnormal machine state.",
+      "ontology_hints": [
+        "Feature of Interest: high pressure unit",
+        "Situation: configuration error (S1–S4)",
+        "TRIGGERS: alarm",
+        "CAUSES: abnormal machine state",
+        "REQUIRES: corrective configuration intervention",
+        "HANDLED_BY: operator or maintenance staff"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"high pressure unit misconfigured\", \"HPU misconfigured\", \"high pressure unit incorrectly configured\"], \"synonyms\": [\"misconfigured high pressure unit\", \"incorrectly configured high pressure unit\", \"high pressure unit not configured correctly\"], \"lexical_variants\": [\"The high pressure unit has not been configured correctly on the user page\", \"The high pressure unit is incorrectly configured on the user page\", \"The high pressure unit is misconfigured on the user page\"], \"definition\": \"A statement indicating that the high pressure unit has been set up incorrectly on the user interface, which is a configuration error that can trigger an alarm or abnormal machine state.\", \"ontology_hints\": [\"Feature of Interest: high pressure unit\", \"Situation: configuration error (S1–S4)\", \"TRIGGERS: alarm\", \"CAUSES: abnormal machine state\", \"REQUIRES: corrective configuration intervention\", \"HANDLED_BY: operator or maintenance staff\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00007",
+        "text": "Configure the CDS device in the user page",
+        "label": "intervention action"
+      },
+      "aliases": [
+        "CDS device configuration",
+        "CDS device setup"
+      ],
+      "synonyms": [
+        "set up",
+        "adjust",
+        "program",
+        "customize"
+      ],
+      "lexical_variants": [
+        "Configure the CDS device",
+        "Set up the CDS device",
+        "Adjust the CDS device"
+      ],
+      "alias_sources": {
+        "CDS device configuration": [
+          "llm"
+        ],
+        "CDS device setup": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "set up": [
+          "llm"
+        ],
+        "adjust": [
+          "llm"
+        ],
+        "program": [
+          "llm"
+        ],
+        "customize": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Configure the CDS device": [
+          "llm"
+        ],
+        "Set up the CDS device": [
+          "llm"
+        ],
+        "Adjust the CDS device": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention action that involves setting or adjusting the parameters of the CDS device through the user page interface to resolve an alarm.",
+      "ontology_hints": [
+        "InterventionAction",
+        "Configuration",
+        "UserInterface",
+        "DeviceConfiguration",
+        "AlarmResolution",
+        "Requires",
+        "HandledBy"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"CDS device configuration\", \"CDS device setup\"], \"synonyms\": [\"set up\", \"adjust\", \"program\", \"customize\"], \"lexical_variants\": [\"Configure the CDS device\", \"Set up the CDS device\", \"Adjust the CDS device\"], \"definition\": \"An intervention action that involves setting or adjusting the parameters of the CDS device through the user page interface to resolve an alarm.\", \"ontology_hints\": [\"InterventionAction\", \"Configuration\", \"UserInterface\", \"DeviceConfiguration\", \"AlarmResolution\", \"Requires\", \"HandledBy\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00008",
+        "text": "responsible for the intervention: programmer",
+        "label": "responsible role"
+      },
+      "aliases": [
+        "programmer"
+      ],
+      "synonyms": [
+        "software engineer",
+        "developer",
+        "coder"
+      ],
+      "lexical_variants": [
+        "programmer",
+        "software developer",
+        "software engineer"
+      ],
+      "alias_sources": {
+        "programmer": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "software engineer": [
+          "llm"
+        ],
+        "developer": [
+          "llm"
+        ],
+        "coder": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "programmer": [
+          "llm"
+        ],
+        "software developer": [
+          "llm"
+        ],
+        "software engineer": [
+          "llm"
+        ]
+      },
+      "definition": "A person who writes, tests, and maintains code, and is accountable for executing interventions in software systems.",
+      "ontology_hints": [
+        "InterventionRole",
+        "ResponsibleRole",
+        "PersonRole"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"programmer\"], \"synonyms\": [\"software engineer\", \"developer\", \"coder\"], \"lexical_variants\": [\"programmer\", \"software developer\", \"software engineer\"], \"definition\": \"A person who writes, tests, and maintains code, and is accountable for executing interventions in software systems.\", \"ontology_hints\": [\"InterventionRole\", \"ResponsibleRole\", \"PersonRole\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00009",
+        "text": "The hidden time recharge function G303 cannot work if cart 2 has been deactivated in the user page",
+        "label": "causality phrase"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A causal statement indicating that the hidden time recharge function G303 fails to operate when cart 2 is deactivated in the user page.",
+      "ontology_hints": [
+        "causes",
+        "requires",
+        "deactivated",
+        "functionality",
+        "user interface",
+        "cart",
+        "time recharge"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A causal statement indicating that the hidden time recharge function G303 fails to operate when cart 2 is deactivated in the user page.\", \"ontology_hints\": [\"causes\", \"requires\", \"deactivated\", \"functionality\", \"user interface\", \"cart\", \"time recharge\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00010",
+        "text": "Activate cart 2 from the user page",
+        "label": "intervention action"
+      },
+      "aliases": [
+        "cart 2 start",
+        "cart 2 enable",
+        "cart 2 activation"
+      ],
+      "synonyms": [
+        "Start cart 2 via user interface",
+        "Enable cart 2 from the user page",
+        "Turn on cart 2 through the user interface"
+      ],
+      "lexical_variants": [
+        "activate cart 2",
+        "cart 2 activation",
+        "user page cart activation"
+      ],
+      "alias_sources": {
+        "cart 2 start": [
+          "llm"
+        ],
+        "cart 2 enable": [
+          "llm"
+        ],
+        "cart 2 activation": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Start cart 2 via user interface": [
+          "llm"
+        ],
+        "Enable cart 2 from the user page": [
+          "llm"
+        ],
+        "Turn on cart 2 through the user interface": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "activate cart 2": [
+          "llm"
+        ],
+        "cart 2 activation": [
+          "llm"
+        ],
+        "user page cart activation": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention action that initiates the operation of cart 2 by interacting with the user interface page.",
+      "ontology_hints": [
+        "intervention action",
+        "user interface interaction",
+        "cart activation",
+        "logistic process initiation"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"cart 2 start\", \"cart 2 enable\", \"cart 2 activation\"], \"synonyms\": [\"Start cart 2 via user interface\", \"Enable cart 2 from the user page\", \"Turn on cart 2 through the user interface\"], \"lexical_variants\": [\"activate cart 2\", \"cart 2 activation\", \"user page cart activation\"], \"definition\": \"An intervention action that initiates the operation of cart 2 by interacting with the user interface page.\", \"ontology_hints\": [\"intervention action\", \"user interface interaction\", \"cart activation\", \"logistic process initiation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00011",
+        "text": "Function G188 was programmed in a machine model that does not have the Y2 axis",
+        "label": "causality phrase"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A statement indicating that the programming of Function G188 in a machine model that lacks a Y2 axis is the cause of an alarm.",
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "Human Process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A statement indicating that the programming of Function G188 in a machine model that lacks a Y2 axis is the cause of an alarm.\", \"ontology_hints\": [\"Manufacturing Process\", \"Manufacturing Facility\", \"Human Process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00012",
+        "text": "Delete function G188 from the program",
+        "label": "intervention action"
+      },
+      "aliases": [
+        "Delete function G188",
+        "Delete G188 function"
+      ],
+      "synonyms": [
+        "Remove function G188 from the program",
+        "Erase function G188 from the program"
+      ],
+      "lexical_variants": [
+        "Delete G188 function",
+        "Delete function G188"
+      ],
+      "alias_sources": {
+        "Delete function G188": [
+          "llm"
+        ],
+        "Delete G188 function": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Remove function G188 from the program": [
+          "llm"
+        ],
+        "Erase function G188 from the program": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Delete G188 function": [
+          "llm"
+        ],
+        "Delete function G188": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention action that removes the function G188 from the control program in order to resolve an alarm condition.",
+      "ontology_hints": [
+        "intervention action",
+        "program modification",
+        "function removal",
+        "alarm resolution",
+        "requires operator",
+        "requires program access"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Delete function G188\", \"Delete G188 function\"], \"synonyms\": [\"Remove function G188 from the program\", \"Erase function G188 from the program\"], \"lexical_variants\": [\"Delete G188 function\", \"Delete function G188\"], \"definition\": \"An intervention action that removes the function G188 from the control program in order to resolve an alarm condition.\", \"ontology_hints\": [\"intervention action\", \"program modification\", \"function removal\", \"alarm resolution\", \"requires operator\", \"requires program access\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00013",
+        "text": "With the G300 function we have reduced the torque so much that the axis fails to achieve the required rating",
+        "label": "causality phrase"
+      },
+      "aliases": [
+        "G300 function",
+        "G300 setting",
+        "G300 mode"
+      ],
+      "synonyms": [
+        "decrease torque",
+        "lower torque",
+        "reduce torque",
+        "fail to meet rating",
+        "not meet rating",
+        "underperform rating"
+      ],
+      "lexical_variants": [
+        "torque reduction",
+        "torque lowered",
+        "torque decreased",
+        "axis fails to meet required rating",
+        "axis does not meet required rating"
+      ],
+      "alias_sources": {
+        "G300 function": [
+          "llm"
+        ],
+        "G300 setting": [
+          "llm"
+        ],
+        "G300 mode": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "decrease torque": [
+          "llm"
+        ],
+        "lower torque": [
+          "llm"
+        ],
+        "reduce torque": [
+          "llm"
+        ],
+        "fail to meet rating": [
+          "llm"
+        ],
+        "not meet rating": [
+          "llm"
+        ],
+        "underperform rating": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "torque reduction": [
+          "llm"
+        ],
+        "torque lowered": [
+          "llm"
+        ],
+        "torque decreased": [
+          "llm"
+        ],
+        "axis fails to meet required rating": [
+          "llm"
+        ],
+        "axis does not meet required rating": [
+          "llm"
+        ]
+      },
+      "definition": "A causal statement indicating that activating the G300 function caused a substantial reduction in torque, resulting in the axis not meeting its required rating.",
+      "ontology_hints": [
+        "TRIGGERS: G300 function",
+        "CAUSES: torque reduction",
+        "REQUIRES: maintenance action to restore torque",
+        "HANDLED_BY: maintenance crew",
+        "REFERENCES: axis rating specification",
+        "DETECTED_BY: torque sensor alarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"G300 function\", \"G300 setting\", \"G300 mode\"], \"synonyms\": [\"decrease torque\", \"lower torque\", \"reduce torque\", \"fail to meet rating\", \"not meet rating\", \"underperform rating\"], \"lexical_variants\": [\"torque reduction\", \"torque lowered\", \"torque decreased\", \"axis fails to meet required rating\", \"axis does not meet required rating\"], \"definition\": \"A causal statement indicating that activating the G300 function caused a substantial reduction in torque, resulting in the axis not meeting its required rating.\", \"ontology_hints\": [\"TRIGGERS: G300 function\", \"CAUSES: torque reduction\", \"REQUIRES: maintenance action to restore torque\", \"HANDLED_BY: maintenance crew\", \"REFERENCES: axis rating specification\", \"DETECTED_BY: torque sensor alarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00014",
+        "text": "Increase the cut of the indicated axis",
+        "label": "intervention action"
+      },
+      "aliases": [
+        "Raise the cut",
+        "Deepen the cut"
+      ],
+      "synonyms": [
+        "Increase cutting depth",
+        "Raise cut depth",
+        "Deepen cut"
+      ],
+      "lexical_variants": [
+        "Increase cut",
+        "Increase cut depth",
+        "Raise cut depth"
+      ],
+      "alias_sources": {
+        "Raise the cut": [
+          "llm"
+        ],
+        "Deepen the cut": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Increase cutting depth": [
+          "llm"
+        ],
+        "Raise cut depth": [
+          "llm"
+        ],
+        "Deepen cut": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Increase cut": [
+          "llm"
+        ],
+        "Increase cut depth": [
+          "llm"
+        ],
+        "Raise cut depth": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention action that increases the depth of the cut along a specified axis to adjust machining parameters and resolve an alarm.",
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "SituationS1",
+        "SituationS2",
+        "SituationS3",
+        "SituationS4"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Raise the cut\", \"Deepen the cut\"], \"synonyms\": [\"Increase cutting depth\", \"Raise cut depth\", \"Deepen cut\"], \"lexical_variants\": [\"Increase cut\", \"Increase cut depth\", \"Raise cut depth\"], \"definition\": \"An intervention action that increases the depth of the cut along a specified axis to adjust machining parameters and resolve an alarm.\", \"ontology_hints\": [\"FeatureOfInterest\", \"SituationS1\", \"SituationS2\", \"SituationS3\", \"SituationS4\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00015",
+        "text": "With the G300 function we have reduced the torque so much that the axis cannot reach the required dimension",
+        "label": "causality phrase"
+      },
+      "aliases": [
+        "G300 function torque reduction",
+        "G300 torque decrease"
+      ],
+      "synonyms": [
+        "as a result of torque reduction",
+        "because of reduced torque",
+        "due to decreased torque"
+      ],
+      "lexical_variants": [
+        "torque reduction",
+        "reduced torque",
+        "decreased torque"
+      ],
+      "alias_sources": {
+        "G300 function torque reduction": [
+          "llm"
+        ],
+        "G300 torque decrease": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "as a result of torque reduction": [
+          "llm"
+        ],
+        "because of reduced torque": [
+          "llm"
+        ],
+        "due to decreased torque": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "torque reduction": [
+          "llm"
+        ],
+        "reduced torque": [
+          "llm"
+        ],
+        "decreased torque": [
+          "llm"
+        ]
+      },
+      "definition": "A causal statement indicating that applying the G300 function reduces torque, which in turn causes the axis to fail to meet its required dimensional specification.",
+      "ontology_hints": [
+        "TRIGGERS: torque reduction",
+        "CAUSES: axis dimension failure",
+        "REQUIRES: adjustment of torque or axis",
+        "HANDLED_BY: maintenance engineer",
+        "REFERENCES: G300 function documentation",
+        "DETECTED_BY: torque sensor"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"G300 function torque reduction\", \"G300 torque decrease\"], \"synonyms\": [\"as a result of torque reduction\", \"because of reduced torque\", \"due to decreased torque\"], \"lexical_variants\": [\"torque reduction\", \"reduced torque\", \"decreased torque\"], \"definition\": \"A causal statement indicating that applying the G300 function reduces torque, which in turn causes the axis to fail to meet its required dimensional specification.\", \"ontology_hints\": [\"TRIGGERS: torque reduction\", \"CAUSES: axis dimension failure\", \"REQUIRES: adjustment of torque or axis\", \"HANDLED_BY: maintenance engineer\", \"REFERENCES: G300 function documentation\", \"DETECTED_BY: torque sensor\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00016",
+        "text": "G188 function",
+        "label": "function component"
+      },
+      "aliases": [
+        "G188",
+        "G188 function"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "G188 function",
+        "G188 function component"
+      ],
+      "alias_sources": {
+        "G188": [
+          "llm"
+        ],
+        "G188 function": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "G188 function": [
+          "llm"
+        ],
+        "G188 function component": [
+          "llm"
+        ]
+      },
+      "definition": "An operational action performed within a manufacturing context, specifically the G188 function, which is triggered in response to a detected situation on a production line.",
+      "ontology_hints": [
+        "Action",
+        "Situation",
+        "Production Line",
+        "G188 function is an instance of Action",
+        "Triggered by Situation S1 or S2",
+        "Located on Production Line"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"G188\", \"G188 function\"], \"synonyms\": [], \"lexical_variants\": [\"G188 function\", \"G188 function component\"], \"definition\": \"An operational action performed within a manufacturing context, specifically the G188 function, which is triggered in response to a detected situation on a production line.\", \"ontology_hints\": [\"Action\", \"Situation\", \"Production Line\", \"G188 function is an instance of Action\", \"Triggered by Situation S1 or S2\", \"Located on Production Line\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00017",
+        "text": "G300 function",
+        "label": "function component"
+      },
+      "aliases": [
+        "G300 function"
+      ],
+      "synonyms": [
+        "function component"
+      ],
+      "lexical_variants": [
+        "G300 function"
+      ],
+      "alias_sources": {
+        "G300 function": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "function component": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "G300 function": [
+          "llm"
+        ]
+      },
+      "definition": "A specific functional component of a machine, designated as G300, that performs a particular operation within the manufacturing system.",
+      "ontology_hints": [
+        "Component of machine",
+        "Functional unit in manufacturing system",
+        "Part of production line"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"G300 function\"], \"synonyms\": [\"function component\"], \"lexical_variants\": [\"G300 function\"], \"definition\": \"A specific functional component of a machine, designated as G300, that performs a particular operation within the manufacturing system.\", \"ontology_hints\": [\"Component of machine\", \"Functional unit in manufacturing system\", \"Part of production line\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00018",
+        "text": "G303 function",
+        "label": "function component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "G303 function is a specific machine function that represents an action performed in response to a detected situation within a production line.",
+      "ontology_hints": [
+        "Action",
+        "Triggered by Situation",
+        "Executed on Production Line"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"G303 function is a specific machine function that represents an action performed in response to a detected situation within a production line.\", \"ontology_hints\": [\"Action\", \"Triggered by Situation\", \"Executed on Production Line\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00019",
+        "text": "Y2 axis",
+        "label": "component"
+      },
+      "aliases": [
+        "Y2 axis"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "Y2 axis",
+        "Y2-Axis",
+        "Y2 Axis"
+      ],
+      "alias_sources": {
+        "Y2 axis": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "Y2 axis": [
+          "llm"
+        ],
+        "Y2-Axis": [
+          "llm"
+        ],
+        "Y2 Axis": [
+          "llm"
+        ]
+      },
+      "definition": "The Y2 axis is a mechanical component of a machine that provides motion or positioning along the Y-axis, typically the second Y-axis in a multi‑axis system.",
+      "ontology_hints": [
+        "MachineComponent",
+        "Axis",
+        "MechanicalComponent",
+        "MotionComponent",
+        "partOf Machine"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Y2 axis\"], \"synonyms\": [], \"lexical_variants\": [\"Y2 axis\", \"Y2-Axis\", \"Y2 Axis\"], \"definition\": \"The Y2 axis is a mechanical component of a machine that provides motion or positioning along the Y-axis, typically the second Y-axis in a multi‑axis system.\", \"ontology_hints\": [\"MachineComponent\", \"Axis\", \"MechanicalComponent\", \"MotionComponent\", \"partOf Machine\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00020",
+        "text": "cart 2",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "cart 2"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "cart 2": [
+          "llm"
+        ]
+      },
+      "definition": "A machine component referred to as cart 2.",
+      "ontology_hints": [
+        "Part",
+        "Situation S2",
+        "Situation S12"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"cart 2\"], \"definition\": \"A machine component referred to as cart 2.\", \"ontology_hints\": [\"Part\", \"Situation S2\", \"Situation S12\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00021",
+        "text": "CDS device",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A CDS device is a machine component used in industrial maintenance.",
+      "ontology_hints": [
+        "Resource",
+        "Component",
+        "Machine part"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A CDS device is a machine component used in industrial maintenance.\", \"ontology_hints\": [\"Resource\", \"Component\", \"Machine part\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00022",
+        "text": "high pressure unit",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "high-pressure unit"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "high-pressure unit": [
+          "llm"
+        ]
+      },
+      "definition": "A machine component designed to operate under high pressure conditions, typically used within a manufacturing process.",
+      "ontology_hints": [
+        "Resource",
+        "Manufacturing Process",
+        "Component"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"high-pressure unit\"], \"definition\": \"A machine component designed to operate under high pressure conditions, typically used within a manufacturing process.\", \"ontology_hints\": [\"Resource\", \"Manufacturing Process\", \"Component\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00023",
+        "text": "user page",
+        "label": "resource"
+      },
+      "aliases": [
+        "User profile"
+      ],
+      "synonyms": [
+        "User profile",
+        "User account",
+        "User profile page"
+      ],
+      "lexical_variants": [
+        "user page",
+        "user profile page"
+      ],
+      "alias_sources": {
+        "User profile": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "User profile": [
+          "llm"
+        ],
+        "User account": [
+          "llm"
+        ],
+        "User profile page": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "user page": [
+          "llm"
+        ],
+        "user profile page": [
+          "llm"
+        ]
+      },
+      "definition": "A user page is a digital resource that aggregates personal settings, identity data, and characteristics of an individual. It serves as a voluntary digital identity on social media, an account in operating systems, or a legal identity document, and typically contains attributes such as name, age, portrait photograph, expertise, and other personal information.",
+      "ontology_hints": [
+        "resource",
+        "digital identity",
+        "user profile",
+        "user account"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "A user profile is a collection of settings and information associated with a user. It contains critical information that is used to identify an individual, such as their name, age, portrait photograph and individual characteristics such as knowledge or expertise. User profiles are most commonly present on social media websites such as Facebook, Instagram, and LinkedIn; and serve as voluntary digital identity of an individual, highlighting their key features and traits. In personal computing and operating systems, user profiles serve to categorise files, settings, and documents by individual user environments, known as 'accounts', allowing the operating system to be more friendly and catered to the user. Physical user profiles serve as identity documents such as passports, driving licenses and legal documents that are used to identify an individual under the legal system.\nA user profile can also be considered as the computer representation of a user model. A user model is a (data) structure that is used to capture certain characteristics about an individual user, and the process of obtaining the user profile is called user modeling or profiling.",
+          "reference": "https://en.wikipedia.org/wiki/User_profile"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"User profile\"], \"synonyms\": [\"User profile\", \"User account\", \"User profile page\"], \"lexical_variants\": [\"user page\", \"user profile page\"], \"definition\": \"A user page is a digital resource that aggregates personal settings, identity data, and characteristics of an individual. It serves as a voluntary digital identity on social media, an account in operating systems, or a legal identity document, and typically contains attributes such as name, age, portrait photograph, expertise, and other personal information.\", \"ontology_hints\": [\"resource\", \"digital identity\", \"user profile\", \"user account\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00024",
+        "text": "program",
+        "label": "resource"
+      },
+      "aliases": [
+        "plan",
+        "program",
+        "programme",
+        "broadcast",
+        "platform",
+        "political platform",
+        "political program",
+        "Program"
+      ],
+      "synonyms": [
+        "plan",
+        "program",
+        "programme",
+        "broadcast",
+        "platform",
+        "political platform",
+        "political program"
+      ],
+      "lexical_variants": [
+        "plan",
+        "program",
+        "programme",
+        "broadcast",
+        "platform",
+        "political platform",
+        "political program"
+      ],
+      "alias_sources": {
+        "plan": [
+          "wordnet",
+          "llm"
+        ],
+        "program": [
+          "wordnet",
+          "llm"
+        ],
+        "programme": [
+          "wordnet",
+          "llm"
+        ],
+        "broadcast": [
+          "wordnet",
+          "llm"
+        ],
+        "platform": [
+          "wordnet",
+          "llm"
+        ],
+        "political platform": [
+          "wordnet",
+          "llm"
+        ],
+        "political program": [
+          "wordnet",
+          "llm"
+        ],
+        "Program": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "plan": [
+          "wordnet",
+          "llm"
+        ],
+        "program": [
+          "wordnet",
+          "llm"
+        ],
+        "programme": [
+          "wordnet",
+          "llm"
+        ],
+        "broadcast": [
+          "wordnet",
+          "llm"
+        ],
+        "platform": [
+          "wordnet",
+          "llm"
+        ],
+        "political platform": [
+          "wordnet",
+          "llm"
+        ],
+        "political program": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "plan": [
+          "wordnet",
+          "llm"
+        ],
+        "program": [
+          "wordnet",
+          "llm"
+        ],
+        "programme": [
+          "wordnet",
+          "llm"
+        ],
+        "broadcast": [
+          "wordnet",
+          "llm"
+        ],
+        "platform": [
+          "wordnet",
+          "llm"
+        ],
+        "political platform": [
+          "wordnet",
+          "llm"
+        ],
+        "political program": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "a series of steps to be carried out or goals to be accomplished",
+      "ontology_hints": [
+        "Process",
+        "Resource",
+        "Configuration"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a series of steps to be carried out or goals to be accomplished",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a system of projects or services intended to meet a public need",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a radio or television show",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a document stating the aims and principles of a political party",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "an announcement of the events that will occur as part of a theatrical or sporting event",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Program (American English; also Commonwealth English in terms of computer programming and related activities) or programme (Commonwealth English in all other meanings), programmer, or programming may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/Program"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"plan\", \"program\", \"programme\", \"broadcast\", \"platform\", \"political platform\", \"political program\"], \"synonyms\": [\"plan\", \"program\", \"programme\", \"broadcast\", \"platform\", \"political platform\", \"political program\"], \"lexical_variants\": [\"plan\", \"program\", \"programme\", \"broadcast\", \"platform\", \"political platform\", \"political program\"], \"definition\": \"a series of steps to be carried out or goals to be accomplished\", \"ontology_hints\": [\"Process\", \"Resource\", \"Configuration\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00025",
+        "text": "torque",
+        "label": "measurement"
+      },
+      "aliases": [
+        "torsion",
+        "torque",
+        "Torque"
+      ],
+      "synonyms": [
+        "torsion",
+        "torque",
+        "moment"
+      ],
+      "lexical_variants": [
+        "torsion",
+        "torque",
+        "moment"
+      ],
+      "alias_sources": {
+        "torsion": [
+          "wordnet",
+          "llm"
+        ],
+        "torque": [
+          "wordnet",
+          "llm"
+        ],
+        "Torque": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "torsion": [
+          "wordnet",
+          "llm"
+        ],
+        "torque": [
+          "wordnet",
+          "llm"
+        ],
+        "moment": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "torsion": [
+          "wordnet",
+          "llm"
+        ],
+        "torque": [
+          "wordnet",
+          "llm"
+        ],
+        "moment": [
+          "llm"
+        ]
+      },
+      "definition": "A twisting force or rotational moment of force applied to an object about a chosen axis, typically measured in newton‑metres.",
+      "ontology_hints": [
+        "measurement",
+        "rotational force",
+        "moment of force",
+        "physical quantity",
+        "unit: newton‑metre",
+        "observable by Platform sensor",
+        "property of a Feature or Resource"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a twisting force",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "In physics and mechanics, torque is the rotational correspondent of linear force. It is also referred to as the moment of force, or simply the moment. Just as a linear force is a push or a pull applied to a body, a torque can be thought of as a twist applied to an object with respect to a chosen axis. For example, driving a screw uses torque to force it into an object. The torque is applied by the screwdriver, rotating around its axis, to the drive on the head of the screw.\nTorque is generally referred to using different vocabulary depending on geographical location and field of study, with torque generally being associated with physics and moment being associated with engineering. This article follows the definition used in US physics in its usage of the word torque.\nTorque is typically represented mathematically using  the lowercase Greek letter tau (\n  \n    \n      \n        \n          τ\n        \n      \n    \n    {\\displaystyle {\\boldsymbol {\\tau }}}\n  \n). When being referred to as moment of force, it is commonly denoted by M.",
+          "reference": "https://en.wikipedia.org/wiki/Torque"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"torsion\", \"torque\"], \"synonyms\": [\"torsion\", \"torque\", \"moment\"], \"lexical_variants\": [\"torsion\", \"torque\", \"moment\"], \"definition\": \"A twisting force or rotational moment of force applied to an object about a chosen axis, typically measured in newton‑metres.\", \"ontology_hints\": [\"measurement\", \"rotational force\", \"moment of force\", \"physical quantity\", \"unit: newton‑metre\", \"observable by Platform sensor\", \"property of a Feature or Resource\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00026",
+        "text": "required rating",
+        "label": "attribute"
+      },
+      "aliases": [
+        "rating requirement"
+      ],
+      "synonyms": [
+        "mandatory rating",
+        "necessary rating",
+        "required score",
+        "required level"
+      ],
+      "lexical_variants": [
+        "required rating",
+        "required rating level"
+      ],
+      "alias_sources": {
+        "rating requirement": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "mandatory rating": [
+          "llm"
+        ],
+        "necessary rating": [
+          "llm"
+        ],
+        "required score": [
+          "llm"
+        ],
+        "required level": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "required rating": [
+          "llm"
+        ],
+        "required rating level": [
+          "llm"
+        ]
+      },
+      "definition": "A specification indicating the minimum rating that a resource, observation, or action must achieve in order to satisfy operational or safety standards.",
+      "ontology_hints": [
+        "attribute of Resource",
+        "attribute of Observation",
+        "attribute of Action"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"rating requirement\"], \"synonyms\": [\"mandatory rating\", \"necessary rating\", \"required score\", \"required level\"], \"lexical_variants\": [\"required rating\", \"required rating level\"], \"definition\": \"A specification indicating the minimum rating that a resource, observation, or action must achieve in order to satisfy operational or safety standards.\", \"ontology_hints\": [\"attribute of Resource\", \"attribute of Observation\", \"attribute of Action\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00027",
+        "text": "required dimension",
+        "label": "attribute"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A measurable attribute that is specified as necessary for a resource or workstation to operate correctly.",
+      "ontology_hints": [
+        "Attribute of Resource or Workstation",
+        "Dimension property",
+        "Required specification"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A measurable attribute that is specified as necessary for a resource or workstation to operate correctly.\", \"ontology_hints\": [\"Attribute of Resource or Workstation\", \"Dimension property\", \"Required specification\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

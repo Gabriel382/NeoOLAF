@@ -1,0 +1,89 @@
+{
+  "layer": "layer03_candidate_typing_resolution",
+  "entity_candidates": [],
+  "relation_candidates": [
+    {
+      "candidate_id": "cand_r_00000",
+      "canonical_label": "controlled mode",
+      "normalized_label": "controlled mode",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "state",
+        "constraint",
+        "interval"
+      ],
+      "definition": "A state of a machine or production line in which its operation is governed by predefined constraints or controls, ensuring that the system functions within specified limits.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00000",
+          "text": "controlled mode",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0003",
+              "chunk_start_char": 2,
+              "chunk_end_char": 17,
+              "doc_start_char": 602,
+              "doc_end_char": 617,
+              "snippet": "n controlled mode;\n• alarms and messages with stop at end of cycle: the machine is stopped\nwhen l"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00001",
+      "canonical_label": "alarms and messages with stop at end of cycle",
+      "normalized_label": "alarms and messages with stop at end of cycle",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: shutdown state",
+        "HANDLED_BY: Manager",
+        "REFERENCES: Manufacturing Cell",
+        "DETECTED_BY: alarm system",
+        "CAUSES: cycle completion",
+        "REQUIRES: shutdown procedure",
+        "Feature of Interest: machine state",
+        "Manufacturing Facility: context"
+      ],
+      "definition": "An alarm or message that triggers a machine stop at the conclusion of a manufacturing cycle.",
+      "aliases": [
+        "cycle-end stop alarm",
+        "end-of-cycle shutdown alarm",
+        "cycle completion stop message"
+      ],
+      "synonyms": [
+        "cycle-end stop alarm",
+        "end-of-cycle shutdown alarm",
+        "cycle completion stop message"
+      ],
+      "lexical_variants": [
+        "stop at cycle end alarm",
+        "end-of-cycle stop alert",
+        "cycle completion stop alert"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00001",
+          "text": "alarms and messages with stop at end of cycle",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0003",
+              "chunk_start_char": 21,
+              "chunk_end_char": 66,
+              "doc_start_char": 621,
+              "doc_end_char": 666,
+              "snippet": "n controlled mode;\n• alarms and messages with stop at end of cycle: the machine is stopped\nwhen launching function M01;\n• read-only messages: thes"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attribute_candidates": [],
+  "event_candidates": []
+}

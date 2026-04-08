@@ -1,0 +1,934 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 58,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "Alarm with immediate and controlled stop",
+      "label": "alarm type",
+      "justification": "Describes the event state of an alarm that triggers an immediate and controlled stop.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 11,
+          "chunk_end_char": 51,
+          "doc_start_char": 5011,
+          "doc_end_char": 5051,
+          "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. i"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "Alarm with stop at the end of the cycle",
+      "label": "alarm type",
+      "justification": "Describes an alarm that stops the machine at cycle completion.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 816,
+          "chunk_end_char": 855,
+          "doc_start_char": 5816,
+          "doc_end_char": 5855,
+          "snippet": "ext: THERMOMAGNET SWITCHES. END OF CYCLE STOP type: Standard: Optional: effect: Alarm with stop at the end of the cycle cause: A thermal switch for the auxiliary motors has been triggered, with low p"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "Alarm with immediate and controlled shutdown",
+      "label": "alarm type",
+      "justification": "Describes an alarm that initiates an immediate and controlled shutdown.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1254,
+          "chunk_end_char": 1298,
+          "doc_start_char": 6254,
+          "doc_end_char": 6298,
+          "snippet": "text: THERMOMAGNETIC SWITCHES IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nA thermal switch on the motors was triggered\ncause:\nauxiliaries, with high prio"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "Alarm with shutdown at the end of the cycle",
+      "label": "alarm type",
+      "justification": "Describes an alarm that shuts down the machine at cycle completion.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1629,
+          "chunk_end_char": 1672,
+          "doc_start_char": 6629,
+          "doc_end_char": 6672,
+          "snippet": "larm No.: 1011\ntext: LOW WATERING LIQUID FLOW\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle.\nInsufficient quantity of coolant in the water circuit:\nwise of the linear moto"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "deactivation of authorization",
+      "label": "alarm effect",
+      "justification": "Specifies the effect of the alarm on system authorization.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 3776,
+          "chunk_end_char": 3805,
+          "doc_start_char": 8776,
+          "doc_end_char": 8805,
+          "snippet": "R FAULT\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, deactivation of authorizationeffect:\nhardware installation of the axes/spindles feeder\ncause: Hardware proble"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "cause:",
+      "label": "relation-bearing expression",
+      "justification": "Introduces the causal relationship between an alarm and its underlying reason.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 52,
+          "chunk_end_char": 58,
+          "doc_start_char": 5052,
+          "doc_end_char": 5058,
+          "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. interven"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "intervention:",
+      "label": "relation-bearing expression",
+      "justification": "Introduces the corrective action required for the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 130,
+          "chunk_end_char": 143,
+          "doc_start_char": 5130,
+          "doc_end_char": 5143,
+          "snippet": "p cause: At the start of the cycle the sliding door is not in a safe condition. intervention: Release the door release button before ordering the start of the cycle. See pag"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "responsible for intervention:",
+      "label": "relation-bearing expression",
+      "justification": "Links the intervention to the responsible role or person.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 3157,
+          "chunk_end_char": 3186,
+          "doc_start_char": 8157,
+          "doc_end_char": 8186,
+          "snippet": "ge 84 of the electrical diagram and the indication on the refrigerator display. responsible for intervention: responsible for maintenance\n\nAlarm n°: 1012 text: HIGH WATERING LIQUID TEMPERAT"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "see page 19 of the electrical diagram, entry X3.2",
+      "label": "page reference",
+      "justification": "Provides a location reference for the intervention procedure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 216,
+          "chunk_end_char": 265,
+          "doc_start_char": 5216,
+          "doc_end_char": 5265,
+          "snippet": "ention: Release the door release button before ordering the start of the cycle. See page 19 of the electrical diagram, entry X3.2 responsible for the intervention: operator\n\nAlarm n°: 1005 text: SIDE PROTECTIO"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "see page 7 of the electrical diagram, entry X2.5",
+      "label": "page reference",
+      "justification": "Provides a location reference for the intervention procedure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 607,
+          "chunk_end_char": 655,
+          "doc_start_char": 5607,
+          "doc_end_char": 5655,
+          "snippet": "pen. intervention: Check that the side protections are closed, check the locks. See page 7 of the electrical diagram, entry X2.5 responsible for the intervention: operator/maintenance person\n\nAlarm no.: 1008"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "see page 7 of the electrical diagram, input X2.4",
+      "label": "page reference",
+      "justification": "Provides a location reference for the intervention procedure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1027,
+          "chunk_end_char": 1075,
+          "doc_start_char": 6027,
+          "doc_end_char": 6075,
+          "snippet": "ervention: Check and reset the circuit breakers and/or thermomagnetic switches. See page 7 of the electrical diagram, input X2.4 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenan"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "see page 7 of the electrical diagram, input X2.3",
+      "label": "page reference",
+      "justification": "Provides a location reference for the intervention procedure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1463,
+          "chunk_end_char": 1511,
+          "doc_start_char": 6463,
+          "doc_end_char": 6511,
+          "snippet": "Check and reset circuit breakers and/or thermomagnetic switches.\nintervention:\nSee page 7 of the electrical diagram, input X2.3\n(0 = ALARM, 1 = OK)\nresponsible for\nAlarm No.: 1011\ntext: LOW WATERING LIQUID F"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "see page 84 of the electrical diagram",
+      "label": "page reference",
+      "justification": "Provides a location reference for the intervention procedure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. intervention: Release the door release button before ordering the start of the cycle. See page 19 of the electrical diagram, entry X3.2 responsible for the intervention: "
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "see page 65 of the electrical diagram, input X3.5",
+      "label": "page reference",
+      "justification": "Provides a location reference for the intervention procedure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4770,
+          "chunk_end_char": 4819,
+          "doc_start_char": 9770,
+          "doc_end_char": 9819,
+          "snippet": "t correctly.\nCheck the line pressure and pressure switch setting.\nintervention: See page 65 of the electrical diagram, input X3.5\n(0 = ALARM, 1 = OK)\nresponsible for\n\nalarm n°: 1013 text: PSM FEEDER FAILURE ty"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "sliding door",
+      "label": "component",
+      "justification": "Component whose safe condition is monitored.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 89,
+          "chunk_end_char": 101,
+          "doc_start_char": 5089,
+          "doc_end_char": 5101,
+          "snippet": ": Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. intervention: Release the door release button befor"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "side protections",
+      "label": "component",
+      "justification": "Component that must be closed to prevent alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 331,
+          "chunk_end_char": 347,
+          "doc_start_char": 5331,
+          "doc_end_char": 5347,
+          "snippet": "am, entry X3.2 responsible for the intervention: operator\n\nAlarm n°: 1005 text: SIDE PROTECTIONS OPEN type: Standard: Optional: effect: Alarm with immediate and controlled stop"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "axis/spindle feeder",
+      "label": "component",
+      "justification": "Hardware authorization point for the axis/spindle.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 474,
+          "chunk_end_char": 493,
+          "doc_start_char": 5474,
+          "doc_end_char": 5493,
+          "snippet": "ith immediate and controlled stop, opening of the hardware authorization to the axis/spindle feeder cause: The side protections are open. intervention: Check that the side protect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "thermal switch",
+      "label": "component",
+      "justification": "Switch that triggers alarms when temperature thresholds are exceeded.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 865,
+          "chunk_end_char": 879,
+          "doc_start_char": 5865,
+          "doc_end_char": 5879,
+          "snippet": "e: Standard: Optional: effect: Alarm with stop at the end of the cycle cause: A thermal switch for the auxiliary motors has been triggered, with low priority. intervention: C"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "auxiliary motors",
+      "label": "component",
+      "justification": "Motors whose thermal switches can trigger alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 888,
+          "chunk_end_char": 904,
+          "doc_start_char": 5888,
+          "doc_end_char": 5904,
+          "snippet": "effect: Alarm with stop at the end of the cycle cause: A thermal switch for the auxiliary motors has been triggered, with low priority. intervention: Check and reset the circui"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "circuit breakers",
+      "label": "component",
+      "justification": "Electrical protection devices involved in the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 978,
+          "chunk_end_char": 994,
+          "doc_start_char": 5978,
+          "doc_end_char": 5994,
+          "snippet": "motors has been triggered, with low priority. intervention: Check and reset the circuit breakers and/or thermomagnetic switches. See page 7 of the electrical diagram, input X2."
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "thermomagnetic switches",
+      "label": "component",
+      "justification": "Switches that can be reset during intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1002,
+          "chunk_end_char": 1025,
+          "doc_start_char": 6002,
+          "doc_end_char": 6025,
+          "snippet": "d, with low priority. intervention: Check and reset the circuit breakers and/or thermomagnetic switches. See page 7 of the electrical diagram, input X2.4 (0 = ALARM, 1 = OK) responsib"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "PLC",
+      "label": "component",
+      "justification": "Programmable logic controller referenced in interventions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1827,
+          "chunk_end_char": 1830,
+          "doc_start_char": 6827,
+          "doc_end_char": 6830,
+          "snippet": "motor.\nCheck the liquid level in the watering circuit.\nintervention: Check the PLC X4.6 input on page 84 of the electrical diagram and\nthe indication on the refri"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "linear motor",
+      "label": "component",
+      "justification": "Motor whose coolant level is monitored.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1741,
+          "chunk_end_char": 1753,
+          "doc_start_char": 6741,
+          "doc_end_char": 6753,
+          "snippet": "f the cycle.\nInsufficient quantity of coolant in the water circuit:\nwise of the linear motor.\nCheck the liquid level in the watering circuit.\nintervention: Check the PLC X4"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "coolant",
+      "label": "resource",
+      "justification": "Coolant whose quantity is checked during intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1699,
+          "chunk_end_char": 1706,
+          "doc_start_char": 6699,
+          "doc_end_char": 6706,
+          "snippet": ":\neffect: Alarm with shutdown at the end of the cycle.\nInsufficient quantity of coolant in the water circuit:\nwise of the linear motor.\nCheck the liquid level in the w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "refrigerator",
+      "label": "component",
+      "justification": "Device that regulates temperature of the linear motor.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1905,
+          "chunk_end_char": 1917,
+          "doc_start_char": 6905,
+          "doc_end_char": 6917,
+          "snippet": "e PLC X4.6 input on page 84 of the electrical diagram and\nthe indication on the refrigerator display.\nresponsible for\nAlarm No.: 1012\ntext: HIGH WATERING FLUID TEMPERATURE"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "compressor",
+      "label": "component",
+      "justification": "Part of the refrigerator system that may fail.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 2192,
+          "chunk_end_char": 2202,
+          "doc_start_char": 7192,
+          "doc_end_char": 7202,
+          "snippet": "gine temperature\ncause:\nlinear.\nCheck the correct operation of the refrigerator compressor.\nintervention: Check the PLC X4.7 input on page 84 of the electrical diagram an"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "PSM feeder",
+      "label": "component",
+      "justification": "Feeder whose hardware installation can cause alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 3687,
+          "chunk_end_char": 3697,
+          "doc_start_char": 8687,
+          "doc_end_char": 8697,
+          "snippet": "responsible for intervention: responsible for maintenance\n\nalarm no: 1013\ntext: PSM FEEDER FAULT\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, d"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "axes/spindles feeder",
+      "label": "component",
+      "justification": "Feeder whose authorization can be deactivated by an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 3842,
+          "chunk_end_char": 3862,
+          "doc_start_char": 8842,
+          "doc_end_char": 8862,
+          "snippet": "led shutdown, deactivation of authorizationeffect:\nhardware installation of the axes/spindles feeder\ncause: Hardware problems with axes and spindles.\nNote the power supply error co"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "cabinet",
+      "label": "component",
+      "justification": "Electrical cabinet whose overheating can trigger an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4080,
+          "chunk_end_char": 4087,
+          "doc_start_char": 9080,
+          "doc_end_char": 9087,
+          "snippet": "B CNC service manual for more information\nresponsible for\nAlarm No.: 1017\ntext: CABINET OVERHEATING\ntype: Standard: Optional:\neffect: Alarm with immediate and controll"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "thermostat",
+      "label": "component",
+      "justification": "Device that controls cabinet temperature.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4183,
+          "chunk_end_char": 4193,
+          "doc_start_char": 9183,
+          "doc_end_char": 9193,
+          "snippet": "e: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe thermostat is not set correctly, the fan or the cause:\neditor does not work, the electrica"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00030",
+      "text": "fan",
+      "label": "component",
+      "justification": "Cooling device that may fail.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 3988,
+          "chunk_end_char": 3991,
+          "doc_start_char": 8988,
+          "doc_end_char": 8991,
+          "snippet": "es.\nNote the power supply error code marked A2831 and consult\nintervention: the Fanuc 160i-TB CNC service manual for more information\nresponsible for\nAlarm No.: 10"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00031",
+      "text": "electrical cabinet",
+      "label": "component",
+      "justification": "Cabinet whose temperature is monitored.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4264,
+          "chunk_end_char": 4282,
+          "doc_start_char": 9264,
+          "doc_end_char": 9282,
+          "snippet": "hermostat is not set correctly, the fan or the cause:\neditor does not work, the electrical cabinet is too hot.\nCheck the thermostat, fan or conditioner.\nintervention: See page 7"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00032",
+      "text": "pressure",
+      "label": "resource",
+      "justification": "Pneumatic pressure monitored for alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4461,
+          "chunk_end_char": 4469,
+          "doc_start_char": 9461,
+          "doc_end_char": 9469,
+          "snippet": "iagram, input X4.3 (0 = ALARM, 1\n=OK)\nresponsible for\nAlarm No.: 1018\ntext: LOW PRESSURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00033",
+      "text": "pneumatic installation",
+      "label": "component",
+      "justification": "System whose pressure is critical.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4569,
+          "chunk_end_char": 4591,
+          "doc_start_char": 9569,
+          "doc_end_char": 9591,
+          "snippet": "ional:\neffect: Alarm with immediate and controlled shutdown\nThe pressure of the pneumatic installation is not sufficient to\ncause: normal operation of the machine, or the pressure sw"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00034",
+      "text": "pressure switch",
+      "label": "component",
+      "justification": "Switch that can trigger alarms if pressure is incorrect.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4660,
+          "chunk_end_char": 4675,
+          "doc_start_char": 9660,
+          "doc_end_char": 9675,
+          "snippet": "nstallation is not sufficient to\ncause: normal operation of the machine, or the pressure switch\nline is not set correctly.\nCheck the line pressure and pressure switch setting."
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00035",
+      "text": "Alarm No.: 1005",
+      "label": "alarm identifier",
+      "justification": "Unique identifier for the alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. intervention: Release the door release button before ordering the start of the cycle. See page 19 of the electrical diagram, entry X3.2 responsible for the intervention: "
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00036",
+      "text": "Alarm No.: 1008",
+      "label": "alarm identifier",
+      "justification": "Unique identifier for the alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 719,
+          "chunk_end_char": 734,
+          "doc_start_char": 5719,
+          "doc_end_char": 5734,
+          "snippet": "gram, entry X2.5 responsible for the intervention: operator/maintenance person\n\nAlarm no.: 1008 text: THERMOMAGNET SWITCHES. END OF CYCLE STOP type: Standard: Optional: effect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00037",
+      "text": "Alarm No.: 1009",
+      "label": "alarm identifier",
+      "justification": "Unique identifier for the alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1159,
+          "chunk_end_char": 1174,
+          "doc_start_char": 6159,
+          "doc_end_char": 6174,
+          "snippet": "= ALARM, 1 = OK) responsible for the intervention: responsible for maintenance\n\nAlarm No.: 1009\ntext: THERMOMAGNETIC SWITCHES IMMEDIATE STOP\ntype: Standard: Optional:\neffect:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00038",
+      "text": "Alarm No.: 1011",
+      "label": "alarm identifier",
+      "justification": "Unique identifier for the alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1548,
+          "chunk_end_char": 1563,
+          "doc_start_char": 6548,
+          "doc_end_char": 6563,
+          "snippet": "age 7 of the electrical diagram, input X2.3\n(0 = ALARM, 1 = OK)\nresponsible for\nAlarm No.: 1011\ntext: LOW WATERING LIQUID FLOW\ntype: Standard: Optional:\neffect: Alarm with shu"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00039",
+      "text": "Alarm No.: 1012",
+      "label": "alarm identifier",
+      "justification": "Unique identifier for the alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1943,
+          "chunk_end_char": 1958,
+          "doc_start_char": 6943,
+          "doc_end_char": 6958,
+          "snippet": "ctrical diagram and\nthe indication on the refrigerator display.\nresponsible for\nAlarm No.: 1012\ntext: HIGH WATERING FLUID TEMPERATURE\ntype: Standard: Optional:\neffect: Alarm w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00040",
+      "text": "Alarm No.: 1013",
+      "label": "alarm identifier",
+      "justification": "Unique identifier for the alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. intervention: Release the door release button before ordering the start of the cycle. See page 19 of the electrical diagram, entry X3.2 responsible for the intervention: "
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00041",
+      "text": "Alarm No.: 1017",
+      "label": "alarm identifier",
+      "justification": "Unique identifier for the alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4058,
+          "chunk_end_char": 4073,
+          "doc_start_char": 9058,
+          "doc_end_char": 9073,
+          "snippet": "tion: the Fanuc 160i-TB CNC service manual for more information\nresponsible for\nAlarm No.: 1017\ntext: CABINET OVERHEATING\ntype: Standard: Optional:\neffect: Alarm with immediat"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00042",
+      "text": "Alarm No.: 1018",
+      "label": "alarm identifier",
+      "justification": "Unique identifier for the alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4435,
+          "chunk_end_char": 4450,
+          "doc_start_char": 9435,
+          "doc_end_char": 9450,
+          "snippet": "page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1\n=OK)\nresponsible for\nAlarm No.: 1018\ntext: LOW PRESSURE\ntype: Standard: Optional:\neffect: Alarm with immediate and c"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00043",
+      "text": "operator",
+      "label": "role",
+      "justification": "Person responsible for performing the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 300,
+          "chunk_end_char": 308,
+          "doc_start_char": 5300,
+          "doc_end_char": 5308,
+          "snippet": "page 19 of the electrical diagram, entry X3.2 responsible for the intervention: operator\n\nAlarm n°: 1005 text: SIDE PROTECTIONS OPEN type: Standard: Optional: effect: A"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00044",
+      "text": "maintenance person",
+      "label": "role",
+      "justification": "Person responsible for performing the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 699,
+          "chunk_end_char": 717,
+          "doc_start_char": 5699,
+          "doc_end_char": 5717,
+          "snippet": "f the electrical diagram, entry X2.5 responsible for the intervention: operator/maintenance person\n\nAlarm no.: 1008 text: THERMOMAGNET SWITCHES. END OF CYCLE STOP type: Standard:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00045",
+      "text": "responsible for maintenance",
+      "label": "role",
+      "justification": "Role responsible for maintenance interventions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1130,
+          "chunk_end_char": 1157,
+          "doc_start_char": 6130,
+          "doc_end_char": 6157,
+          "snippet": "rical diagram, input X2.4 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenance\n\nAlarm No.: 1009\ntext: THERMOMAGNETIC SWITCHES IMMEDIATE STOP\ntype: Standard: O"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00046",
+      "text": "high priority",
+      "label": "attribute",
+      "justification": "Indicates the urgency level of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1369,
+          "chunk_end_char": 1382,
+          "doc_start_char": 6369,
+          "doc_end_char": 6382,
+          "snippet": "shutdown\nA thermal switch on the motors was triggered\ncause:\nauxiliaries, with high priority.\nCheck and reset circuit breakers and/or thermomagnetic switches.\nintervention:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00047",
+      "text": "low priority",
+      "label": "attribute",
+      "justification": "Indicates the urgency level of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 930,
+          "chunk_end_char": 942,
+          "doc_start_char": 5930,
+          "doc_end_char": 5942,
+          "snippet": "cycle cause: A thermal switch for the auxiliary motors has been triggered, with low priority. intervention: Check and reset the circuit breakers and/or thermomagnetic switc"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00048",
+      "text": "open",
+      "label": "state",
+      "justification": "Describes the state of side protections that triggers an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 348,
+          "chunk_end_char": 352,
+          "doc_start_char": 5348,
+          "doc_end_char": 5352,
+          "snippet": "sponsible for the intervention: operator\n\nAlarm n°: 1005 text: SIDE PROTECTIONS OPEN type: Standard: Optional: effect: Alarm with immediate and controlled stop, ope"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00049",
+      "text": "closed",
+      "label": "state",
+      "justification": "Desired state of side protections to avoid alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 582,
+          "chunk_end_char": 588,
+          "doc_start_char": 5582,
+          "doc_end_char": 5588,
+          "snippet": "he side protections are open. intervention: Check that the side protections are closed, check the locks. See page 7 of the electrical diagram, entry X2.5 responsible"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00050",
+      "text": "triggered",
+      "label": "state",
+      "justification": "Describes the activation of a thermal switch.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 914,
+          "chunk_end_char": 923,
+          "doc_start_char": 5914,
+          "doc_end_char": 5923,
+          "snippet": "the end of the cycle cause: A thermal switch for the auxiliary motors has been triggered, with low priority. intervention: Check and reset the circuit breakers and/or t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00051",
+      "text": "insufficient quantity",
+      "label": "state",
+      "justification": "Describes the coolant level condition that triggers an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1674,
+          "chunk_end_char": 1695,
+          "doc_start_char": 6674,
+          "doc_end_char": 6695,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle.\nInsufficient quantity of coolant in the water circuit:\nwise of the linear motor.\nCheck the liquid lev"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00052",
+      "text": "cannot lower the engine temperature",
+      "label": "state",
+      "justification": "Describes the refrigerator’s failure to cool the linear motor.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 2093,
+          "chunk_end_char": 2128,
+          "doc_start_char": 7093,
+          "doc_end_char": 7128,
+          "snippet": "Optional:\neffect: Alarm with shutdown at the end of the cycle.\nThe refrigerator cannot lower the engine temperature\ncause:\nlinear.\nCheck the correct operation of the refrigerator compressor.\ninte"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00053",
+      "text": "hardware problems",
+      "label": "state",
+      "justification": "Describes issues with axes and spindles that trigger an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 3870,
+          "chunk_end_char": 3887,
+          "doc_start_char": 8870,
+          "doc_end_char": 8887,
+          "snippet": "f authorizationeffect:\nhardware installation of the axes/spindles feeder\ncause: Hardware problems with axes and spindles.\nNote the power supply error code marked A2831 and consu"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00054",
+      "text": "power supply error code A2831",
+      "label": "code",
+      "justification": "Specific error code referenced in the alarm description.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. intervention: Release the door release button before ordering the start of the cycle. See page 19 of the electrical diagram, entry X3.2 responsible for the intervention: "
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00055",
+      "text": "not set correctly",
+      "label": "state",
+      "justification": "Describes incorrect settings that can cause alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4197,
+          "chunk_end_char": 4214,
+          "doc_start_char": 9197,
+          "doc_end_char": 9214,
+          "snippet": "ptional:\neffect: Alarm with immediate and controlled shutdown\nThe thermostat is not set correctly, the fan or the cause:\neditor does not work, the electrical cabinet is too hot."
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00056",
+      "text": "not sufficient",
+      "label": "state",
+      "justification": "Describes insufficient pressure or other resource levels.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4595,
+          "chunk_end_char": 4609,
+          "doc_start_char": 9595,
+          "doc_end_char": 9609,
+          "snippet": "immediate and controlled shutdown\nThe pressure of the pneumatic installation is not sufficient to\ncause: normal operation of the machine, or the pressure switch\nline is not s"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00057",
+      "text": "normal operation",
+      "label": "state",
+      "justification": "Desired state of the machine that is disrupted by an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4620,
+          "chunk_end_char": 4636,
+          "doc_start_char": 9620,
+          "doc_end_char": 9636,
+          "snippet": "shutdown\nThe pressure of the pneumatic installation is not sufficient to\ncause: normal operation of the machine, or the pressure switch\nline is not set correctly.\nCheck the lin"
+        }
+      ]
+    }
+  ]
+}

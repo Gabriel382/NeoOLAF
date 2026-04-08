@@ -1,0 +1,2418 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 52,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "CLAMP OPEN",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "Clamp open"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "clamp open"
+      ],
+      "alias_sources": {
+        "Clamp open": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "clamp open": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating that a clamp device is open, which can be observed by a sensor, may act as a cause for downstream process issues, and typically triggers an action such as closing the clamp.",
+      "ontology_hints": [
+        "Property",
+        "Observable Property",
+        "Cause",
+        "Action",
+        "Alarm Type"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Clamp open\"], \"synonyms\": [], \"lexical_variants\": [\"clamp open\"], \"definition\": \"An alarm indicating that a clamp device is open, which can be observed by a sensor, may act as a cause for downstream process issues, and typically triggers an action such as closing the clamp.\", \"ontology_hints\": [\"Property\", \"Observable Property\", \"Cause\", \"Action\", \"Alarm Type\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "CLAMP OPENING FAILURE",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that a clamp failed to open during a manufacturing process, typically detected by the machine’s alarm system and requiring intervention by maintenance personnel.",
+      "ontology_hints": [
+        "Manufacturing Facility",
+        "Operator",
+        "Property",
+        "Manufacturing Process",
+        "Temporal Entity",
+        "Alarm Type",
+        "Failure Phenomenon"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that a clamp failed to open during a manufacturing process, typically detected by the machine’s alarm system and requiring intervention by maintenance personnel.\", \"ontology_hints\": [\"Manufacturing Facility\", \"Operator\", \"Property\", \"Manufacturing Process\", \"Temporal Entity\", \"Alarm Type\", \"Failure Phenomenon\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00002",
+        "text": "CLAMP CLOSURE FAILURE",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "Clamp closure failure alarm"
+      ],
+      "synonyms": [
+        "Clamp failure",
+        "Clamp closure error",
+        "Clamp lock failure"
+      ],
+      "lexical_variants": [
+        "Clamp closure failure alarm",
+        "Clamp closure fault"
+      ],
+      "alias_sources": {
+        "Clamp closure failure alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Clamp failure": [
+          "llm"
+        ],
+        "Clamp closure error": [
+          "llm"
+        ],
+        "Clamp lock failure": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Clamp closure failure alarm": [
+          "llm"
+        ],
+        "Clamp closure fault": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating that the clamp has failed to close properly, representing a failure event that violates operational constraints and impacts the clamp feature within a manufacturing facility.",
+      "ontology_hints": [
+        "Alarm type",
+        "Failure event",
+        "Constraint violation",
+        "Feature of Interest: clamp",
+        "Manufacturing Facility",
+        "Cause",
+        "Intervention: clamp repair",
+        "Handled by: maintenance technician",
+        "References: manual page"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Clamp closure failure alarm\"], \"synonyms\": [\"Clamp failure\", \"Clamp closure error\", \"Clamp lock failure\"], \"lexical_variants\": [\"Clamp closure failure alarm\", \"Clamp closure fault\"], \"definition\": \"An alarm indicating that the clamp has failed to close properly, representing a failure event that violates operational constraints and impacts the clamp feature within a manufacturing facility.\", \"ontology_hints\": [\"Alarm type\", \"Failure event\", \"Constraint violation\", \"Feature of Interest: clamp\", \"Manufacturing Facility\", \"Cause\", \"Intervention: clamp repair\", \"Handled by: maintenance technician\", \"References: manual page\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00003",
+        "text": "CLAMP OPENING NOT ACTIVATED",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that the clamp opening mechanism has not been activated during a manufacturing process.",
+      "ontology_hints": [
+        "AlarmType",
+        "ManufacturingCell",
+        "FeatureOfInterest",
+        "TemporalEntity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that the clamp opening mechanism has not been activated during a manufacturing process.\", \"ontology_hints\": [\"AlarmType\", \"ManufacturingCell\", \"FeatureOfInterest\", \"TemporalEntity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00004",
+        "text": "CLAMP WIRING ERROR",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating a fault in the wiring of a clamp component within a manufacturing cell, typically detected by an operator or monitoring system and requiring corrective action by maintenance staff or a manager.",
+      "ontology_hints": [
+        "AlarmType",
+        "ManufacturingProcess",
+        "ClampWiringSubsystem",
+        "Operator",
+        "Manager"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating a fault in the wiring of a clamp component within a manufacturing cell, typically detected by an operator or monitoring system and requiring corrective action by maintenance staff or a manager.\", \"ontology_hints\": [\"AlarmType\", \"ManufacturingProcess\", \"ClampWiringSubsystem\", \"Operator\", \"Manager\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00005",
+        "text": "MAIN REFRIGERANT alarm",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "Main refrigerant alarm"
+      ],
+      "synonyms": [
+        "Primary refrigerant alarm"
+      ],
+      "lexical_variants": [
+        "MAIN REFRIGERANT ALARM"
+      ],
+      "alias_sources": {
+        "Main refrigerant alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Primary refrigerant alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "MAIN REFRIGERANT ALARM": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating a fault or abnormal condition in the main refrigerant system of a machine, typically triggered by a detected anomaly in refrigerant flow or pressure.",
+      "ontology_hints": [
+        "Alarm",
+        "Interval",
+        "Machine",
+        "Manufacturing Facility",
+        "Manufacturing Cell",
+        "Manager",
+        "Maintenance Technician",
+        "Refrigerant System"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Main refrigerant alarm\"], \"synonyms\": [\"Primary refrigerant alarm\"], \"lexical_variants\": [\"MAIN REFRIGERANT ALARM\"], \"definition\": \"An alarm indicating a fault or abnormal condition in the main refrigerant system of a machine, typically triggered by a detected anomaly in refrigerant flow or pressure.\", \"ontology_hints\": [\"Alarm\", \"Interval\", \"Machine\", \"Manufacturing Facility\", \"Manufacturing Cell\", \"Manager\", \"Maintenance Technician\", \"Refrigerant System\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00006",
+        "text": "AUXILIARY WATERING ALARM",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm that signals a fault or abnormal condition in the auxiliary watering system of a manufacturing facility.",
+      "ontology_hints": [
+        "alarm type",
+        "occurs_in Manufacturing Facility",
+        "triggered_during Interval",
+        "part_of Manufacturing Process",
+        "related to auxiliary watering system"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm that signals a fault or abnormal condition in the auxiliary watering system of a manufacturing facility.\", \"ontology_hints\": [\"alarm type\", \"occurs_in Manufacturing Facility\", \"triggered_during Interval\", \"part_of Manufacturing Process\", \"related to auxiliary watering system\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00007",
+        "text": "immediate and controlled stop",
+        "label": "operational state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An operational state in which a machine is halted immediately and in a controlled manner, typically as a response to an alarm.",
+      "ontology_hints": [
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "HumanProcess",
+        "FeatureOfInterest"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An operational state in which a machine is halted immediately and in a controlled manner, typically as a response to an alarm.\", \"ontology_hints\": [\"Situation S1\", \"Situation S2\", \"Situation S3\", \"HumanProcess\", \"FeatureOfInterest\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00008",
+        "text": "immediate and controlled shutdown",
+        "label": "operational state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An operational state in which a machine is shut down immediately and under controlled conditions, typically as a response to an alarm.",
+      "ontology_hints": [
+        "belongs to Situation S1 (or S2/S3) – a contextual state representing a shutdown scenario",
+        "triggered by an alarm – linked via TRIGGERS property",
+        "requires human intervention – associated with a Human Process",
+        "affects a Feature of Interest – the machine or component being shut down"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An operational state in which a machine is shut down immediately and under controlled conditions, typically as a response to an alarm.\", \"ontology_hints\": [\"belongs to Situation S1 (or S2/S3) – a contextual state representing a shutdown scenario\", \"triggered by an alarm – linked via TRIGGERS property\", \"requires human intervention – associated with a Human Process\", \"affects a Feature of Interest – the machine or component being shut down\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00009",
+        "text": "spindle clamp open",
+        "label": "component state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "The state of a spindle clamp when it is not closed or engaged, indicating that the clamp is open.",
+      "ontology_hints": [
+        "Observable Property of a Spatial Object (spindle clamp)",
+        "Time‑stamped by a Temporal Entity (Instant)",
+        "Part of a Platform that hosts sensors and actuators"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"The state of a spindle clamp when it is not closed or engaged, indicating that the clamp is open.\", \"ontology_hints\": [\"Observable Property of a Spatial Object (spindle clamp)\", \"Time‑stamped by a Temporal Entity (Instant)\", \"Part of a Platform that hosts sensors and actuators\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00010",
+        "text": "spindle rotation function with clamp open",
+        "label": "condition"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Condition where the spindle is rotating while the clamp is open, which can trigger an alarm in an industrial machine.",
+      "ontology_hints": [
+        "spindle operation",
+        "clamp status",
+        "machine state",
+        "alarm trigger condition",
+        "Production Line",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Condition where the spindle is rotating while the clamp is open, which can trigger an alarm in an industrial machine.\", \"ontology_hints\": [\"spindle operation\", \"clamp status\", \"machine state\", \"alarm trigger condition\", \"Production Line\", \"Situation S1\", \"Situation S2\", \"Situation S3\", \"Situation S4\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00011",
+        "text": "M33",
+        "label": "program function"
+      },
+      "aliases": [
+        "M33",
+        "M-33",
+        "M.33"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "M-33",
+        "M.33"
+      ],
+      "alias_sources": {
+        "M33": [
+          "wikipedia",
+          "llm"
+        ],
+        "M-33": [
+          "llm"
+        ],
+        "M.33": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "M-33": [
+          "llm"
+        ],
+        "M.33": [
+          "llm"
+        ]
+      },
+      "definition": "M33 is a program function identifier referenced in machine alarms, typically representing a control or monitoring routine within a manufacturing system.",
+      "ontology_hints": [
+        "program function",
+        "Machine",
+        "Manager",
+        "Platform",
+        "Situation S3"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "M33, M-33, or M.33 may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/M33"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"M33\", \"M-33\", \"M.33\"], \"synonyms\": [], \"lexical_variants\": [\"M-33\", \"M.33\"], \"definition\": \"M33 is a program function identifier referenced in machine alarms, typically representing a control or monitoring routine within a manufacturing system.\", \"ontology_hints\": [\"program function\", \"Machine\", \"Manager\", \"Platform\", \"Situation S3\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00012",
+        "text": "M08",
+        "label": "program function"
+      },
+      "aliases": [
+        "M8",
+        "M08"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "M-08",
+        "M.08"
+      ],
+      "alias_sources": {
+        "M8": [
+          "wikipedia"
+        ],
+        "M08": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "M-08": [
+          "llm"
+        ],
+        "M.08": [
+          "llm"
+        ]
+      },
+      "definition": "M08 is a program function identifier used in machine alarms to reference a specific machine program function.",
+      "ontology_hints": [
+        "program function",
+        "Machine",
+        "Platform",
+        "Situation S8",
+        "alarm reference",
+        "industrial maintenance"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "M8 or M-8 or M.08 or variant, may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/M8"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"M08\"], \"synonyms\": [], \"lexical_variants\": [\"M-08\", \"M.08\"], \"definition\": \"M08 is a program function identifier used in machine alarms to reference a specific machine program function.\", \"ontology_hints\": [\"program function\", \"Machine\", \"Platform\", \"Situation S8\", \"alarm reference\", \"industrial maintenance\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00013",
+        "text": "M208",
+        "label": "program function"
+      },
+      "aliases": [
+        "M-72 (Michigan highway)"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "M-72 (Michigan highway)": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "",
+      "ontology_hints": [],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "M-72 is a state trunkline highway in the US state of Michigan, running from Lake Huron to Lake Michigan across the northern part of the Lower Peninsula. The highway connects M-22 in Empire with US Highway 23 (US 23) in Harrisville. It is one of only three Michigan state trunklines that cross the Lower Peninsula, shore to shore. In between, M-72 runs across Northern Michigan woodland, agricultural areas of the Leelanau Peninsula near Traverse City, and the Au Sable River watershed. The trunkline also provides access to Camp Grayling, a National Guard training facility near the city of the same name. Traffic levels along the highway vary from approximately 800 vehicles a day on the east end to over 32,000 vehicles near Traverse City.\nM-72 was first designated as a state highway by 1919 along a segment of its current route. It was extended southward in the mid-1920s and westward in the 1940s. One section of the modern highway added to M-72 in 1940 previously existed as M-208 in the 1930s east of Grayling. Another section of highway near Empire was disconnected from the rest of M-72 until the gap was eliminated later in the decade. All of M-72 was completely paved by the early 1960s. T",
+          "reference": "https://en.wikipedia.org/wiki/M-72_(Michigan_highway)"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"\", \"ontology_hints\": []}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00014",
+        "text": "M1171",
+        "label": "pump"
+      },
+      "aliases": [
+        "M1171 pump",
+        "M1171 pump unit"
+      ],
+      "synonyms": [
+        "pump",
+        "pump unit",
+        "pump component"
+      ],
+      "lexical_variants": [
+        "pump",
+        "pump unit",
+        "pump component"
+      ],
+      "alias_sources": {
+        "M1171 pump": [
+          "llm"
+        ],
+        "M1171 pump unit": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "pump": [
+          "llm"
+        ],
+        "pump unit": [
+          "llm"
+        ],
+        "pump component": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "pump": [
+          "llm"
+        ],
+        "pump unit": [
+          "llm"
+        ],
+        "pump component": [
+          "llm"
+        ]
+      },
+      "definition": "A device that moves fluid by mechanical action, used as a component of the coolant system in the machine.",
+      "ontology_hints": [
+        "Machine",
+        "Pump",
+        "Component of Machine",
+        "Coolant flow system",
+        "Platform host"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"M1171 pump\", \"M1171 pump unit\"], \"synonyms\": [\"pump\", \"pump unit\", \"pump component\"], \"lexical_variants\": [\"pump\", \"pump unit\", \"pump component\"], \"definition\": \"A device that moves fluid by mechanical action, used as a component of the coolant system in the machine.\", \"ontology_hints\": [\"Machine\", \"Pump\", \"Component of Machine\", \"Coolant flow system\", \"Platform host\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00015",
+        "text": "M1671",
+        "label": "pump"
+      },
+      "aliases": [],
+      "synonyms": [
+        "pump"
+      ],
+      "lexical_variants": [
+        "M1671 pump"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {
+        "pump": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "M1671 pump": [
+          "llm"
+        ]
+      },
+      "definition": "M1671 is a pump component used for coolant flow in the manufacturing system.",
+      "ontology_hints": [
+        "Machine",
+        "Pump",
+        "CoolantFlow"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [\"pump\"], \"lexical_variants\": [\"M1671 pump\"], \"definition\": \"M1671 is a pump component used for coolant flow in the manufacturing system.\", \"ontology_hints\": [\"Machine\", \"Pump\", \"CoolantFlow\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00016",
+        "text": "microdetector",
+        "label": "component"
+      },
+      "aliases": [
+        "micro-sensor",
+        "micro detector"
+      ],
+      "synonyms": [
+        "detector",
+        "sensor"
+      ],
+      "lexical_variants": [
+        "micro-detector"
+      ],
+      "alias_sources": {
+        "micro-sensor": [
+          "llm"
+        ],
+        "micro detector": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "detector": [
+          "llm"
+        ],
+        "sensor": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "micro-detector": [
+          "llm"
+        ]
+      },
+      "definition": "A small-scale detector component used in industrial machinery to sense abnormal conditions and trigger alarm notifications.",
+      "ontology_hints": [
+        "Product",
+        "Component",
+        "Sensor",
+        "Alarm detection device"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"micro-sensor\", \"micro detector\"], \"synonyms\": [\"detector\", \"sensor\"], \"lexical_variants\": [\"micro-detector\"], \"definition\": \"A small-scale detector component used in industrial machinery to sense abnormal conditions and trigger alarm notifications.\", \"ontology_hints\": [\"Product\", \"Component\", \"Sensor\", \"Alarm detection device\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00017",
+        "text": "input X3.0",
+        "label": "input resource"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "input X3.0 is an input resource channel referenced in machine interventions.",
+      "ontology_hints": [
+        "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Product",
+        "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S3",
+        "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S10",
+        "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S13",
+        "http://www.w3.org/2006/time#Instant"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"input X3.0 is an input resource channel referenced in machine interventions.\", \"ontology_hints\": [\"http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Product\", \"http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S3\", \"http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S10\", \"http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S13\", \"http://www.w3.org/2006/time#Instant\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00018",
+        "text": "input X4.2",
+        "label": "input resource"
+      },
+      "aliases": [
+        "input channel X4.2",
+        "input resource X4.2"
+      ],
+      "synonyms": [
+        "input port X4.2"
+      ],
+      "lexical_variants": [
+        "X4.2 input",
+        "input X4.2 channel"
+      ],
+      "alias_sources": {
+        "input channel X4.2": [
+          "llm"
+        ],
+        "input resource X4.2": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "input port X4.2": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "X4.2 input": [
+          "llm"
+        ],
+        "input X4.2 channel": [
+          "llm"
+        ]
+      },
+      "definition": "An input resource identified as X4.2, representing a specific input channel or resource used in manufacturing interventions.",
+      "ontology_hints": [
+        "Product",
+        "Situation S2",
+        "Situation S4",
+        "Situation S12",
+        "Resource",
+        "Platform"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"input channel X4.2\", \"input resource X4.2\"], \"synonyms\": [\"input port X4.2\"], \"lexical_variants\": [\"X4.2 input\", \"input X4.2 channel\"], \"definition\": \"An input resource identified as X4.2, representing a specific input channel or resource used in manufacturing interventions.\", \"ontology_hints\": [\"Product\", \"Situation S2\", \"Situation S4\", \"Situation S12\", \"Resource\", \"Platform\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00019",
+        "text": "input X4.1",
+        "label": "input resource"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An input channel or resource identified as X4.1, referenced in machine intervention procedures within industrial maintenance documentation.",
+      "ontology_hints": [
+        "Possible class: Situation S1",
+        "Possible class: Situation S4",
+        "Possible class: Situation S10",
+        "Possible class: Product",
+        "Possible class: Instant",
+        "Category: InputResource"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An input channel or resource identified as X4.1, referenced in machine intervention procedures within industrial maintenance documentation.\", \"ontology_hints\": [\"Possible class: Situation S1\", \"Possible class: Situation S4\", \"Possible class: Situation S10\", \"Possible class: Product\", \"Possible class: Instant\", \"Category: InputResource\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00020",
+        "text": "coolant liquid",
+        "label": "resource"
+      },
+      "aliases": [
+        "Coolant",
+        "coolant"
+      ],
+      "synonyms": [
+        "heat‑transfer fluid",
+        "cutting fluid"
+      ],
+      "lexical_variants": [],
+      "alias_sources": {
+        "Coolant": [
+          "wikipedia"
+        ],
+        "coolant": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "heat‑transfer fluid": [
+          "llm"
+        ],
+        "cutting fluid": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {},
+      "definition": "A coolant is a substance, typically liquid, used to reduce or regulate the temperature of a system.",
+      "ontology_hints": [
+        "resource used in cooling systems",
+        "fluid with high thermal capacity, low viscosity, non‑toxic, chemically inert",
+        "can be a heat‑transfer fluid or cutting fluid",
+        "may remain liquid or undergo phase transition (refrigerant)"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "A coolant is a substance, typically liquid, that is used to reduce or regulate the temperature of a system. An ideal coolant has high thermal capacity, low viscosity, and low cost, is non-toxic and chemically inert, and neither causes nor promotes corrosion of the cooling system. Some applications also require the coolant to be an electrical insulator.\nWhile the term coolant is commonly used in automotive and HVAC applications, in industrial processing heat-transfer fluid is one technical term more often used in high-temperature as well as low-temperature manufacturing applications. The term also covers cutting fluids. Industrial cutting fluid has broadly been classified as water-soluble coolant and neat cutting fluid. Water-soluble coolant is oil in water emulsion. It has varying oil content from nil oil (synthetic coolant).\nThis coolant can either keep its phase, staying liquid or gaseous, or undergo a phase transition, with the latent heat adding to the cooling efficiency. The latter, when used to achieve below-ambient temperature, is more commonly known as refrigerant.\nA coolant reservoir captures overflow of coolant in a cooling system.",
+          "reference": "https://en.wikipedia.org/wiki/Coolant"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"coolant\"], \"synonyms\": [\"heat‑transfer fluid\", \"cutting fluid\"], \"lexical_variants\": [], \"definition\": \"A coolant is a substance, typically liquid, used to reduce or regulate the temperature of a system.\", \"ontology_hints\": [\"resource used in cooling systems\", \"fluid with high thermal capacity, low viscosity, non‑toxic, chemically inert\", \"can be a heat‑transfer fluid or cutting fluid\", \"may remain liquid or undergo phase transition (refrigerant)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00021",
+        "text": "cooling fluid",
+        "label": "resource"
+      },
+      "aliases": [
+        "Coolant"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "Coolant": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A coolant is a substance, typically liquid, that is used to reduce or regulate the temperature of a system, often possessing high thermal capacity, low viscosity, and chemical inertness.",
+      "ontology_hints": [
+        "resource",
+        "coolant",
+        "cooling fluid",
+        "heat transfer fluid",
+        "cutting fluid"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "A coolant is a substance, typically liquid, that is used to reduce or regulate the temperature of a system. An ideal coolant has high thermal capacity, low viscosity, and low cost, is non-toxic and chemically inert, and neither causes nor promotes corrosion of the cooling system. Some applications also require the coolant to be an electrical insulator.\nWhile the term coolant is commonly used in automotive and HVAC applications, in industrial processing heat-transfer fluid is one technical term more often used in high-temperature as well as low-temperature manufacturing applications. The term also covers cutting fluids. Industrial cutting fluid has broadly been classified as water-soluble coolant and neat cutting fluid. Water-soluble coolant is oil in water emulsion. It has varying oil content from nil oil (synthetic coolant).\nThis coolant can either keep its phase, staying liquid or gaseous, or undergo a phase transition, with the latent heat adding to the cooling efficiency. The latter, when used to achieve below-ambient temperature, is more commonly known as refrigerant.\nA coolant reservoir captures overflow of coolant in a cooling system.",
+          "reference": "https://en.wikipedia.org/wiki/Coolant"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Coolant\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A coolant is a substance, typically liquid, that is used to reduce or regulate the temperature of a system, often possessing high thermal capacity, low viscosity, and chemical inertness.\", \"ontology_hints\": [\"resource\", \"coolant\", \"cooling fluid\", \"heat transfer fluid\", \"cutting fluid\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00022",
+        "text": "hydraulic connections",
+        "label": "component"
+      },
+      "aliases": [
+        "hydraulic hose",
+        "hydraulic fitting",
+        "hydraulic pipe",
+        "fluid line"
+      ],
+      "synonyms": [
+        "hydraulic hose",
+        "hydraulic fitting",
+        "hydraulic pipe",
+        "fluid line"
+      ],
+      "lexical_variants": [
+        "hydraulic connection",
+        "hydraulic link"
+      ],
+      "alias_sources": {
+        "hydraulic hose": [
+          "llm"
+        ],
+        "hydraulic fitting": [
+          "llm"
+        ],
+        "hydraulic pipe": [
+          "llm"
+        ],
+        "fluid line": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "hydraulic hose": [
+          "llm"
+        ],
+        "hydraulic fitting": [
+          "llm"
+        ],
+        "hydraulic pipe": [
+          "llm"
+        ],
+        "fluid line": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "hydraulic connection": [
+          "llm"
+        ],
+        "hydraulic link": [
+          "llm"
+        ]
+      },
+      "definition": "A hydraulic connection is a component that links parts of a hydraulic system, enabling the transfer of pressurized fluid between components.",
+      "ontology_hints": [
+        "Component",
+        "Spatial Object",
+        "Hydraulic System Component",
+        "Fluid Transfer Device",
+        "Part of Production Line"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"hydraulic hose\", \"hydraulic fitting\", \"hydraulic pipe\", \"fluid line\"], \"synonyms\": [\"hydraulic hose\", \"hydraulic fitting\", \"hydraulic pipe\", \"fluid line\"], \"lexical_variants\": [\"hydraulic connection\", \"hydraulic link\"], \"definition\": \"A hydraulic connection is a component that links parts of a hydraulic system, enabling the transfer of pressurized fluid between components.\", \"ontology_hints\": [\"Component\", \"Spatial Object\", \"Hydraulic System Component\", \"Fluid Transfer Device\", \"Part of Production Line\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00023",
+        "text": "pump",
+        "label": "component"
+      },
+      "aliases": [
+        "pump",
+        "heart",
+        "ticker",
+        "Pump"
+      ],
+      "synonyms": [
+        "pump",
+        "heart",
+        "ticker"
+      ],
+      "lexical_variants": [
+        "pump",
+        "heart",
+        "ticker"
+      ],
+      "alias_sources": {
+        "pump": [
+          "wordnet",
+          "llm"
+        ],
+        "heart": [
+          "wordnet"
+        ],
+        "ticker": [
+          "wordnet"
+        ],
+        "Pump": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "pump": [
+          "wordnet",
+          "llm"
+        ],
+        "heart": [
+          "wordnet"
+        ],
+        "ticker": [
+          "wordnet"
+        ]
+      },
+      "lexical_variant_sources": {
+        "pump": [
+          "wordnet",
+          "llm"
+        ],
+        "heart": [
+          "wordnet"
+        ],
+        "ticker": [
+          "wordnet"
+        ]
+      },
+      "definition": "A pump is a mechanical device that moves fluids (liquids or gases), or sometimes slurries, by mechanical action, typically converted from electrical energy into hydraulic or pneumatic energy.",
+      "ontology_hints": [
+        "Part",
+        "Product",
+        "Platform",
+        "Human Process",
+        "Component"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a mechanical device that moves fluid or gas by pressure or suction",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "the hollow muscular organ located behind the sternum and between the lungs; its rhythmic contractions move the blood through the body",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a low-cut shoe without fastenings",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "operate like a pump; move up and down, like a handle or a pedal",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "deliver forth",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "A pump is a device that moves fluids (liquids or gases), or sometimes slurries, by mechanical action, typically converted from electrical energy into hydraulic or pneumatic energy.\nMechanical pumps serve in a wide range of applications such as pumping water from wells, aquarium filtering, pond filtering and aeration, in the car industry for  water-cooling and fuel injection, in the energy industry for pumping oil and natural gas or for operating cooling towers and other components of heating, ventilation and air conditioning systems.  In the medical industry, pumps are used for biochemical processes in developing and manufacturing medicine, and as artificial replacements for body parts, in particular the artificial heart and penile prosthesis.\n\nWhen a pump contains two or more pump mechanisms with fluid being directed to flow through them in series, it is called a multi-stage pump. Terms such as two-stage or double-stage may be used to specifically describe the number of stages. A pump that does not fit this description is simply a single-stage pump in contrast. In biology, many different types of chemical and biomechanical pumps have evolved; biomimicry is sometimes used in develo",
+          "reference": "https://en.wikipedia.org/wiki/Pump"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"pump\"], \"synonyms\": [\"pump\"], \"lexical_variants\": [\"pump\"], \"definition\": \"A pump is a mechanical device that moves fluids (liquids or gases), or sometimes slurries, by mechanical action, typically converted from electrical energy into hydraulic or pneumatic energy.\", \"ontology_hints\": [\"Part\", \"Product\", \"Platform\", \"Human Process\", \"Component\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00024",
+        "text": "solenoid valves",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Valves that control fluid flow.",
+      "ontology_hints": [
+        "component",
+        "valve",
+        "fluid control device"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Valves that control fluid flow.\", \"ontology_hints\": [\"component\", \"valve\", \"fluid control device\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00025",
+        "text": "flow control device",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A device that monitors and regulates the flow of fluid within a system.",
+      "ontology_hints": [
+        "Constraint: imposes limits on acceptable flow states",
+        "Logistic Process: involved in the movement or management of materials",
+        "Feature of Interest: the flow property being observed",
+        "Production Line: component within a manufacturing sequence",
+        "Human Process: operated or monitored by personnel"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A device that monitors and regulates the flow of fluid within a system.\", \"ontology_hints\": [\"Constraint: imposes limits on acceptable flow states\", \"Logistic Process: involved in the movement or management of materials\", \"Feature of Interest: the flow property being observed\", \"Production Line: component within a manufacturing sequence\", \"Human Process: operated or monitored by personnel\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00026",
+        "text": "mechanical resistance",
+        "label": "symptom"
+      },
+      "aliases": [
+        "Strength of materials"
+      ],
+      "synonyms": [
+        "strength of materials",
+        "material strength"
+      ],
+      "lexical_variants": [
+        "mechanical strength",
+        "structural strength"
+      ],
+      "alias_sources": {
+        "Strength of materials": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "strength of materials": [
+          "llm"
+        ],
+        "material strength": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "mechanical strength": [
+          "llm"
+        ],
+        "structural strength": [
+          "llm"
+        ]
+      },
+      "definition": "The ability of a material or structural element to withstand applied loads, quantified through stress–strain analysis and material properties such as yield strength, ultimate strength, Young's modulus, and Poisson's ratio, as well as geometric factors (length, width, thickness, boundary constraints, holes).",
+      "ontology_hints": [
+        "Constraint",
+        "Spatial Object",
+        "Temporal Entity",
+        "Technician",
+        "Human Process",
+        "Strength of Materials domain"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "The strength of materials is determined using various methods of calculating the stresses and strains in structural members, such as beams, columns, and shafts. The methods employed to predict the response of a structure under loading and its susceptibility to various failure modes takes into account the properties of the materials, such as yield strength, ultimate strength, Young's modulus, and Poisson's ratio. In addition, the mechanical element's macroscopic (geometric) properties, such as its length, width, thickness, boundary constraints, and abrupt changes in geometry, such as holes, are considered.\nThe theory began with the consideration of the behavior of one and two dimensional members of structures, whose states of stress can be approximated as two dimensional, and was then generalized to three dimensions to develop a more complete theory of the elastic and plastic behavior of materials. An important founding pioneer in mechanics of materials was Stephen Timoshenko.",
+          "reference": "https://en.wikipedia.org/wiki/Strength_of_materials"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Strength of materials\"], \"synonyms\": [\"strength of materials\", \"material strength\"], \"lexical_variants\": [\"mechanical strength\", \"structural strength\"], \"definition\": \"The ability of a material or structural element to withstand applied loads, quantified through stress–strain analysis and material properties such as yield strength, ultimate strength, Young's modulus, and Poisson's ratio, as well as geometric factors (length, width, thickness, boundary constraints, holes).\", \"ontology_hints\": [\"Constraint\", \"Spatial Object\", \"Temporal Entity\", \"Technician\", \"Human Process\", \"Strength of Materials domain\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00027",
+        "text": "clamp did not open within the time limit of 5 seconds",
+        "label": "failure event"
+      },
+      "aliases": [
+        "clamp failed to open within 5 seconds",
+        "clamp did not open in 5 seconds",
+        "clamp opening failure within 5‑second window"
+      ],
+      "synonyms": [
+        "clamp opening failure",
+        "clamp non‑opening",
+        "clamp stuck"
+      ],
+      "lexical_variants": [
+        "clamp did not open within 5 seconds",
+        "clamp failed to open within 5 seconds",
+        "clamp opening time exceeded 5 seconds"
+      ],
+      "alias_sources": {
+        "clamp failed to open within 5 seconds": [
+          "llm"
+        ],
+        "clamp did not open in 5 seconds": [
+          "llm"
+        ],
+        "clamp opening failure within 5‑second window": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "clamp opening failure": [
+          "llm"
+        ],
+        "clamp non‑opening": [
+          "llm"
+        ],
+        "clamp stuck": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "clamp did not open within 5 seconds": [
+          "llm"
+        ],
+        "clamp failed to open within 5 seconds": [
+          "llm"
+        ],
+        "clamp opening time exceeded 5 seconds": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which a clamp does not open within a specified 5‑second time limit during a manufacturing process.",
+      "ontology_hints": [
+        "Feature of Interest: clamp",
+        "Temporal Entity: 5‑second interval",
+        "Manufacturing Process: clamp operation",
+        "Production Line: clamp usage",
+        "Failure event: negative action",
+        "TRIGGERS: alarm",
+        "CAUSES: mechanical jam",
+        "REQUIRES: maintenance procedure",
+        "HANDLED_BY: maintenance staff",
+        "REFERENCES: manual section",
+        "DETECTED_BY: clamp position sensor"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"clamp failed to open within 5 seconds\", \"clamp did not open in 5 seconds\", \"clamp opening failure within 5‑second window\"], \"synonyms\": [\"clamp opening failure\", \"clamp non‑opening\", \"clamp stuck\"], \"lexical_variants\": [\"clamp did not open within 5 seconds\", \"clamp failed to open within 5 seconds\", \"clamp opening time exceeded 5 seconds\"], \"definition\": \"An event in which a clamp does not open within a specified 5‑second time limit during a manufacturing process.\", \"ontology_hints\": [\"Feature of Interest: clamp\", \"Temporal Entity: 5‑second interval\", \"Manufacturing Process: clamp operation\", \"Production Line: clamp usage\", \"Failure event: negative action\", \"TRIGGERS: alarm\", \"CAUSES: mechanical jam\", \"REQUIRES: maintenance procedure\", \"HANDLED_BY: maintenance staff\", \"REFERENCES: manual section\", \"DETECTED_BY: clamp position sensor\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00028",
+        "text": "clamp did not close within the time limit of 5 seconds",
+        "label": "failure event"
+      },
+      "aliases": [
+        "clamp closure failure",
+        "clamp not closing",
+        "clamp jam"
+      ],
+      "synonyms": [
+        "clamp failure",
+        "clamp malfunction"
+      ],
+      "lexical_variants": [
+        "clamp failed to close within 5 seconds",
+        "clamp did not close in time",
+        "clamp did not close within the 5‑second limit"
+      ],
+      "alias_sources": {
+        "clamp closure failure": [
+          "llm"
+        ],
+        "clamp not closing": [
+          "llm"
+        ],
+        "clamp jam": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "clamp failure": [
+          "llm"
+        ],
+        "clamp malfunction": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "clamp failed to close within 5 seconds": [
+          "llm"
+        ],
+        "clamp did not close in time": [
+          "llm"
+        ],
+        "clamp did not close within the 5‑second limit": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which a clamp, a spatial object used to secure a component, fails to close within a specified time limit of five seconds, indicating a malfunction in the clamp mechanism or its control system.",
+      "ontology_hints": [
+        "Spatial Object: clamp",
+        "Feature of Interest: clamp",
+        "Observation: clamp closure",
+        "Situation: clamp failure situation",
+        "Logistic Process: clamp operation",
+        "TRIGGERS: alarm signal",
+        "CAUSES: mechanical jam, misalignment, sensor fault",
+        "REQUIRES: maintenance intervention",
+        "HANDLED_BY: maintenance staff",
+        "REFERENCES: machine manual section 4.2",
+        "DETECTED_BY: closure sensor"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"clamp closure failure\", \"clamp not closing\", \"clamp jam\"], \"synonyms\": [\"clamp failure\", \"clamp malfunction\"], \"lexical_variants\": [\"clamp failed to close within 5 seconds\", \"clamp did not close in time\", \"clamp did not close within the 5‑second limit\"], \"definition\": \"An event in which a clamp, a spatial object used to secure a component, fails to close within a specified time limit of five seconds, indicating a malfunction in the clamp mechanism or its control system.\", \"ontology_hints\": [\"Spatial Object: clamp\", \"Feature of Interest: clamp\", \"Observation: clamp closure\", \"Situation: clamp failure situation\", \"Logistic Process: clamp operation\", \"TRIGGERS: alarm signal\", \"CAUSES: mechanical jam, misalignment, sensor fault\", \"REQUIRES: maintenance intervention\", \"HANDLED_BY: maintenance staff\", \"REFERENCES: machine manual section 4.2\", \"DETECTED_BY: closure sensor\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00029",
+        "text": "spindle stopped",
+        "label": "state"
+      },
+      "aliases": [
+        "spindle stopped"
+      ],
+      "synonyms": [
+        "spindle halted",
+        "spindle ceased operation"
+      ],
+      "lexical_variants": [
+        "spindle stopped",
+        "spindle stopped running",
+        "spindle stopped operation"
+      ],
+      "alias_sources": {
+        "spindle stopped": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "spindle halted": [
+          "llm"
+        ],
+        "spindle ceased operation": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "spindle stopped": [
+          "llm"
+        ],
+        "spindle stopped running": [
+          "llm"
+        ],
+        "spindle stopped operation": [
+          "llm"
+        ]
+      },
+      "definition": "A state in which the spindle of a machine ceases rotation or operation, often indicating a fault or shutdown condition that may trigger an alarm.",
+      "ontology_hints": [
+        "ObservableProperty of SpatialObject (spindle)",
+        "Situation S1 or S2",
+        "machine state",
+        "trigger alarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"spindle stopped\"], \"synonyms\": [\"spindle halted\", \"spindle ceased operation\"], \"lexical_variants\": [\"spindle stopped\", \"spindle stopped running\", \"spindle stopped operation\"], \"definition\": \"A state in which the spindle of a machine ceases rotation or operation, often indicating a fault or shutdown condition that may trigger an alarm.\", \"ontology_hints\": [\"ObservableProperty of SpatialObject (spindle)\", \"Situation S1 or S2\", \"machine state\", \"trigger alarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00030",
+        "text": "spindle rotation function",
+        "label": "function"
+      },
+      "aliases": [
+        "spindle rotation",
+        "spindle turning",
+        "spindle spin"
+      ],
+      "synonyms": [
+        "spindle turning",
+        "spindle spin"
+      ],
+      "lexical_variants": [
+        "spindle rotation function",
+        "spindle rotation",
+        "spindle turning function"
+      ],
+      "alias_sources": {
+        "spindle rotation": [
+          "llm"
+        ],
+        "spindle turning": [
+          "llm"
+        ],
+        "spindle spin": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "spindle turning": [
+          "llm"
+        ],
+        "spindle spin": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "spindle rotation function": [
+          "llm"
+        ],
+        "spindle rotation": [
+          "llm"
+        ],
+        "spindle turning function": [
+          "llm"
+        ]
+      },
+      "definition": "The function that controls the rotation of the spindle in a machine, enabling machining operations such as turning, milling, or drilling.",
+      "ontology_hints": [
+        "MachineFunction",
+        "SpindleOperation",
+        "RotationalMotion"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"spindle rotation\", \"spindle turning\", \"spindle spin\"], \"synonyms\": [\"spindle turning\", \"spindle spin\"], \"lexical_variants\": [\"spindle rotation function\", \"spindle rotation\", \"spindle turning function\"], \"definition\": \"The function that controls the rotation of the spindle in a machine, enabling machining operations such as turning, milling, or drilling.\", \"ontology_hints\": [\"MachineFunction\", \"SpindleOperation\", \"RotationalMotion\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00031",
+        "text": "programming function M08",
+        "label": "cause"
+      },
+      "aliases": [
+        "M08 function",
+        "function M08"
+      ],
+      "synonyms": [
+        "M08 function"
+      ],
+      "lexical_variants": [
+        "programming function M08",
+        "function M08",
+        "M08 function"
+      ],
+      "alias_sources": {
+        "M08 function": [
+          "llm"
+        ],
+        "function M08": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "M08 function": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "programming function M08": [
+          "llm"
+        ],
+        "function M08": [
+          "llm"
+        ],
+        "M08 function": [
+          "llm"
+        ]
+      },
+      "definition": "A programming function identified as M08 that can trigger an alarm in a machine's control system.",
+      "ontology_hints": [
+        "Cause of Alarm",
+        "Programming Function",
+        "Control Function",
+        "Machine Function",
+        "Trigger Event"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"M08 function\", \"function M08\"], \"synonyms\": [\"M08 function\"], \"lexical_variants\": [\"programming function M08\", \"function M08\", \"M08 function\"], \"definition\": \"A programming function identified as M08 that can trigger an alarm in a machine's control system.\", \"ontology_hints\": [\"Cause of Alarm\", \"Programming Function\", \"Control Function\", \"Machine Function\", \"Trigger Event\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00032",
+        "text": "programming function M208",
+        "label": "cause"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "M208 function",
+        "function M208"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "M208 function": [
+          "llm"
+        ],
+        "function M208": [
+          "llm"
+        ]
+      },
+      "definition": "A programming function identified as M208 that, when executed, can trigger an alarm within a manufacturing system.",
+      "ontology_hints": [
+        "Action",
+        "Trigger",
+        "Alarm",
+        "ManufacturingSystem"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"M208 function\", \"function M208\"], \"definition\": \"A programming function identified as M208 that, when executed, can trigger an alarm within a manufacturing system.\", \"ontology_hints\": [\"Action\", \"Trigger\", \"Alarm\", \"ManufacturingSystem\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00033",
+        "text": "Check any mechanical resistance",
+        "label": "intervention action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An action performed by a technician to inspect or assess the mechanical resistance of a machine component, typically as part of a maintenance or troubleshooting procedure.",
+      "ontology_hints": [
+        "Human Process",
+        "Technician",
+        "Feature of Interest",
+        "Spatial Object",
+        "Temporal Entity",
+        "intervention action"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An action performed by a technician to inspect or assess the mechanical resistance of a machine component, typically as part of a maintenance or troubleshooting procedure.\", \"ontology_hints\": [\"Human Process\", \"Technician\", \"Feature of Interest\", \"Spatial Object\", \"Temporal Entity\", \"intervention action\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00034",
+        "text": "Check the wiring or pneumatic connections",
+        "label": "intervention action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An inspection task performed to verify the integrity of electrical wiring or pneumatic connections within a manufacturing environment.",
+      "ontology_hints": [
+        "InspectionTask",
+        "ElectricalConnection",
+        "PneumaticConnection",
+        "MaintenanceAction"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An inspection task performed to verify the integrity of electrical wiring or pneumatic connections within a manufacturing environment.\", \"ontology_hints\": [\"InspectionTask\", \"ElectricalConnection\", \"PneumaticConnection\", \"MaintenanceAction\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00035",
+        "text": "Check the setting of the microdetector at input X3.0 page 15 of the electrical diagram",
+        "label": "intervention action"
+      },
+      "aliases": [
+        "Check microdetector setting",
+        "Inspect microdetector configuration"
+      ],
+      "synonyms": [
+        "Inspect the microdetector setting",
+        "Verify the microdetector configuration"
+      ],
+      "lexical_variants": [
+        "check setting",
+        "inspect setting",
+        "verify setting"
+      ],
+      "alias_sources": {
+        "Check microdetector setting": [
+          "llm"
+        ],
+        "Inspect microdetector configuration": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Inspect the microdetector setting": [
+          "llm"
+        ],
+        "Verify the microdetector configuration": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "check setting": [
+          "llm"
+        ],
+        "inspect setting": [
+          "llm"
+        ],
+        "verify setting": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention action performed by a technician to examine or confirm the configuration of a microdetector at input X3.0, as indicated on page 15 of the electrical diagram.",
+      "ontology_hints": [
+        "intervention action",
+        "maintenance activity",
+        "technician responsibility",
+        "electrical diagram reference",
+        "microdetector component"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Check microdetector setting\", \"Inspect microdetector configuration\"], \"synonyms\": [\"Inspect the microdetector setting\", \"Verify the microdetector configuration\"], \"lexical_variants\": [\"check setting\", \"inspect setting\", \"verify setting\"], \"definition\": \"An intervention action performed by a technician to examine or confirm the configuration of a microdetector at input X3.0, as indicated on page 15 of the electrical diagram.\", \"ontology_hints\": [\"intervention action\", \"maintenance activity\", \"technician responsibility\", \"electrical diagram reference\", \"microdetector component\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00036",
+        "text": "Make sure that the spindle is stopped or that function M33 is present in the program",
+        "label": "intervention action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "Ensure the spindle is stopped or that function M33 is present in the program"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "Ensure the spindle is stopped or that function M33 is present in the program": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention action that prevents an alarm by ensuring the spindle is stopped or that function M33 is present in the machine program.",
+      "ontology_hints": [
+        "intervention action",
+        "preventive action",
+        "machine control",
+        "spindle stop",
+        "function presence",
+        "alarm prevention"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"Ensure the spindle is stopped or that function M33 is present in the program\"], \"definition\": \"An intervention action that prevents an alarm by ensuring the spindle is stopped or that function M33 is present in the machine program.\", \"ontology_hints\": [\"intervention action\", \"preventive action\", \"machine control\", \"spindle stop\", \"function presence\", \"alarm prevention\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00037",
+        "text": "Check the presence of coolant liquid, hydraulic connections, pump M1171",
+        "label": "intervention action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An intervention action to verify the presence and integrity of coolant liquid, hydraulic connections, and pump M1171.",
+      "ontology_hints": [
+        "requires action",
+        "handled_by",
+        "references",
+        "maintenance activity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An intervention action to verify the presence and integrity of coolant liquid, hydraulic connections, and pump M1171.\", \"ontology_hints\": [\"requires action\", \"handled_by\", \"references\", \"maintenance activity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00038",
+        "text": "Check the presence of coolant fluid, the hydraulic connections, the coolant fluid passage solenoid valves, the pump M1671",
+        "label": "intervention action"
+      },
+      "aliases": [
+        "Check the presence of coolant fluid, the hydraulic connections, the coolant fluid passage solenoid valves, the pump M1671"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "Check presence of coolant fluid, hydraulic connections, solenoid valves, pump M1671",
+        "Check coolant fluid presence, hydraulic connections, solenoid valves, pump M1671"
+      ],
+      "alias_sources": {
+        "Check the presence of coolant fluid, the hydraulic connections, the coolant fluid passage solenoid valves, the pump M1671": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "Check presence of coolant fluid, hydraulic connections, solenoid valves, pump M1671": [
+          "llm"
+        ],
+        "Check coolant fluid presence, hydraulic connections, solenoid valves, pump M1671": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention action that involves inspecting the presence of coolant fluid, hydraulic connections, coolant fluid passage solenoid valves, and pump M1671 as part of routine maintenance.",
+      "ontology_hints": [
+        "intervention action",
+        "maintenance check",
+        "inspection"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Check the presence of coolant fluid, the hydraulic connections, the coolant fluid passage solenoid valves, the pump M1671\"], \"synonyms\": [], \"lexical_variants\": [\"Check presence of coolant fluid, hydraulic connections, solenoid valves, pump M1671\", \"Check coolant fluid presence, hydraulic connections, solenoid valves, pump M1671\"], \"definition\": \"An intervention action that involves inspecting the presence of coolant fluid, hydraulic connections, coolant fluid passage solenoid valves, and pump M1671 as part of routine maintenance.\", \"ontology_hints\": [\"intervention action\", \"maintenance check\", \"inspection\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00039",
+        "text": "responsible for maintenance",
+        "label": "role"
+      },
+      "aliases": [
+        "maintenance role",
+        "maintenance responsibility"
+      ],
+      "synonyms": [
+        "maintenance supervisor",
+        "maintenance engineer",
+        "maintenance technician",
+        "maintenance manager",
+        "maintenance officer"
+      ],
+      "lexical_variants": [
+        "responsible for maintenance",
+        "responsible for upkeep",
+        "responsible for servicing",
+        "responsible for repair"
+      ],
+      "alias_sources": {
+        "maintenance role": [
+          "llm"
+        ],
+        "maintenance responsibility": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "maintenance supervisor": [
+          "llm"
+        ],
+        "maintenance engineer": [
+          "llm"
+        ],
+        "maintenance technician": [
+          "llm"
+        ],
+        "maintenance manager": [
+          "llm"
+        ],
+        "maintenance officer": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for maintenance": [
+          "llm"
+        ],
+        "responsible for upkeep": [
+          "llm"
+        ],
+        "responsible for servicing": [
+          "llm"
+        ],
+        "responsible for repair": [
+          "llm"
+        ]
+      },
+      "definition": "A role that is accountable for performing or overseeing maintenance activities on equipment, machinery, or systems to ensure proper operation and compliance with constraints.",
+      "ontology_hints": [
+        "Resource",
+        "Platform",
+        "Feature of Interest",
+        "Observable Property",
+        "Constraint",
+        "has feature of interest",
+        "associated constraint"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"maintenance role\", \"maintenance responsibility\"], \"synonyms\": [\"maintenance supervisor\", \"maintenance engineer\", \"maintenance technician\", \"maintenance manager\", \"maintenance officer\"], \"lexical_variants\": [\"responsible for maintenance\", \"responsible for upkeep\", \"responsible for servicing\", \"responsible for repair\"], \"definition\": \"A role that is accountable for performing or overseeing maintenance activities on equipment, machinery, or systems to ensure proper operation and compliance with constraints.\", \"ontology_hints\": [\"Resource\", \"Platform\", \"Feature of Interest\", \"Observable Property\", \"Constraint\", \"has feature of interest\", \"associated constraint\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00040",
+        "text": "operator/programmer",
+        "label": "role"
+      },
+      "aliases": [
+        "operator",
+        "programmer",
+        "operator-programmer",
+        "operator / programmer"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "operator-programmer",
+        "operator / programmer"
+      ],
+      "alias_sources": {
+        "operator": [
+          "llm"
+        ],
+        "programmer": [
+          "llm"
+        ],
+        "operator-programmer": [
+          "llm"
+        ],
+        "operator / programmer": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "operator-programmer": [
+          "llm"
+        ],
+        "operator / programmer": [
+          "llm"
+        ]
+      },
+      "definition": "A staff member responsible for operating machines or performing production tasks, and who may also program or configure equipment.",
+      "ontology_hints": [
+        "Class: Operator (http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Operator)",
+        "Subclass of Staff",
+        "Related properties: operates, performs process",
+        "Associated with Platform, Observation, Feature, Property"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"operator\", \"programmer\", \"operator-programmer\", \"operator / programmer\"], \"synonyms\": [], \"lexical_variants\": [\"operator-programmer\", \"operator / programmer\"], \"definition\": \"A staff member responsible for operating machines or performing production tasks, and who may also program or configure equipment.\", \"ontology_hints\": [\"Class: Operator (http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Operator)\", \"Subclass of Staff\", \"Related properties: operates, performs process\", \"Associated with Platform, Observation, Feature, Property\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00041",
+        "text": "toolmaker-adjuster",
+        "label": "role"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A person responsible for adjusting tools and supervising manufacturing operations, typically involved in interventions to maintain or correct machine performance.",
+      "ontology_hints": [
+        "role",
+        "Manager",
+        "supervises",
+        "tool adjustment",
+        "intervention"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A person responsible for adjusting tools and supervising manufacturing operations, typically involved in interventions to maintain or correct machine performance.\", \"ontology_hints\": [\"role\", \"Manager\", \"supervises\", \"tool adjustment\", \"intervention\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00042",
+        "text": "cause:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "cause"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "cause:",
+        "cause"
+      ],
+      "alias_sources": {
+        "cause": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "cause:": [
+          "llm"
+        ],
+        "cause": [
+          "llm"
+        ]
+      },
+      "definition": "A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system.",
+      "ontology_hints": [
+        "Cause",
+        "has cause"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"cause\"], \"synonyms\": [], \"lexical_variants\": [\"cause:\", \"cause\"], \"definition\": \"A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system.\", \"ontology_hints\": [\"Cause\", \"has cause\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00043",
+        "text": "intervention:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An event or action taken to address or resolve an alarm or failure in a machine.",
+      "ontology_hints": [
+        "Observation",
+        "Interval",
+        "Situation",
+        "Instant",
+        "Temporal Entity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An event or action taken to address or resolve an alarm or failure in a machine.\", \"ontology_hints\": [\"Observation\", \"Interval\", \"Situation\", \"Instant\", \"Temporal Entity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00044",
+        "text": "responsible for",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Relates an entity to the role or responsibility for a task or outcome.",
+      "ontology_hints": [
+        "used to link a resource or platform to a responsible role",
+        "expresses accountability in manufacturing contexts",
+        "property used in event modeling to associate an alarm with the responsible role"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Relates an entity to the role or responsibility for a task or outcome.\", \"ontology_hints\": [\"used to link a resource or platform to a responsible role\", \"expresses accountability in manufacturing contexts\", \"property used in event modeling to associate an alarm with the responsible role\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00045",
+        "text": "when the opening command was given",
+        "label": "temporal relation"
+      },
+      "aliases": [
+        "opening command issuance time",
+        "time of opening command"
+      ],
+      "synonyms": [
+        "when the opening command was issued",
+        "at the time the opening command was given"
+      ],
+      "lexical_variants": [
+        "opening command",
+        "open command",
+        "command to open"
+      ],
+      "alias_sources": {
+        "opening command issuance time": [
+          "llm"
+        ],
+        "time of opening command": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "when the opening command was issued": [
+          "llm"
+        ],
+        "at the time the opening command was given": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "opening command": [
+          "llm"
+        ],
+        "open command": [
+          "llm"
+        ],
+        "command to open": [
+          "llm"
+        ]
+      },
+      "definition": "The point in time at which the operator or system issues the command to open a component or system.",
+      "ontology_hints": [
+        "temporal relation",
+        "command issuance event",
+        "trigger event"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"opening command issuance time\", \"time of opening command\"], \"synonyms\": [\"when the opening command was issued\", \"at the time the opening command was given\"], \"lexical_variants\": [\"opening command\", \"open command\", \"command to open\"], \"definition\": \"The point in time at which the operator or system issues the command to open a component or system.\", \"ontology_hints\": [\"temporal relation\", \"command issuance event\", \"trigger event\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00046",
+        "text": "when the opening command was ordered",
+        "label": "temporal relation"
+      },
+      "aliases": [
+        "opening command issuance time",
+        "time of opening command issuance"
+      ],
+      "synonyms": [
+        "when the opening command was issued",
+        "time of the opening command",
+        "timestamp of opening command issuance"
+      ],
+      "lexical_variants": [
+        "at the time the opening command was ordered",
+        "when the opening command was ordered",
+        "when the opening command was issued"
+      ],
+      "alias_sources": {
+        "opening command issuance time": [
+          "llm"
+        ],
+        "time of opening command issuance": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "when the opening command was issued": [
+          "llm"
+        ],
+        "time of the opening command": [
+          "llm"
+        ],
+        "timestamp of opening command issuance": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "at the time the opening command was ordered": [
+          "llm"
+        ],
+        "when the opening command was ordered": [
+          "llm"
+        ],
+        "when the opening command was issued": [
+          "llm"
+        ]
+      },
+      "definition": "The specific point in time at which an opening command was issued to a machine or system, marking the initiation of an opening action.",
+      "ontology_hints": [
+        "temporal relation",
+        "command issuance event",
+        "event occurrence time"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"opening command issuance time\", \"time of opening command issuance\"], \"synonyms\": [\"when the opening command was issued\", \"time of the opening command\", \"timestamp of opening command issuance\"], \"lexical_variants\": [\"at the time the opening command was ordered\", \"when the opening command was ordered\", \"when the opening command was issued\"], \"definition\": \"The specific point in time at which an opening command was issued to a machine or system, marking the initiation of an opening action.\", \"ontology_hints\": [\"temporal relation\", \"command issuance event\", \"event occurrence time\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00047",
+        "text": "the microdetector signaled the closure of the clamp",
+        "label": "relation"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A microdetector indicates that a clamp has closed, representing a closure event within a manufacturing cell.",
+      "ontology_hints": [
+        "microdetector is a FeatureOfInterest",
+        "closure event is a TemporalEntity",
+        "clamp is a component within a ManufacturingCell",
+        "the relation expresses a detection event in a logistic process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A microdetector indicates that a clamp has closed, representing a closure event within a manufacturing cell.\", \"ontology_hints\": [\"microdetector is a FeatureOfInterest\", \"closure event is a TemporalEntity\", \"clamp is a component within a ManufacturingCell\", \"the relation expresses a detection event in a logistic process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00048",
+        "text": "the microdetector signaled the opening of the clamp",
+        "label": "relation"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A sensor event in which a microdetector reports that a clamp has transitioned to an open state.",
+      "ontology_hints": [
+        "sensor-to-device interaction",
+        "temporal event",
+        "clamp component",
+        "microdetector sensor",
+        "manufacturing facility context",
+        "manufacturing process",
+        "manufacturing cell",
+        "production line"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A sensor event in which a microdetector reports that a clamp has transitioned to an open state.\", \"ontology_hints\": [\"sensor-to-device interaction\", \"temporal event\", \"clamp component\", \"microdetector sensor\", \"manufacturing facility context\", \"manufacturing process\", \"manufacturing cell\", \"production line\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00049",
+        "text": "the flow control device does not signal the presence of coolant liquid",
+        "label": "relation"
+      },
+      "aliases": [
+        "coolant detection failure",
+        "coolant flow sensor failure"
+      ],
+      "synonyms": [
+        "coolant presence not detected",
+        "flow control device fails to signal coolant presence"
+      ],
+      "lexical_variants": [
+        "flow control device does not detect coolant",
+        "flow control device fails to indicate coolant presence"
+      ],
+      "alias_sources": {
+        "coolant detection failure": [
+          "llm"
+        ],
+        "coolant flow sensor failure": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "coolant presence not detected": [
+          "llm"
+        ],
+        "flow control device fails to signal coolant presence": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "flow control device does not detect coolant": [
+          "llm"
+        ],
+        "flow control device fails to indicate coolant presence": [
+          "llm"
+        ]
+      },
+      "definition": "A failure condition in which the flow control device does not signal the presence of coolant liquid, thereby violating the expected constraint that coolant presence should be detected.",
+      "ontology_hints": [
+        "Feature of Interest: coolant liquid",
+        "Constraint: device must signal coolant presence",
+        "Technician: responsible for maintaining the flow control device",
+        "Alarm: coolant detection alarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"coolant detection failure\", \"coolant flow sensor failure\"], \"synonyms\": [\"coolant presence not detected\", \"flow control device fails to signal coolant presence\"], \"lexical_variants\": [\"flow control device does not detect coolant\", \"flow control device fails to indicate coolant presence\"], \"definition\": \"A failure condition in which the flow control device does not signal the presence of coolant liquid, thereby violating the expected constraint that coolant presence should be detected.\", \"ontology_hints\": [\"Feature of Interest: coolant liquid\", \"Constraint: device must signal coolant presence\", \"Technician: responsible for maintaining the flow control device\", \"Alarm: coolant detection alarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00050",
+        "text": "consequence of programming function M08",
+        "label": "causal relation"
+      },
+      "aliases": [
+        "consequence of M08",
+        "outcome of M08",
+        "effect of M08"
+      ],
+      "synonyms": [
+        "result of programming function M08",
+        "effect of programming function M08",
+        "outcome of programming function M08"
+      ],
+      "lexical_variants": [
+        "consequence of function M08",
+        "consequence of M08 function",
+        "consequence of M08 programming"
+      ],
+      "alias_sources": {
+        "consequence of M08": [
+          "llm"
+        ],
+        "outcome of M08": [
+          "llm"
+        ],
+        "effect of M08": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "result of programming function M08": [
+          "llm"
+        ],
+        "effect of programming function M08": [
+          "llm"
+        ],
+        "outcome of programming function M08": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "consequence of function M08": [
+          "llm"
+        ],
+        "consequence of M08 function": [
+          "llm"
+        ],
+        "consequence of M08 programming": [
+          "llm"
+        ]
+      },
+      "definition": "The effect or outcome that follows from executing programming function M08 within a production line, typically manifesting as a constraint that triggers an observation and leads to a specific situation such as S8 or S10.",
+      "ontology_hints": [
+        "causes",
+        "triggers",
+        "results in",
+        "leads to",
+        "produces",
+        "constraint",
+        "observation",
+        "situation S8",
+        "situation S10",
+        "production line"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"consequence of M08\", \"outcome of M08\", \"effect of M08\"], \"synonyms\": [\"result of programming function M08\", \"effect of programming function M08\", \"outcome of programming function M08\"], \"lexical_variants\": [\"consequence of function M08\", \"consequence of M08 function\", \"consequence of M08 programming\"], \"definition\": \"The effect or outcome that follows from executing programming function M08 within a production line, typically manifesting as a constraint that triggers an observation and leads to a specific situation such as S8 or S10.\", \"ontology_hints\": [\"causes\", \"triggers\", \"results in\", \"leads to\", \"produces\", \"constraint\", \"observation\", \"situation S8\", \"situation S10\", \"production line\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00051",
+        "text": "consequence of programming function M208",
+        "label": "causal relation"
+      },
+      "aliases": [
+        "M208 consequence",
+        "consequence of M208 function",
+        "effect of M208 function"
+      ],
+      "synonyms": [
+        "result of function M208",
+        "outcome of function M208",
+        "effect of function M208",
+        "impact of function M208"
+      ],
+      "lexical_variants": [
+        "consequence of M208",
+        "consequence of M208 function",
+        "consequence of programming function M208"
+      ],
+      "alias_sources": {
+        "M208 consequence": [
+          "llm"
+        ],
+        "consequence of M208 function": [
+          "llm"
+        ],
+        "effect of M208 function": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "result of function M208": [
+          "llm"
+        ],
+        "outcome of function M208": [
+          "llm"
+        ],
+        "effect of function M208": [
+          "llm"
+        ],
+        "impact of function M208": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "consequence of M208": [
+          "llm"
+        ],
+        "consequence of M208 function": [
+          "llm"
+        ],
+        "consequence of programming function M208": [
+          "llm"
+        ]
+      },
+      "definition": "The outcome or effect that occurs as a result of executing the programming function M208 within a machine’s control system.",
+      "ontology_hints": [
+        "causal relation",
+        "consequence",
+        "result",
+        "effect",
+        "function outcome",
+        "alarm cause"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"M208 consequence\", \"consequence of M208 function\", \"effect of M208 function\"], \"synonyms\": [\"result of function M208\", \"outcome of function M208\", \"effect of function M208\", \"impact of function M208\"], \"lexical_variants\": [\"consequence of M208\", \"consequence of M208 function\", \"consequence of programming function M208\"], \"definition\": \"The outcome or effect that occurs as a result of executing the programming function M208 within a machine’s control system.\", \"ontology_hints\": [\"causal relation\", \"consequence\", \"result\", \"effect\", \"function outcome\", \"alarm cause\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 3,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00017",
+      "relation_label": "Remove material from chip evacuation area.",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "chip conveyor overload alarm",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_r_00017",
+      "target_candidate_label": "Remove material from chip evacuation area.",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk text for message no. 2022 states that the chip conveyor overload alarm is caused by excessive machining residue and that the required intervention is to remove material from the chip evacuation area.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 2696,
+          "chunk_end_char": 2738,
+          "doc_start_char": 47696,
+          "doc_end_char": 47738,
+          "snippet": "Excessive machining residue prevents the operation of the\ncause:\nchip conveyor.\nRemove material from chip evacuation area.\nintervention:\nEntry X4.4 page 13 of the electrical diagram.\nresponsible for\nope"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00022",
+      "relation_label": "Entry X4.4 page 13 of the electrical diagram.",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "chip conveyor overload alarm",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_r_00022",
+      "target_candidate_label": "Entry X4.4 page 13 of the electrical diagram.",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk text shows that the intervention for the chip conveyor overload alarm includes the reference \"Entry X4.4 page 13 of the electrical diagram\", indicating a REFERENCES relation between the event and the diagram entry.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 2753,
+          "chunk_end_char": 2798,
+          "doc_start_char": 47753,
+          "doc_end_char": 47798,
+          "snippet": "cause:\nchip conveyor.\nRemove material from chip evacuation area.\nintervention:\nEntry X4.4 page 13 of the electrical diagram.\nresponsible for\noperator\nmessage no: 2023\ntext: CHIP CONVEYOR BLOCKED\ntype: Sta"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00026",
+      "relation_label": "intervention:",
+      "source_candidate_id": "cand_s_00000",
+      "source_candidate_label": "LOW LUBRICATION OIL LEVEL",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00003",
+      "target_candidate_label": "Add oil",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk contains a message for LOW LUBRICATION OIL LEVEL that lists \"intervention: Add oil\", linking the event to the action.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 40,
+          "chunk_end_char": 53,
+          "doc_start_char": 45040,
+          "doc_end_char": 45053,
+          "snippet": "e to restart the cycle. responsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype:"
+        }
+      ]
+    }
+  ]
+}
