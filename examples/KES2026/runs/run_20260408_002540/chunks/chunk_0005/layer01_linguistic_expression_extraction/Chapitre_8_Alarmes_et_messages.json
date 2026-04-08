@@ -1,0 +1,182 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 11,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "RESET PRG",
+      "label": "action",
+      "justification": "Command to reset the program, representing an event that can be triggered.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 25,
+          "chunk_end_char": 34,
+          "doc_start_char": 1025,
+          "doc_end_char": 1034,
+          "snippet": "recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginnin"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "rewound",
+      "label": "state",
+      "justification": "Describes the program being returned to its initial state.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 58,
+          "chunk_end_char": 65,
+          "doc_start_char": 1058,
+          "doc_end_char": 1065,
+          "snippet": "recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not per"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "restarted at the beginning",
+      "label": "action",
+      "justification": "Indicates the program can be started again from the start.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 89,
+          "chunk_end_char": 115,
+          "doc_start_char": 1089,
+          "doc_end_char": 1115,
+          "snippet": "d with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "only if",
+      "label": "conditional relation",
+      "justification": "Expresses a conditional requirement for restarting the program.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 116,
+          "chunk_end_char": 123,
+          "doc_start_char": 1116,
+          "doc_end_char": 1123,
+          "snippet": "thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Sta"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "causes do not persist",
+      "label": "state",
+      "justification": "States that the underlying causes must not remain for the restart to be possible.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 128,
+          "chunk_end_char": 149,
+          "doc_start_char": 1128,
+          "doc_end_char": 1149,
+          "snippet": "rogram is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Sta"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "recognized with",
+      "label": "relation-bearing expression",
+      "justification": "Links the recognition of an event to the key \"RESET PRG\".",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 0,
+          "chunk_end_char": 15,
+          "doc_start_char": 1000,
+          "doc_end_char": 1015,
+          "snippet": "recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restar"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "program",
+      "label": "component",
+      "justification": "Refers to the software or control program of the machine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 47,
+          "chunk_end_char": 54,
+          "doc_start_char": 1047,
+          "doc_end_char": 1054,
+          "snippet": "recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "causes",
+      "label": "failure phenomenon",
+      "justification": "Represents the underlying issues that may trigger the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 128,
+          "chunk_end_char": 134,
+          "doc_start_char": 1128,
+          "doc_end_char": 1134,
+          "snippet": "rogram is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Sta"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "Alarm 1001",
+      "label": "alarm instance",
+      "justification": "Unique identifier for the specific alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Sta"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "ACTIVE EMERGENCY",
+      "label": "alarm state",
+      "justification": "Describes the current status of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 174,
+          "chunk_end_char": 190,
+          "doc_start_char": 1174,
+          "doc_end_char": 1190,
+          "snippet": "rted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Sta"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "Sta",
+      "label": "alarm type",
+      "justification": "Classification of the alarm as a status type.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 91,
+          "chunk_end_char": 94,
+          "doc_start_char": 1091,
+          "doc_end_char": 1094,
+          "snippet": "with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext:"
+        }
+      ]
+    }
+  ]
+}

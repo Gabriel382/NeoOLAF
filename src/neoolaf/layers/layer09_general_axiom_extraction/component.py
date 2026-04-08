@@ -60,6 +60,46 @@ class GeneralAxiomExtractionLayer(BaseLayer):
         self.max_description_inputs = max_description_inputs
         self.temperature = temperature
 
+    def _call_model_with_retries(
+        self,
+        state,
+        messages,
+        max_attempts: int = 5,
+        retry_wait_seconds: float = 3.0,
+    ):
+        import time
+
+        last_error = None
+
+        for attempt in range(1, max_attempts + 1):
+            try:
+                raw = self.ollama_backend.chat(
+                    model=state.llm_model,
+                    messages=messages,
+                    temperature=self.temperature,
+                )
+
+                if raw is None or not isinstance(raw, str) or not raw.strip():
+                    raise RuntimeError(
+                        f"{self.name}: backend returned empty response on attempt {attempt}/{max_attempts}"
+                    )
+
+                parsed = self.ollama_backend.extract_json(raw)
+                return parsed
+
+            except Exception as exc:
+                last_error = exc
+
+                if self.verbose:
+                    print(f"[NeoOLAF] {self.name} retry {attempt}/{max_attempts} failed: {exc}")
+
+                if attempt < max_attempts:
+                    time.sleep(retry_wait_seconds)
+
+        raise RuntimeError(
+            f"{self.name}: failed after {max_attempts} attempts. Last error: {last_error}"
+        )
+        
     def _normalize_llm_json_dict(self, parsed: Any) -> dict | None:
         """
         Normalize LLM JSON outputs so downstream code always receives a dict.
@@ -130,12 +170,12 @@ class GeneralAxiomExtractionLayer(BaseLayer):
                 {"role": "user", "content": build_axiom_user_prompt(payload)},
             ]
 
-            raw = self.ollama_backend.chat(
-                model=state.llm_model,
+            parsed = self._call_model_with_retries(
+                state=state,
                 messages=messages,
-                temperature=self.temperature,
+                max_attempts=5,
+                retry_wait_seconds=3.0,
             )
-            parsed = self.ollama_backend.extract_json(raw)
 
             # Normalize parsed output so this layer always works with a dictionary.
             parsed = self._normalize_llm_json_dict(parsed)

@@ -1,0 +1,511 @@
+{
+  "layer": "layer07_hierarchisation",
+  "num_concept_hierarchy_links": 18,
+  "num_relation_hierarchy_links": 8,
+  "concept_hierarchy_links": [
+    {
+      "link_id": "concept_h_00000",
+      "child_concept_id": "concept_00001",
+      "child_label": "ThermalCutoffDevice",
+      "parent_concept_id": "concept_00002",
+      "parent_label": "CircuitBreakerComponent",
+      "justification": "A ThermalCutoffDevice is a specific kind of electrical safety device that interrupts current based on temperature, which is a specialized form of the broader CircuitBreakerComponent that interrupts current based on overcurrent. Therefore, ThermalCutoffDevice can be considered a subclass of CircuitBreakerComponent.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 865,
+          "chunk_end_char": 879,
+          "doc_start_char": 5865,
+          "doc_end_char": 5879,
+          "snippet": "e: Standard: Optional: effect: Alarm with stop at the end of the cycle cause: A thermal switch for the auxiliary motors has been triggered, with low priority. intervention: C"
+        },
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4183,
+          "chunk_end_char": 4193,
+          "doc_start_char": 9183,
+          "doc_end_char": 9193,
+          "snippet": "e: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe thermostat is not set correctly, the fan or the cause:\neditor does not work, the electrica"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00001",
+      "child_concept_id": "concept_00002",
+      "child_label": "CircuitBreakerComponent",
+      "parent_concept_id": "concept_00007",
+      "parent_label": "FanMachine",
+      "justification": "A CircuitBreakerComponent is a functional part of a FanMachine, making it a more specific kind of component that is contained within the machine. This aligns with the manufacturing ontology where components are sub‑entities of machines.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 978,
+          "chunk_end_char": 994,
+          "doc_start_char": 5978,
+          "doc_end_char": 5994,
+          "snippet": "motors has been triggered, with low priority. intervention: Check and reset the circuit breakers and/or thermomagnetic switches. See page 7 of the electrical diagram, input X2."
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00002",
+      "child_concept_id": "concept_00003",
+      "child_label": "ThermomagneticSwitchComponent",
+      "parent_concept_id": "concept_00001",
+      "parent_label": "ThermalCutoffDevice",
+      "justification": "A ThermomagneticSwitchComponent is a specific type of device that uses thermal activation to interrupt current, which matches the definition of a ThermalCutoffDevice. Therefore, it is a more specific subclass of ThermalCutoffDevice.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1002,
+          "chunk_end_char": 1025,
+          "doc_start_char": 6002,
+          "doc_end_char": 6025,
+          "snippet": "d, with low priority. intervention: Check and reset the circuit breakers and/or thermomagnetic switches. See page 7 of the electrical diagram, input X2.4 (0 = ALARM, 1 = OK) responsib"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00003",
+      "child_concept_id": "concept_00003",
+      "child_label": "ThermomagneticSwitchComponent",
+      "parent_concept_id": "concept_00002",
+      "parent_label": "CircuitBreakerComponent",
+      "justification": "A ThermomagneticSwitchComponent is a specific type of circuit breaker that uses a thermally activated magnetic mechanism to interrupt current. Therefore it is a more specific subclass of CircuitBreakerComponent.",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1002,
+          "chunk_end_char": 1025,
+          "doc_start_char": 6002,
+          "doc_end_char": 6025,
+          "snippet": "d, with low priority. intervention: Check and reset the circuit breakers and/or thermomagnetic switches. See page 7 of the electrical diagram, input X2.4 (0 = ALARM, 1 = OK) responsib"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00004",
+      "child_concept_id": "concept_00005",
+      "child_label": "CoolantResource",
+      "parent_concept_id": "concept_00011",
+      "parent_label": "FeedResource",
+      "justification": "CoolantResource is a specific type of material supplied to a machine for cooling purposes, which falls under the broader category of FeedResource that encompasses any material or substance provided to a machine or animal to sustain operation. Therefore, CoolantResource is a more specific subclass of FeedResource.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1699,
+          "chunk_end_char": 1706,
+          "doc_start_char": 6699,
+          "doc_end_char": 6706,
+          "snippet": ":\neffect: Alarm with shutdown at the end of the cycle.\nInsufficient quantity of coolant in the water circuit:\nwise of the linear motor.\nCheck the liquid level in the w"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00005",
+      "child_concept_id": "concept_00006",
+      "child_label": "Compressor",
+      "parent_concept_id": "concept_00007",
+      "parent_label": "FanMachine",
+      "justification": "A compressor is a specialized device that compresses gases, which is a specific type of fan machine that creates airflow for cooling or other purposes. Thus, Compressor is a more specific kind of FanMachine.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 2192,
+          "chunk_end_char": 2202,
+          "doc_start_char": 7192,
+          "doc_end_char": 7202,
+          "snippet": "gine temperature\ncause:\nlinear.\nCheck the correct operation of the refrigerator compressor.\nintervention: Check the PLC X4.7 input on page 84 of the electrical diagram an"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00006",
+      "child_concept_id": "concept_00013",
+      "child_label": "ProgramRewindEvent",
+      "parent_concept_id": "concept_00016",
+      "parent_label": "TriggeredEvent",
+      "justification": "A ProgramRewindEvent is an event that is initiated (triggered) by a reset command or control signal, making it a specific instance of a TriggeredEvent. The parent class captures the general notion of an event that is activated by some trigger, while the child refines this to the particular case of reversing a machine program.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1047,
+          "chunk_end_char": 1065,
+          "doc_start_char": 1047,
+          "doc_end_char": 1065,
+          "snippet": "text: of the alarm which can be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not per"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00007",
+      "child_concept_id": "concept_00014",
+      "child_label": "ActiveEmergencyEvent",
+      "parent_concept_id": "concept_00016",
+      "parent_label": "TriggeredEvent",
+      "justification": "An ActiveEmergencyEvent is a specific type of event that is triggered by an emergency alarm, making it a more specific instance of a TriggeredEvent, which is a generic event that occurs when a component, system, or personnel action is initiated by an alarm or control signal.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1174,
+          "chunk_end_char": 1190,
+          "doc_start_char": 1174,
+          "doc_end_char": 1190,
+          "snippet": "rted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00008",
+      "child_concept_id": "concept_00015",
+      "child_label": "OpenSideGuardAlarmEvent",
+      "parent_concept_id": "concept_00000",
+      "parent_label": "InformationalAlarmEvent",
+      "justification": "OpenSideGuardAlarmEvent is a specific type of alarm that notifies operators about a safety condition (open side guards) without necessarily changing the machine’s operational status, which aligns with the definition of an InformationalAlarmEvent. Therefore, it can be considered a more specific subclass of InformationalAlarmEvent.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4172,
+          "chunk_end_char": 4188,
+          "doc_start_char": 4172,
+          "doc_end_char": 4188,
+          "snippet": "e electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00009",
+      "child_concept_id": "concept_00015",
+      "child_label": "OpenSideGuardAlarmEvent",
+      "parent_concept_id": "concept_00014",
+      "parent_label": "ActiveEmergencyEvent",
+      "justification": "OpenSideGuardAlarmEvent is a specific alarm that signals a safety hazard (open side guards), which is a particular type of emergency condition. Therefore it can be considered a more specific subclass of ActiveEmergencyEvent.",
+      "confidence": 0.82,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4172,
+          "chunk_end_char": 4188,
+          "doc_start_char": 4172,
+          "doc_end_char": 4188,
+          "snippet": "e electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00010",
+      "child_concept_id": "concept_00015",
+      "child_label": "OpenSideGuardAlarmEvent",
+      "parent_concept_id": "concept_00016",
+      "parent_label": "TriggeredEvent",
+      "justification": "An OpenSideGuardAlarmEvent is a specific type of alarm that is activated (triggered) when side guards are open, so it is a more specific instance of a TriggeredEvent.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4172,
+          "chunk_end_char": 4188,
+          "doc_start_char": 4172,
+          "doc_end_char": 4188,
+          "snippet": "e electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00011",
+      "child_concept_id": "concept_00018",
+      "child_label": "PneumaticReleaseEvent",
+      "parent_concept_id": "concept_00016",
+      "parent_label": "TriggeredEvent",
+      "justification": "A PneumaticReleaseEvent is a specific type of event that is initiated (triggered) by a control signal or alarm to release pressure in a pneumatic system. Therefore it is a more specific instance of a TriggeredEvent, which is a general class for events that are activated by some trigger.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2313,
+          "chunk_end_char": 2330,
+          "doc_start_char": 17313,
+          "doc_end_char": 17330,
+          "snippet": "ect: Alarm with immediate and controlled shutdown\nInsufficient air pressure for pneumatic release of\ncause:\nthe X1 axis, the movement of which is prohibited.\nCheck line pressure"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00012",
+      "child_concept_id": "concept_00018",
+      "child_label": "PneumaticReleaseEvent",
+      "parent_concept_id": "concept_00017",
+      "parent_label": "NormalOperationEvent",
+      "justification": "PneumaticReleaseEvent is a specific type of event that occurs during normal machine operation, making it a more specific instance of NormalOperationEvent.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2313,
+          "chunk_end_char": 2330,
+          "doc_start_char": 17313,
+          "doc_end_char": 17330,
+          "snippet": "ect: Alarm with immediate and controlled shutdown\nInsufficient air pressure for pneumatic release of\ncause:\nthe X1 axis, the movement of which is prohibited.\nCheck line pressure"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00013",
+      "child_concept_id": "concept_00019",
+      "child_label": "PositioningState",
+      "parent_concept_id": "concept_00017",
+      "parent_label": "NormalOperationEvent",
+      "justification": "PositioningState describes a specific machine state event that occurs when a component is being positioned to its intended target during normal machine operation. NormalOperationEvent is a broader class of events that captures any state in which the machine runs as intended without faults. Therefore, PositioningState is a more specific type of NormalOperationEvent and can be sensibly placed as a subclass.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3849,
+          "chunk_end_char": 3861,
+          "doc_start_char": 18849,
+          "doc_end_char": 18861,
+          "snippet": "After programming the orientation, the main spindle did not\ncause:\nreaches the set position within the time limit of 1 second.\nCheck any mechanical resistance to the rotat"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00014",
+      "child_concept_id": "concept_00020",
+      "child_label": "OpenForcepsEvent",
+      "parent_concept_id": "concept_00000",
+      "parent_label": "InformationalAlarmEvent",
+      "justification": "OpenForcepsEvent is a specific alarm event that reports the open state of forceps, which is a concrete instance of an informational alarm. InformationalAlarmEvent is a generic alarm type that delivers messages to operators without changing machine status. Therefore, OpenForcepsEvent is a more specific subclass of InformationalAlarmEvent.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4133,
+          "chunk_end_char": 4145,
+          "doc_start_char": 19133,
+          "doc_end_char": 19145,
+          "snippet": "sult the Fanuc 160i-TB maintenance manual\nresponsible for\nAlarm No.: 1040\ntext: OPEN FORCEPS\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00015",
+      "child_concept_id": "concept_00020",
+      "child_label": "OpenForcepsEvent",
+      "parent_concept_id": "concept_00011",
+      "parent_label": "FeedResource",
+      "justification": "According to the seed ontology context, OpenForcepsEvent is a specialized event that should be positioned as a subclass of FeedResource, which itself is a specialized type of Resource. This placement aligns with the ontology’s existing Resource and Process families and preserves the is‑a relationship required for semantic reasoning.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4133,
+          "chunk_end_char": 4145,
+          "doc_start_char": 19133,
+          "doc_end_char": 19145,
+          "snippet": "sult the Fanuc 160i-TB maintenance manual\nresponsible for\nAlarm No.: 1040\ntext: OPEN FORCEPS\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00016",
+      "child_concept_id": "concept_00020",
+      "child_label": "OpenForcepsEvent",
+      "parent_concept_id": "concept_00016",
+      "parent_label": "TriggeredEvent",
+      "justification": "OpenForcepsEvent is a specific alarm event that is triggered by a sensor detecting the open position of forceps. TriggeredEvent is a generic event that represents the activation or initiation of a component, system, or personnel action, typically triggered by an alarm or control signal. Therefore, OpenForcepsEvent is a more specific kind of TriggeredEvent.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4133,
+          "chunk_end_char": 4145,
+          "doc_start_char": 19133,
+          "doc_end_char": 19145,
+          "snippet": "sult the Fanuc 160i-TB maintenance manual\nresponsible for\nAlarm No.: 1040\ntext: OPEN FORCEPS\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00017",
+      "child_concept_id": "concept_00021",
+      "child_label": "CheckMechanicalResistanceEvent",
+      "parent_concept_id": "concept_00016",
+      "parent_label": "TriggeredEvent",
+      "justification": "CheckMechanicalResistanceEvent is a specific type of event that occurs when a technician inspects or verifies mechanical resistance, typically initiated by a maintenance schedule or fault detection. Such an event is a concrete instance of a TriggeredEvent, which represents any event that is activated or initiated by a signal, alarm, or scheduled trigger. Therefore, CheckMechanicalResistanceEvent can be considered a more specific subclass of TriggeredEvent.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3897,
+          "chunk_end_char": 3928,
+          "doc_start_char": 18897,
+          "doc_end_char": 18928,
+          "snippet": "ndle did not\ncause:\nreaches the set position within the time limit of 1 second.\nCheck any mechanical resistance to the rotation of the\nintervention: spindle, note the error code on the actuat"
+        }
+      ]
+    }
+  ],
+  "relation_hierarchy_links": [
+    {
+      "link_id": "relation_h_00000",
+      "child_relation_id": "ont_rel_00000",
+      "child_label": "hasCNCAlarm",
+      "parent_relation_id": "ont_rel_00001",
+      "parent_label": "generatesAlarmMessage",
+      "justification": "The relation 'hasCNCAlarm' is a more specific instance of 'generatesAlarmMessage' because it applies to a particular type of resource (a CNC machine) whereas 'generatesAlarmMessage' applies to any resource that can produce alarm messages. Both relations link a resource to an AlarmEvent, and the domain of the child (FeatureOfInterest) can be considered a specialized form of the broader Resource domain, making the child relation a subrelation of the parent.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 81,
+          "chunk_end_char": 111,
+          "doc_start_char": 81,
+          "doc_end_char": 111,
+          "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00001",
+      "child_relation_id": "ont_rel_00000",
+      "child_label": "hasCNCAlarm",
+      "parent_relation_id": "ont_rel_00002",
+      "parent_label": "issuedBy",
+      "justification": "The relation hasCNCAlarm specifically links a CNC machine (FeatureOfInterest) to the alarms it generates, which is a particular case of the more general issuedBy relation that links any alarm, result, or sensor to the entity that issues it. Thus, hasCNCAlarm is a more specific subrelation of issuedBy.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 81,
+          "chunk_end_char": 111,
+          "doc_start_char": 81,
+          "doc_end_char": 111,
+          "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00002",
+      "child_relation_id": "ont_rel_00003",
+      "child_label": "detectedBy",
+      "parent_relation_id": "ont_rel_00002",
+      "parent_label": "issuedBy",
+      "justification": "The relation detectedBy is a more specific form of issuedBy: any event that is detected by a monitoring system is also issued by that system, making detectedBy a sub‑relation of issuedBy.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 308,
+          "chunk_end_char": 320,
+          "doc_start_char": 308,
+          "doc_end_char": 320,
+          "snippet": "erface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper functioning of the machine and the\nma"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00003",
+      "child_relation_id": "ont_rel_00003",
+      "child_label": "detectedBy",
+      "parent_relation_id": "ont_rel_00012",
+      "parent_label": "causes",
+      "justification": "The relation 'detectedBy' specifies a particular causal link where an alarm event is identified by a monitoring system, which is a more specific instance of the general causal relation 'causes' that links a source event to an effect on a machine component. Thus, 'detectedBy' is a sub‑relation of 'causes'.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 308,
+          "chunk_end_char": 320,
+          "doc_start_char": 308,
+          "doc_end_char": 320,
+          "snippet": "erface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper functioning of the machine and the\nma"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00004",
+      "child_relation_id": "ont_rel_00004",
+      "child_label": "triggersReset",
+      "parent_relation_id": "ont_rel_00012",
+      "parent_label": "causes",
+      "justification": "The relation \"triggersReset\" describes a specific causal action—an operator pressing a key that initiates a reset of a program or process. This is a concrete instance of a causal event, which fits naturally under the more general relation \"causes\" that links any source event or entity to an effect on a machine component. Therefore, \"triggersReset\" is a more specific subrelation of \"causes\".",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00005",
+      "child_relation_id": "ont_rel_00010",
+      "child_label": "triggersShutdownAtCycleEnd",
+      "parent_relation_id": "ont_rel_00012",
+      "parent_label": "causes",
+      "justification": "The relation 'triggersShutdownAtCycleEnd' is a specific instance of a causal relationship where an alarm event leads to a shutdown event at the end of a production cycle. This is a more specific form of the general causal relation 'causes', which links a source event to a resulting effect or disabling of machine components. The domain (AlarmEvent) is identical, and the child relation narrows the range from a generic MachineComponent to a specific ShutdownEvent, fitting the subrelation pattern.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4641,
+          "chunk_end_char": 4684,
+          "doc_start_char": 4641,
+          "doc_end_char": 4684,
+          "snippet": "ext: THERMOMAGNET SWITCHES. END OF CYCLE STOP\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA thermal switch on the motors was triggered\ncause:\nauxiliaries, with low prior"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00006",
+      "child_relation_id": "ont_rel_00011",
+      "child_label": "immediateAndControlledShutdown",
+      "parent_relation_id": "ont_rel_00002",
+      "parent_label": "issuedBy",
+      "justification": "The relation \"immediateAndControlledShutdown\" is a specific case of the more general \"issuedBy\" relation. In this context, the machine or system that triggers an immediate and controlled shutdown is the entity that issues the alarm. Therefore, the child relation is more specific than the parent relation.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1228,
+          "chunk_end_char": 1261,
+          "doc_start_char": 1228,
+          "doc_end_char": 1261,
+          "snippet": "t.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening of the authorizationeffect: hardware operation to the axis/spindle fee"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00007",
+      "child_relation_id": "ont_rel_00011",
+      "child_label": "immediateAndControlledShutdown",
+      "parent_relation_id": "ont_rel_00012",
+      "parent_label": "causes",
+      "justification": "The relation \"immediateAndControlledShutdown\" is a specific instance of a causal event where an alarm triggers the immediate shutdown of a machine. This is a more specific case of the general causal relation \"causes\", which links any source event (e.g., alarm, sensor reading, failure) to an effect on machine components. Therefore, \"immediateAndControlledShutdown\" can be considered a subrelation of \"causes\".",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1228,
+          "chunk_end_char": 1261,
+          "doc_start_char": 1228,
+          "doc_end_char": 1261,
+          "snippet": "t.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening of the authorizationeffect: hardware operation to the axis/spindle fee"
+        }
+      ]
+    }
+  ]
+}

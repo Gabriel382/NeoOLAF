@@ -1,0 +1,270 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 11,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00004",
+      "relation_label": "OVERLOAD CONTROL DEVICE FAILURE",
+      "source_candidate_id": "cand_e_00005",
+      "source_candidate_label": "overload control device",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00002",
+      "target_candidate_label": "machine alarm",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk describes the overload control device as abnormal and the message is a machine alarm, implying the failure of the device triggers the alarm.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 4467,
+          "chunk_end_char": 4498,
+          "doc_start_char": 49467,
+          "doc_end_char": 49498,
+          "snippet": "cal diagram. responsible for the intervention: operator\n\nmessage no: 2024\ntext: OVERLOAD CONTROL DEVICE FAILURE\ntype: Standard: Optional:\neffect: Only display of the message\nThe behavior of t"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00005",
+      "relation_label": "buffer battery",
+      "source_candidate_id": "cand_r_00005",
+      "source_candidate_label": "buffer battery",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_e_00000",
+      "target_candidate_label": "CNC memory",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk states that the buffer battery powers the CNC memory when the machine is off.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 194,
+          "chunk_end_char": 208,
+          "doc_start_char": 45194,
+          "doc_end_char": 45208,
+          "snippet": "ERY EXHAUSTED\ntype: Standard: Optional:\neffect: Only display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nRe"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00008",
+      "relation_label": "input X2.6",
+      "source_candidate_id": "cand_r_00008",
+      "source_candidate_label": "input X2.6",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_e_00009",
+      "target_candidate_label": "electrical diagram",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk text states that the intervention includes \"input X2.6 page 14 of the electrical diagram\", indicating that input X2.6 references the electrical diagram.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 941,
+          "chunk_end_char": 951,
+          "doc_start_char": 45941,
+          "doc_end_char": 45951,
+          "snippet": "minimum cause:\nmum.\nAdd oil. If this was not insufficient, check\nintervention: input X2.6 page 14 of the electrical diagram (0 = level lower than\nminimum, 1 = level grea"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00003",
+      "relation_candidate_id": "cand_r_00014",
+      "relation_label": "has cause",
+      "source_candidate_id": "cand_s_00002",
+      "source_candidate_label": "machine alarm",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00005",
+      "target_candidate_label": "overload control device",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk contains a message \"OVERLOAD CONTROL DEVICE FAILURE\" whose cause is described as the abnormal behavior of the overload control device. This indicates that the machine alarm (generic machine alarm event) is caused by the overload control device.",
+      "confidence": 0.82,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 246,
+          "chunk_end_char": 252,
+          "doc_start_char": 45246,
+          "doc_end_char": 45252,
+          "snippet": "display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nReplace the battery with the machine switched"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00004",
+      "relation_candidate_id": "cand_r_00015",
+      "relation_label": "intervention:",
+      "source_candidate_id": "cand_s_00002",
+      "source_candidate_label": "machine alarm",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00006",
+      "target_candidate_label": "Replace the battery",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk contains a message (2001) where the alarm \"CNC BATTERY EXHAUSTED\" (represented by the generic event candidate machine alarm) is followed by the intervention \"Replace the battery\". The relation candidate \"intervention:\" links the alarm event to the intervention event.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 40,
+          "chunk_end_char": 53,
+          "doc_start_char": 45040,
+          "doc_end_char": 45053,
+          "snippet": "e to restart the cycle. responsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype:"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00005",
+      "relation_candidate_id": "cand_r_00019",
+      "relation_label": "can be moved",
+      "source_candidate_id": "cand_e_00007",
+      "source_candidate_label": "MechanicalAxis",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00008",
+      "target_candidate_label": "door",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk text states that \"The axes can be moved as well with the door closed\", linking the MechanicalAxis to the door.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 546,
+          "chunk_end_char": 558,
+          "doc_start_char": 45546,
+          "doc_end_char": 45558,
+          "snippet": ":\neffect: Only display of the message\ncause: Tooling mode was selected\nThe axes can be moved as well with the door closed\nintervention:\nonly with the door open, by the two-"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00006",
+      "relation_candidate_id": "cand_r_00023",
+      "relation_label": "Check the operation of the pump",
+      "source_candidate_id": "cand_s_00000",
+      "source_candidate_label": "LOW LUBRICATION OIL LEVEL",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00002",
+      "target_candidate_label": "pump",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk states that when the LOW LUBRICATION OIL LEVEL event occurs, the operator should check the operation of the pump, linking the event to the pump entity.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 2362,
+          "chunk_end_char": 2393,
+          "doc_start_char": 47362,
+          "doc_end_char": 47393,
+          "snippet": "cause: lubrication, which must occur between a pulse of oil and the\nfollowing.\nCheck the operation of the pump or any faults\nintervention: of the pressure switch.\nInput X2.7 page 14 of the e"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00007",
+      "relation_candidate_id": "cand_r_00024",
+      "relation_label": "Remove material from the chip evacuation area",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "CHIP CONVEYOR OVERLOAD",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00004",
+      "target_candidate_label": "chip evacuation area",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk text states that the intervention \"Remove material from chip evacuation area\" is triggered by the event \"CHIP CONVEYOR OVERLOAD\" and acts on the chip evacuation area.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "e to restart the cycle. responsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype: Standard: Optional:\neffect: Only display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nReplace the ba"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00008",
+      "relation_candidate_id": "cand_r_00027",
+      "relation_label": "The buffer battery which powers the CNC memory",
+      "source_candidate_id": "cand_e_00001",
+      "source_candidate_label": "component",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00000",
+      "target_candidate_label": "CNC memory",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk text states that the buffer battery powers the CNC memory.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 190,
+          "chunk_end_char": 236,
+          "doc_start_char": 45190,
+          "doc_end_char": 45236,
+          "snippet": "BATTERY EXHAUSTED\ntype: Standard: Optional:\neffect: Only display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nReplace the battery with the m"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00009",
+      "relation_candidate_id": "cand_r_00028",
+      "relation_label": "MovementCapability",
+      "source_candidate_id": "cand_e_00007",
+      "source_candidate_label": "MechanicalAxis",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00008",
+      "target_candidate_label": "door",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk states that the axes can be moved with the door closed, indicating a MovementCapability relation between the MechanicalAxis and the door.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 1523,
+          "chunk_end_char": 1618,
+          "doc_start_char": 46523,
+          "doc_end_char": 46618,
+          "snippet": "Only display of the message cause: Tooling mode has been selected intervention: The axes can be moved both with the door closed and with the door open, by the two-hand control. responsible for the intervention: toolmaker-adjuster\n\nmessage n°: 2020 text: L"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00010",
+      "relation_candidate_id": "cand_r_00031",
+      "relation_label": "The completion of the bar change",
+      "source_candidate_id": "cand_s_00003",
+      "source_candidate_label": "bar change phase",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00002",
+      "target_candidate_label": "machine alarm",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0009",
+      "justification": "The chunk states that the completion of the bar change is the cause of the machine alarm (message 2040).",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0009",
+          "chunk_start_char": 4961,
+          "chunk_end_char": 4993,
+          "doc_start_char": 49961,
+          "doc_end_char": 49993,
+          "snippet": "sage\nWarns the operator that the machining cycle is suspended on hold\ncause:\nof the completion of the bar change.\nWhen"
+        }
+      ]
+    }
+  ]
+}

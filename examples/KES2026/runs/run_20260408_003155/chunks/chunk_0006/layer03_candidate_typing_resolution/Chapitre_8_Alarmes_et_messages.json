@@ -1,0 +1,1793 @@
+{
+  "layer": "layer03_candidate_typing_resolution",
+  "entity_candidates": [
+    {
+      "candidate_id": "cand_e_00000",
+      "canonical_label": "Connection",
+      "normalized_label": "connection",
+      "candidate_type": "entity",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "MachineComponent",
+        "Connection",
+        "Link",
+        "Connector",
+        "Interface",
+        "FailureMode"
+      ],
+      "definition": "A link or interface that joins machine parts, enabling mechanical, electrical, or data communication between components.",
+      "aliases": [
+        "connection",
+        "connexion",
+        "connectedness",
+        "link",
+        "connector",
+        "connecter",
+        "connective",
+        "association",
+        "Connections"
+      ],
+      "synonyms": [
+        "connection",
+        "connexion",
+        "connectedness",
+        "link",
+        "connector",
+        "connecter",
+        "connective",
+        "association"
+      ],
+      "lexical_variants": [
+        "connection",
+        "connexion",
+        "connectedness",
+        "link",
+        "connector",
+        "connecter",
+        "connective",
+        "association"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00007",
+          "text": "connections",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 539,
+              "chunk_end_char": 550,
+              "doc_start_char": 30539,
+              "doc_end_char": 30550,
+              "snippet": "s not transmit the \"ready\" signal to the machine's CNC. intervention: Check the connections, consult the bar feeder documentation for details of the anomaly. intervention"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "relation_candidates": [
+    {
+      "candidate_id": "cand_r_00000",
+      "canonical_label": "Alarm with immediate and controlled stop",
+      "normalized_label": "alarm with immediate and controlled stop",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4",
+        "TRIGGERS: shutdown",
+        "HANDLED_BY: operator",
+        "REFERENCES: manual page"
+      ],
+      "definition": "An alarm event that initiates an immediate, controlled shutdown of a machine or process, typically used to prevent damage or ensure safety.",
+      "aliases": [
+        "Immediate stop alarm",
+        "Controlled shutdown alarm"
+      ],
+      "synonyms": [
+        "Emergency stop alarm",
+        "Immediate shutdown alarm"
+      ],
+      "lexical_variants": [
+        "Alarm causing immediate controlled stop",
+        "Alarm that triggers immediate controlled shutdown"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00000",
+          "text": "Alarm with immediate and controlled stop",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 21,
+              "chunk_end_char": 61,
+              "doc_start_char": 30021,
+              "doc_end_char": 30061,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide wit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00001",
+      "canonical_label": "Alarm with immediate and controlled shutdown",
+      "normalized_label": "alarm with immediate and controlled shutdown",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmEvent",
+        "ShutdownEvent",
+        "SafetyInterlock",
+        "ImmediateShutdown",
+        "ControlledShutdown",
+        "MaintenanceIntervention"
+      ],
+      "definition": "An alarm event that initiates an immediate, controlled shutdown of a machine or system to prevent damage or ensure safety.",
+      "aliases": [
+        "Immediate shutdown alarm",
+        "Controlled shutdown alarm"
+      ],
+      "synonyms": [
+        "shutdown alarm",
+        "immediate shutdown alarm",
+        "controlled shutdown alarm"
+      ],
+      "lexical_variants": [
+        "Alarm causing immediate controlled shutdown",
+        "Alarm that triggers immediate controlled shutdown"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00001",
+          "text": "Alarm with immediate and controlled shutdown",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 740,
+              "chunk_end_char": 784,
+              "doc_start_char": 30740,
+              "doc_end_char": 30784,
+              "snippet": "manager\n\nAlarm No.: 1061\ntext: TIP 1: BREAKUP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nTool control device #1 has detected the breakage of the\ncause:\npoint.\nReplace t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00002",
+      "canonical_label": "Tool control device #1",
+      "normalized_label": "tool control device 1",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine Component",
+        "Feature of Interest",
+        "Tool Control Device"
+      ],
+      "definition": "A specific machine component that controls the operation of tools within the equipment, identified as instance #1.",
+      "aliases": [
+        "Tool control device #1"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "Tool control device #1",
+        "Tool control device 1"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00002",
+          "text": "Tool control device #1",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 785,
+              "chunk_end_char": 807,
+              "doc_start_char": 30785,
+              "doc_end_char": 30807,
+              "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nTool control device #1 has detected the breakage of the\ncause:\npoint.\nReplace the tool. If the tool is"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00003",
+      "canonical_label": "Tool monitoring device #2",
+      "normalized_label": "tool monitoring device 2",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest",
+        "Manufacturing Process component",
+        "Machine component"
+      ],
+      "definition": "A device that monitors the status or condition of a tool within a manufacturing cell, providing data for alarms and maintenance actions.",
+      "aliases": [
+        "Tool Monitor 2",
+        "TM2",
+        "Tool Monitoring Device 2"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "Tool monitoring device number two",
+        "Tool monitoring device #2"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00003",
+          "text": "Tool monitoring device #2",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 1463,
+              "chunk_end_char": 1488,
+              "doc_start_char": 31463,
+              "doc_end_char": 31488,
+              "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nTool monitoring device #2 has detected the breakage of the\ncause:\npoint.\nReplace the tool. If the tool is"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00004",
+      "canonical_label": "bar feeder",
+      "normalized_label": "bar feeder",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Resource",
+        "Feature",
+        "MachineComponent"
+      ],
+      "definition": "A machine component that supplies bars to a manufacturing process.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00004",
+          "text": "bar feeder",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 426,
+              "chunk_end_char": 436,
+              "doc_start_char": 30426,
+              "doc_end_char": 30436,
+              "snippet": "Standard: Optional: effect: Alarm with immediate and controlled stop cause: The bar feeder is off-circuit and does not transmit the \"ready\" signal to the machine's CNC. i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00005",
+      "canonical_label": "machine's CNC",
+      "normalized_label": "machines cnc",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "subclass of MachineComponent",
+        "controls machining operations",
+        "part of Manufacturing Cell",
+        "related to Manufacturing Process",
+        "used in CNC machine"
+      ],
+      "definition": "A computer-controlled system that directs machine tools in manufacturing processes, typically used to control the movement of cutting tools and other machining operations.",
+      "aliases": [
+        "Computer Numerical Control"
+      ],
+      "synonyms": [
+        "CNC controller",
+        "CNC system"
+      ],
+      "lexical_variants": [
+        "CNC",
+        "CNC controller",
+        "CNC system"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00005",
+          "text": "machine's CNC",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 500,
+              "chunk_end_char": 513,
+              "doc_start_char": 30500,
+              "doc_end_char": 30513,
+              "snippet": ": The bar feeder is off-circuit and does not transmit the \"ready\" signal to the machine's CNC. intervention: Check the connections, consult the bar feeder documentation for"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00006",
+      "canonical_label": "probe core",
+      "normalized_label": "probe core",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Property",
+        "Process",
+        "Product",
+        "Spatial Object"
+      ],
+      "definition": "A machine component that can fail.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00006",
+          "text": "probe core",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 2223,
+              "chunk_end_char": 2233,
+              "doc_start_char": 32223,
+              "doc_end_char": 32233,
+              "snippet": "shutdown cause: Tool control device no. 1 does not work intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00007",
+      "canonical_label": "operator",
+      "normalized_label": "operator",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "role class in manufacturing ontology",
+        "subclass of Staff",
+        "associated with Platform",
+        "linked to Observation",
+        "responsible for interventions"
+      ],
+      "definition": "an agent that operates some apparatus or machine",
+      "aliases": [
+        "operator",
+        "manipulator",
+        "hustler",
+        "wheeler dealer",
+        "Operator"
+      ],
+      "synonyms": [
+        "operator",
+        "manipulator",
+        "hustler",
+        "wheeler dealer"
+      ],
+      "lexical_variants": [
+        "operator",
+        "manipulator",
+        "hustler",
+        "wheeler dealer"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00008",
+          "text": "operator",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 276,
+              "chunk_end_char": 284,
+              "doc_start_char": 30276,
+              "doc_end_char": 30284,
+              "snippet": "from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjuster\n\nAlarm no.: 1060 text: FEEDER FAULT type: Standard: Optional"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00008",
+      "canonical_label": "maintenance manager",
+      "normalized_label": "maintenance manager",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "role",
+        "Manager",
+        "Staff",
+        "Maintenance"
+      ],
+      "definition": "A maintenance manager is a person responsible for supervising manufacturing operations and responding to detected situations.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00009",
+          "text": "maintenance manager",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 648,
+              "chunk_end_char": 667,
+              "doc_start_char": 30648,
+              "doc_end_char": 30667,
+              "snippet": "feeder documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm No.: 1061\ntext: TIP 1: BREAKUP\ntype: Standard: Optional:\neffect: Alarm w"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00009",
+      "canonical_label": "toolmaker-adjuster",
+      "normalized_label": "toolmaker-adjuster",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "role",
+        "maintenance staff",
+        "toolmaker",
+        "adjuster"
+      ],
+      "definition": "A staff member who creates and adjusts tools used in industrial maintenance and machine repair.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00010",
+          "text": "toolmaker-adjuster",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 285,
+              "chunk_end_char": 303,
+              "doc_start_char": 30285,
+              "doc_end_char": 30303,
+              "snippet": "collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjuster\n\nAlarm no.: 1060 text: FEEDER FAULT type: Standard: Optional: effect: Alarm wit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00010",
+      "canonical_label": "maintenance officer",
+      "normalized_label": "maintenance officer",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "role",
+        "Manager",
+        "Machine",
+        "Interval",
+        "SpatialObject",
+        "Responsible for interventions",
+        "Supervises maintenance activities"
+      ],
+      "definition": "A maintenance officer is a managerial role responsible for supervising and maintaining manufacturing machines within a facility, ensuring operational reliability and coordinating interventions.",
+      "aliases": [],
+      "synonyms": [
+        "maintenance manager",
+        "maintenance supervisor"
+      ],
+      "lexical_variants": [
+        "maintenance officer"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00011",
+          "text": "maintenance officer",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 986,
+              "chunk_end_char": 1005,
+              "doc_start_char": 30986,
+              "doc_end_char": 31005,
+              "snippet": "the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm No.: 1062\ntext: TIP 2: BREAKUP\ntype: Standard: Optional:\neffect: Alarm wi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00011",
+      "canonical_label": "operator/maintenance manager",
+      "normalized_label": "operatormaintenance manager",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Staff",
+        "Operator",
+        "Manager",
+        "MaintenanceRole"
+      ],
+      "definition": "A role that combines the responsibilities of an operator—operating machines or performing production tasks—with those of a manager—supervising manufacturing operations and responding to detected situations, particularly in the context of maintenance activities.",
+      "aliases": [
+        "operator-maintenance manager",
+        "maintenance operator manager",
+        "operator/manager"
+      ],
+      "synonyms": [
+        "maintenance operator",
+        "operator manager"
+      ],
+      "lexical_variants": [
+        "operator/maintenance manager"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00012",
+          "text": "operator/maintenance manager",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 639,
+              "chunk_end_char": 667,
+              "doc_start_char": 30639,
+              "doc_end_char": 30667,
+              "snippet": "the bar feeder documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm No.: 1061\ntext: TIP 1: BREAKUP\ntype: Standard: Optional:\neffect: Alarm w"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00012",
+      "canonical_label": "operator/maintenance officer",
+      "normalized_label": "operatormaintenance officer",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Operator",
+        "role responsible for interventions in industrial maintenance context",
+        "associated with Platform, Observation, and Feature of Interest"
+      ],
+      "definition": "A role that combines responsibilities for operating machinery and performing maintenance tasks, typically involved in interventions to ensure proper machine operation.",
+      "aliases": [
+        "operator",
+        "maintenance officer",
+        "operator/maintenance officer"
+      ],
+      "synonyms": [
+        "operator",
+        "maintenance officer"
+      ],
+      "lexical_variants": [
+        "operator-maintenance officer",
+        "operator or maintenance officer"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00013",
+          "text": "operator/maintenance officer",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 1313,
+              "chunk_end_char": 1341,
+              "doc_start_char": 31313,
+              "doc_end_char": 31341,
+              "snippet": "tion document:\ntation of the device for details of the anomaly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1063\ntext: PUNTA 2: ROTTURA\ntype: Standard: Optional:\neffect: Ala"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00013",
+      "canonical_label": "toolmaker-adjuster/in charge of maintenance",
+      "normalized_label": "toolmaker-adjusterin charge of maintenance",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "HumanProcess",
+        "ManufacturingProcess",
+        "ManufacturingFacility",
+        "FeatureOfInterest",
+        "Constraint"
+      ],
+      "definition": "A human process responsible for adjusting and maintaining tools and equipment within a manufacturing facility, ensuring they operate within defined constraints.",
+      "aliases": [
+        "toolmaker‑adjuster",
+        "toolmaker/adjuster"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "toolmaker and adjuster",
+        "toolmaker‑adjuster",
+        "toolmaker/adjuster"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00014",
+          "text": "toolmaker-adjuster/in charge of maintenance",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 1991,
+              "chunk_end_char": 2034,
+              "doc_start_char": 31991,
+              "doc_end_char": 32034,
+              "snippet": "not broken, check the calibration of the device. in charge of the intervention: toolmaker-adjuster/in charge of maintenance\n\nAlarm no.: 1062 text: POINT 2: BREAK type: Standard: Optional: effect: Alarm w"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00014",
+      "canonical_label": "causes",
+      "normalized_label": "causes",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "causes",
+        "collision",
+        "axis",
+        "command configuration",
+        "machine state",
+        "failure phenomenon",
+        "Feature of Interest: bar feeder",
+        "Observable Property: ready signal",
+        "Machine component: CNC",
+        "State: off‑circuit",
+        "Manufacturing Facility: production line",
+        "TRIGGERS: ready signal loss",
+        "CAUSES: bar feeder off‑circuit",
+        "causes constraint violation",
+        "involves sensor device",
+        "affects manufacturing process",
+        "impacts human process",
+        "related to feature of interest",
+        "Feature of Interest",
+        "Sensor",
+        "Constraint violation",
+        "Manufacturing Process",
+        "Human Process",
+        "Tool control device no. 1 is a Spatial Object and a Feature of Interest within the Manufacturing Process.",
+        "Tip breakage is a Feature of Interest that represents a Constraint violation.",
+        "The relation expresses a detection event where a spatial object (the device) identifies a failure (tip breakage).",
+        "Relevant properties: externally connected, associated constraint, concerned by.",
+        "SpatialObject",
+        "FeatureOfInterest",
+        "DetectionEvent",
+        "CauseRelation",
+        "detects",
+        "has detected",
+        "spatial object",
+        "feature of interest",
+        "constraint",
+        "manufacturing process",
+        "human process"
+      ],
+      "definition": "A command configuration that results in the machine axes colliding with each other.",
+      "aliases": [
+        "command configuration",
+        "configured command",
+        "axis collision",
+        "collision",
+        "bar feeder off‑circuit",
+        "bar feeder offline",
+        "bar feeder disconnected",
+        "Tool control device 1 failure",
+        "Tool control device 1 malfunction",
+        "Tool control device 1 not functioning",
+        "Tool control device 4 malfunction",
+        "Tool control device 4 failure",
+        "Tool control device 3",
+        "TCD3",
+        "Tool control device #3",
+        "Tool control device number 3"
+      ],
+      "synonyms": [
+        "command setup",
+        "axis interference",
+        "collision event",
+        "bar feeder failure",
+        "bar feeder not transmitting ready signal",
+        "bar feeder not on circuit",
+        "Tool control device 1 malfunction",
+        "Tool control device 1 failure",
+        "Tool control device 1 not working",
+        "fails",
+        "malfunctioning",
+        "non-functional",
+        "detected tip breakage",
+        "identified tip breakage",
+        "found tip breakage",
+        "noticed tip breakage"
+      ],
+      "lexical_variants": [
+        "configured command",
+        "command configured",
+        "axes collide",
+        "collision of axes",
+        "bar feeder is off‑circuit",
+        "bar feeder is not on circuit",
+        "bar feeder is disconnected from circuit",
+        "Tool control device no. 1 is not working",
+        "Tool control device no.1 fails",
+        "Tool control device #1 not functioning",
+        "Tool control device no. 4 is not functioning",
+        "Tool control device no. 4 is defective",
+        "Tool control device no. 2",
+        "Tool control device #2",
+        "Tool control device 2",
+        "Tool control device no. 3",
+        "Tool control device number 3",
+        "Tool control device #3",
+        "Tool control device 3"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00015",
+          "text": "cause: The command configured for the mentioned axes causes them to collide with each other",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 62,
+              "chunk_end_char": 153,
+              "doc_start_char": 30062,
+              "doc_end_char": 30153,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear th"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00016",
+          "text": "cause: The bar feeder is off-circuit and does not transmit the 'ready' signal to the machine's CNC",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00018",
+          "text": "cause: Tool control device no. 1 does not work",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 2152,
+              "chunk_end_char": 2198,
+              "doc_start_char": 32152,
+              "doc_end_char": 32198,
+              "snippet": "type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 1 does not work intervention: Check the probe core, the connections, consult the device documen"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00021",
+          "text": "cause: Tool control device no. 4 does not work",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00022",
+          "text": "cause: Tool control device no. 1 has detected tip breakage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 1804,
+              "chunk_end_char": 1862,
+              "doc_start_char": 31804,
+              "doc_end_char": 31862,
+              "snippet": "type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 1 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibrati"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00023",
+          "text": "cause: Tool control device no. 2 has detected tip breakage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00024",
+          "text": "cause: Tool control device no. 3 has detected tip breakage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 4226,
+              "chunk_end_char": 4284,
+              "doc_start_char": 34226,
+              "doc_end_char": 34284,
+              "snippet": "type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 3 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibrati"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00015",
+      "canonical_label": "cause: Tool control device #1 is not working",
+      "normalized_label": "cause tool control device 1 is not working",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Sensor",
+        "Constraint violation",
+        "Human Process impact",
+        "Production Line component"
+      ],
+      "definition": "The failure or malfunction of Tool control device #1, a sensor or control unit on the production line, which constitutes a constraint violation and can affect human processes.",
+      "aliases": [
+        "Tool control device #1 malfunction",
+        "Tool control device #1 failure"
+      ],
+      "synonyms": [
+        "Tool control device #1 malfunctioning",
+        "Tool control device #1 is not functioning"
+      ],
+      "lexical_variants": [
+        "Tool control device #1 is inoperative",
+        "Tool control device #1 is broken"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00017",
+          "text": "cause: Tool control device #1 is not working",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 1122,
+              "chunk_end_char": 1166,
+              "doc_start_char": 31122,
+              "doc_end_char": 31166,
+              "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device #1 is not working\nCheck the core of the probe, the connections, consult the intervention document"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00016",
+      "canonical_label": "cause: Tool control device no. 2 does not work",
+      "normalized_label": "cause tool control device no 2 does not work",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest: Tool control device no. 2",
+        "Constraint: device must be operational",
+        "Manufacturing Process: machine operation",
+        "Human Process: operator supervision",
+        "Sensor: Tool control device no. 2"
+      ],
+      "definition": "The failure of Tool control device no. 2, a sensor or control unit responsible for monitoring tool operation, is identified as the cause of the alarm.",
+      "aliases": [
+        "Tool control device 2 malfunction",
+        "Tool control device no. 2 failure",
+        "Tool control device 2 not working"
+      ],
+      "synonyms": [
+        "failure",
+        "malfunction",
+        "breakdown",
+        "non-functioning"
+      ],
+      "lexical_variants": [
+        "does not work",
+        "is not functioning",
+        "fails",
+        "is broken"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00019",
+          "text": "cause: Tool control device no. 2 does not work",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 2847,
+              "chunk_end_char": 2893,
+              "doc_start_char": 32847,
+              "doc_end_char": 32893,
+              "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 2 does not work\nCheck the core of the probe, the connections, consult the intervention document"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00017",
+      "canonical_label": "cause relation",
+      "normalized_label": "cause relation",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "Sensor",
+        "ProductionLine",
+        "Constraint",
+        "HumanProcess",
+        "CauseRelation"
+      ],
+      "definition": "The failure or malfunction of the third tool control device, a sensor or actuator on the production line, that triggers a constraint violation and leads to an alarm.",
+      "aliases": [
+        "Tool control device no. 3",
+        "Tool control device #3",
+        "Tool control device number 3"
+      ],
+      "synonyms": [
+        "device no. 3 malfunction",
+        "device no. 3 failure",
+        "device no. 3 not functioning",
+        "device no. 3 non-functional"
+      ],
+      "lexical_variants": [
+        "Tool control device 3",
+        "Tool control device #3",
+        "Tool control device number 3"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00020",
+          "text": "cause: Tool control device no. 3 is not working",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 3546,
+              "chunk_end_char": 3593,
+              "doc_start_char": 33546,
+              "doc_end_char": 33593,
+              "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 3 is not working.\nCheck the core of the probe, the connections, consult the intervention documen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00018",
+      "canonical_label": "has detected",
+      "normalized_label": "has detected",
+      "candidate_type": "relation",
+      "confidence": 0.9457142857142857,
+      "ontology_hints": [
+        "TRIGGERS: Tool control device no.4 -> tip breakage",
+        "CAUSES: tip breakage -> alarm",
+        "DETECTED_BY: Tool control device no.4",
+        "CONCERNED_BY: manufacturing process",
+        "Feature of Interest",
+        "Constraint",
+        "Manufacturing Process",
+        "Manufacturing Cell",
+        "Manufacturing Facility",
+        "has feature of interest",
+        "associated constraint",
+        "DetectionEvent",
+        "TipBreakageEvent",
+        "ToolControlDevice",
+        "TemporalEntity",
+        "FeatureOfInterest",
+        "SpatialObject",
+        "detects",
+        "observes",
+        "reports",
+        "constraint violation",
+        "logistic process",
+        "spatial object",
+        "feature of interest",
+        "temporal entity",
+        "Detects",
+        "Feature of Interest: tip breakage",
+        "Spatial Object: tip",
+        "Temporal Entity: detection time",
+        "Constraint: tip breakage violation",
+        "Logistic Process: tip handling",
+        "detects breakage",
+        "breakage is a violation of constraint",
+        "point is a FeatureOfInterest",
+        "device is part of Manufacturing Facility",
+        "DETECTED_BY: Tool monitoring device No. 4 detected breakage of point",
+        "Feature of Interest: point",
+        "Manufacturing Process: context of detection",
+        "Sensor: type of monitoring device",
+        "Failure: breakage event"
+      ],
+      "definition": "A causal event where Tool control device no.4, a spatial object in a manufacturing process, detects the occurrence of tip breakage, a feature of interest.",
+      "aliases": [
+        "Tool control device no.4 detected tip breakage",
+        "Device 4 detected tip breakage",
+        "Tip breakage detected by device 4",
+        "Device No. 4",
+        "Monitoring device 4",
+        "Sensor 4"
+      ],
+      "synonyms": [
+        "breakage",
+        "fracture",
+        "damage",
+        "detected",
+        "identified",
+        "observed",
+        "point",
+        "feature",
+        "location"
+      ],
+      "lexical_variants": [
+        "Tool control device no.4 has detected tip breakage",
+        "Tool control device 4 detected tip breakage",
+        "has detected",
+        "detected",
+        "Device 4 detected tip breakage",
+        "Tip breakage detected by device 4",
+        "Tool monitoring device No. 4",
+        "Device 4",
+        "Monitoring device 4"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00025",
+          "text": "cause: Tool control device no. 4 has detected tip breakage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00035",
+          "text": "Tool monitoring device #2 has detected the breakage of the point",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00036",
+          "text": "Tool control device no. 1 has detected tip breakage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 1811,
+              "chunk_end_char": 1862,
+              "doc_start_char": 31811,
+              "doc_end_char": 31862,
+              "snippet": "Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 1 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibrati"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00037",
+          "text": "Tool control device no. 2 has detected tip breakage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00039",
+          "text": "Tool control device no. 4 has detected tip breakage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00040",
+          "text": "Tool monitoring device No. 3 has detected the breakage of the point",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00041",
+          "text": "Tool monitoring device No. 4 has detected the breakage of the point",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00019",
+      "canonical_label": "intervention: Manually move the axes away from the collision zone and clear the alarm",
+      "normalized_label": "intervention manually move the axes away from the collision zone and clear the alarm",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: collision alarm",
+        "REQUIRES: manual operator action",
+        "HANDLED_BY: operator",
+        "REFERENCES: collision zone",
+        "DETECTED_BY: sensor",
+        "INTERVENTION_INTERVAL: time interval of action",
+        "RELATED_TO: Manufacturing Process",
+        "PART_OF: Manufacturing Facility"
+      ],
+      "definition": "An intervention action performed by an operator in which the machine axes are manually moved away from a collision zone and the resulting collision alarm is cleared.",
+      "aliases": [
+        "manual axis relocation",
+        "alarm reset"
+      ],
+      "synonyms": [
+        "remedy",
+        "action",
+        "procedure",
+        "measure",
+        "manual repositioning",
+        "reset"
+      ],
+      "lexical_variants": [
+        "manual axis movement",
+        "clear alarm",
+        "move axes away",
+        "reset collision alarm"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00026",
+          "text": "intervention: Manually move the axes away from the collision zone and clear the alarm",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 155,
+              "chunk_end_char": 240,
+              "doc_start_char": 30155,
+              "doc_end_char": 30240,
+              "snippet": "mmand configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjuster\n\nAlarm no.: 1060"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00020",
+      "canonical_label": "intervention: Check the connections, consult the bar feeder documentation for details of the anomaly",
+      "normalized_label": "intervention check the connections consult the bar feeder documentation for details of the anomaly",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention action",
+        "maintenance activity",
+        "bar feeder alarm",
+        "bar feeder documentation reference",
+        "maintenance technician",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "TRIGGERS: bar feeder alarm",
+        "REQUIRES: bar feeder documentation",
+        "HANDLED_BY: maintenance technician",
+        "REFERENCES: bar feeder manual"
+      ],
+      "definition": "An intervention action that involves inspecting mechanical connections and consulting the bar feeder documentation to diagnose and resolve an anomaly detected by the bar feeder alarm.",
+      "aliases": [
+        "Check connections",
+        "Consult bar feeder manual"
+      ],
+      "synonyms": [
+        "Inspect connections",
+        "Verify connections",
+        "Refer to bar feeder documentation",
+        "Look up bar feeder manual"
+      ],
+      "lexical_variants": [
+        "Check the connections",
+        "Consult the bar feeder documentation",
+        "Verify connections",
+        "Refer to bar feeder manual"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00027",
+          "text": "intervention: Check the connections, consult the bar feeder documentation for details of the anomaly",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 515,
+              "chunk_end_char": 615,
+              "doc_start_char": 30515,
+              "doc_end_char": 30615,
+              "snippet": "r is off-circuit and does not transmit the \"ready\" signal to the machine's CNC. intervention: Check the connections, consult the bar feeder documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm No.: 1061\ntext: TIP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00021",
+      "canonical_label": "intervention: Replace the tool",
+      "normalized_label": "intervention replace the tool",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observation",
+        "Interval",
+        "Situation S1",
+        "Situation S2",
+        "intervention action"
+      ],
+      "definition": "An action performed to replace a broken or worn tool in a machine, typically undertaken to resolve tool breakage alarms.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00028",
+          "text": "intervention: Replace the tool",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 1864,
+              "chunk_end_char": 1894,
+              "doc_start_char": 31864,
+              "doc_end_char": 31894,
+              "snippet": "controlled shutdown cause: Tool control device no. 1 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibration of the device. in charge of t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00022",
+      "canonical_label": "intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly",
+      "normalized_label": "intervention check the probe core the connections consult the device documentation for details of the anomaly",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "handled_by: Technician",
+        "references: device documentation",
+        "detects: Observable Property (anomaly)",
+        "occurs_in: Production Line",
+        "context: Situation S1",
+        "requires: probe core inspection, connection inspection, device documentation review"
+      ],
+      "definition": "An intervention action where a technician examines the probe core and its connections, and consults device documentation to diagnose and resolve an anomaly.",
+      "aliases": [
+        "probe core check",
+        "connection check",
+        "device manual consultation"
+      ],
+      "synonyms": [
+        "inspect",
+        "examine"
+      ],
+      "lexical_variants": [
+        "probe core inspection",
+        "connection inspection",
+        "device documentation review"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00029",
+          "text": "intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 2199,
+              "chunk_end_char": 2311,
+              "doc_start_char": 32199,
+              "doc_end_char": 32311,
+              "snippet": "mmediate and controlled shutdown cause: Tool control device no. 1 does not work intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm n°: 1063 text: PUNTA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00023",
+      "canonical_label": "responsible for",
+      "normalized_label": "responsible for",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "role",
+        "person",
+        "operator",
+        "toolmaker",
+        "adjuster",
+        "intervention",
+        "Operator",
+        "Maintenance Officer",
+        "Staff",
+        "Responsible for (role-to-entity relation)",
+        "has role"
+      ],
+      "definition": "The person or entity accountable for performing an intervention on a machine or system, such as adjusting, repairing, or maintaining equipment.",
+      "aliases": [
+        "operator",
+        "toolmaker",
+        "adjuster",
+        "responsible for"
+      ],
+      "synonyms": [
+        "machine operator",
+        "toolmaker",
+        "adjuster"
+      ],
+      "lexical_variants": [
+        "operator",
+        "toolmaker",
+        "adjuster"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00030",
+          "text": "responsible for the intervention: operator/toolmaker-adjuster",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 242,
+              "chunk_end_char": 303,
+              "doc_start_char": 30242,
+              "doc_end_char": 30303,
+              "snippet": "ntion: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjuster\n\nAlarm no.: 1060 text: FEEDER FAULT type: Standard: Optional: effect: Alarm wit"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00033",
+          "text": "responsible for: operator/maintenance officer",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00024",
+      "canonical_label": "intervention manager: operator/maintenance manager",
+      "normalized_label": "intervention manager operatormaintenance manager",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Operator",
+        "Maintenance Manager",
+        "Responsible Role",
+        "Intervention Manager",
+        "Manufacturing Process"
+      ],
+      "definition": "A staff role responsible for planning, coordinating, and executing interventions on industrial equipment, typically performed by an operator or a maintenance manager.",
+      "aliases": [
+        "intervention manager",
+        "maintenance manager",
+        "operator"
+      ],
+      "synonyms": [
+        "intervention manager",
+        "maintenance manager",
+        "operator"
+      ],
+      "lexical_variants": [
+        "intervention manager",
+        "maintenance manager",
+        "operator"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00031",
+          "text": "intervention manager: operator/maintenance manager",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 617,
+              "chunk_end_char": 667,
+              "doc_start_char": 30617,
+              "doc_end_char": 30667,
+              "snippet": "e connections, consult the bar feeder documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm No.: 1061\ntext: TIP 1: BREAKUP\ntype: Standard: Optional:\neffect: Alarm w"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00025",
+      "canonical_label": "in charge of the intervention: toolmaker-adjuster/in charge of maintenance",
+      "normalized_label": "in charge of the intervention toolmaker-adjusterin charge of maintenance",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "hasResponsible",
+        "manages",
+        "responsible for",
+        "role",
+        "Production Line",
+        "Feature of Interest",
+        "Observation",
+        "Constraint",
+        "intervention",
+        "toolmaker-adjuster",
+        "maintenance"
+      ],
+      "definition": "A role responsible for performing or overseeing an intervention in a production line, such as a toolmaker‑adjuster or maintenance personnel.",
+      "aliases": [
+        "toolmaker-adjuster",
+        "maintenance",
+        "maintenance personnel",
+        "maintenance technician"
+      ],
+      "synonyms": [
+        "responsible for",
+        "in charge of",
+        "manages",
+        "oversees",
+        "directs",
+        "leads",
+        "coordinates",
+        "administers",
+        "executes",
+        "performs",
+        "carries out",
+        "implements",
+        "conducts"
+      ],
+      "lexical_variants": [
+        "toolmaker-adjuster",
+        "maintenance personnel",
+        "maintenance technician"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00032",
+          "text": "in charge of the intervention: toolmaker-adjuster/in charge of maintenance",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 1960,
+              "chunk_end_char": 2034,
+              "doc_start_char": 31960,
+              "doc_end_char": 32034,
+              "snippet": "place the tool. If the tool is not broken, check the calibration of the device. in charge of the intervention: toolmaker-adjuster/in charge of maintenance\n\nAlarm no.: 1062 text: POINT 2: BREAK type: Standard: Optional: effect: Alarm w"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00026",
+      "canonical_label": "Tool control device #1 has detected the breakage of the point",
+      "normalized_label": "tool control device 1 has detected the breakage of the point",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Tool control device #1 → Machine / ManufacturingFacility",
+        "point → FeatureOfInterest / SpatialObject",
+        "breakage → Constraint violation / Failure event",
+        "has detected → sosa:madeObservation (observation relation)",
+        "TRIGGERS: breakage",
+        "REQUIRES: maintenance intervention",
+        "HANDLED_BY: maintenance staff"
+      ],
+      "definition": "An event in which a tool control device identifies that a specific point has experienced a breakage, indicating a violation of a constraint within a manufacturing facility.",
+      "aliases": [
+        "Tool control device #1",
+        "TCD1",
+        "breakage",
+        "failure",
+        "point",
+        "location"
+      ],
+      "synonyms": [
+        "identified",
+        "observed",
+        "fracture",
+        "break",
+        "spot",
+        "position"
+      ],
+      "lexical_variants": [
+        "Tool control device #1 detected the breakage of the point",
+        "TCD1 detected a breakage at the point",
+        "Tool control device #1 has detected a failure of the point"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00034",
+          "text": "Tool control device #1 has detected the breakage of the point",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00027",
+      "canonical_label": "Tool control device no. 3 has detected tip breakage",
+      "normalized_label": "tool control device no 3 has detected tip breakage",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "detects",
+        "observes",
+        "senses",
+        "identifies",
+        "Feature of Interest",
+        "Spatial Object",
+        "Temporal Entity",
+        "Constraint"
+      ],
+      "definition": "An event in which the tool control device no. 3 observes the occurrence of tip breakage.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00038",
+          "text": "Tool control device no. 3 has detected tip breakage",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 4233,
+              "chunk_end_char": 4284,
+              "doc_start_char": 34233,
+              "doc_end_char": 34284,
+              "snippet": "Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 3 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibrati"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00028",
+      "canonical_label": "Tool control device no. 1 does not work",
+      "normalized_label": "tool control device no 1 does not work",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "ConstraintViolation",
+        "Technician",
+        "LogisticProcess",
+        "TemporalEntity",
+        "AlarmEvent",
+        "TRIGGERS",
+        "CAUSES",
+        "REQUIRES",
+        "HANDLED_BY",
+        "REFERENCES",
+        "DETECTED_BY"
+      ],
+      "definition": "A statement indicating that the first tool control device is not functioning as expected, representing a failure of a feature of interest and a violation of operational constraints.",
+      "aliases": [
+        "Tool control device 1",
+        "TC device 1",
+        "Tool control unit 1"
+      ],
+      "synonyms": [
+        "fails",
+        "malfunctioning",
+        "non-operational",
+        "not functioning"
+      ],
+      "lexical_variants": [
+        "Tool control device no. 1 is not operational",
+        "Tool control device #1 does not work",
+        "Tool control device 1 is not working"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00042",
+          "text": "Tool control device no. 1 does not work",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 2159,
+              "chunk_end_char": 2198,
+              "doc_start_char": 32159,
+              "doc_end_char": 32198,
+              "snippet": "Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 1 does not work intervention: Check the probe core, the connections, consult the device documen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00029",
+      "canonical_label": "Tool control device no. 2 does not work",
+      "normalized_label": "tool control device no 2 does not work",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest: Tool control device no. 2",
+        "Constraint: Functional constraint violation",
+        "Temporal Entity: Time interval of the failure",
+        "Logistic Process: Repair or maintenance activity",
+        "Technician: Responsible for intervention"
+      ],
+      "definition": "The state in which Tool control device no. 2 is not functioning, indicating a failure of the device and a violation of its functional constraint.",
+      "aliases": [
+        "Tool Control Device 2",
+        "TC Device 2",
+        "Tool Control Device no. 2"
+      ],
+      "synonyms": [
+        "fails",
+        "malfunctions",
+        "is non‑operational",
+        "does not function"
+      ],
+      "lexical_variants": [
+        "Tool control device no. 2 is not working",
+        "Tool control device no. 2 is not operational",
+        "Tool control device no. 2 is malfunctioning"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00043",
+          "text": "Tool control device no. 2 does not work",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 2854,
+              "chunk_end_char": 2893,
+              "doc_start_char": 32854,
+              "doc_end_char": 32893,
+              "snippet": "Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 2 does not work\nCheck the core of the probe, the connections, consult the intervention document"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00030",
+      "canonical_label": "Tool control device no. 3 is not working",
+      "normalized_label": "tool control device no 3 is not working",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest",
+        "Constraint violation",
+        "Technician",
+        "Logistic Process",
+        "Temporal Entity"
+      ],
+      "definition": "An instance where the third tool control device fails to operate as intended, indicating a violation of expected operational constraints.",
+      "aliases": [
+        "Tool control device 3 is not working",
+        "Tool control device number 3 is not working"
+      ],
+      "synonyms": [
+        "Tool control device 3 is malfunctioning",
+        "Tool control device 3 is broken",
+        "Tool control device 3 is not functioning"
+      ],
+      "lexical_variants": [
+        "Tool control device no. 3 is not working",
+        "Tool control device no. 3 is not functioning",
+        "Tool control device no. 3 is malfunctioning"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00044",
+          "text": "Tool control device no. 3 is not working",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": 3553,
+              "chunk_end_char": 3593,
+              "doc_start_char": 33553,
+              "doc_end_char": 33593,
+              "snippet": "Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 3 is not working.\nCheck the core of the probe, the connections, consult the intervention documen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00031",
+      "canonical_label": "Tool control device no. 4 does not work",
+      "normalized_label": "tool control device no 4 does not work",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest: Tool control device no. 4",
+        "Constraint: operational requirement",
+        "TemporalEntity: time of failure",
+        "LogisticProcess: maintenance context",
+        "Technician: responsible for remediation",
+        "TRIGGERS: failure event",
+        "CAUSES: constraint violation",
+        "REQUIRES: technician intervention",
+        "HANDLED_BY: technician",
+        "REFERENCES: logistic process context",
+        "DETECTED_BY: monitoring system"
+      ],
+      "definition": "Failure of Tool control device no. 4 to operate as required, indicating a violation of its operational constraints.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00045",
+          "text": "Tool control device no. 4 does not work",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0006",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attribute_candidates": [],
+  "event_candidates": []
+}

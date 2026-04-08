@@ -1,0 +1,126 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 4,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "side protection",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00005",
+        "label": "causes"
+      },
+      "object": {
+        "id": "cand_s_00001",
+        "label": "Alarm event",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0001",
+      "justification": "The chunk text states that the alarm (Alarm n°: 1005) is caused by the side protections being open.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 52,
+          "chunk_end_char": 58,
+          "doc_start_char": 5052,
+          "doc_end_char": 5058,
+          "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. interven"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "Alarm event",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00009",
+        "label": "see page 7 of the electrical diagram, entry X2.5"
+      },
+      "object": {
+        "id": "cand_e_00004",
+        "label": "Programmable Logic Controller",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0001",
+      "justification": "The chunk text indicates that the alarm for side protections open references page 7, entry X2.5, which is a PLC input. Thus the alarm event is linked to the Programmable Logic Controller.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 607,
+          "chunk_end_char": 655,
+          "doc_start_char": 5607,
+          "doc_end_char": 5655,
+          "snippet": "pen. intervention: Check that the side protections are closed, check the locks. See page 7 of the electrical diagram, entry X2.5 responsible for the intervention: operator/maintenance person\n\nAlarm no.: 1008"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00002",
+      "subject": {
+        "id": "cand_e_00001",
+        "label": "component",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00015",
+        "label": "axis/spindle feeder"
+      },
+      "object": {
+        "id": "cand_s_00001",
+        "label": "Alarm event",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0001",
+      "justification": "The alarm event PSM FEEDER FAULT is caused by hardware problems with the axes/spindle feeder, linking the component to the alarm event.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 474,
+          "chunk_end_char": 493,
+          "doc_start_char": 5474,
+          "doc_end_char": 5493,
+          "snippet": "ith immediate and controlled stop, opening of the hardware authorization to the axis/spindle feeder cause: The side protections are open. intervention: Check that the side protect"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00003",
+      "subject": {
+        "id": "cand_e_00005",
+        "label": "coolant",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00028",
+        "label": "insufficient quantity"
+      },
+      "object": {
+        "id": "cand_s_00001",
+        "label": "Alarm event",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0001",
+      "justification": "The text states that the alarm is caused by insufficient quantity of coolant, linking the coolant entity to the alarm event.",
+      "confidence": 0.9,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1674,
+          "chunk_end_char": 1695,
+          "doc_start_char": 6674,
+          "doc_end_char": 6695,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle.\nInsufficient quantity of coolant in the water circuit:\nwise of the linear motor.\nCheck the liquid lev"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,742 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 46,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "Alarm with immediate and controlled stop",
+      "label": "alarm event",
+      "justification": "Describes the alarm type and its immediate shutdown effect.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 21,
+          "chunk_end_char": 61,
+          "doc_start_char": 30021,
+          "doc_end_char": 30061,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide wit"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "Alarm with immediate and controlled shutdown",
+      "label": "alarm event",
+      "justification": "Describes the alarm type and its immediate shutdown effect.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 740,
+          "chunk_end_char": 784,
+          "doc_start_char": 30740,
+          "doc_end_char": 30784,
+          "snippet": "manager\n\nAlarm No.: 1061\ntext: TIP 1: BREAKUP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nTool control device #1 has detected the breakage of the\ncause:\npoint.\nReplace t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "Tool control device #1",
+      "label": "machine component",
+      "justification": "Identifies a specific machine component involved in alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 785,
+          "chunk_end_char": 807,
+          "doc_start_char": 30785,
+          "doc_end_char": 30807,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nTool control device #1 has detected the breakage of the\ncause:\npoint.\nReplace the tool. If the tool is"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "Tool monitoring device #2",
+      "label": "machine component",
+      "justification": "Identifies a specific machine component involved in alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 1463,
+          "chunk_end_char": 1488,
+          "doc_start_char": 31463,
+          "doc_end_char": 31488,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nTool monitoring device #2 has detected the breakage of the\ncause:\npoint.\nReplace the tool. If the tool is"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "bar feeder",
+      "label": "machine component",
+      "justification": "Identifies a machine component that can fail.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 426,
+          "chunk_end_char": 436,
+          "doc_start_char": 30426,
+          "doc_end_char": 30436,
+          "snippet": "Standard: Optional: effect: Alarm with immediate and controlled stop cause: The bar feeder is off-circuit and does not transmit the \"ready\" signal to the machine's CNC. i"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "machine's CNC",
+      "label": "machine component",
+      "justification": "Identifies a machine component that can fail.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 500,
+          "chunk_end_char": 513,
+          "doc_start_char": 30500,
+          "doc_end_char": 30513,
+          "snippet": ": The bar feeder is off-circuit and does not transmit the \"ready\" signal to the machine's CNC. intervention: Check the connections, consult the bar feeder documentation for"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "probe core",
+      "label": "machine component",
+      "justification": "Identifies a machine component that can fail.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 2223,
+          "chunk_end_char": 2233,
+          "doc_start_char": 32223,
+          "doc_end_char": 32233,
+          "snippet": "shutdown cause: Tool control device no. 1 does not work intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly."
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "connections",
+      "label": "machine component",
+      "justification": "Identifies a machine component that can fail.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 539,
+          "chunk_end_char": 550,
+          "doc_start_char": 30539,
+          "doc_end_char": 30550,
+          "snippet": "s not transmit the \"ready\" signal to the machine's CNC. intervention: Check the connections, consult the bar feeder documentation for details of the anomaly. intervention"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "operator",
+      "label": "role",
+      "justification": "Identifies a person responsible for interventions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 276,
+          "chunk_end_char": 284,
+          "doc_start_char": 30276,
+          "doc_end_char": 30284,
+          "snippet": "from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjuster\n\nAlarm no.: 1060 text: FEEDER FAULT type: Standard: Optional"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "maintenance manager",
+      "label": "role",
+      "justification": "Identifies a person responsible for interventions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 648,
+          "chunk_end_char": 667,
+          "doc_start_char": 30648,
+          "doc_end_char": 30667,
+          "snippet": "feeder documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm No.: 1061\ntext: TIP 1: BREAKUP\ntype: Standard: Optional:\neffect: Alarm w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "toolmaker-adjuster",
+      "label": "role",
+      "justification": "Identifies a person responsible for interventions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 285,
+          "chunk_end_char": 303,
+          "doc_start_char": 30285,
+          "doc_end_char": 30303,
+          "snippet": "collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjuster\n\nAlarm no.: 1060 text: FEEDER FAULT type: Standard: Optional: effect: Alarm wit"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "maintenance officer",
+      "label": "role",
+      "justification": "Identifies a person responsible for interventions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 986,
+          "chunk_end_char": 1005,
+          "doc_start_char": 30986,
+          "doc_end_char": 31005,
+          "snippet": "the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm No.: 1062\ntext: TIP 2: BREAKUP\ntype: Standard: Optional:\neffect: Alarm wi"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "operator/maintenance manager",
+      "label": "role",
+      "justification": "Identifies a combined role responsible for interventions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 639,
+          "chunk_end_char": 667,
+          "doc_start_char": 30639,
+          "doc_end_char": 30667,
+          "snippet": "the bar feeder documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm No.: 1061\ntext: TIP 1: BREAKUP\ntype: Standard: Optional:\neffect: Alarm w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "operator/maintenance officer",
+      "label": "role",
+      "justification": "Identifies a combined role responsible for interventions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 1313,
+          "chunk_end_char": 1341,
+          "doc_start_char": 31313,
+          "doc_end_char": 31341,
+          "snippet": "tion document:\ntation of the device for details of the anomaly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1063\ntext: PUNTA 2: ROTTURA\ntype: Standard: Optional:\neffect: Ala"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "toolmaker-adjuster/in charge of maintenance",
+      "label": "role",
+      "justification": "Identifies a combined role responsible for interventions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 1991,
+          "chunk_end_char": 2034,
+          "doc_start_char": 31991,
+          "doc_end_char": 32034,
+          "snippet": "not broken, check the calibration of the device. in charge of the intervention: toolmaker-adjuster/in charge of maintenance\n\nAlarm no.: 1062 text: POINT 2: BREAK type: Standard: Optional: effect: Alarm w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "cause: The command configured for the mentioned axes causes them to collide with each other",
+      "label": "cause relation",
+      "justification": "Shows the causal relationship between command configuration and collision.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 62,
+          "chunk_end_char": 153,
+          "doc_start_char": 30062,
+          "doc_end_char": 30153,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear th"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "cause: The bar feeder is off-circuit and does not transmit the 'ready' signal to the machine's CNC",
+      "label": "cause relation",
+      "justification": "Shows the causal relationship between bar feeder failure and CNC signal loss.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "cause: Tool control device #1 is not working",
+      "label": "cause relation",
+      "justification": "Shows the causal relationship between device failure and alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 1122,
+          "chunk_end_char": 1166,
+          "doc_start_char": 31122,
+          "doc_end_char": 31166,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device #1 is not working\nCheck the core of the probe, the connections, consult the intervention document"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "cause: Tool control device no. 1 does not work",
+      "label": "cause relation",
+      "justification": "Shows the causal relationship between device failure and alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 2152,
+          "chunk_end_char": 2198,
+          "doc_start_char": 32152,
+          "doc_end_char": 32198,
+          "snippet": "type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 1 does not work intervention: Check the probe core, the connections, consult the device documen"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "cause: Tool control device no. 2 does not work",
+      "label": "cause relation",
+      "justification": "Shows the causal relationship between device failure and alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 2847,
+          "chunk_end_char": 2893,
+          "doc_start_char": 32847,
+          "doc_end_char": 32893,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 2 does not work\nCheck the core of the probe, the connections, consult the intervention document"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "cause: Tool control device no. 3 is not working",
+      "label": "cause relation",
+      "justification": "Shows the causal relationship between device failure and alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 3546,
+          "chunk_end_char": 3593,
+          "doc_start_char": 33546,
+          "doc_end_char": 33593,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 3 is not working.\nCheck the core of the probe, the connections, consult the intervention documen"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "cause: Tool control device no. 4 does not work",
+      "label": "cause relation",
+      "justification": "Shows the causal relationship between device failure and alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "cause: Tool control device no. 1 has detected tip breakage",
+      "label": "cause relation",
+      "justification": "Shows the causal relationship between detection and alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 1804,
+          "chunk_end_char": 1862,
+          "doc_start_char": 31804,
+          "doc_end_char": 31862,
+          "snippet": "type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 1 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibrati"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "cause: Tool control device no. 2 has detected tip breakage",
+      "label": "cause relation",
+      "justification": "Shows the causal relationship between detection and alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "cause: Tool control device no. 3 has detected tip breakage",
+      "label": "cause relation",
+      "justification": "Shows the causal relationship between detection and alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 4226,
+          "chunk_end_char": 4284,
+          "doc_start_char": 34226,
+          "doc_end_char": 34284,
+          "snippet": "type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 3 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibrati"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "cause: Tool control device no. 4 has detected tip breakage",
+      "label": "cause relation",
+      "justification": "Shows the causal relationship between detection and alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "intervention: Manually move the axes away from the collision zone and clear the alarm",
+      "label": "intervention action",
+      "justification": "Describes the action taken to resolve the collision alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 155,
+          "chunk_end_char": 240,
+          "doc_start_char": 30155,
+          "doc_end_char": 30240,
+          "snippet": "mmand configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjuster\n\nAlarm no.: 1060"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "intervention: Check the connections, consult the bar feeder documentation for details of the anomaly",
+      "label": "intervention action",
+      "justification": "Describes the action taken to resolve the bar feeder alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 515,
+          "chunk_end_char": 615,
+          "doc_start_char": 30515,
+          "doc_end_char": 30615,
+          "snippet": "r is off-circuit and does not transmit the \"ready\" signal to the machine's CNC. intervention: Check the connections, consult the bar feeder documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm No.: 1061\ntext: TIP"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "intervention: Replace the tool",
+      "label": "intervention action",
+      "justification": "Describes the action taken to resolve tool breakage alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 1864,
+          "chunk_end_char": 1894,
+          "doc_start_char": 31864,
+          "doc_end_char": 31894,
+          "snippet": "controlled shutdown cause: Tool control device no. 1 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibration of the device. in charge of t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly",
+      "label": "intervention action",
+      "justification": "Describes the action taken to resolve probe core or device failure alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 2199,
+          "chunk_end_char": 2311,
+          "doc_start_char": 32199,
+          "doc_end_char": 32311,
+          "snippet": "mmediate and controlled shutdown cause: Tool control device no. 1 does not work intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm n°: 1063 text: PUNTA"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00030",
+      "text": "responsible for the intervention: operator/toolmaker-adjuster",
+      "label": "responsible role",
+      "justification": "Specifies the roles responsible for the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 242,
+          "chunk_end_char": 303,
+          "doc_start_char": 30242,
+          "doc_end_char": 30303,
+          "snippet": "ntion: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjuster\n\nAlarm no.: 1060 text: FEEDER FAULT type: Standard: Optional: effect: Alarm wit"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00031",
+      "text": "intervention manager: operator/maintenance manager",
+      "label": "responsible role",
+      "justification": "Specifies the roles responsible for the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 617,
+          "chunk_end_char": 667,
+          "doc_start_char": 30617,
+          "doc_end_char": 30667,
+          "snippet": "e connections, consult the bar feeder documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm No.: 1061\ntext: TIP 1: BREAKUP\ntype: Standard: Optional:\neffect: Alarm w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00032",
+      "text": "in charge of the intervention: toolmaker-adjuster/in charge of maintenance",
+      "label": "responsible role",
+      "justification": "Specifies the roles responsible for the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 1960,
+          "chunk_end_char": 2034,
+          "doc_start_char": 31960,
+          "doc_end_char": 32034,
+          "snippet": "place the tool. If the tool is not broken, check the calibration of the device. in charge of the intervention: toolmaker-adjuster/in charge of maintenance\n\nAlarm no.: 1062 text: POINT 2: BREAK type: Standard: Optional: effect: Alarm w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00033",
+      "text": "responsible for: operator/maintenance officer",
+      "label": "responsible role",
+      "justification": "Specifies the roles responsible for the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00034",
+      "text": "Tool control device #1 has detected the breakage of the point",
+      "label": "relation-bearing expression",
+      "justification": "Shows the detection relation between device and breakage.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00035",
+      "text": "Tool monitoring device #2 has detected the breakage of the point",
+      "label": "relation-bearing expression",
+      "justification": "Shows the detection relation between device and breakage.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00036",
+      "text": "Tool control device no. 1 has detected tip breakage",
+      "label": "relation-bearing expression",
+      "justification": "Shows the detection relation between device and tip breakage.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 1811,
+          "chunk_end_char": 1862,
+          "doc_start_char": 31811,
+          "doc_end_char": 31862,
+          "snippet": "Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 1 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibrati"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00037",
+      "text": "Tool control device no. 2 has detected tip breakage",
+      "label": "relation-bearing expression",
+      "justification": "Shows the detection relation between device and tip breakage.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00038",
+      "text": "Tool control device no. 3 has detected tip breakage",
+      "label": "relation-bearing expression",
+      "justification": "Shows the detection relation between device and tip breakage.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 4233,
+          "chunk_end_char": 4284,
+          "doc_start_char": 34233,
+          "doc_end_char": 34284,
+          "snippet": "Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 3 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibrati"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00039",
+      "text": "Tool control device no. 4 has detected tip breakage",
+      "label": "relation-bearing expression",
+      "justification": "Shows the detection relation between device and tip breakage.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00040",
+      "text": "Tool monitoring device No. 3 has detected the breakage of the point",
+      "label": "relation-bearing expression",
+      "justification": "Shows the detection relation between device and breakage.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00041",
+      "text": "Tool monitoring device No. 4 has detected the breakage of the point",
+      "label": "relation-bearing expression",
+      "justification": "Shows the detection relation between device and breakage.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00042",
+      "text": "Tool control device no. 1 does not work",
+      "label": "relation-bearing expression",
+      "justification": "Shows the failure relation of the device.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 2159,
+          "chunk_end_char": 2198,
+          "doc_start_char": 32159,
+          "doc_end_char": 32198,
+          "snippet": "Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 1 does not work intervention: Check the probe core, the connections, consult the device documen"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00043",
+      "text": "Tool control device no. 2 does not work",
+      "label": "relation-bearing expression",
+      "justification": "Shows the failure relation of the device.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 2854,
+          "chunk_end_char": 2893,
+          "doc_start_char": 32854,
+          "doc_end_char": 32893,
+          "snippet": "Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 2 does not work\nCheck the core of the probe, the connections, consult the intervention document"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00044",
+      "text": "Tool control device no. 3 is not working",
+      "label": "relation-bearing expression",
+      "justification": "Shows the failure relation of the device.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 3553,
+          "chunk_end_char": 3593,
+          "doc_start_char": 33553,
+          "doc_end_char": 33593,
+          "snippet": "Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 3 is not working.\nCheck the core of the probe, the connections, consult the intervention documen"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00045",
+      "text": "Tool control device no. 4 does not work",
+      "label": "relation-bearing expression",
+      "justification": "Shows the failure relation of the device.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "d: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjus"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1324 @@
+{
+  "layer": "layer08_axiom_schemata_extraction",
+  "num_axiom_schema_candidates": 46,
+  "axiom_schema_candidates": [
+    {
+      "schema_id": "schema_00000",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "generatesCNCAlarm",
+      "predicate": "domain",
+      "object_id": "domain_hint::CNCMachine",
+      "object_label": "CNCMachine",
+      "justification": "The relation candidate *generatesCNCAlarm* explicitly states that it relates a CNC machine (domain) to the alarms or messages it generates (range), capturing operational status, faults, or required actions.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 81,
+          "chunk_end_char": 111,
+          "doc_start_char": 81,
+          "doc_end_char": 111,
+          "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00001",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "generatesCNCAlarm",
+      "predicate": "range",
+      "object_id": "range_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "justification": "The relation candidate *generatesCNCAlarm* explicitly states that it relates a CNC machine (domain) to the alarms or messages it generates (range), capturing operational status, faults, or required actions.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 81,
+          "chunk_end_char": 111,
+          "doc_start_char": 81,
+          "doc_end_char": 111,
+          "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00002",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00001",
+      "subject_label": "issuedBy",
+      "predicate": "domain",
+      "object_id": "domain_hint::Result",
+      "object_label": "Result",
+      "justification": "The relation candidate 'issuedBy' explicitly links a manufacturing command or observation result (domain: Result) to the PLC or other resource that issues it (range: Resource). This matches the seed ontology classes and provides a reusable domain‑range schema for similar manufacturing relations.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00001"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 277,
+          "chunk_end_char": 294,
+          "doc_start_char": 277,
+          "doc_end_char": 294,
+          "snippet": "s and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper functioning"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00003",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00001",
+      "subject_label": "issuedBy",
+      "predicate": "range",
+      "object_id": "range_hint::Resource",
+      "object_label": "Resource",
+      "justification": "The relation candidate 'issuedBy' explicitly links a manufacturing command or observation result (domain: Result) to the PLC or other resource that issues it (range: Resource). This matches the seed ontology classes and provides a reusable domain‑range schema for similar manufacturing relations.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00001"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 277,
+          "chunk_end_char": 294,
+          "doc_start_char": 277,
+          "doc_end_char": 294,
+          "snippet": "s and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper functioning"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00004",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00002",
+      "subject_label": "signalsDetection",
+      "predicate": "domain",
+      "object_id": "domain_hint::Alarm",
+      "object_label": "Alarm",
+      "justification": "The relation *signalsDetection* connects a monitoring entity such as an Alarm to a detection event. In the seed ontology, the closest conceptual match for a detection event is the class *Situation* (and its subclasses *Situation‑S1*, *Situation‑S2*, *Situation‑S3*), which represent contextual states indicating problems. Therefore the domain is an Alarm and the range is a Situation.",
+      "confidence": 0.88,
+      "source_relation_ids": [
+        "ont_rel_00002"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00005",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00002",
+      "subject_label": "signalsDetection",
+      "predicate": "range",
+      "object_id": "range_hint::Situation",
+      "object_label": "Situation",
+      "justification": "The relation *signalsDetection* connects a monitoring entity such as an Alarm to a detection event. In the seed ontology, the closest conceptual match for a detection event is the class *Situation* (and its subclasses *Situation‑S1*, *Situation‑S2*, *Situation‑S3*), which represent contextual states indicating problems. Therefore the domain is an Alarm and the range is a Situation.",
+      "confidence": 0.88,
+      "source_relation_ids": [
+        "ont_rel_00002"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00006",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00003",
+      "subject_label": "drawsOperatorAttention",
+      "predicate": "domain",
+      "object_id": "domain_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "justification": "The relation *drawsOperatorAttention* explicitly connects an alarm or device action (domain: AlarmEvent) to the operator who receives the alert (range: Operator). The seed ontology defines Operator as a staff member responsible for operating machines, making this domain‑range pairing semantically coherent within the manufacturing context.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00003"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 760,
+          "chunk_end_char": 789,
+          "doc_start_char": 760,
+          "doc_end_char": 789,
+          "snippet": "is stopped\nwhen launching function M01;\n• read-only messages: these are used to draw the operator's attention to a particular circumstance without changing the operating status of the machi"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00007",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00003",
+      "subject_label": "drawsOperatorAttention",
+      "predicate": "range",
+      "object_id": "range_hint::Operator",
+      "object_label": "Operator",
+      "justification": "The relation *drawsOperatorAttention* explicitly connects an alarm or device action (domain: AlarmEvent) to the operator who receives the alert (range: Operator). The seed ontology defines Operator as a staff member responsible for operating machines, making this domain‑range pairing semantically coherent within the manufacturing context.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00003"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 760,
+          "chunk_end_char": 789,
+          "doc_start_char": 760,
+          "doc_end_char": 789,
+          "snippet": "is stopped\nwhen launching function M01;\n• read-only messages: these are used to draw the operator's attention to a particular circumstance without changing the operating status of the machi"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00008",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00004",
+      "subject_label": "restartCondition",
+      "predicate": "domain",
+      "object_id": "domain_hint::ProgramEvent",
+      "object_label": "ProgramEvent",
+      "justification": "The relation candidate \"restartCondition\" explicitly states that it links a program or process (i.e., a ProgramEvent) to a condition that must be satisfied for the program to be restarted. The supporting triple indicates that a reset program can only be restarted if the causes do not persist, which is a condition on the program’s state. Thus the domain is ProgramEvent and the range is Condition.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00004"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1074,
+          "chunk_end_char": 1149,
+          "doc_start_char": 1074,
+          "doc_end_char": 1149,
+          "snippet": "an be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with i"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00009",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00004",
+      "subject_label": "restartCondition",
+      "predicate": "range",
+      "object_id": "range_hint::Condition",
+      "object_label": "Condition",
+      "justification": "The relation candidate \"restartCondition\" explicitly states that it links a program or process (i.e., a ProgramEvent) to a condition that must be satisfied for the program to be restarted. The supporting triple indicates that a reset program can only be restarted if the causes do not persist, which is a condition on the program’s state. Thus the domain is ProgramEvent and the range is Condition.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00004"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1074,
+          "chunk_end_char": 1149,
+          "doc_start_char": 1074,
+          "doc_end_char": 1149,
+          "snippet": "an be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with i"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00010",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00005",
+      "subject_label": "causes",
+      "predicate": "domain",
+      "object_id": "domain_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "justification": "The relation candidate \"causes\" is defined with a domain hint of AlarmEvent and a range hint of Cause. The ontology supplies a clear definition for the Cause class, and the supporting triples show Alarm events triggering subsequent events or functions, which can be interpreted as causes within the manufacturing context. This aligns with the ontology’s notion that a Cause is a factor or event responsible for a situation, making the domain‑range pair reusable across similar contexts.",
+      "confidence": 0.88,
+      "source_relation_ids": [
+        "ont_rel_00005"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00001",
+        "triple_00002",
+        "triple_00020"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1366,
+          "chunk_end_char": 1421,
+          "doc_start_char": 1366,
+          "doc_end_char": 1421,
+          "snippet": "ationeffect: hardware operation to the axis/spindle feeder and CNC in\nemergency\ncause: Indicates that the punch button has been pressed\nRelease the button and press the start button on the\nintervention: machine.\nSee"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 3081,
+          "chunk_end_char": 3145,
+          "doc_start_char": 3081,
+          "doc_end_char": 3145,
+          "snippet": "ed stop, opening of the hardware authorization to the axis/spindle power supply cause: Indicates that the power circuits have not been activated, in this condition the machine cannot operate in any way. intervention: Press t"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2231,
+          "chunk_end_char": 2288,
+          "doc_start_char": 2231,
+          "doc_end_char": 2288,
+          "snippet": "own, opening of authorization\neffect:\nhardware to the axis/spindle power supply\ncause: At the start of the cycle the sliding door is open.\nCheck that the door is in an acceptable condition.\nintervention:\nSee page 19 o"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4336,
+          "chunk_end_char": 4372,
+          "doc_start_char": 4336,
+          "doc_end_char": 4372,
+          "snippet": "own, opening of authorization\neffect:\nhardware to the axis/spindle power supply\ncause: The side protections are open.\nCheck that the side protections are closed, check for any possible rusting.\nSe"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00011",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00005",
+      "subject_label": "causes",
+      "predicate": "range",
+      "object_id": "range_hint::Cause",
+      "object_label": "Cause",
+      "justification": "The relation candidate \"causes\" is defined with a domain hint of AlarmEvent and a range hint of Cause. The ontology supplies a clear definition for the Cause class, and the supporting triples show Alarm events triggering subsequent events or functions, which can be interpreted as causes within the manufacturing context. This aligns with the ontology’s notion that a Cause is a factor or event responsible for a situation, making the domain‑range pair reusable across similar contexts.",
+      "confidence": 0.88,
+      "source_relation_ids": [
+        "ont_rel_00005"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00001",
+        "triple_00002",
+        "triple_00020"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1366,
+          "chunk_end_char": 1421,
+          "doc_start_char": 1366,
+          "doc_end_char": 1421,
+          "snippet": "ationeffect: hardware operation to the axis/spindle feeder and CNC in\nemergency\ncause: Indicates that the punch button has been pressed\nRelease the button and press the start button on the\nintervention: machine.\nSee"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 3081,
+          "chunk_end_char": 3145,
+          "doc_start_char": 3081,
+          "doc_end_char": 3145,
+          "snippet": "ed stop, opening of the hardware authorization to the axis/spindle power supply cause: Indicates that the power circuits have not been activated, in this condition the machine cannot operate in any way. intervention: Press t"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2231,
+          "chunk_end_char": 2288,
+          "doc_start_char": 2231,
+          "doc_end_char": 2288,
+          "snippet": "own, opening of authorization\neffect:\nhardware to the axis/spindle power supply\ncause: At the start of the cycle the sliding door is open.\nCheck that the door is in an acceptable condition.\nintervention:\nSee page 19 o"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4336,
+          "chunk_end_char": 4372,
+          "doc_start_char": 4336,
+          "doc_end_char": 4372,
+          "snippet": "own, opening of authorization\neffect:\nhardware to the axis/spindle power supply\ncause: The side protections are open.\nCheck that the side protections are closed, check for any possible rusting.\nSe"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00012",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00006",
+      "subject_label": "located_on_page",
+      "predicate": "domain",
+      "object_id": "domain_hint::FeatureOfInterest",
+      "object_label": "FeatureOfInterest",
+      "justification": "The relation candidate 'located_on_page' explicitly states that it relates a feature of interest to the specific page of a diagram where it is depicted or referenced, providing clear domain and range hints.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00006"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1498,
+          "chunk_end_char": 1546,
+          "doc_start_char": 1498,
+          "doc_end_char": 1546,
+          "snippet": "sed\nRelease the button and press the start button on the\nintervention: machine.\nSee page 5 of the electrical diagram, input X8.4\nresponsible for\noperator/maintenance officer\nAlarm No.: 1002\ntext: OFF-CIRCUIT"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00013",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00006",
+      "subject_label": "located_on_page",
+      "predicate": "range",
+      "object_id": "range_hint::PageReference",
+      "object_label": "PageReference",
+      "justification": "The relation candidate 'located_on_page' explicitly states that it relates a feature of interest to the specific page of a diagram where it is depicted or referenced, providing clear domain and range hints.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00006"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1498,
+          "chunk_end_char": 1546,
+          "doc_start_char": 1498,
+          "doc_end_char": 1546,
+          "snippet": "sed\nRelease the button and press the start button on the\nintervention: machine.\nSee page 5 of the electrical diagram, input X8.4\nresponsible for\noperator/maintenance officer\nAlarm No.: 1002\ntext: OFF-CIRCUIT"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00014",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00007",
+      "subject_label": "handledBy",
+      "predicate": "domain",
+      "object_id": "domain_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "justification": "The handledBy relation explicitly links an AlarmEvent to the person or role that is responsible for addressing, managing, or resolving it. In the ontology, the range is defined as the generic Resource class, which subsumes specific roles such as Manager and Technician, aligning with the provided seed ontology context.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00007"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00015",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00007",
+      "subject_label": "handledBy",
+      "predicate": "range",
+      "object_id": "range_hint::Resource",
+      "object_label": "Resource",
+      "justification": "The handledBy relation explicitly links an AlarmEvent to the person or role that is responsible for addressing, managing, or resolving it. In the ontology, the range is defined as the generic Resource class, which subsumes specific roles such as Manager and Technician, aligning with the provided seed ontology context.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00007"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00016",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00008",
+      "subject_label": "triggersControlledShutdown",
+      "predicate": "domain",
+      "object_id": "domain_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "justification": "The relation candidate \"triggersControlledShutdown\" explicitly states that it links an AlarmEvent (domain) to a ShutdownEvent (range), indicating that an alarm event initiates a controlled shutdown event.",
+      "confidence": 0.85,
+      "source_relation_ids": [
+        "ont_rel_00008"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1217,
+          "chunk_end_char": 1261,
+          "doc_start_char": 1217,
+          "doc_end_char": 1261,
+          "snippet": "not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening of the authorizationeffect: hardware operation to the axis/spindle fee"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00017",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00008",
+      "subject_label": "triggersControlledShutdown",
+      "predicate": "range",
+      "object_id": "range_hint::ShutdownEvent",
+      "object_label": "ShutdownEvent",
+      "justification": "The relation candidate \"triggersControlledShutdown\" explicitly states that it links an AlarmEvent (domain) to a ShutdownEvent (range), indicating that an alarm event initiates a controlled shutdown event.",
+      "confidence": 0.85,
+      "source_relation_ids": [
+        "ont_rel_00008"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1217,
+          "chunk_end_char": 1261,
+          "doc_start_char": 1217,
+          "doc_end_char": 1261,
+          "snippet": "not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening of the authorizationeffect: hardware operation to the axis/spindle fee"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00018",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00009",
+      "subject_label": "misconfigured",
+      "predicate": "domain",
+      "object_id": "domain_hint::Machine",
+      "object_label": "Machine",
+      "justification": "The relation 'misconfigured' connects a manufacturing resource (e.g., a machine such as Feeder) to a configuration error or setting (e.g., error code A2831), indicating a configuration issue that may trigger an alarm.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00009"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00006",
+        "triple_00013"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 458,
+          "chunk_end_char": 478,
+          "doc_start_char": 10458,
+          "doc_end_char": 10478,
+          "snippet": "nal: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot."
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00019",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00009",
+      "subject_label": "misconfigured",
+      "predicate": "range",
+      "object_id": "range_hint::ConfigurationSetting",
+      "object_label": "ConfigurationSetting",
+      "justification": "The relation 'misconfigured' connects a manufacturing resource (e.g., a machine such as Feeder) to a configuration error or setting (e.g., error code A2831), indicating a configuration issue that may trigger an alarm.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00009"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00006",
+        "triple_00013"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 458,
+          "chunk_end_char": 478,
+          "doc_start_char": 10458,
+          "doc_end_char": 10478,
+          "snippet": "nal: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot."
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00020",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00010",
+      "subject_label": "isInFaultState",
+      "predicate": "domain",
+      "object_id": "domain_hint::Entity",
+      "object_label": "Entity",
+      "justification": "The relation candidate 'isInFaultState' explicitly states that an entity (e.g., a pump) is in a fault state. The domain hint is 'Entity' and the range hint is 'FaultState', which aligns with the evidence that the alarm event refers to a pump being checked for faults. No contradictory ontology classes are present, so the generic domain and range are appropriate.",
+      "confidence": 0.88,
+      "source_relation_ids": [
+        "ont_rel_00010"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00014"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 507,
+          "chunk_end_char": 522,
+          "doc_start_char": 10507,
+          "doc_end_char": 10522,
+          "snippet": "shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot. intervention: Check the thermostat, fan or"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00021",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00010",
+      "subject_label": "isInFaultState",
+      "predicate": "range",
+      "object_id": "range_hint::FaultState",
+      "object_label": "FaultState",
+      "justification": "The relation candidate 'isInFaultState' explicitly states that an entity (e.g., a pump) is in a fault state. The domain hint is 'Entity' and the range hint is 'FaultState', which aligns with the evidence that the alarm event refers to a pump being checked for faults. No contradictory ontology classes are present, so the generic domain and range are appropriate.",
+      "confidence": 0.88,
+      "source_relation_ids": [
+        "ont_rel_00010"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00014"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 507,
+          "chunk_end_char": 522,
+          "doc_start_char": 10507,
+          "doc_end_char": 10522,
+          "snippet": "shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot. intervention: Check the thermostat, fan or"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00022",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00011",
+      "subject_label": "failsToSatisfy",
+      "predicate": "domain",
+      "object_id": "domain_hint::Resource",
+      "object_label": "Resource",
+      "justification": "The relation failsToSatisfy is defined as a negated sufficiency link from a Resource to a Requirement, indicating that the Resource does not meet the Requirement.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00011"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 906,
+          "chunk_end_char": 923,
+          "doc_start_char": 10906,
+          "doc_end_char": 10923,
+          "snippet": "immediate and controlled stop cause: The pressure of the pneumatic installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adj"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00023",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00011",
+      "subject_label": "failsToSatisfy",
+      "predicate": "range",
+      "object_id": "range_hint::Requirement",
+      "object_label": "Requirement",
+      "justification": "The relation failsToSatisfy is defined as a negated sufficiency link from a Resource to a Requirement, indicating that the Resource does not meet the Requirement.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00011"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 906,
+          "chunk_end_char": 923,
+          "doc_start_char": 10906,
+          "doc_end_char": 10923,
+          "snippet": "immediate and controlled stop cause: The pressure of the pneumatic installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adj"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00024",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00012",
+      "subject_label": "isNotPermitted",
+      "predicate": "domain",
+      "object_id": "domain_hint::Action",
+      "object_label": "Action",
+      "justification": "The isNotPermitted relation expresses a prohibition on a specific action. In the provided triple, the event \"Alarm 1043\" triggers a procedural action (checking mechanical resistance and inspecting the microdetector). The prohibition applies to the action of opening the clamp while the alarm is active, linking an Action domain to an Action range.",
+      "confidence": 0.88,
+      "source_relation_ids": [
+        "ont_rel_00012"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00017"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00025",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00012",
+      "subject_label": "isNotPermitted",
+      "predicate": "range",
+      "object_id": "range_hint::Action",
+      "object_label": "Action",
+      "justification": "The isNotPermitted relation expresses a prohibition on a specific action. In the provided triple, the event \"Alarm 1043\" triggers a procedural action (checking mechanical resistance and inspecting the microdetector). The prohibition applies to the action of opening the clamp while the alarm is active, linking an Action domain to an Action range.",
+      "confidence": 0.88,
+      "source_relation_ids": [
+        "ont_rel_00012"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00017"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00026",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00013",
+      "subject_label": "isNotAllowed",
+      "predicate": "domain",
+      "object_id": "domain_hint::Staff",
+      "object_label": "Staff",
+      "justification": "The isNotAllowed relation indicates a prohibition that staff are not allowed to perform a specific intervention action while an alarm is active, implying the domain is Staff and the range is Permission.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00013"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00018"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00027",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00013",
+      "subject_label": "isNotAllowed",
+      "predicate": "range",
+      "object_id": "range_hint::Permission",
+      "object_label": "Permission",
+      "justification": "The isNotAllowed relation indicates a prohibition that staff are not allowed to perform a specific intervention action while an alarm is active, implying the domain is Staff and the range is Permission.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00013"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00018"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00028",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00014",
+      "subject_label": "isActivated",
+      "predicate": "domain",
+      "object_id": "domain_hint::Machine",
+      "object_label": "Machine",
+      "justification": "The relation candidate \"isActivated\" explicitly states that it relates a Machine to an Action that activates it, indicating a transition to an active state within a Situation. The domain and range hints provided in the candidate match the ontology classes for Machine and Action, and the retrieved evidence confirms the existence of these classes. Therefore, the reusable schema is that \"isActivated\" has domain Machine and range Action.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00014"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00019"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1515,
+          "chunk_end_char": 1527,
+          "doc_start_char": 11515,
+          "doc_end_char": 11527,
+          "snippet": "situations which are not permitted:\n• spindle removal when the bypass function is activated;\n• spindle orientation when the rigid tapping function or\npin synchronization i"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00029",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00014",
+      "subject_label": "isActivated",
+      "predicate": "range",
+      "object_id": "range_hint::Action",
+      "object_label": "Action",
+      "justification": "The relation candidate \"isActivated\" explicitly states that it relates a Machine to an Action that activates it, indicating a transition to an active state within a Situation. The domain and range hints provided in the candidate match the ontology classes for Machine and Action, and the retrieved evidence confirms the existence of these classes. Therefore, the reusable schema is that \"isActivated\" has domain Machine and range Action.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00014"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00019"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1515,
+          "chunk_end_char": 1527,
+          "doc_start_char": 11515,
+          "doc_end_char": 11527,
+          "snippet": "situations which are not permitted:\n• spindle removal when the bypass function is activated;\n• spindle orientation when the rigid tapping function or\npin synchronization i"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00030",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00015",
+      "subject_label": "isEnabled",
+      "predicate": "domain",
+      "object_id": "domain_hint::Sensor",
+      "object_label": "Sensor",
+      "justification": "The relation candidate \"isEnabled\" semantically links entities such as Sensors (and Managers) to an EnabledState, indicating they are operational. This aligns with the SSN/SOSA framework where sensors can be enabled or disabled, and with the manufacturing context where managers may be in an active supervisory role.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00015"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1606,
+          "chunk_end_char": 1616,
+          "doc_start_char": 11606,
+          "doc_end_char": 11616,
+          "snippet": "d;\n• spindle orientation when the rigid tapping function or\npin synchronization is enabled;\n• spindle bypass mode when rigid tapping function or spindle synchronization i"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00031",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00015",
+      "subject_label": "isEnabled",
+      "predicate": "range",
+      "object_id": "range_hint::EnabledState",
+      "object_label": "EnabledState",
+      "justification": "The relation candidate \"isEnabled\" semantically links entities such as Sensors (and Managers) to an EnabledState, indicating they are operational. This aligns with the SSN/SOSA framework where sensors can be enabled or disabled, and with the manufacturing context where managers may be in an active supervisory role.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00015"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1606,
+          "chunk_end_char": 1616,
+          "doc_start_char": 11606,
+          "doc_end_char": 11616,
+          "snippet": "d;\n• spindle orientation when the rigid tapping function or\npin synchronization is enabled;\n• spindle bypass mode when rigid tapping function or spindle synchronization i"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00032",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00016",
+      "subject_label": "incorrectExecution",
+      "predicate": "domain",
+      "object_id": "domain_hint::Process",
+      "object_label": "Process",
+      "justification": "The relation candidate \"incorrectExecution\" explicitly states that an action or process has been performed incorrectly, which aligns with the triple where an alarm is caused by a programming function. This indicates that the programming function (a Process) executed incorrectly, producing an execution status. The domain and range hints provided in the candidate match this interpretation, and the manufacturing context supports the use of these labels.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00016"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00020"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00033",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00016",
+      "subject_label": "incorrectExecution",
+      "predicate": "range",
+      "object_id": "range_hint::ExecutionStatus",
+      "object_label": "ExecutionStatus",
+      "justification": "The relation candidate \"incorrectExecution\" explicitly states that an action or process has been performed incorrectly, which aligns with the triple where an alarm is caused by a programming function. This indicates that the programming function (a Process) executed incorrectly, producing an execution status. The domain and range hints provided in the candidate match this interpretation, and the manufacturing context supports the use of these labels.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00016"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00020"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00034",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00017",
+      "subject_label": "differsFrom",
+      "predicate": "domain",
+      "object_id": "domain_hint::Thing",
+      "object_label": "Thing",
+      "justification": "The 'differsFrom' relation is a generic non‑equivalence relation that applies to any two entities. No ontology classes explicitly constrain its domain or range, so the broad class 'Thing' is the most appropriate reusable schema.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00017"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00021"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 4519,
+          "chunk_end_char": 4531,
+          "doc_start_char": 14519,
+          "doc_end_char": 14531,
+          "snippet": "cycle we noticed that the number of the\ncause:\nprogram selected in the channel is different.\nCheck the program numbers or, if necessary,\nintervention: to run different pro"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00035",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00017",
+      "subject_label": "differsFrom",
+      "predicate": "range",
+      "object_id": "range_hint::Thing",
+      "object_label": "Thing",
+      "justification": "The 'differsFrom' relation is a generic non‑equivalence relation that applies to any two entities. No ontology classes explicitly constrain its domain or range, so the broad class 'Thing' is the most appropriate reusable schema.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00017"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00021"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 4519,
+          "chunk_end_char": 4531,
+          "doc_start_char": 14519,
+          "doc_end_char": 14531,
+          "snippet": "cycle we noticed that the number of the\ncause:\nprogram selected in the channel is different.\nCheck the program numbers or, if necessary,\nintervention: to run different pro"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00036",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00018",
+      "subject_label": "hasType",
+      "predicate": "domain",
+      "object_id": "domain_hint::Event",
+      "object_label": "Event",
+      "justification": "The hasType relation is intended to link an event instance (e.g., alarm, failure, intervention) to its class or category. Within the seed ontology, Feature is a defined class representing a spatial entity, making it a suitable and compatible target for such a relation. The domain hint explicitly states Event, and the range hint includes Feature, aligning with the ontology’s class hierarchy.",
+      "confidence": 0.88,
+      "source_relation_ids": [
+        "ont_rel_00018"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 364,
+          "chunk_end_char": 368,
+          "doc_start_char": 20364,
+          "doc_end_char": 20368,
+          "snippet": "intervention: responsible for the maintenance\n\nAlarm n°: 1040 text: CLAMP OPEN type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00037",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00018",
+      "subject_label": "hasType",
+      "predicate": "range",
+      "object_id": "range_hint::Feature",
+      "object_label": "Feature",
+      "justification": "The hasType relation is intended to link an event instance (e.g., alarm, failure, intervention) to its class or category. Within the seed ontology, Feature is a defined class representing a spatial entity, making it a suitable and compatible target for such a relation. The domain hint explicitly states Event, and the range hint includes Feature, aligning with the ontology’s class hierarchy.",
+      "confidence": 0.88,
+      "source_relation_ids": [
+        "ont_rel_00018"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 364,
+          "chunk_end_char": 368,
+          "doc_start_char": 20364,
+          "doc_end_char": 20368,
+          "snippet": "intervention: responsible for the maintenance\n\nAlarm n°: 1040 text: CLAMP OPEN type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00038",
+      "schema_type": "subclass",
+      "subject_id": "concept_00002",
+      "subject_label": "Component",
+      "predicate": "subclassOf",
+      "object_id": "concept_00003",
+      "object_label": "FlowControlDevice",
+      "justification": "Component is a generic part that directly influences fluid flow (e.g., valves, pumps, actuators), which aligns with the definition of FlowControlDevice as a device that imposes constraints on fluid movement to regulate flow rates or pressures. Therefore, Component can be considered a reusable subclass of FlowControlDevice.",
+      "confidence": 0.65,
+      "source_relation_ids": [],
+      "source_concept_ids": [
+        "concept_00002",
+        "concept_00003"
+      ],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 4468,
+          "chunk_end_char": 4483,
+          "doc_start_char": 24468,
+          "doc_end_char": 24483,
+          "snippet": "presence of coolant fluid, the hydraulic connections, the coolant fluid passage solenoid valves, the\nintervention: pump M1671; if no problem is detected, check the input\nX4.1"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00039",
+      "schema_type": "subclass",
+      "subject_id": "concept_00003",
+      "subject_label": "FlowControlDevice",
+      "predicate": "subclassOf",
+      "object_id": "concept_00002",
+      "object_label": "Component",
+      "justification": "FlowControlDevice is a reusable subclass of Component, as it specifically imposes constraints on fluid or material flow within a manufacturing system, fitting the generic definition of a Component.",
+      "confidence": 0.95,
+      "source_relation_ids": [],
+      "source_concept_ids": [
+        "concept_00003",
+        "concept_00002"
+      ],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 3771,
+          "chunk_end_char": 3790,
+          "doc_start_char": 23771,
+          "doc_end_char": 23790,
+          "snippet": "e: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe flow control device does not signal the presence of\ncause: coolant liquid, consequence of programmi"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00040",
+      "schema_type": "subclass",
+      "subject_id": "concept_00010",
+      "subject_label": "ActiveEmergencyEvent",
+      "predicate": "subclassOf",
+      "object_id": "concept_00009",
+      "object_label": "AlarmEvent",
+      "justification": "ActiveEmergencyEvent is a more specific subclass of AlarmEvent.",
+      "confidence": 0.9,
+      "source_relation_ids": [],
+      "source_concept_ids": [
+        "concept_00010",
+        "concept_00009"
+      ],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1168,
+          "chunk_end_char": 1190,
+          "doc_start_char": 1168,
+          "doc_end_char": 1190,
+          "snippet": "restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00041",
+      "schema_type": "subclass",
+      "subject_id": "concept_00010",
+      "subject_label": "ActiveEmergencyEvent",
+      "predicate": "subclassOf",
+      "object_id": "concept_00011",
+      "object_label": "AlarmEvent",
+      "justification": "An ActiveEmergencyEvent is a specific type of alarm that indicates an ongoing emergency condition, whereas an AlarmEvent is a broader class covering any alarm triggered in the system. Therefore, ActiveEmergencyEvent is more specific and can be considered a subclass of AlarmEvent.",
+      "confidence": 0.85,
+      "source_relation_ids": [],
+      "source_concept_ids": [
+        "concept_00010",
+        "concept_00011"
+      ],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1168,
+          "chunk_end_char": 1190,
+          "doc_start_char": 1168,
+          "doc_end_char": 1190,
+          "snippet": "restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00042",
+      "schema_type": "subclass",
+      "subject_id": "concept_00011",
+      "subject_label": "AlarmEvent",
+      "predicate": "subclassOf",
+      "object_id": "concept_00009",
+      "object_label": "AlarmEvent",
+      "justification": "Concept_00011 (AlarmEvent) is a more specific instance of the broader AlarmEvent concept (concept_00009), making it a valid reusable subclass.",
+      "confidence": 0.85,
+      "source_relation_ids": [],
+      "source_concept_ids": [
+        "concept_00011",
+        "concept_00009"
+      ],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1592,
+          "chunk_end_char": 1607,
+          "doc_start_char": 1592,
+          "doc_end_char": 1607,
+          "snippet": "the electrical diagram, input X8.4\nresponsible for\noperator/maintenance officer\nAlarm No.: 1002\ntext: OFF-CIRCUIT MACHINE\ntype: Standard: Optional:\nAlarm with immediate and co"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4150,
+          "chunk_end_char": 4165,
+          "doc_start_char": 4150,
+          "doc_end_char": 4165,
+          "snippet": "cle.\nSee page 19 of the electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and contr"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00043",
+      "schema_type": "subclass",
+      "subject_id": "concept_00012",
+      "subject_label": "OpenSideGuardStateEvent",
+      "predicate": "subclassOf",
+      "object_id": "concept_00009",
+      "object_label": "AlarmEvent",
+      "justification": "OpenSideGuardStateEvent is a reusable subclass of AlarmEvent.",
+      "confidence": 0.92,
+      "source_relation_ids": [],
+      "source_concept_ids": [
+        "concept_00012",
+        "concept_00009"
+      ],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4166,
+          "chunk_end_char": 4188,
+          "doc_start_char": 4166,
+          "doc_end_char": 4188,
+          "snippet": "of the electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00044",
+      "schema_type": "subclass",
+      "subject_id": "concept_00012",
+      "subject_label": "OpenSideGuardStateEvent",
+      "predicate": "subclassOf",
+      "object_id": "concept_00011",
+      "object_label": "AlarmEvent",
+      "justification": "OpenSideGuardStateEvent is a specialized event that signals the state of a side guard and is logically a more specific kind of AlarmEvent.",
+      "confidence": 0.95,
+      "source_relation_ids": [],
+      "source_concept_ids": [
+        "concept_00012",
+        "concept_00011"
+      ],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4166,
+          "chunk_end_char": 4188,
+          "doc_start_char": 4166,
+          "doc_end_char": 4188,
+          "snippet": "of the electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00045",
+      "schema_type": "subclass",
+      "subject_id": "concept_00013",
+      "subject_label": "FailureEvent",
+      "predicate": "subclassOf",
+      "object_id": "concept_00011",
+      "object_label": "AlarmEvent",
+      "justification": "FailureEvent is a reusable subclass of AlarmEvent.",
+      "confidence": 0.85,
+      "source_relation_ids": [],
+      "source_concept_ids": [
+        "concept_00013",
+        "concept_00011"
+      ],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 315,
+          "chunk_end_char": 328,
+          "doc_start_char": 35315,
+          "doc_end_char": 35328,
+          "snippet": ": Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention documen"
+        }
+      ]
+    }
+  ]
+}

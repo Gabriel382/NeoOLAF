@@ -1,0 +1,416 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 7.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text indicates that the alarms listed (including ActiveEmergencyEvent and Open side guard alarm) are part of the category \"alarms and messages of the CNC\", implying a grouping relation between them." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00002> ;
+    neo:predicate ns1:cand_r_00001 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00001> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The text states that an alarm can be recognized with the key 'RESET PRG', which triggers a program rewind event." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00000> ;
+    neo:predicate ns1:cand_r_00012 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00001> .
+
+<http://neoolaf.org/resource/triple/triple_00002> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00002/prov/0> ;
+    neo:justification "The text states that the alarm THERMOMAGNET SWITCHES. END OF CYCLE STOP triggers the intervention \"Check and reset circuit breakers and/or thermomagnetic switches\"." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00003> ;
+    neo:predicate ns1:cand_r_00038 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00038> .
+
+<http://neoolaf.org/resource/triple/triple_00003> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.8e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00003/prov/0> ;
+    neo:justification "The text states that the ACTIVE EMERGENCY alarm triggers a program rewind (RESET PRG) when the alarm is displayed, indicating that the alarm causes the program to be rewound." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00000> ;
+    neo:predicate ns1:cand_r_00043 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00001> .
+
+<http://neoolaf.org/resource/triple/triple_00004> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0003" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00004/prov/0> ;
+    neo:justification "The alarm OPEN FORCEPS triggers the intervention Exit automatic mode and close the clamp." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00029> ;
+    neo:predicate ns1:cand_r_00029 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00008> .
+
+<http://neoolaf.org/resource/triple/triple_00005> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0003" ;
+    neo:confidence 8.8e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00005/prov/0> ;
+    neo:justification "The alarm \"CLAMP OPENING FAILURE\" indicates that the clamp did not open within the 5‑second limit, and the recommended intervention is to check mechanical resistance." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00009> ;
+    neo:predicate ns1:cand_r_00030 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00004> .
+
+<http://neoolaf.org/resource/triple/triple_00006> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0007" ;
+    neo:confidence 7.8e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00006/prov/0> ;
+    neo:justification "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00001> ;
+    neo:predicate ns1:cand_r_00014 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00007> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0007" ;
+    neo:confidence 9e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00007/prov/0> ;
+    neo:justification "The text states that the alarm \"waiting for excessive feed\" is triggered by the device \"CDS\"." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00002> ;
+    neo:predicate ns1:cand_r_00017 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00008> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0007" ;
+    neo:confidence 8.8e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00008/prov/0> ;
+    neo:justification "The chunk contains the phrase \"responsible for operator/maintenance officer\" immediately following an alarm description, indicating that the alarm event is responsible for the operator/maintenance officer." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00020> ;
+    neo:predicate ns1:cand_r_00020 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00009> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0007" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00009/prov/0> ;
+    neo:justification "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00003> ;
+    neo:predicate ns1:cand_r_00026 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00010> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0007" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00010/prov/0> ;
+    neo:justification "The chunk describes a device (e.g., Tool control device no. 4) that \"does not work\" or \"has detected tip breakage\", which is a failure event. This indicates the device has had a problem, matching the relation label \"has_had_problem\"." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00003> ;
+    neo:predicate ns1:cand_r_00027 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00011> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0007" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00011/prov/0> ;
+    neo:justification "The cause field in the alarm description indicates that the Tool control device no. 4 does not work, which is a device failure that triggers the alarm." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00002> ;
+    neo:predicate ns1:cand_r_00030 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00012> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0007" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00012/prov/0> ;
+    neo:justification "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00002> ;
+    neo:predicate ns1:cand_r_00031 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00004> .
+
+<http://neoolaf.org/resource/triple/triple_00013> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0007" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00013/prov/0> ;
+    neo:justification "The alarm text explicitly instructs operators to \"Check the anomaly on the CDS operator panel\", which is an action performed on the device (the CDS). The relation candidate therefore links the check event to the device entity." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00000> ;
+    neo:predicate ns1:cand_r_00033 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00004> .
+
+<http://neoolaf.org/resource/triple/triple_00014> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0007" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00014/prov/0> ;
+    neo:justification "The chunk text for alarms 1070, 1071, and 1072 states that the intervention is \"Check the anomaly on the CDS operator panel and consult the documentation.\" This indicates that the alarm event (cand_s_00002) triggers the check action (cand_s_00004)." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00004> ;
+    neo:predicate ns1:cand_r_00034 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00015> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0007" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00015/prov/0> ;
+    neo:justification "The text states that after checking the anomaly on the CDS operator panel, the operator consults the documentation, indicating a triggering relationship." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00005> ;
+    neo:predicate ns1:cand_r_00035 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00004> .
+
+<http://neoolaf.org/resource/triple/triple_00016> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0007" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00016/prov/0> ;
+    neo:justification "The alarm 1070 triggers the intervention steps described in the relation candidate: checking the anomaly on the CDS operator panel, consulting documentation, and checking connections with the lathe." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00000> ;
+    neo:predicate ns1:cand_r_00036 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00017> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0007" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00017/prov/0> ;
+    neo:justification "The chunk text for Alarm 1070 states that the alarm triggers the intervention to check the anomaly on the CDS operator panel, which is a check event." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00004> ;
+    neo:predicate ns1:cand_r_00042 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00002> .
+
+<http://neoolaf.org/resource/node/cand_e_00004> neo:label "clamp" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00030 <http://neoolaf.org/resource/node/cand_s_00009> .
+
+<http://neoolaf.org/resource/node/cand_r_00038> neo:label "THERMOMAGNET SWITCHES. END OF CYCLE STOP" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00038 <http://neoolaf.org/resource/node/cand_s_00003> .
+
+<http://neoolaf.org/resource/node/cand_s_00008> neo:label "OPEN FORCEPS" ;
+    neo:nodeType "event" ;
+    ns1:cand_r_00029 <http://neoolaf.org/resource/node/cand_r_00029> .
+
+ns1:cand_r_00001 neo:label "alarms and messages of the CNC" .
+
+ns1:cand_r_00012 neo:label "recognized with the key 'RESET PRG'" .
+
+ns1:cand_r_00014 neo:label "immediate and controlled shutdown" .
+
+ns1:cand_r_00017 neo:label "waiting for excessive feed" .
+
+ns1:cand_r_00020 neo:label "operator/maintenance officer" .
+
+ns1:cand_r_00026 neo:label "has detected" .
+
+ns1:cand_r_00027 neo:label "has_had_problem" .
+
+ns1:cand_r_00029 neo:label "Exit automatic mode and close the clamp" .
+
+ns1:cand_r_00031 neo:label "check the core of the probe" .
+
+ns1:cand_r_00033 neo:label "check the anomaly in the CDS operation panel" .
+
+ns1:cand_r_00034 neo:label "check the anomaly on the CDS operator panel and consult the documentation" .
+
+ns1:cand_r_00035 neo:label "check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the tower." .
+
+ns1:cand_r_00036 neo:label "check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the lathe." .
+
+ns1:cand_r_00038 neo:label "THERMOMAGNET SWITCHES. END OF CYCLE STOP" .
+
+ns1:cand_r_00042 neo:label "intervention: Check the anomaly in the CDS operation panel and consult the documentation. If there is no sign, check the connections with the lathe." .
+
+ns1:cand_r_00043 neo:label "causes" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet """.1 Introduction
+Alarms and messages are divided into two main categories:
+1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........
+2""" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet """8.1 Introduction
+Alarms and messages are divided into two main categories:
+1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........
+2 alarms and messages from the PLC interface, described below.
+The messages and alarms issued by the PLC indic""" .
+
+<http://neoolaf.org/resource/triple/triple_00002/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet """, input X2.5
+responsible for
+operator/maintenance officer
+Alarm No.: 1008
+text: THERMOMAGNET SWITCHES. END OF CYCLE STOP
+type: Standard: Optional:
+effect: Alarm with shutdown at the end of the cycle
+A""" .
+
+<http://neoolaf.org/resource/triple/triple_00003/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet """8.1 Introduction
+Alarms and messages are divided into two main categories:
+1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........
+2 alarms and messages from the PLC interface, described below.
+The messages and alarms issued by the PLC indic""" .
+
+<http://neoolaf.org/resource/triple/triple_00004/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0003" ;
+    neo:snippet """the automatic cycle with the pliers of the
+cause:
+main pin open.
+intervention: Exit automatic mode and close the clamp.
+responsible for
+toolmaker-adjuster
+Alarm No.: 1041
+text: CLAMP OPENING FAILURE""" .
+
+<http://neoolaf.org/resource/triple/triple_00005/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0003" ;
+    neo:snippet """e and close the clamp.
+responsible for
+toolmaker-adjuster
+Alarm No.: 1041
+text: CLAMP OPENING FAILURE
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown""" .
+
+<http://neoolaf.org/resource/triple/triple_00006/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0007" ;
+    neo:snippet """068
+text: POINT 4: CONTROL FAILURE
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+cause: Tool control device no. 4 does not work,
+Check the core of the probe, th""" .
+
+<http://neoolaf.org/resource/triple/triple_00007/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0007" ;
+    neo:snippet """k the connections with the tower.
+responsible for
+Alarm number: 1072
+text: CDS: WAITING FOR EXCESSIVE FEED
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown""" .
+
+<http://neoolaf.org/resource/triple/triple_00008/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0007" ;
+    neo:snippet """tion document:
+tation of the device for details of the anomaly.
+responsible for
+operator/maintenance officer
+Alarm number: 1070
+text: CDS: IMMEDIATE STOP
+type: Standard: Optional:
+effect:""" .
+
+<http://neoolaf.org/resource/triple/triple_00009/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0007" ;
+    neo:snippet ": Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check" .
+
+<http://neoolaf.org/resource/triple/triple_00010/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0007" ;
+    neo:snippet """Alarm with immediate and controlled shutdown
+The outdoor sprinkler system (CDS) has had a problem that is preventing:
+che to continue the operation.
+Check the anomaly on the CDS""" .
+
+<http://neoolaf.org/resource/triple/triple_00011/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0007" ;
+    neo:snippet """of the proeffect:
+gram.
+The paired tool management program found that the name causes:
+number of spare parts for one or more tools is completed.
+Check the page dedic""" .
+
+<http://neoolaf.org/resource/triple/triple_00012/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0007" ;
+    neo:snippet """mediate and controlled shutdown
+cause: Tool control device no. 4 does not work,
+Check the core of the probe, the connections, consult the intervention document:
+tation of the device for d""" .
+
+<http://neoolaf.org/resource/triple/triple_00013/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0007" ;
+    neo:snippet """CDS) had a problem that did not
+cause:
+does not require immediate intervention.
+Check the anomaly in the CDS operation panel and consult
+intervention: documentation. If there is no signage, check the conn""" .
+
+<http://neoolaf.org/resource/triple/triple_00014/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0007" ;
+    neo:snippet ") has had a problem which prevents the operation from continuing. intervention: Check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the lathe. responsible for int" .
+
+<http://neoolaf.org/resource/triple/triple_00015/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0007" ;
+    neo:snippet """.
+Replace the tool. If the tool is not broken, check the calibration of the
+intervention:
+device.
+responsible for
+toolmaker-adjuster/maintenance officer
+Alarm number: 1068
+text: POINT 4: CONTROL FAILURE
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+cause: Tool contro""" .
+
+<http://neoolaf.org/resource/triple/triple_00016/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0007" ;
+    neo:snippet """) has had a problem which prevents the operation from continuing. intervention: Check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the lathe. responsible for intervention: responsible for maintenance
+
+Alarm number: 1071
+t""" .
+
+<http://neoolaf.org/resource/triple/triple_00017/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0007" ;
+    neo:snippet """er system (CDS) has had a problem that does not require immediate intervention. intervention: Check the anomaly in the CDS operation panel and consult the documentation. If there is no sign, check the connections with the lathe. responsible for intervention: responsible for maintenance
+
+Alarm n°: 1072 text:""" .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "Machine" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "Part" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_r_00020> neo:label "operator/maintenance officer" ;
+    neo:nodeType "relation" .
+
+<http://neoolaf.org/resource/node/cand_r_00029> neo:label "Exit automatic mode and close the clamp" ;
+    neo:nodeType "relation" .
+
+<http://neoolaf.org/resource/node/cand_s_00005> neo:label "consult" ;
+    neo:nodeType "event" .
+
+<http://neoolaf.org/resource/node/cand_s_00009> neo:label "Check mechanical resistance" ;
+    neo:nodeType "event" .
+
+ns1:cand_r_00030 neo:label "CLAMP OPENING FAILURE",
+        "causes" .
+
+<http://neoolaf.org/resource/node/cand_s_00001> neo:label "ActiveEmergencyEvent" ;
+    neo:nodeType "event" ;
+    ns1:cand_r_00001 <http://neoolaf.org/resource/node/cand_s_00002> ;
+    ns1:cand_r_00012 <http://neoolaf.org/resource/node/cand_s_00000> ;
+    ns1:cand_r_00043 <http://neoolaf.org/resource/node/cand_s_00000> .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "device" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00017 <http://neoolaf.org/resource/node/cand_s_00002> ;
+    ns1:cand_r_00026 <http://neoolaf.org/resource/node/cand_s_00003> ;
+    ns1:cand_r_00027 <http://neoolaf.org/resource/node/cand_s_00003> ;
+    ns1:cand_r_00030 <http://neoolaf.org/resource/node/cand_s_00002> .
+
+<http://neoolaf.org/resource/node/cand_s_00000> neo:label "process step",
+        "program rewind" ;
+    neo:nodeType "event" .
+
+<http://neoolaf.org/resource/node/cand_s_00003> neo:label "Check and reset circuit breakers and/or thermomagnetic switches",
+        "failure" ;
+    neo:nodeType "event" .
+
+<http://neoolaf.org/resource/node/cand_s_00004> neo:label "check" ;
+    neo:nodeType "event" ;
+    ns1:cand_r_00031 <http://neoolaf.org/resource/node/cand_e_00002> ;
+    ns1:cand_r_00033 <http://neoolaf.org/resource/node/cand_e_00000> ;
+    ns1:cand_r_00035 <http://neoolaf.org/resource/node/cand_s_00005> .
+
+<http://neoolaf.org/resource/node/cand_s_00002> neo:label "Open side guard alarm",
+        "alarm" ;
+    neo:nodeType "event" ;
+    ns1:cand_r_00014 <http://neoolaf.org/resource/node/cand_e_00001> ;
+    ns1:cand_r_00020 <http://neoolaf.org/resource/node/cand_r_00020> ;
+    ns1:cand_r_00034 <http://neoolaf.org/resource/node/cand_s_00004> ;
+    ns1:cand_r_00036 <http://neoolaf.org/resource/node/cand_s_00000> ;
+    ns1:cand_r_00042 <http://neoolaf.org/resource/node/cand_s_00004> .
+

@@ -1,0 +1,66 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 2,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_r_00000",
+        "label": "AUXILIARY WATERING ALARM",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00000",
+        "label": "AUXILIARY WATERING ALARM"
+      },
+      "object": {
+        "id": "cand_s_00001",
+        "label": "M208 function",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0005",
+      "justification": "The chunk states that the AUXILIARY WATERING ALARM is caused by the programming of the M208 function.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 213,
+          "chunk_end_char": 237,
+          "doc_start_char": 25213,
+          "doc_end_char": 25237,
+          "snippet": "nsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "M208 function",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00024",
+        "label": "M208 function intervention"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "M1671 pump",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0005",
+      "justification": "The text states that the M208 function intervention involves checking the M1671 pump.",
+      "confidence": 0.9,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 428,
+          "chunk_end_char": 454,
+          "doc_start_char": 25428,
+          "doc_end_char": 25454,
+          "snippet": "does not signal the presence of watering liquid, as a result of programming the M208 function intervention: Check the presence of the watering liquid, the hydraulic connections, the wate"
+        }
+      ]
+    }
+  ]
+}

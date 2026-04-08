@@ -1,0 +1,2127 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 42,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "Alarm with immediate and controlled stop",
+        "label": "alarm event/state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm event that triggers an immediate, controlled shutdown of the machine.",
+      "ontology_hints": [
+        "hasFeatureOfInterest",
+        "inSituationS1",
+        "inSituationS2",
+        "inSituationS3",
+        "inSituationS4",
+        "immediateStop"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm event that triggers an immediate, controlled shutdown of the machine.\", \"ontology_hints\": [\"hasFeatureOfInterest\", \"inSituationS1\", \"inSituationS2\", \"inSituationS3\", \"inSituationS4\", \"immediateStop\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "Alarm with stop at the end of the cycle",
+        "label": "alarm event/state"
+      },
+      "aliases": [
+        "End‑of‑cycle stop alarm",
+        "Cycle completion stop alarm",
+        "Alarm on cycle termination"
+      ],
+      "synonyms": [
+        "Cycle end alarm",
+        "Stop alarm at cycle end"
+      ],
+      "lexical_variants": [
+        "stop alarm at end of cycle",
+        "alarm triggered by cycle stop",
+        "alarm upon cycle completion"
+      ],
+      "alias_sources": {
+        "End‑of‑cycle stop alarm": [
+          "llm"
+        ],
+        "Cycle completion stop alarm": [
+          "llm"
+        ],
+        "Alarm on cycle termination": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Cycle end alarm": [
+          "llm"
+        ],
+        "Stop alarm at cycle end": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "stop alarm at end of cycle": [
+          "llm"
+        ],
+        "alarm triggered by cycle stop": [
+          "llm"
+        ],
+        "alarm upon cycle completion": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm event that is triggered when a manufacturing cycle finishes, indicating that the machine has stopped.",
+      "ontology_hints": [
+        "AlarmEvent",
+        "CycleCompletionEvent",
+        "ManufacturingCell",
+        "Workstation",
+        "ObservableProperty",
+        "TemporalEntity",
+        "has feature of interest",
+        "detected by",
+        "references",
+        "requires shutdown procedure"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"End‑of‑cycle stop alarm\", \"Cycle completion stop alarm\", \"Alarm on cycle termination\"], \"synonyms\": [\"Cycle end alarm\", \"Stop alarm at cycle end\"], \"lexical_variants\": [\"stop alarm at end of cycle\", \"alarm triggered by cycle stop\", \"alarm upon cycle completion\"], \"definition\": \"An alarm event that is triggered when a manufacturing cycle finishes, indicating that the machine has stopped.\", \"ontology_hints\": [\"AlarmEvent\", \"CycleCompletionEvent\", \"ManufacturingCell\", \"Workstation\", \"ObservableProperty\", \"TemporalEntity\", \"has feature of interest\", \"detected by\", \"references\", \"requires shutdown procedure\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00002",
+        "text": "Alarm with immediate and controlled shutdown",
+        "label": "alarm event/state"
+      },
+      "aliases": [
+        "Alarm with immediate and controlled shutdown"
+      ],
+      "synonyms": [
+        "Immediate shutdown alarm",
+        "Controlled shutdown alarm",
+        "Emergency shutdown alarm",
+        "Alarm-triggered shutdown"
+      ],
+      "lexical_variants": [
+        "Alarm with immediate controlled shutdown",
+        "Alarm with immediate and controlled shutdown",
+        "Alarm that triggers immediate controlled shutdown"
+      ],
+      "alias_sources": {
+        "Alarm with immediate and controlled shutdown": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Immediate shutdown alarm": [
+          "llm"
+        ],
+        "Controlled shutdown alarm": [
+          "llm"
+        ],
+        "Emergency shutdown alarm": [
+          "llm"
+        ],
+        "Alarm-triggered shutdown": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm with immediate controlled shutdown": [
+          "llm"
+        ],
+        "Alarm with immediate and controlled shutdown": [
+          "llm"
+        ],
+        "Alarm that triggers immediate controlled shutdown": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm event that initiates an immediate, controlled shutdown of a machine or process to prevent damage, protect personnel, or comply with safety regulations.",
+      "ontology_hints": [
+        "AlarmEvent",
+        "ShutdownEvent",
+        "ImmediateShutdown",
+        "ControlledShutdown",
+        "EmergencyShutdown",
+        "TRIGGERS: ShutdownState",
+        "REQUIRES: EmergencyShutdownProcedure",
+        "HANDLED_BY: Operator",
+        "REFERENCES: MachineManualSectionX"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm with immediate and controlled shutdown\"], \"synonyms\": [\"Immediate shutdown alarm\", \"Controlled shutdown alarm\", \"Emergency shutdown alarm\", \"Alarm-triggered shutdown\"], \"lexical_variants\": [\"Alarm with immediate controlled shutdown\", \"Alarm with immediate and controlled shutdown\", \"Alarm that triggers immediate controlled shutdown\"], \"definition\": \"An alarm event that initiates an immediate, controlled shutdown of a machine or process to prevent damage, protect personnel, or comply with safety regulations.\", \"ontology_hints\": [\"AlarmEvent\", \"ShutdownEvent\", \"ImmediateShutdown\", \"ControlledShutdown\", \"EmergencyShutdown\", \"TRIGGERS: ShutdownState\", \"REQUIRES: EmergencyShutdownProcedure\", \"HANDLED_BY: Operator\", \"REFERENCES: MachineManualSectionX\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00003",
+        "text": "Alarm with shutdown at the end of the cycle",
+        "label": "alarm event/state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "shutdown alarm at cycle end",
+        "cycle end shutdown alarm",
+        "alarm indicating shutdown at cycle end"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "shutdown alarm at cycle end": [
+          "llm"
+        ],
+        "cycle end shutdown alarm": [
+          "llm"
+        ],
+        "alarm indicating shutdown at cycle end": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm event that triggers a shutdown at the conclusion of a manufacturing cycle.",
+      "ontology_hints": [
+        "Alarm event is an ObservableProperty observed on a FeatureOfInterest within a ManufacturingCell, occurring at a TemporalEntity representing cycle end, and is part of a Situation describing shutdown context.",
+        "TRIGGERS shutdown",
+        "CAUSED by cycle end",
+        "REFERENCES cycle end",
+        "has feature of interest: machine or process",
+        "interval finished by: cycle end interval",
+        "situation time: time of shutdown"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"shutdown alarm at cycle end\", \"cycle end shutdown alarm\", \"alarm indicating shutdown at cycle end\"], \"definition\": \"An alarm event that triggers a shutdown at the conclusion of a manufacturing cycle.\", \"ontology_hints\": [\"Alarm event is an ObservableProperty observed on a FeatureOfInterest within a ManufacturingCell, occurring at a TemporalEntity representing cycle end, and is part of a Situation describing shutdown context.\", \"TRIGGERS shutdown\", \"CAUSED by cycle end\", \"REFERENCES cycle end\", \"has feature of interest: machine or process\", \"interval finished by: cycle end interval\", \"situation time: time of shutdown\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00004",
+        "text": "Alarm with immediate and controlled shutdown, deactivation of authorization",
+        "label": "alarm event/state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm that triggers an immediate and controlled shutdown of the machine and deactivates authorization.",
+      "ontology_hints": [
+        "Production Line",
+        "Manufacturing Facility",
+        "Manufacturing Cell",
+        "Manufacturing Process",
+        "Feature of Interest"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm that triggers an immediate and controlled shutdown of the machine and deactivates authorization.\", \"ontology_hints\": [\"Production Line\", \"Manufacturing Facility\", \"Manufacturing Cell\", \"Manufacturing Process\", \"Feature of Interest\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00005",
+        "text": "opening of the hardware authorization to the axis/spindle feeder",
+        "label": "alarm effect detail"
+      },
+      "aliases": [
+        "hardware authorization opening for axis/spindle feeder",
+        "unlocking hardware authorization for axis/spindle feeder"
+      ],
+      "synonyms": [
+        "opening of hardware authorization to axis/spindle feeder",
+        "granting hardware authorization to axis/spindle feeder"
+      ],
+      "lexical_variants": [
+        "opening of the hardware authorization to the axis/spindle feeder",
+        "opening of the hardware authorization for the axis/spindle feeder"
+      ],
+      "alias_sources": {
+        "hardware authorization opening for axis/spindle feeder": [
+          "llm"
+        ],
+        "unlocking hardware authorization for axis/spindle feeder": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "opening of hardware authorization to axis/spindle feeder": [
+          "llm"
+        ],
+        "granting hardware authorization to axis/spindle feeder": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "opening of the hardware authorization to the axis/spindle feeder": [
+          "llm"
+        ],
+        "opening of the hardware authorization for the axis/spindle feeder": [
+          "llm"
+        ]
+      },
+      "definition": "The event of granting or enabling hardware authorization for the axis/spindle feeder, allowing it to operate within a production line.",
+      "ontology_hints": [
+        "Event type within a Production Line context",
+        "Transition or state change in a specialized Situation (e.g., Situation S3)",
+        "Related to machine authorization and control systems"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"hardware authorization opening for axis/spindle feeder\", \"unlocking hardware authorization for axis/spindle feeder\"], \"synonyms\": [\"opening of hardware authorization to axis/spindle feeder\", \"granting hardware authorization to axis/spindle feeder\"], \"lexical_variants\": [\"opening of the hardware authorization to the axis/spindle feeder\", \"opening of the hardware authorization for the axis/spindle feeder\"], \"definition\": \"The event of granting or enabling hardware authorization for the axis/spindle feeder, allowing it to operate within a production line.\", \"ontology_hints\": [\"Event type within a Production Line context\", \"Transition or state change in a specialized Situation (e.g., Situation S3)\", \"Related to machine authorization and control systems\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00006",
+        "text": "deactivation of authorization",
+        "label": "alarm effect detail"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "The process of disabling or revoking authorization, resulting in the loss of access or permission within a manufacturing system.",
+      "ontology_hints": [
+        "Action",
+        "Feature of Interest",
+        "Observation",
+        "Situation S1",
+        "Production Line",
+        "Manufacturing Facility"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"The process of disabling or revoking authorization, resulting in the loss of access or permission within a manufacturing system.\", \"ontology_hints\": [\"Action\", \"Feature of Interest\", \"Observation\", \"Situation S1\", \"Production Line\", \"Manufacturing Facility\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00007",
+        "text": "thermal switch for the auxiliary motors has been triggered",
+        "label": "failure symptom"
+      },
+      "aliases": [
+        "auxiliary motor thermal switch activation",
+        "thermal switch activation on auxiliary motors",
+        "auxiliary motor overheating switch triggered"
+      ],
+      "synonyms": [
+        "thermal switch triggered",
+        "thermal switch activation",
+        "thermal switch alarm"
+      ],
+      "lexical_variants": [
+        "thermal switch for auxiliary motors has been triggered",
+        "auxiliary motors thermal switch has been triggered",
+        "thermal switch for the auxiliary motors has been triggered"
+      ],
+      "alias_sources": {
+        "auxiliary motor thermal switch activation": [
+          "llm"
+        ],
+        "thermal switch activation on auxiliary motors": [
+          "llm"
+        ],
+        "auxiliary motor overheating switch triggered": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "thermal switch triggered": [
+          "llm"
+        ],
+        "thermal switch activation": [
+          "llm"
+        ],
+        "thermal switch alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "thermal switch for auxiliary motors has been triggered": [
+          "llm"
+        ],
+        "auxiliary motors thermal switch has been triggered": [
+          "llm"
+        ],
+        "thermal switch for the auxiliary motors has been triggered": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which the thermal switch monitoring the auxiliary motors activates due to excessive temperature, indicating a temperature‑related fault affecting those motors.",
+      "ontology_hints": [
+        "Observable Property: thermal switch",
+        "Feature of Interest: auxiliary motors",
+        "Event: trigger",
+        "Requires: Technician",
+        "Temporal Entity: time of trigger"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"auxiliary motor thermal switch activation\", \"thermal switch activation on auxiliary motors\", \"auxiliary motor overheating switch triggered\"], \"synonyms\": [\"thermal switch triggered\", \"thermal switch activation\", \"thermal switch alarm\"], \"lexical_variants\": [\"thermal switch for auxiliary motors has been triggered\", \"auxiliary motors thermal switch has been triggered\", \"thermal switch for the auxiliary motors has been triggered\"], \"definition\": \"An event in which the thermal switch monitoring the auxiliary motors activates due to excessive temperature, indicating a temperature‑related fault affecting those motors.\", \"ontology_hints\": [\"Observable Property: thermal switch\", \"Feature of Interest: auxiliary motors\", \"Event: trigger\", \"Requires: Technician\", \"Temporal Entity: time of trigger\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00008",
+        "text": "thermal switch on the motors was triggered",
+        "label": "failure symptom"
+      },
+      "aliases": [
+        "thermal switch activation",
+        "motor thermal switch tripped",
+        "motor thermal switch triggered"
+      ],
+      "synonyms": [
+        "thermal switch activation",
+        "motor thermal switch tripped",
+        "motor thermal switch triggered"
+      ],
+      "lexical_variants": [
+        "thermal switch on motor",
+        "motor thermal switch",
+        "thermal switch of motor"
+      ],
+      "alias_sources": {
+        "thermal switch activation": [
+          "llm"
+        ],
+        "motor thermal switch tripped": [
+          "llm"
+        ],
+        "motor thermal switch triggered": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "thermal switch activation": [
+          "llm"
+        ],
+        "motor thermal switch tripped": [
+          "llm"
+        ],
+        "motor thermal switch triggered": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "thermal switch on motor": [
+          "llm"
+        ],
+        "motor thermal switch": [
+          "llm"
+        ],
+        "thermal switch of motor": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which the thermal switch installed on a motor is activated, indicating that the motor has exceeded its temperature threshold and a fault condition has been detected.",
+      "ontology_hints": [
+        "FeatureOfInterest: motor",
+        "ObservableProperty: thermal switch",
+        "HumanProcess: shutdown or maintenance",
+        "Manager: supervisor",
+        "TemporalEntity: event time",
+        "TRIGGERS: alarm",
+        "CAUSES: overheating",
+        "REQUIRES: maintenance action",
+        "HANDLED_BY: operator",
+        "DETECTED_BY: temperature sensor"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"thermal switch activation\", \"motor thermal switch tripped\", \"motor thermal switch triggered\"], \"synonyms\": [\"thermal switch activation\", \"motor thermal switch tripped\", \"motor thermal switch triggered\"], \"lexical_variants\": [\"thermal switch on motor\", \"motor thermal switch\", \"thermal switch of motor\"], \"definition\": \"An event in which the thermal switch installed on a motor is activated, indicating that the motor has exceeded its temperature threshold and a fault condition has been detected.\", \"ontology_hints\": [\"FeatureOfInterest: motor\", \"ObservableProperty: thermal switch\", \"HumanProcess: shutdown or maintenance\", \"Manager: supervisor\", \"TemporalEntity: event time\", \"TRIGGERS: alarm\", \"CAUSES: overheating\", \"REQUIRES: maintenance action\", \"HANDLED_BY: operator\", \"DETECTED_BY: temperature sensor\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00009",
+        "text": "Insufficient quantity of coolant in the water circuit",
+        "label": "failure symptom"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A condition where the coolant level in the water circuit is below the required threshold, potentially triggering a low coolant flow alarm and risking overheating or malfunction.",
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "SituationS1",
+        "SituationS2",
+        "SituationS3",
+        "SituationS4",
+        "FailureSymptom"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A condition where the coolant level in the water circuit is below the required threshold, potentially triggering a low coolant flow alarm and risking overheating or malfunction.\", \"ontology_hints\": [\"FeatureOfInterest\", \"SituationS1\", \"SituationS2\", \"SituationS3\", \"SituationS4\", \"FailureSymptom\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00010",
+        "text": "Insufficient quantity of coolant in the linear motor coolant circuit",
+        "label": "failure symptom"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A failure symptom indicating that the coolant level in the linear motor circuit is below the required threshold.",
+      "ontology_hints": [
+        "Production Line",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4",
+        "Failure symptom"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A failure symptom indicating that the coolant level in the linear motor circuit is below the required threshold.\", \"ontology_hints\": [\"Production Line\", \"Situation S1\", \"Situation S2\", \"Situation S3\", \"Situation S4\", \"Failure symptom\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00011",
+        "text": "The refrigerator cannot lower the engine temperature",
+        "label": "failure symptom"
+      },
+      "aliases": [
+        "Refrigerator fails to lower engine temperature",
+        "Refrigerator unable to reduce engine temperature",
+        "Refrigerator not lowering engine temperature"
+      ],
+      "synonyms": [
+        "Refrigerator cannot reduce engine temperature",
+        "Refrigerator fails to decrease engine temperature",
+        "Refrigerator is unable to lower engine temperature"
+      ],
+      "lexical_variants": [
+        "Refrigerator not reducing engine temperature",
+        "Refrigerator cannot lower the engine temperature",
+        "Refrigerator fails to lower the engine temperature"
+      ],
+      "alias_sources": {
+        "Refrigerator fails to lower engine temperature": [
+          "llm"
+        ],
+        "Refrigerator unable to reduce engine temperature": [
+          "llm"
+        ],
+        "Refrigerator not lowering engine temperature": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Refrigerator cannot reduce engine temperature": [
+          "llm"
+        ],
+        "Refrigerator fails to decrease engine temperature": [
+          "llm"
+        ],
+        "Refrigerator is unable to lower engine temperature": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Refrigerator not reducing engine temperature": [
+          "llm"
+        ],
+        "Refrigerator cannot lower the engine temperature": [
+          "llm"
+        ],
+        "Refrigerator fails to lower the engine temperature": [
+          "llm"
+        ]
+      },
+      "definition": "A failure symptom indicating that the refrigeration system is unable to reduce the temperature of the engine, resulting in a high temperature alarm.",
+      "ontology_hints": [
+        "failure symptom",
+        "Feature (refrigerator)",
+        "Observable Property (engine temperature)",
+        "Production Line",
+        "Manufacturing Cell",
+        "Temporal Entity (time of observation)"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Refrigerator fails to lower engine temperature\", \"Refrigerator unable to reduce engine temperature\", \"Refrigerator not lowering engine temperature\"], \"synonyms\": [\"Refrigerator cannot reduce engine temperature\", \"Refrigerator fails to decrease engine temperature\", \"Refrigerator is unable to lower engine temperature\"], \"lexical_variants\": [\"Refrigerator not reducing engine temperature\", \"Refrigerator cannot lower the engine temperature\", \"Refrigerator fails to lower the engine temperature\"], \"definition\": \"A failure symptom indicating that the refrigeration system is unable to reduce the temperature of the engine, resulting in a high temperature alarm.\", \"ontology_hints\": [\"failure symptom\", \"Feature (refrigerator)\", \"Observable Property (engine temperature)\", \"Production Line\", \"Manufacturing Cell\", \"Temporal Entity (time of observation)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00012",
+        "text": "The refrigerator cannot lower the temperature of the linear motor",
+        "label": "failure symptom"
+      },
+      "aliases": [
+        "refrigerator cooling failure",
+        "linear motor overheating due to cooling failure"
+      ],
+      "synonyms": [
+        "refrigerator fails to cool linear motor",
+        "cooling unit cannot lower temperature of linear motor"
+      ],
+      "lexical_variants": [
+        "refrigerator cannot lower temperature of linear motor",
+        "refrigerator fails to lower temperature of linear motor"
+      ],
+      "alias_sources": {
+        "refrigerator cooling failure": [
+          "llm"
+        ],
+        "linear motor overheating due to cooling failure": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "refrigerator fails to cool linear motor": [
+          "llm"
+        ],
+        "cooling unit cannot lower temperature of linear motor": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "refrigerator cannot lower temperature of linear motor": [
+          "llm"
+        ],
+        "refrigerator fails to lower temperature of linear motor": [
+          "llm"
+        ]
+      },
+      "definition": "A failure symptom indicating that the refrigerator (cooling unit) is unable to reduce the temperature of the linear motor, potentially leading to overheating and triggering an alarm.",
+      "ontology_hints": [
+        "has_feature_of_interest: linear motor",
+        "causes: overheating",
+        "requires: cooling system inspection",
+        "triggers: motor temperature alarm",
+        "handled_by: maintenance technician"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"refrigerator cooling failure\", \"linear motor overheating due to cooling failure\"], \"synonyms\": [\"refrigerator fails to cool linear motor\", \"cooling unit cannot lower temperature of linear motor\"], \"lexical_variants\": [\"refrigerator cannot lower temperature of linear motor\", \"refrigerator fails to lower temperature of linear motor\"], \"definition\": \"A failure symptom indicating that the refrigerator (cooling unit) is unable to reduce the temperature of the linear motor, potentially leading to overheating and triggering an alarm.\", \"ontology_hints\": [\"has_feature_of_interest: linear motor\", \"causes: overheating\", \"requires: cooling system inspection\", \"triggers: motor temperature alarm\", \"handled_by: maintenance technician\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00013",
+        "text": "Hardware problems with axes and spindles",
+        "label": "failure symptom"
+      },
+      "aliases": [
+        "Axis and spindle hardware problems",
+        "Hardware issues with axes and spindles"
+      ],
+      "synonyms": [
+        "Axis and spindle malfunctions",
+        "Mechanical issues with axes and spindles",
+        "Hardware faults in axes and spindles"
+      ],
+      "lexical_variants": [
+        "Hardware problems with axes and spindles",
+        "Hardware problems affecting axes and spindles"
+      ],
+      "alias_sources": {
+        "Axis and spindle hardware problems": [
+          "llm"
+        ],
+        "Hardware issues with axes and spindles": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Axis and spindle malfunctions": [
+          "llm"
+        ],
+        "Mechanical issues with axes and spindles": [
+          "llm"
+        ],
+        "Hardware faults in axes and spindles": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Hardware problems with axes and spindles": [
+          "llm"
+        ],
+        "Hardware problems affecting axes and spindles": [
+          "llm"
+        ]
+      },
+      "definition": "Mechanical failures that affect the machine’s axes and spindle components, causing operational faults and triggering related alarms.",
+      "ontology_hints": [
+        "ObservableProperty",
+        "FailureSymptom",
+        "HardwareFault",
+        "MachineComponent",
+        "Axis",
+        "Spindle",
+        "ManufacturingProcess",
+        "HumanProcess",
+        "Situation S1",
+        "Situation S2"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Axis and spindle hardware problems\", \"Hardware issues with axes and spindles\"], \"synonyms\": [\"Axis and spindle malfunctions\", \"Mechanical issues with axes and spindles\", \"Hardware faults in axes and spindles\"], \"lexical_variants\": [\"Hardware problems with axes and spindles\", \"Hardware problems affecting axes and spindles\"], \"definition\": \"Mechanical failures that affect the machine’s axes and spindle components, causing operational faults and triggering related alarms.\", \"ontology_hints\": [\"ObservableProperty\", \"FailureSymptom\", \"HardwareFault\", \"MachineComponent\", \"Axis\", \"Spindle\", \"ManufacturingProcess\", \"HumanProcess\", \"Situation S1\", \"Situation S2\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00014",
+        "text": "power supply error code marked A2831",
+        "label": "failure symptom"
+      },
+      "aliases": [
+        "A2831",
+        "Power supply error code A2831"
+      ],
+      "synonyms": [
+        "power supply fault",
+        "power supply error"
+      ],
+      "lexical_variants": [
+        "error code A2831",
+        "A2831 error"
+      ],
+      "alias_sources": {
+        "A2831": [
+          "llm"
+        ],
+        "Power supply error code A2831": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "power supply fault": [
+          "llm"
+        ],
+        "power supply error": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "error code A2831": [
+          "llm"
+        ],
+        "A2831 error": [
+          "llm"
+        ]
+      },
+      "definition": "An error code (A2831) that indicates a fault in the power supply system of a machine.",
+      "ontology_hints": [
+        "ObservableProperty",
+        "TemporalEntity",
+        "Process",
+        "Operator",
+        "Platform",
+        "observedBy",
+        "occursAt",
+        "performedBy",
+        "hosts"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"A2831\", \"Power supply error code A2831\"], \"synonyms\": [\"power supply fault\", \"power supply error\"], \"lexical_variants\": [\"error code A2831\", \"A2831 error\"], \"definition\": \"An error code (A2831) that indicates a fault in the power supply system of a machine.\", \"ontology_hints\": [\"ObservableProperty\", \"TemporalEntity\", \"Process\", \"Operator\", \"Platform\", \"observedBy\", \"occursAt\", \"performedBy\", \"hosts\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00015",
+        "text": "fan or conditioner",
+        "label": "component"
+      },
+      "aliases": [
+        "fan",
+        "air conditioner",
+        "cooling fan",
+        "air conditioning unit"
+      ],
+      "synonyms": [
+        "blower",
+        "ventilator"
+      ],
+      "lexical_variants": [
+        "fan",
+        "air conditioner",
+        "cooling unit"
+      ],
+      "alias_sources": {
+        "fan": [
+          "llm"
+        ],
+        "air conditioner": [
+          "llm"
+        ],
+        "cooling fan": [
+          "llm"
+        ],
+        "air conditioning unit": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "blower": [
+          "llm"
+        ],
+        "ventilator": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "fan": [
+          "llm"
+        ],
+        "air conditioner": [
+          "llm"
+        ],
+        "cooling unit": [
+          "llm"
+        ]
+      },
+      "definition": "A device used to circulate air or provide cooling to prevent overheating of equipment, typically installed in cabinets or machinery.",
+      "ontology_hints": [
+        "Machine",
+        "Workstation",
+        "ProductionLine",
+        "ComponentOfMachine",
+        "CoolingDevice"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"fan\", \"air conditioner\", \"cooling fan\", \"air conditioning unit\"], \"synonyms\": [\"blower\", \"ventilator\"], \"lexical_variants\": [\"fan\", \"air conditioner\", \"cooling unit\"], \"definition\": \"A device used to circulate air or provide cooling to prevent overheating of equipment, typically installed in cabinets or machinery.\", \"ontology_hints\": [\"Machine\", \"Workstation\", \"ProductionLine\", \"ComponentOfMachine\", \"CoolingDevice\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00016",
+        "text": "thermostat is not set correctly",
+        "label": "failure symptom"
+      },
+      "aliases": [
+        "incorrect thermostat setting",
+        "thermostat misconfigured",
+        "thermostat improperly set"
+      ],
+      "synonyms": [
+        "thermostat not set correctly",
+        "thermostat incorrectly set"
+      ],
+      "lexical_variants": [
+        "thermostat is not set correctly",
+        "thermostat not set correctly",
+        "thermostat incorrectly set"
+      ],
+      "alias_sources": {
+        "incorrect thermostat setting": [
+          "llm"
+        ],
+        "thermostat misconfigured": [
+          "llm"
+        ],
+        "thermostat improperly set": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "thermostat not set correctly": [
+          "llm"
+        ],
+        "thermostat incorrectly set": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "thermostat is not set correctly": [
+          "llm"
+        ],
+        "thermostat not set correctly": [
+          "llm"
+        ],
+        "thermostat incorrectly set": [
+          "llm"
+        ]
+      },
+      "definition": "A failure symptom where the thermostat’s setpoint or configuration deviates from the intended value, causing improper temperature control and potential overheating of the cabinet.",
+      "ontology_hints": [
+        "Thermostat",
+        "TemperatureSensor",
+        "HVACSystem",
+        "ManufacturingCell",
+        "SpatialObject",
+        "TemporalEntity",
+        "SituationS1",
+        "FailureSymptom"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"incorrect thermostat setting\", \"thermostat misconfigured\", \"thermostat improperly set\"], \"synonyms\": [\"thermostat not set correctly\", \"thermostat incorrectly set\"], \"lexical_variants\": [\"thermostat is not set correctly\", \"thermostat not set correctly\", \"thermostat incorrectly set\"], \"definition\": \"A failure symptom where the thermostat’s setpoint or configuration deviates from the intended value, causing improper temperature control and potential overheating of the cabinet.\", \"ontology_hints\": [\"Thermostat\", \"TemperatureSensor\", \"HVACSystem\", \"ManufacturingCell\", \"SpatialObject\", \"TemporalEntity\", \"SituationS1\", \"FailureSymptom\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00017",
+        "text": "pressure of the pneumatic installation is not sufficient",
+        "label": "failure symptom"
+      },
+      "aliases": [
+        "pneumatic pressure alarm",
+        "low pressure alarm"
+      ],
+      "synonyms": [
+        "low pneumatic pressure",
+        "insufficient pneumatic pressure",
+        "pneumatic pressure too low"
+      ],
+      "lexical_variants": [
+        "pneumatic installation pressure insufficient",
+        "pneumatic system pressure inadequate",
+        "pressure of pneumatic installation is inadequate"
+      ],
+      "alias_sources": {
+        "pneumatic pressure alarm": [
+          "llm"
+        ],
+        "low pressure alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "low pneumatic pressure": [
+          "llm"
+        ],
+        "insufficient pneumatic pressure": [
+          "llm"
+        ],
+        "pneumatic pressure too low": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "pneumatic installation pressure insufficient": [
+          "llm"
+        ],
+        "pneumatic system pressure inadequate": [
+          "llm"
+        ],
+        "pressure of pneumatic installation is inadequate": [
+          "llm"
+        ]
+      },
+      "definition": "A failure symptom indicating that the pressure within the pneumatic installation is below the required threshold, potentially triggering a low pressure alarm.",
+      "ontology_hints": [
+        "belongs to Production Line context",
+        "observed in Situation S1, S2, or S3",
+        "associated with Feature of Interest: pneumatic installation",
+        "triggers low pressure alarm",
+        "requires maintenance intervention"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"pneumatic pressure alarm\", \"low pressure alarm\"], \"synonyms\": [\"low pneumatic pressure\", \"insufficient pneumatic pressure\", \"pneumatic pressure too low\"], \"lexical_variants\": [\"pneumatic installation pressure insufficient\", \"pneumatic system pressure inadequate\", \"pressure of pneumatic installation is inadequate\"], \"definition\": \"A failure symptom indicating that the pressure within the pneumatic installation is below the required threshold, potentially triggering a low pressure alarm.\", \"ontology_hints\": [\"belongs to Production Line context\", \"observed in Situation S1, S2, or S3\", \"associated with Feature of Interest: pneumatic installation\", \"triggers low pressure alarm\", \"requires maintenance intervention\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00018",
+        "text": "pressure switch line is not set correctly",
+        "label": "failure symptom"
+      },
+      "aliases": [
+        "pressure switch line misconfiguration",
+        "pressure switch line incorrectly set"
+      ],
+      "synonyms": [
+        "pressure switch line misconfigured",
+        "pressure switch line incorrectly set"
+      ],
+      "lexical_variants": [
+        "pressure switch line misconfigured",
+        "pressure switch line incorrectly set"
+      ],
+      "alias_sources": {
+        "pressure switch line misconfiguration": [
+          "llm"
+        ],
+        "pressure switch line incorrectly set": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "pressure switch line misconfigured": [
+          "llm"
+        ],
+        "pressure switch line incorrectly set": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "pressure switch line misconfigured": [
+          "llm"
+        ],
+        "pressure switch line incorrectly set": [
+          "llm"
+        ]
+      },
+      "definition": "A failure symptom indicating that the pressure switch line is configured incorrectly, potentially leading to abnormal machine operation or safety hazards.",
+      "ontology_hints": [
+        "belongs to: Production Line",
+        "part of: Manufacturing Cell",
+        "is a: Resource",
+        "has feature of interest: pressure switch line",
+        "has geometry representation",
+        "triggers alarm",
+        "causes abnormal state",
+        "requires intervention",
+        "handled by maintenance staff"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"pressure switch line misconfiguration\", \"pressure switch line incorrectly set\"], \"synonyms\": [\"pressure switch line misconfigured\", \"pressure switch line incorrectly set\"], \"lexical_variants\": [\"pressure switch line misconfigured\", \"pressure switch line incorrectly set\"], \"definition\": \"A failure symptom indicating that the pressure switch line is configured incorrectly, potentially leading to abnormal machine operation or safety hazards.\", \"ontology_hints\": [\"belongs to: Production Line\", \"part of: Manufacturing Cell\", \"is a: Resource\", \"has feature of interest: pressure switch line\", \"has geometry representation\", \"triggers alarm\", \"causes abnormal state\", \"requires intervention\", \"handled by maintenance staff\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00019",
+        "text": "cause:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "cause",
+        "causes"
+      ],
+      "synonyms": [
+        "reason",
+        "origin",
+        "trigger"
+      ],
+      "lexical_variants": [
+        "cause",
+        "causes",
+        "caused by"
+      ],
+      "alias_sources": {
+        "cause": [
+          "llm"
+        ],
+        "causes": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "reason": [
+          "llm"
+        ],
+        "origin": [
+          "llm"
+        ],
+        "trigger": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "cause": [
+          "llm"
+        ],
+        "causes": [
+          "llm"
+        ],
+        "caused by": [
+          "llm"
+        ]
+      },
+      "definition": "A factor or event responsible for the occurrence of a situation in a manufacturing system.",
+      "ontology_hints": [
+        "Cause",
+        "Alarm",
+        "Failure",
+        "Machine",
+        "Sensor",
+        "Manager",
+        "has cause",
+        "TRIGGERS",
+        "CAUSES",
+        "REQUIRES",
+        "HANDLED_BY",
+        "REFERENCES",
+        "DETECTED_BY"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"cause\", \"causes\"], \"synonyms\": [\"reason\", \"origin\", \"trigger\"], \"lexical_variants\": [\"cause\", \"causes\", \"caused by\"], \"definition\": \"A factor or event responsible for the occurrence of a situation in a manufacturing system.\", \"ontology_hints\": [\"Cause\", \"Alarm\", \"Failure\", \"Machine\", \"Sensor\", \"Manager\", \"has cause\", \"TRIGGERS\", \"CAUSES\", \"REQUIRES\", \"HANDLED_BY\", \"REFERENCES\", \"DETECTED_BY\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00020",
+        "text": "effect:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A relation indicating the outcome or result produced by an action performed in response to a detected situation.",
+      "ontology_hints": [
+        "Action",
+        "Result",
+        "requires action"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A relation indicating the outcome or result produced by an action performed in response to a detected situation.\", \"ontology_hints\": [\"Action\", \"Result\", \"requires action\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00021",
+        "text": "intervention:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An action taken to address or resolve an alarm or failure condition in a machine.",
+      "ontology_hints": [
+        "Observation",
+        "Situation",
+        "Interval",
+        "Instant"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An action taken to address or resolve an alarm or failure condition in a machine.\", \"ontology_hints\": [\"Observation\", \"Situation\", \"Interval\", \"Instant\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00022",
+        "text": "responsible for",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "in charge of",
+        "accountable for",
+        "liable for"
+      ],
+      "synonyms": [
+        "in charge of",
+        "accountable for",
+        "liable for"
+      ],
+      "lexical_variants": [
+        "responsible for"
+      ],
+      "alias_sources": {
+        "in charge of": [
+          "llm"
+        ],
+        "accountable for": [
+          "llm"
+        ],
+        "liable for": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "in charge of": [
+          "llm"
+        ],
+        "accountable for": [
+          "llm"
+        ],
+        "liable for": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for": [
+          "llm"
+        ]
+      },
+      "definition": "A relation indicating that a particular entity or role has the duty, obligation, or authority to perform a specified action, intervention, or to produce a specific outcome.",
+      "ontology_hints": [
+        "Sensor is responsible for producing Result",
+        "Platform is responsible for hosting Sensor",
+        "Resource is responsible for Platform",
+        "Observable Property is responsible for Result"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"in charge of\", \"accountable for\", \"liable for\"], \"synonyms\": [\"in charge of\", \"accountable for\", \"liable for\"], \"lexical_variants\": [\"responsible for\"], \"definition\": \"A relation indicating that a particular entity or role has the duty, obligation, or authority to perform a specified action, intervention, or to produce a specific outcome.\", \"ontology_hints\": [\"Sensor is responsible for producing Result\", \"Platform is responsible for hosting Sensor\", \"Resource is responsible for Platform\", \"Observable Property is responsible for Result\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00023",
+        "text": "see page",
+        "label": "reference expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A reference expression used in documentation to direct the reader to a specific page where detailed information can be found.",
+      "ontology_hints": [
+        "references",
+        "page reference",
+        "document reference"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A reference expression used in documentation to direct the reader to a specific page where detailed information can be found.\", \"ontology_hints\": [\"references\", \"page reference\", \"document reference\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00024",
+        "text": "type: Standard: Optional:",
+        "label": "classification phrase"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A classification indicating that the alarm is standard and optional.",
+      "ontology_hints": [
+        "classification phrase",
+        "alarm classification",
+        "standard optional type"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A classification indicating that the alarm is standard and optional.\", \"ontology_hints\": [\"classification phrase\", \"alarm classification\", \"standard optional type\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00025",
+        "text": "Alarm No.: 1005",
+        "label": "alarm identifier"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Unique identifier for the sliding door alarm.",
+      "ontology_hints": [
+        "Alarm identifier",
+        "Platform",
+        "Situation S10",
+        "Manufacturing Process",
+        "Spatial Object",
+        "Manager"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Unique identifier for the sliding door alarm.\", \"ontology_hints\": [\"Alarm identifier\", \"Platform\", \"Situation S10\", \"Manufacturing Process\", \"Spatial Object\", \"Manager\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00026",
+        "text": "Alarm No.: 1008",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Alarm 1008",
+        "Alarm No. 1008",
+        "Alarm #1008"
+      ],
+      "synonyms": [
+        "Thermomagnet Switches End of Cycle Stop Alarm"
+      ],
+      "lexical_variants": [
+        "Alarm No. 1008",
+        "Alarm #1008",
+        "Alarm 1008"
+      ],
+      "alias_sources": {
+        "Alarm 1008": [
+          "llm"
+        ],
+        "Alarm No. 1008": [
+          "llm"
+        ],
+        "Alarm #1008": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Thermomagnet Switches End of Cycle Stop Alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm No. 1008": [
+          "llm"
+        ],
+        "Alarm #1008": [
+          "llm"
+        ],
+        "Alarm 1008": [
+          "llm"
+        ]
+      },
+      "definition": "Unique identifier for the thermomagnet switches end of cycle stop alarm, representing a specific event in the manufacturing process that occurs on a platform and is handled by a manager.",
+      "ontology_hints": [
+        "is a Situation S10",
+        "occurs on a Platform",
+        "occurs during a Manufacturing Process",
+        "located on a Spatial Object",
+        "handled by a Manager"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 1008\", \"Alarm No. 1008\", \"Alarm #1008\"], \"synonyms\": [\"Thermomagnet Switches End of Cycle Stop Alarm\"], \"lexical_variants\": [\"Alarm No. 1008\", \"Alarm #1008\", \"Alarm 1008\"], \"definition\": \"Unique identifier for the thermomagnet switches end of cycle stop alarm, representing a specific event in the manufacturing process that occurs on a platform and is handled by a manager.\", \"ontology_hints\": [\"is a Situation S10\", \"occurs on a Platform\", \"occurs during a Manufacturing Process\", \"located on a Spatial Object\", \"handled by a Manager\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00027",
+        "text": "Alarm No.: 1009",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Alarm 1009",
+        "Alarm No. 1009",
+        "Alarm #1009"
+      ],
+      "synonyms": [
+        "Immediate Stop Alarm",
+        "Thermomagnet Switch Alarm"
+      ],
+      "lexical_variants": [
+        "Alarm No. 1009",
+        "Alarm #1009",
+        "Alarm No: 1009"
+      ],
+      "alias_sources": {
+        "Alarm 1009": [
+          "llm"
+        ],
+        "Alarm No. 1009": [
+          "llm"
+        ],
+        "Alarm #1009": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Immediate Stop Alarm": [
+          "llm"
+        ],
+        "Thermomagnet Switch Alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm No. 1009": [
+          "llm"
+        ],
+        "Alarm #1009": [
+          "llm"
+        ],
+        "Alarm No: 1009": [
+          "llm"
+        ]
+      },
+      "definition": "Unique identifier for the thermomagnet switches immediate stop alarm.",
+      "ontology_hints": [
+        "Alarm identifier",
+        "Situation S10",
+        "Platform",
+        "Manufacturing Process",
+        "Manager"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 1009\", \"Alarm No. 1009\", \"Alarm #1009\"], \"synonyms\": [\"Immediate Stop Alarm\", \"Thermomagnet Switch Alarm\"], \"lexical_variants\": [\"Alarm No. 1009\", \"Alarm #1009\", \"Alarm No: 1009\"], \"definition\": \"Unique identifier for the thermomagnet switches immediate stop alarm.\", \"ontology_hints\": [\"Alarm identifier\", \"Situation S10\", \"Platform\", \"Manufacturing Process\", \"Manager\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00028",
+        "text": "Alarm No.: 1011",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Low Watering Liquid Flow Alarm",
+        "Low Liquid Flow Alarm",
+        "Watering Flow Alarm"
+      ],
+      "synonyms": [
+        "Low Flow Alarm",
+        "Liquid Flow Low Alarm"
+      ],
+      "lexical_variants": [
+        "Alarm 1011",
+        "Alarm No 1011",
+        "Alarm #1011"
+      ],
+      "alias_sources": {
+        "Low Watering Liquid Flow Alarm": [
+          "llm"
+        ],
+        "Low Liquid Flow Alarm": [
+          "llm"
+        ],
+        "Watering Flow Alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Low Flow Alarm": [
+          "llm"
+        ],
+        "Liquid Flow Low Alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm 1011": [
+          "llm"
+        ],
+        "Alarm No 1011": [
+          "llm"
+        ],
+        "Alarm #1011": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating that the liquid flow used for watering is below the required threshold, triggering a low‑flow condition.",
+      "ontology_hints": [
+        "Alarm",
+        "Situation S10",
+        "Situation S11",
+        "Platform",
+        "Manufacturing Process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Low Watering Liquid Flow Alarm\", \"Low Liquid Flow Alarm\", \"Watering Flow Alarm\"], \"synonyms\": [\"Low Flow Alarm\", \"Liquid Flow Low Alarm\"], \"lexical_variants\": [\"Alarm 1011\", \"Alarm No 1011\", \"Alarm #1011\"], \"definition\": \"An alarm indicating that the liquid flow used for watering is below the required threshold, triggering a low‑flow condition.\", \"ontology_hints\": [\"Alarm\", \"Situation S10\", \"Situation S11\", \"Platform\", \"Manufacturing Process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00029",
+        "text": "Alarm No.: 1012",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Alarm 1012",
+        "Alarm #1012"
+      ],
+      "synonyms": [
+        "High watering liquid temperature alarm"
+      ],
+      "lexical_variants": [
+        "Alarm No. 1012",
+        "Alarm No: 1012",
+        "Alarm No.: 1012"
+      ],
+      "alias_sources": {
+        "Alarm 1012": [
+          "llm"
+        ],
+        "Alarm #1012": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "High watering liquid temperature alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm No. 1012": [
+          "llm"
+        ],
+        "Alarm No: 1012": [
+          "llm"
+        ],
+        "Alarm No.: 1012": [
+          "llm"
+        ]
+      },
+      "definition": "Alarm No.: 1012 is a unique identifier for a high watering liquid temperature alarm that occurs within a manufacturing process, indicating that the temperature of the watering liquid has exceeded a safe threshold.",
+      "ontology_hints": [
+        "Alarm",
+        "AlarmIdentifier",
+        "HighWateringLiquidTemperatureAlarm",
+        "ManufacturingProcessEvent",
+        "PlatformComponent",
+        "SituationS10",
+        "SituationS11",
+        "SituationS12"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 1012\", \"Alarm #1012\"], \"synonyms\": [\"High watering liquid temperature alarm\"], \"lexical_variants\": [\"Alarm No. 1012\", \"Alarm No: 1012\", \"Alarm No.: 1012\"], \"definition\": \"Alarm No.: 1012 is a unique identifier for a high watering liquid temperature alarm that occurs within a manufacturing process, indicating that the temperature of the watering liquid has exceeded a safe threshold.\", \"ontology_hints\": [\"Alarm\", \"AlarmIdentifier\", \"HighWateringLiquidTemperatureAlarm\", \"ManufacturingProcessEvent\", \"PlatformComponent\", \"SituationS10\", \"SituationS11\", \"SituationS12\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00030",
+        "text": "Alarm No.: 1013",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Alarm 1013",
+        "Alarm No. 1013"
+      ],
+      "synonyms": [
+        "PSM feeder fault alarm",
+        "feeder fault alarm"
+      ],
+      "lexical_variants": [
+        "Alarm No.: 1013",
+        "Alarm No. 1013",
+        "Alarm No: 1013",
+        "Alarm No.1013",
+        "Alarm No:1013",
+        "Alarm 1013"
+      ],
+      "alias_sources": {
+        "Alarm 1013": [
+          "llm"
+        ],
+        "Alarm No. 1013": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "PSM feeder fault alarm": [
+          "llm"
+        ],
+        "feeder fault alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm No.: 1013": [
+          "llm"
+        ],
+        "Alarm No. 1013": [
+          "llm"
+        ],
+        "Alarm No: 1013": [
+          "llm"
+        ],
+        "Alarm No.1013": [
+          "llm"
+        ],
+        "Alarm No:1013": [
+          "llm"
+        ],
+        "Alarm 1013": [
+          "llm"
+        ]
+      },
+      "definition": "Unique identifier for the PSM feeder fault alarm, indicating a fault in the PSM feeder system.",
+      "ontology_hints": [
+        "Alarm identifier",
+        "PSM feeder fault alarm",
+        "Manufacturing Process",
+        "Platform",
+        "Situation S10",
+        "Situation S11",
+        "Situation S13"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 1013\", \"Alarm No. 1013\"], \"synonyms\": [\"PSM feeder fault alarm\", \"feeder fault alarm\"], \"lexical_variants\": [\"Alarm No.: 1013\", \"Alarm No. 1013\", \"Alarm No: 1013\", \"Alarm No.1013\", \"Alarm No:1013\", \"Alarm 1013\"], \"definition\": \"Unique identifier for the PSM feeder fault alarm, indicating a fault in the PSM feeder system.\", \"ontology_hints\": [\"Alarm identifier\", \"PSM feeder fault alarm\", \"Manufacturing Process\", \"Platform\", \"Situation S10\", \"Situation S11\", \"Situation S13\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00031",
+        "text": "Alarm No.: 1017",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Alarm 1017",
+        "Alarm No. 1017",
+        "Alarm #1017"
+      ],
+      "synonyms": [
+        "Cabinet Overheating Alarm",
+        "Cabinet Overheat Alarm",
+        "Cabinet Overheat Warning"
+      ],
+      "lexical_variants": [
+        "Alarm No. 1017",
+        "Alarm #1017",
+        "Alarm 1017"
+      ],
+      "alias_sources": {
+        "Alarm 1017": [
+          "llm"
+        ],
+        "Alarm No. 1017": [
+          "llm"
+        ],
+        "Alarm #1017": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Cabinet Overheating Alarm": [
+          "llm"
+        ],
+        "Cabinet Overheat Alarm": [
+          "llm"
+        ],
+        "Cabinet Overheat Warning": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm No. 1017": [
+          "llm"
+        ],
+        "Alarm #1017": [
+          "llm"
+        ],
+        "Alarm 1017": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that signals the overheating of a cabinet within a manufacturing system, typically indicating a fault condition that may trigger a shutdown or maintenance intervention.",
+      "ontology_hints": [
+        "Alarm",
+        "Cabinet",
+        "Overheating",
+        "Manufacturing Process",
+        "Spatial Object",
+        "Platform",
+        "Situation S10",
+        "Situation S11"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 1017\", \"Alarm No. 1017\", \"Alarm #1017\"], \"synonyms\": [\"Cabinet Overheating Alarm\", \"Cabinet Overheat Alarm\", \"Cabinet Overheat Warning\"], \"lexical_variants\": [\"Alarm No. 1017\", \"Alarm #1017\", \"Alarm 1017\"], \"definition\": \"An alarm that signals the overheating of a cabinet within a manufacturing system, typically indicating a fault condition that may trigger a shutdown or maintenance intervention.\", \"ontology_hints\": [\"Alarm\", \"Cabinet\", \"Overheating\", \"Manufacturing Process\", \"Spatial Object\", \"Platform\", \"Situation S10\", \"Situation S11\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00032",
+        "text": "Alarm No.: 1018",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Alarm 1018",
+        "Alarm No. 1018",
+        "Alarm #1018"
+      ],
+      "synonyms": [
+        "low pressure alarm"
+      ],
+      "lexical_variants": [
+        "Alarm No. 1018",
+        "Alarm #1018",
+        "Alarm 1018"
+      ],
+      "alias_sources": {
+        "Alarm 1018": [
+          "llm"
+        ],
+        "Alarm No. 1018": [
+          "llm"
+        ],
+        "Alarm #1018": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "low pressure alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm No. 1018": [
+          "llm"
+        ],
+        "Alarm #1018": [
+          "llm"
+        ],
+        "Alarm 1018": [
+          "llm"
+        ]
+      },
+      "definition": "A unique identifier for the low pressure alarm in a manufacturing system.",
+      "ontology_hints": [
+        "Alarm identifier",
+        "Alarm event",
+        "Platform sensor",
+        "Manufacturing Process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 1018\", \"Alarm No. 1018\", \"Alarm #1018\"], \"synonyms\": [\"low pressure alarm\"], \"lexical_variants\": [\"Alarm No. 1018\", \"Alarm #1018\", \"Alarm 1018\"], \"definition\": \"A unique identifier for the low pressure alarm in a manufacturing system.\", \"ontology_hints\": [\"Alarm identifier\", \"Alarm event\", \"Platform sensor\", \"Manufacturing Process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00033",
+        "text": "SIDE PROTECTIONS OPEN",
+        "label": "alarm name"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm indicating that side protection guards are open, potentially compromising safety or operation.",
+      "ontology_hints": [
+        "Production Line",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm indicating that side protection guards are open, potentially compromising safety or operation.\", \"ontology_hints\": [\"Production Line\", \"Situation S1\", \"Situation S2\", \"Situation S3\", \"Situation S4\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00034",
+        "text": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+        "label": "alarm name"
+      },
+      "aliases": [
+        "Thermomagnet Switches Cycle End Stop",
+        "Thermomagnet Switches End-of-Cycle Stop",
+        "Thermomagnet Switches End of Cycle Alarm"
+      ],
+      "synonyms": [
+        "Thermomagnet Switches End-of-Cycle Alarm",
+        "Thermomagnet Switches Cycle End Alarm",
+        "Thermomagnet Switches Stop at Cycle End"
+      ],
+      "lexical_variants": [
+        "THERMOMAGNET SWITCHES END OF CYCLE STOP",
+        "Thermomagnet Switches End of Cycle Stop",
+        "Thermomagnet Switches End‑of‑Cycle Stop"
+      ],
+      "alias_sources": {
+        "Thermomagnet Switches Cycle End Stop": [
+          "llm"
+        ],
+        "Thermomagnet Switches End-of-Cycle Stop": [
+          "llm"
+        ],
+        "Thermomagnet Switches End of Cycle Alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Thermomagnet Switches End-of-Cycle Alarm": [
+          "llm"
+        ],
+        "Thermomagnet Switches Cycle End Alarm": [
+          "llm"
+        ],
+        "Thermomagnet Switches Stop at Cycle End": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "THERMOMAGNET SWITCHES END OF CYCLE STOP": [
+          "llm"
+        ],
+        "Thermomagnet Switches End of Cycle Stop": [
+          "llm"
+        ],
+        "Thermomagnet Switches End‑of‑Cycle Stop": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that is triggered when thermomagnet switches detect the end of a production cycle, causing the machine to stop operation.",
+      "ontology_hints": [
+        "TRIGGERS: cycle end stop event",
+        "CAUSED_BY: thermomagnet switch activation",
+        "HANDLED_BY: operator or maintenance staff",
+        "REFERENCES: machine manual page reference for cycle stop procedures",
+        "DETECTED_BY: sensor monitoring thermomagnet switches",
+        "FEATURE_OF_INTEREST: thermomagnet switches",
+        "OBSERVABLE_PROPERTY: switch state (active/inactive)",
+        "TEMPORAL_ENTITY: time instant of cycle completion"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Thermomagnet Switches Cycle End Stop\", \"Thermomagnet Switches End-of-Cycle Stop\", \"Thermomagnet Switches End of Cycle Alarm\"], \"synonyms\": [\"Thermomagnet Switches End-of-Cycle Alarm\", \"Thermomagnet Switches Cycle End Alarm\", \"Thermomagnet Switches Stop at Cycle End\"], \"lexical_variants\": [\"THERMOMAGNET SWITCHES END OF CYCLE STOP\", \"Thermomagnet Switches End of Cycle Stop\", \"Thermomagnet Switches End‑of‑Cycle Stop\"], \"definition\": \"An alarm that is triggered when thermomagnet switches detect the end of a production cycle, causing the machine to stop operation.\", \"ontology_hints\": [\"TRIGGERS: cycle end stop event\", \"CAUSED_BY: thermomagnet switch activation\", \"HANDLED_BY: operator or maintenance staff\", \"REFERENCES: machine manual page reference for cycle stop procedures\", \"DETECTED_BY: sensor monitoring thermomagnet switches\", \"FEATURE_OF_INTEREST: thermomagnet switches\", \"OBSERVABLE_PROPERTY: switch state (active/inactive)\", \"TEMPORAL_ENTITY: time instant of cycle completion\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00035",
+        "text": "THERMOMAGNETIC SWITCHES IMMEDIATE STOP",
+        "label": "alarm name"
+      },
+      "aliases": [
+        "Thermomagnetic Switches Stop Alarm",
+        "Thermomagnetic Switches Immediate Stop Alarm"
+      ],
+      "synonyms": [
+        "Thermomagnetic Switches Stop",
+        "Thermomagnetic Switches Immediate Stop"
+      ],
+      "lexical_variants": [
+        "Thermomagnetic Switches Immediate Stop Alarm",
+        "Thermomagnetic Switches Immediate Stop"
+      ],
+      "alias_sources": {
+        "Thermomagnetic Switches Stop Alarm": [
+          "llm"
+        ],
+        "Thermomagnetic Switches Immediate Stop Alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Thermomagnetic Switches Stop": [
+          "llm"
+        ],
+        "Thermomagnetic Switches Immediate Stop": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Thermomagnetic Switches Immediate Stop Alarm": [
+          "llm"
+        ],
+        "Thermomagnetic Switches Immediate Stop": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that indicates the thermomagnetic switches have triggered an immediate halt of the machine’s operation.",
+      "ontology_hints": [
+        "Process",
+        "Logistic Process",
+        "Human Process",
+        "Temporal Entity",
+        "Technician",
+        "Alarm",
+        "TRIGGERS: immediate stop",
+        "REQUIRES: Technician intervention",
+        "HANDLED_BY: Technician",
+        "DETECTED_BY: Thermomagnetic Switches"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Thermomagnetic Switches Stop Alarm\", \"Thermomagnetic Switches Immediate Stop Alarm\"], \"synonyms\": [\"Thermomagnetic Switches Stop\", \"Thermomagnetic Switches Immediate Stop\"], \"lexical_variants\": [\"Thermomagnetic Switches Immediate Stop Alarm\", \"Thermomagnetic Switches Immediate Stop\"], \"definition\": \"An alarm that indicates the thermomagnetic switches have triggered an immediate halt of the machine’s operation.\", \"ontology_hints\": [\"Process\", \"Logistic Process\", \"Human Process\", \"Temporal Entity\", \"Technician\", \"Alarm\", \"TRIGGERS: immediate stop\", \"REQUIRES: Technician intervention\", \"HANDLED_BY: Technician\", \"DETECTED_BY: Thermomagnetic Switches\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00036",
+        "text": "LOW WATERING LIQUID FLOW",
+        "label": "alarm name"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm indicating that the flow of liquid used for cooling or watering is below the required threshold, potentially leading to overheating or interruption of the manufacturing process.",
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "Workstation",
+        "Production Line",
+        "Manufacturing Cell",
+        "Liquid Flow",
+        "Cooling System"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm indicating that the flow of liquid used for cooling or watering is below the required threshold, potentially leading to overheating or interruption of the manufacturing process.\", \"ontology_hints\": [\"Manufacturing Process\", \"Manufacturing Facility\", \"Workstation\", \"Production Line\", \"Manufacturing Cell\", \"Liquid Flow\", \"Cooling System\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00037",
+        "text": "HIGH WATERING LIQUID TEMPERATURE",
+        "label": "alarm name"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm triggered when the temperature of the liquid coolant exceeds a predefined threshold.",
+      "ontology_hints": [
+        "Alarm",
+        "TemperatureSensor",
+        "Coolant",
+        "ManufacturingProcess"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm triggered when the temperature of the liquid coolant exceeds a predefined threshold.\", \"ontology_hints\": [\"Alarm\", \"TemperatureSensor\", \"Coolant\", \"ManufacturingProcess\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00038",
+        "text": "PSM FEEDER FAULT",
+        "label": "alarm name"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating a fault in the PSM feeder component of a manufacturing system.",
+      "ontology_hints": [
+        "Alarm",
+        "FeederComponent",
+        "PSMSystem",
+        "FaultEvent"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating a fault in the PSM feeder component of a manufacturing system.\", \"ontology_hints\": [\"Alarm\", \"FeederComponent\", \"PSMSystem\", \"FaultEvent\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00039",
+        "text": "CABINET OVERHEATING",
+        "label": "alarm name"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that the cabinet temperature has risen above a safe threshold, as detected by a sensor measuring the cabinet's temperature.",
+      "ontology_hints": [
+        "Observation",
+        "Observable Property (temperature)",
+        "Situation S1",
+        "Alarm",
+        "Cabinet",
+        "Temperature"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that the cabinet temperature has risen above a safe threshold, as detected by a sensor measuring the cabinet's temperature.\", \"ontology_hints\": [\"Observation\", \"Observable Property (temperature)\", \"Situation S1\", \"Alarm\", \"Cabinet\", \"Temperature\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00040",
+        "text": "LOW PRESSURE",
+        "label": "alarm name"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that the pneumatic pressure supplied to a machine is below the required threshold, triggering a low‑pressure condition.",
+      "ontology_hints": [
+        "Result of a Process (e.g., Logistic Process or Human Process)",
+        "Alarm type indicating a low‑pressure condition",
+        "Related to Resource (pneumatic system) and Process (pressure regulation)",
+        "Detected by pressure sensors and handled by maintenance staff"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that the pneumatic pressure supplied to a machine is below the required threshold, triggering a low‑pressure condition.\", \"ontology_hints\": [\"Result of a Process (e.g., Logistic Process or Human Process)\", \"Alarm type indicating a low‑pressure condition\", \"Related to Resource (pneumatic system) and Process (pressure regulation)\", \"Detected by pressure sensors and handled by maintenance staff\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00041",
+        "text": "PSM FEEDER FAILURE",
+        "label": "alarm name"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An observation event indicating that a feeder component within a process safety management system has failed, recorded as an alarm in a manufacturing facility.",
+      "ontology_hints": [
+        "Observation of feeder failure",
+        "Feature: feeder component",
+        "Manufacturing Facility: cell or facility",
+        "Manufacturing Cell: group of workstations",
+        "Operator: responsible for handling the alarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An observation event indicating that a feeder component within a process safety management system has failed, recorded as an alarm in a manufacturing facility.\", \"ontology_hints\": [\"Observation of feeder failure\", \"Feature: feeder component\", \"Manufacturing Facility: cell or facility\", \"Manufacturing Cell: group of workstations\", \"Operator: responsible for handling the alarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

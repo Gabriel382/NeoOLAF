@@ -1,0 +1,1804 @@
+{
+  "layer": "layer03_candidate_typing_resolution",
+  "entity_candidates": [
+    {
+      "candidate_id": "cand_e_00000",
+      "canonical_label": "machine component",
+      "normalized_label": "machine component",
+      "candidate_type": "entity",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Part of Product",
+        "Manufacturing Process component",
+        "Observable Property via sensors",
+        "Human Process involvement"
+      ],
+      "definition": "M1671 pump is a pump component used in watering processes within manufacturing operations.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "pump",
+        "pump M1671"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00028",
+          "text": "M1671 pump",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 575,
+              "chunk_end_char": 585,
+              "doc_start_char": 25575,
+              "doc_end_char": 25585,
+              "snippet": "id, the hydraulic connections, the watering liquid passage solenoid valves, the M1671 pump; if no problem is detected, check input X4.1 page 16 of the electrical diagram"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_e_00001",
+      "canonical_label": "unloader",
+      "normalized_label": "unloader",
+      "candidate_type": "entity",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "MachineComponent",
+        "PartHandlingEquipment",
+        "HumanProcessComponent"
+      ],
+      "definition": "A mechanical or automated device that removes or unloads parts, products, or materials from a machine, conveyor, or container during manufacturing operations.",
+      "aliases": [
+        "unloading device",
+        "unloading mechanism"
+      ],
+      "synonyms": [
+        "unloading unit",
+        "unloading apparatus"
+      ],
+      "lexical_variants": [
+        "unloader",
+        "unloading device"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00038",
+          "text": "unloader",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 1992,
+              "chunk_end_char": 2000,
+              "doc_start_char": 26992,
+              "doc_end_char": 27000,
+              "snippet": ":\nordered or that it is not reached within the established time.\nCheck that the unloader is not mechanically retained; if the\npart unloader arrives at the commanded pos"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_e_00002",
+      "canonical_label": "MechanicalAxis",
+      "normalized_label": "mechanicalaxis",
+      "candidate_type": "entity",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "MechanicalAxis",
+        "MachineComponent",
+        "PartOf",
+        "SensorMonitoring",
+        "CollisionRisk"
+      ],
+      "definition": "A mechanical axis is a line or plane around which a machine component rotates or translates; axes are structural components of a machine that can collide if not properly aligned.",
+      "aliases": [
+        "ax",
+        "axe",
+        "axis",
+        "Axis",
+        "bloc",
+        "Axes"
+      ],
+      "synonyms": [
+        "ax",
+        "axe",
+        "axis",
+        "Axis",
+        "bloc"
+      ],
+      "lexical_variants": [
+        "ax",
+        "axe",
+        "axis",
+        "Axis",
+        "bloc",
+        "axes"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00040",
+          "text": "axes",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 3911,
+              "chunk_end_char": 3915,
+              "doc_start_char": 28911,
+              "doc_end_char": 28915,
+              "snippet": "521\nresponsible for\noperator/maintenance officer\nAlarm number: 1055\ntext: Z2-Y2 AXES IN COLLISION ZONE\ntype: Standard: Optional:\neffect: Alarm with immediate and co"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_e_00003",
+      "canonical_label": "collision zone",
+      "normalized_label": "collision zone",
+      "candidate_type": "entity",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "area",
+        "collision zone",
+        "collision region",
+        "collision area",
+        "collision zone in manufacturing context"
+      ],
+      "definition": "A physical area within a manufacturing environment where machine axes or components may collide, potentially causing mechanical interference or failure.",
+      "aliases": [
+        "Collision zone",
+        "collision zone",
+        "collision area",
+        "collision region"
+      ],
+      "synonyms": [
+        "collision area",
+        "collision region"
+      ],
+      "lexical_variants": [
+        "collision zone",
+        "collision area",
+        "collision region"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00041",
+          "text": "collision zone",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 3919,
+              "chunk_end_char": 3933,
+              "doc_start_char": 28919,
+              "doc_end_char": 28933,
+              "snippet": "onsible for\noperator/maintenance officer\nAlarm number: 1055\ntext: Z2-Y2 AXES IN COLLISION ZONE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "relation_candidates": [
+    {
+      "candidate_id": "cand_r_00000",
+      "canonical_label": "AUXILIARY WATERING ALARM",
+      "normalized_label": "auxiliary watering alarm",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmType",
+        "WateringSystem",
+        "AuxiliarySystem",
+        "MaintenanceEvent"
+      ],
+      "definition": "An alarm that indicates a fault or low level in the auxiliary water supply system of a machine or process, typically triggering when the auxiliary water source fails to deliver the required water volume.",
+      "aliases": [
+        "auxiliary water alarm",
+        "auxiliary water supply alarm"
+      ],
+      "synonyms": [
+        "secondary watering alarm",
+        "auxiliary water alarm"
+      ],
+      "lexical_variants": [
+        "auxiliary watering alarm",
+        "auxiliary water alarm",
+        "auxiliary water supply alarm"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00000",
+          "text": "AUXILIARY WATERING ALARM",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 213,
+              "chunk_end_char": 237,
+              "doc_start_char": 25213,
+              "doc_end_char": 25237,
+              "snippet": "nsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00001",
+      "canonical_label": "PART NOT EJECTED",
+      "normalized_label": "part not ejected",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Part",
+        "Production Line",
+        "Process",
+        "Alarm type",
+        "Manufacturing failure"
+      ],
+      "definition": "An alarm indicating that a part has not been ejected from the production line as expected.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00001",
+          "text": "PART NOT EJECTED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 802,
+              "chunk_end_char": 818,
+              "doc_start_char": 25802,
+              "doc_end_char": 25818,
+              "snippet": "ble for the intervention: responsible for maintenance\n\nAlarm number: 1048\ntext: PART NOT EJECTED\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00002",
+      "canonical_label": "PART MISSING",
+      "normalized_label": "part missing",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Part",
+        "Action",
+        "Production Line",
+        "Process",
+        "Platform",
+        "Alarm type"
+      ],
+      "definition": "An alarm indicating that a required part is missing during operation, prompting an action such as stopping the line or alerting staff.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00002",
+          "text": "PART MISSING",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 1290,
+              "chunk_end_char": 1302,
+              "doc_start_char": 26290,
+              "doc_end_char": 26302,
+              "snippet": "user page\nresponsible for\noperator/maintenance officer\nAlarm number: 1049\ntext: PART MISSING\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00003",
+      "canonical_label": "ANOMALY IN UNLOADING THE PART",
+      "normalized_label": "anomaly in unloading the part",
+      "candidate_type": "relation",
+      "confidence": 0.97,
+      "ontology_hints": [
+        "AlarmType",
+        "ManufacturingProcess",
+        "FeatureOfInterest",
+        "Manager"
+      ],
+      "definition": "An unexpected event affecting the unloading of a part during a manufacturing process.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00003",
+          "text": "ANOMALY IN UNLOADING THE PART",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 1740,
+              "chunk_end_char": 1769,
+              "doc_start_char": 26740,
+              "doc_end_char": 26769,
+              "snippet": "m (0 = part present,\n1 = part ejected)\nresponsible for\nAlarm number: 1051\ntext: ANOMALY IN UNLOADING THE PART\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00004",
+      "canonical_label": "UNLOADER OF THE WORKPIECE FORWARD",
+      "normalized_label": "unloader of the workpiece forward",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "has feature of interest: workpiece",
+        "is defined for: forward unloader",
+        "handled by: operator or machine",
+        "references: workstation or platform"
+      ],
+      "definition": "Alarm indicating that the forward unloader mechanism has engaged or is in operation, removing a workpiece in the forward direction.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00004",
+          "text": "UNLOADER OF THE WORKPIECE FORWARD",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 3581,
+              "chunk_end_char": 3614,
+              "doc_start_char": 28581,
+              "doc_end_char": 28614,
+              "snippet": "r. intervention manager: operator/maintenance manager\n\nAlarm number: 1052\ntext: UNLOADER OF THE WORKPIECE FORWARD\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00005",
+      "canonical_label": "Z2-Y2 AXES IN COLLISION ZONE",
+      "normalized_label": "z2-y2 axes in collision zone",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Situation S1 (collision situation)",
+        "Manufacturing Facility",
+        "Manufacturing Cell",
+        "Production Line",
+        "Action (required response)"
+      ],
+      "definition": "An alarm indicating that the Z2 and Y2 axes are colliding within the machine’s collision zone, signaling a potentially hazardous abnormal machine state.",
+      "aliases": [],
+      "synonyms": [
+        "Z2-Y2 axis collision",
+        "collision between Z2 and Y2 axes",
+        "axes collision zone"
+      ],
+      "lexical_variants": [
+        "Z2-Y2 axes collision zone",
+        "Z2-Y2 axes in collision zone"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00005",
+          "text": "Z2-Y2 AXES IN COLLISION ZONE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 3905,
+              "chunk_end_char": 3933,
+              "doc_start_char": 28905,
+              "doc_end_char": 28933,
+              "snippet": "tion M521\nresponsible for\noperator/maintenance officer\nAlarm number: 1055\ntext: Z2-Y2 AXES IN COLLISION ZONE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00006",
+      "canonical_label": "FEEDER FAULT",
+      "normalized_label": "feeder fault",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Result",
+        "Feature of Interest",
+        "Manufacturing Facility",
+        "Operator",
+        "Interval",
+        "Alarm type"
+      ],
+      "definition": "A fault in the bar feeder.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00006",
+          "text": "FEEDER FAULT",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 4258,
+              "chunk_end_char": 4270,
+              "doc_start_char": 29258,
+              "doc_end_char": 29270,
+              "snippet": "ion:\nthe alarm.\nresponsible for\noperator/tool adjuster\nAlarm number: 1060\ntext: FEEDER FAULT\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00007",
+      "canonical_label": "WORKPIECE UNLOADER FORWARD",
+      "normalized_label": "workpiece unloader forward",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ObservableProperty of a Workpiece Unloader",
+        "Platform: Workpiece Unloader",
+        "Workstation: Workpiece Unloader area",
+        "FeatureOfInterest: Workpiece Unloader device",
+        "Direction: Forward"
+      ],
+      "definition": "An alarm that indicates the workpiece unloader device is moving in the forward direction.",
+      "aliases": [
+        "Forward Unloader Alarm",
+        "Unloader Forward Alarm"
+      ],
+      "synonyms": [
+        "Forward Unloader Alarm"
+      ],
+      "lexical_variants": [
+        "WORKPIECE UNLOADER FORWARD",
+        "WORKPIECE UNLOADER - FORWARD"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00007",
+          "text": "WORKPIECE UNLOADER FORWARD",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 4617,
+              "chunk_end_char": 4643,
+              "doc_start_char": 29617,
+              "doc_end_char": 29643,
+              "snippet": "the anomaly.\nresponsible for\noperator/maintenance officer\n\nAlarm n°: 1052 text: WORKPIECE UNLOADER FORWARD type: Standard: Optional: effect: Alarm with immediate and controlled stop caus"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00008",
+      "canonical_label": "immediate and controlled shutdown",
+      "normalized_label": "immediate and controlled shutdown",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Feature of Interest",
+        "Human Process"
+      ],
+      "definition": "An operational state in which a machine is shut down immediately and under controlled conditions, typically following an alarm.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00008",
+          "text": "immediate and controlled shutdown",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 283,
+              "chunk_end_char": 316,
+              "doc_start_char": 25283,
+              "doc_end_char": 25316,
+              "snippet": "046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The flow control device does not signal the presence of watering liquid,"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00009",
+      "canonical_label": "immediate and controlled stop",
+      "normalized_label": "immediate and controlled stop",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Human Process",
+        "Feature of Interest"
+      ],
+      "definition": "A machine state in which operations are halted immediately and under controlled conditions, typically triggered by an alarm or safety condition.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00009",
+          "text": "immediate and controlled stop",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 2309,
+              "chunk_end_char": 2338,
+              "doc_start_char": 27309,
+              "doc_end_char": 27338,
+              "snippet": "rm n°: 1048 text: PART NOT EJECTED type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The part was not ejected by the counter spindle after opening the grippe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00010",
+      "canonical_label": "Alarm with immediate and controlled shutdown",
+      "normalized_label": "alarm with immediate and controlled shutdown",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4",
+        "Situation S5"
+      ],
+      "definition": "An alarm that triggers an immediate and controlled shutdown of the machine or system.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00010",
+          "text": "Alarm with immediate and controlled shutdown",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 272,
+              "chunk_end_char": 316,
+              "doc_start_char": 25272,
+              "doc_end_char": 25316,
+              "snippet": "larm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The flow control device does not signal the presence of watering liquid,"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00011",
+      "canonical_label": "Alarm with immediate and controlled stop",
+      "normalized_label": "alarm with immediate and controlled stop",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "triggers Situation S1 (immediate stop)",
+        "triggers Situation S2 (controlled stop)",
+        "hasFeatureOfInterest: machine stop",
+        "associatedConstraint: stop condition",
+        "inXSDDateTimeStamp: alarm occurrence time"
+      ],
+      "definition": "An alarm that initiates an immediate stop of machine operation followed by a controlled shutdown.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "Alarm with immediate and controlled stop",
+        "Alarm that triggers immediate and controlled stop"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00011",
+          "text": "Alarm with immediate and controlled stop",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 2298,
+              "chunk_end_char": 2338,
+              "doc_start_char": 27298,
+              "doc_end_char": 27338,
+              "snippet": "le for\n\nAlarm n°: 1048 text: PART NOT EJECTED type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The part was not ejected by the counter spindle after opening the grippe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00012",
+      "canonical_label": "DETECTED_BY",
+      "normalized_label": "detected_by",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "has observable property: watering liquid",
+        "is in situation: observation",
+        "detects: watering liquid",
+        "negative observation of observable property",
+        "feature of interest: flow control device",
+        "temporal entity: time of observation"
+      ],
+      "definition": "An observation that a sensor or flow‑control device did not detect the presence of watering liquid, indicating a negative or absent signal for that observable property.",
+      "aliases": [
+        "no watering liquid signal",
+        "absence of watering liquid detection"
+      ],
+      "synonyms": [
+        "does not indicate presence of watering liquid",
+        "watering liquid not detected",
+        "no watering liquid detected"
+      ],
+      "lexical_variants": [
+        "no watering liquid signal",
+        "watering liquid not detected",
+        "absence of watering liquid"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00012",
+          "text": "does not signal the presence of watering liquid",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 348,
+              "chunk_end_char": 395,
+              "doc_start_char": 25348,
+              "doc_end_char": 25395,
+              "snippet": "ct: Alarm with immediate and controlled shutdown cause: The flow control device does not signal the presence of watering liquid, as a result of programming the M208 function intervention: Check the presence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00013",
+      "canonical_label": "causes",
+      "normalized_label": "causes",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS",
+        "CAUSES",
+        "REQUIRES",
+        "Feature of Interest",
+        "Manufacturing Cell",
+        "Production Line",
+        "Constraint",
+        "Cause class",
+        "has cause property",
+        "has result property",
+        "Process class",
+        "Sensor class",
+        "Feature class",
+        "Result class"
+      ],
+      "definition": "A causal phrase indicating that programming the M208 function causes a change in the state of a feature of interest within a manufacturing cell or production line, thereby imposing a constraint on the process.",
+      "aliases": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa",
+        "Causes"
+      ],
+      "synonyms": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa"
+      ],
+      "lexical_variants": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00013",
+          "text": "as a result of programming the M208 function",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 397,
+              "chunk_end_char": 441,
+              "doc_start_char": 25397,
+              "doc_end_char": 25441,
+              "snippet": "cause: The flow control device does not signal the presence of watering liquid, as a result of programming the M208 function intervention: Check the presence of the watering liquid, the hydraulic connecti"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00017",
+          "text": "causes",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00014",
+      "canonical_label": "responsible for",
+      "normalized_label": "responsible for",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "HANDLED_BY",
+        "RESPONSIBLE_FOR"
+      ],
+      "definition": "Indicates the entity that has the duty or obligation to perform or oversee the intervention.",
+      "aliases": [
+        "in charge of",
+        "accountable for",
+        "liable for"
+      ],
+      "synonyms": [
+        "accountable for the intervention",
+        "liable for the intervention",
+        "in charge of the intervention"
+      ],
+      "lexical_variants": [
+        "responsible for the intervention",
+        "responsible for the corrective action"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00014",
+          "text": "responsible for the intervention",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 128,
+              "chunk_end_char": 160,
+              "doc_start_char": 25128,
+              "doc_end_char": 25160,
+              "snippet": "e 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM ty"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00015",
+      "canonical_label": "emitted by",
+      "normalized_label": "emitted by",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature emits Alarm",
+        "Feature emits Signal",
+        "Feature emits Event",
+        "Feature emits at Instant",
+        "Feature emits over Interval",
+        "Feature emits within Situation"
+      ],
+      "definition": "give off, send forth, or discharge; as of light, heat, or radiation, vapor, etc.",
+      "aliases": [
+        "emit",
+        "breathe",
+        "pass off",
+        "give out",
+        "give off",
+        "utter",
+        "let out",
+        "let loose"
+      ],
+      "synonyms": [
+        "emit",
+        "breathe",
+        "pass off",
+        "give out",
+        "give off",
+        "utter",
+        "let out",
+        "let loose"
+      ],
+      "lexical_variants": [
+        "emit",
+        "breathe",
+        "pass off",
+        "give out",
+        "give off",
+        "utter",
+        "let out",
+        "let loose"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00015",
+          "text": "emitted",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 1436,
+              "chunk_end_char": 1443,
+              "doc_start_char": 26436,
+              "doc_end_char": 26443,
+              "snippet": "e and controlled shutdown\nIn machines equipped with a controlled ejector, it is emitted\ncause: when with the pliers closed and the part present, the microdetector\nejec"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00016",
+      "canonical_label": "DetectedBy",
+      "normalized_label": "detectedby",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "DetectedBy",
+        "Detects",
+        "Sensor",
+        "Product",
+        "Feature",
+        "SpatialObject",
+        "Technician",
+        "ProductionLine"
+      ],
+      "definition": "discover or determine the existence, presence, or fact of; perceived or discerned.",
+      "aliases": [
+        "detect",
+        "observe",
+        "find",
+        "discover",
+        "notice",
+        "detected"
+      ],
+      "synonyms": [
+        "detect",
+        "observe",
+        "find",
+        "discover",
+        "notice",
+        "detected"
+      ],
+      "lexical_variants": [
+        "detect",
+        "observe",
+        "find",
+        "discover",
+        "notice",
+        "detected"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00016",
+          "text": "detected",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 18,
+              "chunk_end_char": 26,
+              "doc_start_char": 25018,
+              "doc_end_char": 25026,
+              "snippet": "if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00017",
+      "canonical_label": "deactivate the control from the “MACHINE MANAGEMENT” user page",
+      "normalized_label": "deactivate the control from the machine management user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ControlElement",
+        "UserInterfacePage",
+        "MachineManagementSystem",
+        "DeactivationEvent",
+        "TRIGGERS"
+      ],
+      "definition": "An action that stops or disables a control element within the MACHINE MANAGEMENT user interface, preventing it from influencing machine operation.",
+      "aliases": [
+        "disable the control on the MACHINE MANAGEMENT page",
+        "turn off the control in the MACHINE MANAGEMENT interface"
+      ],
+      "synonyms": [
+        "disable",
+        "turn off",
+        "shut down"
+      ],
+      "lexical_variants": [
+        "deactivate the control on the MACHINE MANAGEMENT page",
+        "deactivate the control from the MACHINE MANAGEMENT interface"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00019",
+          "text": "deactivate the control from the “MACHINE MANAGEMENT” user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00018",
+      "canonical_label": "move the part unloader back using function M521",
+      "normalized_label": "move the part unloader back using function m521",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Manufacturing Cell",
+        "Manufacturing Facility",
+        "Situation S1",
+        "Situation S2",
+        "Function M521",
+        "Part Unloader"
+      ],
+      "definition": "An operation to reposition the part unloader to its previous location by activating control function M521, typically performed within a manufacturing cell as part of a maintenance or corrective procedure.",
+      "aliases": [
+        "reposition the part unloader",
+        "return the part unloader to its original position",
+        "reset the part unloader"
+      ],
+      "synonyms": [
+        "move the part unloader back",
+        "use function M521 to reposition the part unloader",
+        "reposition the part unloader using M521"
+      ],
+      "lexical_variants": [
+        "M521 function",
+        "function M521",
+        "unloader repositioning",
+        "part unloader movement"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00020",
+          "text": "move the part unloader back using function M521",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 3787,
+              "chunk_end_char": 3834,
+              "doc_start_char": 28787,
+              "doc_end_char": 28834,
+              "snippet": "tart the cycle with the part unloader in\ncause:\nforward position.\nintervention: Move the part unloader back using function M521\nresponsible for\noperator/maintenance officer\nAlarm number: 1055\ntext: Z2-Y2 AXE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00019",
+      "canonical_label": "reverse the part unloader using function M521",
+      "normalized_label": "reverse the part unloader using function m521",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "requires action",
+        "handled by",
+        "references"
+      ],
+      "definition": "An instruction to reverse the part unloader using function M521.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00021",
+          "text": "reverse the part unloader using function M521",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 4832,
+              "chunk_end_char": 4877,
+              "doc_start_char": 29832,
+              "doc_end_char": 29877,
+              "snippet": "rt the cycle with the workpiece unloader in the forward position. intervention: Reverse the part unloader using function M521 responsible for intervention: operator/maintenance person\n\nAlarm n°: 1055 text:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00020",
+      "canonical_label": "Manually move the axes away from the collision zone and delete the alarm",
+      "normalized_label": "manually move the axes away from the collision zone and delete the alarm",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "HumanProcess",
+        "ManufacturingFacility",
+        "FeatureOfInterest",
+        "Alarm",
+        "MachineState"
+      ],
+      "definition": "A human‑initiated action in which machine axes are moved manually away from a collision zone and the resulting alarm is cleared.",
+      "aliases": [
+        "manual axis repositioning",
+        "manual collision avoidance",
+        "alarm clearance"
+      ],
+      "synonyms": [
+        "manual axis adjustment",
+        "manual collision zone clearance",
+        "manual alarm removal"
+      ],
+      "lexical_variants": [
+        "axes",
+        "axis",
+        "collision zone",
+        "alarm"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00022",
+          "text": "Manually move the axes away from the collision zone and delete the alarm",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00021",
+      "canonical_label": "Check the connections, consult the bar feeder documentation",
+      "normalized_label": "check the connections consult the bar feeder documentation",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "has observation",
+        "made observation",
+        "references",
+        "verification relation",
+        "Constraint",
+        "Feature of Interest",
+        "Observation"
+      ],
+      "definition": "An instruction to verify the physical or logical connections of a bar feeder device and to review its associated documentation for compliance with process constraints.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00023",
+          "text": "Check the connections, consult the bar feeder documentation",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 4448,
+              "chunk_end_char": 4507,
+              "doc_start_char": 29448,
+              "doc_end_char": 29507,
+              "snippet": "off circuit and does not transmit the “ready” signal to\ncause:\nthe CNC machine.\nCheck the connections, consult the bar feeder documentation\nintervention:\nfor details of the anomaly.\nresponsible for\noperator/maintenance"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00022",
+      "canonical_label": "input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant)",
+      "normalized_label": "input x42 page 11 of the electrical diagram 0  absence of coolant 1  passage of coolant",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest: coolant presence",
+        "ObservedBy: sensor",
+        "PartOf: ManufacturingProcess",
+        "MonitoredBy: Technician",
+        "TemporalEntity: observation time"
+      ],
+      "definition": "A sensor input labeled X4.2 on page 11 of the electrical diagram that indicates the presence (1) or absence (0) of coolant flow.",
+      "aliases": [
+        "coolant presence input",
+        "coolant flow sensor input",
+        "X4.2 coolant status input"
+      ],
+      "synonyms": [
+        "coolant flow indicator",
+        "coolant presence signal"
+      ],
+      "lexical_variants": [
+        "input X4.2",
+        "X4.2 input",
+        "page 11 input X4.2"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00024",
+          "text": "input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant)",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 34,
+              "chunk_end_char": 127,
+              "doc_start_char": 25034,
+              "doc_end_char": 25127,
+              "snippet": "if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00023",
+      "canonical_label": "input X4.1 page 16 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant)",
+      "normalized_label": "input x41 page 16 of the electrical diagram 0  absence of coolant 1  passage of coolant",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest: coolant state",
+        "TemporalEntity: time of observation",
+        "LogisticProcess: coolant delivery",
+        "ManufacturingProcess: cooling operation",
+        "Technician: responsible for monitoring",
+        "attribute: coolant presence indicator"
+      ],
+      "definition": "An electrical input signal (X4.1) shown on page 16 of the machine’s electrical diagram that indicates the presence (value 1) or absence (value 0) of coolant flow.",
+      "aliases": [
+        "coolant presence input X4.1",
+        "coolant flow indicator X4.1",
+        "coolant detection input X4.1"
+      ],
+      "synonyms": [
+        "coolant flow input",
+        "coolant presence input",
+        "coolant detection signal"
+      ],
+      "lexical_variants": [
+        "X4.1 coolant input",
+        "input X4.1 coolant detection",
+        "coolant presence sensor X4.1"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00025",
+          "text": "input X4.1 page 16 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant)",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 620,
+              "chunk_end_char": 713,
+              "doc_start_char": 25620,
+              "doc_end_char": 25713,
+              "snippet": "iquid passage solenoid valves, the M1671 pump; if no problem is detected, check input X4.1 page 16 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm number: 10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00024",
+      "canonical_label": "input X5.0 page 71 of the electrical diagram (0 = part present, 1 = part ejected)",
+      "normalized_label": "input x50 page 71 of the electrical diagram 0  part present 1  part ejected",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observable Property of a Feature of Interest (the part)",
+        "Used within a Logistic Process (part handling)",
+        "Associated with a Temporal Entity (time of observation)",
+        "Spatial Object context: the part’s location in the manufacturing environment"
+      ],
+      "definition": "An input signal (X5.0) recorded on page 71 of the electrical diagram that indicates whether a specific part is present (0) or has been ejected (1).",
+      "aliases": [
+        "X5.0 presence indicator",
+        "part ejection flag",
+        "part presence sensor input"
+      ],
+      "synonyms": [
+        "part presence input",
+        "ejection detection input",
+        "presence flag"
+      ],
+      "lexical_variants": [
+        "input X5.0",
+        "X5.0 input",
+        "page 71 input",
+        "X5.0 presence signal"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00026",
+          "text": "input X5.0 page 71 of the electrical diagram (0 = part present, 1 = part ejected)",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00025",
+      "canonical_label": "operator/maintenance officer",
+      "normalized_label": "operatormaintenance officer",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Operator",
+        "Staff",
+        "Role in maintenance"
+      ],
+      "definition": "A worker responsible for operating machines or performing maintenance tasks on equipment.",
+      "aliases": [
+        "operator/maintenance officer"
+      ],
+      "synonyms": [
+        "operator",
+        "maintenance officer"
+      ],
+      "lexical_variants": [
+        "operator",
+        "maintenance officer"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00030",
+          "text": "operator/maintenance officer",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 1236,
+              "chunk_end_char": 1264,
+              "doc_start_char": 26236,
+              "doc_end_char": 26264,
+              "snippet": "tivate the control from\nfrom the “MACHINE MANAGEMENT” user page\nresponsible for\noperator/maintenance officer\nAlarm number: 1049\ntext: PART MISSING\ntype: Standard: Optional:\neffect: Alarm w"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00026",
+      "canonical_label": "operator/tool adjuster",
+      "normalized_label": "operatortool adjuster",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Operator",
+        "Feature of Interest",
+        "Spatial Object",
+        "Observation"
+      ],
+      "definition": "A personnel role responsible for adjusting tools during machine operation; typically an operator who performs adjustment tasks on tools, which are spatial features in the manufacturing environment.",
+      "aliases": [
+        "tool adjuster",
+        "operator adjuster"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "operator/tool adjuster"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00031",
+          "text": "operator/tool adjuster",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 4210,
+              "chunk_end_char": 4232,
+              "doc_start_char": 29210,
+              "doc_end_char": 29232,
+              "snippet": "way from the collision zone and delete\nintervention:\nthe alarm.\nresponsible for\noperator/tool adjuster\nAlarm number: 1060\ntext: FEEDER FAULT\ntype: Standard: Optional:\neffect: Alarm w"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00027",
+      "canonical_label": "operator/maintenance manager",
+      "normalized_label": "operatormaintenance manager",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "role",
+        "Staff",
+        "Operator",
+        "Manager"
+      ],
+      "definition": "A staff role that combines responsibilities for operating machinery and overseeing maintenance activities within a manufacturing environment.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00032",
+          "text": "operator/maintenance manager",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 3526,
+              "chunk_end_char": 3554,
+              "doc_start_char": 28526,
+              "doc_end_char": 28554,
+              "snippet": "ot receiving the signals from the position microdetector. intervention manager: operator/maintenance manager\n\nAlarm number: 1052\ntext: UNLOADER OF THE WORKPIECE FORWARD\ntype: Standard: Opt"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00028",
+      "canonical_label": "operator/maintenance person",
+      "normalized_label": "operatormaintenance person",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Operator",
+        "Workstation",
+        "Observation",
+        "Feature of Interest",
+        "Platform"
+      ],
+      "definition": "A staff member responsible for operating machines or performing maintenance tasks in a manufacturing environment.",
+      "aliases": [
+        "operator"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "operator/maintenance person"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00033",
+          "text": "operator/maintenance person",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 4908,
+              "chunk_end_char": 4935,
+              "doc_start_char": 29908,
+              "doc_end_char": 29935,
+              "snippet": "on: Reverse the part unloader using function M521 responsible for intervention: operator/maintenance person\n\nAlarm n°: 1055 text: Z2-Y2 AXES IN COLLISION ZONE type: Standar"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00029",
+      "canonical_label": "MACHINE MANAGEMENT user page",
+      "normalized_label": "machine management user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "related to Machine",
+        "used by Manager",
+        "part of Human Process",
+        "provides control over machine operations"
+      ],
+      "definition": "A user interface page that allows operators or managers to oversee and adjust machine settings, including the ability to deactivate or enable machine controls.",
+      "aliases": [
+        "machine management interface",
+        "machine management screen",
+        "machine control panel"
+      ],
+      "synonyms": [
+        "machine control interface",
+        "machine management UI",
+        "machine control screen"
+      ],
+      "lexical_variants": [
+        "machine management page",
+        "machine management user interface",
+        "machine control page"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00034",
+          "text": "MACHINE MANAGEMENT user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00030",
+      "canonical_label": "bar feeder",
+      "normalized_label": "bar feeder",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Resource",
+        "Feature",
+        "Component"
+      ],
+      "definition": "A bar feeder is a manufacturing component that supplies bars to downstream processes, functioning as a resource within the production environment.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00035",
+          "text": "bar feeder",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 4354,
+              "chunk_end_char": 4364,
+              "doc_start_char": 29354,
+              "doc_end_char": 29364,
+              "snippet": "e: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe bar feeder is off circuit and does not transmit the “ready” signal to\ncause:\nthe CNC machi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00031",
+      "canonical_label": "CNC machine",
+      "normalized_label": "cnc machine",
+      "candidate_type": "relation",
+      "confidence": 0.97,
+      "ontology_hints": [
+        "Machine",
+        "Computer-controlled manufacturing equipment",
+        "Automated machining tool",
+        "Motorized tool or platform"
+      ],
+      "definition": "Computer numerical control (CNC) or CNC machining is the automated control of machine tools by a computer, enabling programmable, repeatable, and precise manufacturing operations.",
+      "aliases": [
+        "Computer numerical control"
+      ],
+      "synonyms": [
+        "CNC machining"
+      ],
+      "lexical_variants": [
+        "CNC",
+        "computer numerical control machine"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00036",
+          "text": "CNC machine",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 4435,
+              "chunk_end_char": 4446,
+              "doc_start_char": 29435,
+              "doc_end_char": 29446,
+              "snippet": "ar feeder is off circuit and does not transmit the “ready” signal to\ncause:\nthe CNC machine.\nCheck the connections, consult the bar feeder documentation\nintervention:\nfor"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00032",
+      "canonical_label": "microdetector",
+      "normalized_label": "microdetector",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Component of Product",
+        "Component of Production Line",
+        "Monitored by Operator",
+        "Located in Geometry",
+        "Active during Interval"
+      ],
+      "definition": "A small sensor that detects the presence or ejection of a part within a manufacturing system.",
+      "aliases": [
+        "micro-detector"
+      ],
+      "synonyms": [
+        "part presence sensor",
+        "ejection sensor"
+      ],
+      "lexical_variants": [
+        "micro detector"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00037",
+          "text": "microdetector",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 1505,
+              "chunk_end_char": 1518,
+              "doc_start_char": 26505,
+              "doc_end_char": 26518,
+              "snippet": "tor, it is emitted\ncause: when with the pliers closed and the part present, the microdetector\nejected part is detected.\nCheck the tightening elements: if there is a control"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00033",
+      "canonical_label": "part unloader",
+      "normalized_label": "part unloader",
+      "candidate_type": "relation",
+      "confidence": 0.92,
+      "ontology_hints": [
+        "Process",
+        "Part",
+        "Spatial Object",
+        "Production Line",
+        "Manager"
+      ],
+      "definition": "A process or device that removes parts from a production line or spatial location, typically overseen by a manager.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00039",
+          "text": "part unloader",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 2038,
+              "chunk_end_char": 2051,
+              "doc_start_char": 27038,
+              "doc_end_char": 27051,
+              "snippet": "established time.\nCheck that the unloader is not mechanically retained; if the\npart unloader arrives at the commanded position but\nintervention:\nthe alarm persists, this me"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00034",
+      "canonical_label": "bar feeder documentation",
+      "normalized_label": "bar feeder documentation",
+      "candidate_type": "relation",
+      "confidence": 0.99,
+      "ontology_hints": [
+        "Document",
+        "Manual",
+        "Troubleshooting Guide",
+        "References Workstation (bar feeder)",
+        "Contains Observations of bar feeder status",
+        "Used by Maintenance Staff",
+        "Part of Production Line documentation",
+        "Provides instructions for Action in response to bar feeder issues"
+      ],
+      "definition": "A technical document that provides instructions, troubleshooting steps, and reference information for the bar feeder component used in a manufacturing system.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00042",
+          "text": "bar feeder documentation",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 4483,
+              "chunk_end_char": 4507,
+              "doc_start_char": 29483,
+              "doc_end_char": 29507,
+              "snippet": "he “ready” signal to\ncause:\nthe CNC machine.\nCheck the connections, consult the bar feeder documentation\nintervention:\nfor details of the anomaly.\nresponsible for\noperator/maintenance"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attribute_candidates": [],
+  "event_candidates": [
+    {
+      "candidate_id": "cand_s_00000",
+      "canonical_label": "check",
+      "normalized_label": "check",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Process (inspection)",
+        "Cause (stoppage)",
+        "Resource (check document)",
+        "Technician (performs check)"
+      ],
+      "definition": "A verification or appraisal of a machine’s state, often leading to a halt or stoppage.",
+      "aliases": [
+        "check",
+        "bank check",
+        "cheque",
+        "assay",
+        "chit",
+        "tab",
+        "arrest",
+        "halt",
+        "hitch",
+        "stay",
+        "stop",
+        "stoppage",
+        "confirmation",
+        "verification",
+        "substantiation",
+        "Check"
+      ],
+      "synonyms": [
+        "check",
+        "bank check",
+        "cheque",
+        "assay",
+        "chit",
+        "tab",
+        "arrest",
+        "halt",
+        "hitch",
+        "stay",
+        "stop",
+        "stoppage",
+        "confirmation",
+        "verification",
+        "substantiation"
+      ],
+      "lexical_variants": [
+        "check",
+        "bank check",
+        "cheque",
+        "assay",
+        "chit",
+        "tab",
+        "arrest",
+        "halt",
+        "hitch",
+        "stay",
+        "stop",
+        "stoppage",
+        "confirmation",
+        "verification",
+        "substantiation"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00018",
+          "text": "check",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 28,
+              "chunk_end_char": 33,
+              "doc_start_char": 25028,
+              "doc_end_char": 25033,
+              "snippet": "if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00001",
+      "canonical_label": "M208 function",
+      "normalized_label": "m208 function",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Action",
+        "Situation",
+        "Production Line"
+      ],
+      "definition": "The functional activity performed by component M208 within a manufacturing environment, typically triggered by a detected situation on a production line.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00027",
+          "text": "M208 function",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": 428,
+              "chunk_end_char": 441,
+              "doc_start_char": 25428,
+              "doc_end_char": 25441,
+              "snippet": "does not signal the presence of watering liquid, as a result of programming the M208 function intervention: Check the presence of the watering liquid, the hydraulic connecti"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00002",
+      "canonical_label": "M521 function",
+      "normalized_label": "m521 function",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Action",
+        "Situation S1",
+        "Situation S2",
+        "Production Line"
+      ],
+      "definition": "An action performed to move the unloader, designated as the M521 function.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00029",
+          "text": "M521 function",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0005",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

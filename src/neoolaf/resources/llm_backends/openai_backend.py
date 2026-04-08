@@ -114,29 +114,47 @@ class OpenAIBackend:
 
     @staticmethod
     def extract_json(text: str) -> Any:
+        """
+        Extract the first valid JSON object or array from model output.
+
+        Supports:
+        - fenced ```json ... ```
+        - fenced ``` ... ```
+        - raw JSON
+        - first balanced JSON object/array inside extra text
+        """
+        import json
+
         if text is None:
             raise ValueError("extract_json received None from backend.chat().")
+
         text = text.strip()
 
+        # 1. Try fenced json block
         fenced = re.search(r"```json\s*(.*?)\s*```", text, re.DOTALL)
         if fenced:
-            return json.loads(fenced.group(1))
+            return json.loads(fenced.group(1).strip())
 
+        # 2. Try generic fenced block
         fenced2 = re.search(r"```\s*(.*?)\s*```", text, re.DOTALL)
         if fenced2:
-            return json.loads(fenced2.group(1))
+            return json.loads(fenced2.group(1).strip())
 
+        # 3. Try direct full parse
         try:
             return json.loads(text)
         except json.JSONDecodeError:
             pass
 
-        arr_match = re.search(r"(\[.*\])", text, re.DOTALL)
-        if arr_match:
-            return json.loads(arr_match.group(1))
+        # 4. Try first balanced JSON object/array
+        decoder = json.JSONDecoder()
 
-        obj_match = re.search(r"(\{.*\})", text, re.DOTALL)
-        if obj_match:
-            return json.loads(obj_match.group(1))
+        for i, ch in enumerate(text):
+            if ch in "{[":
+                try:
+                    obj, end = decoder.raw_decode(text[i:])
+                    return obj
+                except json.JSONDecodeError:
+                    continue
 
-        raise ValueError(f"Could not parse JSON from output:\n{text[:1000]}")
+        raise ValueError(f"Could not parse JSON from output:\n{text[:1500]}")

@@ -1,0 +1,126 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 4,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "reset program",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00012",
+        "label": "program can be restarted at the beginning only if the causes do not persist"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "rewound state",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The chunk states that pressing the RESET PRG key rewinds the program and the program can be restarted at the beginning only if the causes do not persist, indicating that the reset program event leads to the rewound state under the condition that the causes have been eliminated.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1074,
+          "chunk_end_char": 1149,
+          "doc_start_char": 1074,
+          "doc_end_char": 1149,
+          "snippet": "an be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with i"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_s_00007",
+        "label": "Open side guard state",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00014",
+        "label": "causes"
+      },
+      "object": {
+        "id": "cand_s_00003",
+        "label": "Alarm event",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The chunk text states that Alarm No. 1005 is caused by the side protections being open, which corresponds to the \"Open side guard state\" event, and the alarm itself is represented by the \"Alarm event\" candidate.",
+      "confidence": 0.9,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1366,
+          "chunk_end_char": 1421,
+          "doc_start_char": 1366,
+          "doc_end_char": 1421,
+          "snippet": "ationeffect: hardware operation to the axis/spindle feeder and CNC in\nemergency\ncause: Indicates that the punch button has been pressed\nRelease the button and press the start button on the\nintervention: machine.\nSee"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00002",
+      "subject": {
+        "id": "cand_s_00003",
+        "label": "Alarm event",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00014",
+        "label": "causes"
+      },
+      "object": {
+        "id": "cand_s_00001",
+        "label": "reset program",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text indicates that when an alarm event is displayed, the operator can press the RESET PRG key to rewind the program. This shows that the alarm event triggers the reset program.",
+      "confidence": 0.78,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2231,
+          "chunk_end_char": 2288,
+          "doc_start_char": 2231,
+          "doc_end_char": 2288,
+          "snippet": "own, opening of authorization\neffect:\nhardware to the axis/spindle power supply\ncause: At the start of the cycle the sliding door is open.\nCheck that the door is in an acceptable condition.\nintervention:\nSee page 19 o"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00003",
+      "subject": {
+        "id": "cand_s_00003",
+        "label": "Alarm event",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00021",
+        "label": "intervention: Check that the door is in an acceptable condition"
+      },
+      "object": {
+        "id": "cand_r_00021",
+        "label": "intervention: Check that the door is in an acceptable condition",
+        "type": "relation"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The chunk text explicitly links the intervention \"Check that the door is in an acceptable condition\" to Alarm No. 1003, which is represented by the local candidate cand_s_00003 (Alarm event).",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    }
+  ]
+}

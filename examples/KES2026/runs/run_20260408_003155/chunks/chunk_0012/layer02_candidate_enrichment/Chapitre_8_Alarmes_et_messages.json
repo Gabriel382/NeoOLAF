@@ -1,0 +1,1927 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 32,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "Alarm with program interruption, stopping of axes and spindles.",
+        "label": "alarm"
+      },
+      "aliases": [
+        "Program interruption alarm",
+        "Axes and spindles stop alarm",
+        "Machine stop alarm"
+      ],
+      "synonyms": [
+        "Alarm causing program interruption",
+        "Spindle stop alarm",
+        "Axis stop alarm"
+      ],
+      "lexical_variants": [
+        "Alarm that interrupts program and stops axes/spindles",
+        "Program interruption leading to axes/spindles stop",
+        "Machine alarm causing axes and spindles to halt"
+      ],
+      "alias_sources": {
+        "Program interruption alarm": [
+          "llm"
+        ],
+        "Axes and spindles stop alarm": [
+          "llm"
+        ],
+        "Machine stop alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Alarm causing program interruption": [
+          "llm"
+        ],
+        "Spindle stop alarm": [
+          "llm"
+        ],
+        "Axis stop alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm that interrupts program and stops axes/spindles": [
+          "llm"
+        ],
+        "Program interruption leading to axes/spindles stop": [
+          "llm"
+        ],
+        "Machine alarm causing axes and spindles to halt": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm event that interrupts the machine’s program execution and stops the axes and spindles, thereby halting the manufacturing process.",
+      "ontology_hints": [
+        "TRIGGERS: manufacturing process",
+        "CAUSES: machine shutdown",
+        "REQUIRES: maintenance intervention",
+        "HANDLED_BY: operator",
+        "REFERENCES: machine manual",
+        "Feature of Interest: alarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Program interruption alarm\", \"Axes and spindles stop alarm\", \"Machine stop alarm\"], \"synonyms\": [\"Alarm causing program interruption\", \"Spindle stop alarm\", \"Axis stop alarm\"], \"lexical_variants\": [\"Alarm that interrupts program and stops axes/spindles\", \"Program interruption leading to axes/spindles stop\", \"Machine alarm causing axes and spindles to halt\"], \"definition\": \"An alarm event that interrupts the machine’s program execution and stops the axes and spindles, thereby halting the manufacturing process.\", \"ontology_hints\": [\"TRIGGERS: manufacturing process\", \"CAUSES: machine shutdown\", \"REQUIRES: maintenance intervention\", \"HANDLED_BY: operator\", \"REFERENCES: machine manual\", \"Feature of Interest: alarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "FEED WRONG OR ABSENT",
+        "label": "alarm"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm indicating that the feed material is either incorrect or missing during a manufacturing process.",
+      "ontology_hints": [
+        "Feature of Interest: feed material",
+        "Constraint: acceptable feed conditions",
+        "Temporal Entity: time of observation",
+        "Manufacturing Process",
+        "Manufacturing Facility"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm indicating that the feed material is either incorrect or missing during a manufacturing process.\", \"ontology_hints\": [\"Feature of Interest: feed material\", \"Constraint: acceptable feed conditions\", \"Temporal Entity: time of observation\", \"Manufacturing Process\", \"Manufacturing Facility\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00002",
+        "text": "AXIS NOT PROGRAMMED",
+        "label": "alarm"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm indicating that an axis has not been programmed in the machine control system.",
+      "ontology_hints": [
+        "Sensor",
+        "ObservableProperty",
+        "ManufacturingProcess"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm indicating that an axis has not been programmed in the machine control system.\", \"ontology_hints\": [\"Sensor\", \"ObservableProperty\", \"ManufacturingProcess\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00003",
+        "text": "POLIGONING MICRODETECTOR NOT OK",
+        "label": "alarm"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that the polygoning microdetector component is not functioning properly, potentially affecting the manufacturing cell and related processes.",
+      "ontology_hints": [
+        "Alarm",
+        "Microdetector",
+        "Manufacturing Cell",
+        "Production Line",
+        "Manufacturing Process",
+        "Logistic Process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that the polygoning microdetector component is not functioning properly, potentially affecting the manufacturing cell and related processes.\", \"ontology_hints\": [\"Alarm\", \"Microdetector\", \"Manufacturing Cell\", \"Production Line\", \"Manufacturing Process\", \"Logistic Process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00004",
+        "text": "PROGRAMMING ERROR",
+        "label": "alarm"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm that indicates a programming error, i.e., a violation of a software constraint in the machine’s control system, typically occurring during operation on a production line.",
+      "ontology_hints": [
+        "TRIGGERS: ConstraintViolation",
+        "REQUIRES: Operator intervention",
+        "DETECTED_BY: ControlSystem",
+        "HANDLED_BY: MaintenanceStaff",
+        "REFERENCES: ProductionLine",
+        "DETECTED_AT: TemporalEntity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm that indicates a programming error, i.e., a violation of a software constraint in the machine’s control system, typically occurring during operation on a production line.\", \"ontology_hints\": [\"TRIGGERS: ConstraintViolation\", \"REQUIRES: Operator intervention\", \"DETECTED_BY: ControlSystem\", \"HANDLED_BY: MaintenanceStaff\", \"REFERENCES: ProductionLine\", \"DETECTED_AT: TemporalEntity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00005",
+        "text": "CORRECTOR T NOT ACTIVATED",
+        "label": "alarm"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm indicating that the Corrector T device is not activated.",
+      "ontology_hints": [
+        "Feature of Interest: Corrector T",
+        "Workstation: [Workstation name]",
+        "Manufacturing Facility: [Facility name]",
+        "Temporal Entity: time of alarm detection",
+        "requires action: activate Corrector T",
+        "handled by: Operator",
+        "detected by: Sensor or monitoring system"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm indicating that the Corrector T device is not activated.\", \"ontology_hints\": [\"Feature of Interest: Corrector T\", \"Workstation: [Workstation name]\", \"Manufacturing Facility: [Facility name]\", \"Temporal Entity: time of alarm detection\", \"requires action: activate Corrector T\", \"handled by: Operator\", \"detected by: Sensor or monitoring system\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00006",
+        "text": "INVALID G CODE",
+        "label": "alarm"
+      },
+      "aliases": [
+        "G-code invalid alarm",
+        "G-code error alarm",
+        "Invalid G-code notification"
+      ],
+      "synonyms": [
+        "G-code error",
+        "G-code invalidity",
+        "G-code fault"
+      ],
+      "lexical_variants": [
+        "INVALID G CODE",
+        "INVALID G-Code",
+        "Invalid G code",
+        "invalid g code"
+      ],
+      "alias_sources": {
+        "G-code invalid alarm": [
+          "llm"
+        ],
+        "G-code error alarm": [
+          "llm"
+        ],
+        "Invalid G-code notification": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "G-code error": [
+          "llm"
+        ],
+        "G-code invalidity": [
+          "llm"
+        ],
+        "G-code fault": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "INVALID G CODE": [
+          "llm"
+        ],
+        "INVALID G-Code": [
+          "llm"
+        ],
+        "Invalid G code": [
+          "llm"
+        ],
+        "invalid g code": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that is triggered when a machine receives a G-code command that is syntactically or semantically invalid, indicating a programming or communication error that may affect machine operation.",
+      "ontology_hints": [
+        "Alarm",
+        "MachineState",
+        "FailurePhenomenon",
+        "ShutdownState",
+        "InterventionType",
+        "Manager",
+        "ManufacturingCell",
+        "ObservableProperty",
+        "SpatialObject"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"G-code invalid alarm\", \"G-code error alarm\", \"Invalid G-code notification\"], \"synonyms\": [\"G-code error\", \"G-code invalidity\", \"G-code fault\"], \"lexical_variants\": [\"INVALID G CODE\", \"INVALID G-Code\", \"Invalid G code\", \"invalid g code\"], \"definition\": \"An alarm that is triggered when a machine receives a G-code command that is syntactically or semantically invalid, indicating a programming or communication error that may affect machine operation.\", \"ontology_hints\": [\"Alarm\", \"MachineState\", \"FailurePhenomenon\", \"ShutdownState\", \"InterventionType\", \"Manager\", \"ManufacturingCell\", \"ObservableProperty\", \"SpatialObject\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00007",
+        "text": "CDS OPTION NOT ACTIVATED",
+        "label": "alarm"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm indicating that the CDS option is not activated.",
+      "ontology_hints": [
+        "Alarm",
+        "Situation S1",
+        "requires Action"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm indicating that the CDS option is not activated.\", \"ontology_hints\": [\"Alarm\", \"Situation S1\", \"requires Action\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00008",
+        "text": "CDS CONFIGURATION ERROR",
+        "label": "alarm"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating a configuration error in the CDS (Control Data System) component of a machine.",
+      "ontology_hints": [
+        "Can be modeled as an event that triggers a specialized situation (e.g., Situation S1) in the manufacturing system.",
+        "May be linked via the TRIGGERS property to a situation representing a configuration error state."
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating a configuration error in the CDS (Control Data System) component of a machine.\", \"ontology_hints\": [\"Can be modeled as an event that triggers a specialized situation (e.g., Situation S1) in the manufacturing system.\", \"May be linked via the TRIGGERS property to a situation representing a configuration error state.\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00009",
+        "text": "CART DISABLED",
+        "label": "alarm"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that a cart is disabled, representing a manufacturing situation that can act as a cause affecting a production line or part.",
+      "ontology_hints": [
+        "Cause",
+        "Production Line",
+        "Part",
+        "Situation S1",
+        "Situation S2"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that a cart is disabled, representing a manufacturing situation that can act as a cause affecting a production line or part.\", \"ontology_hints\": [\"Cause\", \"Production Line\", \"Part\", \"Situation S1\", \"Situation S2\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00010",
+        "text": "OPTIONS 9000 NOT ACTIVATED",
+        "label": "alarm"
+      },
+      "aliases": [
+        "Option 9000 not active",
+        "Option 9000 inactive",
+        "Option 9000 not enabled"
+      ],
+      "synonyms": [
+        "Option 9000 not activated",
+        "Option 9000 disabled",
+        "Option 9000 not operational"
+      ],
+      "lexical_variants": [
+        "OPTIONS 9000 NOT ACTIVATED",
+        "Option 9000 not activated",
+        "Option 9000 not active"
+      ],
+      "alias_sources": {
+        "Option 9000 not active": [
+          "llm"
+        ],
+        "Option 9000 inactive": [
+          "llm"
+        ],
+        "Option 9000 not enabled": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Option 9000 not activated": [
+          "llm"
+        ],
+        "Option 9000 disabled": [
+          "llm"
+        ],
+        "Option 9000 not operational": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "OPTIONS 9000 NOT ACTIVATED": [
+          "llm"
+        ],
+        "Option 9000 not activated": [
+          "llm"
+        ],
+        "Option 9000 not active": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that is triggered when option 9000 is not activated in the production line system, indicating a missing or disabled configuration that may affect machine operation.",
+      "ontology_hints": [
+        "Alarm",
+        "ProductionLine",
+        "SituationS9",
+        "SituationS10",
+        "Instant",
+        "SpatialObject",
+        "Option"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Option 9000 not active\", \"Option 9000 inactive\", \"Option 9000 not enabled\"], \"synonyms\": [\"Option 9000 not activated\", \"Option 9000 disabled\", \"Option 9000 not operational\"], \"lexical_variants\": [\"OPTIONS 9000 NOT ACTIVATED\", \"Option 9000 not activated\", \"Option 9000 not active\"], \"definition\": \"An alarm that is triggered when option 9000 is not activated in the production line system, indicating a missing or disabled configuration that may affect machine operation.\", \"ontology_hints\": [\"Alarm\", \"ProductionLine\", \"SituationS9\", \"SituationS10\", \"Instant\", \"SpatialObject\", \"Option\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00011",
+        "text": "causes",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa",
+        "Causes"
+      ],
+      "synonyms": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa"
+      ],
+      "lexical_variants": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa"
+      ],
+      "alias_sources": {
+        "cause": [
+          "wordnet",
+          "llm"
+        ],
+        "reason": [
+          "wordnet",
+          "llm"
+        ],
+        "grounds": [
+          "wordnet",
+          "llm"
+        ],
+        "campaign": [
+          "wordnet"
+        ],
+        "crusade": [
+          "wordnet"
+        ],
+        "drive": [
+          "wordnet",
+          "llm"
+        ],
+        "movement": [
+          "wordnet",
+          "llm"
+        ],
+        "effort": [
+          "wordnet",
+          "llm"
+        ],
+        "causal agent": [
+          "wordnet",
+          "llm"
+        ],
+        "causal agency": [
+          "wordnet",
+          "llm"
+        ],
+        "lawsuit": [
+          "wordnet"
+        ],
+        "suit": [
+          "wordnet"
+        ],
+        "case": [
+          "wordnet"
+        ],
+        "causa": [
+          "wordnet"
+        ],
+        "Causes": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "cause": [
+          "wordnet",
+          "llm"
+        ],
+        "reason": [
+          "wordnet",
+          "llm"
+        ],
+        "grounds": [
+          "wordnet",
+          "llm"
+        ],
+        "campaign": [
+          "wordnet"
+        ],
+        "crusade": [
+          "wordnet"
+        ],
+        "drive": [
+          "wordnet",
+          "llm"
+        ],
+        "movement": [
+          "wordnet",
+          "llm"
+        ],
+        "effort": [
+          "wordnet",
+          "llm"
+        ],
+        "causal agent": [
+          "wordnet",
+          "llm"
+        ],
+        "causal agency": [
+          "wordnet",
+          "llm"
+        ],
+        "lawsuit": [
+          "wordnet"
+        ],
+        "suit": [
+          "wordnet"
+        ],
+        "case": [
+          "wordnet"
+        ],
+        "causa": [
+          "wordnet"
+        ]
+      },
+      "lexical_variant_sources": {
+        "cause": [
+          "wordnet",
+          "llm"
+        ],
+        "reason": [
+          "wordnet",
+          "llm"
+        ],
+        "grounds": [
+          "wordnet",
+          "llm"
+        ],
+        "campaign": [
+          "wordnet"
+        ],
+        "crusade": [
+          "wordnet"
+        ],
+        "drive": [
+          "wordnet",
+          "llm"
+        ],
+        "movement": [
+          "wordnet",
+          "llm"
+        ],
+        "effort": [
+          "wordnet",
+          "llm"
+        ],
+        "causal agent": [
+          "wordnet",
+          "llm"
+        ],
+        "causal agency": [
+          "wordnet",
+          "llm"
+        ],
+        "lawsuit": [
+          "wordnet"
+        ],
+        "suit": [
+          "wordnet"
+        ],
+        "case": [
+          "wordnet"
+        ],
+        "causa": [
+          "wordnet"
+        ]
+      },
+      "definition": "An event, factor, or agent that produces an effect or is responsible for the occurrence of a situation, providing the generative force behind an outcome.",
+      "ontology_hints": [
+        "maps to class Cause (http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause)",
+        "used as the subject of the has cause property linking a Process or Sensor observation to a Result or Feature",
+        "represents a causal relationship in industrial maintenance contexts, such as linking a fault to its underlying failure mechanism"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "events that provide the generative force that is the origin of something",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a justification for something existing or happening",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a series of actions advancing a principle or tending toward a particular end",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "any entity that produces an effect or is responsible for events or results",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a comprehensive term for any proceeding in a court of law whereby an individual seeks a legal remedy",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Causes, or causality, is the relationship between one event and another. It may also refer to:\n\nCauses (band), an indie band based in the Netherlands\nCauses (company), an online company",
+          "reference": "https://en.wikipedia.org/wiki/Causes"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"cause\", \"reason\", \"grounds\", \"drive\", \"movement\", \"effort\", \"causal agent\", \"causal agency\"], \"synonyms\": [\"cause\", \"reason\", \"grounds\", \"drive\", \"movement\", \"effort\", \"causal agent\", \"causal agency\"], \"lexical_variants\": [\"cause\", \"reason\", \"grounds\", \"drive\", \"movement\", \"effort\", \"causal agent\", \"causal agency\"], \"definition\": \"An event, factor, or agent that produces an effect or is responsible for the occurrence of a situation, providing the generative force behind an outcome.\", \"ontology_hints\": [\"maps to class Cause (http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause)\", \"used as the subject of the has cause property linking a Process or Sensor observation to a Result or Feature\", \"represents a causal relationship in industrial maintenance contexts, such as linking a fault to its underlying failure mechanism\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00012",
+        "text": "intervention",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "intervention",
+        "intercession",
+        "interference",
+        "interposition",
+        "treatment",
+        "Intervention"
+      ],
+      "synonyms": [
+        "intervention",
+        "intercession",
+        "interference",
+        "interposition",
+        "treatment"
+      ],
+      "lexical_variants": [
+        "intervention",
+        "intercession",
+        "interference",
+        "interposition",
+        "treatment"
+      ],
+      "alias_sources": {
+        "intervention": [
+          "wordnet",
+          "llm"
+        ],
+        "intercession": [
+          "wordnet",
+          "llm"
+        ],
+        "interference": [
+          "wordnet",
+          "llm"
+        ],
+        "interposition": [
+          "wordnet",
+          "llm"
+        ],
+        "treatment": [
+          "wordnet",
+          "llm"
+        ],
+        "Intervention": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "intervention": [
+          "wordnet",
+          "llm"
+        ],
+        "intercession": [
+          "wordnet",
+          "llm"
+        ],
+        "interference": [
+          "wordnet",
+          "llm"
+        ],
+        "interposition": [
+          "wordnet",
+          "llm"
+        ],
+        "treatment": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "intervention": [
+          "wordnet",
+          "llm"
+        ],
+        "intercession": [
+          "wordnet",
+          "llm"
+        ],
+        "interference": [
+          "wordnet",
+          "llm"
+        ],
+        "interposition": [
+          "wordnet",
+          "llm"
+        ],
+        "treatment": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "The act of intervening to resolve an issue or improve a situation, often involving a process that changes the current state.",
+      "ontology_hints": [
+        "Observation",
+        "TemporalEntity",
+        "Situation",
+        "process that changes a situation"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "the act of intervening (as to mediate a dispute, etc.)",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a policy of intervening in the affairs of other countries",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "the act or fact of interposing one thing between or among others",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "(law) a proceeding that permits a person to enter into a lawsuit already in progress; admission of person not an original party to the suit so that person can protect some right or interest that is allegedly affected by the proceedings",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "care provided to improve a situation (especially medical procedures or applications that are intended to relieve illness or injury)",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Intervention, Interventions, The Intervention, or An Intervention may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/Intervention"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"intervention\", \"intercession\", \"interference\", \"interposition\", \"treatment\"], \"synonyms\": [\"intervention\", \"intercession\", \"interference\", \"interposition\", \"treatment\"], \"lexical_variants\": [\"intervention\", \"intercession\", \"interference\", \"interposition\", \"treatment\"], \"definition\": \"The act of intervening to resolve an issue or improve a situation, often involving a process that changes the current state.\", \"ontology_hints\": [\"Observation\", \"TemporalEntity\", \"Situation\", \"process that changes a situation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00013",
+        "text": "responsible for the intervention",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "responsible for intervention",
+        "responsible for the intervention action",
+        "responsible for the intervention procedure"
+      ],
+      "synonyms": [
+        "accountable for the intervention",
+        "in charge of the intervention",
+        "liable for the intervention"
+      ],
+      "lexical_variants": [
+        "responsible for intervention",
+        "responsible for the intervention action",
+        "responsible for the intervention procedure"
+      ],
+      "alias_sources": {
+        "responsible for intervention": [
+          "llm"
+        ],
+        "responsible for the intervention action": [
+          "llm"
+        ],
+        "responsible for the intervention procedure": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "accountable for the intervention": [
+          "llm"
+        ],
+        "in charge of the intervention": [
+          "llm"
+        ],
+        "liable for the intervention": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for intervention": [
+          "llm"
+        ],
+        "responsible for the intervention action": [
+          "llm"
+        ],
+        "responsible for the intervention procedure": [
+          "llm"
+        ]
+      },
+      "definition": "The agent or role that has the duty, authority, or accountability to perform, oversee, or manage an intervention within a system or process.",
+      "ontology_hints": [
+        "HANDLED_BY",
+        "RESPONSIBLE_FOR",
+        "ACCOUNTABLE_FOR",
+        "ROLE_OF_INTERVENTION"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"responsible for intervention\", \"responsible for the intervention action\", \"responsible for the intervention procedure\"], \"synonyms\": [\"accountable for the intervention\", \"in charge of the intervention\", \"liable for the intervention\"], \"lexical_variants\": [\"responsible for intervention\", \"responsible for the intervention action\", \"responsible for the intervention procedure\"], \"definition\": \"The agent or role that has the duty, authority, or accountability to perform, oversee, or manage an intervention within a system or process.\", \"ontology_hints\": [\"HANDLED_BY\", \"RESPONSIBLE_FOR\", \"ACCOUNTABLE_FOR\", \"ROLE_OF_INTERVENTION\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00014",
+        "text": "without the parameter F",
+        "label": "prepositional linking expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A prepositional phrase indicating that the parameter F is not present or omitted in the operation or process.",
+      "ontology_hints": [
+        "exclusion of a parameter from a process",
+        "parameter omission",
+        "parameter exclusion"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A prepositional phrase indicating that the parameter F is not present or omitted in the operation or process.\", \"ontology_hints\": [\"exclusion of a parameter from a process\", \"parameter omission\", \"parameter exclusion\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00015",
+        "text": "searched unsuccessfully for the reference microdetector",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "unsuccessful search for reference microdetector",
+        "failed search for reference microdetector"
+      ],
+      "synonyms": [
+        "could not locate the reference microdetector",
+        "failed to find the reference microdetector",
+        "search for reference microdetector was unsuccessful"
+      ],
+      "lexical_variants": [
+        "searching for reference microdetector failed",
+        "reference microdetector search failed",
+        "unsuccessful attempt to locate the reference microdetector"
+      ],
+      "alias_sources": {
+        "unsuccessful search for reference microdetector": [
+          "llm"
+        ],
+        "failed search for reference microdetector": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "could not locate the reference microdetector": [
+          "llm"
+        ],
+        "failed to find the reference microdetector": [
+          "llm"
+        ],
+        "search for reference microdetector was unsuccessful": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "searching for reference microdetector failed": [
+          "llm"
+        ],
+        "reference microdetector search failed": [
+          "llm"
+        ],
+        "unsuccessful attempt to locate the reference microdetector": [
+          "llm"
+        ]
+      },
+      "definition": "An attempt to locate or identify the reference microdetector that did not succeed, indicating a failure in the sensor search process.",
+      "ontology_hints": [
+        "Sensor",
+        "ObservableProperty",
+        "FeatureOfInterest",
+        "TemporalEntity",
+        "SpatialObject",
+        "FailureEvent",
+        "SearchAction",
+        "UnsuccessfulOutcome",
+        "TRIGGERS",
+        "CAUSES"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"unsuccessful search for reference microdetector\", \"failed search for reference microdetector\"], \"synonyms\": [\"could not locate the reference microdetector\", \"failed to find the reference microdetector\", \"search for reference microdetector was unsuccessful\"], \"lexical_variants\": [\"searching for reference microdetector failed\", \"reference microdetector search failed\", \"unsuccessful attempt to locate the reference microdetector\"], \"definition\": \"An attempt to locate or identify the reference microdetector that did not succeed, indicating a failure in the sensor search process.\", \"ontology_hints\": [\"Sensor\", \"ObservableProperty\", \"FeatureOfInterest\", \"TemporalEntity\", \"SpatialObject\", \"FailureEvent\", \"SearchAction\", \"UnsuccessfulOutcome\", \"TRIGGERS\", \"CAUSES\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00016",
+        "text": "Check the program and modify the instruction",
+        "label": "action"
+      },
+      "aliases": [
+        "Program review and instruction update",
+        "Software inspection and directive modification"
+      ],
+      "synonyms": [
+        "examine the program and adjust the instruction",
+        "inspect the code and alter the command",
+        "review the software and change the directive"
+      ],
+      "lexical_variants": [
+        "check program",
+        "modify instruction",
+        "review code",
+        "update command"
+      ],
+      "alias_sources": {
+        "Program review and instruction update": [
+          "llm"
+        ],
+        "Software inspection and directive modification": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "examine the program and adjust the instruction": [
+          "llm"
+        ],
+        "inspect the code and alter the command": [
+          "llm"
+        ],
+        "review the software and change the directive": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "check program": [
+          "llm"
+        ],
+        "modify instruction": [
+          "llm"
+        ],
+        "review code": [
+          "llm"
+        ],
+        "update command": [
+          "llm"
+        ]
+      },
+      "definition": "An action that involves inspecting a software program and making changes to its instruction set or command.",
+      "ontology_hints": [
+        "Action",
+        "SoftwareModification",
+        "InstructionChange",
+        "ProgramInspection",
+        "Requires: programmer",
+        "Handled_by: software engineer"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Program review and instruction update\", \"Software inspection and directive modification\"], \"synonyms\": [\"examine the program and adjust the instruction\", \"inspect the code and alter the command\", \"review the software and change the directive\"], \"lexical_variants\": [\"check program\", \"modify instruction\", \"review code\", \"update command\"], \"definition\": \"An action that involves inspecting a software program and making changes to its instruction set or command.\", \"ontology_hints\": [\"Action\", \"SoftwareModification\", \"InstructionChange\", \"ProgramInspection\", \"Requires: programmer\", \"Handled_by: software engineer\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00017",
+        "text": "Check the correct operation of the reference microdetector",
+        "label": "action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An action performed by an operator to verify that the reference microdetector is functioning correctly.",
+      "ontology_hints": [
+        "Observation",
+        "Operator",
+        "Workstation",
+        "Observable Property",
+        "Feature of Interest",
+        "Sensor"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An action performed by an operator to verify that the reference microdetector is functioning correctly.\", \"ontology_hints\": [\"Observation\", \"Operator\", \"Workstation\", \"Observable Property\", \"Feature of Interest\", \"Sensor\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00018",
+        "text": "Check the correct operation of the polishing reference microdetector",
+        "label": "action"
+      },
+      "aliases": [
+        "polishing reference microdetector check",
+        "microdetector operation check"
+      ],
+      "synonyms": [
+        "verify operation",
+        "confirm operation",
+        "inspect operation",
+        "test operation"
+      ],
+      "lexical_variants": [
+        "check correct operation",
+        "verify correct operation",
+        "confirm correct operation"
+      ],
+      "alias_sources": {
+        "polishing reference microdetector check": [
+          "llm"
+        ],
+        "microdetector operation check": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "verify operation": [
+          "llm"
+        ],
+        "confirm operation": [
+          "llm"
+        ],
+        "inspect operation": [
+          "llm"
+        ],
+        "test operation": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "check correct operation": [
+          "llm"
+        ],
+        "verify correct operation": [
+          "llm"
+        ],
+        "confirm correct operation": [
+          "llm"
+        ]
+      },
+      "definition": "An action performed by an operator to verify that the polishing reference microdetector is functioning correctly during a polishing process.",
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "ManufacturingProcess",
+        "ManufacturingFacility",
+        "ProductionLine",
+        "Operator",
+        "sensing/monitoring",
+        "performed_by",
+        "observes",
+        "located_in",
+        "part_of"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"polishing reference microdetector check\", \"microdetector operation check\"], \"synonyms\": [\"verify operation\", \"confirm operation\", \"inspect operation\", \"test operation\"], \"lexical_variants\": [\"check correct operation\", \"verify correct operation\", \"confirm correct operation\"], \"definition\": \"An action performed by an operator to verify that the polishing reference microdetector is functioning correctly during a polishing process.\", \"ontology_hints\": [\"FeatureOfInterest\", \"ManufacturingProcess\", \"ManufacturingFacility\", \"ProductionLine\", \"Operator\", \"sensing/monitoring\", \"performed_by\", \"observes\", \"located_in\", \"part_of\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00019",
+        "text": "Check if cart 2 has been disabled in the user page",
+        "label": "action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An action to verify whether cart 2 is disabled in the user page.",
+      "ontology_hints": [
+        "Feature of Interest",
+        "Observable Property"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An action to verify whether cart 2 is disabled in the user page.\", \"ontology_hints\": [\"Feature of Interest\", \"Observable Property\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00020",
+        "text": "Activate cart 2 from the user page",
+        "label": "action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An action that enables or starts cart number 2 through the user page interface.",
+      "ontology_hints": [
+        "action",
+        "user interface",
+        "cart activation"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An action that enables or starts cart number 2 through the user page interface.\", \"ontology_hints\": [\"action\", \"user interface\", \"cart activation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00021",
+        "text": "Activate the CDS device in the user page",
+        "label": "action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An instruction to enable or start the CDS device through the user interface.",
+      "ontology_hints": [
+        "Machine",
+        "Feature of Interest",
+        "Technician"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An instruction to enable or start the CDS device through the user interface.\", \"ontology_hints\": [\"Machine\", \"Feature of Interest\", \"Technician\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00022",
+        "text": "Configure the CDS device in the user page",
+        "label": "action"
+      },
+      "aliases": [
+        "CDS device configuration",
+        "CDS device setup"
+      ],
+      "synonyms": [
+        "configure",
+        "set up",
+        "adjust",
+        "program"
+      ],
+      "lexical_variants": [
+        "configuring the CDS device",
+        "configuring CDS device in user page",
+        "setting up the CDS device"
+      ],
+      "alias_sources": {
+        "CDS device configuration": [
+          "llm"
+        ],
+        "CDS device setup": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "configure": [
+          "llm"
+        ],
+        "set up": [
+          "llm"
+        ],
+        "adjust": [
+          "llm"
+        ],
+        "program": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "configuring the CDS device": [
+          "llm"
+        ],
+        "configuring CDS device in user page": [
+          "llm"
+        ],
+        "setting up the CDS device": [
+          "llm"
+        ]
+      },
+      "definition": "The action of setting or adjusting the parameters of the CDS device within the user page interface.",
+      "ontology_hints": [
+        "appliesConstraint",
+        "hasFeatureOfInterest",
+        "isDefinedFor",
+        "isInSituation"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"CDS device configuration\", \"CDS device setup\"], \"synonyms\": [\"configure\", \"set up\", \"adjust\", \"program\"], \"lexical_variants\": [\"configuring the CDS device\", \"configuring CDS device in user page\", \"setting up the CDS device\"], \"definition\": \"The action of setting or adjusting the parameters of the CDS device within the user page interface.\", \"ontology_hints\": [\"appliesConstraint\", \"hasFeatureOfInterest\", \"isDefinedFor\", \"isInSituation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00023",
+        "text": "Delete this function from the program",
+        "label": "action"
+      },
+      "aliases": [
+        "Delete function",
+        "Remove function",
+        "Erase function"
+      ],
+      "synonyms": [
+        "remove this function from the program",
+        "eliminate this function from the program",
+        "delete this function in the program",
+        "erase this function from the program"
+      ],
+      "lexical_variants": [
+        "Delete function from program",
+        "Delete this function",
+        "Remove function from program",
+        "Erase function from program"
+      ],
+      "alias_sources": {
+        "Delete function": [
+          "llm"
+        ],
+        "Remove function": [
+          "llm"
+        ],
+        "Erase function": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "remove this function from the program": [
+          "llm"
+        ],
+        "eliminate this function from the program": [
+          "llm"
+        ],
+        "delete this function in the program": [
+          "llm"
+        ],
+        "erase this function from the program": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Delete function from program": [
+          "llm"
+        ],
+        "Delete this function": [
+          "llm"
+        ],
+        "Remove function from program": [
+          "llm"
+        ],
+        "Erase function from program": [
+          "llm"
+        ]
+      },
+      "definition": "An instruction to remove a specified function from a software program, thereby deleting its code and associated behavior from the program's source or compiled representation.",
+      "ontology_hints": [
+        "SoftwareModification",
+        "FunctionRemoval",
+        "ProgramEditing",
+        "CodeMaintenance",
+        "SoftwareArtifact"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Delete function\", \"Remove function\", \"Erase function\"], \"synonyms\": [\"remove this function from the program\", \"eliminate this function from the program\", \"delete this function in the program\", \"erase this function from the program\"], \"lexical_variants\": [\"Delete function from program\", \"Delete this function\", \"Remove function from program\", \"Erase function from program\"], \"definition\": \"An instruction to remove a specified function from a software program, thereby deleting its code and associated behavior from the program's source or compiled representation.\", \"ontology_hints\": [\"SoftwareModification\", \"FunctionRemoval\", \"ProgramEditing\", \"CodeMaintenance\", \"SoftwareArtifact\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00024",
+        "text": "Function G304 was not activated in the user page",
+        "label": "state"
+      },
+      "aliases": [
+        "G304 function",
+        "G304 feature"
+      ],
+      "synonyms": [
+        "inactive",
+        "disabled",
+        "not enabled"
+      ],
+      "lexical_variants": [
+        "G304 function inactive",
+        "G304 function not enabled",
+        "G304 function not activated"
+      ],
+      "alias_sources": {
+        "G304 function": [
+          "llm"
+        ],
+        "G304 feature": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "inactive": [
+          "llm"
+        ],
+        "disabled": [
+          "llm"
+        ],
+        "not enabled": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "G304 function inactive": [
+          "llm"
+        ],
+        "G304 function not enabled": [
+          "llm"
+        ],
+        "G304 function not activated": [
+          "llm"
+        ]
+      },
+      "definition": "The G304 function is a feature of interest within the manufacturing system that is currently not activated, indicating it is inactive or disabled in the user interface.",
+      "ontology_hints": [
+        "Feature of Interest",
+        "Activation State (hasActivationState = false)",
+        "Constraint (function must be activated for normal operation)",
+        "User Page (interface context)"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"G304 function\", \"G304 feature\"], \"synonyms\": [\"inactive\", \"disabled\", \"not enabled\"], \"lexical_variants\": [\"G304 function inactive\", \"G304 function not enabled\", \"G304 function not activated\"], \"definition\": \"The G304 function is a feature of interest within the manufacturing system that is currently not activated, indicating it is inactive or disabled in the user interface.\", \"ontology_hints\": [\"Feature of Interest\", \"Activation State (hasActivationState = false)\", \"Constraint (function must be activated for normal operation)\", \"User Page (interface context)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00025",
+        "text": "Function G10 L50 is not permitted",
+        "label": "state"
+      },
+      "aliases": [
+        "G10 L50 function not allowed",
+        "G10 L50 operation disallowed",
+        "G10 L50 function disallowed"
+      ],
+      "synonyms": [
+        "G10 L50 function is forbidden",
+        "G10 L50 operation is prohibited",
+        "G10 L50 function is not allowed"
+      ],
+      "lexical_variants": [
+        "G10 L50 function prohibited",
+        "G10 L50 operation not permitted",
+        "G10 L50 function disallowed"
+      ],
+      "alias_sources": {
+        "G10 L50 function not allowed": [
+          "llm"
+        ],
+        "G10 L50 operation disallowed": [
+          "llm"
+        ],
+        "G10 L50 function disallowed": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "G10 L50 function is forbidden": [
+          "llm"
+        ],
+        "G10 L50 operation is prohibited": [
+          "llm"
+        ],
+        "G10 L50 function is not allowed": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "G10 L50 function prohibited": [
+          "llm"
+        ],
+        "G10 L50 operation not permitted": [
+          "llm"
+        ],
+        "G10 L50 function disallowed": [
+          "llm"
+        ]
+      },
+      "definition": "A state indicating that the operation or function G10 on production line L50 is prohibited or disallowed in the current situation.",
+      "ontology_hints": [
+        "Production Line",
+        "Feature of Interest",
+        "Situation S10",
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "has feature of interest",
+        "situation time"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"G10 L50 function not allowed\", \"G10 L50 operation disallowed\", \"G10 L50 function disallowed\"], \"synonyms\": [\"G10 L50 function is forbidden\", \"G10 L50 operation is prohibited\", \"G10 L50 function is not allowed\"], \"lexical_variants\": [\"G10 L50 function prohibited\", \"G10 L50 operation not permitted\", \"G10 L50 function disallowed\"], \"definition\": \"A state indicating that the operation or function G10 on production line L50 is prohibited or disallowed in the current situation.\", \"ontology_hints\": [\"Production Line\", \"Feature of Interest\", \"Situation S10\", \"Manufacturing Process\", \"Manufacturing Facility\", \"has feature of interest\", \"situation time\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00026",
+        "text": "The high pressure unit has not been configured correctly",
+        "label": "state"
+      },
+      "aliases": [
+        "high pressure unit",
+        "high-pressure unit"
+      ],
+      "synonyms": [
+        "misconfigured high pressure unit",
+        "incorrectly configured high pressure unit",
+        "faulty configuration of the high pressure unit"
+      ],
+      "lexical_variants": [
+        "high pressure unit",
+        "high-pressure unit",
+        "HPU"
+      ],
+      "alias_sources": {
+        "high pressure unit": [
+          "llm"
+        ],
+        "high-pressure unit": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "misconfigured high pressure unit": [
+          "llm"
+        ],
+        "incorrectly configured high pressure unit": [
+          "llm"
+        ],
+        "faulty configuration of the high pressure unit": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "high pressure unit": [
+          "llm"
+        ],
+        "high-pressure unit": [
+          "llm"
+        ],
+        "HPU": [
+          "llm"
+        ]
+      },
+      "definition": "A state indicating that the high pressure unit is not configured correctly, implying a configuration error that may affect machine operation.",
+      "ontology_hints": [
+        "Feature of Interest",
+        "Manufacturing Process",
+        "Production Line",
+        "Temporal Entity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"high pressure unit\", \"high-pressure unit\"], \"synonyms\": [\"misconfigured high pressure unit\", \"incorrectly configured high pressure unit\", \"faulty configuration of the high pressure unit\"], \"lexical_variants\": [\"high pressure unit\", \"high-pressure unit\", \"HPU\"], \"definition\": \"A state indicating that the high pressure unit is not configured correctly, implying a configuration error that may affect machine operation.\", \"ontology_hints\": [\"Feature of Interest\", \"Manufacturing Process\", \"Production Line\", \"Temporal Entity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00027",
+        "text": "The G305 polishing function with milling with phasing function searched unsuccessfully for the reference microdetector for which it stopped",
+        "label": "cause"
+      },
+      "aliases": [
+        "G305 polishing function with milling and phasing function",
+        "G305 polishing function (milling/phasing)"
+      ],
+      "synonyms": [
+        "failed to locate reference microdetector",
+        "unsuccessful search for reference microdetector"
+      ],
+      "lexical_variants": [
+        "searching unsuccessfully for the reference microdetector",
+        "failed to find the reference microdetector"
+      ],
+      "alias_sources": {
+        "G305 polishing function with milling and phasing function": [
+          "llm"
+        ],
+        "G305 polishing function (milling/phasing)": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "failed to locate reference microdetector": [
+          "llm"
+        ],
+        "unsuccessful search for reference microdetector": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "searching unsuccessfully for the reference microdetector": [
+          "llm"
+        ],
+        "failed to find the reference microdetector": [
+          "llm"
+        ]
+      },
+      "definition": "The cause of the stop is that the G305 polishing function, operating in milling and phasing mode, failed to locate the reference microdetector.",
+      "ontology_hints": [
+        "TRIGGERS: stop",
+        "CAUSES: reference microdetector not found",
+        "REQUIRES: reference microdetector",
+        "DETECTED_BY: sensors",
+        "HANDLED_BY: maintenance staff",
+        "Located in: Production Line",
+        "Feature of Interest: reference microdetector"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"G305 polishing function with milling and phasing function\", \"G305 polishing function (milling/phasing)\"], \"synonyms\": [\"failed to locate reference microdetector\", \"unsuccessful search for reference microdetector\"], \"lexical_variants\": [\"searching unsuccessfully for the reference microdetector\", \"failed to find the reference microdetector\"], \"definition\": \"The cause of the stop is that the G305 polishing function, operating in milling and phasing mode, failed to locate the reference microdetector.\", \"ontology_hints\": [\"TRIGGERS: stop\", \"CAUSES: reference microdetector not found\", \"REQUIRES: reference microdetector\", \"DETECTED_BY: sensors\", \"HANDLED_BY: maintenance staff\", \"Located in: Production Line\", \"Feature of Interest: reference microdetector\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00028",
+        "text": "The G303 hidden time recharge function cannot work because: check if cart 2 has been disabled in the user page",
+        "label": "cause"
+      },
+      "aliases": [
+        "G303 function",
+        "hidden time recharge",
+        "time recharge function"
+      ],
+      "synonyms": [
+        "fails",
+        "does not function",
+        "is disabled",
+        "is deactivated",
+        "is turned off"
+      ],
+      "lexical_variants": [
+        "cart 2 disabled",
+        "cart 2 deactivated",
+        "cart 2 turned off",
+        "cart 2 status check",
+        "user page cart 2"
+      ],
+      "alias_sources": {
+        "G303 function": [
+          "llm"
+        ],
+        "hidden time recharge": [
+          "llm"
+        ],
+        "time recharge function": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "fails": [
+          "llm"
+        ],
+        "does not function": [
+          "llm"
+        ],
+        "is disabled": [
+          "llm"
+        ],
+        "is deactivated": [
+          "llm"
+        ],
+        "is turned off": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "cart 2 disabled": [
+          "llm"
+        ],
+        "cart 2 deactivated": [
+          "llm"
+        ],
+        "cart 2 turned off": [
+          "llm"
+        ],
+        "cart 2 status check": [
+          "llm"
+        ],
+        "user page cart 2": [
+          "llm"
+        ]
+      },
+      "definition": "The G303 hidden time recharge function fails when cart 2 is disabled in the user page.",
+      "ontology_hints": [
+        "TRIGGERS: G303 hidden time recharge function",
+        "CAUSES: cart 2 disabled in user page",
+        "HANDLED_BY: user page interface",
+        "REFERENCES: cart 2 status"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"G303 function\", \"hidden time recharge\", \"time recharge function\"], \"synonyms\": [\"fails\", \"does not function\", \"is disabled\", \"is deactivated\", \"is turned off\"], \"lexical_variants\": [\"cart 2 disabled\", \"cart 2 deactivated\", \"cart 2 turned off\", \"cart 2 status check\", \"user page cart 2\"], \"definition\": \"The G303 hidden time recharge function fails when cart 2 is disabled in the user page.\", \"ontology_hints\": [\"TRIGGERS: G303 hidden time recharge function\", \"CAUSES: cart 2 disabled in user page\", \"HANDLED_BY: user page interface\", \"REFERENCES: cart 2 status\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00029",
+        "text": "PLC X5.4 input page 28 of the electrical diagram",
+        "label": "component/resource"
+      },
+      "aliases": [
+        "PLC X5.4 input",
+        "PLC X5.4 input (page 28)",
+        "PLC X5.4 input on page 28"
+      ],
+      "synonyms": [
+        "PLC input",
+        "PLC X5.4 input signal"
+      ],
+      "lexical_variants": [
+        "PLC X5.4 input",
+        "PLC X5.4 input (page 28)",
+        "PLC X5.4 input on page 28"
+      ],
+      "alias_sources": {
+        "PLC X5.4 input": [
+          "llm"
+        ],
+        "PLC X5.4 input (page 28)": [
+          "llm"
+        ],
+        "PLC X5.4 input on page 28": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "PLC input": [
+          "llm"
+        ],
+        "PLC X5.4 input signal": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "PLC X5.4 input": [
+          "llm"
+        ],
+        "PLC X5.4 input (page 28)": [
+          "llm"
+        ],
+        "PLC X5.4 input on page 28": [
+          "llm"
+        ]
+      },
+      "definition": "A specific input channel of a PLC X5.4 controller that is referenced on page 28 of the electrical diagram.",
+      "ontology_hints": [
+        "Feature of Interest",
+        "Spatial Object",
+        "Temporal Entity",
+        "Component/Resource"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"PLC X5.4 input\", \"PLC X5.4 input (page 28)\", \"PLC X5.4 input on page 28\"], \"synonyms\": [\"PLC input\", \"PLC X5.4 input signal\"], \"lexical_variants\": [\"PLC X5.4 input\", \"PLC X5.4 input (page 28)\", \"PLC X5.4 input on page 28\"], \"definition\": \"A specific input channel of a PLC X5.4 controller that is referenced on page 28 of the electrical diagram.\", \"ontology_hints\": [\"Feature of Interest\", \"Spatial Object\", \"Temporal Entity\", \"Component/Resource\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00030",
+        "text": "responsible for the intervention: programmer",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A programmer is the person who is accountable for executing the intervention, typically involving software or configuration changes to address a machine alarm or failure.",
+      "ontology_hints": [
+        "Agent role: Programmer",
+        "Responsibility relation: responsible for the intervention",
+        "Intervention context: maintenance or corrective action"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A programmer is the person who is accountable for executing the intervention, typically involving software or configuration changes to address a machine alarm or failure.\", \"ontology_hints\": [\"Agent role: Programmer\", \"Responsibility relation: responsible for the intervention\", \"Intervention context: maintenance or corrective action\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00031",
+        "text": "responsible for the intervention: Responsible for maintenance",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "Responsible for maintenance",
+        "Responsible for the intervention"
+      ],
+      "synonyms": [
+        "in charge of the intervention",
+        "accountable for the intervention",
+        "liable for the intervention",
+        "in charge of maintenance",
+        "accountable for maintenance",
+        "liable for maintenance"
+      ],
+      "lexical_variants": [
+        "responsible for the intervention",
+        "responsible for maintenance"
+      ],
+      "alias_sources": {
+        "Responsible for maintenance": [
+          "llm"
+        ],
+        "Responsible for the intervention": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "in charge of the intervention": [
+          "llm"
+        ],
+        "accountable for the intervention": [
+          "llm"
+        ],
+        "liable for the intervention": [
+          "llm"
+        ],
+        "in charge of maintenance": [
+          "llm"
+        ],
+        "accountable for maintenance": [
+          "llm"
+        ],
+        "liable for maintenance": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for the intervention": [
+          "llm"
+        ],
+        "responsible for maintenance": [
+          "llm"
+        ]
+      },
+      "definition": "A role or entity that has the duty, authority, or accountability to plan, execute, or oversee a maintenance intervention on a machine or production line.",
+      "ontology_hints": [
+        "hasResponsible",
+        "responsibleFor",
+        "interventionResponsible",
+        "maintenanceRole",
+        "role",
+        "person",
+        "staff"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Responsible for maintenance\", \"Responsible for the intervention\"], \"synonyms\": [\"in charge of the intervention\", \"accountable for the intervention\", \"liable for the intervention\", \"in charge of maintenance\", \"accountable for maintenance\", \"liable for maintenance\"], \"lexical_variants\": [\"responsible for the intervention\", \"responsible for maintenance\"], \"definition\": \"A role or entity that has the duty, authority, or accountability to plan, execute, or oversee a maintenance intervention on a machine or production line.\", \"ontology_hints\": [\"hasResponsible\", \"responsibleFor\", \"interventionResponsible\", \"maintenanceRole\", \"role\", \"person\", \"staff\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

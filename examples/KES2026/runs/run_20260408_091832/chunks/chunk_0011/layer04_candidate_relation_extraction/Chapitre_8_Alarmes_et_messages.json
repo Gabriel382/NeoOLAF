@@ -1,0 +1,198 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 8,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00000",
+      "relation_label": "MAINTENANCE NOTICE",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "alarm message number",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "AlarmMessage",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0011",
+      "justification": "The chunk text states that the alarm message number 2065 has the text \"MAINTENANCE NOTICE\", linking the message number to the alarm message event.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 41,
+          "chunk_end_char": 59,
+          "doc_start_char": 55041,
+          "doc_end_char": 55059,
+          "snippet": ".\nresponsible for\nmessage no: 2065\ntext: MAINTENANCE NOTICE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns that some m"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00003",
+      "relation_label": "WRONG TORQUE REDUCTION",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "AlarmMessage",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00003",
+      "target_candidate_label": "Modify the program",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0011",
+      "justification": "The chunk describes message 3001‑3003 as the \"WRONG TORQUE REDUCTION\" alarm and states that the intervention required is to \"Modify the programmed reduction value\", i.e., the alarm event triggers the modification event.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1655,
+          "chunk_end_char": 1677,
+          "doc_start_char": 56655,
+          "doc_end_char": 56677,
+          "snippet": "e intervention: responsible for the maintenance\n\nmessage no: 3001 to 3003\ntext: WRONG TORQUE REDUCTION\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00008",
+      "relation_label": "Alarm with program interruption, stopping of axes and spindles.",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "AlarmMessage",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00010",
+      "target_candidate_label": "MechanicalComponent",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0011",
+      "justification": "The chunk text lists several alarm messages (e.g., 3001‑3005) whose effect is described as \"Alarm with program interruption, stopping of axes and spindles.\" This indicates that the alarm event (AlarmMessage) causes the mechanical components (axes and spindles) to stop. Thus the relation candidate connects the AlarmMessage event to the MechanicalComponent entity.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 2595,
+          "chunk_end_char": 2658,
+          "doc_start_char": 57595,
+          "doc_end_char": 57658,
+          "snippet": "n°: 3001 to 3003 text: WRONG TORQUE REDUCTION type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The torque reduction requested at the indicated axis is outside the agre"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00003",
+      "relation_candidate_id": "cand_r_00010",
+      "relation_label": "message no: 3001 to 3003",
+      "source_candidate_id": "cand_e_00005",
+      "source_candidate_label": "AlarmIdentifierRange",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "AlarmMessage",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0011",
+      "justification": "The chunk text states that messages 3001‑3003 are the \"Wrong Torque Reduction\" alarm, which is an AlarmMessage event. Thus the AlarmIdentifierRange (3001‑3003) triggers the AlarmMessage event.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1624,
+          "chunk_end_char": 1648,
+          "doc_start_char": 56624,
+          "doc_end_char": 56648,
+          "snippet": "maintenance responsible for the intervention: responsible for the maintenance\n\nmessage no: 3001 to 3003\ntext: WRONG TORQUE REDUCTION\ntype: Standard: Optional:\nAlarm with program inter"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00004",
+      "relation_candidate_id": "cand_r_00029",
+      "relation_label": "Modify the programmed reduction value",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "AlarmMessage",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00003",
+      "target_candidate_label": "Modify the program",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0011",
+      "justification": "The chunk describes that for message no. 3001‑3003 (a torque‑reduction alarm), the intervention is \"Modify the programmed reduction value.\" This indicates that the alarm event triggers the intervention event \"Modify the program.\"",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1873,
+          "chunk_end_char": 1910,
+          "doc_start_char": 56873,
+          "doc_end_char": 56910,
+          "snippet": "uested at the indicated axis is beyond the limits:\nyour consents.\nintervention: Modify the programmed reduction value.\nresponsible for\nprogrammer\nmessage no: 3004\ntext: CAUTION VERTICAL AXIS\ntype:"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00005",
+      "relation_candidate_id": "cand_r_00032",
+      "relation_label": "Check the program and modify the instruction",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "AlarmMessage",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00003",
+      "target_candidate_label": "Modify the program",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0011",
+      "justification": "The chunk states that the alarm message 3012 triggers the intervention \"Check the program and modify the instruction\", which is represented by the event \"Modify the program\".",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4476,
+          "chunk_end_char": 4520,
+          "doc_start_char": 59476,
+          "doc_end_char": 59520,
+          "snippet": "ates:\nthan the feed, or it was indicated with an incorrect value.\nintervention: Check the program and modify the instruction.\nresponsible for\nprogrammer\n\nmessage n°: 3006 - 3008 text: AXIS NOT IN POSITION"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00006",
+      "relation_candidate_id": "cand_r_00033",
+      "relation_label": "has cause",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "AlarmMessage",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00011",
+      "target_candidate_label": "obstacle",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0011",
+      "justification": "In the chunk, message no: 3006‑3008 lists the cause as \"an obstacle it found in its path.\" The alarm message is represented by the event candidate cand_s_00001, and the obstacle is represented by the entity candidate cand_e_00011, so the relation \"has cause\" links them.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 175,
+          "chunk_end_char": 181,
+          "doc_start_char": 55175,
+          "doc_end_char": 55181,
+          "snippet": "nly display of the message\nWarns that some maintenance settings are about to be\ncause:\nto exhaust oneself\nCheck on the “MAINTENANCE” page which of the items listed\nin"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00007",
+      "relation_candidate_id": "cand_r_00034",
+      "relation_label": "intervention:",
+      "source_candidate_id": "cand_s_00000",
+      "source_candidate_label": "Caution Vertical Axis Alarm",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00003",
+      "target_candidate_label": "Modify the program",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0011",
+      "justification": "The chunk contains the alarm message \"CAUTION VERTICAL AXIS\" (cand_s_00000) followed by the line \"intervention: Modify the program\" (cand_s_00003), indicating that the alarm triggers the intervention.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 259,
+          "chunk_end_char": 272,
+          "doc_start_char": 55259,
+          "doc_end_char": 55272,
+          "snippet": "e:\nto exhaust oneself\nCheck on the “MAINTENANCE” page which of the items listed\nintervention:\nrequest an interview\nresponsible for\n\nmessage n°: 2061 text: CONFIGURED PRODUCT"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1538 @@
+{
+  "layer": "layer03_candidate_typing_resolution",
+  "entity_candidates": [],
+  "relation_candidates": [
+    {
+      "candidate_id": "cand_r_00000",
+      "canonical_label": "Hardware problems concerning the axes and spindles",
+      "normalized_label": "hardware problems concerning the axes and spindles",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest: axes, spindles",
+        "ObservableProperty: misalignment, wear, vibration",
+        "HumanProcess: inspection, maintenance, troubleshooting",
+        "ManufacturingProcess: machining, turning, spindle operation"
+      ],
+      "definition": "An abnormal state affecting machine components, specifically the axes and spindles, indicating potential mechanical failure such as misalignment, wear, or vibration.",
+      "aliases": [
+        "axis and spindle faults",
+        "spindle and axis problems",
+        "hardware issues with axes and spindles"
+      ],
+      "synonyms": [
+        "axis and spindle failures",
+        "spindle and axis defects"
+      ],
+      "lexical_variants": [
+        "hardware problems concerning the axes and spindles",
+        "mechanical issues with axes and spindles",
+        "axis/spindle hardware problems"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00000",
+          "text": "Hardware problems concerning the axes and spindles",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 55,
+              "chunk_end_char": 105,
+              "doc_start_char": 10055,
+              "doc_end_char": 10105,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the m"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00001",
+      "canonical_label": "Alarm n°: 1017 text: CABINET OVERHEATING",
+      "normalized_label": "alarm n 1017 text cabinet overheating",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm type: Cabinet Overheating",
+        "Observable Property: Cabinet Overheating",
+        "Observation: Temperature sensor reading > threshold",
+        "Action: Activate cooling system or initiate shutdown",
+        "Handled by: Maintenance Technician",
+        "Detected by: Temperature sensor",
+        "Location: Workstation",
+        "Temporal Entity: Time of alarm occurrence",
+        "References: Manual Section 4.2.3"
+      ],
+      "definition": "An alarm that is triggered when the temperature of a machine cabinet exceeds a predefined safe threshold, indicating a cabinet overheating condition that requires immediate cooling or shutdown action.",
+      "aliases": [
+        "Cabinet Overheating Alarm 1017",
+        "Alarm 1017: Cabinet Overheating",
+        "Cabinet Overheat Alarm 1017"
+      ],
+      "synonyms": [
+        "Cabinet Overheating Alarm",
+        "Cabinet Overheat Alarm",
+        "Cabinet Temperature Alarm"
+      ],
+      "lexical_variants": [
+        "Alarm n° 1017 – Cabinet Overheating",
+        "1017 Cabinet Overheating Alarm",
+        "Cabinet Overheating – Alarm 1017"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00001",
+          "text": "Alarm n°: 1017 text: CABINET OVERHEATING",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 316,
+              "chunk_end_char": 356,
+              "doc_start_char": 10316,
+              "doc_end_char": 10356,
+              "snippet": "information responsible for the intervention: responsible for the maintenance\n\nAlarm n°: 1017 text: CABINET OVERHEATING type: Standard: Optional: effect: Alarm with immediate and controlled shutdown"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00002",
+      "canonical_label": "effect: Alarm with immediate and controlled shutdown",
+      "normalized_label": "effect alarm with immediate and controlled shutdown",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ObservableProperty",
+        "FeatureOfInterest",
+        "ManufacturingCell",
+        "SituationS1",
+        "SituationS2",
+        "TRIGGERS",
+        "CAUSES",
+        "REQUIRES",
+        "HANDLED_BY",
+        "REFERENCES",
+        "DETECTED_BY"
+      ],
+      "definition": "The state of a manufacturing cell immediately after an alarm activates, causing the system to enter a controlled shutdown to prevent damage or hazards.",
+      "aliases": [
+        "Alarm-induced shutdown",
+        "Alarm-triggered shutdown",
+        "Safety shutdown",
+        "Emergency stop",
+        "Automatic shutdown"
+      ],
+      "synonyms": [
+        "Immediate shutdown",
+        "Controlled shutdown",
+        "Safety interlock",
+        "Stop state",
+        "Shutdown mode"
+      ],
+      "lexical_variants": [
+        "immediate controlled shutdown",
+        "prompt controlled shutdown",
+        "instant controlled shutdown",
+        "safety shutdown",
+        "emergency stop"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00003",
+          "text": "effect: Alarm with immediate and controlled shutdown",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 383,
+              "chunk_end_char": 435,
+              "doc_start_char": 10383,
+              "doc_end_char": 10435,
+              "snippet": "maintenance\n\nAlarm n°: 1017 text: CABINET OVERHEATING type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00003",
+      "canonical_label": "causes",
+      "normalized_label": "causes",
+      "candidate_type": "relation",
+      "confidence": 0.9499999999999998,
+      "ontology_hints": [
+        "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause",
+        "has cause",
+        "Alarm cause: missing speed parameter for spindle rotation command",
+        "Spindle rotation command",
+        "Speed parameter",
+        "G-code M commands",
+        "Manufacturing Process",
+        "Program Block",
+        "Function Call",
+        "Missing Parameter",
+        "Alarm Cause",
+        "S code alarm"
+      ],
+      "definition": "A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system.",
+      "aliases": [
+        "spindle rotation without speed",
+        "spindle rotation missing S",
+        "missing S argument",
+        "pin orientation function M",
+        "M19/M219 function",
+        "function M"
+      ],
+      "synonyms": [
+        "missing speed parameter",
+        "unspecified speed",
+        "no speed specified",
+        "missing argument B",
+        "parameter omitted",
+        "argument B not specified"
+      ],
+      "lexical_variants": [
+        "S argument missing",
+        "S parameter omitted",
+        "speed not set",
+        "pin orientation function M (M19, M219)",
+        "function M",
+        "M19",
+        "M219"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00004",
+          "text": "cause:",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 48,
+              "chunk_end_char": 54,
+              "doc_start_char": 10048,
+              "doc_end_char": 10054,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the erro"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00021",
+          "text": "We tried to execute a program block containing the function: spindle rotation M (M3, M4, M73, M74, M203, M204, M273, M274) without having designated the “S” argument of the speed.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00024",
+          "text": "An attempt was made to execute a program block containing the pin orientation function M (M19, M219) without having designated the argument “B” concerning the positioning angle.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00004",
+      "canonical_label": "The fan or the conditioner are not working",
+      "normalized_label": "the fan or the conditioner are not working",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Constraint",
+        "Feature of Interest",
+        "Workstation",
+        "Production Line",
+        "Temporal Entity",
+        "Alarm",
+        "Failure Phenomenon"
+      ],
+      "definition": "A state in which the fan or the conditioner is not operational, indicating a malfunction of the feature of interest within a workstation or production line.",
+      "aliases": [
+        "fan or conditioner failure",
+        "fan or conditioner malfunction"
+      ],
+      "synonyms": [
+        "fan failure",
+        "fan malfunction",
+        "fan not working",
+        "fan not functioning",
+        "conditioner failure",
+        "conditioner malfunction",
+        "conditioner not working",
+        "conditioner not functioning"
+      ],
+      "lexical_variants": [
+        "fan or conditioner not working",
+        "fan or conditioner not functioning"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00006",
+          "text": "The fan or the conditioner are not working",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 480,
+              "chunk_end_char": 522,
+              "doc_start_char": 10480,
+              "doc_end_char": 10522,
+              "snippet": "h immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot. intervention: Check the thermostat, fan or"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00005",
+      "canonical_label": "The electrical cabinet is too hot",
+      "normalized_label": "the electrical cabinet is too hot",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "Constraint",
+        "Technician",
+        "ProductionLine",
+        "TemporalEntity",
+        "TRIGGERS",
+        "CAUSES",
+        "REQUIRES",
+        "HANDLED_BY",
+        "REFERENCES",
+        "DETECTED_BY"
+      ],
+      "definition": "An attribute indicating that the temperature of the electrical cabinet exceeds acceptable limits, constituting a constraint that may trigger a technician intervention within the production line context.",
+      "aliases": [
+        "electrical cabinet temperature high",
+        "electrical cabinet overheating"
+      ],
+      "synonyms": [
+        "electrical cabinet temperature too high",
+        "electrical cabinet is overheating"
+      ],
+      "lexical_variants": [
+        "electrical cabinet temperature exceeds limits",
+        "electrical cabinet is too hot"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00007",
+          "text": "The electrical cabinet is too hot",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 524,
+              "chunk_end_char": 557,
+              "doc_start_char": 10524,
+              "doc_end_char": 10557,
+              "snippet": "he thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot. intervention: Check the thermostat, fan or conditioner. See page 7 of the elec"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00006",
+      "canonical_label": "intervention:",
+      "normalized_label": "intervention",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observation",
+        "Situation",
+        "Interval",
+        "Instant",
+        "Temporal Entity"
+      ],
+      "definition": "An action or set of actions performed to resolve an alarm or failure in an industrial machine.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00008",
+          "text": "intervention:",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 107,
+              "chunk_end_char": 120,
+              "doc_start_char": 10107,
+              "doc_end_char": 10120,
+              "snippet": "axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00007",
+      "canonical_label": "references",
+      "normalized_label": "references",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "hasFeatureOfInterest: input X4.3",
+        "locatedIn: ManufacturingFacility",
+        "observedBy: Technician",
+        "time: TemporalEntity",
+        "spatialObject: input X4.3"
+      ],
+      "definition": "A reference to the electrical diagram on page 7 indicating the status of input X4.3, where a value of 0 denotes an alarm condition and a value of 1 denotes normal operation.",
+      "aliases": [
+        "Reference to input X4.3",
+        "Page 7 electrical diagram reference",
+        "Signal X4.3 status reference"
+      ],
+      "synonyms": [
+        "See page 7",
+        "Refer to page 7",
+        "Consult page 7"
+      ],
+      "lexical_variants": [
+        "Input X4.3",
+        "Signal X4.3",
+        "Electrical input X4.3"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00010",
+          "text": "See page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1 = OK)",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 615,
+              "chunk_end_char": 683,
+              "doc_start_char": 10615,
+              "doc_end_char": 10683,
+              "snippet": "cal cabinet is too hot. intervention: Check the thermostat, fan or conditioner. See page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenance\n\nAlarm n°: 1018 t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00008",
+      "canonical_label": "responsible for the intervention: responsible for maintenance",
+      "normalized_label": "responsible for the intervention responsible for maintenance",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "responsible_for",
+        "intervention",
+        "maintenance",
+        "role"
+      ],
+      "definition": "A role that oversees or carries out interventions or maintenance tasks within a manufacturing system.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00011",
+          "text": "responsible for the intervention: responsible for maintenance",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 684,
+              "chunk_end_char": 745,
+              "doc_start_char": 10684,
+              "doc_end_char": 10745,
+              "snippet": "nditioner. See page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenance\n\nAlarm n°: 1018 text: LOW PRESSURE type: Standard: Optional: effect: Alarm with"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00009",
+      "canonical_label": "Alarm n°: 1018 text: LOW PRESSURE",
+      "normalized_label": "alarm n 1018 text low pressure",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "triggers low pressure event",
+        "causes system shutdown",
+        "requires operator intervention",
+        "handled by maintenance staff",
+        "references pressure sensor",
+        "detected by pressure sensor"
+      ],
+      "definition": "An alarm that is triggered when the pressure sensor reading falls below a predefined threshold, indicating that the system pressure is lower than the acceptable operating range.",
+      "aliases": [
+        "Alarm 1018",
+        "Alarm #1018",
+        "LOW PRESSURE alarm"
+      ],
+      "synonyms": [
+        "Low pressure alarm",
+        "Pressure low alarm",
+        "Low pressure warning"
+      ],
+      "lexical_variants": [
+        "LOW PRESSURE",
+        "Low pressure",
+        "low pressure"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00012",
+          "text": "Alarm n°: 1018 text: LOW PRESSURE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 747,
+              "chunk_end_char": 780,
+              "doc_start_char": 10747,
+              "doc_end_char": 10780,
+              "snippet": "= ALARM, 1 = OK) responsible for the intervention: responsible for maintenance\n\nAlarm n°: 1018 text: LOW PRESSURE type: Standard: Optional: effect: Alarm with immediate and controlled stop caus"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00010",
+      "canonical_label": "The pressure of the pneumatic installation is not sufficient for the normal operation of the machine",
+      "normalized_label": "the pressure of the pneumatic installation is not sufficient for the normal operation of the machine",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest: pressure attribute of pneumatic installation",
+        "Situation S1: insufficient pressure condition",
+        "Production Line: context of machine operation",
+        "Spatial Object: pneumatic installation",
+        "Attribute: cause condition for machine failure"
+      ],
+      "definition": "The pressure of the pneumatic installation is below the required threshold for normal machine operation.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00013",
+          "text": "The pressure of the pneumatic installation is not sufficient for the normal operation of the machine",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 863,
+              "chunk_end_char": 963,
+              "doc_start_char": 10863,
+              "doc_end_char": 10963,
+              "snippet": "pe: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The pressure of the pneumatic installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adjusted correctly. intervention: Check the"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00011",
+      "canonical_label": "the line pressure switch is not adjusted correctly",
+      "normalized_label": "the line pressure switch is not adjusted correctly",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest: line",
+        "ObservableProperty: pressure switch",
+        "HumanProcess: adjustment",
+        "ManufacturingProcess: affected by misadjustment"
+      ],
+      "definition": "A condition where the line pressure switch, an observable property of a line segment, is set to an incorrect value, causing potential alarms or failures in the manufacturing process.",
+      "aliases": [
+        "line pressure switch misadjustment"
+      ],
+      "synonyms": [
+        "misadjusted line pressure switch",
+        "incorrectly set line pressure switch"
+      ],
+      "lexical_variants": [
+        "line pressure switch misconfiguration",
+        "line pressure switch misadjustment"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00014",
+          "text": "the line pressure switch is not adjusted correctly",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 968,
+              "chunk_end_char": 1018,
+              "doc_start_char": 10968,
+              "doc_end_char": 11018,
+              "snippet": "atic installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adjusted correctly. intervention: Check the line pressure and the pressure switch setting. See pag"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00012",
+      "canonical_label": "Check the line pressure and the pressure switch setting.",
+      "normalized_label": "check the line pressure and the pressure switch setting",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "HumanProcess",
+        "ObservableProperty",
+        "FeatureOfInterest",
+        "ProductionLine",
+        "Pressure",
+        "PressureSwitch",
+        "InterventionAction",
+        "hasFeatureOfInterest",
+        "requires",
+        "handledBy"
+      ],
+      "definition": "An intervention action performed by a human operator to verify the pressure of the production line and the setting of the pressure switch, ensuring that both parameters are within acceptable limits.",
+      "aliases": [
+        "Check line pressure and switch setting",
+        "Verify line pressure and pressure switch setting"
+      ],
+      "synonyms": [
+        "Inspect line pressure and pressure switch setting",
+        "Verify line pressure and pressure switch setting",
+        "Measure line pressure and pressure switch setting"
+      ],
+      "lexical_variants": [
+        "Check the line pressure and the pressure switch setting",
+        "Check line pressure and pressure switch setting",
+        "Check line pressure and switch setting"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00015",
+          "text": "Check the line pressure and the pressure switch setting.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 1034,
+              "chunk_end_char": 1090,
+              "doc_start_char": 11034,
+              "doc_end_char": 11090,
+              "snippet": "e machine, or the line pressure switch is not adjusted correctly. intervention: Check the line pressure and the pressure switch setting. See page 65 of the electrical diagram, input X3.5 (0 = ALARM, 1 = OK) responsib"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00013",
+      "canonical_label": "Alarm number: 1020 text: PROGRAMMING ERROR",
+      "normalized_label": "alarm number 1020 text programming error",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "has observable property: programming error",
+        "detected by sensor",
+        "triggered by human process",
+        "associated with manufacturing process",
+        "occurs within manufacturing facility"
+      ],
+      "definition": "An alarm type that signals a programming error in the machine’s control system, typically detected by sensors monitoring the manufacturing process.",
+      "aliases": [
+        "Alarm 1020",
+        "Programming Error Alarm",
+        "Alarm 1020 – Programming Error"
+      ],
+      "synonyms": [
+        "Programming error alarm",
+        "Software error alarm",
+        "Control system error alarm"
+      ],
+      "lexical_variants": [
+        "Alarm number: 1020 text: PROGRAMMING ERROR",
+        "Alarm 1020: PROGRAMMING ERROR",
+        "Alarm 1020 – PROGRAMMING ERROR"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00016",
+          "text": "Alarm number: 1020 text: PROGRAMMING ERROR",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00014",
+      "canonical_label": "An attempt was made to execute a program block containing a function M in one of the following situations which are not permitted:",
+      "normalized_label": "an attempt was made to execute a program block containing a function m in one of the following situations which are not permitted",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ProgrammingErrorAlarm",
+        "ProhibitedExecutionContext",
+        "FunctionM",
+        "ProgramBlock",
+        "ExecutionAttempt",
+        "ErrorTrigger"
+      ],
+      "definition": "An event in which a program block that includes function M is executed under conditions that are not permitted, thereby triggering a programming error alarm.",
+      "aliases": [
+        "program block execution attempt",
+        "function M execution attempt",
+        "attempted execution of function M"
+      ],
+      "synonyms": [
+        "execution attempt",
+        "attempted execution",
+        "program block run attempt"
+      ],
+      "lexical_variants": [
+        "attempted execution of a program block containing function M",
+        "execution attempt of function M within a program block",
+        "attempt to run function M in a program block"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00017",
+          "text": "An attempt was made to execute a program block containing a function M in one of the following situations which are not permitted:",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 1341,
+              "chunk_end_char": 1471,
+              "doc_start_char": 11341,
+              "doc_end_char": 11471,
+              "snippet": "ERROR\ntype: Standard: Optional:\neffect: Alarm with immediate arrest and control\nAn attempt was made to execute a program block containing a function M in one of the following situations which are not permitted:\n• spindle removal when the bypass function is activated;\n• spindle orientation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00015",
+      "canonical_label": "Modify the program in order to prevent any erroneous situation.",
+      "normalized_label": "modify the program in order to prevent any erroneous situation",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention action",
+        "prevents erroneous situation",
+        "program modification",
+        "situation prevention"
+      ],
+      "definition": "An action to change a program so that it does not create or encounter erroneous situations.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00018",
+          "text": "Modify the program in order to prevent any erroneous situation.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00016",
+      "canonical_label": "responsible for",
+      "normalized_label": "responsible for",
+      "candidate_type": "relation",
+      "confidence": 0.935,
+      "ontology_hints": [
+        "Platform",
+        "Staff",
+        "Human Process",
+        "role",
+        "responsible",
+        "toolmaker-adjuster"
+      ],
+      "definition": "The role or entity that holds responsibility for the programmer, typically overseeing or supervising the programmer’s activities within the system.",
+      "aliases": [
+        "responsible for toolmaker-adjuster"
+      ],
+      "synonyms": [
+        "person in charge of toolmaker-adjuster",
+        "accountable for toolmaker-adjuster"
+      ],
+      "lexical_variants": [
+        "responsible for toolmaker adjuster"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00019",
+          "text": "responsible for programmer",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00029",
+          "text": "responsible for toolmaker-adjuster",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00017",
+      "canonical_label": "Alarm n°: 1021 text: MANDATORY “S” CODE",
+      "normalized_label": "alarm n 1021 text mandatory s code",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: missing mandatory S code",
+        "CAUSES: failure event",
+        "HANDLED_BY: maintenance staff",
+        "REFERENCES: manufacturing cell",
+        "DETECTED_BY: sensor or control system"
+      ],
+      "definition": "An alarm indicating that a mandatory 'S' code is missing, which triggers a failure event within a manufacturing cell.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00020",
+          "text": "Alarm n°: 1021 text: MANDATORY “S” CODE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00018",
+      "canonical_label": "Correct the program so as to insert the argument “S”",
+      "normalized_label": "correct the program so as to insert the argument s",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "ObservableProperty",
+        "Constraint",
+        "Instant",
+        "ManufacturingProcess"
+      ],
+      "definition": "An intervention action that modifies a program to include a new argument named 'S'.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00022",
+          "text": "Correct the program so as to insert the argument “S”",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 2437,
+              "chunk_end_char": 2489,
+              "doc_start_char": 12437,
+              "doc_end_char": 12489,
+              "snippet": "3,\nM274) without having designated the “S” argument of the speed.\nintervention: Correct the program so as to insert the argument “S”\nresponsible for\nprogrammer\n\nAlarm n°: 1020 text: PROGRAMMING ERROR type: Standa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00019",
+      "canonical_label": "Alarm n°: 1022 text: MANDATORY “S” CODE",
+      "normalized_label": "alarm n 1022 text mandatory s code",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm type",
+        "Failure event",
+        "Manufacturing Cell",
+        "Resource",
+        "Temporal Entity",
+        "Feature of Interest",
+        "Situation S1"
+      ],
+      "definition": "An alarm indicating that a mandatory 'S' code has been triggered, representing a specific failure event within a manufacturing cell.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00023",
+          "text": "Alarm n°: 1022 text: MANDATORY “S” CODE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00020",
+      "canonical_label": "Correct the program so as to insert the argument “B”",
+      "normalized_label": "correct the program so as to insert the argument b",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention action",
+        "software modification",
+        "parameter insertion",
+        "program correction",
+        "code update",
+        "requires modification",
+        "resolve alarm"
+      ],
+      "definition": "An intervention action that involves modifying a software program to include a specific argument, typically to resolve an alarm or error condition.",
+      "aliases": [
+        "Insert argument B into program",
+        "Add parameter B to program"
+      ],
+      "synonyms": [
+        "Modify the program to include argument B",
+        "Update the code to add parameter B",
+        "Adjust the program to insert argument B"
+      ],
+      "lexical_variants": [
+        "Correct the program to insert argument B",
+        "Correct program to add argument B",
+        "Correct program to include parameter B"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00025",
+          "text": "Correct the program so as to insert the argument “B”",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 4189,
+              "chunk_end_char": 4241,
+              "doc_start_char": 14189,
+              "doc_end_char": 14241,
+              "snippet": "ing designated\nthe argument “B” concerning the positioning angle.\nintervention: Correct the program so as to insert the argument “B”\nresponsible for\nprogrammer\nAlarm No.: 1026\ntext: DIFFERENT TROLLEY PROGRAM NUMB"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00021",
+      "canonical_label": "Alarm No.: 1026 text: DIFFERENT TROLLEY PROGRAM NUMBER",
+      "normalized_label": "alarm no 1026 text different trolley program number",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmType",
+        "FailureEvent",
+        "ObservableProperty",
+        "TrolleyProgramNumber",
+        "TRIGGERS: TrolleyProgramMismatchEvent",
+        "CAUSES: ConfigurationError",
+        "HANDLED_BY: Operator",
+        "REFERENCES: ManualSection 4.2.3"
+      ],
+      "definition": "An alarm that is triggered when the trolley's program number does not match the expected or configured program number, indicating a potential configuration or synchronization error in the trolley control system.",
+      "aliases": [
+        "Alarm 1026",
+        "Trolley Program Number Mismatch Alarm",
+        "Program Number Discrepancy Alarm"
+      ],
+      "synonyms": [
+        "Program number mismatch",
+        "Trolley program mismatch",
+        "Program number discrepancy"
+      ],
+      "lexical_variants": [
+        "DIFFERENT TROLLEY PROGRAM NUMBER",
+        "trolley program number mismatch",
+        "trolley program number discrepancy"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00026",
+          "text": "Alarm No.: 1026 text: DIFFERENT TROLLEY PROGRAM NUMBER",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00022",
+      "canonical_label": "At the start of the execution of the cycle we noticed that the number of the program selected in the channel is different.",
+      "normalized_label": "at the start of the execution of the cycle we noticed that the number of the program selected in the channel is different",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "has observable property: program number",
+        "has feature of interest: channel",
+        "has temporal entity: cycle start",
+        "has cause detail: program selection discrepancy",
+        "belongs to: Production Line",
+        "related to: Manufacturing Facility",
+        "triggered by: program selection error"
+      ],
+      "definition": "A discrepancy observed at the start of a production cycle where the program number selected in a channel does not match the expected value, indicating a control or configuration issue within the manufacturing line.",
+      "aliases": [
+        "program number mismatch",
+        "channel program mismatch",
+        "program selection discrepancy"
+      ],
+      "synonyms": [
+        "program number discrepancy",
+        "program selection error",
+        "channel program error"
+      ],
+      "lexical_variants": [
+        "the program number selected in the channel is different",
+        "the selected program number differs",
+        "the program number in the channel does not match the expected value"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00027",
+          "text": "At the start of the execution of the cycle we noticed that the number of the program selected in the channel is different.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00023",
+      "canonical_label": "to run different programs, deactivate the control in the “CART MANAGEMENT” user page",
+      "normalized_label": "to run different programs deactivate the control in the cart management user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Control",
+        "User Interface",
+        "Intervention Action",
+        "Control Deactivation",
+        "Program Execution"
+      ],
+      "definition": "An intervention action that involves executing multiple programs and disabling a control element on the CART MANAGEMENT user interface in order to resolve an alarm.",
+      "aliases": [
+        "CART MANAGEMENT page control deactivation",
+        "control element disablement on CART MANAGEMENT interface"
+      ],
+      "synonyms": [
+        "execute programs",
+        "disable control",
+        "turn off control",
+        "run multiple programs",
+        "deactivate control element"
+      ],
+      "lexical_variants": [
+        "run programs",
+        "deactivate control",
+        "CART MANAGEMENT user page",
+        "CART MANAGEMENT screen",
+        "user interface control"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00028",
+          "text": "to run different programs, deactivate the control in the “CART MANAGEMENT” user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00024",
+      "canonical_label": "automatic mode, rewinding was not carried out correctly.",
+      "normalized_label": "automatic mode rewinding was not carried out correctly",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ManufacturingProcess",
+        "ManufacturingCell",
+        "FeatureOfInterest",
+        "SpatialObject",
+        "AutomaticMode",
+        "RewindingStep",
+        "ProgramNotRewoundAlarm"
+      ],
+      "definition": "A malfunction in the automatic mode of a manufacturing process where the rewinding step was not performed correctly, leading to a program not rewound alarm.",
+      "aliases": [
+        "rewind failure in automatic mode",
+        "automatic mode rewinding error"
+      ],
+      "synonyms": [
+        "rewind failure",
+        "rewind malfunction",
+        "rewind error",
+        "rewind not executed"
+      ],
+      "lexical_variants": [
+        "automatic mode rewinding failed",
+        "rewinding was not carried out correctly in automatic mode",
+        "automatic mode, rewinding was not carried out correctly"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00031",
+          "text": "automatic mode, rewinding was not carried out correctly.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 4895,
+              "chunk_end_char": 4951,
+              "doc_start_char": 14895,
+              "doc_end_char": 14951,
+              "snippet": "controlled shutdown\nWhen we pressed the Reset button. or we selected the\ncause: automatic mode, rewinding was not carried out correctly.\nPress the Reset key. and verify that the cominte"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00025",
+      "canonical_label": "Press the Reset button.",
+      "normalized_label": "press the reset button",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Process",
+        "Workstation",
+        "Situation",
+        "Observation",
+        "InterventionAction"
+      ],
+      "definition": "An intervention action performed by a user to reset a machine or system by pressing the reset button, typically to clear an alarm or return the system to a normal operating state.",
+      "aliases": [
+        "reset button press"
+      ],
+      "synonyms": [
+        "press reset button"
+      ],
+      "lexical_variants": [
+        "press the reset button",
+        "press reset button"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00033",
+          "text": "Press the Reset button.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00026",
+      "canonical_label": "effect: Alarm with immediate and controlled stop",
+      "normalized_label": "effect alarm with immediate and controlled stop",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: Alarm",
+        "REQUIRES: ControlledStopProcedure",
+        "HANDLED_BY: Operator",
+        "REFERENCES: Situation S1, Situation S2",
+        "has feature of interest: sensor",
+        "belongs to: ManufacturingCell",
+        "observable property: low pressure sensor reading"
+      ],
+      "definition": "An operational state in which the manufacturing cell halts immediately and in a controlled manner in response to a detected alarm, typically triggered by a low‑pressure condition.",
+      "aliases": [
+        "Alarm effect: immediate controlled stop",
+        "Alarm with immediate controlled stop effect",
+        "Immediate controlled stop due to alarm"
+      ],
+      "synonyms": [
+        "immediate shutdown",
+        "controlled halt",
+        "stop state",
+        "halt state"
+      ],
+      "lexical_variants": [
+        "immediate controlled stop",
+        "controlled immediate stop",
+        "stop on alarm",
+        "alarm-induced stop"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00034",
+          "text": "effect: Alarm with immediate and controlled stop",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 807,
+              "chunk_end_char": 855,
+              "doc_start_char": 10807,
+              "doc_end_char": 10855,
+              "snippet": "le for maintenance\n\nAlarm n°: 1018 text: LOW PRESSURE type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The pressure of the pneumatic installation is not sufficient for the nor"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00027",
+      "canonical_label": "effect: Alarm with immediate arrest and control",
+      "normalized_label": "effect alarm with immediate arrest and control",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "ManufacturingCell",
+        "ManufacturingFacility",
+        "Instant",
+        "requires action",
+        "TRIGGERS"
+      ],
+      "definition": "An alarm state that triggers an immediate halt of machine operation and initiates control actions within a manufacturing environment.",
+      "aliases": [
+        "Alarm effect",
+        "Alarm-induced arrest",
+        "Alarm with immediate shutdown"
+      ],
+      "synonyms": [
+        "alarm",
+        "warning",
+        "alert",
+        "immediate arrest",
+        "instant shutdown",
+        "sudden halt",
+        "control",
+        "regulation",
+        "management"
+      ],
+      "lexical_variants": [
+        "Alarm causing immediate arrest and control",
+        "Alarm leading to immediate arrest and control",
+        "Alarm that triggers immediate arrest and control"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00035",
+          "text": "effect: Alarm with immediate arrest and control",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 1293,
+              "chunk_end_char": 1340,
+              "doc_start_char": 11293,
+              "doc_end_char": 11340,
+              "snippet": "intenance\n\nAlarm number: 1020\ntext: PROGRAMMING ERROR\ntype: Standard: Optional:\neffect: Alarm with immediate arrest and control\nAn attempt was made to execute a program block containing a function M in one o"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attribute_candidates": [
+    {
+      "candidate_id": "cand_v_00000",
+      "canonical_label": "AlarmClassification",
+      "normalized_label": "alarmclassification",
+      "candidate_type": "attribute",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmType",
+        "AlarmClassification",
+        "hasAttribute"
+      ],
+      "definition": "An attribute that classifies an alarm as either standard or optional.",
+      "aliases": [
+        "type",
+        "classification",
+        "category"
+      ],
+      "synonyms": [
+        "standard",
+        "optional"
+      ],
+      "lexical_variants": [
+        "type: standard",
+        "type: optional",
+        "standard optional"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00002",
+          "text": "type: Standard: Optional:",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 357,
+              "chunk_end_char": 382,
+              "doc_start_char": 10357,
+              "doc_end_char": 10382,
+              "snippet": "tion: responsible for the maintenance\n\nAlarm n°: 1017 text: CABINET OVERHEATING type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The thermostat is n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_v_00001",
+      "canonical_label": "attribute",
+      "normalized_label": "attribute",
+      "candidate_type": "attribute",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "attribute of Spatial Object",
+        "located in Workstation",
+        "part of Manufacturing Cell",
+        "occurs in Situation S1",
+        "triggers machine alarm",
+        "requires adjustment"
+      ],
+      "definition": "A condition where the thermostat's temperature setting deviates from the intended value, potentially causing operational issues.",
+      "aliases": [
+        "thermostat misconfigured",
+        "thermostat mis-set",
+        "thermostat not set properly"
+      ],
+      "synonyms": [
+        "incorrect thermostat setting",
+        "thermostat set incorrectly",
+        "thermostat not properly set"
+      ],
+      "lexical_variants": [
+        "thermostat incorrectly set",
+        "thermostat not set correctly"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00005",
+          "text": "The thermostat is not set correctly",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 443,
+              "chunk_end_char": 478,
+              "doc_start_char": 10443,
+              "doc_end_char": 10478,
+              "snippet": "Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event_candidates": [
+    {
+      "candidate_id": "cand_s_00000",
+      "canonical_label": "Inspect HVAC components",
+      "normalized_label": "inspect hvac components",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Human Process",
+        "Feature of Interest",
+        "Workstation",
+        "Manufacturing Facility",
+        "TRIGGERS",
+        "REQUIRES",
+        "HANDLED_BY"
+      ],
+      "definition": "An action performed by a human operator to examine or verify the status of HVAC components—specifically the thermostat, fan, or air conditioner—within a workstation in a manufacturing facility.",
+      "aliases": [
+        "Inspect HVAC components",
+        "Verify HVAC settings",
+        "Check HVAC system"
+      ],
+      "synonyms": [
+        "Inspect the thermostat, fan or conditioner",
+        "Examine the thermostat, fan or conditioner",
+        "Verify the thermostat, fan or conditioner",
+        "Review the thermostat, fan or conditioner"
+      ],
+      "lexical_variants": [
+        "Check the thermostat, fan, or conditioner",
+        "Check thermostat, fan or conditioner",
+        "Check the HVAC components",
+        "Check the thermostat, fan, or air conditioner"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00009",
+          "text": "Check the thermostat, fan or conditioner.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 573,
+              "chunk_end_char": 614,
+              "doc_start_char": 10573,
+              "doc_end_char": 10614,
+              "snippet": "e conditioner are not working, the electrical cabinet is too hot. intervention: Check the thermostat, fan or conditioner. See page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1 = OK) responsibl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00001",
+      "canonical_label": "AlarmType",
+      "normalized_label": "alarmtype",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ObservableProperty",
+        "ManufacturingProcess",
+        "HumanProcess",
+        "LogisticProcess",
+        "Constraint",
+        "AlarmType"
+      ],
+      "definition": "An alarm type that signals a failure event where a program has not been rewound, indicating a breach of a process constraint during a manufacturing operation.",
+      "aliases": [
+        "PROGRAM NOT REWOUND",
+        "program not rewound",
+        "Program Not Rewound"
+      ],
+      "synonyms": [
+        "Program not rewound error",
+        "Rewind failure alarm"
+      ],
+      "lexical_variants": [
+        "PROGRAM NOT REWOUND",
+        "program not rewound",
+        "Program Not Rewound"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00030",
+          "text": "Alarm number: 1027 text: PROGRAM NOT REWOUND",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00002",
+      "canonical_label": "Press the Reset key",
+      "normalized_label": "press the reset key",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Process",
+        "Human Process",
+        "Intervention action",
+        "Reset action",
+        "Machine reset"
+      ],
+      "definition": "An intervention action performed by a human operator to reset a machine or system by pressing the reset key or button.",
+      "aliases": [
+        "Reset key",
+        "Reset button"
+      ],
+      "synonyms": [
+        "Press the reset button",
+        "Press reset"
+      ],
+      "lexical_variants": [
+        "Press the Reset key",
+        "Press the reset button"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00032",
+          "text": "Press the Reset key.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0002",
+              "chunk_start_char": 4952,
+              "chunk_end_char": 4972,
+              "doc_start_char": 14952,
+              "doc_end_char": 14972,
+              "snippet": "we selected the\ncause: automatic mode, rewinding was not carried out correctly.\nPress the Reset key. and verify that the cominte"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

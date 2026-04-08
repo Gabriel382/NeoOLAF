@@ -1,0 +1,534 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 22,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00004",
+      "relation_label": "CDS: ATTESA ABILITAZIONE AVANZAMENTO",
+      "source_candidate_id": "cand_e_00006",
+      "source_candidate_label": "Timer",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_r_00004",
+      "target_candidate_label": "CDS: ATTESA ABILITAZIONE AVANZAMENTO",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0010",
+      "justification": "The text states that when the timer which masks the stopping of the axis advance has exhausted its scheduled time, the lathe waits for authorization from the external watering device (CDS). This indicates that the Timer event triggers the CDS: ATTESA ABILITAZIONE AVANZAMENTO message.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 1797,
+          "chunk_end_char": 1833,
+          "doc_start_char": 51797,
+          "doc_end_char": 51833,
+          "snippet": "ignals check\nconnections with the tower.\nresponsible for\nmessage no: 2051\ntext: CDS: ATTESA ABILITAZIONE AVANZAMENTO\ntype: Standard: Optional:\neffect: Only display of the message\nThis message indi"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00005",
+      "relation_label": "AUTOMATIC OFF: SET TIME REACHED",
+      "source_candidate_id": "cand_e_00006",
+      "source_candidate_label": "Timer",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "shutdown phase",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0010",
+      "justification": "The message states that the machine shutdown time has been reached, which triggers the shutdown phase. The timer entity (cand_e_00006) is the source of this event, and the shutdown phase (cand_s_00001) is the target.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 2234,
+          "chunk_end_char": 2265,
+          "doc_start_char": 52234,
+          "doc_end_char": 52265,
+          "snippet": "sage clears\nintervention:\nautomatically.\nresponsible for\nmessage no: 2060\ntext: AUTOMATIC OFF: SET TIME REACHED\ntype: Standard: Optional:\neffect: Only display of the message\nThe machine shutd"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00006",
+      "relation_label": "AUTOMATIC STOP: CONFIGURED TIME REACHED",
+      "source_candidate_id": "cand_r_00006",
+      "source_candidate_label": "AUTOMATIC STOP: CONFIGURED TIME REACHED",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "shutdown phase",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0010",
+      "justification": "The message text states that when the machine shutdown time is reached, the programs will be stopped and the shutdown phase will be started, indicating that the event ‘AUTOMATIC STOP: CONFIGURED TIME REACHED’ triggers the shutdown phase.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 3598,
+          "chunk_end_char": 3637,
+          "doc_start_char": 53598,
+          "doc_end_char": 53637,
+          "snippet": "utomatically cleared. responsible for the intervention:\n\nmessage n°: 2060 text: AUTOMATIC STOP: CONFIGURED TIME REACHED type: Standard: Optional: effect: Only display of the message cause: The machin"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00003",
+      "relation_candidate_id": "cand_r_00008",
+      "relation_label": "AUTOMATIC STOP: MACHINE IN ALARM",
+      "source_candidate_id": "cand_e_00004",
+      "source_candidate_label": "Machine",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "shutdown phase",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0010",
+      "justification": "The chunk states that when an alarm occurs, the machine enters a shutdown phase, implying that the machine (in alarm) triggers the shutdown phase event.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 4607,
+          "chunk_end_char": 4639,
+          "doc_start_char": 54607,
+          "doc_end_char": 54639,
+          "snippet": "ppropriate user page.\nresponsible for\ntoolmaker-adjuster\nmessage no: 2062\ntext: AUTOMATIC STOP: MACHINE IN ALARM\ntype: Standard: Optional:\neffect: Only display of the message\nThe AUTOMATIC OFF"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00004",
+      "relation_candidate_id": "cand_r_00010",
+      "relation_label": "machine shutdown time",
+      "source_candidate_id": "cand_e_00004",
+      "source_candidate_label": "Machine",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00006",
+      "target_candidate_label": "Timer",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0010",
+      "justification": "The chunk states that the machine shutdown time has been reached and that the time can be changed, indicating a timer that is associated with the machine.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 2332,
+          "chunk_end_char": 2353,
+          "doc_start_char": 52332,
+          "doc_end_char": 52353,
+          "snippet": "TIME REACHED\ntype: Standard: Optional:\neffect: Only display of the message\nThe machine shutdown time has been reached; if the condition persists,\ncause: the programs will be stoppe"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00005",
+      "relation_candidate_id": "cand_r_00012",
+      "relation_label": "configured time",
+      "source_candidate_id": "cand_e_00006",
+      "source_candidate_label": "Timer",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "shutdown phase",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0010",
+      "justification": "The text states that the machine shutdown time (a configured time) has been reached, which is a constraint on the Timer that triggers the shutdown phase.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 3614,
+          "chunk_end_char": 3629,
+          "doc_start_char": 53614,
+          "doc_end_char": 53629,
+          "snippet": "ared. responsible for the intervention:\n\nmessage n°: 2060 text: AUTOMATIC STOP: CONFIGURED TIME REACHED type: Standard: Optional: effect: Only display of the message cause: Th"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00006",
+      "relation_candidate_id": "cand_r_00013",
+      "relation_label": "quantity of pieces",
+      "source_candidate_id": "cand_s_00000",
+      "source_candidate_label": "bar change phase alarm",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00007",
+      "target_candidate_label": "Production Data Page",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0010",
+      "justification": "The event \"CONFIGURED PRODUCTION REACHED\" is triggered when the quantity of pieces established in the PRODUCTION DATA page has been reached, linking the event to the page.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 4183,
+          "chunk_end_char": 4201,
+          "doc_start_char": 54183,
+          "doc_end_char": 54201,
+          "snippet": "CTION REACHED\ntype: Standard: Optional:\neffect: Only display of the message\nThe quantity of pieces established in the “PRODUCTION DATA” page has been reached; if the condition pe"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00007",
+      "relation_candidate_id": "cand_r_00020",
+      "relation_label": "machine shutdown time has been reached",
+      "source_candidate_id": "cand_r_00020",
+      "source_candidate_label": "machine shutdown time has been reached",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "shutdown phase",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0010",
+      "justification": "The chunk states that \"the machine shutdown time has been reached\" and that this condition causes the shutdown phase to start.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 2332,
+          "chunk_end_char": 2370,
+          "doc_start_char": 52332,
+          "doc_end_char": 52370,
+          "snippet": "TIME REACHED\ntype: Standard: Optional:\neffect: Only display of the message\nThe machine shutdown time has been reached; if the condition persists,\ncause: the programs will be stopped at the same tim"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00008",
+      "relation_candidate_id": "cand_r_00021",
+      "relation_label": "quantity of pieces established in the PRODUCTION DATA page has been reached",
+      "source_candidate_id": "cand_e_00007",
+      "source_candidate_label": "Production Data Page",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "shutdown phase",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0010",
+      "justification": "The text states that the quantity of pieces established in the “PRODUCTION DATA” page has been reached; if the condition persists, the programs will be stopped at the same time as function M01 and the shutdown phase will be started, indicating that the event triggers the shutdown phase.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00009",
+      "relation_candidate_id": "cand_r_00022",
+      "relation_label": "programs will be stopped",
+      "source_candidate_id": "cand_e_00002",
+      "source_candidate_label": "software program",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "shutdown phase",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0010",
+      "justification": "The text states that the programs will be stopped at the same time as function M01 and the shutdown phase will be started, linking the software program to the shutdown phase.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 2410,
+          "chunk_end_char": 2434,
+          "doc_start_char": 52410,
+          "doc_end_char": 52434,
+          "snippet": "e machine shutdown time has been reached; if the condition persists,\ncause: the programs will be stopped at the same time as function M01\nand the shutdown phase will be started (see al"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00010",
+      "relation_candidate_id": "cand_r_00024",
+      "relation_label": "message clears automatically",
+      "source_candidate_id": "cand_s_00000",
+      "source_candidate_label": "bar change phase alarm",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00003",
+      "target_candidate_label": "AlarmClearingEvent",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0010",
+      "justification": "The chunk states that when the bar change is completed, the message (the bar change phase alarm) is automatically cleared, indicating a \"message clears automatically\" relation between the alarm event and the clearing event.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00011",
+      "relation_candidate_id": "cand_r_00025",
+      "relation_label": "AUTOMATIC OFF function activated",
+      "source_candidate_id": "cand_e_00004",
+      "source_candidate_label": "Machine",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "shutdown phase",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0010",
+      "justification": "The chunk text states that the AUTOMATIC OFF function has been activated, which triggers the shutdown phase of the machine.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00012",
+      "relation_candidate_id": "cand_r_00026",
+      "relation_label": "configured time has been reached",
+      "source_candidate_id": "cand_e_00006",
+      "source_candidate_label": "Timer",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "shutdown phase",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0010",
+      "justification": "The text states that when the configured time has been reached, the shutdown phase is started.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 4787,
+          "chunk_end_char": 4819,
+          "doc_start_char": 54787,
+          "doc_end_char": 54819,
+          "snippet": "UTOMATIC OFF function has been activated using the\ncorresponding user page, the configured time has been reached,\ncause:\nor an alarm has occurred, therefore the shutdown phase\nof the machine h"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00013",
+      "relation_candidate_id": "cand_r_00027",
+      "relation_label": "alarm has occurred",
+      "source_candidate_id": "cand_s_00000",
+      "source_candidate_label": "bar change phase alarm",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "shutdown phase",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0010",
+      "justification": "The chunk text states that an alarm has occurred, which triggers the shutdown phase of the machine.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 4834,
+          "chunk_end_char": 4852,
+          "doc_start_char": 54834,
+          "doc_end_char": 54852,
+          "snippet": "the\ncorresponding user page, the configured time has been reached,\ncause:\nor an alarm has occurred, therefore the shutdown phase\nof the machine has started.\nWait for the general"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00014",
+      "relation_candidate_id": "cand_r_00033",
+      "relation_label": "shutdown from user page",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "shutdown phase",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00007",
+      "target_candidate_label": "Production Data Page",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0010",
+      "justification": "The chunk text states that the shutdown phase can be interrupted by changing the time from the appropriate user page, which is represented by the Production Data Page entity.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00015",
+      "relation_candidate_id": "cand_r_00034",
+      "relation_label": "change shutdown time from user page",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "shutdown phase",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00003",
+      "target_candidate_label": "machine function",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0010",
+      "justification": "The chunk states that the shutdown phase can be interrupted by changing the shutdown time from the appropriate user page, which is represented by the machine function entity.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00016",
+      "relation_candidate_id": "cand_r_00035",
+      "relation_label": "change number of deposit documents from user page",
+      "source_candidate_id": "cand_e_00007",
+      "source_candidate_label": "Production Data Page",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00002",
+      "target_candidate_label": "deposit documents",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0010",
+      "justification": "The chunk text states that the operator can change the number of deposit documents from the appropriate user page (the PRODUCTION DATA page).",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00017",
+      "relation_candidate_id": "cand_r_00036",
+      "relation_label": "engage and turn on machine",
+      "source_candidate_id": "cand_s_00004",
+      "source_candidate_label": "engage general switch",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00004",
+      "target_candidate_label": "Machine",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0010",
+      "justification": "The chunk text states that after the AUTOMATIC STOP: MACHINE IN ALARM, the operator must \"engage it and turn on the machine\", i.e., engage the general switch (event cand_s_00004) and then power the Machine (entity cand_e_00004).",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00018",
+      "relation_candidate_id": "cand_r_00038",
+      "relation_label": "intervention: shutdown from the appropriate user page",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "shutdown phase",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_r_00038",
+      "target_candidate_label": "intervention: shutdown from the appropriate user page",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0010",
+      "justification": "The chunk text states that the shutdown phase can be interrupted by changing the time via the appropriate user page, i.e., the intervention \"shutdown from the appropriate user page\" is required to interrupt the shutdown phase.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00019",
+      "relation_candidate_id": "cand_r_00039",
+      "relation_label": "intervention: of deposit documents from the appropriate user page",
+      "source_candidate_id": "cand_s_00002",
+      "source_candidate_label": "deposit documents",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00007",
+      "target_candidate_label": "Production Data Page",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0010",
+      "justification": "The chunk text states that the intervention is to deposit documents from the appropriate user page, which corresponds to the Production Data Page entity.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00020",
+      "relation_candidate_id": "cand_r_00040",
+      "relation_label": "intervention: engage it and turn on the machine",
+      "source_candidate_id": "cand_s_00004",
+      "source_candidate_label": "engage general switch",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00004",
+      "target_candidate_label": "Machine",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0010",
+      "justification": "The intervention phrase 'engage it and turn on the machine' refers to engaging the general switch (cand_s_00004) and turning on the machine (cand_e_00004).",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00021",
+      "relation_candidate_id": "cand_r_00046",
+      "relation_label": "has cause",
+      "source_candidate_id": "cand_s_00002",
+      "source_candidate_label": "deposit documents",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "shutdown phase",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0010",
+      "justification": "The chunk text states that the cause of the deposit documents event is the shutdown phase.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 287,
+          "chunk_end_char": 293,
+          "doc_start_char": 50287,
+          "doc_end_char": 50293,
+          "snippet": "display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost empty.\nintervention: Add new bars to the store.\nresponsible for\noperator"
+        }
+      ]
+    }
+  ]
+}

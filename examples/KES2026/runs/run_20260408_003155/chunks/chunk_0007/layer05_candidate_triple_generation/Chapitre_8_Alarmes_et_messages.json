@@ -1,0 +1,546 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 18,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_e_00002",
+        "label": "Part",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00002",
+        "label": "probe core"
+      },
+      "object": {
+        "id": "cand_e_00004",
+        "label": "AlarmDevice",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The text states that the probe core is part of the tool control device no. 4, which is the AlarmDevice.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 1447,
+          "chunk_end_char": 1457,
+          "doc_start_char": 36447,
+          "doc_end_char": 36457,
+          "snippet": "hutdown cause: Tool control device no. 4 does not work, intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly."
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_r_00004",
+        "label": "outdoor sprinkler system (CDS)",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00004",
+        "label": "outdoor sprinkler system (CDS)"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "device documentation",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk states that the outdoor sprinkler system (CDS) requires consulting the device documentation for details of the anomaly, indicating a REFERENCES relationship.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 633,
+          "chunk_end_char": 663,
+          "doc_start_char": 35633,
+          "doc_end_char": 35663,
+          "snippet": "e: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe outdoor sprinkler system (CDS) has had a problem that is preventing:\nche to continue the operation.\nCheck the"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00002",
+      "subject": {
+        "id": "cand_s_00000",
+        "label": "StopEvent",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00006",
+        "label": "SISTER TOOL"
+      },
+      "object": {
+        "id": "cand_e_00002",
+        "label": "Part",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The alarm \"SISTER TOOL: STOP AT END OF CYCLE\" indicates that the stop event is triggered by the tool (a part). The text explicitly refers to an expired tool and the need to replace it, linking the stop event to the part.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2876,
+          "chunk_end_char": 2887,
+          "doc_start_char": 37876,
+          "doc_end_char": 37887,
+          "snippet": "consult the\nintervention:\ndocumentation.\nresponsible for\nAlarm No.: 1078\ntext: SISTER TOOL: STOP AT END OF CYCLE\ntype: Standard: Optional:\nAt the end of the cycle (M01),"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00003",
+      "subject": {
+        "id": "cand_e_00002",
+        "label": "Part",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00007",
+        "label": "paired tool management program"
+      },
+      "object": {
+        "id": "cand_e_00004",
+        "label": "AlarmDevice",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The text states that the paired tool management program monitors the number of spare parts for one or more tools and triggers the STOP AT END OF CYCLE alarm when the inventory is exhausted.",
+      "confidence": 0.88,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 3025,
+          "chunk_end_char": 3055,
+          "doc_start_char": 38025,
+          "doc_end_char": 38055,
+          "snippet": "d of the cycle (M01), stops the automatic execution of the proeffect:\ngram.\nThe paired tool management program found that the name causes:\nnumber of spare parts for one or more tools is comp"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00004",
+      "subject": {
+        "id": "cand_e_00001",
+        "label": "Machine",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00012",
+        "label": "axis feed"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "control anomaly",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The cause of Alarm 1072 is the validation of the authorization of the advance of the axes, i.e., axis feed, which triggers the control anomaly.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 3982,
+          "chunk_end_char": 3991,
+          "doc_start_char": 38982,
+          "doc_end_char": 38991,
+          "snippet": "ystem (CDS) delayed more than one minute in validating the authorization of the axis feed; in this situation the work cycle must be stopped. intervention: Check the anom"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00005",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "control anomaly",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00014",
+        "label": "intervention document"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "device documentation",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk text contains the phrase \"intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly.\" which links the control anomaly alarm to the device documentation.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 388,
+          "chunk_end_char": 409,
+          "doc_start_char": 35388,
+          "doc_end_char": 35409,
+          "snippet": "no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention document:\ntation of the device for details of the anomaly.\nresponsible for\noperator/main"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00006",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "control anomaly",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00015",
+        "label": "intervention"
+      },
+      "object": {
+        "id": "cand_s_00006",
+        "label": "consult the device documentation",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk states that the control anomaly (Alarm 1068) triggers an intervention to consult the device documentation.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 76,
+          "chunk_end_char": 88,
+          "doc_start_char": 35076,
+          "doc_end_char": 35088,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00007",
+      "subject": {
+        "id": "cand_e_00004",
+        "label": "AlarmDevice",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00016",
+        "label": "tool breakage"
+      },
+      "object": {
+        "id": "cand_s_00003",
+        "label": "breakage",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk states that the tool control device no. 4 has detected tip breakage, indicating a relation between the AlarmDevice and the breakage event.",
+      "confidence": 0.9,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00008",
+      "subject": {
+        "id": "cand_e_00004",
+        "label": "AlarmDevice",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00019",
+        "label": "immediate stop"
+      },
+      "object": {
+        "id": "cand_s_00000",
+        "label": "StopEvent",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk contains alarms such as \"CDS: IMMEDIATE STOP\" whose effect is described as \"Alarm with immediate and controlled shutdown\", i.e., a StopEvent. This indicates that the AlarmDevice (source) triggers a StopEvent (target) via the relation \"immediate stop\".",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 535,
+          "chunk_end_char": 549,
+          "doc_start_char": 35535,
+          "doc_end_char": 35549,
+          "snippet": "aly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1070\ntext: CDS: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00009",
+      "subject": {
+        "id": "cand_e_00004",
+        "label": "AlarmDevice",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00020",
+        "label": "stop at end of cycle"
+      },
+      "object": {
+        "id": "cand_s_00000",
+        "label": "StopEvent",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The alarm text \"STOP AT END OF CYCLE\" indicates that the AlarmDevice triggers a StopEvent at the end of a cycle.",
+      "confidence": 0.9,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2053,
+          "chunk_end_char": 2073,
+          "doc_start_char": 37053,
+          "doc_end_char": 37073,
+          "snippet": "le for intervention: responsible for maintenance\n\nAlarm number: 1071\ntext: CDS: STOP AT END OF CYCLE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00010",
+      "subject": {
+        "id": "cand_e_00004",
+        "label": "AlarmDevice",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00021",
+        "label": "waiting for excessive feed"
+      },
+      "object": {
+        "id": "cand_s_00000",
+        "label": "StopEvent",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk describes Alarm 1072 as \"WAITING FOR EXCESSIVE FEED\" and states that this alarm causes an immediate and controlled shutdown, i.e., a StopEvent.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2457,
+          "chunk_end_char": 2483,
+          "doc_start_char": 37457,
+          "doc_end_char": 37483,
+          "snippet": "k the connections with the tower.\nresponsible for\nAlarm number: 1072\ntext: CDS: WAITING FOR EXCESSIVE FEED\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00011",
+      "subject": {
+        "id": "cand_e_00004",
+        "label": "AlarmDevice",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00023",
+        "label": "load monitor"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "control anomaly",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk states that the Load Monitor tool monitoring system has detected that the feedrate trimmer is set to a different percentage, indicating that the AlarmDevice (Load Monitor) monitors the control anomaly.",
+      "confidence": 0.9,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 4677,
+          "chunk_end_char": 4689,
+          "doc_start_char": 39677,
+          "doc_end_char": 39689,
+          "snippet": "of parts. responsible for the intervention: operator\n\nAlarm number: 1079\ntext: LOAD MONITOR: FEED DIFFERENT FROM 100%\ntype: Standard: Optional:\neffect: Alarms or messages"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00012",
+      "subject": {
+        "id": "cand_e_00004",
+        "label": "AlarmDevice",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00033",
+        "label": "has detected"
+      },
+      "object": {
+        "id": "cand_s_00003",
+        "label": "breakage",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The text states that the Tool control device no. 4 has detected tip breakage.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 1050,
+          "chunk_end_char": 1075,
+          "doc_start_char": 36050,
+          "doc_end_char": 36075,
+          "snippet": ": Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibrati"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00013",
+      "subject": {
+        "id": "cand_e_00004",
+        "label": "AlarmDevice",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00034",
+        "label": "has had a problem that prevents the operation from continuing"
+      },
+      "object": {
+        "id": "cand_s_00000",
+        "label": "StopEvent",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk explicitly states that the outdoor sprinkler system (CDS) has had a problem that prevents the operation from continuing, which is the cause of the immediate stop event described in the alarm entry.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00014",
+      "subject": {
+        "id": "cand_e_00004",
+        "label": "AlarmDevice",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00035",
+        "label": "has had a problem that does not require immediate intervention"
+      },
+      "object": {
+        "id": "cand_s_00009",
+        "label": "failure",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk states that the outdoor sprinkler system (CDS) had a problem that does not require immediate intervention, linking the AlarmDevice (CDS) to a failure event.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 3472,
+          "chunk_end_char": 3534,
+          "doc_start_char": 38472,
+          "doc_end_char": 38534,
+          "snippet": "ith immediate and controlled shutdown cause: The outdoor sprinkler system (CDS) has had a problem that does not require immediate intervention. intervention: Check the anomaly in the CDS operation panel and consult the doc"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00015",
+      "subject": {
+        "id": "cand_e_00004",
+        "label": "AlarmDevice",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00037",
+        "label": "causes"
+      },
+      "object": {
+        "id": "cand_s_00009",
+        "label": "failure",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk states that the alarm is caused by a failure of the tool control device (\"Tool control device no. 4 does not work\"), which is represented by the failure event candidate.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 4942,
+          "chunk_end_char": 4979,
+          "doc_start_char": 39942,
+          "doc_end_char": 39979,
+          "snippet": "hat the\nfeedrate trimmer is set to a different percentage\ncause:\nof 100%, which causes a different current absorption by\ncompared to the n"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00016",
+      "subject": {
+        "id": "cand_s_00004",
+        "label": "Check the anomaly",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00041",
+        "label": "Check the anomaly on the CDS operator panel"
+      },
+      "object": {
+        "id": "cand_e_00003",
+        "label": "operation panel",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk contains the phrase \"Check the anomaly on the CDS operator panel\", which explicitly links the event \"Check the anomaly\" (cand_s_00004) with the entity \"operation panel\" (cand_e_00003).",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 733,
+          "chunk_end_char": 776,
+          "doc_start_char": 35733,
+          "doc_end_char": 35776,
+          "snippet": "stem (CDS) has had a problem that is preventing:\nche to continue the operation.\nCheck the anomaly on the CDS operator panel and consult the\nintervention: documentation. If there is no signage, check the"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00017",
+      "subject": {
+        "id": "cand_s_00004",
+        "label": "Check the anomaly",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00042",
+        "label": "Check the anomaly in the CDS operation panel"
+      },
+      "object": {
+        "id": "cand_e_00003",
+        "label": "operation panel",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk text contains the phrase \"Check the anomaly on the CDS operator panel\", linking the event \"Check the anomaly\" (cand_s_00004) to the entity \"operation panel\" (cand_e_00003).",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2263,
+          "chunk_end_char": 2307,
+          "doc_start_char": 37263,
+          "doc_end_char": 37307,
+          "snippet": "CDS) had a problem that did not\ncause:\ndoes not require immediate intervention.\nCheck the anomaly in the CDS operation panel and consult\nintervention: documentation. If there is no signage, check the conn"
+        }
+      ]
+    }
+  ]
+}

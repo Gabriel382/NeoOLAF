@@ -1,0 +1,942 @@
+{
+  "layer": "layer06_concept_relation_induction",
+  "num_concept_candidates": 22,
+  "num_ontology_relation_candidates": 13,
+  "concept_candidates": [
+    {
+      "concept_id": "concept_00000",
+      "label": "InformationalAlarmEvent",
+      "normalized_label": "informationalalarmevent",
+      "description": "An alarm type that delivers messages to operators indicating a condition without triggering a change in machine status.",
+      "concept_kind": "alarm",
+      "parent_hint": "AlarmType",
+      "source_candidate_ids": [
+        "cand_e_00000"
+      ],
+      "source_triple_ids": [
+        "triple_00007",
+        "triple_00009",
+        "triple_00010",
+        "triple_00011",
+        "triple_00013"
+      ],
+      "confidence": 0.93,
+      "justification": "InformationalAlarm is a stable, reusable alarm type that represents a non‑disruptive notification pattern across documents.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 722,
+          "chunk_end_char": 740,
+          "doc_start_char": 722,
+          "doc_end_char": 740,
+          "snippet": "ith stop at end of cycle: the machine is stopped\nwhen launching function M01;\n• read-only messages: these are used to draw the operator's attention to a particular circumstance w"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00001",
+      "label": "ThermalCutoffDevice",
+      "normalized_label": "thermalcutoffdevice",
+      "description": "An electrical safety device that interrupts current when a set temperature is reached, and can be reset manually or automatically.",
+      "concept_kind": "component",
+      "parent_hint": "Component",
+      "source_candidate_ids": [
+        "cand_e_00001"
+      ],
+      "source_triple_ids": [
+        "triple_00006"
+      ],
+      "confidence": 0.92,
+      "justification": "The candidate represents a stable, reusable safety device concept (thermal cutoff) that appears across multiple documents and aligns with existing ontology classes such as Component and SafetyDevice.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 865,
+          "chunk_end_char": 879,
+          "doc_start_char": 5865,
+          "doc_end_char": 5879,
+          "snippet": "e: Standard: Optional: effect: Alarm with stop at the end of the cycle cause: A thermal switch for the auxiliary motors has been triggered, with low priority. intervention: C"
+        },
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4183,
+          "chunk_end_char": 4193,
+          "doc_start_char": 9183,
+          "doc_end_char": 9193,
+          "snippet": "e: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe thermostat is not set correctly, the fan or the cause:\neditor does not work, the electrica"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00002",
+      "label": "CircuitBreakerComponent",
+      "normalized_label": "circuitbreakercomponent",
+      "description": "An electrical safety device that interrupts overcurrent to protect equipment and prevent fire, and can be reset manually or automatically.",
+      "concept_kind": "component",
+      "parent_hint": "Component",
+      "source_candidate_ids": [
+        "cand_e_00002"
+      ],
+      "source_triple_ids": [
+        "triple_00012"
+      ],
+      "confidence": 0.95,
+      "justification": "Circuit breaker is a stable, reusable component in industrial maintenance contexts, fitting ontology modeling as a class rather than an instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 978,
+          "chunk_end_char": 994,
+          "doc_start_char": 5978,
+          "doc_end_char": 5994,
+          "snippet": "motors has been triggered, with low priority. intervention: Check and reset the circuit breakers and/or thermomagnetic switches. See page 7 of the electrical diagram, input X2."
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00003",
+      "label": "ThermomagneticSwitchComponent",
+      "normalized_label": "thermomagneticswitchcomponent",
+      "description": "A thermally activated magnetic switch used as a temperature sensor and circuit interrupter in industrial machinery, typically reset during maintenance.",
+      "concept_kind": "component",
+      "parent_hint": "Switch",
+      "source_candidate_ids": [
+        "cand_e_00003"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "The thermomagnetic switch is a stable, reusable hardware component that appears across multiple maintenance contexts, making it suitable for ontology inclusion as a distinct class.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1002,
+          "chunk_end_char": 1025,
+          "doc_start_char": 6002,
+          "doc_end_char": 6025,
+          "snippet": "d, with low priority. intervention: Check and reset the circuit breakers and/or thermomagnetic switches. See page 7 of the electrical diagram, input X2.4 (0 = ALARM, 1 = OK) responsib"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00004",
+      "label": "ProgrammableLogicController",
+      "normalized_label": "programmablelogiccontroller",
+      "description": "A digital computer used for automation of electromechanical processes, controlling machinery in industrial settings.",
+      "concept_kind": "entity",
+      "parent_hint": "Platform",
+      "source_candidate_ids": [
+        "cand_e_00004"
+      ],
+      "source_triple_ids": [
+        "triple_00005"
+      ],
+      "confidence": 0.95,
+      "justification": "Programmable Logic Controllers are a stable, reusable class of industrial control devices that appear across many maintenance documents and are better represented as a concept rather than individual mentions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1827,
+          "chunk_end_char": 1830,
+          "doc_start_char": 6827,
+          "doc_end_char": 6830,
+          "snippet": "motor.\nCheck the liquid level in the watering circuit.\nintervention: Check the PLC X4.6 input on page 84 of the electrical diagram and\nthe indication on the refri"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00005",
+      "label": "CoolantResource",
+      "normalized_label": "coolantresource",
+      "description": "A fluid or liquid substance used to transfer heat away from a system, typically with high thermal capacity, low viscosity, and chemical inertness, employed in industrial processing and machine cooling.",
+      "concept_kind": "resource",
+      "parent_hint": "Resource",
+      "source_candidate_ids": [
+        "cand_e_00005"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "Coolant is a stable, general-purpose resource that appears repeatedly across industrial maintenance contexts, making it a reusable ontology concept rather than a document-specific mention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1699,
+          "chunk_end_char": 1706,
+          "doc_start_char": 6699,
+          "doc_end_char": 6706,
+          "snippet": ":\neffect: Alarm with shutdown at the end of the cycle.\nInsufficient quantity of coolant in the water circuit:\nwise of the linear motor.\nCheck the liquid level in the w"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00006",
+      "label": "Compressor",
+      "normalized_label": "compressor",
+      "description": "A mechanical device that compresses gases by reducing their volume, thereby increasing pressure (and temperature if not intercoolled).",
+      "concept_kind": "equipment",
+      "parent_hint": "MechanicalDevice",
+      "source_candidate_ids": [
+        "cand_e_00006"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "The compressor is a stable, reusable class of mechanical equipment commonly used in industrial maintenance contexts, fitting well within the Resource/Equipment hierarchy of the ontology.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 2192,
+          "chunk_end_char": 2202,
+          "doc_start_char": 7192,
+          "doc_end_char": 7202,
+          "snippet": "gine temperature\ncause:\nlinear.\nCheck the correct operation of the refrigerator compressor.\nintervention: Check the PLC X4.7 input on page 84 of the electrical diagram an"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00007",
+      "label": "FanMachine",
+      "normalized_label": "fanmachine",
+      "description": "A device that creates airflow for cooling purposes in industrial equipment.",
+      "concept_kind": "machine",
+      "parent_hint": "Machine",
+      "source_candidate_ids": [
+        "cand_e_00007"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "Fan is a stable, reusable machine type used for cooling in industrial equipment, fitting the ontology's Machine class.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 3988,
+          "chunk_end_char": 3991,
+          "doc_start_char": 8988,
+          "doc_end_char": 8991,
+          "snippet": "es.\nNote the power supply error code marked A2831 and consult\nintervention: the Fanuc 160i-TB CNC service manual for more information\nresponsible for\nAlarm No.: 10"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00008",
+      "label": "AlarmIdentifier",
+      "normalized_label": "alarmidentifier",
+      "description": "A unique identifier that distinguishes a specific alarm instance within a manufacturing system, typically expressed as a numeric or alphanumeric code.",
+      "concept_kind": "identifier",
+      "parent_hint": "AlarmInstance",
+      "source_candidate_ids": [
+        "cand_e_00008"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "The term 'alarm identifier' is a stable, reusable concept that appears across multiple documents to refer to the unique code of an alarm event. It is general enough to model as a class in the ontology, providing a clear distinction between the alarm event itself and its identifying reference.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1159,
+          "chunk_end_char": 1174,
+          "doc_start_char": 6159,
+          "doc_end_char": 6174,
+          "snippet": "= ALARM, 1 = OK) responsible for the intervention: responsible for maintenance\n\nAlarm No.: 1009\ntext: THERMOMAGNETIC SWITCHES IMMEDIATE STOP\ntype: Standard: Optional:\neffect:"
+        },
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4058,
+          "chunk_end_char": 4073,
+          "doc_start_char": 9058,
+          "doc_end_char": 9073,
+          "snippet": "tion: the Fanuc 160i-TB CNC service manual for more information\nresponsible for\nAlarm No.: 1017\ntext: CABINET OVERHEATING\ntype: Standard: Optional:\neffect: Alarm with immediat"
+        },
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4435,
+          "chunk_end_char": 4450,
+          "doc_start_char": 9435,
+          "doc_end_char": 9450,
+          "snippet": "page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1\n=OK)\nresponsible for\nAlarm No.: 1018\ntext: LOW PRESSURE\ntype: Standard: Optional:\neffect: Alarm with immediate and c"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00009",
+      "label": "MechanicalComponent",
+      "normalized_label": "mechanicalcomponent",
+      "description": "A mechanical component that provides rotational or translational motion, such as an axis or pivot point.",
+      "concept_kind": "entity",
+      "parent_hint": "Machine",
+      "source_candidate_ids": [
+        "cand_e_00010"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "MechanicalComponent is a stable, reusable class that represents a fundamental part of machinery, fitting ontology-oriented modeling rather than a document-only mention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1737,
+          "chunk_end_char": 1741,
+          "doc_start_char": 56737,
+          "doc_end_char": 56741,
+          "snippet": "ONG TORQUE REDUCTION\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nThe torque reduction requested at the indicated axis"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00010",
+      "label": "Obstacle",
+      "normalized_label": "obstacle",
+      "description": "An obstruction that blocks or hinders progress, often causing a machine axis to fail to reach its intended position. Obstacles can be physical or abstract and act as constraints on machine operation.",
+      "concept_kind": "entity",
+      "parent_hint": "Constraint",
+      "source_candidate_ids": [
+        "cand_e_00011"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.93,
+      "justification": "Obstacle is a stable, general concept that recurs across maintenance contexts and is better represented as a reusable class rather than a document-specific mention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 3701,
+          "chunk_end_char": 3709,
+          "doc_start_char": 58701,
+          "doc_end_char": 58709,
+          "snippet": "o torque reduction, HAS NOT reached the position causing:\ngrammed because of an obstacle he found on his route.\nintervention: Check the machining and remove the obstacl"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00011",
+      "label": "FeedResource",
+      "normalized_label": "feedresource",
+      "description": "A material or substance supplied to a machine or animal to sustain operation or nutrition, commonly used as a manufacturing resource.",
+      "concept_kind": "entity",
+      "parent_hint": "Resource",
+      "source_candidate_ids": [
+        "cand_e_00012"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.93,
+      "justification": "Feed Resource is a stable, general concept that represents a reusable material used in industrial processes, fitting the ontology’s Resource class and providing a reusable entity for modeling.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4233,
+          "chunk_end_char": 4237,
+          "doc_start_char": 59233,
+          "doc_end_char": 59237,
+          "snippet": "the program.\nresponsible for\nprogrammer\nmessage no: 3012\ntext: WRONG OR MISSING FEED\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00012",
+      "label": "GCodeCommandAction",
+      "normalized_label": "gcodecommandaction",
+      "description": "A G‑code command used in CNC machine control, typically referenced in feed alarms.",
+      "concept_kind": "action",
+      "parent_hint": "Action",
+      "source_candidate_ids": [
+        "cand_e_00013"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.88,
+      "justification": "G‑code commands are recurrent, stable, and represent a reusable action type in CNC machine manuals.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4329,
+          "chunk_end_char": 4343,
+          "doc_start_char": 59329,
+          "doc_end_char": 59343,
+          "snippet": "ard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nG84, G88, G188 have been programmed without parameter F which indicates:\nthan the feed, or it"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00013",
+      "label": "ProgramRewindEvent",
+      "normalized_label": "programrewindevent",
+      "description": "An event where a machine program is reversed to a previous state, typically as part of a reset operation.",
+      "concept_kind": "event",
+      "parent_hint": "Process",
+      "source_candidate_ids": [
+        "cand_s_00000"
+      ],
+      "source_triple_ids": [
+        "triple_00001",
+        "triple_00003",
+        "triple_00016"
+      ],
+      "confidence": 0.88,
+      "justification": "The candidate represents a stable, recurrent event pattern that occurs across multiple machine manuals and is not a document‑specific mention. It aligns with the ontology’s treatment of process‑like events.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1047,
+          "chunk_end_char": 1065,
+          "doc_start_char": 1047,
+          "doc_end_char": 1065,
+          "snippet": "text: of the alarm which can be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not per"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00014",
+      "label": "ActiveEmergencyEvent",
+      "normalized_label": "activeemergencyevent",
+      "description": "An alarm event indicating an active emergency condition in a manufacturing system.",
+      "concept_kind": "event",
+      "parent_hint": "AlarmEvent",
+      "source_candidate_ids": [
+        "cand_s_00001"
+      ],
+      "source_triple_ids": [
+        "triple_00000",
+        "triple_00001",
+        "triple_00003"
+      ],
+      "confidence": 0.92,
+      "justification": "The ActiveEmergencyEvent is a recurring alarm type that represents a distinct emergency state in manufacturing facilities, making it a stable, reusable event concept.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1174,
+          "chunk_end_char": 1190,
+          "doc_start_char": 1174,
+          "doc_end_char": 1190,
+          "snippet": "rted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00015",
+      "label": "OpenSideGuardAlarmEvent",
+      "normalized_label": "opensideguardalarmevent",
+      "description": "An alarm event indicating that the side guards of a machine or production line are open, creating a safety hazard for operators and potentially disrupting the production process.",
+      "concept_kind": "event",
+      "parent_hint": "AlarmEvent",
+      "source_candidate_ids": [
+        "cand_s_00002"
+      ],
+      "source_triple_ids": [
+        "triple_00000",
+        "triple_00006",
+        "triple_00007",
+        "triple_00008",
+        "triple_00011",
+        "triple_00014",
+        "triple_00016",
+        "triple_00017"
+      ],
+      "confidence": 0.95,
+      "justification": "The candidate represents a stable, recurrent alarm type that is relevant across multiple documents and contexts, fitting the ontology’s event/state abstraction for alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4172,
+          "chunk_end_char": 4188,
+          "doc_start_char": 4172,
+          "doc_end_char": 4188,
+          "snippet": "e electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00016",
+      "label": "TriggeredEvent",
+      "normalized_label": "triggeredevent",
+      "description": "An event representing the activation or initiation of a component, system, or personnel action, typically triggered by an alarm or control signal.",
+      "concept_kind": "event",
+      "parent_hint": "Event",
+      "source_candidate_ids": [
+        "cand_s_00004"
+      ],
+      "source_triple_ids": [
+        "triple_00012",
+        "triple_00013",
+        "triple_00014",
+        "triple_00015",
+        "triple_00017"
+      ],
+      "confidence": 0.88,
+      "justification": "The term 'triggered' denotes a stable, recurrent activation event that occurs across multiple contexts in industrial maintenance documentation, making it a reusable concept for ontology modeling.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 914,
+          "chunk_end_char": 923,
+          "doc_start_char": 5914,
+          "doc_end_char": 5923,
+          "snippet": "the end of the cycle cause: A thermal switch for the auxiliary motors has been triggered, with low priority. intervention: Check and reset the circuit breakers and/or t"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00017",
+      "label": "NormalOperationEvent",
+      "normalized_label": "normaloperationevent",
+      "description": "The state in which a machine operates as intended, without alarms or faults, representing the desired operational condition.",
+      "concept_kind": "event",
+      "parent_hint": "Observation",
+      "source_candidate_ids": [
+        "cand_s_00005"
+      ],
+      "source_triple_ids": [
+        "triple_00015"
+      ],
+      "confidence": 0.95,
+      "justification": "Normal operation is a recurring, general machine state that is better modeled as an event/state concept rather than a document-specific mention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4620,
+          "chunk_end_char": 4636,
+          "doc_start_char": 9620,
+          "doc_end_char": 9636,
+          "snippet": "shutdown\nThe pressure of the pneumatic installation is not sufficient to\ncause: normal operation of the machine, or the pressure switch\nline is not set correctly.\nCheck the lin"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00018",
+      "label": "PneumaticReleaseEvent",
+      "normalized_label": "pneumaticreleaseevent",
+      "description": "An event that releases pressure in a pneumatic system, typically used to disengage or reset a brake mechanism.",
+      "concept_kind": "event",
+      "parent_hint": "LogisticProcess",
+      "source_candidate_ids": [
+        "cand_s_00006"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "Pneumatic release is a recurring, reusable event in industrial maintenance contexts, especially within brake systems. It is not a one‑off document mention but a stable action that can be modeled as an event or intervention type in the ontology.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2313,
+          "chunk_end_char": 2330,
+          "doc_start_char": 17313,
+          "doc_end_char": 17330,
+          "snippet": "ect: Alarm with immediate and controlled shutdown\nInsufficient air pressure for pneumatic release of\ncause:\nthe X1 axis, the movement of which is prohibited.\nCheck line pressure"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00019",
+      "label": "PositioningState",
+      "normalized_label": "positioningstate",
+      "description": "A machine state event representing the intended or target position of a component, such as a spindle, that the system aims to achieve during operation.",
+      "concept_kind": "event",
+      "parent_hint": "Event",
+      "source_candidate_ids": [
+        "cand_s_00007"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.88,
+      "justification": "PositioningState is a stable, reusable state concept that captures the target position of machine components, fitting the ontology's event/state abstraction for machine states.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3849,
+          "chunk_end_char": 3861,
+          "doc_start_char": 18849,
+          "doc_end_char": 18861,
+          "snippet": "After programming the orientation, the main spindle did not\ncause:\nreaches the set position within the time limit of 1 second.\nCheck any mechanical resistance to the rotat"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00020",
+      "label": "OpenForcepsEvent",
+      "normalized_label": "openforcepsevent",
+      "description": "An alarm indicating that forceps are in an open state, typically triggered by a sensor detecting the open position.",
+      "concept_kind": "event",
+      "parent_hint": "AlarmEvent",
+      "source_candidate_ids": [
+        "cand_s_00008"
+      ],
+      "source_triple_ids": [
+        "triple_00004"
+      ],
+      "confidence": 0.92,
+      "justification": "The candidate represents a recurring alarm type that is semantically stable and reusable across documents, fitting the ontology's event/state abstraction.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4133,
+          "chunk_end_char": 4145,
+          "doc_start_char": 19133,
+          "doc_end_char": 19145,
+          "snippet": "sult the Fanuc 160i-TB maintenance manual\nresponsible for\nAlarm No.: 1040\ntext: OPEN FORCEPS\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00021",
+      "label": "CheckMechanicalResistanceEvent",
+      "normalized_label": "checkmechanicalresistanceevent",
+      "description": "An intervention event where a technician inspects, measures, or verifies the mechanical resistance of a component or system as part of routine maintenance or fault diagnosis.",
+      "concept_kind": "event",
+      "parent_hint": "HumanProcess",
+      "source_candidate_ids": [
+        "cand_s_00009"
+      ],
+      "source_triple_ids": [
+        "triple_00005"
+      ],
+      "confidence": 0.93,
+      "justification": "The candidate represents a reusable intervention pattern that occurs repeatedly in maintenance contexts. It is an event type rather than a specific instance, fitting the ontology's event/state abstraction level.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3897,
+          "chunk_end_char": 3928,
+          "doc_start_char": 18897,
+          "doc_end_char": 18928,
+          "snippet": "ndle did not\ncause:\nreaches the set position within the time limit of 1 second.\nCheck any mechanical resistance to the rotation of the\nintervention: spindle, note the error code on the actuat"
+        }
+      ]
+    }
+  ],
+  "ontology_relation_candidates": [
+    {
+      "relation_id": "ont_rel_00000",
+      "label": "hasCNCAlarm",
+      "normalized_label": "hascncalarm",
+      "description": "Relates a CNC machine (Feature of Interest) to the alarms and messages it generates, representing abnormal operating conditions, faults, or required actions.",
+      "domain_hint": "FeatureOfInterest",
+      "range_hint": "AlarmEvent",
+      "source_candidate_ids": [
+        "cand_r_00001"
+      ],
+      "source_triple_ids": [
+        "triple_00000"
+      ],
+      "confidence": 0.78,
+      "justification": "The relation is semantically stable and reusable across multiple maintenance documents, linking a CNC machine to its generated alarms. It captures a meaningful, non‑isolated relationship that aligns with existing ontology concepts such as FeatureOfInterest and AlarmEvent.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 81,
+          "chunk_end_char": 111,
+          "doc_start_char": 81,
+          "doc_end_char": 111,
+          "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00001",
+      "label": "generatesAlarmMessage",
+      "normalized_label": "generatesalarmmessage",
+      "description": "Relates a PLC interface (resource) to the alarm messages or alerts it generates, indicating abnormal conditions or events within a manufacturing system.",
+      "domain_hint": "Resource",
+      "range_hint": "AlarmEvent",
+      "source_candidate_ids": [
+        "cand_r_00002"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.88,
+      "justification": "The relation captures a common, reusable pattern across industrial maintenance documents: a PLC interface emits alarm messages. It is semantically stable, not duplicating existing properties, and meaningful beyond isolated mentions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 192,
+          "chunk_end_char": 234,
+          "doc_start_char": 192,
+          "doc_end_char": 234,
+          "snippet": "for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detect"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00002",
+      "label": "issuedBy",
+      "normalized_label": "issuedby",
+      "description": "Relates an alarm, result, or sensor to the entity that issues or generates it.",
+      "domain_hint": "Result",
+      "range_hint": "Resource",
+      "source_candidate_ids": [
+        "cand_r_00003"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "The relation is semantically stable, reusable across documents, and aligns with existing ontology properties such as Result issuedBy Resource.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 277,
+          "chunk_end_char": 286,
+          "doc_start_char": 277,
+          "doc_end_char": 286,
+          "snippet": "s and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper fun"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00003",
+      "label": "detectedBy",
+      "normalized_label": "detectedby",
+      "description": "Relates an alarm or abnormal condition event to the monitoring system (e.g., PLC, sensor) that identifies or senses it.",
+      "domain_hint": "AlarmEvent",
+      "range_hint": "MonitoringSystem",
+      "source_candidate_ids": [
+        "cand_r_00005"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "The relation is semantically stable, reusable across documents, and aligns with SSN/SOSA observedBy semantics without duplicating existing ontology properties.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 308,
+          "chunk_end_char": 320,
+          "doc_start_char": 308,
+          "doc_end_char": 320,
+          "snippet": "erface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper functioning of the machine and the\nma"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00004",
+      "label": "triggersReset",
+      "normalized_label": "triggersreset",
+      "description": "Relates an operator action, such as pressing a designated key, to the reset of a program or process.",
+      "domain_hint": "OperatorAction",
+      "range_hint": "LogisticProcess",
+      "source_candidate_ids": [
+        "cand_r_00012"
+      ],
+      "source_triple_ids": [
+        "triple_00001"
+      ],
+      "confidence": 0.92,
+      "justification": "This relation captures a common pattern of operator actions triggering resets, is stable across documents, and is reusable.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00005",
+      "label": "requiresNoPersistingCauses",
+      "normalized_label": "requiresnopersistingcauses",
+      "description": "Relates a manufacturing process to the condition that it can be restarted only when the underlying causes of failure are no longer present.",
+      "domain_hint": "ManufacturingProcess",
+      "range_hint": "Condition",
+      "source_candidate_ids": [
+        "cand_r_00013"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.85,
+      "justification": "This relation captures a general, reusable rule that applies across multiple manufacturing processes, making it semantically stable and meaningful beyond a single document.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1074,
+          "chunk_end_char": 1149,
+          "doc_start_char": 1074,
+          "doc_end_char": 1149,
+          "snippet": "an be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with i"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00006",
+      "label": "punchButtonPress",
+      "normalized_label": "punchbuttonpress",
+      "description": "Relates a human-initiated punch button press to the alarm event it triggers.",
+      "domain_hint": "HumanProcess",
+      "range_hint": "AlarmEvent",
+      "source_candidate_ids": [
+        "cand_r_00015"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.85,
+      "justification": "The relation is semantically stable, reusable across documents, and meaningful beyond a single mention, aligning with the AlarmTrigger context.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1373,
+          "chunk_end_char": 1421,
+          "doc_start_char": 1373,
+          "doc_end_char": 1421,
+          "snippet": "fect: hardware operation to the axis/spindle feeder and CNC in\nemergency\ncause: Indicates that the punch button has been pressed\nRelease the button and press the start button on the\nintervention: machine.\nSee"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00007",
+      "label": "referencesDiagram",
+      "normalized_label": "referencesdiagram",
+      "description": "Relates an alarm or event to a specific page and input within an electrical diagram used for troubleshooting.",
+      "domain_hint": "AlarmEvent",
+      "range_hint": "DiagramPage",
+      "source_candidate_ids": [
+        "cand_r_00017"
+      ],
+      "source_triple_ids": [
+        "triple_00007"
+      ],
+      "confidence": 0.92,
+      "justification": "The relation is semantically stable, reusable across documents, and captures a common pattern of referencing diagram pages in maintenance documentation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1498,
+          "chunk_end_char": 1546,
+          "doc_start_char": 1498,
+          "doc_end_char": 1546,
+          "snippet": "sed\nRelease the button and press the start button on the\nintervention: machine.\nSee page 5 of the electrical diagram, input X8.4\nresponsible for\noperator/maintenance officer\nAlarm No.: 1002\ntext: OFF-CIRCUIT"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00008",
+      "label": "hasResponsibility",
+      "normalized_label": "hasresponsibility",
+      "description": "Relates an alarm or emitted signal to the personnel responsible for handling it.",
+      "domain_hint": "AlarmEvent",
+      "range_hint": "Staff",
+      "source_candidate_ids": [
+        "cand_r_00018"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "The relation is semantically stable, reusable across documents, and captures a meaningful responsibility link between alarms and personnel.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00009",
+      "label": "references",
+      "normalized_label": "references",
+      "description": "Relates a resource such as a document, diagram, or page to a feature of interest or specific reference point within that resource.",
+      "domain_hint": "Resource",
+      "range_hint": "FeatureOfInterest",
+      "source_candidate_ids": [
+        "cand_r_00027"
+      ],
+      "source_triple_ids": [
+        "triple_00010"
+      ],
+      "confidence": 0.92,
+      "justification": "The relation is semantically stable, reusable across documents, and meaningful beyond isolated mentions, aligning with existing ontology concepts of references between resources and features.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2355,
+          "chunk_end_char": 2404,
+          "doc_start_char": 2355,
+          "doc_end_char": 2404,
+          "snippet": "door is open.\nCheck that the door is in an acceptable condition.\nintervention:\nSee page 19 of the electrical diagram, input X3.3\nresponsible for\noperator/maintenance officer\n\nAlarm n°: 1001 text: EMERGENCY AC"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4450,
+          "chunk_end_char": 4498,
+          "doc_start_char": 4450,
+          "doc_end_char": 4498,
+          "snippet": "en.\nCheck that the side protections are closed, check for any possible rusting.\nSee page 7 of the electrical diagram, input X2.5\nresponsible for\noperator/maintenance officer\nAlarm No.: 1008\ntext: THERMOMAGNET"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4848,
+          "chunk_end_char": 4896,
+          "doc_start_char": 4848,
+          "doc_end_char": 4896,
+          "snippet": "Check and reset circuit breakers and/or thermomagnetic switches.\nintervention:\nSee page 7 of the electrical diagram, input X2.4\n(0 = ALARM, 1 = OK)\nresponsible for\n\nAlarm n°: 1004 text: SLIDING DOOR UNLOCKED"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00010",
+      "label": "triggersShutdownAtCycleEnd",
+      "normalized_label": "triggersshutdownatcycleend",
+      "description": "Relates an alarm event to a shutdown event that is initiated at the conclusion of a production cycle.",
+      "domain_hint": "AlarmEvent",
+      "range_hint": "ShutdownEvent",
+      "source_candidate_ids": [
+        "cand_r_00039"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.88,
+      "justification": "The relation captures a stable, reusable pattern of alarms that trigger shutdowns at cycle completion, occurring across multiple documents and contexts.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4641,
+          "chunk_end_char": 4684,
+          "doc_start_char": 4641,
+          "doc_end_char": 4684,
+          "snippet": "ext: THERMOMAGNET SWITCHES. END OF CYCLE STOP\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA thermal switch on the motors was triggered\ncause:\nauxiliaries, with low prior"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00011",
+      "label": "immediateAndControlledShutdown",
+      "normalized_label": "immediateandcontrolledshutdown",
+      "description": "Relates an alarm to a machine or system that triggers an immediate and controlled shutdown.",
+      "domain_hint": "AlarmEvent",
+      "range_hint": "Machine",
+      "source_candidate_ids": [
+        "cand_r_00042"
+      ],
+      "source_triple_ids": [
+        "triple_00017"
+      ],
+      "confidence": 0.9,
+      "justification": "This relation is semantically stable, reusable across documents, and captures a meaningful interaction between alarms and machine shutdowns.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1228,
+          "chunk_end_char": 1261,
+          "doc_start_char": 1228,
+          "doc_end_char": 1261,
+          "snippet": "t.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening of the authorizationeffect: hardware operation to the axis/spindle fee"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00012",
+      "label": "causes",
+      "normalized_label": "causes",
+      "description": "Relates a source event or entity (e.g., an alarm, sensor reading, or failure) to the resulting effect or disabling of machine components.",
+      "domain_hint": "AlarmEvent",
+      "range_hint": "MachineComponent",
+      "source_candidate_ids": [
+        "cand_r_00043"
+      ],
+      "source_triple_ids": [
+        "triple_00003"
+      ],
+      "confidence": 0.92,
+      "justification": "The relation is semantically stable, widely reusable across documents, and captures a causal link beyond isolated mentions. It aligns with the existing 'has cause' property in the seed ontology.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    }
+  ]
+}

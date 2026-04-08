@@ -1,0 +1,126 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 5,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00009",
+      "relation_label": "spindle rotation function with clamp open",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "program function",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00000",
+      "target_candidate_label": "CLAMP OPEN",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text states that the spindle rotation function with clamp open (M33) has not been programmed, indicating that the function is associated with the clamp being open. This implies a relation where the function requires the clamp open state.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 2983,
+          "chunk_end_char": 3024,
+          "doc_start_char": 22983,
+          "doc_end_char": 23024,
+          "snippet": "ere are no conditions for opening the clamp, for example spindle stopped or the spindle rotation function with clamp open has not been programmed (M33) intervention: Make sure that the spindle is stopp"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00015",
+      "relation_label": "cooling fluid",
+      "source_candidate_id": "cand_e_00005",
+      "source_candidate_label": "flow control device",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_r_00015",
+      "target_candidate_label": "cooling fluid",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk states that the flow control device does not signal the presence of coolant liquid, indicating that the cooling fluid is detected by the flow control device.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ot reached the defined position within the time limit of 1 second. intervention: Check any mechanical resistance to the rotation of the spindle, note the error code on the actuation identified with the acronym A2721 and consult the Fanuc 160i-TB maintenance manual responsible for the intervention: r"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00019",
+      "relation_label": "spindle rotation function",
+      "source_candidate_id": "cand_r_00019",
+      "source_candidate_label": "spindle rotation function",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_e_00000",
+      "target_candidate_label": "program function",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0004",
+      "justification": "The text states that the spindle rotation function requires the program function M33 to be present in the program.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 1728,
+          "chunk_end_char": 1753,
+          "doc_start_char": 21728,
+          "doc_end_char": 21753,
+          "snippet": "no conditions for opening the clamp, for example\ncause: spindle stopped or the spindle rotation function with\nclamp open has not been programmed (M33)\nMake sure that the spindle is sto"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00003",
+      "relation_candidate_id": "cand_r_00031",
+      "relation_label": "intervention:",
+      "source_candidate_id": "cand_s_00000",
+      "source_candidate_label": "CLAMP OPEN",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "intervention action",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text explicitly links the alarm event \"CLAMP OPEN\" to the intervention action \"Exit automatic mode and close the clamp\" with the phrase \"intervention:\". This indicates a causal relationship where the alarm triggers the intervention.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 67,
+          "chunk_end_char": 80,
+          "doc_start_char": 20067,
+          "doc_end_char": 20080,
+          "snippet": "ot reached the defined position within the time limit of 1 second. intervention: Check any mechanical resistance to the rotation of the spindle, note the error"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00004",
+      "relation_candidate_id": "cand_r_00033",
+      "relation_label": "temporal relation",
+      "source_candidate_id": "cand_s_00000",
+      "source_candidate_label": "CLAMP OPEN",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "intervention action",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0004",
+      "justification": "The alarm text indicates that the CLAMP OPEN event triggers the subsequent intervention action, establishing a temporal ordering.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 763,
+          "chunk_end_char": 797,
+          "doc_start_char": 20763,
+          "doc_end_char": 20797,
+          "snippet": "pe: Standard: Optional: effect: Alarm with immediate and controlled stop cause: When the opening command was given, the clamp did not open within the time limit of 5 seconds. intervention: Check"
+        }
+      ]
+    }
+  ]
+}

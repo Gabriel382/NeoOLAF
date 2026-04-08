@@ -1,0 +1,126 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 2,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "Alarm with immediate and controlled shutdown",
+        "label": "alarm event/state"
+      },
+      "aliases": [
+        "Shutdown alarm",
+        "Emergency shutdown alarm"
+      ],
+      "synonyms": [
+        "Alarm-triggered shutdown",
+        "Alarm causing immediate and controlled shutdown"
+      ],
+      "lexical_variants": [
+        "Alarm that triggers immediate and controlled shutdown",
+        "Alarm causing immediate and controlled shutdown",
+        "Alarm with immediate and controlled shutdown"
+      ],
+      "alias_sources": {
+        "Shutdown alarm": [
+          "llm"
+        ],
+        "Emergency shutdown alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Alarm-triggered shutdown": [
+          "llm"
+        ],
+        "Alarm causing immediate and controlled shutdown": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm that triggers immediate and controlled shutdown": [
+          "llm"
+        ],
+        "Alarm causing immediate and controlled shutdown": [
+          "llm"
+        ],
+        "Alarm with immediate and controlled shutdown": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm event that initiates both an immediate shutdown and a controlled shutdown of a machine or system, typically used to prevent damage or ensure safety.",
+      "ontology_hints": [
+        "TRIGGERS immediate shutdown",
+        "TRIGGERS controlled shutdown",
+        "REQUIRES shutdown procedure",
+        "HANDLED_BY operator",
+        "REFERENCES manual section (e.g., §4.2.3)",
+        "Situation S1 (shutdown situation)",
+        "Situation S2 (controlled shutdown situation)"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Shutdown alarm\", \"Emergency shutdown alarm\"], \"synonyms\": [\"Alarm-triggered shutdown\", \"Alarm causing immediate and controlled shutdown\"], \"lexical_variants\": [\"Alarm that triggers immediate and controlled shutdown\", \"Alarm causing immediate and controlled shutdown\", \"Alarm with immediate and controlled shutdown\"], \"definition\": \"An alarm event that initiates both an immediate shutdown and a controlled shutdown of a machine or system, typically used to prevent damage or ensure safety.\", \"ontology_hints\": [\"TRIGGERS immediate shutdown\", \"TRIGGERS controlled shutdown\", \"REQUIRES shutdown procedure\", \"HANDLED_BY operator\", \"REFERENCES manual section (e.g., §4.2.3)\", \"Situation S1 (shutdown situation)\", \"Situation S2 (controlled shutdown situation)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "opening of the authorizationeffect",
+        "label": "event"
+      },
+      "aliases": [
+        "authorization effect opening",
+        "opening of the authorization effect"
+      ],
+      "synonyms": [
+        "activation of the authorization effect",
+        "initiation of the authorization effect"
+      ],
+      "lexical_variants": [
+        "opening of the authorization effect",
+        "opening authorization effect"
+      ],
+      "alias_sources": {
+        "authorization effect opening": [
+          "llm"
+        ],
+        "opening of the authorization effect": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "activation of the authorization effect": [
+          "llm"
+        ],
+        "initiation of the authorization effect": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "opening of the authorization effect": [
+          "llm"
+        ],
+        "opening authorization effect": [
+          "llm"
+        ]
+      },
+      "definition": "The act of initiating or enabling the authorization effect within a system, typically by a control action that causes the effect to become active.",
+      "ontology_hints": [
+        "Event",
+        "AuthorizationEffect",
+        "ActivationEvent"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"authorization effect opening\", \"opening of the authorization effect\"], \"synonyms\": [\"activation of the authorization effect\", \"initiation of the authorization effect\"], \"lexical_variants\": [\"opening of the authorization effect\", \"opening authorization effect\"], \"definition\": \"The act of initiating or enabling the authorization effect within a system, typically by a control action that causes the effect to become active.\", \"ontology_hints\": [\"Event\", \"AuthorizationEffect\", \"ActivationEvent\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}
