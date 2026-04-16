@@ -1,0 +1,336 @@
+{
+  "entities": [
+    {
+      "id": "E1",
+      "label": "Alarm 1001",
+      "type": "Alarm"
+    },
+    {
+      "id": "E2",
+      "label": "Punch button pressed",
+      "type": "Cause"
+    },
+    {
+      "id": "E3",
+      "label": "Release button and press start button",
+      "type": "Intervention"
+    },
+    {
+      "id": "E4",
+      "label": "operator/maintenance officer",
+      "type": "Actor"
+    },
+    {
+      "id": "E5",
+      "label": "Alarm 1002",
+      "type": "Alarm"
+    },
+    {
+      "id": "E6",
+      "label": "Power circuits not activated",
+      "type": "Cause"
+    },
+    {
+      "id": "E7",
+      "label": "Press machine start button",
+      "type": "Intervention"
+    },
+    {
+      "id": "E8",
+      "label": "Alarm 1003",
+      "type": "Alarm"
+    },
+    {
+      "id": "E9",
+      "label": "Sliding door open at start",
+      "type": "Cause"
+    },
+    {
+      "id": "E10",
+      "label": "Check door condition",
+      "type": "Intervention"
+    },
+    {
+      "id": "E11",
+      "label": "Alarm 1004",
+      "type": "Alarm"
+    },
+    {
+      "id": "E12",
+      "label": "Door not in working condition",
+      "type": "Cause"
+    },
+    {
+      "id": "E13",
+      "label": "Release door release button before ordering start",
+      "type": "Intervention"
+    },
+    {
+      "id": "E14",
+      "label": "Alarm 1005",
+      "type": "Alarm"
+    },
+    {
+      "id": "E15",
+      "label": "Side protections open",
+      "type": "Cause"
+    },
+    {
+      "id": "E16",
+      "label": "Check side protections closed",
+      "type": "Intervention"
+    },
+    {
+      "id": "E17",
+      "label": "Alarm 1008",
+      "type": "Alarm"
+    },
+    {
+      "id": "E18",
+      "label": "Thermal switch triggered",
+      "type": "Cause"
+    },
+    {
+      "id": "E19",
+      "label": "Check and reset circuit breakers",
+      "type": "Intervention"
+    },
+    {
+      "id": "E20",
+      "label": "Alarm 1009",
+      "type": "Alarm"
+    },
+    {
+      "id": "E21",
+      "label": "Alarm 1011",
+      "type": "Alarm"
+    },
+    {
+      "id": "E22",
+      "label": "Insufficient coolant",
+      "type": "Cause"
+    },
+    {
+      "id": "E23",
+      "label": "Check liquid level",
+      "type": "Intervention"
+    },
+    {
+      "id": "E24",
+      "label": "Alarm 1012",
+      "type": "Alarm"
+    },
+    {
+      "id": "E25",
+      "label": "Refrigerator cannot lower temperature",
+      "type": "Cause"
+    },
+    {
+      "id": "E26",
+      "label": "Check compressor",
+      "type": "Intervention"
+    },
+    {
+      "id": "E27",
+      "label": "Alarm 1013",
+      "type": "Alarm"
+    },
+    {
+      "id": "E28",
+      "label": "Hardware problems with axes/spindles",
+      "type": "Cause"
+    },
+    {
+      "id": "E29",
+      "label": "Consult manual",
+      "type": "Intervention"
+    },
+    {
+      "id": "E30",
+      "label": "operator",
+      "type": "Actor"
+    }
+  ],
+  "relations": [
+    {
+      "head": "Alarm 1001",
+      "relation": "CAUSES",
+      "tail": "Punch button pressed",
+      "evidence": "Indicates that the punch button has been pressed"
+    },
+    {
+      "head": "Alarm 1001",
+      "relation": "HANDLED_BY",
+      "tail": "operator/maintenance officer",
+      "evidence": "operator/maintenance officer"
+    },
+    {
+      "head": "Alarm 1001",
+      "relation": "REQUIRES",
+      "tail": "Release button and press start button",
+      "evidence": "Release the button and press the start button on the machine."
+    },
+    {
+      "head": "Alarm 1002",
+      "relation": "CAUSES",
+      "tail": "Power circuits not activated",
+      "evidence": "Indicates that the power circuits have not been activated, in this condition the machine cannot operate in any way."
+    },
+    {
+      "head": "Alarm 1002",
+      "relation": "HANDLED_BY",
+      "tail": "operator/maintenance officer",
+      "evidence": "operator/maintenance officer"
+    },
+    {
+      "head": "Alarm 1002",
+      "relation": "REQUIRES",
+      "tail": "Press machine start button",
+      "evidence": "Press the machine start button."
+    },
+    {
+      "head": "Alarm 1003",
+      "relation": "CAUSES",
+      "tail": "Sliding door open at start",
+      "evidence": "At the start of the cycle the sliding door is open."
+    },
+    {
+      "head": "Alarm 1003",
+      "relation": "HANDLED_BY",
+      "tail": "operator/maintenance officer",
+      "evidence": "operator/maintenance officer"
+    },
+    {
+      "head": "Alarm 1003",
+      "relation": "REQUIRES",
+      "tail": "Check door condition",
+      "evidence": "Check that the door is in an acceptable condition."
+    },
+    {
+      "head": "Alarm 1004",
+      "relation": "CAUSES",
+      "tail": "Door not in working condition",
+      "evidence": "At the start of the cycle the sliding door is not in working condition."
+    },
+    {
+      "head": "Alarm 1004",
+      "relation": "HANDLED_BY",
+      "tail": "operator",
+      "evidence": "operator"
+    },
+    {
+      "head": "Alarm 1004",
+      "relation": "REQUIRES",
+      "tail": "Release door release button before ordering start",
+      "evidence": "Release the door release button before ordering the start of the cycle."
+    },
+    {
+      "head": "Alarm 1005",
+      "relation": "CAUSES",
+      "tail": "Side protections open",
+      "evidence": "The side protections are open."
+    },
+    {
+      "head": "Alarm 1005",
+      "relation": "HANDLED_BY",
+      "tail": "operator/maintenance officer",
+      "evidence": "operator/maintenance officer"
+    },
+    {
+      "head": "Alarm 1005",
+      "relation": "REQUIRES",
+      "tail": "Check side protections closed",
+      "evidence": "Check that the side protections are closed, check for any possible rusting."
+    },
+    {
+      "head": "Alarm 1008",
+      "relation": "CAUSES",
+      "tail": "Thermal switch triggered",
+      "evidence": "A thermal switch on the motors was triggered."
+    },
+    {
+      "head": "Alarm 1008",
+      "relation": "HANDLED_BY",
+      "tail": "operator/maintenance officer",
+      "evidence": "operator/maintenance officer"
+    },
+    {
+      "head": "Alarm 1008",
+      "relation": "REQUIRES",
+      "tail": "Check and reset circuit breakers",
+      "evidence": "Check and reset circuit breakers and/or thermomagnetic switches."
+    },
+    {
+      "head": "Alarm 1009",
+      "relation": "CAUSES",
+      "tail": "Thermal switch triggered",
+      "evidence": "A thermal switch on the motors was triggered."
+    },
+    {
+      "head": "Alarm 1009",
+      "relation": "HANDLED_BY",
+      "tail": "operator/maintenance officer",
+      "evidence": "operator/maintenance officer"
+    },
+    {
+      "head": "Alarm 1009",
+      "relation": "REQUIRES",
+      "tail": "Check and reset circuit breakers",
+      "evidence": "Check and reset circuit breakers and/or thermomagnetic switches."
+    },
+    {
+      "head": "Alarm 1011",
+      "relation": "CAUSES",
+      "tail": "Insufficient coolant",
+      "evidence": "Insufficient quantity of coolant in the water circuit: wise of the linear motor."
+    },
+    {
+      "head": "Alarm 1011",
+      "relation": "HANDLED_BY",
+      "tail": "operator/maintenance officer",
+      "evidence": "operator/maintenance officer"
+    },
+    {
+      "head": "Alarm 1011",
+      "relation": "REQUIRES",
+      "tail": "Check liquid level",
+      "evidence": "Check the liquid level in the watering circuit."
+    },
+    {
+      "head": "Alarm 1012",
+      "relation": "CAUSES",
+      "tail": "Refrigerator cannot lower temperature",
+      "evidence": "The refrigerator cannot lower the engine temperature linear."
+    },
+    {
+      "head": "Alarm 1012",
+      "relation": "HANDLED_BY",
+      "tail": "operator/maintenance officer",
+      "evidence": "operator/maintenance officer"
+    },
+    {
+      "head": "Alarm 1012",
+      "relation": "REQUIRES",
+      "tail": "Check compressor",
+      "evidence": "Check the correct operation of the refrigerator compressor."
+    },
+    {
+      "head": "Alarm 1013",
+      "relation": "CAUSES",
+      "tail": "Hardware problems with axes/spindles",
+      "evidence": "Hardware problems with axes and spindles."
+    },
+    {
+      "head": "Alarm 1013",
+      "relation": "HANDLED_BY",
+      "tail": "operator/maintenance officer",
+      "evidence": "operator/maintenance officer"
+    },
+    {
+      "head": "Alarm 1013",
+      "relation": "REQUIRES",
+      "tail": "Consult manual",
+      "evidence": "Note the power supply error code marked A2831 and consult the Fanuc 160i-TB CNC service manual for more information."
+    }
+  ]
+}

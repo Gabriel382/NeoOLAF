@@ -1,0 +1,1330 @@
+You are an information extraction system for industrial knowledge graph construction.
+
+Your task:
+Given an industrial document, produce a JSON object describing a knowledge graph extraction in a SINGLE PASS.
+Do not perform retrieval, no multi-step reasoning, and no ontology evolution. Just extract a final KG proposal.
+
+Return ONLY valid JSON. No markdown fences. No explanations before or after JSON.
+
+Expected JSON format:
+{
+  "entities": [
+    {
+      "id": "E1",
+      "label": "entity label",
+      "type": "entity type or best guess"
+    }
+  ],
+  "relations": [
+    {
+      "head": "entity label exactly as written in entities",
+      "relation": "TRIGGERS|CAUSES|REQUIRES|HANDLED_BY|REFERENCES",
+      "tail": "entity label exactly as written in entities",
+      "evidence": "short supporting text span from the document"
+    }
+  ]
+}
+
+Rules:
+- Use only these relation labels exactly:
+  - TRIGGERS
+  - CAUSES
+  - REQUIRES
+  - HANDLED_BY
+  - REFERENCES
+- Prefer concrete alarm, cause, intervention, responsible actor, or referenced artifact entities.
+- Keep entity labels concise but faithful to the document.
+- Each relation must use head/tail labels that appear in "entities".
+- "evidence" must be copied or closely grounded in the document.
+- If unsure, omit rather than hallucinate.
+- Output must be strict JSON parseable by json.loads.
+
+
+SEED ONTOLOGY (optional guidance only):
+--------------------
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#"
+     xml:base="http://semanticweb.org/STEaMINg/ContextOntology-COInd4"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:sosa="http://www.w3.org/ns/sosa/"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:time="http://www.w3.org/2006/time#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:ContextOntology-COInd4="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#">
+    <owl:Ontology rdf:about="http://semanticweb.org/STEaMINg/ContextOntology-COInd4">
+        <rdfs:comment xml:lang="en">Ontology describing contextual situations in industrial environments, integrating sensor observations (SOSA/SSN), spatial context (GeoSPARQL), and temporal relations (OWL-Time).</rdfs:comment>
+        <rdfs:label xml:lang="en">COInd Context Ontology for Industrial Situations</rdfs:label>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#gmlLiteral -->
+
+    <rdfs:Datatype rdf:about="http://www.opengis.net/ont/geosparql#gmlLiteral"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#wktLiteral -->
+
+    <rdfs:Datatype rdf:about="http://www.opengis.net/ont/geosparql#wktLiteral"/>
+    
+
+
+    <!-- https://www.w3.org/TR/xmlschema11-2/#dateTimeStamp -->
+
+    <rdfs:Datatype rdf:about="https://www.w3.org/TR/xmlschema11-2/#dateTimeStamp"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://semanticweb.org/STEaMINg/ContextOntology-COInd4#associatedConstraint -->
+
+    <owl:ObjectProperty rdf:about="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#associatedConstraint">
+        <rdfs:domain rdf:resource="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation"/>
+        <rdfs:range rdf:resource="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Constraint"/>
+        <rdfs:comment xml:lang="en">Relates a process, resource, or situation to a constraint that defines acceptable operational conditions.</rdfs:comment>
+        <rdfs:label xml:lang="en">associated constraint</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://semanticweb.org/STEaMINg/ContextOntology-COInd4#concernBy -->
+
+    <owl:ObjectProperty rdf:about="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#concernBy">
+        <rdfs:domain rdf:resource="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource"/>
+        <rdfs:range rdf:resource="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation"/>
+        <rdfs:comment xml:lang="en">Relates a situation or event to an entity, such as a machine, process, or product, that it concerns.</rdfs:comment>
+        <rdfs:label xml:lang="en">concerned by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://semanticweb.org/STEaMINg/ContextOntology-COInd4#definedOn -->
+
+    <owl:ObjectProperty rdf:about="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#definedOn">
+        <owl:inverseOf rdf:resource="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#definedOn_1"/>
+        <rdfs:domain rdf:resource="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Constraint"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/sosa/ObservableProperty"/>
+        <rdfs:comment xml:lang="en">Relates a situation or property to the entity or context element on which it is defined.</rdfs:comment>
+        <rdfs:label xml:lang="en">defined on</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://semanticweb.org/STEaMINg/ContextOntology-COInd4#definedOn_1 -->
+
+    <owl:ObjectProperty rdf:about="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#definedOn_1">
+        <rdfs:comment xml:lang="en">Relates an entity or context element to the situation or property for which it is defined.</rdfs:comment>
+        <rdfs:label xml:lang="en">is defined for</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasCause -->
+
+    <owl:ObjectProperty rdf:about="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasCause">
+        <rdfs:domain rdf:resource="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation"/>
+        <rdfs:range rdf:resource="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause"/>
+        <rdfs:comment xml:lang="en">Relates a situation to the cause responsible for triggering or explaining it.</rdfs:comment>
+        <rdfs:label xml:lang="en">has cause</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasDuration -->
+
+    <owl:ObjectProperty rdf:about="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasDuration">
+        <rdfs:domain rdf:resource="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:comment xml:lang="en">Relates an event, process, or situation to the temporal interval during which it occurs.</rdfs:comment>
+        <rdfs:label xml:lang="en">has duration</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasObservableProperty -->
+
+    <owl:ObjectProperty rdf:about="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasObservableProperty">
+        <rdfs:domain rdf:resource="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/sosa/ObservableProperty"/>
+        <rdfs:comment xml:lang="en">Relates an entity in the manufacturing system to a property that can be observed by sensors.</rdfs:comment>
+        <rdfs:label xml:lang="en">has observable property</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasObservation -->
+
+    <owl:ObjectProperty rdf:about="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasObservation">
+        <rdfs:domain rdf:resource="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:comment xml:lang="en">Relates a situation to an observation associated with it.</rdfs:comment>
+        <rdfs:label xml:lang="en">has observation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasTime -->
+
+    <owl:ObjectProperty rdf:about="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasTime">
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+        <rdfs:comment xml:lang="en">Relates an observation to the temporal entity that represents when it occurred.</rdfs:comment>
+        <rdfs:label xml:lang="en">has time</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://semanticweb.org/STEaMINg/ContextOntology-COInd4#isInSituation -->
+
+    <owl:ObjectProperty rdf:about="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#isInSituation">
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:range rdf:resource="http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation"/>
+        <rdfs:comment xml:lang="en">Relates an observation to the situation with which it is associated.</rdfs:comment>
+        <rdfs:lab
+...
+[TRUNCATED]
+--------------------
+
+
+DOCUMENT:
+--------------------
+8.1 Introduction
+Alarms and messages are divided into two main categories:
+1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........
+2 alarms and messages from the PLC interface, described below.
+The messages and alarms issued by the PLC indicate the detection of a
+problem which may compromise the proper functioning of the machine and the
+machining cycle. Depending on the effect they produce, they are classified into:
+• alarms with immediate and controlled stop: the machine is stopped and the
+axes and spindles blocked at maximum torque in controlled mode;
+• alarms and messages with stop at end of cycle: the machine is stopped
+when launching function M01;
+• read-only messages: these are used to draw the operator's attention to a particular circumstance without changing the operating status of the machine.
+By pressing the “MESSAGE” key, you access the screen page where you can
+can see the number and text: of the alarm which can be recognized with the key
+“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.
+
+Alarm No.: 1001
+text: ACTIVE EMERGENCY
+type: Standard: Optional:
+Alarm with immediate and controlled shutdown, opening of the authorizationeffect: hardware operation to the axis/spindle feeder and CNC in
+emergency
+cause: Indicates that the punch button has been pressed
+Release the button and press the start button on the
+intervention: machine.
+See page 5 of the electrical diagram, input X8.4
+responsible for
+operator/maintenance officer
+Alarm No.: 1002
+text: OFF-CIRCUIT MACHINE
+type: Standard: Optional:
+Alarm with immediate and controlled shutdown, opening of authorization
+effect:
+hardware to the axis/spindle power supply
+Indicates that the power circuits have not been activated, in
+cause:
+This condition the machine cannot operate in any way.
+Press the machine start button.
+intervention:
+See page 5 of the electrical diagram, input X2.0
+responsible for
+operator/maintenance officer
+Alarm No.: 1003
+text: SLIDING DOOR OPEN
+type: Standard: Optional:
+Alarm with immediate and controlled shutdown, opening of authorization
+effect:
+hardware to the axis/spindle power supply
+cause: At the start of the cycle the sliding door is open.
+Check that the door is in an acceptable condition.
+intervention:
+See page 19 of the electrical diagram, input X3.3
+responsible for
+operator/maintenance officer
+
+Alarm n°: 1001 text: EMERGENCY ACTIVE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown, opening of the hardware authorization to the axis/spindle feeder and CNC in emergency cause: Signals that the punch button has been pressed intervention: Release the button and press the machine start button. See page 5 of the electrical diagram, entry X8.4 responsible for the intervention: operator/maintenance person
+
+Alarm n°: 1002 text: MACHINE OUT OF CIRCUIT type: Standard: Optional: effect: Alarm with immediate and controlled stop, opening of the hardware authorization to the axis/spindle power supply cause: Indicates that the power circuits have not been activated, in this condition the machine cannot operate in any way. intervention: Press the machine start button. See page 5 of the electrical diagram, entry X2.0 responsible for the intervention: operator/maintenance person
+
+Alarm n°: 1003 text: SLIDING DOOR OPEN type: Standard: Optional: effect: Alarm with immediate and controlled stop, opening of the hardware authorization to the axis/spindle feeder cause: At the start of the cycle the sliding door is open. intervention: Check that the door is in an accepted condition. See page 19 of the electrical diagram, entry X3.3 responsible for the intervention: operator/maintenance person
+
+Alarm No.: 1004
+text: SLIDING DOOR UNLOCKED
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+At the start of the cycle the sliding door is not in working condition.
+cause:
+security.
+Release the door release button before ordering
+intervention: the start of the cycle.
+See page 19 of the electrical diagram, input X3.2
+responsible for
+operator
+Alarm No.: 1005
+text: OPEN SIDE GUARDS
+type: Standard: Optional:
+Alarm with immediate and controlled shutdown, opening of authorization
+effect:
+hardware to the axis/spindle power supply
+cause: The side protections are open.
+Check that the side protections are closed, check for any possible rusting.
+See page 7 of the electrical diagram, input X2.5
+responsible for
+operator/maintenance officer
+Alarm No.: 1008
+text: THERMOMAGNET SWITCHES. END OF CYCLE STOP
+type: Standard: Optional:
+effect: Alarm with shutdown at the end of the cycle
+A thermal switch on the motors was triggered
+cause:
+auxiliaries, with low priority.
+Check and reset circuit breakers and/or thermomagnetic switches.
+intervention:
+See page 7 of the electrical diagram, input X2.4
+(0 = ALARM, 1 = OK)
+responsible for
+
+Alarm n°: 1004 text: SLIDING DOOR UNLOCKED type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. intervention: Release the door release button before ordering the start of the cycle. See page 19 of the electrical diagram, entry X3.2 responsible for the intervention: operator
+
+Alarm n°: 1005 text: SIDE PROTECTIONS OPEN type: Standard: Optional: effect: Alarm with immediate and controlled stop, opening of the hardware authorization to the axis/spindle feeder cause: The side protections are open. intervention: Check that the side protections are closed, check the locks. See page 7 of the electrical diagram, entry X2.5 responsible for the intervention: operator/maintenance person
+
+Alarm no.: 1008 text: THERMOMAGNET SWITCHES. END OF CYCLE STOP type: Standard: Optional: effect: Alarm with stop at the end of the cycle cause: A thermal switch for the auxiliary motors has been triggered, with low priority. intervention: Check and reset the circuit breakers and/or thermomagnetic switches. See page 7 of the electrical diagram, input X2.4 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenance
+
+Alarm No.: 1009
+text: THERMOMAGNETIC SWITCHES IMMEDIATE STOP
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+A thermal switch on the motors was triggered
+cause:
+auxiliaries, with high priority.
+Check and reset circuit breakers and/or thermomagnetic switches.
+intervention:
+See page 7 of the electrical diagram, input X2.3
+(0 = ALARM, 1 = OK)
+responsible for
+Alarm No.: 1011
+text: LOW WATERING LIQUID FLOW
+type: Standard: Optional:
+effect: Alarm with shutdown at the end of the cycle.
+Insufficient quantity of coolant in the water circuit:
+wise of the linear motor.
+Check the liquid level in the watering circuit.
+intervention: Check the PLC X4.6 input on page 84 of the electrical diagram and
+the indication on the refrigerator display.
+responsible for
+Alarm No.: 1012
+text: HIGH WATERING FLUID TEMPERATURE
+type: Standard: Optional:
+effect: Alarm with shutdown at the end of the cycle.
+The refrigerator cannot lower the engine temperature
+cause:
+linear.
+Check the correct operation of the refrigerator compressor.
+intervention: Check the PLC X4.7 input on page 84 of the electrical diagram and
+the indication on the refrigerator display.
+responsible for
+
+Alarm n°: 1009 text: THERMOMAGNETIC SWITCHES IMMEDIATE STOP type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: A thermal switch of the auxiliary motors has been triggered, with high priority. intervention: Check and reset the circuit breakers and/or thermomagnetic switches. See page 7 of the electrical diagram, input X2.3 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenance
+
+Alarm n°: 1011 text: LOW WATERING LIQUID FLOW type: Standard: Optional: effect: Alarm with shutdown at the end of the cycle. cause: Insufficient quantity of coolant in the linear motor coolant circuit. intervention: Check the liquid level in the watering circuit. Check the PLC X4.6 input on page 84 of the electrical diagram and the indication on the refrigerator display. responsible for intervention: responsible for maintenance
+
+Alarm n°: 1012 text: HIGH WATERING LIQUID TEMPERATURE type: Standard: Optional: effect: Alarm with shutdown at the end of the cycle. cause: The refrigerator cannot lower the temperature of the linear motor. intervention: Check the correct operation of the refrigerator compressor. Check the PLC X4.7 input on page 84 of the electrical diagram and the indication on the refrigerator display. responsible for intervention: responsible for maintenance
+
+alarm no: 1013
+text: PSM FEEDER FAULT
+type: Standard: Optional:
+Alarm with immediate and controlled shutdown, deactivation of authorizationeffect:
+hardware installation of the axes/spindles feeder
+cause: Hardware problems with axes and spindles.
+Note the power supply error code marked A2831 and consult
+intervention: the Fanuc 160i-TB CNC service manual for more information
+responsible for
+Alarm No.: 1017
+text: CABINET OVERHEATING
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+The thermostat is not set correctly, the fan or the cause:
+editor does not work, the electrical cabinet is too hot.
+Check the thermostat, fan or conditioner.
+intervention: See page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1
+=OK)
+responsible for
+Alarm No.: 1018
+text: LOW PRESSURE
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+The pressure of the pneumatic installation is not sufficient to
+cause: normal operation of the machine, or the pressure switch
+line is not set correctly.
+Check the line pressure and pressure switch setting.
+intervention: See page 65 of the electrical diagram, input X3.5
+(0 = ALARM, 1 = OK)
+responsible for
+
+alarm n°: 1013 text: PSM FEEDER FAILURE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown, deactivation of the hardware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for the maintenance
+
+Alarm n°: 1017 text: CABINET OVERHEATING type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot. intervention: Check the thermostat, fan or conditioner. See page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenance
+
+Alarm n°: 1018 text: LOW PRESSURE type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The pressure of the pneumatic installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adjusted correctly. intervention: Check the line pressure and the pressure switch setting. See page 65 of the electrical diagram, input X3.5 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenance
+
+Alarm number: 1020
+text: PROGRAMMING ERROR
+type: Standard: Optional:
+effect: Alarm with immediate arrest and control
+An attempt was made to execute a program block containing a function M in one of the following situations which are not permitted:
+• spindle removal when the bypass function is activated;
+• spindle orientation when the rigid tapping function or
+pin synchronization is enabled;
+• spindle bypass mode when rigid tapping function or spindle synchronization is enabled;
+cause:
+• spindle rotation when the rigid tapping function is
+activated;
+• Spindle synchronization when tapping function
+rigid or pin orientation is enabled;
+• rigid tapping when the spindle synchronization function is activated;
+• activation of bypass mode from a different channel
+of that of which the pin belongs.
+Modify the program in order to prevent any erroneous situation:
+born.
+responsible for
+programmer
+Alarm number: 1021
+text: MANDATORY “S” CODE
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+We tried to execute a program block containing the function: spindle rotation M (M3, M4, M73, M74, M203, M204, M273,
+M274) without having designated the “S” argument of the speed.
+intervention: Correct the program so as to insert the argument “S”
+responsible for
+programmer
+
+Alarm n°: 1020 text: PROGRAMMING ERROR type: Standard: Optional: effect: Alarm con arresto immediato e controllato cause: An attempt was made to execute a program block containing a function M in one of the following situations which are not allowed: • removal of the pin when the bypass function is activated; • spindle orientation when the rigid tapping function or spindle synchronization is activated; • spindle bypass mode when rigid tapping function or spindle synchronization is activated; • spindle rotation when the rigid tapping function is activated; • spindle synchronization when the rigid tapping function or spindle orientation is activated; • rigid tapping when the spindle synchronization function is activated; • activation of bypass mode from a channel different from that to which the pin belongs. intervention: Modify the program in order to prevent any error situation. responsible for the intervention: programmer
+
+Alarm n°: 1021 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the spindle rotation function M (M3, M4, M73, M74, M203, M204, M273, M274) without having designated the speed argument “S”. intervention: Correct the program so as to insert the argument “S” responsible for the intervention: programmer
+
+Alarm number: 1022
+text: MANDATORY “S” CODE
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+An attempt was made to execute a program block containing the pin orientation function M (M19, M219) without having designated
+the argument “B” concerning the positioning angle.
+intervention: Correct the program so as to insert the argument “B”
+responsible for
+programmer
+Alarm No.: 1026
+text: DIFFERENT TROLLEY PROGRAM NUMBER
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+At the start of the execution of the cycle we noticed that the number of the
+cause:
+program selected in the channel is different.
+Check the program numbers or, if necessary,
+intervention: to run different programs, deactivate the control in
+the “CART MANAGEMENT” user page
+responsible for
+toolmaker-adjuster
+Alarm number: 1027
+text: PROGRAM NOT REWOUND
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+When we pressed the Reset button. or we selected the
+cause: automatic mode, rewinding was not carried out correctly.
+Press the Reset key. and verify that the comintervention programs:
+start from the first sentence.
+responsible for
+operator
+
+Alarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins (M19, M219) without having designated the argument “B” concerning the positioning angle. intervention: Correct the program so as to insert the argument “B” responsible for the intervention: programmer
+
+Alarm n°: 1026 text: DIFFERENT TROLLEY PROGRAM N° type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: At the start of the cycle execution it was noticed that the number of the program selected in the channel is different. intervention: Check the program numbers or, if it is necessary to execute different programs, deactivate the control in the user page “GESTIÓN DES CHARIOTS” responsible for the intervention: tool maker-adjuster
+
+Alarm n°: 1027 text: PROGRAM NOT REWOUND type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: When the Reset key was pressed. or automatic mode has been selected, rewinding has not been carried out correctly. intervention: Press the R.A.Z. key. and check that the programs start from the first sentence. responsible for the intervention: operator
+
+Alarm No.: 1030
+text: PROGRAM M560
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+The R.A.Z. key. was pressed while the X2 axis had migrated
+cause: in channel 1; in this case the axis is returned to channel 2 without
+the tool correctors are first reset to zero,
+Program the M560 function in both channels to restore the
+intervention:
+correct operation of the T function.
+responsible for
+toolmaker-adjuster
+Alarm number: 1031
+text: TURN THE CNC OFF AND ON
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+The emergency stop button was pressed while the axis
+cause: X2 had migrated into channel 1, or the migration signal in
+prices suddenly fell.
+intervention: Turn the CNC off and on again to restore normal operation.
+responsible for
+toolmaker-adjuster
+Alarm No.: 1034
+text: X-AXIS BRAKE BLOCKED
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+Insufficient air pressure for pneumatic release of
+cause:
+the X1 axis, the movement of which is prohibited.
+Check line pressure and pressure switch calibration;
+intervention: See page 65 of the electrical diagram, input X3.5
+(0 = ALARM, 1 = OK)
+responsible for
+
+Alarm n°: 1030 text: PROGRAM M560 type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The Reset key. was pressed while the X2 axis had migrated into channel 1; in this case the axis is returned to channel 2 without the tool correctors being first reset to zero, intervention: Program the M560 function in both channels to restore the correct operation of the T function. responsible for the intervention: tool maker-adjuster
+
+Alarm n°: 1031 text: TURN THE CNC OFF AND ON again type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The emergency stop button was pressed while the X2 axis had migrated into channel 1, or the current migration signal suddenly fell out. intervention: Turn the CNC off and on again to restore normal operation. responsible for the intervention: toolmaker-adjuster
+
+Alarm n°: 1034 text: BRAKE OF AXIS intervention: Check the line pressure and pressure switch calibration; See page 65 of the electrical diagram, input X3.5 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenance
+
+Alarm number: 1039
+text: SPINDLE ORIENTATION FAULT
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+After programming the orientation, the main spindle did not
+cause:
+reaches the set position within the time limit of 1 second.
+Check any mechanical resistance to the rotation of the
+intervention: spindle, note the error code on the actuation identified with the
+acronym A2721 and consult the Fanuc 160i-TB maintenance manual
+responsible for
+Alarm No.: 1040
+text: OPEN FORCEPS
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+We tried to start the automatic cycle with the pliers of the
+cause:
+main pin open.
+intervention: Exit automatic mode and close the clamp.
+responsible for
+toolmaker-adjuster
+Alarm No.: 1041
+text: CLAMP OPENING FAILURE
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+When the opening command was given, the clamp did not open in the
+cause:
+time limit of 5 seconds.
+Check any mechanical resistance; if the pliers were
+intervention: open despite the alarm, check the setting of the microdetector
+entry X3.0 page 15 of the electrical diagram.
+responsible for
+
+Alarm no.: 1039 text: SPINDLE ORIENTATION ANOMALY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: After programming the orientation, the main spindle has not reached the defined position within the time limit of 1 second. intervention: Check any mechanical resistance to the rotation of the spindle, note the error code on the actuation identified with the acronym A2721 and consult the Fanuc 160i-TB maintenance manual responsible for the intervention: responsible for the maintenance
+
+Alarm n°: 1040 text: CLAMP OPEN type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to start the automatic cycle with the main spindle clamp open. intervention: Exit automatic mode and close the clamp. responsible for the intervention: toolmaker-adjuster
+
+Alarm n°: 1041 text: CLAMP OPENING FAILURE type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: When the opening command was given, the clamp did not open within the time limit of 5 seconds. intervention: Check any mechanical resistance; if the clamp was open despite the alarm, check the setting of the microdetector at input X3.0 page 15 of the electrical diagram. responsible for intervention: responsible for maintenance
+
+Alarm number: 1042
+text: CLAMP CLOSURE FAILURE
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+When the opening command was given, the clamp did not close in the
+cause:
+time limit of 5 seconds.
+Check any mechanical resistance; if the clamp was fervent: activated despite the alarm, check the setting of the microdetector
+entry X3.0 page 15 of the electrical diagram.
+responsible for
+Alarm number: 1043
+text: CLAMP OPENING NOT ACTIVATED
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+There are no conditions for opening the clamp, for example
+cause: spindle stopped or the spindle rotation function with
+clamp open has not been programmed (M33)
+Make sure that the spindle is stopped or that function M33 is
+intervention:
+present in the program.
+responsible for
+operator/programmer
+Alarm number: 1044
+text: CLAMP WIRING ERROR
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+When the opening command was given, the microdetector signaled the closure of the clamp, or, when the closing command was ordered, the microdetector signaled the clamp opening.
+intervention: Check the wiring or pneumatic connections.
+responsible for
+
+Alarm n°: 1042 text: CLAMP CLOSING FAILURE type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: When the opening command was ordered, the clamp did not close within the time limit of 5 seconds. intervention: Check any mechanical resistance; if the clamp was closed despite the alarm, check the setting of the microdetector at input X3.0 page 15 of the electrical diagram. responsible for intervention: responsible for maintenance
+
+Alarm n°: 1043 text: CLAMP OPENING NOT ACTIVATED type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: There are no conditions for opening the clamp, for example spindle stopped or the spindle rotation function with clamp open has not been programmed (M33) intervention: Make sure that the spindle is stopped or that the M33 function is present in the program. responsible for the intervention: operator/programmer
+
+Alarm no.: 1044 text: CLAMP WIRING ERROR type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: When the opening command is given, the microdetector has signaled the closing of the clamp, or, when the closing command is ordered, the microdetector has signaled the opening of the clamp. intervention: Check the wiring or pneumatic connections. responsible for intervention: responsible for maintenance
+
+Alarm No.: 1045
+text: MAIN REFRIGERANT alarm
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+The flow control device does not signal the presence of
+cause: coolant liquid, consequence of programming function M08
+Check the presence of coolant, hydraulic connections, pump M1171; If no problem is detected, check
+intervention:
+input X4.2 page 11 of the electrical diagram (0 = absence of liquid
+watering, 1 = passage of the watering liquid)
+responsible for
+Alarm number: 1046
+text: AUXILIARY WATERING ALARM
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+The flow control device does not signal the presence of
+cause: coolant liquid, consequence of programming function M208
+Check the presence of coolant fluid, the hydraulic connections, the coolant fluid passage solenoid valves, the
+intervention: pump M1671; if no problem is detected, check the input
+X4.1 page 16 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant)
+responsible for
+
+Alarm no.: 1045 text: MAIN REFRIGERANT alarm type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The flow control device does not signal the presence of coolant liquid, consequence of programming function M08 intervention: Check the presence of coolant liquid, the hydraulic connections, the M1171 pump; if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance
+
+Alarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The flow control device does not signal the presence of watering liquid, as a result of programming the M208 function intervention: Check the presence of the watering liquid, the hydraulic connections, the watering liquid passage solenoid valves, the M1671 pump; if no problem is detected, check input X4.1 page 16 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance
+
+Alarm number: 1048
+text: PART NOT EJECTED
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+The part was not ejected by the counter spindle after opening
+cause:
+of the pliers.
+Extract the part from the counter spindle by hand; if it is not stuck check input X5.0 page 71 of the electrical diagram
+intervention: NOTE:
+If the part ejects rearward, deactivate the control from
+from the “MACHINE MANAGEMENT” user page
+responsible for
+operator/maintenance officer
+Alarm number: 1049
+text: PART MISSING
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+In machines equipped with a controlled ejector, it is emitted
+cause: when with the pliers closed and the part present, the microdetector
+ejected part is detected.
+Check the tightening elements: if there is a control part present: read entry X5.0 page 71 of the electrical diagram (0 = part present,
+1 = part ejected)
+responsible for
+Alarm number: 1051
+text: ANOMALY IN UNLOADING THE PART
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+Means that the workpiece unloading is not in the position
+cause:
+ordered or that it is not reached within the established time.
+Check that the unloader is not mechanically retained; if the
+part unloader arrives at the commanded position but
+intervention:
+the alarm persists, this means that the CNC is not receiving the signals
+of the micro position detector.
+responsible for
+
+Alarm n°: 1048 text: PART NOT EJECTED type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The part was not ejected by the counter spindle after opening the gripper. intervention: Extract the part from the counter spindle by hand; if it is not stuck, check input
+
+Alarm n°: 1049 text: PART ABSENT type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: In machines equipped with controlled ejector, it is issued when with the gripper closed and the part present, the ejected part microdetector is detected. intervention: Check the clamping elements: if a part is present, check entry X5.0 page 71 of the electrical diagram (0 = part present, 1 = part ejected) responsible for the intervention: responsible for maintenance
+
+Alarm n°: 1051 text: ANOMALY IN THE UNLOADING OF THE PART type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: Means that the unloading of the part is not in the commanded position or that this is not reached within the established time. intervention: Check that the unloader is not mechanically retained; if the part unloader arrives at the commanded position but the alarm persists, this means that the CNC is not receiving the signals from the position microdetector. intervention manager: operator/maintenance manager
+
+Alarm number: 1052
+text: UNLOADER OF THE WORKPIECE FORWARD
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+We tried to start the cycle with the part unloader in
+cause:
+forward position.
+intervention: Move the part unloader back using function M521
+responsible for
+operator/maintenance officer
+Alarm number: 1055
+text: Z2-Y2 AXES IN COLLISION ZONE
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+The command configured for the mentioned axes takes them into
+cause:
+collision between them.
+Manually move the axes away from the collision zone and delete
+intervention:
+the alarm.
+responsible for
+operator/tool adjuster
+Alarm number: 1060
+text: FEEDER FAULT
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+The bar feeder is off circuit and does not transmit the “ready” signal to
+cause:
+the CNC machine.
+Check the connections, consult the bar feeder documentation
+intervention:
+for details of the anomaly.
+responsible for
+operator/maintenance officer
+
+Alarm n°: 1052 text: WORKPIECE UNLOADER FORWARD type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to start the cycle with the workpiece unloader in the forward position. intervention: Reverse the part unloader using function M521 responsible for intervention: operator/maintenance person
+
+Alarm n°: 1055 text: Z2-Y2 AXES IN COLLISION ZONE type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The command configured for the mentioned axes causes them to collide with each other. intervention: Manually move the axes away from the collision zone and clear the alarm. responsible for the intervention: operator/toolmaker-adjuster
+
+Alarm no.: 1060 text: FEEDER FAULT type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The bar feeder is off-circuit and does not transmit the "ready" signal to the machine's CNC. intervention: Check the connections, consult the bar feeder documentation for details of the anomaly. intervention manager: operator/maintenance manager
+
+Alarm No.: 1061
+text: TIP 1: BREAKUP
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+Tool control device #1 has detected the breakage of the
+cause:
+point.
+Replace the tool. If the tool is not broken, check the calibration of the
+intervention:
+device.
+responsible for
+toolmaker-adjuster/maintenance officer
+Alarm No.: 1062
+text: TIP 2: BREAKUP
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+cause: Tool control device #1 is not working
+Check the core of the probe, the connections, consult the intervention document:
+tation of the device for details of the anomaly.
+responsible for
+operator/maintenance officer
+Alarm number: 1063
+text: PUNTA 2: ROTTURA
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+Tool monitoring device #2 has detected the breakage of the
+cause:
+point.
+Replace the tool. If the tool is not broken, check the calibration of the
+intervention:
+device.
+responsible for
+toolmaker-adjuster/maintenance officer
+
+Alarm n°: 1061 text: TIP 1: BREAKAGE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 1 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibration of the device. in charge of the intervention: toolmaker-adjuster/in charge of maintenance
+
+Alarm no.: 1062 text: POINT 2: BREAK type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 1 does not work intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly. intervention manager: operator/maintenance manager
+
+Alarm n°: 1063 text: PUNTA 2: ROTTURA type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 2 has detected the tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibration of the device. in charge of the intervention: toolmaker-adjuster/in charge of maintenance
+
+Alarm number: 1064
+text: POINT 2: CONTROL FAILURE
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+cause: Tool control device no. 2 does not work
+Check the core of the probe, the connections, consult the intervention document:
+tation of the device for details of the anomaly.
+responsible for
+operator/maintenance officer
+Alarm number: 1065
+text: POINT 3: BREAKUP
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+Tool monitoring device No. 3 has detected the breakage of the
+cause:
+point.
+Replace the tool. If the tool is not broken, check the calibration of the
+intervention:
+device.
+responsible for
+toolmaker-adjuster/maintenance officer
+Alarm number: 1066
+text: POINT 3: CONTROL FAILURE
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+cause: Tool control device no. 3 is not working.
+Check the core of the probe, the connections, consult the intervention document:
+tation of the device for details of the anomaly.
+responsible for
+operator/maintenance officer
+
+Alarm no.: 1064 text: POINT 2: CONTROL ANOMALY type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 2 does not work intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly. intervention manager: operator/maintenance manager
+
+Alarm n°: 1065 text: TIP 3: BREAKAGE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 3 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibration of the device. in charge of the intervention: toolmaker-adjuster/in charge of maintenance
+
+Alarm no.: 1066 text: POINT 3: CONTROL FAILURE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 3 does not work. intervention: Check the core of the probe, the connections, consult the device documentation for details of the anomaly. intervention manager: operator/maintenance manager
+
+Alarm number: 1067
+text: POINT 4: BREAKUP
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+Tool monitoring device No. 4 has detected the breakage of the
+cause:
+point.
+Replace the tool. If the tool is not broken, check the calibration of the
+intervention:
+device.
+responsible for
+toolmaker-adjuster/maintenance officer
+Alarm number: 1068
+text: POINT 4: CONTROL FAILURE
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+cause: Tool control device no. 4 does not work,
+Check the core of the probe, the connections, consult the intervention document:
+tation of the device for details of the anomaly.
+responsible for
+operator/maintenance officer
+Alarm number: 1070
+text: CDS: IMMEDIATE STOP
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+The outdoor sprinkler system (CDS) has had a problem that is preventing:
+che to continue the operation.
+Check the anomaly on the CDS operator panel and consult the
+intervention: documentation. If there is no signage, check the connections with the tower.
+responsible for
+
+Alarm n°: 1067 text: TIP 4: BREAKAGE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibration of the device. in charge of the intervention: toolmaker-adjuster/in charge of maintenance
+
+Alarm no.: 1068 text: POINT 4: CONTROL ANOMALY type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 4 does not work, intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly. intervention manager: operator/maintenance manager
+
+Alarm no.: 1070 text: CDS: IMMEDIATE STOP type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The outdoor sprinkler system (CDS) has had a problem which prevents the operation from continuing. intervention: Check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the lathe. responsible for intervention: responsible for maintenance
+
+Alarm number: 1071
+text: CDS: STOP AT END OF CYCLE
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+The outdoor sprinkler system (CDS) had a problem that did not
+cause:
+does not require immediate intervention.
+Check the anomaly in the CDS operation panel and consult
+intervention: documentation. If there is no signage, check the connections with the tower.
+responsible for
+Alarm number: 1072
+text: CDS: WAITING FOR EXCESSIVE FEED
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+The outdoor sprinkler system (CDS) delayed more than a minute
+cause: in the validation of the authorization of the advance of the axes; in this
+situation the work cycle must be stopped.
+Check the anomaly on the CDS operator panel and consult the
+intervention:
+documentation.
+responsible for
+Alarm No.: 1078
+text: SISTER TOOL: STOP AT END OF CYCLE
+type: Standard: Optional:
+At the end of the cycle (M01), stops the automatic execution of the proeffect:
+gram.
+The paired tool management program found that the name causes:
+number of spare parts for one or more tools is completed.
+Check the page dedicated to SISTER TOOL for the expired tool, replace
+intervention:
+the wafer and reload the defined number of pieces.
+responsible for
+operator
+
+Alarm no.: 1071 text: CDS: STOP AT END OF CYCLE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The outdoor sprinkler system (CDS) has had a problem that does not require immediate intervention. intervention: Check the anomaly in the CDS operation panel and consult the documentation. If there is no sign, check the connections with the lathe. responsible for intervention: responsible for maintenance
+
+Alarm n°: 1072 text: CDS: WAITING FOR EXCESSIVE FEED type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The external watering system (CDS) delayed more than one minute in validating the authorization of the axis feed; in this situation the work cycle must be stopped. intervention: Check the anomaly on the CDS operator panel and consult the documentation. responsible for intervention: responsible for maintenance
+
+Alarm no.: 1078 text: SISTER TOOL: STOP AT END OF CYCLE type: Standard: Optional: effect: At the end of the cycle (M01), stops the automatic execution of the program. cause: The paired tool management program has found that the set number of parts for one or more tools has expired. intervention: Check the page dedicated to SISTER TOOL for the expired tool, replace the plate and reload the defined number of parts. responsible for the intervention: operator
+
+Alarm number: 1079
+text: LOAD MONITOR: FEED DIFFERENT FROM 100%
+type: Standard: Optional:
+effect: Alarms or messages with shutdown at the end of the cycle.
+The Load Monitor tool monitoring system has detected that the
+feedrate trimmer is set to a different percentage
+cause:
+of 100%, which causes a different current absorption by
+compared to the nominal.
+intervention: Set the priority (override) to 100% and repeat the cycle.
+responsible for
+operator
+Alarm No.: 1080
+text: LOAD MONITOR: IMMEDIATE STOP
+type: Standard: Optional:
+effect: Alarm with immediate and controlled shutdown
+The Load Monitor tool monitoring system has detected a breakage
+cause:
+tool.
+Replace the tool, or if it is not broken, check the
+intervention: system calibrations which are described in the product documentation
+the application.
+responsible for
+toolmaker-adjuster
+Alarm No.: 1081
+text: LOAD MONITOR: STOP AT END OF CYCLE
+type: Standard: Optional:
+effect: Alarms or messages with shutdown at the end of the cycle.
+The Load Monitor tool monitoring system has detected wear
+cause:
+of a tool.
+Replace the tool, or in the case of insufficient wear, check the
+intervention: system calibrations which are described in the product documentation
+the application.
+responsible for
+toolmaker-adjuster
+
+Alarm n°: 1079 text: LOAD MONITOR: FEED DIFFERENT FROM 100% type: Standard: Optional: effect: Alarms or messages with shutdown at the end of the cycle. cause: The Load Monitor tool monitoring system has detected that the feed rate trimmer is set to a percentage other than 100%, which causes a different current absorption compared to the nominal. intervention: Set the priority (override) to 100% and repeat the cycle. responsible for the intervention: operator
+
+Alarm no.: 1080 text: LOAD MONITOR: IMMEDIATE STOP type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The Load Monitor tool monitoring system has detected a tool breakage. intervention: Replace the tool, or if it is not broken, check the system calibrations which are described in the application documentation. responsible for the intervention: toolmaker-adjuster
+
+Alarm n°: 1081 text: LOAD MONITOR: STOP AT END OF CYCLE type: Standard: Optional: effect: Alarms or messages with shutdown at the end of the cycle. cause: The Load Monitor tool monitoring system has detected tool wear. intervention: Replace the tool, or in the case of insufficient wear, check the system calibrations which are described in the application documentation. responsible for the intervention: toolmaker-adjuster
+
+Alarm No.: 1082
+text: LOAD MONITOR: STOP AT END OF BLOCK
+type: Standard: Optional:
+effect: Alarm with shutdown at the end of the block.
+The Load Monitor tool monitoring system has detected
+cause:
+the absence of a tool.
+Mount the tool or, if present, check the system calibrations
+intervention:
+which are described in the application documentation.
+responsible for
+toolmaker-adjuster
+Alarm No.: 1083
+text: AUTOMATIC STOP IN PROGRESS
+type: Standard: Optional:
+effect: Alarms or messages with shutdown at the end of the cycle
+The established time or the target production has been reached, or
+the lathe is in alarm condition with automatic stop activated; to
+cause:
+the expiration of the time specified in the user page for the shutdown
+automatically, the power supply will be cut off to the lathe.
+If you want to stop the shutdown sequence, press
+intervention: R.A.Z. (RESET) and deactivate the scheduled shutdown in the user page.
+responsible for
+operator
+Alarm No.: 1084
+text: MANDATORY MAINTENANCE
+type: Standard: Optional:
+effect: Alarms or messages with shutdown at the end of the cycle
+The time predicted by one or more counters relating to the inter-cause:
+Your time has elapsed, so the cycle cannot continue.
+Carry out maintenance operations for inter-intervention applications and confirm the operation in the “MAINTENANCE” user page;
+at this point it is possible to restart the cycle.
+responsible for
+
+Alarm n°: 1082 text: LOAD MONITOR: STOP AT END OF BLOCK type: Standard: Optional: effect: Alarm with stop at end of block. cause: The Load Monitor tool monitoring system detected the absence of a tool. intervention: Mount the tool or, if present, check the system calibrations which are described in the application documentation. responsible for the intervention: toolmaker-adjuster
+
+Alarm n°: 1083 text: AUTOMATIC STOP IN PROGRESS type: Standard: Optional: effect: Alarms or messages with stop at the end of the cycle cause: The established time or the target production has been reached, or the lathe is in alarm condition with automatic stop activated; At the end of the time specified in the user page for automatic shutdown, the power supply will be cut off to the lathe. intervention: If you want to stop the shutdown sequence, press R.A.Z. (RESET) and deactivate the scheduled shutdown in the user page. responsible for the intervention: operator
+
+Alarm n°: 1084 text: MANDATORY MAINTENANCE type: Standard: Optional: effect: Alarms or messages with stop at the end of the cycle cause: The time set by one or more counters concerning the maintenance has elapsed, therefore the cycle cannot continue. intervention: Carry out the maintenance operations for the applications concerned and confirm the operation in the “MAINTENANCE” user page; at this point it is possible to restart the cycle. responsible for intervention: responsible for maintenance
+
+message no: 2001
+text: CNC BATTERY EXHAUSTED
+type: Standard: Optional:
+effect: Only display of the message
+The buffer battery which powers the CNC memory with the
+cause:
+machine turned off is exhausted.
+Replace the battery with the machine switched on to avoid unnecessary intervention:
+display the stored data.
+message no: 2002
+text: MACHINE IN TOOLING MODE
+type: Standard: Optional:
+effect: Only display of the message
+cause: Tooling mode was selected
+The axes can be moved as well with the door closed
+intervention:
+only with the door open, by the two-hand control.
+responsible for
+toolmaker-adjuster
+message no: 2020
+text: LOW LOSS LUBRICATION OIL LEVEL
+type: Standard: Optional:
+effect: Only display of the message
+Indicates that the lubricating oil level is lower than the minimum cause:
+mum.
+Add oil. If this was not insufficient, check
+intervention: input X2.6 page 14 of the electrical diagram (0 = level lower than
+minimum, 1 = level greater than minimum)
+responsible for
+
+message n°: 2001 text: CNC BATTERY EXHAUSTED type: Standard: Optional: effect: Only display of the message cause: The buffer battery which powers the CNC memory with the machine off is exhausted. intervention: Replace the battery with the machine switched on to avoid losing the memorized data.
+
+message n°: 2002 text: MACHINE IN TOOLING MODE type: Standard: Optional: effect: Only display of the message cause: Tooling mode has been selected intervention: The axes can be moved both with the door closed and with the door open, by the two-hand control. responsible for the intervention: toolmaker-adjuster
+
+message n°: 2020 text: LOW LUBRICATION OIL LEVEL type: Standard: Optional: effect: Only display of the message cause: Indicates that the lubricating oil level is lower than the minimum. intervention: Add oil. If this was not insufficient, check input X2.6 page 14 of the electrical diagram (0 = level below the minimum, 1 = level above the minimum) responsible for the intervention: responsible for maintenance
+
+message no: 2021
+text: LUBRICATION AT LOSS: PRESSURE NOT REACHED
+type: Standard: Optional:
+effect: Only display of the message
+Indicates that the pressure has not been restored in the installation
+cause: lubrication, which must occur between a pulse of oil and the
+following.
+Check the operation of the pump or any faults
+intervention: of the pressure switch.
+Input X2.7 page 14 of the electrical diagram.
+responsible for
+message no: 2022
+text: CHIP CONVEYOR OVERLOAD
+type: Standard: Optional:
+effect: Only display of the message
+Excessive machining residue prevents the operation of the
+cause:
+chip conveyor.
+Remove material from chip evacuation area.
+intervention:
+Entry X4.4 page 13 of the electrical diagram.
+responsible for
+operator
+message no: 2023
+text: CHIP CONVEYOR BLOCKED
+type: Standard: Optional:
+effect: Only display of the message
+Despite attempts made in automatic mode to unblock: whether the conveyor or the endless screw is jammed, the problem
+persists
+Investigate the cause of the conveyor or screw jamming
+intervention: end and eliminate it.
+Entry X4.4 page 13 of the electrical diagram.
+responsible for
+operator
+
+message n°: 2021 text: LUBRICATION AT LOSS: PRESSURE NOT REACHED type: Standard: Optional: effect: Only display of the message cause: Indicates that the pressure has not been restored in the lubrication installation, which must occur between one oil pulse and the next. intervention: Check the operation of the pump or any faults in the pressure switch. Input X2.7 page 14 of the electrical diagram. responsible for intervention: responsible for maintenance
+
+message n°: 2022 text: OVERLOAD OF THE CHIP CONVEYOR type: Standard: Optional: effect: Only display of the message cause: Excessive machining residues prevent the operation of the chip conveyor. intervention: Remove the material from the chip evacuation area. Entry X4.4 page 13 of the electrical diagram. responsible for the intervention: operator
+
+message n°: 2023 text: CHIP CONVEYOR BLOCKED type: Standard: Optional: effect: Only display of the message cause: Despite the attempts made in automatic mode to unblock the conveyor or the auger from the jamming, the problem persists intervention: Find the cause of the jamming of the conveyor or the auger and eliminate it. Entry X4.4 page 13 of the electrical diagram. responsible for the intervention: operator
+
+message no: 2024
+text: OVERLOAD CONTROL DEVICE FAILURE
+type: Standard: Optional:
+effect: Only display of the message
+The behavior of the “concause overload control device: chip voyeur” is abnormal, for this reason the logic system considers it to be faulty.
+intervention: Make sure that this device works correctly.
+responsible for
+message no: 2040
+text: FEEDER: BAR CHANGE PHASE
+type: Standard: Optional:
+effect: Only display of the message
+Warns the operator that the machining cycle is suspended on hold
+cause:
+of the completion of the bar change.
+When the bar change is completed, the self-intervention message clears:
+matically.
+responsible for
+no intervention requested
+message no: 2041
+text: BARRIER: EMPTY BAR STORE
+type: Standard: Optional:
+effect: Only display of the message
+Informs the operator that the bar feeder bar magazine is
+cause:
+almost empty.
+intervention: Add new bars to the store.
+responsible for
+operator
+
+message n°: 2024 text: OVERLOAD CONTROL DEVICE FAILURE type: Standard: Optional: effect: Only display of the message cause: The behavior of the “chip conveyor overload control device” is abnormal, for this reason the logic system considers it to be faulty. intervention: Make sure that this device works correctly. responsible for intervention: responsible for maintenance
+
+message n°: 2040 text: FEEDER: BAR CHANGE PHASE type: Standard: Optional: effect: Only display of the message cause: Warns the operator that the machining cycle is suspended waiting for the bar change to be completed. intervention: When the bar change is completed, the message is automatically cleared. responsible for the intervention: no intervention requested
+
+message n°: 2041 text: FEEDER: EMPTY BAR MAGAZINE type: Standard: Optional: effect: Only display of the message cause: Informs the operator that the bar feeder bar magazine is almost empty. intervention: Add new bars to the store. responsible for the intervention: operator
+
+message no: 2050
+text: CDS: SIGNALING A MESSAGE OR NOTICE
+type: Standard: Optional:
+effect: Only display of the message
+The exterior watering system (CDS) requires no maintenance.
+cause:
+immediate.
+Check the type of maintenance requested on the CDS operator panel and
+intervention: consult the documentation, in the absence of signals check
+connections with the tower.
+responsible for
+message no: 2051
+text: CDS: ATTESA ABILITAZIONE AVANZAMENTO
+type: Standard: Optional:
+effect: Only display of the message
+This message indicates that when the timer which masks
+stopping the advance of the axes has exhausted the scheduled time, the lathe waits
+cause:
+further authorization from the outdoor watering device
+(CDS)
+Once authorization is received from the CDS, the message clears
+intervention:
+automatically.
+responsible for
+message no: 2060
+text: AUTOMATIC OFF: SET TIME REACHED
+type: Standard: Optional:
+effect: Only display of the message
+The machine shutdown time has been reached; if the condition persists,
+cause: the programs will be stopped at the same time as function M01
+and the shutdown phase will be started (see alarm no. 1083)
+It is possible to interrupt the shutdown phase by changing the time
+intervention:
+shutdown from the appropriate user page.
+responsible for
+operator
+
+message n°: 2050 text: CDS: MESSAGE OR NOTICE SIGNALING type: Standard: Optional: effect: Only display of the message cause: The exterior watering system (CDS) requires non-immediate maintenance. intervention: Check the type of maintenance requested on the CDS operator panel and consult the documentation, in the absence of signals check the connections with the lathe. responsible for intervention: responsible for maintenance
+
+message n°: 2051 text: CDS: ATTESA ABILITAZIONE AVANZAMENTO type: Standard: Optional: effect: Only display of the message cause: This message indicates that when the timer which hides the stopping of the axis advance has exhausted the scheduled time, the lathe is still waiting for authorization from the external watering device (CDS) intervention: Once authorization is received from the CDS, the message is automatically cleared. responsible for the intervention:
+
+message n°: 2060 text: AUTOMATIC STOP: CONFIGURED TIME REACHED type: Standard: Optional: effect: Only display of the message cause: The machine shutdown time has been reached; if the condition persists, the programs will be stopped at the same time as function M01 and the shutdown phase will be started (see alarm no. 1083) intervention: It is possible to interrupt the shutdown phase changing the shutdown time from the appropriate user page. responsible for the intervention: operator
+
+message no: 2061
+text: CONFIGURED PRODUCTION REACHED
+type: Standard: Optional:
+effect: Only display of the message
+The quantity of pieces established in the “PRODUCTION DATA” page has been reached; if the condition persists, the programs
+cause:
+will be stopped at the same time as function M01 and phase
+shutdown will be started (see alarm no. 1083).
+It is possible to interrupt the stopping phase changing the number
+intervention:
+of deposit documents from the appropriate user page.
+responsible for
+toolmaker-adjuster
+message no: 2062
+text: AUTOMATIC STOP: MACHINE IN ALARM
+type: Standard: Optional:
+effect: Only display of the message
+The AUTOMATIC OFF function has been activated using the
+corresponding user page, the configured time has been reached,
+cause:
+or an alarm has occurred, therefore the shutdown phase
+of the machine has started.
+Wait for the general switch to trip, then
+intervention:
+engage it and turn on the machine.
+responsible for
+message no: 2065
+text: MAINTENANCE NOTICE
+type: Standard: Optional:
+effect: Only display of the message
+Warns that some maintenance settings are about to be
+cause:
+to exhaust oneself
+Check on the “MAINTENANCE” page which of the items listed
+intervention:
+request an interview
+responsible for
+
+message n°: 2061 text: CONFIGURED PRODUCTION REACHED type: Standard: Optional: effect: Only display of the message cause: The quantity of pieces established in the “PRODUCTION DATA” page has been reached; if the condition persists, the programs will be stopped at the same time as function M01 and the stopping phase will be started (see alarm no. 1083). intervention: It is possible to interrupt the shutdown phase changing the number of set pieces from the appropriate user page. responsible for the intervention: toolmaker-adjuster
+
+message no.: 2062 text: AUTOMATIC STOP: MACHINE IN ALARM type: Standard: Optional: effect: Only display of the message cause: The AUTOMATIC STOP function has been activated using the corresponding user page, the configured time has been reached, or an alarm has occurred, therefore the machine shutdown phase has started. intervention: Wait for the main switch to trip, then turn it on and turn on the machine. responsible for the intervention:
+
+message n°: 2065 text: MAINTENANCE NOTICE type: Standard: Optional: effect: Only display of the message cause: Warns that some maintenance parameters are about to run out intervention: Check in the “MAINTENANCE” page which of the listed items requires maintenance responsible for the intervention: responsible for the maintenance
+
+message no: 3001 to 3003
+text: WRONG TORQUE REDUCTION
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+The torque reduction requested at the indicated axis is beyond the limits:
+your consents.
+intervention: Modify the programmed reduction value.
+responsible for
+programmer
+message no: 3004
+text: CAUTION VERTICAL AXIS
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+It is requested to reduce the torque to a vertical axis, this is not
+cause:
+not allowed.
+intervention: Modify the program
+responsible for
+programmer
+message no: 3005
+text: AXIS NOT PRESENT
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+It is requested to reduce the torque to an axis which is not pre-cause:
+feels in the Path.
+intervention: Modify the program
+responsible for
+programmer
+
+message n°: 3001 to 3003 text: WRONG TORQUE REDUCTION type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The torque reduction requested at the indicated axis is outside the agreed limits. intervention: Modify the programmed reduction value. responsible for the intervention: programmer
+
+message n°: 3004 text: CAUTION VERTICAL AXIS type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: It is requested to reduce the torque to a vertical axis, this is not allowed. intervention: Modify the program responsible for the intervention: programmer
+
+message n°: 3005 text: AXIS NOT PRESENT type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: It is requested to reduce the torque to an axis which is not present in the Path. intervention: Modify the program responsible for the intervention: programmer
+
+message no: 3006 - 3008
+text: AXIS NOT IN POSITION
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+The axis subject to torque reduction, HAS NOT reached the position causing:
+grammed because of an obstacle he found on his route.
+intervention: Check the machining and remove the obstacle.
+responsible for
+programmer
+message no: 3009 - 3011
+text: AXIS NOT IN STOP
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot
+be in contact with the part
+intervention: Check the machining, and review the program.
+responsible for
+programmer
+message no: 3012
+text: WRONG OR MISSING FEED
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+G84, G88, G188 have been programmed without parameter F which indicates:
+than the feed, or it was indicated with an incorrect value.
+intervention: Check the program and modify the instruction.
+responsible for
+programmer
+
+message n°: 3006 - 3008 text: AXIS NOT IN POSITION type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, HAS NOT reached the programmed position because of an obstacle it found in its path. intervention: Check the machining and remove the obstacle. responsible for the intervention: programmer
+
+message n°: 3009 - 3011 text: AXIS NOT IN STOP type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. responsible for the intervention: programmer
+
+message n°: 3012 text: FEED WRONG OR ABSENT type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: G84, G88, G188 were programmed without the parameter F which indicates the feed, or it was indicated with an incorrect value. intervention: Check the program and modify the instruction. responsible for the intervention: programmer
+
+message no: 3013 - 3015
+text: AXIS NOT PROGRAMMED
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+When programming one of the functions G88, G84, G188 we have
+cause:
+omit the X, Z, or Y parameter respectively.
+intervention: Check the program and modify the instruction.
+responsible for
+programmer
+message no: 3016
+text: POLIGONAGE MICRODETECTOR NOT OK
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+The G305 polishing function with milling with phasing
+cause: unsuccessfully searched for the reference microdetector for
+which she stopped.
+Check the correct operation of the reference microdetector
+intervention:
+poligonage. PLC X5.4 input page 28 of the electrical diagram.
+responsible for
+message no: 3020
+text: PROGRAMMING ERROR
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+cause:
+intervention:
+responsible for
+
+message n°: 3013 - 3015 text: AXIS NOT PROGRAMMED type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: When programming one of the functions G88, G84, G188, the parameter X, Z, or Y was respectively omitted. intervention: Check the program and modify the instruction. responsible for the intervention: programmer
+
+message n°: 3016 text: POLIGONING MICRODETECTOR NOT OK type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The G305 polishing with milling with phasing function searched unsuccessfully for the reference microdetector for which it stopped. intervention: Check the correct operation of the polishing reference microdetector. PLC X5.4 input page 28 of the electrical diagram. responsible for the intervention: Responsible for maintenance
+
+message no.: 3020 text: PROGRAMMING ERROR type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: intervention: responsible for the intervention:
+
+message no: 3021
+text: CORRECTOR T NOT ACTIVATED
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+cause:
+intervention:
+responsible for
+programmer
+message no: 3028
+text: INVALID G CODE
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+cause: Programming of function G10 L50 is not permitted.
+intervention: Delete this function from the program.
+responsible for
+programmer
+message no: 3029
+text: CDS OPTION NOT ACTIVATED
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+cause: Function G304 was not activated in the user page,
+intervention: Activate the CDS device in the user page.
+responsible for
+programmer
+
+message n°: 3021 text: CORRECTOR T NOT ACTIVATED type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: intervention: responsible for the intervention: programmer
+
+message no.: 3028 text: INVALID G CODE type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: Programming of function G10 L50 is not permitted. intervention: Delete this function from the program. responsible for the intervention: programmer
+
+message n°: 3029 text: CDS OPTION NOT ACTIVATED type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: Function G304 was not activated in the user page, intervention: Activate the CDS device in the user page. responsible for the intervention: programmer
+
+message no: 3030
+text: CDS CONFIGURATION ERROR
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+The high pressure unit has not been configured correctly
+cause:
+in the user page.
+intervention: Configure the CDS device in the user page.
+responsible for
+programmer
+message no: 3031 - 3034
+text: CART DISABLED
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+The G303 hidden time recharge function cannot work because:
+check if cart 2 has been disabled in the user page.
+intervention: Activate cart 2 from the user page.
+responsible for
+programmer
+message no: 3035
+text: OPTIONS 9000 NOT ACTIVATED
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+Function G188 is programmed in a machine model that is not
+cause:
+not having the Y2 axis.
+intervention: Delete function G188 from the program.
+responsible for
+programmer
+
+message no.: 3030 text: CDS CONFIGURATION ERROR type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The high pressure unit has not been configured correctly on the user page. intervention: Configure the CDS device in the user page. responsible for the intervention: programmer
+
+message no.: 3031 - 3034 text: CARRIAGE DISABLED type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The hidden time recharge function G303 cannot work if cart 2 has been deactivated in the user page. intervention: Activate cart 2 from the user page. responsible for the intervention: programmer
+
+message n°: 3035 text: OPTIONS 9000 NOT ACTIVATED type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: Function G188 was programmed in a machine model that does not have the Y2 axis. intervention: Delete function G188 from the program. responsible for the intervention: programmer
+
+message no: 3036 - 3038
+text: AXIS TRACKING ERROR
+type: Standard: Optional:
+Alarm with program interruption, axis and bro-effect stop:
+ches.
+With the G300 function we have reduced the torque so much that the axis
+cause:
+fails to achieve the required rating.
+intervention: Increase the cut of the indicated axis
+responsible for
+programmer
+
+message no.: 3036 - 3038 text: AXIS CHASE ERROR type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: With the G300 function we have reduced the torque so much that the axis cannot reach the required dimension. intervention: Increase the cut of the indicated axis responsible for the intervention: programmer
+--------------------
