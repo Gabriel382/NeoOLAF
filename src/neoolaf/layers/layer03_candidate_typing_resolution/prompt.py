@@ -1,0 +1,111 @@
+from __future__ import annotations
+
+# Standard library imports
+import json
+
+# Local imports
+from neoolaf.domain.enriched_expression import EnrichedExpression
+from neoolaf.domain.user_guidance import UserGuidance
+from neoolaf.domain.seed_ontology import SeedOntology
+from neoolaf.ontology.prompt_context import build_seed_ontology_context
+from neoolaf.domain.user_guidance import UserGuidance
+from neoolaf.domain.user_guidance_formatting import build_user_guidance_context
+
+def build_system_prompt() -> str:
+    """
+    Build the system prompt for Layer 3 typing and resolution.
+
+    This version gives much stronger guidance for recognizing relation candidates.
+    """
+    return """
+You are the NeoOLAF Layer 3 agent: Candidate Typing and Resolution.
+
+Your task is to assign one provisional semantic type to an enriched expression.
+
+Allowed types:
+- entity
+- relation
+- attribute
+- event
+
+Type definitions:
+- entity:
+  a machine, component, resource, actor, device, object, or identifiable thing
+- relation:
+  a linking phrase, semantic connector, verbal predicate, verbal group,
+  prepositional relation, classification phrase, causality phrase,
+  part-whole phrase, or dependency-like expression that can connect entities or events
+- attribute:
+  a measurable value, property, threshold, quality, or state-value expression
+- event:
+  a failure, alarm, degradation, shutdown, detection, occurrence, process event, or state occurrence
+
+Important guidance for relations:
+Relation candidates often look like:
+- is divided into
+- emitted by
+- indicates
+- compromises
+- classified in
+- detected by
+- caused by
+- part of
+- belongs to
+- located in
+
+If an expression mainly serves to connect things, classify it as relation.
+
+You must also provide:
+- a canonical label
+- a short justification
+- an optional confidence score
+
+Return JSON only in this format:
+{
+  "candidate_type": "relation",
+  "canonical_label": "emitted by",
+  "justification": "This is a linking phrase that connects alarms to the PLC.",
+  "confidence": 0.91
+}
+"""
+
+
+def build_user_prompt(
+    enriched_expression,
+    guidance=None,
+    seed_ontology=None,
+    grounding_context: str = "",
+) -> str:
+    """
+    Build the user prompt for one enriched expression.
+    """
+    guidance_text = ""
+    if guidance:
+        guidance_text = build_user_guidance_context(
+            guidance,
+            include_typing_examples=True,
+            include_negative_examples=True,
+        )
+
+    payload = {
+        "base_expression_text": enriched_expression.base_expression.text,
+        "base_expression_label": enriched_expression.base_expression.label,
+        "aliases": enriched_expression.aliases,
+        "synonyms": enriched_expression.synonyms,
+        "lexical_variants": enriched_expression.lexical_variants,
+        "definition": enriched_expression.definition,
+        "ontology_hints": enriched_expression.ontology_hints,
+    }
+
+    ontology_context = build_seed_ontology_context(
+        seed_ontology=seed_ontology,
+        query=enriched_expression.base_expression.text,
+        top_k_classes=3,
+        top_k_properties=3,
+    )
+    return f"""
+{guidance_text}{ontology_context}{grounding_context}Enriched expression:
+{json.dumps(payload, indent=2, ensure_ascii=False)}
+
+Return JSON only.
+"""
