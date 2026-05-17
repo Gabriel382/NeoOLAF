@@ -1,0 +1,91 @@
+{
+  "layer": "layer09_general_axiom_extraction",
+  "num_general_axiom_candidates": 3,
+  "general_axiom_candidates": [
+    {
+      "axiom_id": "axiom_00000",
+      "axiom_type": "relation_domain",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "homeTutoring",
+      "predicate": "domain",
+      "object_id": "domain_hint::TutoringEvent",
+      "object_label": "TutoringEvent",
+      "literal_value": null,
+      "justification": "The relation candidate 'homeTutoring' explicitly states that it connects a tutoring event to the residence where the tutoring takes place, making TutoringEvent the domain.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00000"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 714,
+          "chunk_end_char": 732,
+          "doc_start_char": 714,
+          "doc_end_char": 732,
+          "snippet": "to remain active in shaping music in Houston by conducting summer programs and in - home tutoring . Johnson was a proficient musician in his own right and , at one point , playe"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00001",
+      "axiom_type": "range",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "homeTutoring",
+      "predicate": "range",
+      "object_id": "range_hint::Residence",
+      "object_label": "Residence",
+      "literal_value": null,
+      "justification": "The relation 'homeTutoring' explicitly connects a TutoringEvent to the Residence where the tutoring takes place, making Residence the range of homeTutoring.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00001"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 714,
+          "chunk_end_char": 732,
+          "doc_start_char": 714,
+          "doc_end_char": 732,
+          "snippet": "to remain active in shaping music in Houston by conducting summer programs and in - home tutoring . Johnson was a proficient musician in his own right and , at one point , playe"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00002",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "homeTutoring",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates a tutoring event to the student's residence where the tutoring takes place.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 714,
+          "chunk_end_char": 732,
+          "doc_start_char": 714,
+          "doc_end_char": 732,
+          "snippet": "to remain active in shaping music in Houston by conducting summer programs and in - home tutoring . Johnson was a proficient musician in his own right and , at one point , playe"
+        }
+      ]
+    }
+  ]
+}

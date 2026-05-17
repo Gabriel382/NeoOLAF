@@ -1,0 +1,67 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that Conrad Oberon Johnson was born on November 15, 1915." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00001> ;
+    neo:predicate ns1:cand_r_00000 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00003> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The text states that Conrad Oberon Johnson attended Houston College for Negroes." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00002> ;
+    neo:predicate ns1:cand_r_00005 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00003> .
+
+<http://neoolaf.org/resource/triple/triple_00002> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.8e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00002/prov/0> ;
+    neo:justification "The text indicates that the former students of Kashmere High School staged a celebration in honor of Johnson, implying a relationship between the students and Kashmere High School." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00006> ;
+    neo:predicate ns1:cand_r_00006 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00004> .
+
+<http://neoolaf.org/resource/node/cand_e_00004> neo:label "students" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00006 <http://neoolaf.org/resource/node/cand_r_00006> .
+
+ns1:cand_r_00000 neo:label "November 15 , 1915" .
+
+ns1:cand_r_00005 neo:label "Houston College for Negroes" .
+
+ns1:cand_r_00006 neo:label "Kashmere High School" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Conrad Oberon Johnson ( November 15 , 1915 – February 3 , 2008 ) was an American music educator , long associated with the" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "family moved to Houston . Following studies at Yates High School , he attended Houston College for Negroes and graduated from Wiley College . He was an active member of Omega Psi Phi Fra" .
+
+<http://neoolaf.org/resource/triple/triple_00002/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "1 and , following a thirty - seven - year career , retired from his position at Kashmere High School in 1978 , but continued to remain active in shaping music in Houston by conduct" .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "date" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "organization" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_e_00003> neo:label "person" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00000 <http://neoolaf.org/resource/node/cand_e_00001> ;
+    ns1:cand_r_00005 <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/node/cand_r_00006> neo:label "Kashmere High School" ;
+    neo:nodeType "relation" .
+

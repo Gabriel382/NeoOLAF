@@ -1,0 +1,26 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that Jack Gantos was born in the village of Norvelt, which is located in Westmoreland County." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00001> ;
+    neo:predicate ns1:cand_r_00008 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00008> .
+
+<http://neoolaf.org/resource/node/cand_r_00008> neo:label "Jack Gantos" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00008 <http://neoolaf.org/resource/node/cand_e_00001> .
+
+ns1:cand_r_00008 neo:label "Jack Gantos" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "ncrease the standard of living of laid - off coal miners . Award winning writer Jack Gantos was born in the village and wrote a book about it" .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "Westmoreland County" ;
+    neo:nodeType "entity" .
+

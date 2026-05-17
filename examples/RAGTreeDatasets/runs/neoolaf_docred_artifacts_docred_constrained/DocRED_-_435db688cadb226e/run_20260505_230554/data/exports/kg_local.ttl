@@ -1,0 +1,26 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that James Llewellyn \"Jimmy\" Frise is the author of Life's Little Comedies." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00002> ;
+    neo:predicate ns1:cand_r_00000 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00000> .
+
+<http://neoolaf.org/resource/node/cand_r_00000> neo:label "James Llewellyn \"Jimmy\" Frise" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00000 <http://neoolaf.org/resource/node/cand_e_00002> .
+
+ns1:cand_r_00000 neo:label "James Llewellyn \"Jimmy\" Frise" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "The Canadian cartoonist James Llewellyn \" Jimmy \" Frise ( , 16 October 1891 – 13 June 1948 ) is best known for his work on the comic strip Birdseye and his illustrations of humorous prose pieces by Greg Clark . Born in Scugog Island , Ontario , Frise moved to Toronto at 19 and found illustration wor" .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "Life's Little Comedies" ;
+    neo:nodeType "entity" .
+

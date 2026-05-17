@@ -1,0 +1,78 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 3,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00001",
+      "relation_label": "located in",
+      "source_candidate_id": "cand_e_00001",
+      "source_candidate_label": "port city",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00006",
+      "target_candidate_label": "country",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0000",
+      "justification": "The chunk states that Skai TV is based in Piraeus, a Greek city, implying Piraeus is located in Greece.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 54,
+          "chunk_end_char": 70,
+          "doc_start_char": 54,
+          "doc_end_char": 70,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00003",
+      "relation_label": "largest media groups in the country",
+      "source_candidate_id": "cand_e_00002",
+      "source_candidate_label": "Skai Group",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00006",
+      "target_candidate_label": "country",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0000",
+      "justification": "The chunk states that Skai Group is \"one of the largest media groups in the country\", linking Skai Group to the country entity.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 115,
+          "chunk_end_char": 150,
+          "doc_start_char": 115,
+          "doc_end_char": 150,
+          "snippet": "television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its present form on lst of April 2006 in the Athens metr"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00005",
+      "relation_label": "available on",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "entity",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "Nova",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0000",
+      "justification": "The chunk states that Skai TV is available on the subscription‑based encrypted services of Nova and Cosmote TV, establishing an \"available on\" relation between Skai TV and Nova.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its present form on lst of April 2006 in the Athens metropolitan area , and gradually spread its coverage nationwide . Besides"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that Washington Place (William Washington House) was built on land given to Annie by her former owner, Susan Blue Parsons of Wappocomo plantation, indicating that the house is part of the plantation." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00001> ;
+    neo:predicate ns1:cand_r_00001 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00001> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The text states that William Washington created the Blacks Hill subdivision, implying ownership." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00007> ;
+    neo:predicate ns1:cand_r_00007 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "Blacks Hill" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00007 <http://neoolaf.org/resource/node/cand_r_00007> .
+
+<http://neoolaf.org/resource/node/cand_r_00001> neo:label "William Washington House" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00001 <http://neoolaf.org/resource/node/cand_e_00001> .
+
+ns1:cand_r_00001 neo:label "William Washington House" .
+
+ns1:cand_r_00007 neo:label "William Washington" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Washington Place ( William Washington House ) is one of the first homes built by freed slaves after the Emancipation Procla" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Washington Place ( William Washington House ) is one of the first homes built by freed slaves after the Emancipation" .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "Wappocomo plantation" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_r_00007> neo:label "William Washington" ;
+    neo:nodeType "relation" .
+

@@ -1,0 +1,109 @@
+{
+  "layer": "layer06_concept_relation_induction",
+  "num_concept_candidates": 1,
+  "num_ontology_relation_candidates": 3,
+  "concept_candidates": [
+    {
+      "concept_id": "concept_00000",
+      "label": "GolfTournament",
+      "normalized_label": "golftournament",
+      "description": "A professional golf tournament, a type of sports competition typically held on a golf course featuring 9 or 18 holes.",
+      "concept_kind": "event",
+      "parent_hint": "SportsCompetition",
+      "source_candidate_ids": [
+        "cand_s_00001"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "The candidate represents a reusable event type that is general enough to be used across multiple documents and aligns with existing ontology classes such as sports competition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 851,
+          "chunk_end_char": 864,
+          "doc_start_char": 851,
+          "doc_end_char": 864,
+          "snippet": "st 25 to win 6 & 4 ; it was the first of his nine major titles . He had won the Portland Open the previous year in early autumn with a score of The following year , PGC host"
+        }
+      ]
+    }
+  ],
+  "ontology_relation_candidates": [
+    {
+      "relation_id": "ont_rel_00000",
+      "label": "P131 : located in the administrative territorial entity",
+      "normalized_label": "p131  located in the administrative territorial entity",
+      "description": "Indicates that an entity is situated within an administrative territorial entity.",
+      "domain_hint": "Entity",
+      "range_hint": "Administrative territorial entity",
+      "source_candidate_ids": [
+        "cand_r_00004"
+      ],
+      "source_triple_ids": [
+        "triple_00000"
+      ],
+      "confidence": 0.95,
+      "justification": "This relation is stable, reusable across documents, and aligns with the established Wikidata property P131.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "The Portland Golf Club is a private golf club in the northwest United States , in suburban Portland , Oregon . It is located in the unincorporated Raleigh Hills area of eastern Washington County , southwest of downtown Portland and east of Beaverton . PGC was established in the winter of 1914 , when"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00001",
+      "label": "P276 : location",
+      "normalized_label": "p276  location",
+      "description": "A property that indicates the physical or geographic location of an entity.",
+      "domain_hint": "Entity",
+      "range_hint": "Location",
+      "source_candidate_ids": [
+        "cand_r_00005"
+      ],
+      "source_triple_ids": [
+        "triple_00001"
+      ],
+      "confidence": 0.95,
+      "justification": "P276 is a stable, reusable property linking entities to locations across documents.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "The Portland Golf Club is a private golf club in the northwest United States , in suburban Portland , Oregon . It is located in the unincorporated Raleigh Hills area of eastern Washington County , southwest of downtown Portland and east of Beaverton . PGC was established in the winter of 1914 , when"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00002",
+      "label": "P571: inception",
+      "normalized_label": "p571 inception",
+      "description": "Relates an entity to the date of its inception or founding.",
+      "domain_hint": "institution",
+      "range_hint": "date",
+      "source_candidate_ids": [
+        "cand_r_00006"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "P571 is a widely used, stable Wikidata property that captures the founding or inception date of an entity, making it reusable across documents.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 260,
+          "chunk_end_char": 293,
+          "doc_start_char": 260,
+          "doc_end_char": 293,
+          "snippet": "hington County , southwest of downtown Portland and east of Beaverton . PGC was established in the winter of 1914 , when a group of nine businessmen assembled to form a new club after leaving t"
+        }
+      ]
+    }
+  ]
+}

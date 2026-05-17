@@ -1,0 +1,45 @@
+case_id,node_label,node_type,category,normalized_key,aliases,evidence,page,source_layer
+feedrate_80,Feedrate reduced to 80%,event,condition,FEEDRATE_80,Feedrate reduced to 80%,Feedrate reduced to 80%,3,layer03_candidates
+feedrate_80,Part #61 to #70,entity,part_range,PART_61_70,"Part 61-70, Parts 61 to 70",Part #61 to Part #70 : Feedrate reduced to 80%,3,layer03_candidates
+feedrate_80,Part #71 to #75,entity,part_range,PART_71_75,"Part 71-75, Parts 71 to 75",Part #71 to Part #75 : 316L grade instead of 303 grade,3,layer03_candidates
+feedrate_80,Part #7 to #60,entity,part_range,PART_7_60,"Part 7-60, Parts 7 to 60",Part #7 to Part #60 : Normal process conditions,3,layer03_candidates
+feedrate_80,Part #76 to #77,entity,part_range,PART_76_77,"Part 76-77, Parts 76 to 77",Part #76 to Part #77 : Normal process conditions for tool wear changes verification (if any),3,layer03_candidates
+feedrate_80,Part #78 to #81,entity,part_range,PART_78_81,"Part 78-81, Parts 78 to 81",Part #78 to Part #81 : Tool references mistakes (voluntary),3,layer03_candidates
+feedrate_80,AI1 (main spindle),entity,sensor,AI1,"AI1, Ai1, Main spindle sensor, amp_AI1, main spindle, spindle power",#1 : AI1 (main spindle),5,layer03_candidates
+feedrate_80,Vib1 (feedrate on roughing turning tool T104),entity,sensor,VIB1,"Feedrate sensor on T104, Vib1, freq_VIB_1, vibration 1",#8 : Vib1 (// feedrate on the roughing turning tool T104),5,layer03_candidates
+feedrate_80,Vib2 (main cutting force on roughing turning tool T104),entity,sensor,VIB2,"Cutting force sensor on T104, Vib2, freq_VIB_2, vibration 2",#9 : Vib2 (// main cutting force on the roughing turning tool T104),5,layer03_candidates
+feedrate_80,Vib11 (audio micro),entity,sensor,VIB11,"Audio micro sensor, Vib1, Vib11, audio RMS, audio micro, freq_VIB_1, vibration 1",#18 : Vib11 (audio micro),5,layer03_candidates
+feedrate_80,Operation 120: EBAUCHE EXTER,entity,operation,OP_120_EBAUCHE_EXTER,"Operation 120, EBAUCHE EXTER","<Operation id=""120"" description=""EBAUCHE EXTER"" monitor=""true"" tool=""T104"" Color=""0;255;0""",4,layer03_candidates
+feedrate_80,Tool T104,entity,tool,T104,"T104, Roughing turning tool","tool=""T104""",4,layer03_candidates
+feedrate_80,Spindle power decreases when feedrate decreases,event,observation,SPINDLE_POWER_DECREASES_FEEDRATE,Spindle power decrease with feedrate reduction,Spindle power decreases when feedrate decreases => OK,6,layer03_candidates
+feedrate_80,Cutting force decreases when feedrate decreases,event,observation,CUTTING_FORCE_DECREASES_FEEDRATE,Cutting force decrease with feedrate reduction,Cutting Force decreases when feedrate decreases => OK,7,layer03_candidates
+feedrate_80,Vib1 RMS remains same when feedrate decreases,event,observation,VIB1_RMS_STABLE_FEEDRATE,"Vib1, Vib1 RMS stable with feedrate reduction, freq_VIB_1, vibration 1",RMS remains the same when feedrate decreases,8,layer03_candidates
+feedrate_80,Vib1 RMS increases in second part when feedrate decreases,event,observation,VIB1_RMS_INCREASES_SECOND_PART_FEEDRATE,"Vib1, Vib1 RMS increase in second part with feedrate reduction, freq_VIB_1, vibration 1",RMS increases (in the 2nd part of the signal) when feedrate decreases,14,layer03_candidates
+feedrate_80,Audio RMS increases when feedrate decreases,event,observation,AUDIO_RMS_INCREASES_FEEDRATE,Audio RMS increase with feedrate reduction,RMS audio increases when feedrate decreases => OK,15,layer03_candidates
+feedrate_80,Audio RMS remains same when feedrate decreases,event,observation,AUDIO_RMS_STABLE_FEEDRATE,Audio RMS stable with feedrate reduction,"Audio RMS, remains the same when feedrate decreases …",29,layer03_candidates
+feedrate_80,Audio RMS decreases when feedrate decreases,event,observation,AUDIO_RMS_DECREASES_FEEDRATE,Audio RMS decrease with feedrate reduction,"Audio RMS, decreases when feedrate decreases",22,layer03_candidates
+feedrate_80,Cutting time increases when feedrate decreases,event,observation,CUTTING_TIME_INCREASES_FEEDRATE,Cutting time increase with feedrate reduction,Cutting time increases when feedrate decreases => OK,31,layer03_candidates
+feedrate_80,Temporal shifts sometimes,attribute,observation,TEMPORAL_SHIFTS_SOMETIMES,Temporal shifts occasionally,Rem : Temporal shifts sometimes !,6,layer03_candidates
+feedrate_80,Spindle power seems to remain same or decreases a little when feedrate decreases,event,observation,SPINDLE_POWER_SAME_OR_DECREASES_FEEDRATE,Spindle power seems stable or slightly decreasing with feedrate reduction,Spindle power seems to be remains the sema or decreases a little when feedrate decreases,34,layer03_candidates
+feedrate_80,Audio RMS seems to decrease when feedrate decreases for some time slices,event,observation,AUDIO_RMS_SENSE_DECREASES_FEEDRATE,Audio RMS seems to decrease with feedrate reduction in some slices,"Audio RMS, seems to decrease when feedrate decreases for some times slices… => Not obvious",32,layer03_candidates
+feedrate_80,Audio RMS seems to increase when feedrate decreases,event,observation,AUDIO_RMS_SENSE_INCREASES_FEEDRATE,Audio RMS seems to increase with feedrate reduction,"Audio RMS, seems to increase when feedrate decreases ?",39,layer03_candidates
+feedrate_80,FEEDRATE_80,event,,,,Part #61 to Part #70 : Feedrate reduced to 80%,3,layer05_triples_only
+feedrate_80,PART_61_70,entity,,,,Part #61 to Part #70 : Feedrate reduced to 80%,3,layer05_triples_only
+feedrate_80,OP_120_EBAUCHE_EXTER,entity,,,,Operation 120: EBAUCHE EXTER,4,layer05_triples_only
+feedrate_80,SPINDLE_POWER_DECREASES_FEEDRATE,event,,,,Spindle power decreases when feedrate decreases => OK,6,layer05_triples_only
+feedrate_80,CUTTING_FORCE_DECREASES_FEEDRATE,event,,,,Cutting Force decreases when feedrate decreases => OK,7,layer05_triples_only
+feedrate_80,VIB1_RMS_STABLE_FEEDRATE,event,,,,RMS remains the same when feedrate decreases,8,layer05_triples_only
+feedrate_80,VIB1_RMS_INCREASES_SECOND_PART_FEEDRATE,event,,,,RMS increases (in the 2nd part of the signal) when feedrate decreases,14,layer05_triples_only
+feedrate_80,AUDIO_RMS_INCREASES_FEEDRATE,event,,,,RMS audio increases when feedrate decreases => OK,15,layer05_triples_only
+feedrate_80,AUDIO_RMS_DECREASES_FEEDRATE,event,,,,"Audio RMS, decreases when feedrate decreases",22,layer05_triples_only
+feedrate_80,CUTTING_TIME_INCREASES_FEEDRATE,event,,,,Cutting time increases when feedrate decreases => OK,31,layer05_triples_only
+feedrate_80,TEMPORAL_SHIFTS_SOMETIMES,event,,,,Rem : Temporal shifts sometimes !,6,layer05_triples_only
+feedrate_80,AI1,entity,,,,Spindle power decreases when feedrate decreases => OK,6,layer05_triples_only
+feedrate_80,Vib2,entity,,,,Cutting Force decreases when feedrate decreases => OK,7,layer05_triples_only
+feedrate_80,Vib1,entity,,,,RMS remains the same when feedrate decreases,8,layer05_triples_only
+feedrate_80,Vib11,entity,,,,RMS audio increases when feedrate decreases => OK,15,layer05_triples_only
+material_316L,316L grade instead of 303 stainless steel,event,condition,GRADE_316L_VS_303,"316L grade instead of 303 stainless steel, 316L instead of 303 stainless steel",Case of the changes in the material for grade 316L instead of the 303 stainless steel reference grade,1,layer03_candidates
+material_316L,Spindle Power (AI1),entity,,,,Spindle power increases when 316L grade => OK,6,layer05_triples_only
+material_316L,Cutting Force (Fz),entity,,,,Cutting Force increases when 316L grade => OK,7,layer05_triples_only
+material_316L,Vibration RMS (Vib1),entity,,,,RMS decreases when 316L grade,8,layer05_triples_only
+material_316L,Audio RMS (Vib11),entity,,,,RMS decreases when 316L grade,9,layer05_triples_only

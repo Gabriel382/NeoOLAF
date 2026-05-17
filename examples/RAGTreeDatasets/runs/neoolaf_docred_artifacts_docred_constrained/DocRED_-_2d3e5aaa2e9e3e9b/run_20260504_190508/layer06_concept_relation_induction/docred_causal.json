@@ -1,0 +1,32 @@
+{
+  "layer": "layer06_concept_relation_induction",
+  "num_concept_candidates": 0,
+  "num_ontology_relation_candidates": 1,
+  "concept_candidates": [],
+  "ontology_relation_candidates": [
+    {
+      "relation_id": "ont_rel_00000",
+      "label": "homeTutoring",
+      "normalized_label": "hometutoring",
+      "description": "Relates a tutoring event to the student's residence where the tutoring takes place.",
+      "domain_hint": "TutoringEvent",
+      "range_hint": "Residence",
+      "source_candidate_ids": [
+        "cand_r_00009"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.85,
+      "justification": "The relation captures a stable, reusable concept of tutoring conducted at a student's home, which is meaningful across multiple documents and not duplicating existing ontology properties.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 714,
+          "chunk_end_char": 732,
+          "doc_start_char": 714,
+          "doc_end_char": 732,
+          "snippet": "to remain active in shaping music in Houston by conducting summer programs and in - home tutoring . Johnson was a proficient musician in his own right and , at one point , playe"
+        }
+      ]
+    }
+  ]
+}

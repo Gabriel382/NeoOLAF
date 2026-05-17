@@ -1,0 +1,81 @@
+{
+  "layer": "layer06_concept_relation_induction",
+  "num_concept_candidates": 2,
+  "num_ontology_relation_candidates": 1,
+  "concept_candidates": [
+    {
+      "concept_id": "concept_00000",
+      "label": "town",
+      "normalized_label": "town",
+      "description": "A human settlement larger than a village but smaller than a city, typically featuring centralized services, infrastructure, and municipal governance.",
+      "concept_kind": "location",
+      "parent_hint": "location",
+      "source_candidate_ids": [
+        "cand_e_00002"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "The candidate 'town' is a semantically stable, general concept that can be reused across documents to represent settlements, fitting ontology-oriented modeling better than treating each mention as a unique instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 119,
+          "chunk_end_char": 128,
+          "doc_start_char": 119,
+          "doc_end_char": 128,
+          "snippet": "was an Irish hurler who played for the Dublin and Laois senior teams . Born in Abbeyleix , County Laois , Mc Evoy first played competitive hurling and Gaelic football i"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00001",
+      "label": "WonMedalEvent",
+      "normalized_label": "wonmedalevent",
+      "description": "An event in which an individual or group receives a medal for a specific achievement, typically in a competitive or ceremonial context.",
+      "concept_kind": "event",
+      "parent_hint": "AwardEvent",
+      "source_candidate_ids": [
+        "cand_s_00000"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.88,
+      "justification": "The candidate represents a reusable event type that is semantically stable and general enough to cover many instances of medal awarding across sports, academics, and other competitions. It aligns with the ontology's event modeling preference and does not duplicate existing classes.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 442,
+          "chunk_end_char": 469,
+          "doc_start_char": 442,
+          "doc_end_char": 469,
+          "snippet": "retuming to Laois . Mc Evoy was a regular member of the starting fifteen , and won one All - Ireland medal and two Leinster medals . He was an All - Ireland runner - up on one occasion ."
+        }
+      ]
+    }
+  ],
+  "ontology_relation_candidates": [
+    {
+      "relation_id": "ont_rel_00000",
+      "label": "dual player",
+      "normalized_label": "dual player",
+      "description": "Relates a sportsperson to the sports they compete in, indicating that the individual plays multiple sports.",
+      "domain_hint": "athlete",
+      "range_hint": "sport",
+      "source_candidate_ids": [
+        "cand_r_00010"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.88,
+      "justification": "The concept of a dual player is a stable, reusable property that appears across many documents about Gaelic games and other multi-sport athletes, and it does not duplicate existing relations such as \"plays sport\".",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 609,
+          "chunk_end_char": 620,
+          "doc_start_char": 609,
+          "doc_end_char": 620,
+          "snippet": "up on one occasion . At club level Mc Evoy won several championship medals as a dual player with Abbeyleix . He also won a championship medal with the Thomas Davis club ."
+        }
+      ]
+    }
+  ]
+}

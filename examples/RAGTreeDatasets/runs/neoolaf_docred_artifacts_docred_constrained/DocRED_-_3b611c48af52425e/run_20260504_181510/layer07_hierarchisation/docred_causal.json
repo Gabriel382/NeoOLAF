@@ -1,0 +1,46 @@
+{
+  "layer": "layer07_hierarchisation",
+  "num_concept_hierarchy_links": 0,
+  "num_relation_hierarchy_links": 2,
+  "concept_hierarchy_links": [],
+  "relation_hierarchy_links": [
+    {
+      "link_id": "relation_h_00000",
+      "child_relation_id": "ont_rel_00000",
+      "child_label": "was produced by",
+      "parent_relation_id": "ont_rel_00001",
+      "parent_label": "recordedBy",
+      "justification": "According to the seed ontology, 'was produced by' is a sub‑relation of the broader relation 'recordedBy', indicating that it is more specific.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 115,
+          "chunk_end_char": 130,
+          "doc_start_char": 115,
+          "doc_end_char": 130,
+          "snippet": "\" Lookin Ass Nigga \" ) is a song by American rapper and singer Nicki Minaj . It was produced by Detail and Choppa Boi . It was recorded by Minaj for the Young Money Entertainm"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00001",
+      "child_relation_id": "ont_rel_00001",
+      "child_label": "recordedBy",
+      "parent_relation_id": "ont_rel_00000",
+      "parent_label": "was produced by",
+      "justification": "The relation \"recordedBy\" is a specific instance of a production relationship, linking a musical recording to the record label that produced or released it. The parent relation \"was produced by\" is a generic production link between any product and its producer. Therefore, \"recordedBy\" is more specific and can be considered a subrelation of \"was produced by\".",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 158,
+          "chunk_end_char": 173,
+          "doc_start_char": 158,
+          "doc_end_char": 173,
+          "snippet": "n rapper and singer Nicki Minaj . It was produced by Detail and Choppa Boi . It was recorded by Minaj for the Young Money Entertainment compilation album ( 2014 ) . The music"
+        }
+      ]
+    }
+  ]
+}

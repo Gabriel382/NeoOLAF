@@ -1,0 +1,416 @@
+{
+  "layer": "layer10_validation_reasoning",
+  "validation_report": {
+    "is_valid": true,
+    "issues": []
+  },
+  "reasoning_report": {
+    "notes": [
+      "Inferred graph initialized from validated candidate triples.",
+      "Inferred axiom schemata copied from extracted reusable schemata.",
+      "Inferred general axioms copied from candidate general axioms.",
+      "Concept hierarchy links are available for downstream ontology reasoning.",
+      "Relation hierarchy links are available for downstream relation reasoning."
+    ],
+    "inferred_triples": [
+      {
+        "triple_id": "triple_00000",
+        "subject_id": "cand_e_00001",
+        "subject_label": "port city",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00001",
+        "predicate_label": "located in",
+        "object_id": "cand_e_00006",
+        "object_label": "country",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The chunk states that Skai TV is based in Piraeus, a Greek city, implying Piraeus is located in Greece.",
+        "confidence": 0.92
+      },
+      {
+        "triple_id": "triple_00001",
+        "subject_id": "cand_e_00002",
+        "subject_label": "Skai Group",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00003",
+        "predicate_label": "largest media groups in the country",
+        "object_id": "cand_e_00006",
+        "object_label": "country",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The chunk states that Skai Group is \"one of the largest media groups in the country\", linking Skai Group to the country entity.",
+        "confidence": 0.85
+      },
+      {
+        "triple_id": "triple_00002",
+        "subject_id": "cand_e_00000",
+        "subject_label": "entity",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00005",
+        "predicate_label": "available on",
+        "object_id": "cand_s_00001",
+        "object_label": "Nova",
+        "object_type": "event",
+        "chunk_id": "chunk_0000",
+        "justification": "The chunk states that Skai TV is available on the subscription‑based encrypted services of Nova and Cosmote TV, establishing an \"available on\" relation between Skai TV and Nova.",
+        "confidence": 0.85
+      }
+    ],
+    "inferred_axiom_schemata": [
+      {
+        "schema_id": "schema_00000",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "is a",
+        "predicate": "domain",
+        "object_id": "domain_hint::Entity",
+        "object_label": "Entity",
+        "confidence": 0.92
+      },
+      {
+        "schema_id": "schema_00001",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "is a",
+        "predicate": "range",
+        "object_id": "range_hint::TelevisionNetwork",
+        "object_label": "TelevisionNetwork",
+        "confidence": 0.92
+      },
+      {
+        "schema_id": "schema_00002",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "locatedIn",
+        "predicate": "domain",
+        "object_id": "domain_hint::Entity",
+        "object_label": "Entity",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00003",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "locatedIn",
+        "predicate": "range",
+        "object_id": "range_hint::Location",
+        "object_label": "Location",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00004",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "partOf",
+        "predicate": "domain",
+        "object_id": "domain_hint::Entity",
+        "object_label": "Entity",
+        "confidence": 0.92
+      },
+      {
+        "schema_id": "schema_00005",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "partOf",
+        "predicate": "range",
+        "object_id": "range_hint::Entity",
+        "object_label": "Entity",
+        "confidence": 0.92
+      },
+      {
+        "schema_id": "schema_00006",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00003",
+        "subject_label": "availableOn",
+        "predicate": "domain",
+        "object_id": "domain_hint::AudiovisualWork",
+        "object_label": "AudiovisualWork",
+        "confidence": 0.85
+      },
+      {
+        "schema_id": "schema_00007",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00003",
+        "subject_label": "availableOn",
+        "predicate": "range",
+        "object_id": "range_hint::SubscriptionService",
+        "object_label": "SubscriptionService",
+        "confidence": 0.85
+      },
+      {
+        "schema_id": "schema_00008",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00004",
+        "subject_label": "memberOf",
+        "predicate": "domain",
+        "object_id": "domain_hint::Organization",
+        "object_label": "Organization",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00009",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00004",
+        "subject_label": "memberOf",
+        "predicate": "range",
+        "object_id": "range_hint::Consortium",
+        "object_label": "Consortium",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00010",
+        "schema_type": "subclass",
+        "subject_id": "concept_00000",
+        "subject_label": "PortCity",
+        "predicate": "subclassOf",
+        "object_id": "concept_00002",
+        "object_label": "GeographicArea",
+        "confidence": 0.95
+      }
+    ],
+    "inferred_general_axioms": [
+      {
+        "axiom_id": "axiom_00000",
+        "axiom_type": "relation_domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "is a",
+        "predicate": "domain",
+        "object_id": "domain_hint::Entity",
+        "object_label": "Entity",
+        "literal_value": null,
+        "confidence": 0.92
+      },
+      {
+        "axiom_id": "axiom_00001",
+        "axiom_type": "relation_range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "is a",
+        "predicate": "range",
+        "object_id": "range_hint::TelevisionNetwork",
+        "object_label": "TelevisionNetwork",
+        "literal_value": null,
+        "confidence": 0.92
+      },
+      {
+        "axiom_id": "axiom_00002",
+        "axiom_type": "relation_domain",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "locatedIn",
+        "predicate": "domain",
+        "object_id": "domain_hint::Entity",
+        "object_label": "Entity",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00003",
+        "axiom_type": "relation_range",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "locatedIn",
+        "predicate": "range",
+        "object_id": "range_hint::Location",
+        "object_label": "Location",
+        "literal_value": null,
+        "confidence": 0.92
+      },
+      {
+        "axiom_id": "axiom_00004",
+        "axiom_type": "relation_domain",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "partOf",
+        "predicate": "domain",
+        "object_id": "domain_hint::Entity",
+        "object_label": "Entity",
+        "literal_value": null,
+        "confidence": 0.97
+      },
+      {
+        "axiom_id": "axiom_00005",
+        "axiom_type": "range",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "partOf",
+        "predicate": "range",
+        "object_id": "range_hint::Entity",
+        "object_label": "Entity",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00006",
+        "axiom_type": "relation_domain",
+        "subject_id": "ont_rel_00003",
+        "subject_label": "availableOn",
+        "predicate": "domain",
+        "object_id": "domain_hint::AudiovisualWork",
+        "object_label": "AudiovisualWork",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00007",
+        "axiom_type": "range",
+        "subject_id": "ont_rel_00003",
+        "subject_label": "availableOn",
+        "predicate": "range",
+        "object_id": "range_hint::SubscriptionService",
+        "object_label": "SubscriptionService",
+        "literal_value": null,
+        "confidence": 0.9
+      },
+      {
+        "axiom_id": "axiom_00008",
+        "axiom_type": "relation_domain",
+        "subject_id": "ont_rel_00004",
+        "subject_label": "memberOf",
+        "predicate": "domain",
+        "object_id": "domain_hint::Organization",
+        "object_label": "Organization",
+        "literal_value": null,
+        "confidence": 0.92
+      },
+      {
+        "axiom_id": "axiom_00009",
+        "axiom_type": "range",
+        "subject_id": "ont_rel_00004",
+        "subject_label": "memberOf",
+        "predicate": "range",
+        "object_id": "range_hint::Consortium",
+        "object_label": "Consortium",
+        "literal_value": null,
+        "confidence": 0.93
+      },
+      {
+        "axiom_id": "axiom_00010",
+        "axiom_type": "subclass",
+        "subject_id": "concept_00000",
+        "subject_label": "PortCity",
+        "predicate": "subClassOf",
+        "object_id": "concept_00002",
+        "object_label": "GeographicArea",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00011",
+        "axiom_type": "description",
+        "subject_id": "concept_00000",
+        "subject_label": "PortCity",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "A city that hosts a port, typically situated on a coast or estuary and serving as a major node in maritime trade.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00012",
+        "axiom_type": "description",
+        "subject_id": "concept_00001",
+        "subject_label": "Date",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "A specific calendar date, representing a point in time.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00013",
+        "axiom_type": "description",
+        "subject_id": "concept_00002",
+        "subject_label": "GeographicArea",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "A geographic area is a region or area on Earth that can be identified, located, or described, such as a metropolitan area or administrative territorial entity.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00014",
+        "axiom_type": "description",
+        "subject_id": "concept_00003",
+        "subject_label": "DigitalTerrestrialTransmission",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "A technology for transmitting digital signals over terrestrial broadcast channels, commonly used in digital television and radio broadcasting.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00015",
+        "axiom_type": "description",
+        "subject_id": "concept_00004",
+        "subject_label": "NationwideCoverageExpansion",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "An event in which a service, network, or information coverage is extended across an entire sovereign state or large geographic area.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00016",
+        "axiom_type": "description",
+        "subject_id": "concept_00005",
+        "subject_label": "Nova",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "An astronomical event in which a white dwarf in a close binary system accretes matter from its companion, triggering a sudden brightening of a new star that fades over weeks or months. It is a type of cataclysmic variable star.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00017",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "is a",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Relates an individual entity to a class or subclass, indicating that the entity is an instance of that class or belongs to that subclass.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00018",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "locatedIn",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Relates an entity (person, organization, place, or other entity) to the geographic or administrative location where it is situated, headquartered, or based.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00019",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "partOf",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Indicates that an entity is a component, member, or constituent of another entity, such as a sub‑organization within a larger organization or a product within a product line.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00020",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00003",
+        "subject_label": "availableOn",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Indicates that a media item (e.g., an audiovisual work) can be accessed through a subscription-based service such as Nova or Cosmote TV.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00021",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00004",
+        "subject_label": "memberOf",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Relates an entity to an organization, group, or consortium of which it is a member.",
+        "confidence": 1.0
+      }
+    ]
+  }
+}

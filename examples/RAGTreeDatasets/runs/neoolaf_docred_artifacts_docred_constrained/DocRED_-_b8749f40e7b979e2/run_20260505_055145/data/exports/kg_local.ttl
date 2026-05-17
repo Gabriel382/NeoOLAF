@@ -1,0 +1,45 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that the Lima, OH Metropolitan Statistical Area is part of the Lima - Van Wert - Wapakoneta, OH Combined Statistical Area." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00003> ;
+    neo:predicate ns1:cand_r_00003 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00005> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The text states that Allen County comprises the Lima, OH Metropolitan Statistical Area, implying that the metropolitan area is part of the county." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00000> ;
+    neo:predicate ns1:cand_r_00011 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00005> .
+
+ns1:cand_r_00003 neo:label "Lima - Van Wert - Wapakoneta, OH Combined Statistical Area" .
+
+ns1:cand_r_00011 neo:label "part of" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Allen County is a county in the U.S. state of Ohio . As of the 2010 census , the population was 106,331 . The county seat is Lima . The county was created in 1820 and organized in 1831 . The county is named for Colonel John Allen , who was killed leading his men at the Battle of Frenchtown , during " .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "en County comprises the Lima , OH Metropolitan Statistical Area , which is also part of the Lima - Van Wert - Wapakoneta , OH Combined Statistical Area ." .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "Allen County" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_e_00005> neo:label "Lima, OH Metropolitan Statistical Area" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00003 <http://neoolaf.org/resource/node/cand_r_00003> ;
+    ns1:cand_r_00011 <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/node/cand_r_00003> neo:label "Lima - Van Wert - Wapakoneta, OH Combined Statistical Area" ;
+    neo:nodeType "relation" .
+

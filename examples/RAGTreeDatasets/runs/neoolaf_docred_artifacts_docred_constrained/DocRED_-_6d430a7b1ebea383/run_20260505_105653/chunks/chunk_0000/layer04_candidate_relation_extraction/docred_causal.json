@@ -1,0 +1,102 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 4,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00000",
+      "relation_label": "Commonwealth of Virginia",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "Albemarle County",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_r_00000",
+      "target_candidate_label": "Commonwealth of Virginia",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that Albemarle County is located in the Commonwealth of Virginia.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 67,
+          "chunk_end_char": 91,
+          "doc_start_char": 67,
+          "doc_end_char": 91,
+          "snippet": "Albemarle County is a county located in the Piedmont region of the Commonwealth of Virginia . Its county seat is Charlottesville , which is an independent city and enclave"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00003",
+      "relation_label": "located in",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "Albemarle County",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00001",
+      "target_candidate_label": "Piedmont region",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0000",
+      "justification": "The chunk text explicitly states that Albemarle County is a county located in the Piedmont region.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 17,
+          "chunk_end_char": 39,
+          "doc_start_char": 17,
+          "doc_end_char": 39,
+          "snippet": "Albemarle County is a county located in the Piedmont region of the Commonwealth of Virginia . Its county seat is Charlo"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00005",
+      "relation_label": "was created in",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "Albemarle County",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00004",
+      "target_candidate_label": "date",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that Albemarle County was created in 1744.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 418,
+          "chunk_end_char": 432,
+          "doc_start_char": 418,
+          "doc_end_char": 432,
+          "snippet": "e County was 98,970 , more than triple the 1960 census count . Albemarle County was created in 1744 from the western portion of Goochland County , though portions of Albemarl"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00003",
+      "relation_candidate_id": "cand_r_00007",
+      "relation_label": "is an independent city and enclave entirely surrounded by the county",
+      "source_candidate_id": "cand_e_00002",
+      "source_candidate_label": "Charlottesville",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00000",
+      "target_candidate_label": "Albemarle County",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0000",
+      "justification": "The chunk states that Charlottesville is an independent city and enclave entirely surrounded by Albemarle County, indicating that Charlottesville is located within Albemarle County.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 137,
+          "chunk_end_char": 205,
+          "doc_start_char": 137,
+          "doc_end_char": 205,
+          "snippet": "on of the Commonwealth of Virginia . Its county seat is Charlottesville , which is an independent city and enclave entirely surrounded by the county . Albemarle County is part of the Charlottesville Metropolitan Statistical Area"
+        }
+      ]
+    }
+  ]
+}
