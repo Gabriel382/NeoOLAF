@@ -1,0 +1,26 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The chunk states that IBM Research – Brazil’s second priority area is the social data analytics segment, which is described as a segment that comprises analysis of data from social networking sites. This indicates a relation between IBM Research – Brazil and the segment named Social Data Analytics." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00004> ;
+    neo:predicate ns1:cand_r_00006 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "IBM Research – Brazil" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00006 <http://neoolaf.org/resource/node/cand_e_00004> .
+
+ns1:cand_r_00006 neo:label "social data analytics segment" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "t , involving oil and gas , mining and agricultural sectors . The second is the social data analytics segment that comprises the analysis of data generated from social networking sites [ su" .
+
+<http://neoolaf.org/resource/node/cand_e_00004> neo:label "Social Data Analytics" ;
+    neo:nodeType "entity" .
+

@@ -1,0 +1,58 @@
+{
+  "layer": "layer08_axiom_schemata_extraction",
+  "num_axiom_schema_candidates": 2,
+  "axiom_schema_candidates": [
+    {
+      "schema_id": "schema_00000",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "produced by",
+      "predicate": "domain",
+      "object_id": "domain_hint::Product",
+      "object_label": "Product",
+      "justification": "The relation \"produced by\" explicitly links a product or product series to the entity that manufactures or produces it, as indicated by the domain hint \"Product\" and the range hint \"Manufacturer\". In the seed ontology, potential manufacturer classes include broadcaster, record label, and sports league, all of which are organizations capable of producing products.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 101,
+          "chunk_end_char": 132,
+          "doc_start_char": 101,
+          "doc_end_char": 132,
+          "snippet": "( Super Smart ) series is a line of high - end Android - powered mobile devices produced by Samsung Electronics , a division of Samsung from South Korea . The series consisted initially of sm"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00001",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "produced by",
+      "predicate": "range",
+      "object_id": "range_hint::Manufacturer",
+      "object_label": "Manufacturer",
+      "justification": "The relation \"produced by\" explicitly links a product or product series to the entity that manufactures or produces it, as indicated by the domain hint \"Product\" and the range hint \"Manufacturer\". In the seed ontology, potential manufacturer classes include broadcaster, record label, and sports league, all of which are organizations capable of producing products.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 101,
+          "chunk_end_char": 132,
+          "doc_start_char": 101,
+          "doc_end_char": 132,
+          "snippet": "( Super Smart ) series is a line of high - end Android - powered mobile devices produced by Samsung Electronics , a division of Samsung from South Korea . The series consisted initially of sm"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that the Delaware House of Representatives meets at Legislative Hall." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00000> ;
+    neo:predicate ns1:cand_r_00003 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00003> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The text states that Legislative Hall is located in Dover, Delaware." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00004> ;
+    neo:predicate ns1:cand_r_00004 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/node/cand_r_00003> neo:label "Delaware House of Representatives" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00003 <http://neoolaf.org/resource/node/cand_e_00000> .
+
+ns1:cand_r_00003 neo:label "Delaware House of Representatives" .
+
+ns1:cand_r_00004 neo:label "Dover, Delaware" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "bicameral legislature composed of the Delaware Senate with 21 Senators and the Delaware House of Representatives with 41 Representatives . It meets at Legislative Hall in Dover , Delaware , co" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "The Delaware General Assembly is the legislature of the U.S. state of Delaware . It is a bicameral legislature composed of the Delaware Senate with 21 Senators and the Delaware House of Representatives with 41 Representatives . It meets at Legislative Hall in Dover , Delaware , convening on the seco" .
+
+<http://neoolaf.org/resource/node/cand_r_00004> neo:label "Dover, Delaware" ;
+    neo:nodeType "relation" .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "Legislative Hall" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00004 <http://neoolaf.org/resource/node/cand_r_00004> .
+

@@ -1,0 +1,123 @@
+{
+  "layer": "layer07_hierarchisation",
+  "num_concept_hierarchy_links": 1,
+  "num_relation_hierarchy_links": 5,
+  "concept_hierarchy_links": [
+    {
+      "link_id": "concept_h_00000",
+      "child_concept_id": "concept_00000",
+      "child_label": "PortCity",
+      "parent_concept_id": "concept_00002",
+      "parent_label": "GeographicArea",
+      "justification": "PortCity is a more specific type of geographic area, as it is a city that includes port facilities. GeographicArea is a general class for any region or area on Earth that can be identified or described, so PortCity naturally fits as a subclass.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 63,
+          "chunk_end_char": 70,
+          "doc_start_char": 63,
+          "doc_end_char": 70,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country"
+        }
+      ]
+    }
+  ],
+  "relation_hierarchy_links": [
+    {
+      "link_id": "relation_h_00000",
+      "child_relation_id": "ont_rel_00001",
+      "child_label": "locatedIn",
+      "parent_relation_id": "ont_rel_00002",
+      "parent_label": "partOf",
+      "justification": "The relation \"locatedIn\" specifies a spatial containment of an entity within a geographic or administrative location, which is a particular instance of an entity being part of another entity.  Thus, \"locatedIn\" is a more specific, spatial subrelation of the broader structural relation \"partOf\".",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 54,
+          "chunk_end_char": 70,
+          "doc_start_char": 54,
+          "doc_end_char": 70,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00001",
+      "child_relation_id": "ont_rel_00002",
+      "child_label": "partOf",
+      "parent_relation_id": "ont_rel_00000",
+      "parent_label": "is a",
+      "justification": "\"partOf\" is a more specific relation that describes a component or member relationship, whereas \"is a\" is a general classification relation. Therefore, partOf can be considered a subrelation of is a.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 79,
+          "chunk_end_char": 101,
+          "doc_start_char": 79,
+          "doc_end_char": 101,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its pre"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00002",
+      "child_relation_id": "ont_rel_00002",
+      "child_label": "partOf",
+      "parent_relation_id": "ont_rel_00004",
+      "parent_label": "memberOf",
+      "justification": "The relation 'partOf' denotes a component or constituent relationship, which is a more specific form of belonging. Every instance linked by 'partOf' is inherently a member of the larger entity, making 'partOf' a subrelation of the broader 'memberOf' relation. This aligns with the seed ontology context that places partOf under memberOf.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 79,
+          "chunk_end_char": 101,
+          "doc_start_char": 79,
+          "doc_end_char": 101,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its pre"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00003",
+      "child_relation_id": "ont_rel_00003",
+      "child_label": "availableOn",
+      "parent_relation_id": "ont_rel_00002",
+      "parent_label": "partOf",
+      "justification": "The relation 'availableOn' specifies that a media item is accessible through a particular subscription service, which is a more specific instance of the general 'partOf' relation that denotes membership or inclusion within a larger entity. Thus, 'availableOn' can be considered a subrelation of 'partOf'.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its present form on lst of April 2006 in the Athens metropolitan area , and gradually spread its coverage nationwide . Besides"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00004",
+      "child_relation_id": "ont_rel_00004",
+      "child_label": "memberOf",
+      "parent_relation_id": "ont_rel_00002",
+      "parent_label": "partOf",
+      "justification": "\"memberOf\" is a specific type of part‑whole relationship where the entity is a member of an organization, which is a special case of the broader \"partOf\" relation that covers any component or constituent relationship.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 442,
+          "chunk_end_char": 457,
+          "doc_start_char": 442,
+          "doc_end_char": 457,
+          "snippet": "scription - based encrypted services of Nova and Cosmote TV . Skai TV is also a member of Digea , a consortium of private television networks introducing digital terrestrial t"
+        }
+      ]
+    }
+  ]
+}

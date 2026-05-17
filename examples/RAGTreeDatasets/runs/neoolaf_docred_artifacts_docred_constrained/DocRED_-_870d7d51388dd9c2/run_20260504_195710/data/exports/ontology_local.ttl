@@ -1,0 +1,324 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://neoolaf.org/resource/concept/concept_00000> a owl:Class ;
+    rdfs:label "town" ;
+    neo:conceptKind "location" ;
+    neo:parentHint "location" ;
+    rdfs:comment "A human settlement larger than a village but smaller than a city, typically featuring centralized services, infrastructure, and municipal governance." .
+
+<http://neoolaf.org/resource/concept/concept_00001> a owl:Class ;
+    rdfs:label "WonMedalEvent" ;
+    neo:conceptKind "event" ;
+    neo:parentHint "AwardEvent" ;
+    rdfs:comment "An event in which an individual or group receives a medal for a specific achievement, typically in a competitive or ceremonial context." .
+
+<http://neoolaf.org/resource/relation/ont_rel_00000> a owl:ObjectProperty ;
+    rdfs:label "dual player" ;
+    neo:domainHint "athlete" ;
+    neo:rangeHint "sport" ;
+    rdfs:comment "Relates a sportsperson to the sports they compete in, indicating that the individual plays multiple sports." ;
+    rdfs:domain "athlete" ;
+    rdfs:range "sport" .
+
+<http://www.wikidata.org/entity/Q10864048> a owl:Class ;
+    rdfs:label "first-level administrative division" ;
+    rdfs:comment "administrative division directly subordinate to or under administration of a national government" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#LOC> .
+
+<http://www.wikidata.org/entity/Q11204> a owl:Class ;
+    rdfs:label "legislature" ;
+    rdfs:comment "kind of deliberative assembly with the power to pass, amend, and repeal laws" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q1137109> a owl:Class ;
+    rdfs:label "video game publisher" ;
+    rdfs:comment "company that publishes video games" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q1190554> a owl:Class ;
+    rdfs:label "occurrence" ;
+    rdfs:comment "occurrence of a fact or object in space-time; instantiation of a property in an object" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q12973014> a owl:Class ;
+    rdfs:label "sports team" ;
+    rdfs:comment "individual team that plays sports" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q1320047> a owl:Class ;
+    rdfs:label "book publisher" ;
+    rdfs:comment "publishing house whose sole or main output is books / texts" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q14897293> a owl:Class ;
+    rdfs:label "fictional entity" ;
+    rdfs:comment "entity that only exists in a work of fiction" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q15265344> a owl:Class ;
+    rdfs:label "broadcaster" ;
+    rdfs:comment "organization responsible for production and transmission of radio and television programs" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q15275719> a owl:Class ;
+    rdfs:label "recurring event" ;
+    rdfs:comment "event recurring at an interval" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q15324> a owl:Class ;
+    rdfs:label "body of water" ;
+    rdfs:comment "any significant accumulation of water, generally on a planet's surface" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q16334295> a owl:Class ;
+    rdfs:label "group of humans" ;
+    rdfs:comment "any set of human beings" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#PER> .
+
+<http://www.wikidata.org/entity/Q16334298> a owl:Class ;
+    rdfs:label "group of living things" ;
+    rdfs:comment "set of live physical entities of any nature" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q17334923> a owl:Class ;
+    rdfs:label "physical location" ;
+    rdfs:comment "property describing the position of something in space" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#LOC> .
+
+<http://www.wikidata.org/entity/Q17376908> a owl:Class ;
+    rdfs:label "languoid" ;
+    rdfs:comment "language, variety of a language, or group of languages" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q178706> a owl:Class ;
+    rdfs:label "institution" ;
+    rdfs:comment "structure or mechanism of social order and cooperation governing the behaviour of a set of individuals within a given community" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q18011141> a owl:Class ;
+    rdfs:label "fictional military organization" ;
+    rdfs:comment "military organization which only appears in works of fiction" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q180684> a owl:Class ;
+    rdfs:label "conflict" ;
+    rdfs:comment "friction, disagreement, or discord within a group or between different groups" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q18127> a owl:Class ;
+    rdfs:label "record label" ;
+    rdfs:comment "brand and trademark associated with the marketing of music recordings and music videos" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q188451> a owl:Class ;
+    rdfs:label "music genre" ;
+    rdfs:comment "category that identifies pieces of music as belonging to a shared tradition or set of conventions" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q198> a owl:Class ;
+    rdfs:label "war" ;
+    rdfs:comment "organized and prolonged violent conflict between states" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q2031291> a owl:Class ;
+    rdfs:label "musical release" ;
+    rdfs:comment "collection of musical recordings released in a specific format for consumption" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q215380> a owl:Class ;
+    rdfs:label "musical group" ;
+    rdfs:comment "musical ensemble which performs music" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q2188189> a owl:Class ;
+    rdfs:label "musical work" ;
+    rdfs:comment "generic term for any work of art related to music, i.e. songs, compositions, groups of compositions, sheet music, melodies, albums, musical films, etc." ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q2221906> a owl:Class ;
+    rdfs:label "geographic location" ;
+    rdfs:comment "point, line or area on or near Earth" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#LOC> .
+
+<http://www.wikidata.org/entity/Q231002> a owl:Class ;
+    rdfs:label "nationality" ;
+    rdfs:comment "a legal identification of a person in international law, establishing the person as a subject, a national, of a sovereign state" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q2385804> a owl:Class ;
+    rdfs:label "educational institution" ;
+    rdfs:comment "institution that provides education" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q241317> a owl:Class ;
+    rdfs:label "computing platform" ;
+    rdfs:comment "environment in which a piece of software is executed" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q2424752> a owl:Class ;
+    rdfs:label "product" ;
+    rdfs:comment "anything that can be offered to a market" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q2431196> a owl:Class ;
+    rdfs:label "audiovisual work" ;
+    rdfs:comment "creative work possessing both a sound and a visual component" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q27096213> a owl:Class ;
+    rdfs:label "geographic entity" ;
+    rdfs:comment "relatively stationary place or entity that can be geographically identified, located, or described" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#LOC> .
+
+<http://www.wikidata.org/entity/Q2728698> a owl:Class ;
+    rdfs:label "religious belief" ;
+    rdfs:comment "idea or tenet that is part of a faith; refers to attitudes towards mythological, supernatural, or spiritual aspects of a religion; is usually codified" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q3024240> a owl:Class ;
+    rdfs:label "historical country" ;
+    rdfs:comment "country, state or territory that once existed" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#LOC> .
+
+<http://www.wikidata.org/entity/Q327333> a owl:Class ;
+    rdfs:label "government agency" ;
+    rdfs:comment "organisational part of a government responsible for specific public services, such as health, judiciary, education, transportation, foreign affairs, etc" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q3624078> a owl:Class ;
+    rdfs:label "sovereign state" ;
+    rdfs:comment "state that has the highest authority over a territory" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#LOC> .
+
+<http://www.wikidata.org/entity/Q386724> a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:comment "intellectual or artistic creation" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q41710> a owl:Class ;
+    rdfs:label "ethnic group" ;
+    rdfs:comment "socially defined category of people who identify with each other" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q43229> a owl:Class ;
+    rdfs:label "organization" ;
+    rdfs:comment "social entity established to meet needs or pursue goals" .
+
+<http://www.wikidata.org/entity/Q4406616> a owl:Class ;
+    rdfs:label "concrete object" ;
+    rdfs:comment "a particular or specific instance of an entity. To describe tangible or physical objects use Q223557" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q482994> a owl:Class ;
+    rdfs:label "album" ;
+    rdfs:comment "grouping of album releases by an artist usually released at the same time with the same title and tracks but in different formats for consumption (digital, CD, LP)" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q5> a owl:Class ;
+    rdfs:label "human" ;
+    rdfs:comment "any member of Homo sapiens, unique extant species of the genus Homo" .
+
+<http://www.wikidata.org/entity/Q5107> a owl:Class ;
+    rdfs:label "continent" ;
+    rdfs:comment "large landmass identified by convention" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#LOC> .
+
+<http://www.wikidata.org/entity/Q56061> a owl:Class ;
+    rdfs:label "administrative territorial entity" ;
+    rdfs:comment "territorial entity for administration purposes, with or without its own local government" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#LOC> .
+
+<http://www.wikidata.org/entity/Q571> a owl:Class ;
+    rdfs:label "book" ;
+    rdfs:comment "medium for recording information (words or images) typically on bound pages or more abstractly in electronic or audio form" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q618123> a owl:Class ;
+    rdfs:label "geographical feature" ;
+    rdfs:comment "components of planets that can be geographically located" .
+
+<http://www.wikidata.org/entity/Q623109> a owl:Class ;
+    rdfs:label "sports league" ;
+    rdfs:comment "group of sports teams or individual athletes that compete against each other" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q6581097> a owl:Class ;
+    rdfs:label "male" ;
+    rdfs:comment "to be used in \"sex or gender\" (P21) to indicate that the human subject is a male or \"semantic gender\" (P10339) to indicate that a word refers to a male person" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#PER> .
+
+<http://www.wikidata.org/entity/Q7275> a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:comment "organised community living under a system of government; either a sovereign state, constituent state, or federated state" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q7278> a owl:Class ;
+    rdfs:label "political party" ;
+    rdfs:comment "organization that seeks to influence government policy and actions and be elected to directly take part on government or legislation" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q7397> a owl:Class ;
+    rdfs:label "software" ;
+    rdfs:comment "non-tangible executable component of a computer" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q7725310> a owl:Class ;
+    rdfs:label "series of creative works" ;
+    rdfs:comment "ordered set of creative works" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q781132> a owl:Class ;
+    rdfs:label "military branch" ;
+    rdfs:comment "subdivision of the armed forces of a sovereign nation" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q783794> a owl:Class ;
+    rdfs:label "company" ;
+    rdfs:comment "legal entity representing an association of people, whether natural, legal or a mixture of both, with a specific objective" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> .
+
+<http://www.wikidata.org/entity/Q7889> a owl:Class ;
+    rdfs:label "video game" ;
+    rdfs:comment "electronic game with user interface and visual feedback" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q9174> a owl:Class ;
+    rdfs:label "religion" ;
+    rdfs:comment "social-cultural system" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> .
+
+<http://www.wikidata.org/entity/Q95074> a owl:Class ;
+    rdfs:label "character" ;
+    rdfs:comment "fictional human or non-human character in a narrative work of art" ;
+    rdfs:subClassOf <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#PER> .
+
+<https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#BLANK> a owl:Class ;
+    rdfs:label "BLANK" ;
+    rdfs:comment "Represents a placeholder or unknown entity in DocRED" .
+
+<https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#NUM> a owl:Class ;
+    rdfs:label "NUM" ;
+    rdfs:comment "A number, quantity, or countable concept." .
+
+<https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#TIME> a owl:Class ;
+    rdfs:label "TIME" ;
+    rdfs:comment "A temporal point or period such as a date or historical time." .
+
+<https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#PER> a owl:Class ;
+    rdfs:label "PER" ;
+    rdfs:comment "A human being." .
+
+<https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#LOC> a owl:Class ;
+    rdfs:label "LOC" ;
+    rdfs:comment "A location-based entity such as cities, countries, or landmarks." .
+
+<https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#ORG> a owl:Class ;
+    rdfs:label "ORG" ;
+    rdfs:comment "An organization such as a company or institution." .
+
+<https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#MISC> a owl:Class ;
+    rdfs:label "MISC" ;
+    rdfs:comment "A miscellaneous entity that doesn't fall under standard categories." .
+

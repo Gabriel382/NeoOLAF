@@ -1,0 +1,32 @@
+{
+  "layer": "layer06_concept_relation_induction",
+  "num_concept_candidates": 0,
+  "num_ontology_relation_candidates": 1,
+  "concept_candidates": [],
+  "ontology_relation_candidates": [
+    {
+      "relation_id": "ont_rel_00000",
+      "label": "produced by",
+      "normalized_label": "produced by",
+      "description": "Relates a product or product series to the entity that manufactures or produces it.",
+      "domain_hint": "Product",
+      "range_hint": "Manufacturer",
+      "source_candidate_ids": [
+        "cand_r_00002"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "The relation is semantically stable, reusable across documents, and aligns with the product class in the seed ontology. It captures a common producer–product relationship that is meaningful beyond isolated mentions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 101,
+          "chunk_end_char": 132,
+          "doc_start_char": 101,
+          "doc_end_char": 132,
+          "snippet": "( Super Smart ) series is a line of high - end Android - powered mobile devices produced by Samsung Electronics , a division of Samsung from South Korea . The series consisted initially of sm"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "layer": "layer06_concept_relation_induction",
+  "num_concept_candidates": 0,
+  "num_ontology_relation_candidates": 2,
+  "concept_candidates": [],
+  "ontology_relation_candidates": [
+    {
+      "relation_id": "ont_rel_00000",
+      "label": "was produced by",
+      "normalized_label": "was produced by",
+      "description": "Connects a produced item to its producer.",
+      "domain_hint": "product",
+      "range_hint": "record label",
+      "source_candidate_ids": [
+        "cand_r_00007"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "The relation is semantically stable, reusable across documents, and aligns with production contexts across multiple domains (music, software, political documents). It does not duplicate existing ontology properties and is meaningful beyond isolated mentions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 115,
+          "chunk_end_char": 130,
+          "doc_start_char": 115,
+          "doc_end_char": 130,
+          "snippet": "\" Lookin Ass Nigga \" ) is a song by American rapper and singer Nicki Minaj . It was produced by Detail and Choppa Boi . It was recorded by Minaj for the Young Money Entertainm"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00001",
+      "label": "recordedBy",
+      "normalized_label": "recordedby",
+      "description": "Relates a musical recording to the record label that produced or released it.",
+      "domain_hint": "MusicalRecording",
+      "range_hint": "RecordLabel",
+      "source_candidate_ids": [
+        "cand_r_00008"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "The relation \"recorded by\" is a stable, reusable semantic link that appears across many documents involving music recordings and record labels. It aligns with existing ontology concepts (e.g., Wikidata property P272) and does not duplicate any other relation in the seed ontology.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 158,
+          "chunk_end_char": 173,
+          "doc_start_char": 158,
+          "doc_end_char": 173,
+          "snippet": "n rapper and singer Nicki Minaj . It was produced by Detail and Choppa Boi . It was recorded by Minaj for the Young Money Entertainment compilation album ( 2014 ) . The music"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,454 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 28,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "feedrate decreases",
+      "label": "event",
+      "justification": "This expression describes a change in the feedrate, a key process variable.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2,
+          "chunk_end_char": 20,
+          "doc_start_char": 15002,
+          "doc_end_char": 15020,
+          "snippet": "n feedrate decreases? Parts 80%\n© Cetim 2024, toute reproduction, traduction ou interprétation des s"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "increases a little when feedrate decreases",
+      "label": "relation-bearing expression",
+      "justification": "Links spindle power increase to the condition of feedrate decrease.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 985,
+          "chunk_end_char": 1027,
+          "doc_start_char": 15985,
+          "doc_end_char": 16027,
+          "snippet": "ormal\n80%\nPower\nTime\nBefore machining In machining\nTime\nParts\n80%\nSpindle power increases a little when feedrate decreases? Parts\n© Cetim 2024, toute reproduction, traduction ou interprétation des suppo"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "decreases when feedrate decreases",
+      "label": "relation-bearing expression",
+      "justification": "Describes RMS reduction conditioned on feedrate decrease.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1245,
+          "chunk_end_char": 1278,
+          "doc_start_char": 16245,
+          "doc_end_char": 16278,
+          "snippet": "rt #20\nPart #65\nRMS\nNormal\nRMS\n80%\nTime\nParts Before machining In machining\nRMS decreases when feedrate decreases Parts 80%\n© Cetim 2024, toute reproduction, traduction ou interprétation des su"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "seems to increase when feedrate decreases",
+      "label": "relation-bearing expression",
+      "justification": "Indicates Audio RMS trend linked to feedrate decrease.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1497,
+          "chunk_end_char": 1538,
+          "doc_start_char": 16497,
+          "doc_end_char": 16538,
+          "snippet": "Part #65\nRMS\nNormal\nRMS\n80%\nTime\nParts Before machining In machining\nAudio RMS, seems to increase when feedrate decreases? Parts 80%\n© Cetim 2024, toute reproduction, traduction ou interprétation des s"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "seems to decrease when feedrate decreases",
+      "label": "relation-bearing expression",
+      "justification": "Indicates Audio RMS trend linked to feedrate decrease.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3774,
+          "chunk_end_char": 3815,
+          "doc_start_char": 18774,
+          "doc_end_char": 18815,
+          "snippet": "Part #65\nRMS\nNormal\nRMS\n80%\nTime\nParts Before machining In machining\nAudio RMS, seems to decrease when feedrate decreases Parts 80%\n© Cetim 2024, toute reproduction, traduction ou interprétation des su"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "Spindle power decreases a little when feedrate decreases",
+      "label": "relation-bearing expression",
+      "justification": "Shows spindle power reduction conditioned on feedrate decrease.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "n feedrate decreases? Parts 80%\n© Cetim 2024, toute reproduction, traduction ou interprétation des supports de formation RÉFÉRENCE SUPPORT: TITRE DU CHAPITRE:\n\n#1: AI1 (main spindle)\n#2: AI2 (counter spindle power)\n#3: AI3 (rotative spindle Power)\n#4: Fx (roughing tuming tool T104)\n#5: Fy (roughing "
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "feedrate on the roughing tuming tool T104",
+      "label": "sensor description",
+      "justification": "Specifies the feedrate measurement associated with tool T104.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 406,
+          "chunk_end_char": 447,
+          "doc_start_char": 15406,
+          "doc_end_char": 15447,
+          "snippet": "roughing tuming tool T104)\n\n#7: Fz2 (finishing tuming tool T1111)\n\n#8: Vib1 (// feedrate on the roughing tuming tool T104)\n\n#9: Vib2 (// main cutting force on the roughing tuming tool T104) Le 26/01/26"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "main cutting force on the roughing tuming tool T104",
+      "label": "sensor description",
+      "justification": "Specifies the cutting force measurement associated with tool T104.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 463,
+          "chunk_end_char": 514,
+          "doc_start_char": 15463,
+          "doc_end_char": 15514,
+          "snippet": "l T1111)\n\n#8: Vib1 (// feedrate on the roughing tuming tool T104)\n\n#9: Vib2 (// main cutting force on the roughing tuming tool T104) Le 26/01/26\n#10: Vib3 (boring tool T0202) Intermediate report Project n°316285"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "main spindle",
+      "label": "entity",
+      "justification": "Identifies a primary spindle component.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 169,
+          "chunk_end_char": 181,
+          "doc_start_char": 15169,
+          "doc_end_char": 15181,
+          "snippet": "ation des supports de formation RÉFÉRENCE SUPPORT: TITRE DU CHAPITRE:\n\n#1: AI1 (main spindle)\n#2: AI2 (counter spindle power)\n#3: AI3 (rotative spindle Power)\n#4: Fx (rough"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "counter spindle power",
+      "label": "entity",
+      "justification": "Identifies the counter spindle power measurement.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 192,
+          "chunk_end_char": 213,
+          "doc_start_char": 15192,
+          "doc_end_char": 15213,
+          "snippet": "ormation RÉFÉRENCE SUPPORT: TITRE DU CHAPITRE:\n\n#1: AI1 (main spindle)\n#2: AI2 (counter spindle power)\n#3: AI3 (rotative spindle Power)\n#4: Fx (roughing tuming tool T104)\n#5: Fy (ro"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "rotative spindle Power",
+      "label": "entity",
+      "justification": "Identifies the rotative spindle power measurement.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 224,
+          "chunk_end_char": 246,
+          "doc_start_char": 15224,
+          "doc_end_char": 15246,
+          "snippet": "E DU CHAPITRE:\n\n#1: AI1 (main spindle)\n#2: AI2 (counter spindle power)\n#3: AI3 (rotative spindle Power)\n#4: Fx (roughing tuming tool T104)\n#5: Fy (roughing tuming tool T104)\n#6: Fz ("
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "roughing tuming tool T104",
+      "label": "entity",
+      "justification": "Identifies a roughing tool used in machining.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 256,
+          "chunk_end_char": 281,
+          "doc_start_char": 15256,
+          "doc_end_char": 15281,
+          "snippet": "indle)\n#2: AI2 (counter spindle power)\n#3: AI3 (rotative spindle Power)\n#4: Fx (roughing tuming tool T104)\n#5: Fy (roughing tuming tool T104)\n#6: Fz (roughing tuming tool T104)\n\n#7: Fz2"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "finishing tuming tool T1111",
+      "label": "entity",
+      "justification": "Identifies a finishing tool used in machining.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 363,
+          "chunk_end_char": 390,
+          "doc_start_char": 15363,
+          "doc_end_char": 15390,
+          "snippet": "#5: Fy (roughing tuming tool T104)\n#6: Fz (roughing tuming tool T104)\n\n#7: Fz2 (finishing tuming tool T1111)\n\n#8: Vib1 (// feedrate on the roughing tuming tool T104)\n\n#9: Vib2 (// main cu"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "boring tool T0202",
+      "label": "entity",
+      "justification": "Identifies a boring tool used in machining.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 539,
+          "chunk_end_char": 556,
+          "doc_start_char": 15539,
+          "doc_end_char": 15556,
+          "snippet": "(// main cutting force on the roughing tuming tool T104) Le 26/01/26\n#10: Vib3 (boring tool T0202) Intermediate report Project n°316285 - Date 26/01/26 Page 91/188\n#11: Vib4 (th"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "threading tool T102",
+      "label": "entity",
+      "justification": "Identifies a threading tool used in machining.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 634,
+          "chunk_end_char": 653,
+          "doc_start_char": 15634,
+          "doc_end_char": 15653,
+          "snippet": "02) Intermediate report Project n°316285 - Date 26/01/26 Page 91/188\n#11: Vib4 (threading tool T102)\n#12: Vib5 (cutting-off tool T101)\n#13: Vib6 (finishing tool T1111)\n#14: Vib7 ("
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "cutting-off tool T101",
+      "label": "entity",
+      "justification": "Identifies a cutting‑off tool used in machining.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 666,
+          "chunk_end_char": 687,
+          "doc_start_char": 15666,
+          "doc_end_char": 15687,
+          "snippet": "n°316285 - Date 26/01/26 Page 91/188\n#11: Vib4 (threading tool T102)\n#12: Vib5 (cutting-off tool T101)\n#13: Vib6 (finishing tool T1111)\n#14: Vib7 (boring tool T1313)\n#15: Vib8 (mill"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "milling tool",
+      "label": "entity",
+      "justification": "Identifies a milling tool used in machining.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 763,
+          "chunk_end_char": 775,
+          "doc_start_char": 15763,
+          "doc_end_char": 15775,
+          "snippet": "T101)\n#13: Vib6 (finishing tool T1111)\n#14: Vib7 (boring tool T1313)\n#15: Vib8 (milling tool)\n\n#16: Vib9 (bar feeder)\n\n#17: Vib10 (counter spindle)\n\n#18: Vib11 (audio micro"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "bar feeder",
+      "label": "entity",
+      "justification": "Identifies a bar feeder component.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 789,
+          "chunk_end_char": 799,
+          "doc_start_char": 15789,
+          "doc_end_char": 15799,
+          "snippet": "tool T1111)\n#14: Vib7 (boring tool T1313)\n#15: Vib8 (milling tool)\n\n#16: Vib9 (bar feeder)\n\n#17: Vib10 (counter spindle)\n\n#18: Vib11 (audio micro)\n\nMachining OP 290\n\nPar"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "audio micro",
+      "label": "entity",
+      "justification": "Identifies an audio microphone sensor.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 844,
+          "chunk_end_char": 855,
+          "doc_start_char": 15844,
+          "doc_end_char": 15855,
+          "snippet": "illing tool)\n\n#16: Vib9 (bar feeder)\n\n#17: Vib10 (counter spindle)\n\n#18: Vib11 (audio micro)\n\nMachining OP 290\n\nPart #20\nPart #65\nPower 80%\nNormal\n80%\nPower\nTime\nBefore ma"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "Machining OP 290",
+      "label": "operation",
+      "justification": "Denotes a specific machining operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 858,
+          "chunk_end_char": 874,
+          "doc_start_char": 15858,
+          "doc_end_char": 15874,
+          "snippet": "#16: Vib9 (bar feeder)\n\n#17: Vib10 (counter spindle)\n\n#18: Vib11 (audio micro)\n\nMachining OP 290\n\nPart #20\nPart #65\nPower 80%\nNormal\n80%\nPower\nTime\nBefore machining In machinin"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "Machining OP 311",
+      "label": "operation",
+      "justification": "Denotes a specific machining operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2376,
+          "chunk_end_char": 2392,
+          "doc_start_char": 17376,
+          "doc_end_char": 17392,
+          "snippet": "#16: Vib9 (bar feeder)\n\n#17: Vib10 (counter spindle)\n\n#18: Vib11 (audio micro)\n\nMachining OP 311\n\n#1: AI1 (main spindle)\n#2: AI2 (counter spindle power)\n#3: AI3 (rotative spind"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "Machining OP 312",
+      "label": "operation",
+      "justification": "Denotes a specific machining operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3092,
+          "chunk_end_char": 3108,
+          "doc_start_char": 18092,
+          "doc_end_char": 18108,
+          "snippet": "#16: Vib9 (bar feeder)\n\n#17: Vib10 (counter spindle)\n\n#18: Vib11 (audio micro)\n\nMachining OP 312\n(last pass #24)\n\nPart #20\nPart #65\nPower\nNormal\n80%\nPower\nTime\nBefore machining"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "Machining OP 313",
+      "label": "operation",
+      "justification": "Denotes a specific machining operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4652,
+          "chunk_end_char": 4668,
+          "doc_start_char": 19652,
+          "doc_end_char": 19668,
+          "snippet": "#16: Vib9 (bar feeder)\n\n#17: Vib10 (counter spindle)\n\n#18: Vib11 (audio micro)\n\nMachining OP 313\n(last pass #24)\n\n#1: AI1 (main spindle)\n#2: AI2 (counter spindle power)\n#3: AI3"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "Power 80%",
+      "label": "attribute",
+      "justification": "Specifies the spindle power level.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 894,
+          "chunk_end_char": 903,
+          "doc_start_char": 15894,
+          "doc_end_char": 15903,
+          "snippet": "counter spindle)\n\n#18: Vib11 (audio micro)\n\nMachining OP 290\n\nPart #20\nPart #65\nPower 80%\nNormal\n80%\nPower\nTime\nBefore machining In machining\nTime\nParts\n80%\nSpindle powe"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "RMS Normal",
+      "label": "state",
+      "justification": "Indicates a normal RMS measurement state.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "n feedrate decreases? Parts 80%\n© Cetim 2024, toute reproduction, traduction ou interprétation des supports de formation RÉFÉRENCE SUPPORT: TITRE DU CHAPITRE:\n\n#1: AI1 (main spindle)\n#2: AI2 (counter spindle power)\n#3: AI3 (rotative spindle Power)\n#4: Fx (roughing tuming tool T104)\n#5: Fy (roughing "
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "Audio RMS",
+      "label": "sensor",
+      "justification": "Represents the audio RMS measurement.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1486,
+          "chunk_end_char": 1495,
+          "doc_start_char": 16486,
+          "doc_end_char": 16495,
+          "snippet": "CHAPITRE:\n\nPart #65\nRMS\nNormal\nRMS\n80%\nTime\nParts Before machining In machining\nAudio RMS, seems to increase when feedrate decreases? Parts 80%\n© Cetim 2024, toute repro"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "RMS",
+      "label": "measurement",
+      "justification": "Generic RMS measurement used in the observations.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 1181,
+          "chunk_end_char": 1184,
+          "doc_start_char": 16181,
+          "doc_end_char": 16184,
+          "snippet": "supports de formation RÉFÉRENCE SUPPORT: TITRE DU CHAPITRE:\n\nPart #20\nPart #65\nRMS\nNormal\nRMS\n80%\nTime\nParts Before machining In machining\nRMS decreases when feed"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "feedrate",
+      "label": "measurement",
+      "justification": "Generic feedrate measurement used in the observations.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2,
+          "chunk_end_char": 10,
+          "doc_start_char": 15002,
+          "doc_end_char": 15010,
+          "snippet": "n feedrate decreases? Parts 80%\n© Cetim 2024, toute reproduction, traduction ou interpréta"
+        }
+      ]
+    }
+  ]
+}

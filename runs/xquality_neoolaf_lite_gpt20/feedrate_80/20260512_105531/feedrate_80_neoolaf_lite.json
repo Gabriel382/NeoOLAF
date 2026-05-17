@@ -1,0 +1,1229 @@
+{
+  "case_id": "feedrate_80",
+  "pdf_path": "/home/galencarmedeiro/git/postdoc/NeoOLAF/data/XQuality/Events/Analyse XQuality CETIM Cluses-Février 2026-Feedrate 80 per cent-v4.pdf",
+  "model_name": "openai/gpt-oss-20b",
+  "created_at": "2026-05-12T11:00:57.465424",
+  "guidance": {
+    "domain_focus": "Industrial machining, abnormal production conditions, quality diagnosis, sensor signal changes, operation-level observations, causal explanations, feedrate reduction, material grade change, spindle power, cutting force, vibration RMS, audio RMS, temporal shifts, tools, operations, and part ranges. The central abnormal condition is feedrate reduced to 80%.",
+    "abstraction_level": "Extract concrete sensors, operations, tools, part ranges, and measured quantities as entities. Extract abnormal conditions and signal changes as events or states. Extract increase, decrease, stable, high, low, mid, peak, impulse, and uncertainty as attributes.",
+    "priority_relations": [
+      "CAUSES",
+      "AFFECTS",
+      "INCREASES",
+      "DECREASES",
+      "REMAINS_STABLE",
+      "OBSERVED_IN",
+      "MEASURED_BY",
+      "OCCURS_DURING",
+      "HAS_PART_RANGE",
+      "HAS_SIGNAL_FEATURE",
+      "INDICATES",
+      "CONTRASTED_WITH"
+    ],
+    "event_modeling_preference": "Treat feedrate reduction, material grade change, sensor increases/decreases, RMS changes, cutting force changes, spindle power changes, and temporal shifts as events or states. Do not force the output into a fault tree. Produce comparison-ready semantic evidence.",
+    "comparison_goal": "The output will later be compared with expert fault-tree JSON files. Therefore, preserve sensors such as AI1, Vib1, Vib2, Vib9, Vib11, qualitative directions such as high, low, mid, stable, impulse, and the abnormal condition."
+  },
+  "counts": {
+    "preprocessed_chars": 45118,
+    "expressions": 24,
+    "candidates": 24,
+    "relations": 20,
+    "triples": 20,
+    "concepts": 15,
+    "schema_relations": 20
+  },
+  "layer01_expressions": {
+    "expressions": [
+      {
+        "label": "Feedrate reduced to 80%",
+        "kind_hint": "event",
+        "category": "condition",
+        "evidence": "Feedrate reduced to 80%",
+        "page": "3"
+      },
+      {
+        "label": "Part #61 to #70",
+        "kind_hint": "entity",
+        "category": "part_range",
+        "evidence": "Part #61 to Part #70 : Feedrate reduced to 80%",
+        "page": "3"
+      },
+      {
+        "label": "Part #71 to #75",
+        "kind_hint": "entity",
+        "category": "part_range",
+        "evidence": "Part #71 to Part #75 : 316L grade instead of 303 grade",
+        "page": "3"
+      },
+      {
+        "label": "Part #7 to #60",
+        "kind_hint": "entity",
+        "category": "part_range",
+        "evidence": "Part #7 to Part #60 : Normal process conditions",
+        "page": "3"
+      },
+      {
+        "label": "Part #76 to #77",
+        "kind_hint": "entity",
+        "category": "part_range",
+        "evidence": "Part #76 to Part #77 : Normal process conditions for tool wear changes verification (if any)",
+        "page": "3"
+      },
+      {
+        "label": "Part #78 to #81",
+        "kind_hint": "entity",
+        "category": "part_range",
+        "evidence": "Part #78 to Part #81 : Tool references mistakes (voluntary)",
+        "page": "3"
+      },
+      {
+        "label": "AI1 (main spindle)",
+        "kind_hint": "entity",
+        "category": "sensor",
+        "evidence": "#1 : AI1 (main spindle)",
+        "page": "5"
+      },
+      {
+        "label": "Vib1 (feedrate on roughing turning tool T104)",
+        "kind_hint": "entity",
+        "category": "sensor",
+        "evidence": "#8 : Vib1 (// feedrate on the roughing turning tool T104)",
+        "page": "5"
+      },
+      {
+        "label": "Vib2 (main cutting force on roughing turning tool T104)",
+        "kind_hint": "entity",
+        "category": "sensor",
+        "evidence": "#9 : Vib2 (// main cutting force on the roughing turning tool T104)",
+        "page": "5"
+      },
+      {
+        "label": "Vib11 (audio micro)",
+        "kind_hint": "entity",
+        "category": "sensor",
+        "evidence": "#18 : Vib11 (audio micro)",
+        "page": "5"
+      },
+      {
+        "label": "Operation 120: EBAUCHE EXTER",
+        "kind_hint": "entity",
+        "category": "operation",
+        "evidence": "<Operation id=\"120\" description=\"EBAUCHE EXTER\" monitor=\"true\" tool=\"T104\" Color=\"0;255;0\"",
+        "page": "4"
+      },
+      {
+        "label": "Tool T104",
+        "kind_hint": "entity",
+        "category": "tool",
+        "evidence": "tool=\"T104\"",
+        "page": "4"
+      },
+      {
+        "label": "Spindle power decreases when feedrate decreases",
+        "kind_hint": "event",
+        "category": "observation",
+        "evidence": "Spindle power decreases when feedrate decreases => OK",
+        "page": "6"
+      },
+      {
+        "label": "Cutting force decreases when feedrate decreases",
+        "kind_hint": "event",
+        "category": "observation",
+        "evidence": "Cutting Force decreases when feedrate decreases => OK",
+        "page": "7"
+      },
+      {
+        "label": "Vib1 RMS remains same when feedrate decreases",
+        "kind_hint": "event",
+        "category": "observation",
+        "evidence": "RMS remains the same when feedrate decreases",
+        "page": "8"
+      },
+      {
+        "label": "Vib1 RMS increases in second part when feedrate decreases",
+        "kind_hint": "event",
+        "category": "observation",
+        "evidence": "RMS increases (in the 2nd part of the signal) when feedrate decreases",
+        "page": "14"
+      },
+      {
+        "label": "Audio RMS increases when feedrate decreases",
+        "kind_hint": "event",
+        "category": "observation",
+        "evidence": "RMS audio increases when feedrate decreases => OK",
+        "page": "15"
+      },
+      {
+        "label": "Audio RMS remains same when feedrate decreases",
+        "kind_hint": "event",
+        "category": "observation",
+        "evidence": "Audio RMS, remains the same when feedrate decreases …",
+        "page": "29"
+      },
+      {
+        "label": "Audio RMS decreases when feedrate decreases",
+        "kind_hint": "event",
+        "category": "observation",
+        "evidence": "Audio RMS, decreases when feedrate decreases",
+        "page": "22"
+      },
+      {
+        "label": "Cutting time increases when feedrate decreases",
+        "kind_hint": "event",
+        "category": "observation",
+        "evidence": "Cutting time increases when feedrate decreases => OK",
+        "page": "31"
+      },
+      {
+        "label": "Temporal shifts sometimes",
+        "kind_hint": "attribute",
+        "category": "observation",
+        "evidence": "Rem : Temporal shifts sometimes !",
+        "page": "6"
+      },
+      {
+        "label": "Spindle power seems to remain same or decreases a little when feedrate decreases",
+        "kind_hint": "observation",
+        "category": "observation",
+        "evidence": "Spindle power seems to be remains the sema or decreases a little when feedrate decreases",
+        "page": "34"
+      },
+      {
+        "label": "Audio RMS seems to decrease when feedrate decreases for some time slices",
+        "kind_hint": "observation",
+        "category": "observation",
+        "evidence": "Audio RMS, seems to decrease when feedrate decreases for some times slices… => Not obvious",
+        "page": "32"
+      },
+      {
+        "label": "Audio RMS seems to increase when feedrate decreases",
+        "kind_hint": "observation",
+        "category": "observation",
+        "evidence": "Audio RMS, seems to increase when feedrate decreases ?",
+        "page": "39"
+      }
+    ]
+  },
+  "layer03_candidates": {
+    "candidates": [
+      {
+        "canonical_label": "Feedrate reduced to 80%",
+        "type": "event",
+        "category": "condition",
+        "aliases": [
+          "Feedrate reduced to 80%"
+        ],
+        "normalized_key": "FEEDRATE_80",
+        "evidence": "Feedrate reduced to 80%",
+        "page": "3"
+      },
+      {
+        "canonical_label": "Part #61 to #70",
+        "type": "entity",
+        "category": "part_range",
+        "aliases": [
+          "Part 61-70",
+          "Parts 61 to 70"
+        ],
+        "normalized_key": "PART_61_70",
+        "evidence": "Part #61 to Part #70 : Feedrate reduced to 80%",
+        "page": "3"
+      },
+      {
+        "canonical_label": "Part #71 to #75",
+        "type": "entity",
+        "category": "part_range",
+        "aliases": [
+          "Part 71-75",
+          "Parts 71 to 75"
+        ],
+        "normalized_key": "PART_71_75",
+        "evidence": "Part #71 to Part #75 : 316L grade instead of 303 grade",
+        "page": "3"
+      },
+      {
+        "canonical_label": "Part #7 to #60",
+        "type": "entity",
+        "category": "part_range",
+        "aliases": [
+          "Part 7-60",
+          "Parts 7 to 60"
+        ],
+        "normalized_key": "PART_7_60",
+        "evidence": "Part #7 to Part #60 : Normal process conditions",
+        "page": "3"
+      },
+      {
+        "canonical_label": "Part #76 to #77",
+        "type": "entity",
+        "category": "part_range",
+        "aliases": [
+          "Part 76-77",
+          "Parts 76 to 77"
+        ],
+        "normalized_key": "PART_76_77",
+        "evidence": "Part #76 to Part #77 : Normal process conditions for tool wear changes verification (if any)",
+        "page": "3"
+      },
+      {
+        "canonical_label": "Part #78 to #81",
+        "type": "entity",
+        "category": "part_range",
+        "aliases": [
+          "Part 78-81",
+          "Parts 78 to 81"
+        ],
+        "normalized_key": "PART_78_81",
+        "evidence": "Part #78 to Part #81 : Tool references mistakes (voluntary)",
+        "page": "3"
+      },
+      {
+        "canonical_label": "AI1 (main spindle)",
+        "type": "entity",
+        "category": "sensor",
+        "aliases": [
+          "AI1",
+          "Ai1",
+          "Main spindle sensor",
+          "amp_AI1",
+          "main spindle",
+          "spindle power"
+        ],
+        "normalized_key": "AI1",
+        "evidence": "#1 : AI1 (main spindle)",
+        "page": "5"
+      },
+      {
+        "canonical_label": "Vib1 (feedrate on roughing turning tool T104)",
+        "type": "entity",
+        "category": "sensor",
+        "aliases": [
+          "Feedrate sensor on T104",
+          "Vib1",
+          "freq_VIB_1",
+          "vibration 1"
+        ],
+        "normalized_key": "VIB1",
+        "evidence": "#8 : Vib1 (// feedrate on the roughing turning tool T104)",
+        "page": "5"
+      },
+      {
+        "canonical_label": "Vib2 (main cutting force on roughing turning tool T104)",
+        "type": "entity",
+        "category": "sensor",
+        "aliases": [
+          "Cutting force sensor on T104",
+          "Vib2",
+          "freq_VIB_2",
+          "vibration 2"
+        ],
+        "normalized_key": "VIB2",
+        "evidence": "#9 : Vib2 (// main cutting force on the roughing turning tool T104)",
+        "page": "5"
+      },
+      {
+        "canonical_label": "Vib11 (audio micro)",
+        "type": "entity",
+        "category": "sensor",
+        "aliases": [
+          "Audio micro sensor",
+          "Vib1",
+          "Vib11",
+          "audio RMS",
+          "audio micro",
+          "freq_VIB_1",
+          "vibration 1"
+        ],
+        "normalized_key": "VIB11",
+        "evidence": "#18 : Vib11 (audio micro)",
+        "page": "5"
+      },
+      {
+        "canonical_label": "Operation 120: EBAUCHE EXTER",
+        "type": "entity",
+        "category": "operation",
+        "aliases": [
+          "Operation 120",
+          "EBAUCHE EXTER"
+        ],
+        "normalized_key": "OP_120_EBAUCHE_EXTER",
+        "evidence": "<Operation id=\"120\" description=\"EBAUCHE EXTER\" monitor=\"true\" tool=\"T104\" Color=\"0;255;0\"",
+        "page": "4"
+      },
+      {
+        "canonical_label": "Tool T104",
+        "type": "entity",
+        "category": "tool",
+        "aliases": [
+          "T104",
+          "Roughing turning tool"
+        ],
+        "normalized_key": "T104",
+        "evidence": "tool=\"T104\"",
+        "page": "4"
+      },
+      {
+        "canonical_label": "Spindle power decreases when feedrate decreases",
+        "type": "event",
+        "category": "observation",
+        "aliases": [
+          "Spindle power decrease with feedrate reduction"
+        ],
+        "normalized_key": "SPINDLE_POWER_DECREASES_FEEDRATE",
+        "evidence": "Spindle power decreases when feedrate decreases => OK",
+        "page": "6"
+      },
+      {
+        "canonical_label": "Cutting force decreases when feedrate decreases",
+        "type": "event",
+        "category": "observation",
+        "aliases": [
+          "Cutting force decrease with feedrate reduction"
+        ],
+        "normalized_key": "CUTTING_FORCE_DECREASES_FEEDRATE",
+        "evidence": "Cutting Force decreases when feedrate decreases => OK",
+        "page": "7"
+      },
+      {
+        "canonical_label": "Vib1 RMS remains same when feedrate decreases",
+        "type": "event",
+        "category": "observation",
+        "aliases": [
+          "Vib1",
+          "Vib1 RMS stable with feedrate reduction",
+          "freq_VIB_1",
+          "vibration 1"
+        ],
+        "normalized_key": "VIB1_RMS_STABLE_FEEDRATE",
+        "evidence": "RMS remains the same when feedrate decreases",
+        "page": "8"
+      },
+      {
+        "canonical_label": "Vib1 RMS increases in second part when feedrate decreases",
+        "type": "event",
+        "category": "observation",
+        "aliases": [
+          "Vib1",
+          "Vib1 RMS increase in second part with feedrate reduction",
+          "freq_VIB_1",
+          "vibration 1"
+        ],
+        "normalized_key": "VIB1_RMS_INCREASES_SECOND_PART_FEEDRATE",
+        "evidence": "RMS increases (in the 2nd part of the signal) when feedrate decreases",
+        "page": "14"
+      },
+      {
+        "canonical_label": "Audio RMS increases when feedrate decreases",
+        "type": "event",
+        "category": "observation",
+        "aliases": [
+          "Audio RMS increase with feedrate reduction"
+        ],
+        "normalized_key": "AUDIO_RMS_INCREASES_FEEDRATE",
+        "evidence": "RMS audio increases when feedrate decreases => OK",
+        "page": "15"
+      },
+      {
+        "canonical_label": "Audio RMS remains same when feedrate decreases",
+        "type": "event",
+        "category": "observation",
+        "aliases": [
+          "Audio RMS stable with feedrate reduction"
+        ],
+        "normalized_key": "AUDIO_RMS_STABLE_FEEDRATE",
+        "evidence": "Audio RMS, remains the same when feedrate decreases …",
+        "page": "29"
+      },
+      {
+        "canonical_label": "Audio RMS decreases when feedrate decreases",
+        "type": "event",
+        "category": "observation",
+        "aliases": [
+          "Audio RMS decrease with feedrate reduction"
+        ],
+        "normalized_key": "AUDIO_RMS_DECREASES_FEEDRATE",
+        "evidence": "Audio RMS, decreases when feedrate decreases",
+        "page": "22"
+      },
+      {
+        "canonical_label": "Cutting time increases when feedrate decreases",
+        "type": "event",
+        "category": "observation",
+        "aliases": [
+          "Cutting time increase with feedrate reduction"
+        ],
+        "normalized_key": "CUTTING_TIME_INCREASES_FEEDRATE",
+        "evidence": "Cutting time increases when feedrate decreases => OK",
+        "page": "31"
+      },
+      {
+        "canonical_label": "Temporal shifts sometimes",
+        "type": "attribute",
+        "category": "observation",
+        "aliases": [
+          "Temporal shifts occasionally"
+        ],
+        "normalized_key": "TEMPORAL_SHIFTS_SOMETIMES",
+        "evidence": "Rem : Temporal shifts sometimes !",
+        "page": "6"
+      },
+      {
+        "canonical_label": "Spindle power seems to remain same or decreases a little when feedrate decreases",
+        "type": "event",
+        "category": "observation",
+        "aliases": [
+          "Spindle power seems stable or slightly decreasing with feedrate reduction"
+        ],
+        "normalized_key": "SPINDLE_POWER_SAME_OR_DECREASES_FEEDRATE",
+        "evidence": "Spindle power seems to be remains the sema or decreases a little when feedrate decreases",
+        "page": "34"
+      },
+      {
+        "canonical_label": "Audio RMS seems to decrease when feedrate decreases for some time slices",
+        "type": "event",
+        "category": "observation",
+        "aliases": [
+          "Audio RMS seems to decrease with feedrate reduction in some slices"
+        ],
+        "normalized_key": "AUDIO_RMS_SENSE_DECREASES_FEEDRATE",
+        "evidence": "Audio RMS, seems to decrease when feedrate decreases for some times slices… => Not obvious",
+        "page": "32"
+      },
+      {
+        "canonical_label": "Audio RMS seems to increase when feedrate decreases",
+        "type": "event",
+        "category": "observation",
+        "aliases": [
+          "Audio RMS seems to increase with feedrate reduction"
+        ],
+        "normalized_key": "AUDIO_RMS_SENSE_INCREASES_FEEDRATE",
+        "evidence": "Audio RMS, seems to increase when feedrate decreases ?",
+        "page": "39"
+      }
+    ]
+  },
+  "layer04_relations": {
+    "relations": [
+      {
+        "source": "FEEDRATE_80",
+        "relation": "HAS_PART_RANGE",
+        "target": "PART_61_70",
+        "evidence": "Part #61 to Part #70 : Feedrate reduced to 80%",
+        "page": "3",
+        "confidence": "0.95"
+      },
+      {
+        "source": "FEEDRATE_80",
+        "relation": "OCCURS_DURING",
+        "target": "OP_120_EBAUCHE_EXTER",
+        "evidence": "Operation 120: EBAUCHE EXTER",
+        "page": "4",
+        "confidence": "0.90"
+      },
+      {
+        "source": "FEEDRATE_80",
+        "relation": "CAUSES",
+        "target": "SPINDLE_POWER_DECREASES_FEEDRATE",
+        "evidence": "Spindle power decreases when feedrate decreases => OK",
+        "page": "6",
+        "confidence": "0.90"
+      },
+      {
+        "source": "FEEDRATE_80",
+        "relation": "CAUSES",
+        "target": "CUTTING_FORCE_DECREASES_FEEDRATE",
+        "evidence": "Cutting Force decreases when feedrate decreases => OK",
+        "page": "7",
+        "confidence": "0.90"
+      },
+      {
+        "source": "VIB1_RMS_STABLE_FEEDRATE",
+        "relation": "REMAINS_STABLE",
+        "target": "FEEDRATE_80",
+        "evidence": "RMS remains the same when feedrate decreases",
+        "page": "8",
+        "confidence": "0.90"
+      },
+      {
+        "source": "FEEDRATE_80",
+        "relation": "CAUSES",
+        "target": "VIB1_RMS_INCREASES_SECOND_PART_FEEDRATE",
+        "evidence": "RMS increases (in the 2nd part of the signal) when feedrate decreases",
+        "page": "14",
+        "confidence": "0.90"
+      },
+      {
+        "source": "FEEDRATE_80",
+        "relation": "CAUSES",
+        "target": "AUDIO_RMS_INCREASES_FEEDRATE",
+        "evidence": "RMS audio increases when feedrate decreases => OK",
+        "page": "15",
+        "confidence": "0.90"
+      },
+      {
+        "source": "FEEDRATE_80",
+        "relation": "CAUSES",
+        "target": "AUDIO_RMS_DECREASES_FEEDRATE",
+        "evidence": "Audio RMS, decreases when feedrate decreases",
+        "page": "22",
+        "confidence": "0.90"
+      },
+      {
+        "source": "FEEDRATE_80",
+        "relation": "CAUSES",
+        "target": "CUTTING_TIME_INCREASES_FEEDRATE",
+        "evidence": "Cutting time increases when feedrate decreases => OK",
+        "page": "31",
+        "confidence": "0.90"
+      },
+      {
+        "source": "FEEDRATE_80",
+        "relation": "CAUSES",
+        "target": "TEMPORAL_SHIFTS_SOMETIMES",
+        "evidence": "Rem : Temporal shifts sometimes !",
+        "page": "6",
+        "confidence": "0.80"
+      },
+      {
+        "source": "SPINDLE_POWER_DECREASES_FEEDRATE",
+        "relation": "OBSERVED_IN",
+        "target": "AI1",
+        "evidence": "Spindle power decreases when feedrate decreases => OK",
+        "page": "6",
+        "confidence": "0.90"
+      },
+      {
+        "source": "CUTTING_FORCE_DECREASES_FEEDRATE",
+        "relation": "OBSERVED_IN",
+        "target": "Vib2",
+        "evidence": "Cutting Force decreases when feedrate decreases => OK",
+        "page": "7",
+        "confidence": "0.90"
+      },
+      {
+        "source": "VIB1_RMS_STABLE_FEEDRATE",
+        "relation": "OBSERVED_IN",
+        "target": "Vib1",
+        "evidence": "RMS remains the same when feedrate decreases",
+        "page": "8",
+        "confidence": "0.90"
+      },
+      {
+        "source": "VIB1_RMS_INCREASES_SECOND_PART_FEEDRATE",
+        "relation": "OBSERVED_IN",
+        "target": "Vib1",
+        "evidence": "RMS increases (in the 2nd part of the signal) when feedrate decreases",
+        "page": "14",
+        "confidence": "0.90"
+      },
+      {
+        "source": "AUDIO_RMS_INCREASES_FEEDRATE",
+        "relation": "OBSERVED_IN",
+        "target": "Vib11",
+        "evidence": "RMS audio increases when feedrate decreases => OK",
+        "page": "15",
+        "confidence": "0.90"
+      },
+      {
+        "source": "AUDIO_RMS_DECREASES_FEEDRATE",
+        "relation": "OBSERVED_IN",
+        "target": "Vib11",
+        "evidence": "Audio RMS, decreases when feedrate decreases",
+        "page": "22",
+        "confidence": "0.90"
+      },
+      {
+        "source": "AI1",
+        "relation": "MEASURED_BY",
+        "target": "OP_120_EBAUCHE_EXTER",
+        "evidence": "AI1 (main spindle) in operation 120",
+        "page": "5",
+        "confidence": "0.80"
+      },
+      {
+        "source": "Vib1",
+        "relation": "MEASURED_BY",
+        "target": "OP_120_EBAUCHE_EXTER",
+        "evidence": "Vib1 (// feedrate on the roughing turning tool T104) in operation 120",
+        "page": "5",
+        "confidence": "0.80"
+      },
+      {
+        "source": "Vib2",
+        "relation": "MEASURED_BY",
+        "target": "OP_120_EBAUCHE_EXTER",
+        "evidence": "Vib2 (// main cutting force on the roughing turning tool T104) in operation 120",
+        "page": "5",
+        "confidence": "0.80"
+      },
+      {
+        "source": "Vib11",
+        "relation": "MEASURED_BY",
+        "target": "OP_120_EBAUCHE_EXTER",
+        "evidence": "Vib11 (audio micro) in operation 120",
+        "page": "5",
+        "confidence": "0.80"
+      }
+    ]
+  },
+  "layer05_triples": {
+    "triples": [
+      {
+        "subject": "FEEDRATE_80",
+        "predicate": "HAS_PART_RANGE",
+        "object": "PART_61_70",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "Part #61 to Part #70 : Feedrate reduced to 80%",
+        "page": "3",
+        "confidence": 0.95,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "unknown",
+          "feature": "unknown",
+          "direction": "unknown",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "FEEDRATE_80",
+        "predicate": "OCCURS_DURING",
+        "object": "OP_120_EBAUCHE_EXTER",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "Operation 120: EBAUCHE EXTER",
+        "page": "4",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "unknown",
+          "feature": "unknown",
+          "direction": "unknown",
+          "operation": "OP120"
+        }
+      },
+      {
+        "subject": "FEEDRATE_80",
+        "predicate": "CAUSES",
+        "object": "SPINDLE_POWER_DECREASES_FEEDRATE",
+        "subject_type": "event",
+        "object_type": "event",
+        "evidence": "Spindle power decreases when feedrate decreases => OK",
+        "page": "6",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "AI1",
+          "feature": "power",
+          "direction": "decrease",
+          "operation": "OP120"
+        }
+      },
+      {
+        "subject": "FEEDRATE_80",
+        "predicate": "CAUSES",
+        "object": "CUTTING_FORCE_DECREASES_FEEDRATE",
+        "subject_type": "event",
+        "object_type": "event",
+        "evidence": "Cutting Force decreases when feedrate decreases => OK",
+        "page": "7",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "Vib2",
+          "feature": "force",
+          "direction": "decrease",
+          "operation": "OP120"
+        }
+      },
+      {
+        "subject": "VIB1_RMS_STABLE_FEEDRATE",
+        "predicate": "REMAINS_STABLE",
+        "object": "FEEDRATE_80",
+        "subject_type": "event",
+        "object_type": "event",
+        "evidence": "RMS remains the same when feedrate decreases",
+        "page": "8",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "Vib1",
+          "feature": "rms",
+          "direction": "stable",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "FEEDRATE_80",
+        "predicate": "CAUSES",
+        "object": "VIB1_RMS_INCREASES_SECOND_PART_FEEDRATE",
+        "subject_type": "event",
+        "object_type": "event",
+        "evidence": "RMS increases (in the 2nd part of the signal) when feedrate decreases",
+        "page": "14",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "Vib1",
+          "feature": "rms",
+          "direction": "increase",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "FEEDRATE_80",
+        "predicate": "CAUSES",
+        "object": "AUDIO_RMS_INCREASES_FEEDRATE",
+        "subject_type": "event",
+        "object_type": "event",
+        "evidence": "RMS audio increases when feedrate decreases => OK",
+        "page": "15",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "Vib11",
+          "feature": "audio",
+          "direction": "increase",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "FEEDRATE_80",
+        "predicate": "CAUSES",
+        "object": "AUDIO_RMS_DECREASES_FEEDRATE",
+        "subject_type": "event",
+        "object_type": "event",
+        "evidence": "Audio RMS, decreases when feedrate decreases",
+        "page": "22",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "Vib11",
+          "feature": "audio",
+          "direction": "decrease",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "FEEDRATE_80",
+        "predicate": "CAUSES",
+        "object": "CUTTING_TIME_INCREASES_FEEDRATE",
+        "subject_type": "event",
+        "object_type": "event",
+        "evidence": "Cutting time increases when feedrate decreases => OK",
+        "page": "31",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "unknown",
+          "feature": "time",
+          "direction": "increase",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "FEEDRATE_80",
+        "predicate": "CAUSES",
+        "object": "TEMPORAL_SHIFTS_SOMETIMES",
+        "subject_type": "event",
+        "object_type": "event",
+        "evidence": "Rem : Temporal shifts sometimes !",
+        "page": "6",
+        "confidence": 0.8,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "unknown",
+          "feature": "time shift",
+          "direction": "uncertain",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "SPINDLE_POWER_DECREASES_FEEDRATE",
+        "predicate": "OBSERVED_IN",
+        "object": "AI1",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "Spindle power decreases when feedrate decreases => OK",
+        "page": "6",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "AI1",
+          "feature": "power",
+          "direction": "decrease",
+          "operation": "OP120"
+        }
+      },
+      {
+        "subject": "CUTTING_FORCE_DECREASES_FEEDRATE",
+        "predicate": "OBSERVED_IN",
+        "object": "Vib2",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "Cutting Force decreases when feedrate decreases => OK",
+        "page": "7",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "Vib2",
+          "feature": "force",
+          "direction": "decrease",
+          "operation": "OP120"
+        }
+      },
+      {
+        "subject": "VIB1_RMS_STABLE_FEEDRATE",
+        "predicate": "OBSERVED_IN",
+        "object": "Vib1",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "RMS remains the same when feedrate decreases",
+        "page": "8",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "Vib1",
+          "feature": "rms",
+          "direction": "stable",
+          "operation": "OP120"
+        }
+      },
+      {
+        "subject": "VIB1_RMS_INCREASES_SECOND_PART_FEEDRATE",
+        "predicate": "OBSERVED_IN",
+        "object": "Vib1",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "RMS increases (in the 2nd part of the signal) when feedrate decreases",
+        "page": "14",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "Vib1",
+          "feature": "rms",
+          "direction": "increase",
+          "operation": "OP120"
+        }
+      },
+      {
+        "subject": "AUDIO_RMS_INCREASES_FEEDRATE",
+        "predicate": "OBSERVED_IN",
+        "object": "Vib11",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "RMS audio increases when feedrate decreases => OK",
+        "page": "15",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "Vib11",
+          "feature": "audio",
+          "direction": "increase",
+          "operation": "OP120"
+        }
+      },
+      {
+        "subject": "AUDIO_RMS_DECREASES_FEEDRATE",
+        "predicate": "OBSERVED_IN",
+        "object": "Vib11",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "Audio RMS, decreases when feedrate decreases",
+        "page": "22",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "feedrate_80",
+          "sensor": "Vib11",
+          "feature": "audio",
+          "direction": "decrease",
+          "operation": "OP120"
+        }
+      },
+      {
+        "subject": "AI1",
+        "predicate": "MEASURED_BY",
+        "object": "OP_120_EBAUCHE_EXTER",
+        "subject_type": "entity",
+        "object_type": "entity",
+        "evidence": "AI1 (main spindle) in operation 120",
+        "page": "5",
+        "confidence": 0.8,
+        "comparison_tags": {
+          "condition": "unknown",
+          "sensor": "AI1",
+          "feature": "power",
+          "direction": "unknown",
+          "operation": "OP120"
+        }
+      },
+      {
+        "subject": "Vib1",
+        "predicate": "MEASURED_BY",
+        "object": "OP_120_EBAUCHE_EXTER",
+        "subject_type": "entity",
+        "object_type": "entity",
+        "evidence": "Vib1 (// feedrate on the roughing turning tool T104) in operation 120",
+        "page": "5",
+        "confidence": 0.8,
+        "comparison_tags": {
+          "condition": "unknown",
+          "sensor": "Vib1",
+          "feature": "rms",
+          "direction": "unknown",
+          "operation": "OP120"
+        }
+      },
+      {
+        "subject": "Vib2",
+        "predicate": "MEASURED_BY",
+        "object": "OP_120_EBAUCHE_EXTER",
+        "subject_type": "entity",
+        "object_type": "entity",
+        "evidence": "Vib2 (// main cutting force on the roughing turning tool T104) in operation 120",
+        "page": "5",
+        "confidence": 0.8,
+        "comparison_tags": {
+          "condition": "unknown",
+          "sensor": "Vib2",
+          "feature": "force",
+          "direction": "unknown",
+          "operation": "OP120"
+        }
+      },
+      {
+        "subject": "Vib11",
+        "predicate": "MEASURED_BY",
+        "object": "OP_120_EBAUCHE_EXTER",
+        "subject_type": "entity",
+        "object_type": "entity",
+        "evidence": "Vib11 (audio micro) in operation 120",
+        "page": "5",
+        "confidence": 0.8,
+        "comparison_tags": {
+          "condition": "unknown",
+          "sensor": "Vib11",
+          "feature": "audio",
+          "direction": "unknown",
+          "operation": "OP120"
+        }
+      }
+    ]
+  },
+  "layer06_lite_schema": {
+    "concepts": [
+      {
+        "label": "FEEDRATE_80",
+        "parent": null,
+        "definition": "Feedrate reduced to 80%.",
+        "evidence": "Part #61 to Part #70 : Feedrate reduced to 80%"
+      },
+      {
+        "label": "PART_61_70",
+        "parent": null,
+        "definition": "Part numbers 61 to 70.",
+        "evidence": "Part #61 to Part #70 : Feedrate reduced to 80%"
+      },
+      {
+        "label": "OP_120_EBAUCHE_EXTER",
+        "parent": null,
+        "definition": "Operation 120: EBAUCHE EXTER.",
+        "evidence": "Operation 120: EBAUCHE EXTER"
+      },
+      {
+        "label": "SPINDLE_POWER_DECREASES_FEEDRATE",
+        "parent": null,
+        "definition": "Spindle power decreases when feedrate decreases.",
+        "evidence": "Spindle power decreases when feedrate decreases => OK"
+      },
+      {
+        "label": "CUTTING_FORCE_DECREASES_FEEDRATE",
+        "parent": null,
+        "definition": "Cutting force decreases when feedrate decreases.",
+        "evidence": "Cutting Force decreases when feedrate decreases => OK"
+      },
+      {
+        "label": "VIB1_RMS_STABLE_FEEDRATE",
+        "parent": null,
+        "definition": "Vib1 RMS remains stable during feedrate reduction.",
+        "evidence": "RMS remains the same when feedrate decreases"
+      },
+      {
+        "label": "VIB1_RMS_INCREASES_SECOND_PART_FEEDRATE",
+        "parent": null,
+        "definition": "Vib1 RMS increases in second part of signal during feedrate reduction.",
+        "evidence": "RMS increases (in the 2nd part of the signal) when feedrate decreases"
+      },
+      {
+        "label": "AUDIO_RMS_INCREASES_FEEDRATE",
+        "parent": null,
+        "definition": "Audio RMS increases during feedrate reduction.",
+        "evidence": "RMS audio increases when feedrate decreases => OK"
+      },
+      {
+        "label": "AUDIO_RMS_DECREASES_FEEDRATE",
+        "parent": null,
+        "definition": "Audio RMS decreases during feedrate reduction.",
+        "evidence": "Audio RMS, decreases when feedrate decreases"
+      },
+      {
+        "label": "CUTTING_TIME_INCREASES_FEEDRATE",
+        "parent": null,
+        "definition": "Cutting time increases during feedrate reduction.",
+        "evidence": "Cutting time increases when feedrate decreases => OK"
+      },
+      {
+        "label": "TEMPORAL_SHIFTS_SOMETIMES",
+        "parent": null,
+        "definition": "Temporal shifts sometimes occur during feedrate reduction.",
+        "evidence": "Rem : Temporal shifts sometimes !"
+      },
+      {
+        "label": "AI1",
+        "parent": null,
+        "definition": "Main spindle power sensor AI1.",
+        "evidence": "AI1 (main spindle) in operation 120"
+      },
+      {
+        "label": "Vib1",
+        "parent": null,
+        "definition": "Vib1 sensor on roughing turning tool T104.",
+        "evidence": "Vib1 (// feedrate on the roughing turning tool T104) in operation 120"
+      },
+      {
+        "label": "Vib2",
+        "parent": null,
+        "definition": "Vib2 sensor for main cutting force on tool T104.",
+        "evidence": "Vib2 (// main cutting force on the roughing turning tool T104) in operation 120"
+      },
+      {
+        "label": "Vib11",
+        "parent": null,
+        "definition": "Vib11 audio micro sensor.",
+        "evidence": "Vib11 (audio micro) in operation 120"
+      }
+    ],
+    "relations": [
+      {
+        "label": "HAS_PART_RANGE",
+        "domain": "FEEDRATE_80",
+        "range": "PART_61_70",
+        "definition": "Feedrate reduction applies to part range 61-70."
+      },
+      {
+        "label": "OCCURS_DURING",
+        "domain": "FEEDRATE_80",
+        "range": "OP_120_EBAUCHE_EXTER",
+        "definition": "Feedrate reduction occurs during operation 120."
+      },
+      {
+        "label": "CAUSES",
+        "domain": "FEEDRATE_80",
+        "range": "SPINDLE_POWER_DECREASES_FEEDRATE",
+        "definition": "Feedrate reduction causes spindle power decrease."
+      },
+      {
+        "label": "CAUSES",
+        "domain": "FEEDRATE_80",
+        "range": "CUTTING_FORCE_DECREASES_FEEDRATE",
+        "definition": "Feedrate reduction causes cutting force decrease."
+      },
+      {
+        "label": "REMAINS_STABLE",
+        "domain": "VIB1_RMS_STABLE_FEEDRATE",
+        "range": "FEEDRATE_80",
+        "definition": "Vib1 RMS remains stable during feedrate reduction."
+      },
+      {
+        "label": "CAUSES",
+        "domain": "FEEDRATE_80",
+        "range": "VIB1_RMS_INCREASES_SECOND_PART_FEEDRATE",
+        "definition": "Feedrate reduction causes Vib1 RMS increase in second part."
+      },
+      {
+        "label": "CAUSES",
+        "domain": "FEEDRATE_80",
+        "range": "AUDIO_RMS_INCREASES_FEEDRATE",
+        "definition": "Feedrate reduction causes audio RMS increase."
+      },
+      {
+        "label": "CAUSES",
+        "domain": "FEEDRATE_80",
+        "range": "AUDIO_RMS_DECREASES_FEEDRATE",
+        "definition": "Feedrate reduction causes audio RMS decrease."
+      },
+      {
+        "label": "CAUSES",
+        "domain": "FEEDRATE_80",
+        "range": "CUTTING_TIME_INCREASES_FEEDRATE",
+        "definition": "Feedrate reduction causes cutting time increase."
+      },
+      {
+        "label": "CAUSES",
+        "domain": "FEEDRATE_80",
+        "range": "TEMPORAL_SHIFTS_SOMETIMES",
+        "definition": "Feedrate reduction sometimes causes temporal shifts."
+      },
+      {
+        "label": "OBSERVED_IN",
+        "domain": "SPINDLE_POWER_DECREASES_FEEDRATE",
+        "range": "AI1",
+        "definition": "Spindle power decrease observed in sensor AI1."
+      },
+      {
+        "label": "OBSERVED_IN",
+        "domain": "CUTTING_FORCE_DECREASES_FEEDRATE",
+        "range": "Vib2",
+        "definition": "Cutting force decrease observed in sensor Vib2."
+      },
+      {
+        "label": "OBSERVED_IN",
+        "domain": "VIB1_RMS_STABLE_FEEDRATE",
+        "range": "Vib1",
+        "definition": "Vib1 RMS stable observed in sensor Vib1."
+      },
+      {
+        "label": "OBSERVED_IN",
+        "domain": "VIB1_RMS_INCREASES_SECOND_PART_FEEDRATE",
+        "range": "Vib1",
+        "definition": "Vib1 RMS increase observed in sensor Vib1."
+      },
+      {
+        "label": "OBSERVED_IN",
+        "domain": "AUDIO_RMS_INCREASES_FEEDRATE",
+        "range": "Vib11",
+        "definition": "Audio RMS increase observed in sensor Vib11."
+      },
+      {
+        "label": "OBSERVED_IN",
+        "domain": "AUDIO_RMS_DECREASES_FEEDRATE",
+        "range": "Vib11",
+        "definition": "Audio RMS decrease observed in sensor Vib11."
+      },
+      {
+        "label": "MEASURED_BY",
+        "domain": "AI1",
+        "range": "OP_120_EBAUCHE_EXTER",
+        "definition": "Sensor AI1 measured during operation 120."
+      },
+      {
+        "label": "MEASURED_BY",
+        "domain": "Vib1",
+        "range": "OP_120_EBAUCHE_EXTER",
+        "definition": "Sensor Vib1 measured during operation 120."
+      },
+      {
+        "label": "MEASURED_BY",
+        "domain": "Vib2",
+        "range": "OP_120_EBAUCHE_EXTER",
+        "definition": "Sensor Vib2 measured during operation 120."
+      },
+      {
+        "label": "MEASURED_BY",
+        "domain": "Vib11",
+        "range": "OP_120_EBAUCHE_EXTER",
+        "definition": "Sensor Vib11 measured during operation 120."
+      }
+    ]
+  }
+}

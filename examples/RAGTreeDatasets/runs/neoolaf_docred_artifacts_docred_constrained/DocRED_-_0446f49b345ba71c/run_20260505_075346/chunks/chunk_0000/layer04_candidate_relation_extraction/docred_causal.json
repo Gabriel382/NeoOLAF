@@ -1,0 +1,54 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 2,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00000",
+      "relation_label": "Setonix brachyurus",
+      "source_candidate_id": "cand_r_00000",
+      "source_candidate_label": "Setonix brachyurus",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_e_00002",
+      "target_candidate_label": "macropod family",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that the quokka is a small macropod, indicating that Setonix brachyurus is an instance of the macropod family.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 15,
+          "chunk_end_char": 33,
+          "doc_start_char": 15,
+          "doc_end_char": 33,
+          "snippet": "The quokka ( , Setonix brachyurus ) , the only member of the genus Setonix , is a small macropod about the size o"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00002",
+      "relation_label": "Two Peoples Bay Nature Reserve",
+      "source_candidate_id": "cand_r_00002",
+      "source_candidate_label": "Two Peoples Bay Nature Reserve",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_e_00004",
+      "target_candidate_label": "Western Australia",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0000",
+      "justification": "The passage states that a small quokka colony exists in the protected area of Two Peoples Bay Nature Reserve, which lies at the eastern limit of the quokka range in Western Australia, implying the reserve is located within Western Australia.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 599,
+          "chunk_end_char": 629,
+          "doc_start_char": 599,
+          "doc_end_char": 629,
+          "snippet": "small colony exists at the eastern limit of their range in a protected area of Two Peoples Bay Nature Reserve , where they co - exist with the critically endangered Gilbert 's potoroo ."
+        }
+      ]
+    }
+  ]
+}

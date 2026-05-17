@@ -1,0 +1,114 @@
+{
+  "layer": "layer08_axiom_schemata_extraction",
+  "num_axiom_schema_candidates": 4,
+  "axiom_schema_candidates": [
+    {
+      "schema_id": "schema_00000",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "broadcast_type",
+      "predicate": "domain",
+      "object_id": "domain_hint::BroadcastService",
+      "object_label": "BroadcastService",
+      "justification": "The relation candidate \"broadcast_type\" explicitly states that it links a broadcast service (domain) to a broadcast modality (range). The domain hint \"BroadcastService\" and the description of the relation confirm this mapping, and the range hint \"BroadcastType\" matches the set of possible modalities such as free‑to‑air or subscription‑based.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its present form on lst of April 2006 in the Athens metropolitan area , and gradually spread its coverage nationwide . Besides"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00001",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "broadcast_type",
+      "predicate": "range",
+      "object_id": "range_hint::BroadcastType",
+      "object_label": "BroadcastType",
+      "justification": "The relation candidate \"broadcast_type\" explicitly states that it links a broadcast service (domain) to a broadcast modality (range). The domain hint \"BroadcastService\" and the description of the relation confirm this mapping, and the range hint \"BroadcastType\" matches the set of possible modalities such as free‑to‑air or subscription‑based.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its present form on lst of April 2006 in the Athens metropolitan area , and gradually spread its coverage nationwide . Besides"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00002",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00001",
+      "subject_label": "dubbing",
+      "predicate": "domain",
+      "object_id": "domain_hint::BroadcastingStation",
+      "object_label": "BroadcastingStation",
+      "justification": "The relation \"dubbing\" connects a media entity that produces or modifies content (e.g., a broadcasting station) to the work it has altered by replacing or augmenting the original soundtrack, as illustrated by the triple Skai TV dubbing foreign shows.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00001"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 591,
+          "chunk_end_char": 598,
+          "doc_start_char": 591,
+          "doc_end_char": 598,
+          "snippet": "cing digital terrestrial transmission in Greece . At launch , Skai TV opted for dubbing all foreign language content into Greek , instead of using subtitles . This is"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00003",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00001",
+      "subject_label": "dubbing",
+      "predicate": "range",
+      "object_id": "range_hint::TVShow",
+      "object_label": "TVShow",
+      "justification": "The relation \"dubbing\" connects a media entity that produces or modifies content (e.g., a broadcasting station) to the work it has altered by replacing or augmenting the original soundtrack, as illustrated by the triple Skai TV dubbing foreign shows.",
+      "confidence": 0.92,
+      "source_relation_ids": [
+        "ont_rel_00001"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 591,
+          "chunk_end_char": 598,
+          "doc_start_char": 591,
+          "doc_end_char": 598,
+          "snippet": "cing digital terrestrial transmission in Greece . At launch , Skai TV opted for dubbing all foreign language content into Greek , instead of using subtitles . This is"
+        }
+      ]
+    }
+  ]
+}

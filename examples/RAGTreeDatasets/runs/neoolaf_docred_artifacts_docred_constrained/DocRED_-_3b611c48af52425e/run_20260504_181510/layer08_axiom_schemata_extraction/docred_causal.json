@@ -1,0 +1,110 @@
+{
+  "layer": "layer08_axiom_schemata_extraction",
+  "num_axiom_schema_candidates": 4,
+  "axiom_schema_candidates": [
+    {
+      "schema_id": "schema_00000",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "was produced by",
+      "predicate": "domain",
+      "object_id": "domain_hint::product",
+      "object_label": "product",
+      "justification": "The relation candidate \"was produced by\" explicitly states its domain as product and range as record label, and the ontology provides clear class definitions for both: product (anything that can be offered to a market) and record label (brand and trademark associated with the marketing of music recordings and music videos).",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 115,
+          "chunk_end_char": 130,
+          "doc_start_char": 115,
+          "doc_end_char": 130,
+          "snippet": "\" Lookin Ass Nigga \" ) is a song by American rapper and singer Nicki Minaj . It was produced by Detail and Choppa Boi . It was recorded by Minaj for the Young Money Entertainm"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00001",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "was produced by",
+      "predicate": "range",
+      "object_id": "range_hint::record label",
+      "object_label": "record label",
+      "justification": "The relation candidate \"was produced by\" explicitly states its domain as product and range as record label, and the ontology provides clear class definitions for both: product (anything that can be offered to a market) and record label (brand and trademark associated with the marketing of music recordings and music videos).",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 115,
+          "chunk_end_char": 130,
+          "doc_start_char": 115,
+          "doc_end_char": 130,
+          "snippet": "\" Lookin Ass Nigga \" ) is a song by American rapper and singer Nicki Minaj . It was produced by Detail and Choppa Boi . It was recorded by Minaj for the Young Money Entertainm"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00002",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00001",
+      "subject_label": "recordedBy",
+      "predicate": "domain",
+      "object_id": "domain_hint::MusicalRecording",
+      "object_label": "MusicalRecording",
+      "justification": "The relation \"recordedBy\" explicitly links a musical recording to the record label that produced or released it, as described in the seed ontology context and the retrieved evidence for the class record label.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00001"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 158,
+          "chunk_end_char": 173,
+          "doc_start_char": 158,
+          "doc_end_char": 173,
+          "snippet": "n rapper and singer Nicki Minaj . It was produced by Detail and Choppa Boi . It was recorded by Minaj for the Young Money Entertainment compilation album ( 2014 ) . The music"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00003",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00001",
+      "subject_label": "recordedBy",
+      "predicate": "range",
+      "object_id": "range_hint::RecordLabel",
+      "object_label": "RecordLabel",
+      "justification": "The relation \"recordedBy\" explicitly links a musical recording to the record label that produced or released it, as described in the seed ontology context and the retrieved evidence for the class record label.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00001"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 158,
+          "chunk_end_char": 173,
+          "doc_start_char": 158,
+          "doc_end_char": 173,
+          "snippet": "n rapper and singer Nicki Minaj . It was produced by Detail and Choppa Boi . It was recorded by Minaj for the Young Money Entertainment compilation album ( 2014 ) . The music"
+        }
+      ]
+    }
+  ]
+}

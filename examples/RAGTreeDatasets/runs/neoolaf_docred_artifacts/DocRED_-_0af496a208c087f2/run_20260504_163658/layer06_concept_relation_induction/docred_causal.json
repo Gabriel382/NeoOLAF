@@ -1,0 +1,203 @@
+{
+  "layer": "layer06_concept_relation_induction",
+  "num_concept_candidates": 7,
+  "num_ontology_relation_candidates": 1,
+  "concept_candidates": [
+    {
+      "concept_id": "concept_00000",
+      "label": "continent",
+      "normalized_label": "continent",
+      "description": "A continent is a large landmass identified by convention, typically encompassing a single terrestrial region or a landmass plus nearby islands.",
+      "concept_kind": "geographic region",
+      "parent_hint": "landmass",
+      "source_candidate_ids": [
+        "cand_e_00002"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "The candidate represents a stable, reusable geographic concept that aligns with existing ontology classes and is not a document-specific mention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 100,
+          "chunk_end_char": 113,
+          "doc_start_char": 100,
+          "doc_end_char": 113,
+          "snippet": "l is one of twelve research laboratories comprising IBM Research , its first in South America . It was established in June 2010 , with locations in São Paulo and Rio de Jane"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00001",
+      "label": "TimeInterval",
+      "normalized_label": "timeinterval",
+      "description": "A specific span of time defined by a start and end point, such as a month, year, or other calendar-based period.",
+      "concept_kind": "time",
+      "parent_hint": "TIME",
+      "source_candidate_ids": [
+        "cand_e_00003"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.93,
+      "justification": "The candidate represents a reusable, semantically stable concept that extends the existing TIME class to capture interval-based temporal entities.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 138,
+          "chunk_end_char": 147,
+          "doc_start_char": 138,
+          "doc_end_char": 147,
+          "snippet": "es comprising IBM Research , its first in South America . It was established in June 2010 , with locations in São Paulo and Rio de Janeiro . Research focuses on Industri"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00002",
+      "label": "City",
+      "normalized_label": "city",
+      "description": "A human settlement of substantial size, defined as a densely populated place with administrative boundaries and primarily non‑agricultural activities.",
+      "concept_kind": "location",
+      "parent_hint": "GeographicEntity",
+      "source_candidate_ids": [
+        "cand_e_00004"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "The candidate represents a reusable geographic concept that is semantically stable and general enough for ontology modeling.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 168,
+          "chunk_end_char": 177,
+          "doc_start_char": 168,
+          "doc_end_char": 177,
+          "snippet": "ts first in South America . It was established in June 2010 , with locations in São Paulo and Rio de Janeiro . Research focuses on Industrial Technology and Science , Sy"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00003",
+      "label": "Social Data Analytics",
+      "normalized_label": "social data analytics",
+      "description": "A research area focused on collecting, processing, and analyzing data from social contexts such as social media, online communities, and other digital social interactions to uncover patterns, insights, and trends.",
+      "concept_kind": "research area",
+      "parent_hint": "ResearchArea",
+      "source_candidate_ids": [
+        "cand_e_00006"
+      ],
+      "source_triple_ids": [
+        "triple_00000"
+      ],
+      "confidence": 0.88,
+      "justification": "The candidate represents a stable, reusable research area concept that is general enough to be applied across multiple documents and aligns with the ontology's treatment of research domains.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 291,
+          "chunk_end_char": 312,
+          "doc_start_char": 291,
+          "doc_end_char": 312,
+          "snippet": "uses on Industrial Technology and Science , Systems of Engagement and Insight , Social Data Analytics and Natural Resources Solutions . The new lab , IBM 's ninth at the time of ope"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00004",
+      "label": "Natural Resources Solutions",
+      "normalized_label": "natural resources solutions",
+      "description": "A research area focusing on solutions related to natural resources.",
+      "concept_kind": "research_area",
+      "parent_hint": "ResearchArea",
+      "source_candidate_ids": [
+        "cand_e_00007"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.85,
+      "justification": "The candidate represents a stable, reusable research area concept that can be applied across multiple documents, fitting ontology-oriented modeling better than treating it as a document-specific mention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 317,
+          "chunk_end_char": 344,
+          "doc_start_char": 317,
+          "doc_end_char": 344,
+          "snippet": "ogy and Science , Systems of Engagement and Insight , Social Data Analytics and Natural Resources Solutions . The new lab , IBM 's ninth at the time of opening and first in 12 years , und"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00005",
+      "label": "FossilFuel",
+      "normalized_label": "fossilfuel",
+      "description": "A non‑renewable hydrocarbon resource formed from the buried remains of prehistoric organisms, extracted from geological reservoirs and used as an energy source and in petrochemical manufacturing.",
+      "concept_kind": "resource",
+      "parent_hint": "EnergySource",
+      "source_candidate_ids": [
+        "cand_e_00009"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "Fossil fuel is a stable, general concept that can be reused across documents and fits an ontology of energy resources better than a document‑specific mention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 876,
+          "chunk_end_char": 887,
+          "doc_start_char": 876,
+          "doc_end_char": 887,
+          "snippet": "Brazil : \" The main area is related to natural resources management , involving oil and gas , mining and agricultural sectors . The second is the social data analytics seg"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00006",
+      "label": "SocialMediaPlatform",
+      "normalized_label": "socialmediaplatform",
+      "description": "A software platform that enables users to create, share, and aggregate content, facilitating social networking and microblogging.",
+      "concept_kind": "platform",
+      "parent_hint": "ComputingPlatform",
+      "source_candidate_ids": [
+        "cand_e_00010"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "Social media platform is a reusable class that represents a type of computing platform used for social networking and microblogging, fitting ontology-oriented modeling rather than a document-specific mention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1057,
+          "chunk_end_char": 1064,
+          "doc_start_char": 1057,
+          "doc_end_char": 1064,
+          "snippet": "comprises the analysis of data generated from social networking sites [ such as Twitter or Facebook ] , which can be applied , for example , to financial analysis . Th"
+        }
+      ]
+    }
+  ],
+  "ontology_relation_candidates": [
+    {
+      "relation_id": "ont_rel_00000",
+      "label": "hasNaturalResourceManagement",
+      "normalized_label": "hasnaturalresourcemanagement",
+      "description": "Relates an administrative area or organization to its natural resource management program or policy.",
+      "domain_hint": "AdministrativeArea",
+      "range_hint": "Policy",
+      "source_candidate_ids": [
+        "cand_r_00004"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.88,
+      "justification": "This relation captures a stable, reusable concept that links regions or organizations to their natural resource management initiatives, which is frequently mentioned across documents and aligns with existing ontology practices.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 835,
+          "chunk_end_char": 863,
+          "doc_start_char": 835,
+          "doc_end_char": 863,
+          "snippet": "ains that IBM has four priority areas in Brazil : \" The main area is related to natural resources management , involving oil and gas , mining and agricultural sectors . The second is the s"
+        }
+      ]
+    }
+  ]
+}

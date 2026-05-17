@@ -1,0 +1,54 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 2,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00005",
+      "relation_label": "2016 album Braver Than We Are",
+      "source_candidate_id": "cand_e_00003",
+      "source_candidate_label": "artist",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00004",
+      "target_candidate_label": "album",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0000",
+      "justification": "The chunk states that Meat Loaf re‑recorded the song for his 2016 album Braver Than We Are, linking the artist (Meat Loaf) to the album.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 719,
+          "chunk_end_char": 748,
+          "doc_start_char": 719,
+          "doc_end_char": 748,
+          "snippet": "his musical Batman . The song has also been re - recorded by Meat Loaf for his 2016 album Braver Than We Are ."
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00008",
+      "relation_label": "co-written",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "song",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00002",
+      "target_candidate_label": "person",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0000",
+      "justification": "The chunk states that the song \"More\" was co‑written by Andrew Eldritch and Jim Steinman, establishing a co‑written relation between the song entity and each person entity.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "\" More \" is a song by The Sisters of Mercy , from their album Vision Thing . It was the first single from the album , reaching number one on the Billboard Modern Rock Tracks chart for five weeks , starting 15 December 1990 . The song was co - written and co - produced by Andrew Eldritch and Jim Stei"
+        }
+      ]
+    }
+  ]
+}

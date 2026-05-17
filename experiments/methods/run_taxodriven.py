@@ -14,6 +14,7 @@ from rdflib import Graph, Literal
 # ============================================================
 # Resolve project paths
 # ============================================================
+
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 TAXODRIVEN_DIR = PROJECT_ROOT / "examples" / "approaches" / "TaxoDrivenKG"
 COMMON_DIR = PROJECT_ROOT / "experiments" / "common"
@@ -27,6 +28,7 @@ if str(COMMON_DIR) not in sys.path:
 # ============================================================
 # Local imports
 # ============================================================
+
 from jsonl_adapter import count_documents, iter_documents  # type: ignore
 from taxonomy import OntologyRetriever  # type: ignore
 from backends.openai_compatible import OpenAICompatibleBackend  # type: ignore
@@ -36,6 +38,7 @@ from backends.ollama_backend import OllamaBackend  # type: ignore
 # ============================================================
 # Backend
 # ============================================================
+
 def build_backend(
     backend_name: str,
     host: str,
@@ -50,6 +53,7 @@ def build_backend(
         return OllamaBackend(host=host)
 
     extra_headers = None
+
     if backend_name == "openrouter":
         extra_headers = {}
         if referer:
@@ -67,6 +71,7 @@ def build_backend(
 # ============================================================
 # Small helpers
 # ============================================================
+
 def normalize_text_field(value: Any) -> str:
     """Convert a possibly missing field into a clean string."""
     if value is None:
@@ -82,6 +87,7 @@ def ensure_parent_dir(path: Path) -> None:
 def append_jsonl(path: Path, row: Dict[str, Any]) -> None:
     """Append one JSON object as one JSONL line."""
     ensure_parent_dir(path)
+
     with path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
@@ -96,13 +102,17 @@ def load_processed_ids(output_jsonl_path: Path) -> Set[str]:
     with output_jsonl_path.open("r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
+
             if not line:
                 continue
+
             try:
                 row = json.loads(line)
                 doc_id = str(row.get("document_id", "")).strip()
+
                 if doc_id:
                     processed.add(doc_id)
+
             except Exception:
                 continue
 
@@ -112,10 +122,12 @@ def load_processed_ids(output_jsonl_path: Path) -> Set[str]:
 def safe_document_id(doc: Dict[str, Any], fallback_index: int) -> str:
     """Return a robust document id."""
     doc_id = normalize_text_field(doc.get("document_id"))
+
     if doc_id:
         return doc_id
 
     title = normalize_text_field(doc.get("title"))
+
     if title:
         return f"doc_{fallback_index:07d}_{title}"
 
@@ -132,21 +144,27 @@ def build_document_text(doc: Dict[str, Any]) -> str:
     3. tokens
     """
     text = normalize_text_field(doc.get("text"))
+
     if text:
         return text
 
     sentences = doc.get("sentences")
+
     if isinstance(sentences, list) and sentences:
         merged = "\n".join(str(x).strip() for x in sentences if str(x).strip())
+
         if merged.strip():
             return merged
 
     tokens = doc.get("tokens")
+
     if isinstance(tokens, list) and tokens:
         rebuilt_sentences: List[str] = []
+
         for sent in tokens:
             if isinstance(sent, list):
                 rebuilt = " ".join(str(tok) for tok in sent).strip()
+
                 if rebuilt:
                     rebuilt_sentences.append(rebuilt)
 
@@ -160,12 +178,14 @@ def parse_manual_candidates(manual_candidates: str) -> List[str]:
     """Parse comma-separated manual candidates."""
     if not manual_candidates.strip():
         return []
+
     return [x.strip() for x in manual_candidates.split(",") if x.strip()]
 
 
 # ============================================================
 # Ontology helpers
 # ============================================================
+
 def summarize_ontology(ontology_path: Path) -> Dict[str, Any]:
     """Load ontology and return a lightweight summary for debug."""
     summary: Dict[str, Any] = {
@@ -204,27 +224,34 @@ def summarize_ontology(ontology_path: Path) -> Dict[str, Any]:
 
     for _, pred, obj in graph:
         pred_s = str(pred).lower()
+
         if "label" in pred_s and isinstance(obj, Literal):
             labels.append(str(obj))
+
         if "comment" in pred_s and isinstance(obj, Literal):
             comments.append(str(obj))
 
     summary["labels_preview"] = labels[:20]
     summary["comments_preview"] = comments[:10]
+
     return summary
 
 
 def normalize_retrieved_nodes(raw_retrieved_nodes: Any) -> Dict[str, Dict[str, Any]]:
     """
-    Normalize ontology retrieval output into a dict format:
+    Normalize ontology retrieval output into a dict format.
+
+    Output format:
     {
       label: {"uri": ..., "label": ..., "type": ..., "score": ...}
     }
     """
     if isinstance(raw_retrieved_nodes, dict):
         normalized: Dict[str, Dict[str, Any]] = {}
+
         for key, value in raw_retrieved_nodes.items():
             label = str(key).strip()
+
             if not label:
                 continue
 
@@ -242,10 +269,12 @@ def normalize_retrieved_nodes(raw_retrieved_nodes: Any) -> Dict[str, Dict[str, A
                     "type": "unknown",
                     "score": 1.0,
                 }
+
         return normalized
 
     if isinstance(raw_retrieved_nodes, list):
         normalized = {}
+
         for idx, item in enumerate(raw_retrieved_nodes):
             if isinstance(item, dict):
                 label = str(item.get("label", "")).strip() or f"candidate_{idx}"
@@ -257,6 +286,7 @@ def normalize_retrieved_nodes(raw_retrieved_nodes: Any) -> Dict[str, Dict[str, A
                 }
             else:
                 label = str(item).strip()
+
                 if label:
                     normalized[label] = {
                         "uri": "",
@@ -264,6 +294,7 @@ def normalize_retrieved_nodes(raw_retrieved_nodes: Any) -> Dict[str, Dict[str, A
                         "type": "unknown",
                         "score": 1.0,
                     }
+
         return normalized
 
     raise TypeError(
@@ -274,6 +305,7 @@ def normalize_retrieved_nodes(raw_retrieved_nodes: Any) -> Dict[str, Dict[str, A
 # ============================================================
 # Prompt helpers
 # ============================================================
+
 def format_candidates_for_prompt(retrieved_nodes: Dict[str, Dict[str, Any]]) -> str:
     """Format ontology candidates for the prompt."""
     if not retrieved_nodes:
@@ -282,70 +314,124 @@ def format_candidates_for_prompt(retrieved_nodes: Dict[str, Dict[str, Any]]) -> 
     return ", ".join(retrieved_nodes.keys())
 
 
-def format_output_records_for_example(example_doc: Dict[str, Any], max_records: int = 40) -> str:
+def format_output_records_for_example(
+    example_doc: Dict[str, Any],
+    max_records: int = 40,
+) -> str:
     """
     Build TaxoDrivenKG-style example output from one dataset entry.
 
-    We use gold entities and gold relations from the JSONL entry itself.
+    Supports both:
+    1. Original DocRED/Re-DocRED-like dict format:
+       entities = {"Event_x": {"type": "...", "mentions": [...]}}
+       relations = {"P17 : country": [["Event_a", "Event_b"]]}
+    2. Normalized list format:
+       entities = [{"text": "...", "type": "..."}]
+       relations = [{"head_text": "...", "relation": "...", "tail_text": "..."}]
     """
     entities = example_doc.get("entities", {})
     relations = example_doc.get("relations", {})
 
-    if not isinstance(entities, dict):
-        entities = {}
-    if not isinstance(relations, dict):
-        relations = {}
-
     records: List[str] = []
     added_entities: Set[str] = set()
 
-    # Convert entities dict -> entity records.
-    for entity_id, entity_info in entities.items():
-        if not isinstance(entity_info, dict):
-            continue
+    # ------------------------------------------------------------
+    # Case 1: normalized entity list
+    # ------------------------------------------------------------
+    if isinstance(entities, list):
+        for ent in entities:
+            if not isinstance(ent, dict):
+                continue
 
-        ent_type = normalize_text_field(entity_info.get("type")) or "UNKNOWN"
-        mentions = entity_info.get("mentions", [])
+            text = normalize_text_field(
+                ent.get("text")
+                or ent.get("label")
+                or ent.get("name")
+                or ent.get("trigger_word")
+            )
 
-        if isinstance(mentions, list) and mentions:
-            mention = mentions[0]
-            if isinstance(mention, dict):
-                trigger = normalize_text_field(mention.get("trigger_word"))
-                if trigger and trigger not in added_entities:
-                    records.append(
-                        f'("entity"<|>{trigger}<|>{ent_type}<|>{ent_type} entity)'
-                    )
-                    added_entities.add(trigger)
+            ent_type = normalize_text_field(ent.get("type")) or "UNKNOWN"
 
-    # Build id -> surface label map.
-    id_to_label: Dict[str, str] = {}
-    for entity_id, entity_info in entities.items():
-        if not isinstance(entity_info, dict):
-            continue
-        mentions = entity_info.get("mentions", [])
-        if isinstance(mentions, list) and mentions:
-            mention = mentions[0]
-            if isinstance(mention, dict):
-                trigger = normalize_text_field(mention.get("trigger_word"))
-                if trigger:
-                    id_to_label[str(entity_id)] = trigger
+            if text and text not in added_entities:
+                records.append(
+                    f'("entity"<|>{text}<|>{ent_type}<|>{ent_type} entity)'
+                )
+                added_entities.add(text)
 
-    # Convert relation dict -> relationship records.
-    for rel_name, pairs in relations.items():
-        rel_label = normalize_text_field(rel_name)
-        if not rel_label:
-            continue
+    # ------------------------------------------------------------
+    # Case 2: original DocRED-like entity dict
+    # ------------------------------------------------------------
+    elif isinstance(entities, dict):
+        for _, entity_info in entities.items():
+            if not isinstance(entity_info, dict):
+                continue
 
-        if isinstance(pairs, list):
-            for pair in pairs:
-                if not (isinstance(pair, list) or isinstance(pair, tuple)) or len(pair) != 2:
+            ent_type = normalize_text_field(entity_info.get("type")) or "UNKNOWN"
+            mentions = entity_info.get("mentions", [])
+
+            if isinstance(mentions, list) and mentions:
+                mention = mentions[0]
+
+                if isinstance(mention, dict):
+                    trigger = normalize_text_field(mention.get("trigger_word"))
+
+                    if trigger and trigger not in added_entities:
+                        records.append(
+                            f'("entity"<|>{trigger}<|>{ent_type}<|>{ent_type} entity)'
+                        )
+                        added_entities.add(trigger)
+
+    # ------------------------------------------------------------
+    # Case 1: normalized relation list
+    # ------------------------------------------------------------
+    if isinstance(relations, list):
+        for rel in relations:
+            if not isinstance(rel, dict):
+                continue
+
+            head = normalize_text_field(rel.get("head_text") or rel.get("head"))
+            tail = normalize_text_field(rel.get("tail_text") or rel.get("tail"))
+            rel_label = normalize_text_field(rel.get("relation") or rel.get("rel"))
+
+            if head and tail and rel_label:
+                records.append(
+                    f'("relationship"<|>{head}<|>{tail}<|>{rel_label})'
+                )
+
+    # ------------------------------------------------------------
+    # Case 2: original DocRED-like relation dict
+    # ------------------------------------------------------------
+    elif isinstance(relations, dict):
+        id_to_label: Dict[str, str] = {}
+
+        if isinstance(entities, dict):
+            for entity_id, entity_info in entities.items():
+                if not isinstance(entity_info, dict):
                     continue
 
-                src_id = str(pair[0])
-                tgt_id = str(pair[1])
+                mentions = entity_info.get("mentions", [])
 
-                src_label = id_to_label.get(src_id, "")
-                tgt_label = id_to_label.get(tgt_id, "")
+                if isinstance(mentions, list) and mentions:
+                    mention = mentions[0]
+
+                    if isinstance(mention, dict):
+                        trigger = normalize_text_field(mention.get("trigger_word"))
+
+                        if trigger:
+                            id_to_label[str(entity_id)] = trigger
+
+        for rel_name, pairs in relations.items():
+            rel_label = normalize_text_field(rel_name)
+
+            if not rel_label or not isinstance(pairs, list):
+                continue
+
+            for pair in pairs:
+                if not isinstance(pair, (list, tuple)) or len(pair) != 2:
+                    continue
+
+                src_label = id_to_label.get(str(pair[0]), "")
+                tgt_label = id_to_label.get(str(pair[1]), "")
 
                 if src_label and tgt_label:
                     records.append(
@@ -359,13 +445,12 @@ def build_few_shot_examples_text(
     examples: List[Dict[str, Any]],
     max_chars_per_example: int = 1500,
 ) -> str:
-    """
-    Build the '-Examples-' prompt block from dataset entries.
-    """
+    """Build the '-Examples-' prompt block from dataset entries."""
     blocks: List[str] = []
 
     for ex in examples:
         ex_text = build_document_text(ex)
+
         if not ex_text:
             continue
 
@@ -392,14 +477,21 @@ def build_taxodriven_prompt(
     retrieved_nodes: Dict[str, Dict[str, Any]],
     few_shot_examples_text: str,
 ) -> str:
-    """
-    Build the TaxoDrivenKG prompt text.
-    """
+    """Build the TaxoDrivenKG prompt text."""
     candidates_text = format_candidates_for_prompt(retrieved_nodes)
 
     prompt = f"""
 -Goal-
-Given a text document and a list of potential entities from a domain taxonomy, identify all entities and relationships that are explicitly supported by the text.
+Given a text document and a list of ontology hints, identify all entities and relationships that are explicitly supported by the text.
+
+Important rules:
+1. Extract named entities directly from the text, even if they are not present in the ontology hints.
+2. Ontology hints are guidance for possible entity types or relation labels; they are not a closed candidate list.
+3. Extract only relationships explicitly supported by the text.
+4. Prefer relation labels from the ontology hints when they match the text.
+5. If a relation is clear but the exact ontology label is not available, use a concise relation label from the document.
+6. Do not return an empty answer if the text contains named entities.
+7. Return only records in the required tuple format.
 
 -Steps-
 1. Extract all named or domain-relevant entities in the text. For each entity, output:
@@ -418,7 +510,7 @@ Use exactly these formats:
 ("entity"<|><entity_name><|><entity_type><|><entity_description>)
 ("relationship"<|><source_entity><|><target_entity><|><relationship_type>)
 
-Potential entity candidates from the ontology: {candidates_text}
+Ontology hints: {candidates_text}
 
 ######################
 -Examples-
@@ -437,6 +529,7 @@ Output:
 # ============================================================
 # Backend calling and parsing
 # ============================================================
+
 def call_backend_chat(
     backend: Any,
     backend_name: str,
@@ -445,9 +538,7 @@ def call_backend_chat(
     max_tokens: int = 4096,
     temperature: float = 0.0,
 ) -> str:
-    """
-    Unified backend call for the three supported backends.
-    """
+    """Unified backend call for the supported backends."""
     backend_name = backend_name.lower()
 
     if backend_name == "ollama":
@@ -457,8 +548,10 @@ def call_backend_chat(
             temperature=temperature,
             max_tokens=max_tokens,
         )
+
         if isinstance(response, str):
             return response
+
         return str(response)
 
     # OpenAI-compatible wrappers for vllm/openrouter.
@@ -468,6 +561,7 @@ def call_backend_chat(
         temperature=temperature,
         max_tokens=max_tokens,
     )
+
     if isinstance(response, str):
         return response
 
@@ -529,8 +623,242 @@ def parse_taxodriven_output(content: str) -> Dict[str, Any]:
 
 
 # ============================================================
+# Canonical output for eval_relations.py
+# ============================================================
+
+def canonicalize_taxodriven_entity(entity: Dict[str, Any]) -> Optional[Dict[str, str]]:
+    """
+    Convert one raw TaxoDrivenKG entity into eval_relations.py format.
+
+    Raw TaxoDrivenKG:
+        {"name": "Urgut", "label": "LOC", "description": "..."}
+
+    Canonical:
+        {"label": "Urgut", "type": "LOC", "description": "..."}
+    """
+    name = normalize_text_field(
+        entity.get("name")
+        or entity.get("entity_name")
+        or entity.get("label")
+    )
+
+    entity_type = normalize_text_field(
+        entity.get("type")
+        or entity.get("entity_type")
+        or entity.get("label")
+    )
+
+    description = normalize_text_field(
+        entity.get("description")
+        or entity.get("entity_description")
+    )
+
+    if not name:
+        return None
+
+    return {
+        "label": name,
+        "type": entity_type,
+        "description": description,
+    }
+
+
+def canonicalize_taxodriven_relationship(rel: Dict[str, Any]) -> Optional[Dict[str, str]]:
+    """
+    Convert one raw TaxoDrivenKG relationship into eval_relations.py format.
+
+    Raw TaxoDrivenKG:
+        {"source": "Urgut", "target": "Uzbekistan", "relation": "location"}
+
+    Canonical:
+        {"head": "Urgut", "relation": "location", "tail": "Uzbekistan", "evidence": ""}
+    """
+    head = normalize_text_field(
+        rel.get("head")
+        or rel.get("source")
+        or rel.get("source_entity")
+    )
+
+    tail = normalize_text_field(
+        rel.get("tail")
+        or rel.get("target")
+        or rel.get("target_entity")
+    )
+
+    relation = normalize_text_field(
+        rel.get("relation")
+        or rel.get("rel")
+        or rel.get("relationship_type")
+        or rel.get("predicate")
+    )
+
+    evidence = normalize_text_field(
+        rel.get("evidence")
+        or rel.get("support_text")
+        or rel.get("justification")
+    )
+
+    if not head or not relation or not tail:
+        return None
+
+    return {
+        "head": head,
+        "relation": relation,
+        "tail": tail,
+        "evidence": evidence,
+    }
+
+
+def canonicalize_taxodriven_result_row(result_row: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Convert a full raw TaxoDrivenKG row into the format expected by eval_relations.py.
+
+    eval_relations.py expects:
+    {
+      "document_id": "...",
+      "parsed_ok": true,
+      "prediction": {
+        "entities": [{"label": "..."}],
+        "relations": [{"head": "...", "relation": "...", "tail": "..."}]
+      }
+    }
+    """
+    canonical_entities: List[Dict[str, str]] = []
+    canonical_relations: List[Dict[str, str]] = []
+
+    seen_entities: Set[Tuple[str, str]] = set()
+    seen_relations: Set[Tuple[str, str, str]] = set()
+
+    outputs = result_row.get("outputs", {})
+
+    if isinstance(outputs, dict):
+        for _, chunk_output in outputs.items():
+            if not isinstance(chunk_output, dict):
+                continue
+
+            raw_entities = chunk_output.get("entities", []) or []
+            raw_relationships = chunk_output.get("relationships", []) or []
+
+            for raw_entity in raw_entities:
+                if not isinstance(raw_entity, dict):
+                    continue
+
+                entity = canonicalize_taxodriven_entity(raw_entity)
+
+                if entity is None:
+                    continue
+
+                entity_key = (
+                    entity["label"].lower(),
+                    entity["type"].lower(),
+                )
+
+                if entity_key not in seen_entities:
+                    seen_entities.add(entity_key)
+                    canonical_entities.append(entity)
+
+            for raw_rel in raw_relationships:
+                if not isinstance(raw_rel, dict):
+                    continue
+
+                relation = canonicalize_taxodriven_relationship(raw_rel)
+
+                if relation is None:
+                    continue
+
+                relation_key = (
+                    relation["head"].lower(),
+                    relation["relation"].lower(),
+                    relation["tail"].lower(),
+                )
+
+                if relation_key not in seen_relations:
+                    seen_relations.add(relation_key)
+                    canonical_relations.append(relation)
+
+    parsed_ok = result_row.get("status") == "ok"
+
+    return {
+        "document_id": result_row.get("document_id", ""),
+        "title": result_row.get("title", ""),
+        "type": result_row.get("type", ""),
+        "method": "taxodrivenkg",
+        "parsed_ok": bool(parsed_ok),
+        "prediction": {
+            "entities": canonical_entities,
+            "relations": canonical_relations,
+        },
+        "raw_counts": {
+            "entities": len(canonical_entities),
+            "relations": len(canonical_relations),
+        },
+    }
+
+
+def make_output_row(result_row: Dict[str, Any], output_format: str) -> Dict[str, Any]:
+    """
+    Select what to write to the output JSONL.
+
+    output_format:
+    - raw: original TaxoDrivenKG row
+    - canonical: eval_relations.py-compatible row
+    - both: canonical fields + raw TaxoDrivenKG debug fields
+    """
+    output_format = output_format.strip().lower()
+
+    if output_format == "raw":
+        return result_row
+
+    canonical_row = canonicalize_taxodriven_result_row(result_row)
+
+    if output_format == "canonical":
+        return canonical_row
+
+    if output_format == "both":
+        canonical_row["raw_taxodriven"] = {
+            "status": result_row.get("status"),
+            "num_chars": result_row.get("num_chars"),
+            "num_chunks": result_row.get("num_chunks"),
+            "outputs": result_row.get("outputs", {}),
+            "prompts": result_row.get("prompts", {}),
+            "conversations": result_row.get("conversations", {}),
+            "retrieved_nodes": result_row.get("retrieved_nodes", {}),
+            "few_shot_examples": result_row.get("few_shot_examples", []),
+        }
+        return canonical_row
+
+    raise ValueError(
+        f"Unsupported output_format={output_format}. "
+        "Use one of: raw, canonical, both."
+    )
+
+
+# ============================================================
 # Few-shot selection from the dataset itself
 # ============================================================
+
+def doc_has_gold_annotations(doc: Dict[str, Any]) -> bool:
+    """
+    Check whether a document has usable gold entities or relations.
+
+    Supports both dict-style and list-style annotations.
+    """
+    entities = doc.get("entities", {})
+    relations = doc.get("relations", {})
+
+    has_entities = (
+        (isinstance(entities, dict) and len(entities) > 0)
+        or (isinstance(entities, list) and len(entities) > 0)
+    )
+
+    has_relations = (
+        (isinstance(relations, dict) and len(relations) > 0)
+        or (isinstance(relations, list) and len(relations) > 0)
+    )
+
+    return has_entities or has_relations
+
+
 def select_few_shot_examples_from_dataset(
     dataset_jsonl_path: Path,
     current_document_id: str,
@@ -545,7 +873,7 @@ def select_few_shot_examples_from_dataset(
     - never use the current document as an example
     - if few_shot_source_type == "all", accept all types
     - otherwise match exact type
-    - keep only entries that seem to have entities or relations
+    - keep only entries that have entities or relations
     """
     if few_shot_k <= 0:
         return []
@@ -558,16 +886,15 @@ def select_few_shot_examples_from_dataset(
 
     for doc in iter_documents(dataset_jsonl_path, type_filter=type_filter):
         document_id = normalize_text_field(doc.get("document_id"))
+
         if document_id == current_document_id:
             continue
 
-        entities = doc.get("entities", {})
-        relations = doc.get("relations", {})
+        if not doc_has_gold_annotations(doc):
+            continue
 
-        has_entities = isinstance(entities, dict) and len(entities) > 0
-        has_relations = isinstance(relations, dict) and len(relations) > 0
-
-        if not (has_entities or has_relations):
+        # Also require that the example can actually be converted to tuple output.
+        if not format_output_records_for_example(doc).strip():
             continue
 
         seen += 1
@@ -576,6 +903,7 @@ def select_few_shot_examples_from_dataset(
             reservoir.append(doc)
         else:
             j = rng.randint(1, seen)
+
             if j <= few_shot_k:
                 reservoir[j - 1] = doc
 
@@ -585,6 +913,7 @@ def select_few_shot_examples_from_dataset(
 # ============================================================
 # Debug helpers
 # ============================================================
+
 def maybe_print_debug_header(
     doc_idx: int,
     document_id: str,
@@ -606,6 +935,7 @@ def maybe_print_debug_header(
 # ============================================================
 # Per-document run
 # ============================================================
+
 def run_one_document(
     doc_idx: int,
     doc: Dict[str, Any],
@@ -623,6 +953,7 @@ def run_one_document(
     debug_show_output: bool = False,
     manual_candidates: Optional[List[str]] = None,
     generation_max_tokens: int = 4096,
+    retry_empty_output: bool = True,
 ) -> Dict[str, Any]:
     """Run TaxoDrivenKG extraction for one document."""
     document_id = normalize_text_field(doc.get("document_id"))
@@ -659,10 +990,7 @@ def run_one_document(
     few_shot_examples_text = build_few_shot_examples_text(few_shot_examples)
 
     # Chunk text.
-    # Keep simple, consistent with TaxoDrivenKG spirit.
-    # We use one chunk if small enough, otherwise rough char-based split fallback.
-    # Since original TextChunker from TaxoDrivenKG is not used here, we avoid
-    # hidden few-shot dependencies there.
+    # This uses a rough character approximation to avoid hidden dependencies.
     text_chunks: List[str]
     start_idxs: List[int]
 
@@ -674,6 +1002,7 @@ def run_one_document(
         text_chunks = []
         start_idxs = []
         start = 0
+
         while start < len(full_text):
             end = min(len(full_text), start + approx_chunk_chars)
             text_chunks.append(full_text[start:end])
@@ -702,6 +1031,7 @@ def run_one_document(
         else:
             if retriever is None:
                 raise ValueError("Retriever is None and no manual candidates were provided.")
+
             raw_retrieved_nodes = retriever.retrieve(text, max_hits=max_taxonomy_hits)
 
         retrieved_nodes = normalize_retrieved_nodes(raw_retrieved_nodes)
@@ -724,6 +1054,33 @@ def run_one_document(
             temperature=0.0,
         )
 
+        # Retry once if the assistant returns an empty answer.
+        if retry_empty_output and not assistant_content.strip():
+            retry_prompt = prompt + """
+
+The previous answer was empty.
+
+You must extract at least the named entities explicitly present in the text.
+If no relationship is certain, output only entity records.
+
+Return only records in this exact format:
+("entity"<|><entity_name><|><entity_type><|><entity_description>)
+##
+("relationship"<|><source_entity><|><target_entity><|><relationship_type>)
+"""
+            retry_messages = [{"role": "user", "content": retry_prompt}]
+
+            assistant_content = call_backend_chat(
+                backend=backend,
+                backend_name=backend_name,
+                model_name=model_name,
+                messages=retry_messages,
+                max_tokens=generation_max_tokens,
+                temperature=0.0,
+            )
+
+            messages = retry_messages
+
         parsed_output = parse_taxodriven_output(assistant_content)
         outputs[span_key] = parsed_output
         conversations[span_key] = messages + [{"role": "assistant", "content": assistant_content}]
@@ -732,8 +1089,12 @@ def run_one_document(
             print(f"\n[DEBUG] chunk {chunk_i}/{len(text_chunks)} span={span_key}")
             print(f"[DEBUG] chunk text[:500]:\n{text[:500]}")
             print(f"[DEBUG] retrieved_nodes count: {len(retrieved_nodes)}")
+
             for k, v in list(retrieved_nodes.items())[:20]:
                 print(f"   - {k}: {v}")
+
+            print(f"[DEBUG] few-shot examples selected: {len(few_shot_examples)}")
+            print(f"[DEBUG] few-shot examples text empty: {not bool(few_shot_examples_text.strip())}")
 
         if debug and debug_show_prompt:
             print("\n[DEBUG] PROMPT")
@@ -776,6 +1137,7 @@ def run_one_document(
 # ============================================================
 # Dataset runner
 # ============================================================
+
 def run_taxodriven_dataset(
     dataset_jsonl_path: str | Path,
     ontology_path: str | Path,
@@ -798,6 +1160,8 @@ def run_taxodriven_dataset(
     few_shot_source_type: str = "all",
     few_shot_k: int = 3,
     generation_max_tokens: int = 4096,
+    output_format: str = "raw",
+    retry_empty_output: bool = True,
 ) -> Dict[str, Any]:
     """Run TaxoDrivenKG line by line on a JSONL dataset."""
     dataset_jsonl_path = Path(dataset_jsonl_path)
@@ -810,6 +1174,11 @@ def run_taxodriven_dataset(
     if not ontology_path.exists():
         raise FileNotFoundError(f"Ontology file not found: {ontology_path}")
 
+    output_format = output_format.strip().lower()
+
+    if output_format not in {"raw", "canonical", "both"}:
+        raise ValueError("output_format must be one of: raw, canonical, both")
+
     ensure_parent_dir(output_jsonl_path)
 
     if debug:
@@ -820,6 +1189,7 @@ def run_taxodriven_dataset(
         print("=" * 80)
 
     processed_ids: Set[str] = set()
+
     if resume:
         processed_ids = load_processed_ids(output_jsonl_path)
 
@@ -876,9 +1246,11 @@ def run_taxodriven_dataset(
                 debug_show_output=debug_show_output,
                 manual_candidates=manual_candidates,
                 generation_max_tokens=generation_max_tokens,
+                retry_empty_output=retry_empty_output,
             )
 
-            append_jsonl(output_jsonl_path, result_row)
+            output_row = make_output_row(result_row, output_format=output_format)
+            append_jsonl(output_jsonl_path, output_row)
             done += 1
 
         except KeyboardInterrupt:
@@ -886,14 +1258,23 @@ def run_taxodriven_dataset(
 
         except Exception as e:
             failed += 1
+
             error_row = {
                 "document_id": document_id,
                 "title": normalize_text_field(doc.get("title")),
                 "type": normalize_text_field(doc.get("type")),
                 "status": "error",
                 "error": str(e),
+                "outputs": {},
             }
-            append_jsonl(output_jsonl_path, error_row)
+
+            output_error_row = make_output_row(error_row, output_format=output_format)
+
+            # Preserve error information in raw and both modes.
+            if output_format in {"raw", "both"}:
+                output_error_row["error"] = str(e)
+
+            append_jsonl(output_jsonl_path, output_error_row)
 
             if debug:
                 print(f"\n[DEBUG] ERROR on document {document_id}: {e}")
@@ -913,6 +1294,8 @@ def run_taxodriven_dataset(
         "few_shot_source_type": few_shot_source_type,
         "few_shot_k": few_shot_k,
         "generation_max_tokens": generation_max_tokens,
+        "output_format": output_format,
+        "retry_empty_output": retry_empty_output,
         "resume": resume,
         "seen": seen,
         "done": done,
@@ -929,6 +1312,7 @@ def run_taxodriven_dataset(
 # ============================================================
 # CLI
 # ============================================================
+
 def build_argparser() -> argparse.ArgumentParser:
     """Build CLI parser."""
     parser = argparse.ArgumentParser(
@@ -938,6 +1322,18 @@ def build_argparser() -> argparse.ArgumentParser:
     parser.add_argument("--dataset-jsonl-path", required=True, help="Path to input JSONL dataset.")
     parser.add_argument("--ontology-path", required=True, help="Path to ontology file.")
     parser.add_argument("--output-jsonl-path", required=True, help="Path to output JSONL predictions.")
+
+    parser.add_argument(
+        "--output-format",
+        default="raw",
+        choices=["raw", "canonical", "both"],
+        help=(
+            "Output JSONL format. "
+            "'raw' keeps TaxoDrivenKG debug structure; "
+            "'canonical' writes eval_relations.py-compatible predictions; "
+            "'both' writes canonical predictions plus raw debug fields."
+        ),
+    )
 
     parser.add_argument(
         "--backend-name",
@@ -956,7 +1352,11 @@ def build_argparser() -> argparse.ArgumentParser:
     parser.add_argument("--title", default="TaxoDrivenKG-JSONL", help="Optional X-Title for OpenRouter.")
     parser.add_argument("--no-resume", action="store_true", help="Disable resume mode.")
 
-    parser.add_argument("--few-shot-source-type", default="all", help='Type used to sample few-shot examples from the same dataset. Use "all" for all types.')
+    parser.add_argument(
+        "--few-shot-source-type",
+        default="all",
+        help='Type used to sample few-shot examples from the same dataset. Use "all" for all types.',
+    )
     parser.add_argument("--few-shot-k", type=int, default=3, help="Number of few-shot examples to sample from the dataset.")
     parser.add_argument("--generation-max-tokens", type=int, default=4096, help="Max generation tokens for the model.")
 
@@ -964,10 +1364,17 @@ def build_argparser() -> argparse.ArgumentParser:
     parser.add_argument("--debug-max-docs", type=int, default=3, help="How many processed docs to debug.")
     parser.add_argument("--debug-show-prompt", action="store_true", help="Print prompts in debug mode.")
     parser.add_argument("--debug-show-output", action="store_true", help="Print raw outputs in debug mode.")
+
     parser.add_argument(
         "--manual-candidates",
         default="",
         help="Comma-separated manual ontology candidates to bypass retrieval for debugging.",
+    )
+
+    parser.add_argument(
+        "--no-retry-empty-output",
+        action="store_true",
+        help="Disable the one-time retry when the model returns an empty output.",
     )
 
     return parser
@@ -1002,6 +1409,8 @@ def main() -> None:
         few_shot_source_type=args.few_shot_source_type,
         few_shot_k=args.few_shot_k,
         generation_max_tokens=args.generation_max_tokens,
+        output_format=args.output_format,
+        retry_empty_output=not args.no_retry_empty_output,
     )
 
     print(json.dumps(summary, indent=2, ensure_ascii=False))

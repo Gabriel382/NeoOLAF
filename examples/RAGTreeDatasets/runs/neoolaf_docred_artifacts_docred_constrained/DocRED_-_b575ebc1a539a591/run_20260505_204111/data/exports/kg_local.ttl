@@ -1,0 +1,48 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that Rose Porteous was born on 26 October 1948." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00000> ;
+    neo:predicate ns1:cand_r_00000 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The text states that Melbourne is located in Victoria." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00005> ;
+    neo:predicate ns1:cand_r_00005 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00006> .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "person" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00000 <http://neoolaf.org/resource/node/cand_r_00000> .
+
+<http://neoolaf.org/resource/node/cand_e_00006> neo:label "Melbourne" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00005 <http://neoolaf.org/resource/node/cand_r_00005> .
+
+ns1:cand_r_00000 neo:label "26 October 1948" .
+
+ns1:cand_r_00005 neo:label "Victoria" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "formerly Teodoro , Kuan and Hancock , born Rosario Magdalena Teresita Lacson , 26 October 1948 ) , a Filipino - born Australian , is best known for her marriage to Lang Hanco" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "d Hancock died of natural causes . Porteous , who lives in Perth and Melboume , Victoria , is often referred to by the media as a socialite ." .
+
+<http://neoolaf.org/resource/node/cand_r_00000> neo:label "26 October 1948" ;
+    neo:nodeType "relation" .
+
+<http://neoolaf.org/resource/node/cand_r_00005> neo:label "Victoria" ;
+    neo:nodeType "relation" .
+

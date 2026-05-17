@@ -1,0 +1,80 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The chunk states that the Portland Golf Club is located in suburban Portland, Oregon, indicating a location relationship." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00002> ;
+    neo:predicate ns1:cand_r_00004 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The chunk states that the Portland Golf Club is located in Portland, Oregon, establishing a P276 : location relation between the club and the state." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00002> ;
+    neo:predicate ns1:cand_r_00005 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00002> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00002/prov/0> ;
+    neo:justification "The chunk states that the PGA Championship was held at the Portland Golf Club in 1946, linking the event to the location." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00000> ;
+    neo:predicate ns1:cand_r_00007 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00003> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00003/prov/0> ;
+    neo:justification "The chunk states that Ben Hogan won the 36‑hole final match on August 25, which was part of the PGA Championship." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00000> ;
+    neo:predicate ns1:cand_r_00008 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00004> .
+
+<http://neoolaf.org/resource/node/cand_e_00004> neo:label "Ben Hogan" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00008 <http://neoolaf.org/resource/node/cand_s_00000> .
+
+ns1:cand_r_00004 neo:label "P131 : located in the administrative territorial entity" .
+
+ns1:cand_r_00005 neo:label "P276 : location" .
+
+ns1:cand_r_00007 neo:label "held at the club in 1946" .
+
+ns1:cand_r_00008 neo:label "won the 36-hole final match on August 25" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "The Portland Golf Club is a private golf club in the northwest United States , in suburban Portland , Oregon . It is located in the unincorporated Raleigh Hills area of eastern Washington County , southwest of downtown Portland and east of Beaverton . PGC was established in the winter of 1914 , when" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "The Portland Golf Club is a private golf club in the northwest United States , in suburban Portland , Oregon . It is located in the unincorporated Raleigh Hills area of eastern Washington County , southwest of downtown Portland and east of Beaverton . PGC was established in the winter of 1914 , when" .
+
+<http://neoolaf.org/resource/triple/triple_00002/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "and roads were few . The PGA Championship , then a match play competition , was held at the club in 1946 . Ben Hogan , age 34 , overcame an early deficit in the 36-hole final match on" .
+
+<http://neoolaf.org/resource/triple/triple_00003/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "The Portland Golf Club is a private golf club in the northwest United States , in suburban Portland , Oregon . It is located in the unincorporated Raleigh Hills area of eastern Washington County , southwest of downtown Portland and east of Beaverton . PGC was established in the winter of 1914 , when" .
+
+<http://neoolaf.org/resource/node/cand_s_00000> neo:label "PGA Championship" ;
+    neo:nodeType "event" ;
+    ns1:cand_r_00007 <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "Portland Golf Club" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00004 <http://neoolaf.org/resource/node/cand_e_00002> ;
+    ns1:cand_r_00005 <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "Oregon" ;
+    neo:nodeType "entity" .
+

@@ -1,0 +1,774 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 48,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "Live in New York",
+      "label": "entity",
+      "justification": "This is the title of the album mentioned in the text.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 0,
+          "chunk_end_char": 16,
+          "doc_start_char": 0,
+          "doc_end_char": 16,
+          "snippet": "Live in New York was a 2-CD live album released by performance artist Laurie Anderson on Nonesuc"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "2-CD live album",
+      "label": "attribute",
+      "justification": "Describes the format and type of the album.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 23,
+          "chunk_end_char": 38,
+          "doc_start_char": 23,
+          "doc_end_char": 38,
+          "snippet": "Live in New York was a 2-CD live album released by performance artist Laurie Anderson on Nonesuch Records in 2002 . It"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "released by",
+      "label": "relation-bearing expression",
+      "justification": "Links the album to its record label.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 39,
+          "chunk_end_char": 50,
+          "doc_start_char": 39,
+          "doc_end_char": 50,
+          "snippet": "Live in New York was a 2-CD live album released by performance artist Laurie Anderson on Nonesuch Records in 2002 . It was her nin"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "Laurie Anderson",
+      "label": "entity",
+      "justification": "The performer and artist of the album.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 70,
+          "chunk_end_char": 85,
+          "doc_start_char": 70,
+          "doc_end_char": 85,
+          "snippet": "Live in New York was a 2-CD live album released by performance artist Laurie Anderson on Nonesuch Records in 2002 . It was her ninth album of new recordings released"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "Nonesuch Records",
+      "label": "entity",
+      "justification": "The record label that released the album.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 89,
+          "chunk_end_char": 105,
+          "doc_start_char": 89,
+          "doc_end_char": 105,
+          "snippet": "ew York was a 2-CD live album released by performance artist Laurie Anderson on Nonesuch Records in 2002 . It was her ninth album of new recordings released since 1982 . The fr"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "2002",
+      "label": "entity",
+      "justification": "The year the album was released.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 109,
+          "chunk_end_char": 113,
+          "doc_start_char": 109,
+          "doc_end_char": 113,
+          "snippet": "ive album released by performance artist Laurie Anderson on Nonesuch Records in 2002 . It was her ninth album of new recordings released since 1982 . The front cove"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "ninth album of new recordings",
+      "label": "attribute",
+      "justification": "Describes the album's position in the artist's discography.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 127,
+          "chunk_end_char": 156,
+          "doc_start_char": 127,
+          "doc_end_char": 156,
+          "snippet": "by performance artist Laurie Anderson on Nonesuch Records in 2002 . It was her ninth album of new recordings released since 1982 . The front cover of the CD has the title Live at Town Hall"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "1982",
+      "label": "entity",
+      "justification": "The year of the artist's first new recording release.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 172,
+          "chunk_end_char": 176,
+          "doc_start_char": 172,
+          "doc_end_char": 176,
+          "snippet": "esuch Records in 2002 . It was her ninth album of new recordings released since 1982 . The front cover of the CD has the title Live at Town Hall , New York City Sep"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "front cover of the CD",
+      "label": "attribute",
+      "justification": "Refers to the album's cover design.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 183,
+          "chunk_end_char": 204,
+          "doc_start_char": 183,
+          "doc_end_char": 204,
+          "snippet": "ds in 2002 . It was her ninth album of new recordings released since 1982 . The front cover of the CD has the title Live at Town Hall , New York City September 19–20 , 2001 , howeve"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "Live at Town Hall , New York City September 19–20 , 2001",
+      "label": "entity",
+      "justification": "The title shown on the front cover.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 219,
+          "chunk_end_char": 275,
+          "doc_start_char": 219,
+          "doc_end_char": 275,
+          "snippet": "of new recordings released since 1982 . The front cover of the CD has the title Live at Town Hall , New York City September 19–20 , 2001 , however the official title of the album is just Live in New York . Recorded l"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "official title of the album",
+      "label": "attribute",
+      "justification": "Refers to the formal name of the album.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 290,
+          "chunk_end_char": 317,
+          "doc_start_char": 290,
+          "doc_end_char": 317,
+          "snippet": "he title Live at Town Hall , New York City September 19–20 , 2001 , however the official title of the album is just Live in New York . Recorded less than 10 days after the September 11 ,"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "September 11 , 2001 attacks on New York City",
+      "label": "event",
+      "justification": "Historical event that contextualizes the album's recording.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Live in New York was a 2-CD live album released by performance artist Laurie Anderson on Nonesuch Records in 2002 . It was her ninth album of new recordings released since 1982 . The front cover of the CD has the title Live at Town Hall , New York City September 19–20 , 2001 , however the official t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "recorded less than 10 days after the September 11 , 2001 attacks on New York City",
+      "label": "state",
+      "justification": "Describes the timing of the album's recording relative to the attacks.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Live in New York was a 2-CD live album released by performance artist Laurie Anderson on Nonesuch Records in 2002 . It was her ninth album of new recordings released since 1982 . The front cover of the CD has the title Live at Town Hall , New York City September 19–20 , 2001 , however the official t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "produced during a tour Anderson gave of the United States",
+      "label": "relation-bearing expression",
+      "justification": "Links the album's production to a specific tour.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 445,
+          "chunk_end_char": 502,
+          "doc_start_char": 445,
+          "doc_end_char": 502,
+          "snippet": "0 days after the September 11 , 2001 , attacks on New York City , the album was produced during a tour Anderson gave of the United States in which she performed a mixture of older pieces from earlier in her career and"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "tour Anderson gave of the United States",
+      "label": "event",
+      "justification": "The tour during which the album was produced.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 463,
+          "chunk_end_char": 502,
+          "doc_start_char": 463,
+          "doc_end_char": 502,
+          "snippet": "eptember 11 , 2001 , attacks on New York City , the album was produced during a tour Anderson gave of the United States in which she performed a mixture of older pieces from earlier in her career and"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "United States",
+      "label": "entity",
+      "justification": "The country where the tour took place.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 489,
+          "chunk_end_char": 502,
+          "doc_start_char": 489,
+          "doc_end_char": 502,
+          "snippet": "ks on New York City , the album was produced during a tour Anderson gave of the United States in which she performed a mixture of older pieces from earlier in her career and"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "performed a mixture of older pieces from earlier in her career and newer works",
+      "label": "relation-bearing expression",
+      "justification": "Describes the content of the tour performances.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 516,
+          "chunk_end_char": 594,
+          "doc_start_char": 516,
+          "doc_end_char": 594,
+          "snippet": "lbum was produced during a tour Anderson gave of the United States in which she performed a mixture of older pieces from earlier in her career and newer works , including songs from her then - recent album Life on a String , as well as ea"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "older pieces",
+      "label": "attribute",
+      "justification": "Refers to earlier works performed.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 539,
+          "chunk_end_char": 551,
+          "doc_start_char": 539,
+          "doc_end_char": 551,
+          "snippet": "g a tour Anderson gave of the United States in which she performed a mixture of older pieces from earlier in her career and newer works , including songs from her then - re"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "earlier in her career",
+      "label": "attribute",
+      "justification": "Timeframe of the older pieces.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 557,
+          "chunk_end_char": 578,
+          "doc_start_char": 557,
+          "doc_end_char": 578,
+          "snippet": "gave of the United States in which she performed a mixture of older pieces from earlier in her career and newer works , including songs from her then - recent album Life on a String"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "newer works",
+      "label": "attribute",
+      "justification": "Refers to recent compositions performed.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 583,
+          "chunk_end_char": 594,
+          "doc_start_char": 583,
+          "doc_end_char": 594,
+          "snippet": "in which she performed a mixture of older pieces from earlier in her career and newer works , including songs from her then - recent album Life on a String , as well as ea"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "including songs from her then - recent album Life on a String",
+      "label": "relation-bearing expression",
+      "justification": "Specifies songs drawn from a particular album.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 597,
+          "chunk_end_char": 658,
+          "doc_start_char": 597,
+          "doc_end_char": 658,
+          "snippet": "erformed a mixture of older pieces from earlier in her career and newer works , including songs from her then - recent album Life on a String , as well as earlier albums such as United States Live , Big Science , Bright R"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "Life on a String",
+      "label": "entity",
+      "justification": "The album from which songs were included.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 642,
+          "chunk_end_char": 658,
+          "doc_start_char": 642,
+          "doc_end_char": 658,
+          "snippet": "er in her career and newer works , including songs from her then - recent album Life on a String , as well as earlier albums such as United States Live , Big Science , Bright R"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "earlier albums such as United States Live , Big Science , Bright Red , Home of the Brave and Strange Angels",
+      "label": "relation-bearing expression",
+      "justification": "Lists other albums referenced.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 672,
+          "chunk_end_char": 779,
+          "doc_start_char": 672,
+          "doc_end_char": 779,
+          "snippet": "ks , including songs from her then - recent album Life on a String , as well as earlier albums such as United States Live , Big Science , Bright Red , Home of the Brave and Strange Angels . Following so close to the attacks , Anderson makes several statements about t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "United States Live",
+      "label": "entity",
+      "justification": "An earlier album mentioned.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 695,
+          "chunk_end_char": 713,
+          "doc_start_char": 695,
+          "doc_end_char": 713,
+          "snippet": "om her then - recent album Life on a String , as well as earlier albums such as United States Live , Big Science , Bright Red , Home of the Brave and Strange Angels . Following s"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "Big Science",
+      "label": "entity",
+      "justification": "An earlier album mentioned.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 716,
+          "chunk_end_char": 727,
+          "doc_start_char": 716,
+          "doc_end_char": 727,
+          "snippet": "album Life on a String , as well as earlier albums such as United States Live , Big Science , Bright Red , Home of the Brave and Strange Angels . Following so close to the"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "Bright Red",
+      "label": "entity",
+      "justification": "An earlier album mentioned.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 730,
+          "chunk_end_char": 740,
+          "doc_start_char": 730,
+          "doc_end_char": 740,
+          "snippet": "a String , as well as earlier albums such as United States Live , Big Science , Bright Red , Home of the Brave and Strange Angels . Following so close to the attacks , An"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "Home of the Brave",
+      "label": "entity",
+      "justification": "An earlier album mentioned.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 743,
+          "chunk_end_char": 760,
+          "doc_start_char": 743,
+          "doc_end_char": 760,
+          "snippet": "well as earlier albums such as United States Live , Big Science , Bright Red , Home of the Brave and Strange Angels . Following so close to the attacks , Anderson makes several"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "Strange Angels",
+      "label": "entity",
+      "justification": "An earlier album mentioned.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 765,
+          "chunk_end_char": 779,
+          "doc_start_char": 765,
+          "doc_end_char": 779,
+          "snippet": "s such as United States Live , Big Science , Bright Red , Home of the Brave and Strange Angels . Following so close to the attacks , Anderson makes several statements about t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "performance is highlighted by a performance of 'O Superman'",
+      "label": "relation-bearing expression",
+      "justification": "Describes a notable moment in the performance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Live in New York was a 2-CD live album released by performance artist Laurie Anderson on Nonesuch Records in 2002 . It was her ninth album of new recordings released since 1982 . The front cover of the CD has the title Live at Town Hall , New York City September 19–20 , 2001 , however the official t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "O Superman",
+      "label": "entity",
+      "justification": "The song performed.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 944,
+          "chunk_end_char": 954,
+          "doc_start_char": 944,
+          "doc_end_char": 954,
+          "snippet": "n her recognizable style . The performance is highlighted by a performance of \" O Superman , \" the song that launched Anderson to stardom in 1981 and that contains lyrics"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00030",
+      "text": "song that launched Anderson to stardom in 1981",
+      "label": "relation-bearing expression",
+      "justification": "Describes the significance of the song.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 963,
+          "chunk_end_char": 1009,
+          "doc_start_char": 963,
+          "doc_end_char": 1009,
+          "snippet": "style . The performance is highlighted by a performance of \" O Superman , \" the song that launched Anderson to stardom in 1981 and that contains lyrics that can — in retrospect — be seen to relate to the te"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00031",
+      "text": "1981",
+      "label": "entity",
+      "justification": "The year the song launched Anderson.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1005,
+          "chunk_end_char": 1009,
+          "doc_start_char": 1005,
+          "doc_end_char": 1009,
+          "snippet": "a performance of \" O Superman , \" the song that launched Anderson to stardom in 1981 and that contains lyrics that can — in retrospect — be seen to relate to the te"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00032",
+      "text": "contains lyrics that can — in retrospect — be seen to relate to the terrorist attacks",
+      "label": "relation-bearing expression",
+      "justification": "Describes lyrical content relating to the attacks.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1019,
+          "chunk_end_char": 1104,
+          "doc_start_char": 1019,
+          "doc_end_char": 1104,
+          "snippet": "of \" O Superman , \" the song that launched Anderson to stardom in 1981 and that contains lyrics that can — in retrospect — be seen to relate to the terrorist attacks . One song , \" Progress \" , is a retitled performance of the song \" The Dream B"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00033",
+      "text": "terrorist attacks",
+      "label": "event",
+      "justification": "The attacks referenced in the lyrics.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1087,
+          "chunk_end_char": 1104,
+          "doc_start_char": 1087,
+          "doc_end_char": 1104,
+          "snippet": "81 and that contains lyrics that can — in retrospect — be seen to relate to the terrorist attacks . One song , \" Progress \" , is a retitled performance of the song \" The Dream B"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00034",
+      "text": "One song , 'Progress' , is a retitled performance of the song 'The Dream Before'",
+      "label": "relation-bearing expression",
+      "justification": "Describes a song transformation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Live in New York was a 2-CD live album released by performance artist Laurie Anderson on Nonesuch Records in 2002 . It was her ninth album of new recordings released since 1982 . The front cover of the CD has the title Live at Town Hall , New York City September 19–20 , 2001 , however the official t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00035",
+      "text": "Progress",
+      "label": "entity",
+      "justification": "The retitled song.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1120,
+          "chunk_end_char": 1128,
+          "doc_start_char": 1120,
+          "doc_end_char": 1128,
+          "snippet": "can — in retrospect — be seen to relate to the terrorist attacks . One song , \" Progress \" , is a retitled performance of the song \" The Dream Before \" which Anderson d"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00036",
+      "text": "The Dream Before",
+      "label": "entity",
+      "justification": "The original song.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1173,
+          "chunk_end_char": 1189,
+          "doc_start_char": 1173,
+          "doc_end_char": 1189,
+          "snippet": "ist attacks . One song , \" Progress \" , is a retitled performance of the song \" The Dream Before \" which Anderson debuted in her 1986 short film What You Mean We ? and later fe"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00037",
+      "text": "which Anderson debuted in her 1986 short film What You Mean We ?",
+      "label": "relation-bearing expression",
+      "justification": "Links the song to its debut film.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1192,
+          "chunk_end_char": 1256,
+          "doc_start_char": 1192,
+          "doc_end_char": 1256,
+          "snippet": "ong , \" Progress \" , is a retitled performance of the song \" The Dream Before \" which Anderson debuted in her 1986 short film What You Mean We ? and later featured on Strange Angels ."
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00038",
+      "text": "1986 short film What You Mean We ?",
+      "label": "event",
+      "justification": "The film in which the song debuted.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1222,
+          "chunk_end_char": 1256,
+          "doc_start_char": 1222,
+          "doc_end_char": 1256,
+          "snippet": "tled performance of the song \" The Dream Before \" which Anderson debuted in her 1986 short film What You Mean We ? and later featured on Strange Angels ."
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00039",
+      "text": "What You Mean We ?",
+      "label": "entity",
+      "justification": "The film title.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1238,
+          "chunk_end_char": 1256,
+          "doc_start_char": 1238,
+          "doc_end_char": 1256,
+          "snippet": "of the song \" The Dream Before \" which Anderson debuted in her 1986 short film What You Mean We ? and later featured on Strange Angels ."
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00040",
+      "text": "and later featured on Strange Angels",
+      "label": "relation-bearing expression",
+      "justification": "Describes later inclusion of the song.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1257,
+          "chunk_end_char": 1293,
+          "doc_start_char": 1257,
+          "doc_end_char": 1293,
+          "snippet": "Dream Before \" which Anderson debuted in her 1986 short film What You Mean We ? and later featured on Strange Angels ."
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00041",
+      "text": "Following so close to the attacks , Anderson makes several statements about them in her recognizable style",
+      "label": "relation-bearing expression",
+      "justification": "Describes Anderson's commentary.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 782,
+          "chunk_end_char": 888,
+          "doc_start_char": 782,
+          "doc_end_char": 888,
+          "snippet": "States Live , Big Science , Bright Red , Home of the Brave and Strange Angels . Following so close to the attacks , Anderson makes several statements about them in her recognizable style . The performance is highlighted by a performance of \" O Superman , \" the song"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00042",
+      "text": "has the title Live at Town Hall , New York City September 19–20 , 2001",
+      "label": "relation-bearing expression",
+      "justification": "Links the front cover to its title.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 205,
+          "chunk_end_char": 275,
+          "doc_start_char": 205,
+          "doc_end_char": 275,
+          "snippet": "r ninth album of new recordings released since 1982 . The front cover of the CD has the title Live at Town Hall , New York City September 19–20 , 2001 , however the official title of the album is just Live in New York . Recorded l"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00043",
+      "text": "official title of the album is just Live in New York",
+      "label": "relation-bearing expression",
+      "justification": "States the formal album title.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 290,
+          "chunk_end_char": 342,
+          "doc_start_char": 290,
+          "doc_end_char": 342,
+          "snippet": "he title Live at Town Hall , New York City September 19–20 , 2001 , however the official title of the album is just Live in New York . Recorded less than 10 days after the September 11 , 2001 , attacks on New Yor"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00044",
+      "text": "was a 2-CD live album released by performance artist Laurie Anderson on Nonesuch Records in 2002",
+      "label": "relation-bearing expression",
+      "justification": "Describes the album's release details.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 17,
+          "chunk_end_char": 113,
+          "doc_start_char": 17,
+          "doc_end_char": 113,
+          "snippet": "Live in New York was a 2-CD live album released by performance artist Laurie Anderson on Nonesuch Records in 2002 . It was her ninth album of new recordings released since 1982 . The front cove"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00045",
+      "text": "ninth album of new recordings released since 1982",
+      "label": "relation-bearing expression",
+      "justification": "Describes the album's place in discography.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 127,
+          "chunk_end_char": 176,
+          "doc_start_char": 127,
+          "doc_end_char": 176,
+          "snippet": "by performance artist Laurie Anderson on Nonesuch Records in 2002 . It was her ninth album of new recordings released since 1982 . The front cover of the CD has the title Live at Town Hall , New York City Sep"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00046",
+      "text": "in which she performed a mixture of older pieces from earlier in her career and newer works",
+      "label": "relation-bearing expression",
+      "justification": "Describes the content of the tour.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 503,
+          "chunk_end_char": 594,
+          "doc_start_char": 503,
+          "doc_end_char": 594,
+          "snippet": "City , the album was produced during a tour Anderson gave of the United States in which she performed a mixture of older pieces from earlier in her career and newer works , including songs from her then - recent album Life on a String , as well as ea"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00047",
+      "text": "makes several statements about them",
+      "label": "relation-bearing expression",
+      "justification": "Describes Anderson's statements about the attacks.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 827,
+          "chunk_end_char": 862,
+          "doc_start_char": 827,
+          "doc_end_char": 862,
+          "snippet": "of the Brave and Strange Angels . Following so close to the attacks , Anderson makes several statements about them in her recognizable style . The performance is highlighted by a performance of"
+        }
+      ]
+    }
+  ]
+}

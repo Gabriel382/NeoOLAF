@@ -1,0 +1,64 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 7.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text indicates that West Virginia Route 28 runs along the hills north of Romney, linking the geographic location (the route) to the town of Romney." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00001> ;
+    neo:predicate ns1:cand_r_00008 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00003> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The text states that William Washington became the first African‑American land developer in the state of West Virginia." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00003> ;
+    neo:predicate ns1:cand_r_00009 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00002> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00002/prov/0> ;
+    neo:justification "The chunk states that Washington Place was bought and restored by Ralph W. Haines." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00003> ;
+    neo:predicate ns1:cand_r_00011 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00011> .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "person" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00009 <http://neoolaf.org/resource/node/cand_e_00003> .
+
+<http://neoolaf.org/resource/node/cand_r_00011> neo:label "Ralph W. Haines" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00011 <http://neoolaf.org/resource/node/cand_e_00003> .
+
+ns1:cand_r_00008 neo:label "West Virginia Route 28" .
+
+ns1:cand_r_00009 neo:label "first African-American land developer" .
+
+ns1:cand_r_00011 neo:label "Ralph W. Haines" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "m Washington later acquired other properties on the hills north of Romney along West Virginia Route 28 and became the first African - American land developer in the state of West Vir" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Washington Place ( William Washington House ) is one of the first homes built by freed slaves after the Emancipation Proclamation of 1863 in Hampshire County , West Virginia , United States . Washington Place was built by William and Annie Washington in north Romney between 1863 and 1874 on land giv" .
+
+<http://neoolaf.org/resource/triple/triple_00002/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "to the Washington Place homestead . Washington Place was bought and restored by Ralph W. Haines , a local attomey and historic preservationist ." .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "town" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_e_00003> neo:label "geographic location" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00008 <http://neoolaf.org/resource/node/cand_e_00001> .
+

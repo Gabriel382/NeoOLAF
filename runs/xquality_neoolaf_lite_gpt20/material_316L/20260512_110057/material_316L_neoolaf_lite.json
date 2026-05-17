@@ -1,0 +1,394 @@
+{
+  "case_id": "material_316L",
+  "pdf_path": "/home/galencarmedeiro/git/postdoc/NeoOLAF/data/XQuality/Events/Analyse XQuality CETIM Cluses-Février 2026-316L-v4.pdf",
+  "model_name": "openai/gpt-oss-20b",
+  "created_at": "2026-05-12T11:06:08.550274",
+  "guidance": {
+    "domain_focus": "Industrial machining, abnormal production conditions, quality diagnosis, sensor signal changes, operation-level observations, causal explanations, feedrate reduction, material grade change, spindle power, cutting force, vibration RMS, audio RMS, temporal shifts, tools, operations, and part ranges. The central abnormal condition is 316L grade instead of 303 stainless steel.",
+    "abstraction_level": "Extract concrete sensors, operations, tools, part ranges, and measured quantities as entities. Extract abnormal conditions and signal changes as events or states. Extract increase, decrease, stable, high, low, mid, peak, impulse, and uncertainty as attributes.",
+    "priority_relations": [
+      "CAUSES",
+      "AFFECTS",
+      "INCREASES",
+      "DECREASES",
+      "REMAINS_STABLE",
+      "OBSERVED_IN",
+      "MEASURED_BY",
+      "OCCURS_DURING",
+      "HAS_PART_RANGE",
+      "HAS_SIGNAL_FEATURE",
+      "INDICATES",
+      "CONTRASTED_WITH"
+    ],
+    "event_modeling_preference": "Treat feedrate reduction, material grade change, sensor increases/decreases, RMS changes, cutting force changes, spindle power changes, and temporal shifts as events or states. Do not force the output into a fault tree. Produce comparison-ready semantic evidence.",
+    "comparison_goal": "The output will later be compared with expert fault-tree JSON files. Therefore, preserve sensors such as AI1, Vib1, Vib2, Vib9, Vib11, qualitative directions such as high, low, mid, stable, impulse, and the abnormal condition."
+  },
+  "counts": {
+    "preprocessed_chars": 45120,
+    "expressions": 0,
+    "candidates": 1,
+    "relations": 10,
+    "triples": 10,
+    "concepts": 5,
+    "schema_relations": 7
+  },
+  "layer01_expressions": {
+    "label": "316L grade instead of 303 stainless steel",
+    "kind_hint": "event",
+    "category": "condition",
+    "evidence": "Case of the changes in the material for grade 316L instead of the 303 stainless steel reference grade",
+    "page": "1"
+  },
+  "layer03_candidates": {
+    "candidates": [
+      {
+        "canonical_label": "316L grade instead of 303 stainless steel",
+        "type": "event",
+        "category": "condition",
+        "aliases": [
+          "316L grade instead of 303 stainless steel",
+          "316L instead of 303 stainless steel"
+        ],
+        "normalized_key": "GRADE_316L_VS_303",
+        "evidence": "Case of the changes in the material for grade 316L instead of the 303 stainless steel reference grade",
+        "page": "1"
+      }
+    ]
+  },
+  "layer04_relations": {
+    "relations": [
+      {
+        "source": "316L grade instead of 303 stainless steel",
+        "relation": "INCREASES",
+        "target": "Spindle Power (AI1)",
+        "evidence": "Spindle power increases when 316L grade => OK",
+        "page": "6",
+        "confidence": 0.9
+      },
+      {
+        "source": "316L grade instead of 303 stainless steel",
+        "relation": "INCREASES",
+        "target": "Cutting Force (Fz)",
+        "evidence": "Cutting Force increases when 316L grade => OK",
+        "page": "7",
+        "confidence": 0.9
+      },
+      {
+        "source": "316L grade instead of 303 stainless steel",
+        "relation": "DECREASES",
+        "target": "Vibration RMS (Vib1)",
+        "evidence": "RMS decreases when 316L grade",
+        "page": "8",
+        "confidence": 0.9
+      },
+      {
+        "source": "316L grade instead of 303 stainless steel",
+        "relation": "INCREASES",
+        "target": "Vibration RMS (Vib1)",
+        "evidence": "RMS increases when 316L grade",
+        "page": "14",
+        "confidence": 0.8
+      },
+      {
+        "source": "316L grade instead of 303 stainless steel",
+        "relation": "DECREASES",
+        "target": "Audio RMS (Vib11)",
+        "evidence": "RMS decreases when 316L grade",
+        "page": "9",
+        "confidence": 0.9
+      },
+      {
+        "source": "316L grade instead of 303 stainless steel",
+        "relation": "INCREASES",
+        "target": "Audio RMS (Vib11)",
+        "evidence": "Audio RMS increases when 316L grade",
+        "page": "31",
+        "confidence": 0.8
+      },
+      {
+        "source": "316L grade instead of 303 stainless steel",
+        "relation": "DECREASES",
+        "target": "Audio RMS (Vib11)",
+        "evidence": "Audio RMS decreases a little when 316L grade",
+        "page": "28",
+        "confidence": 0.8
+      },
+      {
+        "source": "316L grade instead of 303 stainless steel",
+        "relation": "INCREASES",
+        "target": "Audio RMS (Vib11)",
+        "evidence": "Audio RMS seems to increase when 316L grade",
+        "page": "38",
+        "confidence": 0.8
+      },
+      {
+        "source": "316L grade instead of 303 stainless steel",
+        "relation": "REMAINS_STABLE",
+        "target": "Spindle Power (AI1)",
+        "evidence": "Spindle power remains the same with 316L grade ?",
+        "page": "40",
+        "confidence": 0.7
+      },
+      {
+        "source": "316L grade instead of 303 stainless steel",
+        "relation": "INCREASES",
+        "target": "Spindle Power (AI1)",
+        "evidence": "Spindle power increases a little when 316L grade",
+        "page": "17",
+        "confidence": 0.9
+      }
+    ]
+  },
+  "layer05_triples": {
+    "triples": [
+      {
+        "subject": "316L grade instead of 303 stainless steel",
+        "predicate": "INCREASES",
+        "object": "Spindle Power (AI1)",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "Spindle power increases when 316L grade => OK",
+        "page": "6",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "material_316L",
+          "sensor": "AI1",
+          "feature": "power",
+          "direction": "increase",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "316L grade instead of 303 stainless steel",
+        "predicate": "INCREASES",
+        "object": "Cutting Force (Fz)",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "Cutting Force increases when 316L grade => OK",
+        "page": "7",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "material_316L",
+          "sensor": "unknown",
+          "feature": "force",
+          "direction": "increase",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "316L grade instead of 303 stainless steel",
+        "predicate": "DECREASES",
+        "object": "Vibration RMS (Vib1)",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "RMS decreases when 316L grade",
+        "page": "8",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "material_316L",
+          "sensor": "Vib1",
+          "feature": "rms",
+          "direction": "decrease",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "316L grade instead of 303 stainless steel",
+        "predicate": "INCREASES",
+        "object": "Vibration RMS (Vib1)",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "RMS increases when 316L grade",
+        "page": "14",
+        "confidence": 0.8,
+        "comparison_tags": {
+          "condition": "material_316L",
+          "sensor": "Vib1",
+          "feature": "rms",
+          "direction": "increase",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "316L grade instead of 303 stainless steel",
+        "predicate": "DECREASES",
+        "object": "Audio RMS (Vib11)",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "RMS decreases when 316L grade",
+        "page": "9",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "material_316L",
+          "sensor": "Vib11",
+          "feature": "audio",
+          "direction": "decrease",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "316L grade instead of 303 stainless steel",
+        "predicate": "INCREASES",
+        "object": "Audio RMS (Vib11)",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "Audio RMS increases when 316L grade",
+        "page": "31",
+        "confidence": 0.8,
+        "comparison_tags": {
+          "condition": "material_316L",
+          "sensor": "Vib11",
+          "feature": "audio",
+          "direction": "increase",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "316L grade instead of 303 stainless steel",
+        "predicate": "DECREASES",
+        "object": "Audio RMS (Vib11)",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "Audio RMS decreases a little when 316L grade",
+        "page": "28",
+        "confidence": 0.8,
+        "comparison_tags": {
+          "condition": "material_316L",
+          "sensor": "Vib11",
+          "feature": "audio",
+          "direction": "decrease",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "316L grade instead of 303 stainless steel",
+        "predicate": "INCREASES",
+        "object": "Audio RMS (Vib11)",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "Audio RMS seems to increase when 316L grade",
+        "page": "38",
+        "confidence": 0.8,
+        "comparison_tags": {
+          "condition": "material_316L",
+          "sensor": "Vib11",
+          "feature": "audio",
+          "direction": "increase",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "316L grade instead of 303 stainless steel",
+        "predicate": "REMAINS_STABLE",
+        "object": "Spindle Power (AI1)",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "Spindle power remains the same with 316L grade ?",
+        "page": "40",
+        "confidence": 0.7,
+        "comparison_tags": {
+          "condition": "material_316L",
+          "sensor": "AI1",
+          "feature": "power",
+          "direction": "stable",
+          "operation": "unknown"
+        }
+      },
+      {
+        "subject": "316L grade instead of 303 stainless steel",
+        "predicate": "INCREASES",
+        "object": "Spindle Power (AI1)",
+        "subject_type": "event",
+        "object_type": "entity",
+        "evidence": "Spindle power increases a little when 316L grade",
+        "page": "17",
+        "confidence": 0.9,
+        "comparison_tags": {
+          "condition": "material_316L",
+          "sensor": "AI1",
+          "feature": "power",
+          "direction": "increase",
+          "operation": "unknown"
+        }
+      }
+    ]
+  },
+  "layer06_lite_schema": {
+    "concepts": [
+      {
+        "label": "316L grade instead of 303 stainless steel",
+        "parent": null,
+        "definition": "Abnormal material grade used in machining",
+        "evidence": "Material change noted in process documentation"
+      },
+      {
+        "label": "Spindle Power (AI1)",
+        "parent": null,
+        "definition": "Measurement of spindle power captured by sensor AI1",
+        "evidence": "AI1 sensor records spindle power"
+      },
+      {
+        "label": "Cutting Force (Fz)",
+        "parent": null,
+        "definition": "Force applied in the cutting direction",
+        "evidence": "Force sensor records cutting force"
+      },
+      {
+        "label": "Vibration RMS (Vib1)",
+        "parent": null,
+        "definition": "Root‑mean‑square vibration measured by sensor Vib1",
+        "evidence": "Vib1 sensor records vibration RMS"
+      },
+      {
+        "label": "Audio RMS (Vib11)",
+        "parent": null,
+        "definition": "Root‑mean‑square audio level measured by sensor Vib11",
+        "evidence": "Vib11 sensor records audio RMS"
+      }
+    ],
+    "relations": [
+      {
+        "label": "INCREASES",
+        "domain": "316L grade instead of 303 stainless steel",
+        "range": "Spindle Power (AI1)",
+        "definition": "Indicates spindle power rises when 316L grade is used"
+      },
+      {
+        "label": "INCREASES",
+        "domain": "316L grade instead of 303 stainless steel",
+        "range": "Cutting Force (Fz)",
+        "definition": "Indicates cutting force rises when 316L grade is used"
+      },
+      {
+        "label": "INCREASES",
+        "domain": "316L grade instead of 303 stainless steel",
+        "range": "Vibration RMS (Vib1)",
+        "definition": "Indicates vibration RMS rises when 316L grade is used"
+      },
+      {
+        "label": "INCREASES",
+        "domain": "316L grade instead of 303 stainless steel",
+        "range": "Audio RMS (Vib11)",
+        "definition": "Indicates audio RMS rises when 316L grade is used"
+      },
+      {
+        "label": "DECREASES",
+        "domain": "316L grade instead of 303 stainless steel",
+        "range": "Vibration RMS (Vib1)",
+        "definition": "Indicates vibration RMS falls when 316L grade is used"
+      },
+      {
+        "label": "DECREASES",
+        "domain": "316L grade instead of 303 stainless steel",
+        "range": "Audio RMS (Vib11)",
+        "definition": "Indicates audio RMS falls when 316L grade is used"
+      },
+      {
+        "label": "REMAINS_STABLE",
+        "domain": "316L grade instead of 303 stainless steel",
+        "range": "Spindle Power (AI1)",
+        "definition": "Indicates spindle power stays unchanged when 316L grade is used"
+      }
+    ]
+  }
+}
