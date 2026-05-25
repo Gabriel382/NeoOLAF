@@ -1,0 +1,118 @@
+{
+  "layer": "layer09_general_axiom_extraction",
+  "num_general_axiom_candidates": 4,
+  "general_axiom_candidates": [
+    {
+      "axiom_id": "axiom_00000",
+      "axiom_type": "relation domain",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "emittedBy",
+      "predicate": "domain",
+      "object_id": "domain_hint::Event",
+      "object_label": "Event",
+      "literal_value": null,
+      "justification": "The relation 'emittedBy' directly connects events to system components as emitters.",
+      "confidence": 0.93,
+      "source_schema_ids": [
+        "schema_00000"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 335,
+          "chunk_end_char": 345,
+          "doc_start_char": 335,
+          "doc_end_char": 345,
+          "snippet": "s and messages from the PLC interface, described below. The messages and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper f"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00001",
+      "axiom_type": "relation range",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "emittedBy",
+      "predicate": "range",
+      "object_id": "range_hint::SystemComponent",
+      "object_label": "SystemComponent",
+      "literal_value": null,
+      "justification": "The relation 'emittedBy' directly connects events to system components as emitters.",
+      "confidence": 0.93,
+      "source_schema_ids": [
+        "schema_00001"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 335,
+          "chunk_end_char": 345,
+          "doc_start_char": 335,
+          "doc_end_char": 345,
+          "snippet": "s and messages from the PLC interface, described below. The messages and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper f"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00002",
+      "axiom_type": "description",
+      "subject_id": "concept_00000",
+      "subject_label": "AlarmAndMessage",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Signals or indicators that notify operators of potential issues or events requiring attention within an industrial setting.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00000"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 40,
+          "chunk_end_char": 59,
+          "doc_start_char": 40,
+          "doc_end_char": 59,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-en Page 8-4 8 Alarms and messages 8.1 Introduction Alarms and messages are divided into two main categories: 1 al"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00003",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "emittedBy",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates an event or signal to the system or device that emits it.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 335,
+          "chunk_end_char": 345,
+          "doc_start_char": 335,
+          "doc_end_char": 345,
+          "snippet": "s and messages from the PLC interface, described below. The messages and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper f"
+        }
+      ]
+    }
+  ]
+}

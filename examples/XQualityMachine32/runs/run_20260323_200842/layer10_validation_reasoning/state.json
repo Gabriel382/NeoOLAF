@@ -1,0 +1,328 @@
+{
+  "layer": "layer10_validation_reasoning",
+  "validation_report": {
+    "is_valid": true,
+    "issues": []
+  },
+  "reasoning_report": {
+    "notes": [
+      "Inferred graph initialized from validated candidate triples.",
+      "Inferred axiom schemata copied from extracted reusable schemata.",
+      "Inferred general axioms copied from candidate general axioms.",
+      "Relation hierarchy links are available for downstream relation reasoning."
+    ],
+    "inferred_triples": [
+      {
+        "triple_id": "triple_00000",
+        "subject_id": "cand_e_00002",
+        "subject_label": "RESET PRG key",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00000",
+        "predicate_label": "PLC interface",
+        "object_id": "cand_r_00000",
+        "object_label": "PLC interface",
+        "object_type": "relation",
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that alarms are divided into two categories, one of which is 'alarms and messages from the PLC interface'.",
+        "confidence": 0.85
+      },
+      {
+        "triple_id": "triple_00001",
+        "subject_id": "cand_e_00002",
+        "subject_label": "RESET PRG key",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00001",
+        "predicate_label": "emitted by",
+        "object_id": "cand_e_00001",
+        "object_label": "CNC",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that alarms and messages from the PLC interface are described below.",
+        "confidence": 0.85
+      },
+      {
+        "triple_id": "triple_00002",
+        "subject_id": "cand_e_00002",
+        "subject_label": "RESET PRG key",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00002",
+        "predicate_label": "affects",
+        "object_id": "cand_e_00000",
+        "object_label": "Alarm Message",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that pressing the RESET PRG key allows you to see the alarm number and text.",
+        "confidence": 0.85
+      },
+      {
+        "triple_id": "triple_00003",
+        "subject_id": "cand_e_00000",
+        "subject_label": "Alarm Message",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00003",
+        "predicate_label": "alarms with immediate and controlled stop",
+        "object_id": "cand_r_00003",
+        "object_label": "alarms with immediate and controlled stop",
+        "object_type": "relation",
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that alarms are classified into categories including 'alarms with immediate and controlled stop'.",
+        "confidence": 0.85
+      },
+      {
+        "triple_id": "triple_00004",
+        "subject_id": "cand_e_00002",
+        "subject_label": "RESET PRG key",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00004",
+        "predicate_label": "stop at the end of the cycle",
+        "object_id": "cand_e_00001",
+        "object_label": "CNC",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that alarms and messages from the PLC interface are classified into categories including 'alarms with stop at the end of the cycle'.",
+        "confidence": 0.85
+      },
+      {
+        "triple_id": "triple_00005",
+        "subject_id": "cand_e_00002",
+        "subject_label": "RESET PRG key",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00005",
+        "predicate_label": "causes do not persist",
+        "object_id": "cand_e_00000",
+        "object_label": "Alarm Message",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that by pressing the RESET PRG key, the alarm can be cleared if the causes do not persist.",
+        "confidence": 0.85
+      },
+      {
+        "triple_id": "triple_00006",
+        "subject_id": "cand_s_00000",
+        "subject_label": "EMERGENCY ACTIVE",
+        "subject_type": "event",
+        "predicate_id": "cand_r_00006",
+        "predicate_label": "has cause",
+        "object_id": "cand_e_00003",
+        "object_label": "Alarm 1001",
+        "object_type": "entity",
+        "chunk_id": "chunk_0001",
+        "justification": "The text states that Alarm 1001 has cause: Signals that the punch button has been pressed.",
+        "confidence": 0.95
+      },
+      {
+        "triple_id": "triple_00007",
+        "subject_id": "cand_s_00000",
+        "subject_label": "EMERGENCY ACTIVE",
+        "subject_type": "event",
+        "predicate_id": "cand_r_00007",
+        "predicate_label": "Signals that the punch button has been pressed",
+        "object_id": "cand_e_00003",
+        "object_label": "Alarm 1001",
+        "object_type": "entity",
+        "chunk_id": "chunk_0001",
+        "justification": "The text states that Alarm 1001 signals the EMERGENCY ACTIVE state.",
+        "confidence": 0.95
+      },
+      {
+        "triple_id": "triple_00008",
+        "subject_id": "cand_s_00000",
+        "subject_label": "EMERGENCY ACTIVE",
+        "subject_type": "event",
+        "predicate_id": "cand_r_00010",
+        "predicate_label": "END OF CYCLE STOP",
+        "object_id": "cand_r_00010",
+        "object_label": "END OF CYCLE STOP",
+        "object_type": "relation",
+        "chunk_id": "chunk_0001",
+        "justification": "The text states that END OF CYCLE STOP is a type of alarm.",
+        "confidence": 0.85
+      }
+    ],
+    "inferred_axiom_schemata": [
+      {
+        "schema_id": "schema_00000",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "domain",
+        "object_id": "domain_hint::SignalEvent",
+        "object_label": "SignalEvent",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00001",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "range",
+        "object_id": "range_hint::Device",
+        "object_label": "Device",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00002",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "negativelyImpacts",
+        "predicate": "domain",
+        "object_id": "domain_hint::ObservableProperty",
+        "object_label": "ObservableProperty",
+        "confidence": 0.75
+      },
+      {
+        "schema_id": "schema_00003",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "negativelyImpacts",
+        "predicate": "range",
+        "object_id": "range_hint::MachineState",
+        "object_label": "MachineState",
+        "confidence": 0.75
+      },
+      {
+        "schema_id": "schema_00004",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "indicates",
+        "predicate": "domain",
+        "object_id": "domain_hint::Situation",
+        "object_label": "Situation",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00005",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "indicates",
+        "predicate": "range",
+        "object_id": "range_hint::ObservableEntity",
+        "object_label": "ObservableEntity",
+        "confidence": 0.95
+      }
+    ],
+    "inferred_general_axioms": [
+      {
+        "axiom_id": "axiom_00000",
+        "axiom_type": "relation domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "domain",
+        "object_id": "domain_hint::SignalEvent",
+        "object_label": "SignalEvent",
+        "literal_value": null,
+        "confidence": 0.93
+      },
+      {
+        "axiom_id": "axiom_00001",
+        "axiom_type": "relation range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "range",
+        "object_id": "range_hint::Device",
+        "object_label": "Device",
+        "literal_value": null,
+        "confidence": 0.93
+      },
+      {
+        "axiom_id": "axiom_00002",
+        "axiom_type": "domain",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "negativelyImpacts",
+        "predicate": "domain",
+        "object_id": "domain_hint::ObservableProperty",
+        "object_label": "ObservableProperty",
+        "literal_value": null,
+        "confidence": 0.93
+      },
+      {
+        "axiom_id": "axiom_00003",
+        "axiom_type": "range",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "negativelyImpacts",
+        "predicate": "range",
+        "object_id": "range_hint::MachineState",
+        "object_label": "MachineState",
+        "literal_value": null,
+        "confidence": 0.93
+      },
+      {
+        "axiom_id": "axiom_00004",
+        "axiom_type": "domain",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "indicates",
+        "predicate": "domain",
+        "object_id": "domain_hint::Situation",
+        "object_label": "Situation",
+        "literal_value": null,
+        "confidence": null
+      },
+      {
+        "axiom_id": "axiom_00005",
+        "axiom_type": "relation range",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "indicates",
+        "predicate": "range",
+        "object_id": "range_hint::ObservableEntity",
+        "object_label": "ObservableEntity",
+        "literal_value": null,
+        "confidence": null
+      },
+      {
+        "axiom_id": "axiom_00006",
+        "axiom_type": "description",
+        "subject_id": "concept_00000",
+        "subject_label": "CNCMachine",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "A computer-controlled machine tool for automated manufacturing.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00007",
+        "axiom_type": "description",
+        "subject_id": "concept_00001",
+        "subject_label": "EmergencySituation",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "A state indicating a serious and immediate threat requiring urgent action.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00008",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Relates an entity or event to the source that produces or generates it.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00009",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "negativelyImpacts",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Relates a factor or condition to its negative effect on the functionality of a machine or system.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00010",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "indicates",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Relates a situation or event to an observable signal or property.",
+        "confidence": 1.0
+      }
+    ]
+  }
+}

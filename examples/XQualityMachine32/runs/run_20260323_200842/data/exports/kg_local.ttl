@@ -1,0 +1,173 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that alarms are divided into two categories, one of which is 'alarms and messages from the PLC interface'." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00000> ;
+    neo:predicate ns1:cand_r_00000 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The text states that alarms and messages from the PLC interface are described below." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00001> ;
+    neo:predicate ns1:cand_r_00001 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00002> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00002/prov/0> ;
+    neo:justification "The text states that pressing the RESET PRG key allows you to see the alarm number and text." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00000> ;
+    neo:predicate ns1:cand_r_00002 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00003> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00003/prov/0> ;
+    neo:justification "The text states that alarms are classified into categories including 'alarms with immediate and controlled stop'." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00003> ;
+    neo:predicate ns1:cand_r_00003 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00004> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00004/prov/0> ;
+    neo:justification "The text states that alarms and messages from the PLC interface are classified into categories including 'alarms with stop at the end of the cycle'." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00001> ;
+    neo:predicate ns1:cand_r_00004 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00005> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00005/prov/0> ;
+    neo:justification "The text states that by pressing the RESET PRG key, the alarm can be cleared if the causes do not persist." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00000> ;
+    neo:predicate ns1:cand_r_00005 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00006> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0001" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00006/prov/0> ;
+    neo:justification "The text states that Alarm 1001 has cause: Signals that the punch button has been pressed." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00003> ;
+    neo:predicate ns1:cand_r_00006 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00007> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0001" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00007/prov/0> ;
+    neo:justification "The text states that Alarm 1001 signals the EMERGENCY ACTIVE state." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00003> ;
+    neo:predicate ns1:cand_r_00007 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00008> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0001" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00008/prov/0> ;
+    neo:justification "The text states that END OF CYCLE STOP is a type of alarm." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00010> ;
+    neo:predicate ns1:cand_r_00010 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00000> .
+
+ns1:cand_r_00000 neo:label "PLC interface" .
+
+ns1:cand_r_00001 neo:label "emitted by" .
+
+ns1:cand_r_00002 neo:label "affects" .
+
+ns1:cand_r_00003 neo:label "alarms with immediate and controlled stop" .
+
+ns1:cand_r_00004 neo:label "stop at the end of the cycle" .
+
+ns1:cand_r_00005 neo:label "causes do not persist" .
+
+ns1:cand_r_00006 neo:label "has cause" .
+
+ns1:cand_r_00007 neo:label "Signals that the punch button has been pressed" .
+
+ns1:cand_r_00010 neo:label "END OF CYCLE STOP" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "intenance manual of the Fanuc series CNC........ 2 alarms and messages from the PLC interface, described below. The messages and alarms emitted by the PLC indicate the detec" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "s and messages from the PLC interface, described below. The messages and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper f" .
+
+<http://neoolaf.org/resource/triple/triple_00002/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "s and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper functioning of the machine and the machining cycle. Depending on the effect they produce, t" .
+
+<http://neoolaf.org/resource/triple/triple_00003/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "hining cycle. Depending on the effect they produce, they are classified into: • alarms with immediate and controlled stop: the machine is stopped and the axes and spindles blocked at maximum torque in" .
+
+<http://neoolaf.org/resource/triple/triple_00004/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "indles blocked at maximum torque in controlled mode; • alarms and messages with stop at the end of the cycle: the machine is stopped when function M01 is launched; • read-only messages: th" .
+
+<http://neoolaf.org/resource/triple/triple_00005/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "ogram is rewound and you can restart the program from the beginning only if the causes do not persist. SPRINT32linear-FA-MP-v0.1-fr Page 8-5 8.2 List of alarms and description SPRIN" .
+
+<http://neoolaf.org/resource/triple/triple_00006/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0001" ;
+    neo:snippet "ear-FA-MP-v0.1-fr Page 8-6 8.2.1 Alarm no. 1001 8.2.2 Alarm no. 1002 8.2.3 Alarm no. 1003 Alarm no.: 1001 text: EMERGENCY ACTIVE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown, opening of the hardware authorization to the axis/spindle feeder and CNC in emergency cause" .
+
+<http://neoolaf.org/resource/triple/triple_00007/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0001" ;
+    neo:snippet "e hardware authorization to the axis/spindle feeder and CNC in emergency cause: Signals that the punch button has been pressed intervention: Release the button and press the machine start button. See page 5" .
+
+<http://neoolaf.org/resource/triple/triple_00008/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0001" ;
+    neo:snippet """ctions are closed, check the locks. See page 7 of the electrical diagram, entry
+END OF CYCLE STOP type: Standard: Optional: effect: Alarm with stop at the end of the cycle cause""" .
+
+<http://neoolaf.org/resource/node/cand_r_00000> neo:label "PLC interface" ;
+    neo:nodeType "relation" .
+
+<http://neoolaf.org/resource/node/cand_r_00003> neo:label "alarms with immediate and controlled stop" ;
+    neo:nodeType "relation" .
+
+<http://neoolaf.org/resource/node/cand_r_00010> neo:label "END OF CYCLE STOP" ;
+    neo:nodeType "relation" .
+
+<http://neoolaf.org/resource/node/cand_s_00000> neo:label "EMERGENCY ACTIVE" ;
+    neo:nodeType "event" ;
+    ns1:cand_r_00006 <http://neoolaf.org/resource/node/cand_e_00003> ;
+    ns1:cand_r_00007 <http://neoolaf.org/resource/node/cand_e_00003> ;
+    ns1:cand_r_00010 <http://neoolaf.org/resource/node/cand_r_00010> .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "CNC" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_e_00003> neo:label "Alarm 1001" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "Alarm Message" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00003 <http://neoolaf.org/resource/node/cand_r_00003> .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "RESET PRG key" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00000 <http://neoolaf.org/resource/node/cand_r_00000> ;
+    ns1:cand_r_00001 <http://neoolaf.org/resource/node/cand_e_00001> ;
+    ns1:cand_r_00002 <http://neoolaf.org/resource/node/cand_e_00000> ;
+    ns1:cand_r_00004 <http://neoolaf.org/resource/node/cand_e_00001> ;
+    ns1:cand_r_00005 <http://neoolaf.org/resource/node/cand_e_00000> .
+

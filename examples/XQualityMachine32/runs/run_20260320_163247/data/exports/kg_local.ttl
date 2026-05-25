@@ -1,0 +1,137 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that messages are emitted by the PLC." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00000> ;
+    neo:predicate ns1:cand_r_00000 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The text states that messages emitted by the PLC can indicate a problem that may compromise the proper functioning of the machine and its machining cycle. These messages can trigger an immediate controlled stop, which is reset by pressing the RESET PRG button." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00000> ;
+    neo:predicate ns1:cand_r_00001 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00002> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00002/prov/0> ;
+    neo:justification "The text states that messages from the PLC indicate a problem that can compromise the proper functioning of the machine and the machining cycle." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00003> ;
+    neo:predicate ns1:cand_r_00002 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00003> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0001" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00003/prov/0> ;
+    neo:justification "The text states that the URGENCE ACTIVE alarm is triggered when the bouton coup-de-poing is pressed." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00006> ;
+    neo:predicate ns1:cand_r_00005 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00004> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0001" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00004/prov/0> ;
+    neo:justification "The text states that Alarm n°1002 indicates URGENCE ACTIVE." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00002> ;
+    neo:predicate ns1:cand_r_00006 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00006> .
+
+<http://neoolaf.org/resource/triple/triple_00005> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0001" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00005/prov/0> ;
+    neo:justification "The text states that the intervention for Alarm n°1002 is to release the button and press the start button." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00006> ;
+    neo:predicate ns1:cand_r_00007 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_s_00001> .
+
+<http://neoolaf.org/resource/triple/triple_00006> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0001" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00006/prov/0> ;
+    neo:justification "The text states that Alarm n°1002 has the type 'MACHINE HORS CIRCUIT' and that 'MACHINE HORS CIRCUIT' is associated with 'URGENCE ACTIVE'." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00002> ;
+    neo:predicate ns1:cand_r_00008 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00006> .
+
+<http://neoolaf.org/resource/node/cand_s_00001> neo:label "alarm" ;
+    neo:nodeType "event" ;
+    ns1:cand_r_00007 <http://neoolaf.org/resource/node/cand_e_00006> .
+
+ns1:cand_r_00000 neo:label "emitted by" .
+
+ns1:cand_r_00001 neo:label "compromises" .
+
+ns1:cand_r_00002 neo:label "machine" .
+
+ns1:cand_r_00005 neo:label "bouton coup-de-poing" .
+
+ns1:cand_r_00006 neo:label "indicates" .
+
+ns1:cand_r_00007 neo:label "Relâcher le bouton et appuyer sur la touche de démarrage" .
+
+ns1:cand_r_00008 neo:label "MACHINE HORS CIRCUIT" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de" .
+
+<http://neoolaf.org/resource/triple/triple_00002/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "nt la détection d’un problème qui peut compromettre le bon fonctionnement de la machine et du cycle d’usinage. En fonction de l’effet qu’ils produisent, ils sont class" .
+
+<http://neoolaf.org/resource/triple/triple_00003/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0001" ;
+    neo:snippet "dware à l’alimentateur des axes/broches et CNC en urgence cause: Signale que le bouton coup-de-poing à été enfoncé intervention: Relâcher le bouton et appuyer sur la touche de déma" .
+
+<http://neoolaf.org/resource/triple/triple_00004/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0001" ;
+    neo:snippet "orisa- tion hardware à l’alimentateur des axes/broches et CNC en urgence cause: Signale que le bouton coup-de-poing à été enfoncé intervention: Relâcher le bouton et appuy" .
+
+<http://neoolaf.org/resource/triple/triple_00005/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0001" ;
+    neo:snippet "urgence cause: Signale que le bouton coup-de-poing à été enfoncé intervention: Relâcher le bouton et appuyer sur la touche de démarrage de la machine. Voir la page 5 du schéma électrique, entrée X8.4 chargé de l’int" .
+
+<http://neoolaf.org/resource/triple/triple_00006/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0001" ;
+    neo:snippet "hargé de l’intervention: opérateur/chargé de l’entretien Alarme n°: 1002 texte: MACHINE HORS CIRCUIT type: Standard: Optionnel: effet: Alarme avec arrêt immédiat et contrôlé, ouver" .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "message" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_e_00003> neo:label "cycle" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_s_00000> neo:label "reset" ;
+    neo:nodeType "event" .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "PLC" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00000 <http://neoolaf.org/resource/node/cand_e_00000> ;
+    ns1:cand_r_00001 <http://neoolaf.org/resource/node/cand_s_00000> ;
+    ns1:cand_r_00002 <http://neoolaf.org/resource/node/cand_e_00003> .
+
+<http://neoolaf.org/resource/node/cand_s_00002> neo:label "URGENCE ACTIVE" ;
+    neo:nodeType "event" ;
+    ns1:cand_r_00005 <http://neoolaf.org/resource/node/cand_e_00006> .
+
+<http://neoolaf.org/resource/node/cand_e_00006> neo:label "Alarm n°1002" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00006 <http://neoolaf.org/resource/node/cand_s_00002> ;
+    ns1:cand_r_00008 <http://neoolaf.org/resource/node/cand_s_00002> .
+

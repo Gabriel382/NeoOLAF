@@ -1,0 +1,142 @@
+{
+  "layer": "layer06_concept_relation_induction",
+  "num_concept_candidates": 2,
+  "num_ontology_relation_candidates": 3,
+  "concept_candidates": [
+    {
+      "concept_id": "concept_00000",
+      "label": "CNCMachine",
+      "normalized_label": "cncmachine",
+      "description": "A computer-controlled machine tool for automated manufacturing.",
+      "concept_kind": "Machine",
+      "parent_hint": "Machine",
+      "source_candidate_ids": [
+        "cand_e_00001"
+      ],
+      "source_triple_ids": [
+        "triple_00001",
+        "triple_00004"
+      ],
+      "confidence": 0.95,
+      "justification": "The candidate represents a specific type of machine tool commonly used in manufacturing, aligning with the existing 'Machine' class.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 166,
+          "chunk_end_char": 169,
+          "doc_start_char": 166,
+          "doc_end_char": 169,
+          "snippet": "d messages are divided into two main categories: 1 alarms and messages from the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........ 2"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00001",
+      "label": "EmergencySituation",
+      "normalized_label": "emergencysituation",
+      "description": "A state indicating a serious and immediate threat requiring urgent action.",
+      "concept_kind": "situation",
+      "parent_hint": "TemporalEntity",
+      "source_candidate_ids": [
+        "cand_s_00000"
+      ],
+      "source_triple_ids": [
+        "triple_00006",
+        "triple_00007",
+        "triple_00008"
+      ],
+      "confidence": 0.85,
+      "justification": "The candidate represents a reusable situation type with clear semantic stability and aligns with the 'Temporal Entity' class.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 112,
+          "chunk_end_char": 128,
+          "doc_start_char": 1412,
+          "doc_end_char": 1428,
+          "snippet": "Alarm no. 1001 8.2.2 Alarm no. 1002 8.2.3 Alarm no. 1003 Alarm no.: 1001 text: EMERGENCY ACTIVE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown,"
+        }
+      ]
+    }
+  ],
+  "ontology_relation_candidates": [
+    {
+      "relation_id": "ont_rel_00000",
+      "label": "emittedBy",
+      "normalized_label": "emittedby",
+      "description": "Relates an entity or event to the source that produces or generates it.",
+      "domain_hint": "SignalEvent",
+      "range_hint": "Device",
+      "source_candidate_ids": [
+        "cand_r_00001"
+      ],
+      "source_triple_ids": [
+        "triple_00001"
+      ],
+      "confidence": 0.92,
+      "justification": "This relation captures a reusable semantic pattern of emission or generation, aligning with the 'concerned by' property while focusing on the source.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 335,
+          "chunk_end_char": 345,
+          "doc_start_char": 335,
+          "doc_end_char": 345,
+          "snippet": "s and messages from the PLC interface, described below. The messages and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper f"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00001",
+      "label": "negativelyImpacts",
+      "normalized_label": "negativelyimpacts",
+      "description": "Relates a factor or condition to its negative effect on the functionality of a machine or system.",
+      "domain_hint": "ObservableProperty",
+      "range_hint": "Machine",
+      "source_candidate_ids": [
+        "cand_r_00002"
+      ],
+      "source_triple_ids": [
+        "triple_00002"
+      ],
+      "confidence": 0.92,
+      "justification": "The relation is semantically stable, reusable, and meaningful beyond isolated mentions. It aligns with the seed ontology's focus on manufacturing processes and potential disruptions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 402,
+          "chunk_end_char": 435,
+          "doc_start_char": 402,
+          "doc_end_char": 435,
+          "snippet": "s and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper functioning of the machine and the machining cycle. Depending on the effect they produce, t"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00002",
+      "label": "indicates",
+      "normalized_label": "indicates",
+      "description": "Relates a situation or event to an observable signal or property.",
+      "domain_hint": "Situation",
+      "range_hint": "ObservableEntity",
+      "source_candidate_ids": [
+        "cand_r_00007"
+      ],
+      "source_triple_ids": [
+        "triple_00007"
+      ],
+      "confidence": 0.92,
+      "justification": "This relation captures the semantic connection between a situation and its detectable manifestation. It aligns with the 'has observable property' hint and is reusable across various contexts.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 302,
+          "chunk_end_char": 348,
+          "doc_start_char": 1602,
+          "doc_end_char": 1648,
+          "snippet": "e hardware authorization to the axis/spindle feeder and CNC in emergency cause: Signals that the punch button has been pressed intervention: Release the button and press the machine start button. See page 5"
+        }
+      ]
+    }
+  ]
+}

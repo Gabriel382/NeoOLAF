@@ -1,0 +1,38 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "PLC" ;
+    ns1:cand_r_00000 <http://neoolaf.org/resource/node/cand_e_00000> ;
+    ns1:cand_r_00001 <http://neoolaf.org/resource/node/cand_s_00000> ;
+    ns1:cand_r_00002 <http://neoolaf.org/resource/node/cand_e_00003> .
+
+<http://neoolaf.org/resource/node/cand_s_00001> neo:label "alarm" ;
+    ns1:cand_r_00007 <http://neoolaf.org/resource/node/cand_e_00006> .
+
+ns1:cand_r_00000 neo:label "emitted by" .
+
+ns1:cand_r_00001 neo:label "compromises" .
+
+ns1:cand_r_00002 neo:label "machine" .
+
+ns1:cand_r_00005 neo:label "bouton coup-de-poing" .
+
+ns1:cand_r_00006 neo:label "indicates" .
+
+ns1:cand_r_00007 neo:label "Relâcher le bouton et appuyer sur la touche de démarrage" .
+
+ns1:cand_r_00008 neo:label "MACHINE HORS CIRCUIT" .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "message" .
+
+<http://neoolaf.org/resource/node/cand_e_00003> neo:label "cycle" .
+
+<http://neoolaf.org/resource/node/cand_s_00000> neo:label "reset" .
+
+<http://neoolaf.org/resource/node/cand_e_00006> neo:label "Alarm n°1002" ;
+    ns1:cand_r_00006 <http://neoolaf.org/resource/node/cand_s_00002> ;
+    ns1:cand_r_00008 <http://neoolaf.org/resource/node/cand_s_00002> .
+
+<http://neoolaf.org/resource/node/cand_s_00002> neo:label "URGENCE ACTIVE" ;
+    ns1:cand_r_00005 <http://neoolaf.org/resource/node/cand_e_00006> .
+

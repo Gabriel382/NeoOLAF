@@ -1,0 +1,2370 @@
+[
+  {
+    "pred_idx": 0,
+    "gt_idx": 0,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "Emergency stop button pressed",
+      "rel": "TRIGGERS",
+      "tail": "EMERGENCY ACTIVE",
+      "raw_subject": "EMERGENCY ACTIVE",
+      "raw_predicate": "alarms and messages of the CNC",
+      "raw_object": "SIDE GUARDS OPEN",
+      "justification": "The text indicates that the alarms listed (including ActiveEmergencyEvent and Open side guard alarm) are part of the category \"alarms and messages of the CNC\", implying a grouping relation between them.",
+      "chunkid": "chunk_0000",
+      "confidence": 0.75,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00000",
+        "subject": {
+          "id": "cand_s_00001",
+          "label": "ActiveEmergencyEvent",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00001",
+          "label": "alarms and messages of the CNC"
+        },
+        "object": {
+          "id": "cand_s_00002",
+          "label": "Open side guard alarm",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0000",
+        "justification": "The text indicates that the alarms listed (including ActiveEmergencyEvent and Open side guard alarm) are part of the category \"alarms and messages of the CNC\", implying a grouping relation between them.",
+        "confidence": 0.75,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0000",
+            "chunk_start_char": 81,
+            "chunk_end_char": 111,
+            "doc_start_char": 81,
+            "doc_end_char": 111,
+            "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "Emergency stop button pressed",
+      "rel": "TRIGGERS",
+      "tail": "EMERGENCY ACTIVE",
+      "anchor_id": "1001",
+      "raw": {
+        "#": 1,
+        "Node 1": "Emergency stop button pressed",
+        "RELATION": "TRIGGERS",
+        "Node 2": "EMERGENCY ACTIVE",
+        "Triplet Type": "Cause → Alarm",
+        "Alarm No.": "1001",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 1,
+    "gt_idx": 28,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "Side guards open",
+      "rel": "TRIGGERS",
+      "tail": "SIDE GUARDS OPEN",
+      "raw_subject": "EMERGENCY ACTIVE",
+      "raw_predicate": "alarms and messages of the CNC",
+      "raw_object": "SIDE GUARDS OPEN",
+      "justification": "The text indicates that the alarms listed (including ActiveEmergencyEvent and Open side guard alarm) are part of the category \"alarms and messages of the CNC\", implying a grouping relation between them.",
+      "chunkid": "chunk_0000",
+      "confidence": 0.75,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00000",
+        "subject": {
+          "id": "cand_s_00001",
+          "label": "ActiveEmergencyEvent",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00001",
+          "label": "alarms and messages of the CNC"
+        },
+        "object": {
+          "id": "cand_s_00002",
+          "label": "Open side guard alarm",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0000",
+        "justification": "The text indicates that the alarms listed (including ActiveEmergencyEvent and Open side guard alarm) are part of the category \"alarms and messages of the CNC\", implying a grouping relation between them.",
+        "confidence": 0.75,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0000",
+            "chunk_start_char": 81,
+            "chunk_end_char": 111,
+            "doc_start_char": 81,
+            "doc_end_char": 111,
+            "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "Side guards open",
+      "rel": "TRIGGERS",
+      "tail": "SIDE GUARDS OPEN",
+      "anchor_id": "1005",
+      "raw": {
+        "#": 29,
+        "Node 1": "Side guards open",
+        "RELATION": "TRIGGERS",
+        "Node 2": "SIDE GUARDS OPEN",
+        "Triplet Type": "Cause → Alarm",
+        "Alarm No.": "1005",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 2,
+    "gt_idx": 3,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "EMERGENCY ACTIVE",
+      "rel": "CAUSES",
+      "tail": "CNC in emergency",
+      "raw_subject": "EMERGENCY ACTIVE",
+      "raw_predicate": "recognized with the key 'RESET PRG'",
+      "raw_object": "program rewind",
+      "justification": "The text states that an alarm can be recognized with the key 'RESET PRG', which triggers a program rewind event.",
+      "chunkid": "chunk_0000",
+      "confidence": 0.85,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00001",
+        "subject": {
+          "id": "cand_s_00001",
+          "label": "ActiveEmergencyEvent",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00012",
+          "label": "recognized with the key 'RESET PRG'"
+        },
+        "object": {
+          "id": "cand_s_00000",
+          "label": "program rewind",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that an alarm can be recognized with the key 'RESET PRG', which triggers a program rewind event.",
+        "confidence": 0.85,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0000",
+            "chunk_start_char": -1,
+            "chunk_end_char": -1,
+            "doc_start_char": -1,
+            "doc_end_char": -1,
+            "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "EMERGENCY ACTIVE",
+      "rel": "CAUSES",
+      "tail": "CNC in emergency",
+      "anchor_id": "1001",
+      "raw": {
+        "#": 4,
+        "Node 1": "EMERGENCY ACTIVE",
+        "RELATION": "CAUSES",
+        "Node 2": "CNC in emergency",
+        "Triplet Type": "Alarm → Effect",
+        "Alarm No.": "1001",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 3,
+    "gt_idx": 38,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "THERMOMAGNETIC SWITCHES END-OF-CYCLE STOP",
+      "rel": "REQUIRES",
+      "tail": "Check",
+      "raw_subject": "THERMOMAGNETIC SWITCHES END-OF-CYCLE STOP",
+      "raw_predicate": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+      "raw_object": "Check and reset circuit breakers and/or thermomagnetic switches",
+      "justification": "The text states that the alarm THERMOMAGNET SWITCHES. END OF CYCLE STOP triggers the intervention \"Check and reset circuit breakers and/or thermomagnetic switches\".",
+      "chunkid": "chunk_0000",
+      "confidence": 0.9,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00002",
+        "subject": {
+          "id": "cand_r_00038",
+          "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+          "type": "relation"
+        },
+        "predicate": {
+          "id": "cand_r_00038",
+          "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP"
+        },
+        "object": {
+          "id": "cand_s_00003",
+          "label": "Check and reset circuit breakers and/or thermomagnetic switches",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that the alarm THERMOMAGNET SWITCHES. END OF CYCLE STOP triggers the intervention \"Check and reset circuit breakers and/or thermomagnetic switches\".",
+        "confidence": 0.9,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0000",
+            "chunk_start_char": 4566,
+            "chunk_end_char": 4606,
+            "doc_start_char": 4566,
+            "doc_end_char": 4606,
+            "snippet": ", input X2.5\nresponsible for\noperator/maintenance officer\nAlarm No.: 1008\ntext: THERMOMAGNET SWITCHES. END OF CYCLE STOP\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "THERMOMAGNETIC SWITCHES END-OF-CYCLE STOP",
+      "rel": "REQUIRES",
+      "tail": "Check",
+      "anchor_id": "1008",
+      "raw": {
+        "#": 39,
+        "Node 1": "THERMOMAGNETIC SWITCHES END-OF-CYCLE STOP",
+        "RELATION": "REQUIRES",
+        "Node 2": "Check",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1008",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 4,
+    "gt_idx": 39,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "THERMOMAGNETIC SWITCHES END-OF-CYCLE STOP",
+      "rel": "REQUIRES",
+      "tail": "reset the circuit breakers and/or thermomagnetic switches",
+      "raw_subject": "THERMOMAGNETIC SWITCHES END-OF-CYCLE STOP",
+      "raw_predicate": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+      "raw_object": "Check and reset circuit breakers and/or thermomagnetic switches",
+      "justification": "The text states that the alarm THERMOMAGNET SWITCHES. END OF CYCLE STOP triggers the intervention \"Check and reset circuit breakers and/or thermomagnetic switches\".",
+      "chunkid": "chunk_0000",
+      "confidence": 0.9,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00002",
+        "subject": {
+          "id": "cand_r_00038",
+          "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+          "type": "relation"
+        },
+        "predicate": {
+          "id": "cand_r_00038",
+          "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP"
+        },
+        "object": {
+          "id": "cand_s_00003",
+          "label": "Check and reset circuit breakers and/or thermomagnetic switches",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that the alarm THERMOMAGNET SWITCHES. END OF CYCLE STOP triggers the intervention \"Check and reset circuit breakers and/or thermomagnetic switches\".",
+        "confidence": 0.9,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0000",
+            "chunk_start_char": 4566,
+            "chunk_end_char": 4606,
+            "doc_start_char": 4566,
+            "doc_end_char": 4606,
+            "snippet": ", input X2.5\nresponsible for\noperator/maintenance officer\nAlarm No.: 1008\ntext: THERMOMAGNET SWITCHES. END OF CYCLE STOP\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "THERMOMAGNETIC SWITCHES END-OF-CYCLE STOP",
+      "rel": "REQUIRES",
+      "tail": "reset the circuit breakers and/or thermomagnetic switches",
+      "anchor_id": "1008",
+      "raw": {
+        "#": 40,
+        "Node 1": "THERMOMAGNETIC SWITCHES END-OF-CYCLE STOP",
+        "RELATION": "REQUIRES",
+        "Node 2": "reset the circuit breakers and/or thermomagnetic switches",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1008",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 5,
+    "gt_idx": 44,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "THERMOMAGNETIC SWITCHES IMMEDIATE STOP",
+      "rel": "REQUIRES",
+      "tail": "Check",
+      "raw_subject": "THERMOMAGNETIC SWITCHES END-OF-CYCLE STOP",
+      "raw_predicate": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+      "raw_object": "Check and reset circuit breakers and/or thermomagnetic switches",
+      "justification": "The text states that the alarm THERMOMAGNET SWITCHES. END OF CYCLE STOP triggers the intervention \"Check and reset circuit breakers and/or thermomagnetic switches\".",
+      "chunkid": "chunk_0000",
+      "confidence": 0.9,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00002",
+        "subject": {
+          "id": "cand_r_00038",
+          "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+          "type": "relation"
+        },
+        "predicate": {
+          "id": "cand_r_00038",
+          "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP"
+        },
+        "object": {
+          "id": "cand_s_00003",
+          "label": "Check and reset circuit breakers and/or thermomagnetic switches",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that the alarm THERMOMAGNET SWITCHES. END OF CYCLE STOP triggers the intervention \"Check and reset circuit breakers and/or thermomagnetic switches\".",
+        "confidence": 0.9,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0000",
+            "chunk_start_char": 4566,
+            "chunk_end_char": 4606,
+            "doc_start_char": 4566,
+            "doc_end_char": 4606,
+            "snippet": ", input X2.5\nresponsible for\noperator/maintenance officer\nAlarm No.: 1008\ntext: THERMOMAGNET SWITCHES. END OF CYCLE STOP\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "THERMOMAGNETIC SWITCHES IMMEDIATE STOP",
+      "rel": "REQUIRES",
+      "tail": "Check",
+      "anchor_id": "1009",
+      "raw": {
+        "#": 45,
+        "Node 1": "THERMOMAGNETIC SWITCHES IMMEDIATE STOP",
+        "RELATION": "REQUIRES",
+        "Node 2": "Check",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1009",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 6,
+    "gt_idx": 45,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "THERMOMAGNETIC SWITCHES IMMEDIATE STOP",
+      "rel": "REQUIRES",
+      "tail": "reset the circuit breakers and/or thermomagnetic switches",
+      "raw_subject": "THERMOMAGNETIC SWITCHES END-OF-CYCLE STOP",
+      "raw_predicate": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+      "raw_object": "Check and reset circuit breakers and/or thermomagnetic switches",
+      "justification": "The text states that the alarm THERMOMAGNET SWITCHES. END OF CYCLE STOP triggers the intervention \"Check and reset circuit breakers and/or thermomagnetic switches\".",
+      "chunkid": "chunk_0000",
+      "confidence": 0.9,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00002",
+        "subject": {
+          "id": "cand_r_00038",
+          "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+          "type": "relation"
+        },
+        "predicate": {
+          "id": "cand_r_00038",
+          "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP"
+        },
+        "object": {
+          "id": "cand_s_00003",
+          "label": "Check and reset circuit breakers and/or thermomagnetic switches",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that the alarm THERMOMAGNET SWITCHES. END OF CYCLE STOP triggers the intervention \"Check and reset circuit breakers and/or thermomagnetic switches\".",
+        "confidence": 0.9,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0000",
+            "chunk_start_char": 4566,
+            "chunk_end_char": 4606,
+            "doc_start_char": 4566,
+            "doc_end_char": 4606,
+            "snippet": ", input X2.5\nresponsible for\noperator/maintenance officer\nAlarm No.: 1008\ntext: THERMOMAGNET SWITCHES. END OF CYCLE STOP\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "THERMOMAGNETIC SWITCHES IMMEDIATE STOP",
+      "rel": "REQUIRES",
+      "tail": "reset the circuit breakers and/or thermomagnetic switches",
+      "anchor_id": "1009",
+      "raw": {
+        "#": 46,
+        "Node 1": "THERMOMAGNETIC SWITCHES IMMEDIATE STOP",
+        "RELATION": "REQUIRES",
+        "Node 2": "reset the circuit breakers and/or thermomagnetic switches",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1009",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 7,
+    "gt_idx": 120,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "CHUCK OPEN",
+      "rel": "REQUIRES",
+      "tail": "Exit automatic mode",
+      "raw_subject": "CHUCK OPEN",
+      "raw_predicate": "Exit automatic mode and close the clamp",
+      "raw_object": "Exit automatic mode and close the clamp",
+      "justification": "The alarm OPEN FORCEPS triggers the intervention Exit automatic mode and close the clamp.",
+      "chunkid": "chunk_0003",
+      "confidence": 0.95,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00004",
+        "subject": {
+          "id": "cand_s_00008",
+          "label": "OPEN FORCEPS",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00029",
+          "label": "Exit automatic mode and close the clamp"
+        },
+        "object": {
+          "id": "cand_r_00029",
+          "label": "Exit automatic mode and close the clamp",
+          "type": "relation"
+        },
+        "chunk_id": "chunk_0003",
+        "justification": "The alarm OPEN FORCEPS triggers the intervention Exit automatic mode and close the clamp.",
+        "confidence": 0.95,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0003",
+            "chunk_start_char": 4322,
+            "chunk_end_char": 4361,
+            "doc_start_char": 19322,
+            "doc_end_char": 19361,
+            "snippet": "the automatic cycle with the pliers of the\ncause:\nmain pin open.\nintervention: Exit automatic mode and close the clamp.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1041\ntext: CLAMP OPENING FAILURE"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "CHUCK OPEN",
+      "rel": "REQUIRES",
+      "tail": "Exit automatic mode",
+      "anchor_id": "1040",
+      "raw": {
+        "#": 121,
+        "Node 1": "CHUCK OPEN",
+        "RELATION": "REQUIRES",
+        "Node 2": "Exit automatic mode",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1040",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 8,
+    "gt_idx": 121,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "CHUCK OPEN",
+      "rel": "REQUIRES",
+      "tail": "close the chuck",
+      "raw_subject": "CHUCK OPEN",
+      "raw_predicate": "Exit automatic mode and close the clamp",
+      "raw_object": "Exit automatic mode and close the clamp",
+      "justification": "The alarm OPEN FORCEPS triggers the intervention Exit automatic mode and close the clamp.",
+      "chunkid": "chunk_0003",
+      "confidence": 0.95,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00004",
+        "subject": {
+          "id": "cand_s_00008",
+          "label": "OPEN FORCEPS",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00029",
+          "label": "Exit automatic mode and close the clamp"
+        },
+        "object": {
+          "id": "cand_r_00029",
+          "label": "Exit automatic mode and close the clamp",
+          "type": "relation"
+        },
+        "chunk_id": "chunk_0003",
+        "justification": "The alarm OPEN FORCEPS triggers the intervention Exit automatic mode and close the clamp.",
+        "confidence": 0.95,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0003",
+            "chunk_start_char": 4322,
+            "chunk_end_char": 4361,
+            "doc_start_char": 19322,
+            "doc_end_char": 19361,
+            "snippet": "the automatic cycle with the pliers of the\ncause:\nmain pin open.\nintervention: Exit automatic mode and close the clamp.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1041\ntext: CLAMP OPENING FAILURE"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "CHUCK OPEN",
+      "rel": "REQUIRES",
+      "tail": "close the chuck",
+      "anchor_id": "1040",
+      "raw": {
+        "#": 122,
+        "Node 1": "CHUCK OPEN",
+        "RELATION": "REQUIRES",
+        "Node 2": "close the chuck",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1040",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 9,
+    "gt_idx": 143,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "CHUCK WIRING ERROR",
+      "rel": "REQUIRES",
+      "tail": "Check the wiring",
+      "raw_subject": "CHUCK OPEN",
+      "raw_predicate": "Exit automatic mode and close the clamp",
+      "raw_object": "Exit automatic mode and close the clamp",
+      "justification": "The alarm OPEN FORCEPS triggers the intervention Exit automatic mode and close the clamp.",
+      "chunkid": "chunk_0003",
+      "confidence": 0.95,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00004",
+        "subject": {
+          "id": "cand_s_00008",
+          "label": "OPEN FORCEPS",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00029",
+          "label": "Exit automatic mode and close the clamp"
+        },
+        "object": {
+          "id": "cand_r_00029",
+          "label": "Exit automatic mode and close the clamp",
+          "type": "relation"
+        },
+        "chunk_id": "chunk_0003",
+        "justification": "The alarm OPEN FORCEPS triggers the intervention Exit automatic mode and close the clamp.",
+        "confidence": 0.95,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0003",
+            "chunk_start_char": 4322,
+            "chunk_end_char": 4361,
+            "doc_start_char": 19322,
+            "doc_end_char": 19361,
+            "snippet": "the automatic cycle with the pliers of the\ncause:\nmain pin open.\nintervention: Exit automatic mode and close the clamp.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1041\ntext: CLAMP OPENING FAILURE"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "CHUCK WIRING ERROR",
+      "rel": "REQUIRES",
+      "tail": "Check the wiring",
+      "anchor_id": "1044",
+      "raw": {
+        "#": 144,
+        "Node 1": "CHUCK WIRING ERROR",
+        "RELATION": "REQUIRES",
+        "Node 2": "Check the wiring",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1044",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 10,
+    "gt_idx": 125,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "CHUCK OPENING FAULT",
+      "rel": "REQUIRES",
+      "tail": "Check mechanical resistance",
+      "raw_subject": "clamp",
+      "raw_predicate": "CLAMP OPENING FAILURE",
+      "raw_object": "Check mechanical resistance",
+      "justification": "The alarm \"CLAMP OPENING FAILURE\" indicates that the clamp did not open within the 5‑second limit, and the recommended intervention is to check mechanical resistance.",
+      "chunkid": "chunk_0003",
+      "confidence": 0.88,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00005",
+        "subject": {
+          "id": "cand_e_00004",
+          "label": "clamp",
+          "type": "entity"
+        },
+        "predicate": {
+          "id": "cand_r_00030",
+          "label": "CLAMP OPENING FAILURE"
+        },
+        "object": {
+          "id": "cand_s_00009",
+          "label": "Check mechanical resistance",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0003",
+        "justification": "The alarm \"CLAMP OPENING FAILURE\" indicates that the clamp did not open within the 5‑second limit, and the recommended intervention is to check mechanical resistance.",
+        "confidence": 0.88,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0003",
+            "chunk_start_char": 4420,
+            "chunk_end_char": 4441,
+            "doc_start_char": 19420,
+            "doc_end_char": 19441,
+            "snippet": "e and close the clamp.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1041\ntext: CLAMP OPENING FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "CHUCK OPENING FAULT",
+      "rel": "REQUIRES",
+      "tail": "Check mechanical resistance",
+      "anchor_id": "1041",
+      "raw": {
+        "#": 126,
+        "Node 1": "CHUCK OPENING FAULT",
+        "RELATION": "REQUIRES",
+        "Node 2": "Check mechanical resistance",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1041",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 11,
+    "gt_idx": 126,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "CHUCK OPENING FAULT",
+      "rel": "REQUIRES",
+      "tail": "check microdetector adjustment",
+      "raw_subject": "clamp",
+      "raw_predicate": "CLAMP OPENING FAILURE",
+      "raw_object": "Check mechanical resistance",
+      "justification": "The alarm \"CLAMP OPENING FAILURE\" indicates that the clamp did not open within the 5‑second limit, and the recommended intervention is to check mechanical resistance.",
+      "chunkid": "chunk_0003",
+      "confidence": 0.88,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00005",
+        "subject": {
+          "id": "cand_e_00004",
+          "label": "clamp",
+          "type": "entity"
+        },
+        "predicate": {
+          "id": "cand_r_00030",
+          "label": "CLAMP OPENING FAILURE"
+        },
+        "object": {
+          "id": "cand_s_00009",
+          "label": "Check mechanical resistance",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0003",
+        "justification": "The alarm \"CLAMP OPENING FAILURE\" indicates that the clamp did not open within the 5‑second limit, and the recommended intervention is to check mechanical resistance.",
+        "confidence": 0.88,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0003",
+            "chunk_start_char": 4420,
+            "chunk_end_char": 4441,
+            "doc_start_char": 19420,
+            "doc_end_char": 19441,
+            "snippet": "e and close the clamp.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1041\ntext: CLAMP OPENING FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "CHUCK OPENING FAULT",
+      "rel": "REQUIRES",
+      "tail": "check microdetector adjustment",
+      "anchor_id": "1041",
+      "raw": {
+        "#": 127,
+        "Node 1": "CHUCK OPENING FAULT",
+        "RELATION": "REQUIRES",
+        "Node 2": "check microdetector adjustment",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1041",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 12,
+    "gt_idx": 154,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "AUXILIARY COOLANT ALARM",
+      "rel": "CAUSES",
+      "tail": "Immediate and controlled stop",
+      "raw_subject": "alarm",
+      "raw_predicate": "immediate and controlled shutdown",
+      "raw_object": "Machine",
+      "justification": "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.78,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00006",
+        "subject": {
+          "id": "cand_s_00002",
+          "label": "alarm",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00014",
+          "label": "immediate and controlled shutdown"
+        },
+        "object": {
+          "id": "cand_e_00001",
+          "label": "Machine",
+          "type": "entity"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine.",
+        "confidence": 0.78,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 248,
+            "chunk_end_char": 281,
+            "doc_start_char": 35248,
+            "doc_end_char": 35281,
+            "snippet": "068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, th"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "AUXILIARY COOLANT ALARM",
+      "rel": "CAUSES",
+      "tail": "Immediate and controlled stop",
+      "anchor_id": "1046",
+      "raw": {
+        "#": 155,
+        "Node 1": "AUXILIARY COOLANT ALARM",
+        "RELATION": "CAUSES",
+        "Node 2": "Immediate and controlled stop",
+        "Triplet Type": "Alarm → Effect",
+        "Alarm No.": "1046",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 13,
+    "gt_idx": 246,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "CDS: IMMEDIATE STOP",
+      "rel": "CAUSES",
+      "tail": "Immediate and controlled stop",
+      "raw_subject": "alarm",
+      "raw_predicate": "immediate and controlled shutdown",
+      "raw_object": "Machine",
+      "justification": "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.78,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00006",
+        "subject": {
+          "id": "cand_s_00002",
+          "label": "alarm",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00014",
+          "label": "immediate and controlled shutdown"
+        },
+        "object": {
+          "id": "cand_e_00001",
+          "label": "Machine",
+          "type": "entity"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine.",
+        "confidence": 0.78,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 248,
+            "chunk_end_char": 281,
+            "doc_start_char": 35248,
+            "doc_end_char": 35281,
+            "snippet": "068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, th"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "CDS: IMMEDIATE STOP",
+      "rel": "CAUSES",
+      "tail": "Immediate and controlled stop",
+      "anchor_id": "1070",
+      "raw": {
+        "#": 247,
+        "Node 1": "CDS: IMMEDIATE STOP",
+        "RELATION": "CAUSES",
+        "Node 2": "Immediate and controlled stop",
+        "Triplet Type": "Alarm → Effect",
+        "Alarm No.": "1070",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 14,
+    "gt_idx": 271,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "LOAD MONITOR: IMMEDIATE STOP",
+      "rel": "CAUSES",
+      "tail": "Immediate and controlled stop",
+      "raw_subject": "alarm",
+      "raw_predicate": "immediate and controlled shutdown",
+      "raw_object": "Machine",
+      "justification": "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.78,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00006",
+        "subject": {
+          "id": "cand_s_00002",
+          "label": "alarm",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00014",
+          "label": "immediate and controlled shutdown"
+        },
+        "object": {
+          "id": "cand_e_00001",
+          "label": "Machine",
+          "type": "entity"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine.",
+        "confidence": 0.78,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 248,
+            "chunk_end_char": 281,
+            "doc_start_char": 35248,
+            "doc_end_char": 35281,
+            "snippet": "068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, th"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "LOAD MONITOR: IMMEDIATE STOP",
+      "rel": "CAUSES",
+      "tail": "Immediate and controlled stop",
+      "anchor_id": "1080",
+      "raw": {
+        "#": 272,
+        "Node 1": "LOAD MONITOR: IMMEDIATE STOP",
+        "RELATION": "CAUSES",
+        "Node 2": "Immediate and controlled stop",
+        "Triplet Type": "Alarm → Effect",
+        "Alarm No.": "1080",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 15,
+    "gt_idx": 10,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "MACHINE OFFLINE",
+      "rel": "CAUSES",
+      "tail": "Immediate and controlled stop",
+      "raw_subject": "alarm",
+      "raw_predicate": "immediate and controlled shutdown",
+      "raw_object": "Machine",
+      "justification": "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.78,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00006",
+        "subject": {
+          "id": "cand_s_00002",
+          "label": "alarm",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00014",
+          "label": "immediate and controlled shutdown"
+        },
+        "object": {
+          "id": "cand_e_00001",
+          "label": "Machine",
+          "type": "entity"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine.",
+        "confidence": 0.78,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 248,
+            "chunk_end_char": 281,
+            "doc_start_char": 35248,
+            "doc_end_char": 35281,
+            "snippet": "068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, th"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "MACHINE OFFLINE",
+      "rel": "CAUSES",
+      "tail": "Immediate and controlled stop",
+      "anchor_id": "1002",
+      "raw": {
+        "#": 11,
+        "Node 1": "MACHINE OFFLINE",
+        "RELATION": "CAUSES",
+        "Node 2": "Immediate and controlled stop",
+        "Triplet Type": "Alarm → Effect",
+        "Alarm No.": "1002",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 16,
+    "gt_idx": 147,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "MAIN COOLANT ALARM",
+      "rel": "CAUSES",
+      "tail": "Immediate and controlled stop",
+      "raw_subject": "alarm",
+      "raw_predicate": "immediate and controlled shutdown",
+      "raw_object": "Machine",
+      "justification": "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.78,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00006",
+        "subject": {
+          "id": "cand_s_00002",
+          "label": "alarm",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00014",
+          "label": "immediate and controlled shutdown"
+        },
+        "object": {
+          "id": "cand_e_00001",
+          "label": "Machine",
+          "type": "entity"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine.",
+        "confidence": 0.78,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 248,
+            "chunk_end_char": 281,
+            "doc_start_char": 35248,
+            "doc_end_char": 35281,
+            "snippet": "068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, th"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "MAIN COOLANT ALARM",
+      "rel": "CAUSES",
+      "tail": "Immediate and controlled stop",
+      "anchor_id": "1045",
+      "raw": {
+        "#": 148,
+        "Node 1": "MAIN COOLANT ALARM",
+        "RELATION": "CAUSES",
+        "Node 2": "Immediate and controlled stop",
+        "Triplet Type": "Alarm → Effect",
+        "Alarm No.": "1045",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 17,
+    "gt_idx": 350,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "AUTOMATIC STOP function enabled and time reached or alarm occurred",
+      "rel": "TRIGGERS",
+      "tail": "AUTOMATIC STOP: MACHINE IN ALARM",
+      "raw_subject": "device",
+      "raw_predicate": "waiting for excessive feed",
+      "raw_object": "alarm",
+      "justification": "The text states that the alarm \"waiting for excessive feed\" is triggered by the device \"CDS\".",
+      "chunkid": "chunk_0007",
+      "confidence": 0.9,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00007",
+        "subject": {
+          "id": "cand_e_00000",
+          "label": "device",
+          "type": "entity"
+        },
+        "predicate": {
+          "id": "cand_r_00017",
+          "label": "waiting for excessive feed"
+        },
+        "object": {
+          "id": "cand_s_00002",
+          "label": "alarm",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The text states that the alarm \"waiting for excessive feed\" is triggered by the device \"CDS\".",
+        "confidence": 0.9,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 2457,
+            "chunk_end_char": 2483,
+            "doc_start_char": 37457,
+            "doc_end_char": 37483,
+            "snippet": "k the connections with the tower.\nresponsible for\nAlarm number: 1072\ntext: CDS: WAITING FOR EXCESSIVE FEED\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "AUTOMATIC STOP function enabled and time reached or alarm occurred",
+      "rel": "TRIGGERS",
+      "tail": "AUTOMATIC STOP: MACHINE IN ALARM",
+      "anchor_id": "2062",
+      "raw": {
+        "#": 351,
+        "Node 1": "AUTOMATIC STOP function enabled and time reached or alarm occurred",
+        "RELATION": "TRIGGERS",
+        "Node 2": "AUTOMATIC STOP: MACHINE IN ALARM",
+        "Triplet Type": "Cause → Alarm",
+        "Alarm No.": "2062",
+        "Category": "Info Message"
+      }
+    }
+  },
+  {
+    "pred_idx": 18,
+    "gt_idx": 324,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "Abnormal behavior of the conveyor overload control device",
+      "rel": "TRIGGERS",
+      "tail": "OVERLOAD CONTROL DEVICE FAILURE",
+      "raw_subject": "device",
+      "raw_predicate": "waiting for excessive feed",
+      "raw_object": "alarm",
+      "justification": "The text states that the alarm \"waiting for excessive feed\" is triggered by the device \"CDS\".",
+      "chunkid": "chunk_0007",
+      "confidence": 0.9,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00007",
+        "subject": {
+          "id": "cand_e_00000",
+          "label": "device",
+          "type": "entity"
+        },
+        "predicate": {
+          "id": "cand_r_00017",
+          "label": "waiting for excessive feed"
+        },
+        "object": {
+          "id": "cand_s_00002",
+          "label": "alarm",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The text states that the alarm \"waiting for excessive feed\" is triggered by the device \"CDS\".",
+        "confidence": 0.9,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 2457,
+            "chunk_end_char": 2483,
+            "doc_start_char": 37457,
+            "doc_end_char": 37483,
+            "snippet": "k the connections with the tower.\nresponsible for\nAlarm number: 1072\ntext: CDS: WAITING FOR EXCESSIVE FEED\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "Abnormal behavior of the conveyor overload control device",
+      "rel": "TRIGGERS",
+      "tail": "OVERLOAD CONTROL DEVICE FAILURE",
+      "anchor_id": "2024",
+      "raw": {
+        "#": 325,
+        "Node 1": "Abnormal behavior of the conveyor overload control device",
+        "RELATION": "TRIGGERS",
+        "Node 2": "OVERLOAD CONTROL DEVICE FAILURE",
+        "Triplet Type": "Cause → Alarm",
+        "Alarm No.": "2024",
+        "Category": "Info Message"
+      }
+    }
+  },
+  {
+    "pred_idx": 19,
+    "gt_idx": 159,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "AUXILIARY COOLANT ALARM",
+      "rel": "HANDLED_BY",
+      "tail": "Maintenance Technician",
+      "raw_subject": "alarm",
+      "raw_predicate": "operator/maintenance officer",
+      "raw_object": "operator/maintenance officer",
+      "justification": "The chunk contains the phrase \"responsible for operator/maintenance officer\" immediately following an alarm description, indicating that the alarm event is responsible for the operator/maintenance officer.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.88,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00008",
+        "subject": {
+          "id": "cand_s_00002",
+          "label": "alarm",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00020",
+          "label": "operator/maintenance officer"
+        },
+        "object": {
+          "id": "cand_r_00020",
+          "label": "operator/maintenance officer",
+          "type": "relation"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk contains the phrase \"responsible for operator/maintenance officer\" immediately following an alarm description, indicating that the alarm event is responsible for the operator/maintenance officer.",
+        "confidence": 0.88,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 476,
+            "chunk_end_char": 504,
+            "doc_start_char": 35476,
+            "doc_end_char": 35504,
+            "snippet": "tion document:\ntation of the device for details of the anomaly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1070\ntext: CDS: IMMEDIATE STOP\ntype: Standard: Optional:\neffect:"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "AUXILIARY COOLANT ALARM",
+      "rel": "HANDLED_BY",
+      "tail": "Maintenance Technician",
+      "anchor_id": "1046",
+      "raw": {
+        "#": 160,
+        "Node 1": "AUXILIARY COOLANT ALARM",
+        "RELATION": "HANDLED_BY",
+        "Node 2": "Maintenance Technician",
+        "Triplet Type": "Alarm → Responsible",
+        "Alarm No.": "1046",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 20,
+    "gt_idx": 151,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "MAIN COOLANT ALARM",
+      "rel": "HANDLED_BY",
+      "tail": "Maintenance Technician",
+      "raw_subject": "alarm",
+      "raw_predicate": "operator/maintenance officer",
+      "raw_object": "operator/maintenance officer",
+      "justification": "The chunk contains the phrase \"responsible for operator/maintenance officer\" immediately following an alarm description, indicating that the alarm event is responsible for the operator/maintenance officer.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.88,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00008",
+        "subject": {
+          "id": "cand_s_00002",
+          "label": "alarm",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00020",
+          "label": "operator/maintenance officer"
+        },
+        "object": {
+          "id": "cand_r_00020",
+          "label": "operator/maintenance officer",
+          "type": "relation"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk contains the phrase \"responsible for operator/maintenance officer\" immediately following an alarm description, indicating that the alarm event is responsible for the operator/maintenance officer.",
+        "confidence": 0.88,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 476,
+            "chunk_end_char": 504,
+            "doc_start_char": 35476,
+            "doc_end_char": 35504,
+            "snippet": "tion document:\ntation of the device for details of the anomaly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1070\ntext: CDS: IMMEDIATE STOP\ntype: Standard: Optional:\neffect:"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "MAIN COOLANT ALARM",
+      "rel": "HANDLED_BY",
+      "tail": "Maintenance Technician",
+      "anchor_id": "1045",
+      "raw": {
+        "#": 152,
+        "Node 1": "MAIN COOLANT ALARM",
+        "RELATION": "HANDLED_BY",
+        "Node 2": "Maintenance Technician",
+        "Triplet Type": "Alarm → Responsible",
+        "Alarm No.": "1045",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 21,
+    "gt_idx": 356,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "MAINTENANCE PREWARNING",
+      "rel": "HANDLED_BY",
+      "tail": "Maintenance Technician",
+      "raw_subject": "alarm",
+      "raw_predicate": "operator/maintenance officer",
+      "raw_object": "operator/maintenance officer",
+      "justification": "The chunk contains the phrase \"responsible for operator/maintenance officer\" immediately following an alarm description, indicating that the alarm event is responsible for the operator/maintenance officer.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.88,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00008",
+        "subject": {
+          "id": "cand_s_00002",
+          "label": "alarm",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00020",
+          "label": "operator/maintenance officer"
+        },
+        "object": {
+          "id": "cand_r_00020",
+          "label": "operator/maintenance officer",
+          "type": "relation"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk contains the phrase \"responsible for operator/maintenance officer\" immediately following an alarm description, indicating that the alarm event is responsible for the operator/maintenance officer.",
+        "confidence": 0.88,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 476,
+            "chunk_end_char": 504,
+            "doc_start_char": 35476,
+            "doc_end_char": 35504,
+            "snippet": "tion document:\ntation of the device for details of the anomaly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1070\ntext: CDS: IMMEDIATE STOP\ntype: Standard: Optional:\neffect:"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "MAINTENANCE PREWARNING",
+      "rel": "HANDLED_BY",
+      "tail": "Maintenance Technician",
+      "anchor_id": "2065",
+      "raw": {
+        "#": 357,
+        "Node 1": "MAINTENANCE PREWARNING",
+        "RELATION": "HANDLED_BY",
+        "Node 2": "Maintenance Technician",
+        "Triplet Type": "Alarm → Responsible",
+        "Alarm No.": "2065",
+        "Category": "Info Message"
+      }
+    }
+  },
+  {
+    "pred_idx": 22,
+    "gt_idx": 294,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "MANDATORY MAINTENANCE",
+      "rel": "HANDLED_BY",
+      "tail": "Maintenance Technician",
+      "raw_subject": "alarm",
+      "raw_predicate": "operator/maintenance officer",
+      "raw_object": "operator/maintenance officer",
+      "justification": "The chunk contains the phrase \"responsible for operator/maintenance officer\" immediately following an alarm description, indicating that the alarm event is responsible for the operator/maintenance officer.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.88,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00008",
+        "subject": {
+          "id": "cand_s_00002",
+          "label": "alarm",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00020",
+          "label": "operator/maintenance officer"
+        },
+        "object": {
+          "id": "cand_r_00020",
+          "label": "operator/maintenance officer",
+          "type": "relation"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk contains the phrase \"responsible for operator/maintenance officer\" immediately following an alarm description, indicating that the alarm event is responsible for the operator/maintenance officer.",
+        "confidence": 0.88,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 476,
+            "chunk_end_char": 504,
+            "doc_start_char": 35476,
+            "doc_end_char": 35504,
+            "snippet": "tion document:\ntation of the device for details of the anomaly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1070\ntext: CDS: IMMEDIATE STOP\ntype: Standard: Optional:\neffect:"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "MANDATORY MAINTENANCE",
+      "rel": "HANDLED_BY",
+      "tail": "Maintenance Technician",
+      "anchor_id": "1084",
+      "raw": {
+        "#": 295,
+        "Node 1": "MANDATORY MAINTENANCE",
+        "RELATION": "HANDLED_BY",
+        "Node 2": "Maintenance Technician",
+        "Triplet Type": "Alarm → Responsible",
+        "Alarm No.": "1084",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 23,
+    "gt_idx": 197,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "Tool monitoring device no. 1 detects tip breakage",
+      "rel": "TRIGGERS",
+      "tail": "TIP 1: BREAKAGE",
+      "raw_subject": "device",
+      "raw_predicate": "has detected",
+      "raw_object": "failure",
+      "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.95,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00009",
+        "subject": {
+          "id": "cand_e_00000",
+          "label": "device",
+          "type": "entity"
+        },
+        "predicate": {
+          "id": "cand_r_00026",
+          "label": "has detected"
+        },
+        "object": {
+          "id": "cand_s_00003",
+          "label": "failure",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+        "confidence": 0.95,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 1050,
+            "chunk_end_char": 1062,
+            "doc_start_char": 36050,
+            "doc_end_char": 36062,
+            "snippet": ": Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "Tool monitoring device no. 1 detects tip breakage",
+      "rel": "TRIGGERS",
+      "tail": "TIP 1: BREAKAGE",
+      "anchor_id": "1061",
+      "raw": {
+        "#": 198,
+        "Node 1": "Tool monitoring device no. 1 detects tip breakage",
+        "RELATION": "TRIGGERS",
+        "Node 2": "TIP 1: BREAKAGE",
+        "Triplet Type": "Cause → Alarm",
+        "Alarm No.": "1061",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 24,
+    "gt_idx": 203,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "Tool monitoring device no. 1 is not working",
+      "rel": "TRIGGERS",
+      "tail": "TIP 2: BREAKAGE",
+      "raw_subject": "device",
+      "raw_predicate": "has detected",
+      "raw_object": "failure",
+      "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.95,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00009",
+        "subject": {
+          "id": "cand_e_00000",
+          "label": "device",
+          "type": "entity"
+        },
+        "predicate": {
+          "id": "cand_r_00026",
+          "label": "has detected"
+        },
+        "object": {
+          "id": "cand_s_00003",
+          "label": "failure",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+        "confidence": 0.95,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 1050,
+            "chunk_end_char": 1062,
+            "doc_start_char": 36050,
+            "doc_end_char": 36062,
+            "snippet": ": Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "Tool monitoring device no. 1 is not working",
+      "rel": "TRIGGERS",
+      "tail": "TIP 2: BREAKAGE",
+      "anchor_id": "1062",
+      "raw": {
+        "#": 204,
+        "Node 1": "Tool monitoring device no. 1 is not working",
+        "RELATION": "TRIGGERS",
+        "Node 2": "TIP 2: BREAKAGE",
+        "Triplet Type": "Cause → Alarm",
+        "Alarm No.": "1062",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 25,
+    "gt_idx": 209,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "Tool monitoring device no. 2 detects tip breakage",
+      "rel": "TRIGGERS",
+      "tail": "TIP 2: BREAKAGE",
+      "raw_subject": "device",
+      "raw_predicate": "has detected",
+      "raw_object": "failure",
+      "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.95,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00009",
+        "subject": {
+          "id": "cand_e_00000",
+          "label": "device",
+          "type": "entity"
+        },
+        "predicate": {
+          "id": "cand_r_00026",
+          "label": "has detected"
+        },
+        "object": {
+          "id": "cand_s_00003",
+          "label": "failure",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+        "confidence": 0.95,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 1050,
+            "chunk_end_char": 1062,
+            "doc_start_char": 36050,
+            "doc_end_char": 36062,
+            "snippet": ": Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "Tool monitoring device no. 2 detects tip breakage",
+      "rel": "TRIGGERS",
+      "tail": "TIP 2: BREAKAGE",
+      "anchor_id": "1063",
+      "raw": {
+        "#": 210,
+        "Node 1": "Tool monitoring device no. 2 detects tip breakage",
+        "RELATION": "TRIGGERS",
+        "Node 2": "TIP 2: BREAKAGE",
+        "Triplet Type": "Cause → Alarm",
+        "Alarm No.": "1063",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 26,
+    "gt_idx": 215,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "Tool monitoring device no. 2 is not working",
+      "rel": "TRIGGERS",
+      "tail": "TIP 2: CONTROL ANOMALY",
+      "raw_subject": "device",
+      "raw_predicate": "has detected",
+      "raw_object": "failure",
+      "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.95,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00009",
+        "subject": {
+          "id": "cand_e_00000",
+          "label": "device",
+          "type": "entity"
+        },
+        "predicate": {
+          "id": "cand_r_00026",
+          "label": "has detected"
+        },
+        "object": {
+          "id": "cand_s_00003",
+          "label": "failure",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+        "confidence": 0.95,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 1050,
+            "chunk_end_char": 1062,
+            "doc_start_char": 36050,
+            "doc_end_char": 36062,
+            "snippet": ": Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "Tool monitoring device no. 2 is not working",
+      "rel": "TRIGGERS",
+      "tail": "TIP 2: CONTROL ANOMALY",
+      "anchor_id": "1064",
+      "raw": {
+        "#": 216,
+        "Node 1": "Tool monitoring device no. 2 is not working",
+        "RELATION": "TRIGGERS",
+        "Node 2": "TIP 2: CONTROL ANOMALY",
+        "Triplet Type": "Cause → Alarm",
+        "Alarm No.": "1064",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 27,
+    "gt_idx": 221,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "Tool monitoring device no. 3 detects tip breakage",
+      "rel": "TRIGGERS",
+      "tail": "TIP 3: BREAKAGE",
+      "raw_subject": "device",
+      "raw_predicate": "has detected",
+      "raw_object": "failure",
+      "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.95,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00009",
+        "subject": {
+          "id": "cand_e_00000",
+          "label": "device",
+          "type": "entity"
+        },
+        "predicate": {
+          "id": "cand_r_00026",
+          "label": "has detected"
+        },
+        "object": {
+          "id": "cand_s_00003",
+          "label": "failure",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+        "confidence": 0.95,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 1050,
+            "chunk_end_char": 1062,
+            "doc_start_char": 36050,
+            "doc_end_char": 36062,
+            "snippet": ": Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "Tool monitoring device no. 3 detects tip breakage",
+      "rel": "TRIGGERS",
+      "tail": "TIP 3: BREAKAGE",
+      "anchor_id": "1065",
+      "raw": {
+        "#": 222,
+        "Node 1": "Tool monitoring device no. 3 detects tip breakage",
+        "RELATION": "TRIGGERS",
+        "Node 2": "TIP 3: BREAKAGE",
+        "Triplet Type": "Cause → Alarm",
+        "Alarm No.": "1065",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 28,
+    "gt_idx": 227,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "Tool monitoring device no. 3 is not working",
+      "rel": "TRIGGERS",
+      "tail": "TIP 3: CONTROL ANOMALY",
+      "raw_subject": "device",
+      "raw_predicate": "has detected",
+      "raw_object": "failure",
+      "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.95,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00009",
+        "subject": {
+          "id": "cand_e_00000",
+          "label": "device",
+          "type": "entity"
+        },
+        "predicate": {
+          "id": "cand_r_00026",
+          "label": "has detected"
+        },
+        "object": {
+          "id": "cand_s_00003",
+          "label": "failure",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+        "confidence": 0.95,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 1050,
+            "chunk_end_char": 1062,
+            "doc_start_char": 36050,
+            "doc_end_char": 36062,
+            "snippet": ": Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "Tool monitoring device no. 3 is not working",
+      "rel": "TRIGGERS",
+      "tail": "TIP 3: CONTROL ANOMALY",
+      "anchor_id": "1066",
+      "raw": {
+        "#": 228,
+        "Node 1": "Tool monitoring device no. 3 is not working",
+        "RELATION": "TRIGGERS",
+        "Node 2": "TIP 3: CONTROL ANOMALY",
+        "Triplet Type": "Cause → Alarm",
+        "Alarm No.": "1066",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 29,
+    "gt_idx": 233,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "Tool monitoring device no. 4 detects tip breakage",
+      "rel": "TRIGGERS",
+      "tail": "TIP 4: BREAKAGE",
+      "raw_subject": "device",
+      "raw_predicate": "has detected",
+      "raw_object": "failure",
+      "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.95,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00009",
+        "subject": {
+          "id": "cand_e_00000",
+          "label": "device",
+          "type": "entity"
+        },
+        "predicate": {
+          "id": "cand_r_00026",
+          "label": "has detected"
+        },
+        "object": {
+          "id": "cand_s_00003",
+          "label": "failure",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+        "confidence": 0.95,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 1050,
+            "chunk_end_char": 1062,
+            "doc_start_char": 36050,
+            "doc_end_char": 36062,
+            "snippet": ": Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "Tool monitoring device no. 4 detects tip breakage",
+      "rel": "TRIGGERS",
+      "tail": "TIP 4: BREAKAGE",
+      "anchor_id": "1067",
+      "raw": {
+        "#": 234,
+        "Node 1": "Tool monitoring device no. 4 detects tip breakage",
+        "RELATION": "TRIGGERS",
+        "Node 2": "TIP 4: BREAKAGE",
+        "Triplet Type": "Cause → Alarm",
+        "Alarm No.": "1067",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 30,
+    "gt_idx": 239,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "Tool monitoring device no. 4 is not working",
+      "rel": "TRIGGERS",
+      "tail": "TIP 4: CONTROL ANOMALY",
+      "raw_subject": "device",
+      "raw_predicate": "has detected",
+      "raw_object": "failure",
+      "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.95,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00009",
+        "subject": {
+          "id": "cand_e_00000",
+          "label": "device",
+          "type": "entity"
+        },
+        "predicate": {
+          "id": "cand_r_00026",
+          "label": "has detected"
+        },
+        "object": {
+          "id": "cand_s_00003",
+          "label": "failure",
+          "type": "event"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+        "confidence": 0.95,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 1050,
+            "chunk_end_char": 1062,
+            "doc_start_char": 36050,
+            "doc_end_char": 36062,
+            "snippet": ": Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "Tool monitoring device no. 4 is not working",
+      "rel": "TRIGGERS",
+      "tail": "TIP 4: CONTROL ANOMALY",
+      "anchor_id": "1068",
+      "raw": {
+        "#": 240,
+        "Node 1": "Tool monitoring device no. 4 is not working",
+        "RELATION": "TRIGGERS",
+        "Node 2": "TIP 4: CONTROL ANOMALY",
+        "Triplet Type": "Cause → Alarm",
+        "Alarm No.": "1068",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 31,
+    "gt_idx": 176,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "FAULT IN PART UNLOADING",
+      "rel": "REQUIRES",
+      "tail": "Check that the unloader is not mechanically blocked",
+      "raw_subject": "check",
+      "raw_predicate": "check the core of the probe",
+      "raw_object": "Part",
+      "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.85,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00012",
+        "subject": {
+          "id": "cand_s_00004",
+          "label": "check",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00031",
+          "label": "check the core of the probe"
+        },
+        "object": {
+          "id": "cand_e_00002",
+          "label": "Part",
+          "type": "entity"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+        "confidence": 0.85,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 330,
+            "chunk_end_char": 357,
+            "doc_start_char": 35330,
+            "doc_end_char": 35357,
+            "snippet": "mediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention document:\ntation of the device for d"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "FAULT IN PART UNLOADING",
+      "rel": "REQUIRES",
+      "tail": "Check that the unloader is not mechanically blocked",
+      "anchor_id": "1051",
+      "raw": {
+        "#": 177,
+        "Node 1": "FAULT IN PART UNLOADING",
+        "RELATION": "REQUIRES",
+        "Node 2": "Check that the unloader is not mechanically blocked",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1051",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 32,
+    "gt_idx": 177,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "FAULT IN PART UNLOADING",
+      "rel": "REQUIRES",
+      "tail": "check the microdetector signals",
+      "raw_subject": "check",
+      "raw_predicate": "check the core of the probe",
+      "raw_object": "Part",
+      "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.85,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00012",
+        "subject": {
+          "id": "cand_s_00004",
+          "label": "check",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00031",
+          "label": "check the core of the probe"
+        },
+        "object": {
+          "id": "cand_e_00002",
+          "label": "Part",
+          "type": "entity"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+        "confidence": 0.85,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 330,
+            "chunk_end_char": 357,
+            "doc_start_char": 35330,
+            "doc_end_char": 35357,
+            "snippet": "mediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention document:\ntation of the device for d"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "FAULT IN PART UNLOADING",
+      "rel": "REQUIRES",
+      "tail": "check the microdetector signals",
+      "anchor_id": "1051",
+      "raw": {
+        "#": 178,
+        "Node 1": "FAULT IN PART UNLOADING",
+        "RELATION": "REQUIRES",
+        "Node 2": "check the microdetector signals",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1051",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 33,
+    "gt_idx": 170,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "PART ABSENT",
+      "rel": "REQUIRES",
+      "tail": "Check the clamping elements",
+      "raw_subject": "check",
+      "raw_predicate": "check the core of the probe",
+      "raw_object": "Part",
+      "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.85,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00012",
+        "subject": {
+          "id": "cand_s_00004",
+          "label": "check",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00031",
+          "label": "check the core of the probe"
+        },
+        "object": {
+          "id": "cand_e_00002",
+          "label": "Part",
+          "type": "entity"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+        "confidence": 0.85,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 330,
+            "chunk_end_char": 357,
+            "doc_start_char": 35330,
+            "doc_end_char": 35357,
+            "snippet": "mediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention document:\ntation of the device for d"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "PART ABSENT",
+      "rel": "REQUIRES",
+      "tail": "Check the clamping elements",
+      "anchor_id": "1049",
+      "raw": {
+        "#": 171,
+        "Node 1": "PART ABSENT",
+        "RELATION": "REQUIRES",
+        "Node 2": "Check the clamping elements",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1049",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 34,
+    "gt_idx": 171,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "PART ABSENT",
+      "rel": "REQUIRES",
+      "tail": "check input X5.0",
+      "raw_subject": "check",
+      "raw_predicate": "check the core of the probe",
+      "raw_object": "Part",
+      "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.85,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00012",
+        "subject": {
+          "id": "cand_s_00004",
+          "label": "check",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00031",
+          "label": "check the core of the probe"
+        },
+        "object": {
+          "id": "cand_e_00002",
+          "label": "Part",
+          "type": "entity"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+        "confidence": 0.85,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 330,
+            "chunk_end_char": 357,
+            "doc_start_char": 35330,
+            "doc_end_char": 35357,
+            "snippet": "mediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention document:\ntation of the device for d"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "PART ABSENT",
+      "rel": "REQUIRES",
+      "tail": "check input X5.0",
+      "anchor_id": "1049",
+      "raw": {
+        "#": 172,
+        "Node 1": "PART ABSENT",
+        "RELATION": "REQUIRES",
+        "Node 2": "check input X5.0",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1049",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 35,
+    "gt_idx": 163,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "PART NOT EJECTED",
+      "rel": "REQUIRES",
+      "tail": "Extract the part manually from the counterspindle",
+      "raw_subject": "check",
+      "raw_predicate": "check the core of the probe",
+      "raw_object": "Part",
+      "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.85,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00012",
+        "subject": {
+          "id": "cand_s_00004",
+          "label": "check",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00031",
+          "label": "check the core of the probe"
+        },
+        "object": {
+          "id": "cand_e_00002",
+          "label": "Part",
+          "type": "entity"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+        "confidence": 0.85,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 330,
+            "chunk_end_char": 357,
+            "doc_start_char": 35330,
+            "doc_end_char": 35357,
+            "snippet": "mediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention document:\ntation of the device for d"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "PART NOT EJECTED",
+      "rel": "REQUIRES",
+      "tail": "Extract the part manually from the counterspindle",
+      "anchor_id": "1048",
+      "raw": {
+        "#": 164,
+        "Node 1": "PART NOT EJECTED",
+        "RELATION": "REQUIRES",
+        "Node 2": "Extract the part manually from the counterspindle",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1048",
+        "Category": "PLC Alarm"
+      }
+    }
+  },
+  {
+    "pred_idx": 36,
+    "gt_idx": 164,
+    "score": 100.0,
+    "head_score": 100.0,
+    "tail_score": 100.0,
+    "pred": {
+      "head": "PART NOT EJECTED",
+      "rel": "REQUIRES",
+      "tail": "check input X5.0",
+      "raw_subject": "check",
+      "raw_predicate": "check the core of the probe",
+      "raw_object": "Part",
+      "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+      "chunkid": "chunk_0007",
+      "confidence": 0.85,
+      "provenance_present": true,
+      "raw": {
+        "triple_id": "triple_00012",
+        "subject": {
+          "id": "cand_s_00004",
+          "label": "check",
+          "type": "event"
+        },
+        "predicate": {
+          "id": "cand_r_00031",
+          "label": "check the core of the probe"
+        },
+        "object": {
+          "id": "cand_e_00002",
+          "label": "Part",
+          "type": "entity"
+        },
+        "chunk_id": "chunk_0007",
+        "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+        "confidence": 0.85,
+        "provenance": [
+          {
+            "chunk_id": "chunk_0007",
+            "chunk_start_char": 330,
+            "chunk_end_char": 357,
+            "doc_start_char": 35330,
+            "doc_end_char": 35357,
+            "snippet": "mediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention document:\ntation of the device for d"
+          }
+        ]
+      }
+    },
+    "gt": {
+      "head": "PART NOT EJECTED",
+      "rel": "REQUIRES",
+      "tail": "check input X5.0",
+      "anchor_id": "1048",
+      "raw": {
+        "#": 165,
+        "Node 1": "PART NOT EJECTED",
+        "RELATION": "REQUIRES",
+        "Node 2": "check input X5.0",
+        "Triplet Type": "Alarm → Intervention",
+        "Alarm No.": "1048",
+        "Category": "PLC Alarm"
+      }
+    }
+  }
+]
