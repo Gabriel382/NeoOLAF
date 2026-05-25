@@ -1,0 +1,590 @@
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/concept/concept_00000> rdfs:comment "Signals or indicators that notify operators of potential issues or events requiring attention within an industrial setting." .
+
+<http://neoolaf.org/resource/relation/ont_rel_00000> rdfs:comment "Relates an event or signal to the system or device that emits it." ;
+    rdfs:domain "Event" ;
+    rdfs:range "SystemComponent" .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4> a owl:Ontology ;
+    rdfs:label "COInd Context Ontology for Industrial Situations" ;
+    rdfs:comment "Ontology describing contextual situations in industrial environments, integrating sensor observations (SOSA/SSN), spatial context (GeoSPARQL), and temporal relations (OWL-Time)." .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cell> a owl:Class ;
+    rdfs:label "Manufacturing Cell" ;
+    rdfs:comment "A manufacturing cell is a group of workstations organized to perform a particular manufacturing task." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#HumanProcess> a owl:Class ;
+    rdfs:label "Human Process" ;
+    rdfs:comment "A human process is a process primarily performed by human operators within the manufacturing environment." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Line> a owl:Class ;
+    rdfs:label "Production Line" ;
+    rdfs:comment "A production line is a group of manufacturing cells arranged to carry out a sequence of production tasks." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#LogisticProcess> a owl:Class ;
+    rdfs:label "Logistic Process" ;
+    rdfs:comment "A logistic process is a process related to the movement, storage, or management of materials or products." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Machine> a owl:Class ;
+    rdfs:label "Machine" ;
+    rdfs:comment "A machine is a device used to perform a manufacturing task, either autonomously or with human intervention." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Manager> a owl:Class ;
+    rdfs:label "Manager" ;
+    rdfs:comment "A manager is a person responsible for supervising manufacturing operations and responding to detected situations." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Staff> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingProcess> a owl:Class ;
+    rdfs:label "Manufacturing Process" ;
+    rdfs:comment "A manufacturing process is an industrial process carried out within a manufacturing facility to produce or transform products." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Operator> a owl:Class ;
+    rdfs:label "Operator" ;
+    rdfs:comment "An operator is a worker responsible for operating machines or performing production tasks." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Staff> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Part> a owl:Class ;
+    rdfs:label "Part" ;
+    rdfs:comment "A part is a component or piece used in the assembly or production of a product." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Product> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S1> a owl:Class ;
+    rdfs:label "Situation S1" ;
+    rdfs:comment "Situation S1 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S10> a owl:Class ;
+    rdfs:label "Situation S10" ;
+    rdfs:comment "Situation S10 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S11> a owl:Class ;
+    rdfs:label "Situation S11" ;
+    rdfs:comment "Situation S11 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S12> a owl:Class ;
+    rdfs:label "Situation S12" ;
+    rdfs:comment "Situation S12 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S13> a owl:Class ;
+    rdfs:label "Situation S13" ;
+    rdfs:comment "Situation S13 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S14> a owl:Class ;
+    rdfs:label "Situation S14" ;
+    rdfs:comment "Situation S14 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S2> a owl:Class ;
+    rdfs:label "Situation S2" ;
+    rdfs:comment "Situation S2 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S3> a owl:Class ;
+    rdfs:label "Situation S3" ;
+    rdfs:comment "Situation S3 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S4> a owl:Class ;
+    rdfs:label "Situation S4" ;
+    rdfs:comment "Situation S4 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S5> a owl:Class ;
+    rdfs:label "Situation S5" ;
+    rdfs:comment "Situation S5 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S6> a owl:Class ;
+    rdfs:label "Situation S6" ;
+    rdfs:comment "Situation S6 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S7> a owl:Class ;
+    rdfs:label "Situation S7" ;
+    rdfs:comment "Situation S7 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S8> a owl:Class ;
+    rdfs:label "Situation S8" ;
+    rdfs:comment "Situation S8 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S9> a owl:Class ;
+    rdfs:label "Situation S9" ;
+    rdfs:comment "Situation S9 is a specialized situation class representing a specific contextual state in the manufacturing system." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Technician> a owl:Class ;
+    rdfs:label "Technician" ;
+    rdfs:comment "A technician is a technical specialist responsible for maintaining or repairing equipment." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Staff> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#WorkStation> a owl:Class ;
+    rdfs:label "Workstation" ;
+    rdfs:comment "A workstation is a physical area in the manufacturing environment where one or more machines or resources are organized to perform a specific task." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#associatedConstraint> a owl:ObjectProperty ;
+    rdfs:label "associated constraint" ;
+    rdfs:comment "Relates a process, resource, or situation to a constraint that defines acceptable operational conditions." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Constraint> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#concernBy> a owl:ObjectProperty ;
+    rdfs:label "concerned by" ;
+    rdfs:comment "Relates a situation or event to an entity, such as a machine, process, or product, that it concerns." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#definedOn> a owl:ObjectProperty ;
+    rdfs:label "defined on" ;
+    rdfs:comment "Relates a situation or property to the entity or context element on which it is defined." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Constraint> ;
+    rdfs:range sosa:ObservableProperty .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#definedOn_1> a owl:ObjectProperty ;
+    rdfs:label "is defined for" ;
+    rdfs:comment "Relates an entity or context element to the situation or property for which it is defined." .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasCause> a owl:ObjectProperty ;
+    rdfs:label "has cause" ;
+    rdfs:comment "Relates a situation to the cause responsible for triggering or explaining it." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasDescription> a owl:DatatypeProperty ;
+    rdfs:label "hasDescription" ;
+    rdfs:comment "Links a constraint to its description." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Constraint> ;
+    rdfs:range xsd:string .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasDuration> a owl:ObjectProperty ;
+    rdfs:label "has duration" ;
+    rdfs:comment "Relates an event, process, or situation to the temporal interval during which it occurs." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process> ;
+    rdfs:range time:TemporalEntity .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasObservableProperty> a owl:ObjectProperty ;
+    rdfs:label "has observable property" ;
+    rdfs:comment "Relates an entity in the manufacturing system to a property that can be observed by sensors." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource> ;
+    rdfs:range sosa:ObservableProperty .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasObservation> a owl:ObjectProperty ;
+    rdfs:label "has observation" ;
+    rdfs:comment "Relates a situation to an observation associated with it." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> ;
+    rdfs:range sosa:Observation .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasTime> a owl:ObjectProperty ;
+    rdfs:label "has time" ;
+    rdfs:comment "Relates an observation to the temporal entity that represents when it occurred." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range time:TemporalEntity .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#isInSituation> a owl:ObjectProperty ;
+    rdfs:label "is in situation" ;
+    rdfs:comment "Relates an observation to the situation with which it is associated." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#isInlocation> a owl:ObjectProperty ;
+    rdfs:label "is in location" ;
+    rdfs:comment "Relates a resource to the spatial object in which it is located." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource> ;
+    rdfs:range geo:SpatialObject .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#isPartOf> a owl:ObjectProperty ;
+    rdfs:label "is part of" ;
+    rdfs:comment "Relates an entity to a larger entity of which it is a component." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#locatedIn> a owl:ObjectProperty ;
+    rdfs:label "located in" ;
+    rdfs:comment "Relates a sensor to the spatial object in which it is located." ;
+    rdfs:domain sosa:Sensor ;
+    rdfs:range geo:SpatialObject .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#operates> a owl:ObjectProperty ;
+    rdfs:label "operates" ;
+    rdfs:comment "Relates a staff member or operator to the machine or workstation that they operate." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Staff> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#performsPorcess> a owl:ObjectProperty ;
+    rdfs:label "performs process" ;
+    rdfs:comment "Relates a resource to a process that it performs or supports." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#requiresAction> a owl:ObjectProperty ;
+    rdfs:label "requires action" ;
+    rdfs:comment "Relates a situation to an action that should be performed in response to it." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> ;
+    rdfs:range <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Action> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#situationTime> a owl:ObjectProperty ;
+    rdfs:label "situation time" ;
+    rdfs:comment "Relates a situation to the temporal entity that represents when it occurs." ;
+    rdfs:domain <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> ;
+    rdfs:range time:Interval .
+
+geo:asGML a owl:DatatypeProperty ;
+    rdfs:label "asGML" ;
+    rdfs:comment "Links a geometry to its GML serialization." ;
+    rdfs:domain geo:Geometry ;
+    rdfs:range geo:gmlLiteral .
+
+geo:asWKT a owl:DatatypeProperty ;
+    rdfs:label "asWKT" ;
+    rdfs:comment "Links a geometry to its WKT serialization." ;
+    rdfs:domain geo:Geometry ;
+    rdfs:range geo:wktLiteral .
+
+geo:hasGeometry a owl:ObjectProperty ;
+    rdfs:label "has geometry" ;
+    rdfs:comment "Relates a feature to the geometry that represents its spatial extent." ;
+    rdfs:domain geo:Feature ;
+    rdfs:range geo:Geometry .
+
+geo:rcc8dc a owl:ObjectProperty ;
+    rdfs:label "disconnected" ;
+    rdfs:comment "Relates two spatial regions that are disconnected and share no common point." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8ec a owl:ObjectProperty ;
+    rdfs:label "externally connected" ;
+    rdfs:comment "Relates two spatial regions that touch along their boundary but whose interiors do not overlap." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8eq a owl:ObjectProperty ;
+    rdfs:label "equals" ;
+    rdfs:comment "Relates two spatial regions that have exactly the same spatial extent." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8ntpp a owl:ObjectProperty ;
+    rdfs:label "non-tangential proper part" ;
+    rdfs:comment "Relates a spatial region that is completely inside another region without touching its boundary." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8ntppi a owl:ObjectProperty ;
+    rdfs:label "non-tangential proper part inverse" ;
+    rdfs:comment "Relates a spatial region that completely contains another region whose boundary it does not touch." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8po a owl:ObjectProperty ;
+    rdfs:label "partially overlapping" ;
+    rdfs:comment "Relates two spatial regions whose interiors overlap, while neither region contains the other." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8tpp a owl:ObjectProperty ;
+    rdfs:label "tangential proper part" ;
+    rdfs:comment "Relates a spatial region that is inside another region and touches its boundary." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8tppi a owl:ObjectProperty ;
+    rdfs:label "tangential proper part inverse" ;
+    rdfs:comment "Relates a spatial region that contains another region and touches its boundary." ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+time:after a owl:ObjectProperty ;
+    rdfs:label "after" ;
+    rdfs:comment "Relates a temporal entity that occurs after another temporal entity." ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:TemporalEntity .
+
+time:before a owl:ObjectProperty ;
+    rdfs:label "before" ;
+    rdfs:comment "Relates a temporal entity that occurs before another temporal entity." ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:TemporalEntity .
+
+time:hasBeginning a owl:ObjectProperty ;
+    rdfs:label "has beginning" ;
+    rdfs:comment "Relates a temporal interval to the instant that marks its beginning." ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:Instant .
+
+time:hasEnd a owl:ObjectProperty ;
+    rdfs:label "has end" ;
+    rdfs:comment "Relates a temporal interval to the instant that marks its end." ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:Instant .
+
+time:inXSDDateTimeStamp a owl:DatatypeProperty ;
+    rdfs:label "inXSDDateTimeStamp" ;
+    rdfs:comment "Position of an instant in which the time-zone field is mandatory." ;
+    rdfs:domain time:Instant ;
+    rdfs:range <https://www.w3.org/TR/xmlschema11-2/#dateTimeStamp> .
+
+time:inside a owl:ObjectProperty ;
+    rdfs:label "inside" ;
+    rdfs:comment "Relates a temporal instant or interval that occurs within another interval." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Instant .
+
+time:intervalAfter a owl:ObjectProperty ;
+    rdfs:label "interval after" ;
+    rdfs:comment "Relates a time interval that occurs completely after another interval." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalBefore a owl:ObjectProperty ;
+    rdfs:label "interval before" ;
+    rdfs:comment "Relates a time interval that occurs completely before another interval." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalContains a owl:ObjectProperty ;
+    rdfs:label "interval contains" ;
+    rdfs:comment "Relates a time interval that fully contains another interval." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalDisjoint a owl:ObjectProperty ;
+    rdfs:label "interval disjoint" ;
+    rdfs:comment "Relates two temporal intervals that do not overlap in time." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalDuring a owl:ObjectProperty ;
+    rdfs:label "interval during" ;
+    rdfs:comment "Relates an interval that starts after another interval begins and ends before it ends." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalEquals a owl:ObjectProperty ;
+    rdfs:label "interval equals" ;
+    rdfs:comment "Relates two time intervals that have exactly the same temporal extent." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalFinishedBy a owl:ObjectProperty ;
+    rdfs:label "interval finished by" ;
+    rdfs:comment "Relates an interval that ends at the same time as another interval but starts earlier." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalFinishes a owl:ObjectProperty ;
+    rdfs:label "interval finishes" ;
+    rdfs:comment "Relates an interval that ends at the same time as another interval but starts later." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalIn a owl:ObjectProperty ;
+    rdfs:label "interval in" ;
+    rdfs:comment "Relates an interval that is contained within another interval, without requiring both boundaries to coincide." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalMeets a owl:ObjectProperty ;
+    rdfs:label "interval meets" ;
+    rdfs:comment "Relates an interval that ends exactly when another interval begins." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalMetBy a owl:ObjectProperty ;
+    rdfs:label "interval met by" ;
+    rdfs:comment "Relates an interval that begins exactly when another interval ends." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalOverlaps a owl:ObjectProperty ;
+    rdfs:label "interval overlaps" ;
+    rdfs:comment "Relates an interval that overlaps another interval without either interval containing the other." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalStartedBy a owl:ObjectProperty ;
+    rdfs:label "interval started by" ;
+    rdfs:comment "Relates an interval that starts at the same time as another interval but ends later." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalStarts a owl:ObjectProperty ;
+    rdfs:label "interval starts" ;
+    rdfs:comment "Relates an interval that starts at the same time as another interval but ends sooner." ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+sosa:hasFeatureOfInterest a owl:ObjectProperty ;
+    rdfs:label "has feature of interest" ;
+    rdfs:comment "Relates an observation to the entity whose property is being observed." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:FeatureOfInterest .
+
+sosa:hasResult a owl:ObjectProperty ;
+    rdfs:label "has result" ;
+    rdfs:comment "Relates an observation to the result that it produced." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:Result .
+
+sosa:hasSimpleResult a owl:DatatypeProperty ;
+    rdfs:label "hasSimpleResult" ;
+    rdfs:comment "Links an obervation to its result, which contains a value representing the value associated with the observed Property." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range xsd:integer .
+
+sosa:hosts a owl:ObjectProperty ;
+    rdfs:label "hosts" ;
+    rdfs:comment "Relates a platform to a sensor, actuator, sampler, or platform that it hosts." ;
+    rdfs:domain sosa:Platform ;
+    rdfs:range sosa:Sensor .
+
+sosa:madeObservation a owl:ObjectProperty ;
+    rdfs:label "made observation" ;
+    rdfs:comment "Relates a sensor to an observation that it made." ;
+    rdfs:domain sosa:Sensor ;
+    rdfs:range sosa:Observation .
+
+sosa:observedProperty a owl:ObjectProperty ;
+    rdfs:label "observed property" ;
+    rdfs:comment "Relates an observation to the property that it observes." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:ObservableProperty .
+
+ssn:hasProperty a owl:ObjectProperty ;
+    rdfs:label "has property" ;
+    rdfs:comment "Relates an entity to one of its properties." ;
+    rdfs:domain sosa:FeatureOfInterest ;
+    rdfs:range ssn:Property .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Action> a owl:Class ;
+    rdfs:label "Action" ;
+    rdfs:comment "An action is an operation or intervention performed in response to a detected situation in the manufacturing system." ;
+    rdfs:subClassOf owl:Thing .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause> a owl:Class ;
+    rdfs:label "Cause" ;
+    rdfs:comment "A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system." ;
+    rdfs:subClassOf owl:Thing .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Product> a owl:Class ;
+    rdfs:label "Product" ;
+    rdfs:comment "A product is an item produced or processed during manufacturing operations." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource>,
+        sosa:Platform .
+
+sosa:Result a owl:Class ;
+    rdfs:label "Result" ;
+    rdfs:comment "A result is the outcome or value produced by an observation." ;
+    rdfs:subClassOf owl:Thing .
+
+sosa:FeatureOfInterest a owl:Class ;
+    rdfs:label "Feature of Interest" ;
+    rdfs:comment "A feature of interest is the entity whose property is being observed." ;
+    rdfs:subClassOf owl:Thing .
+
+ssn:Property a owl:Class ;
+    rdfs:label "Property" ;
+    rdfs:comment "A property is a characteristic of an entity that can be observed or measured." ;
+    rdfs:subClassOf owl:Thing .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Constraint> a owl:Class ;
+    rdfs:label "Constraint" ;
+    rdfs:comment "A constraint is a condition or rule that restricts or defines acceptable states of a process, resource, or situation." ;
+    rdfs:subClassOf owl:Thing .
+
+geo:Feature a owl:Class ;
+    rdfs:label "Feature" ;
+    rdfs:comment "A feature is a spatial entity representing a physical object or location in the manufacturing environment." ;
+    rdfs:subClassOf geo:SpatialObject .
+
+geo:Geometry a owl:Class ;
+    rdfs:label "Geometry" ;
+    rdfs:comment "A geometry is the geometric representation of a spatial feature." ;
+    rdfs:subClassOf geo:SpatialObject .
+
+sosa:ObservableProperty a owl:Class ;
+    rdfs:label "Observable Property" ;
+    rdfs:comment "An observable property is a property of a feature of interest that can be observed by a sensor." ;
+    rdfs:subClassOf ssn:Property .
+
+sosa:Sensor a owl:Class ;
+    rdfs:label "Sensor" ;
+    rdfs:comment "A sensor is a device, agent, or software component that performs observations." ;
+    rdfs:subClassOf owl:Thing .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Staff> a owl:Class ;
+    rdfs:label "Staff" ;
+    rdfs:comment "Staff is a human agent involved in the operation or supervision of manufacturing processes." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource>,
+        sosa:Platform .
+
+time:Instant a owl:Class ;
+    rdfs:label "Instant" ;
+    rdfs:comment "An instant is a specific point in time." ;
+    rdfs:subClassOf time:TemporalEntity .
+
+sosa:Platform a owl:Class ;
+    rdfs:label "Platform" ;
+    rdfs:comment "A platform is an entity that hosts sensors, actuators, samplers, or other platforms." ;
+    rdfs:subClassOf geo:Feature .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process> a owl:Class ;
+    rdfs:label "Process" ;
+    rdfs:comment "A process is an activity that transforms inputs into outputs." ;
+    rdfs:subClassOf owl:Thing .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility> a owl:Class ;
+    rdfs:label "Manufacturing Facility" ;
+    rdfs:comment "A manufacturing facility is a physical environment where manufacturing processes take place." ;
+    rdfs:subClassOf <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource>,
+        sosa:Platform .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource> a owl:Class ;
+    rdfs:label "Resource" ;
+    rdfs:comment "A resource is an entity used during manufacturing processes, such as a machine, material, or human resource." ;
+    rdfs:subClassOf geo:Feature .
+
+sosa:Observation a owl:Class ;
+    rdfs:label "Observation" ;
+    rdfs:comment "An observation is an event in which a sensor measures or estimates the value of an observable property of a feature of interest." ;
+    rdfs:subClassOf owl:Thing .
+
+time:TemporalEntity a owl:Class ;
+    rdfs:label "Temporal Entity" ;
+    rdfs:comment "A temporal entity is a temporal interval or instant used to represent the time of an observation or situation." ;
+    rdfs:subClassOf owl:Thing .
+
+geo:SpatialObject a owl:Class ;
+    rdfs:label "Spatial Object" ;
+    rdfs:comment "A spatial object is an entity with a spatial extent in the manufacturing environment." ;
+    rdfs:subClassOf owl:Thing .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation> a owl:Class ;
+    rdfs:label "Situation" ;
+    rdfs:comment "A situation is a contextual state describing conditions in a manufacturing environment based on observations, processes, and contextual factors." ;
+    rdfs:subClassOf owl:Thing .
+
+time:Interval a owl:Class ;
+    rdfs:label "Interval" ;
+    rdfs:comment "An interval is a temporal extent with a beginning and an end." ;
+    rdfs:subClassOf time:TemporalEntity .
+

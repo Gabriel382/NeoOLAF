@@ -1,0 +1,184 @@
+{
+  "triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_e_00002",
+        "label": "RESET PRG key",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00000",
+        "label": "PLC interface"
+      },
+      "object": {
+        "id": "cand_r_00000",
+        "label": "PLC interface",
+        "type": "relation"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that alarms are divided into two categories, one of which is 'alarms and messages from the PLC interface'.",
+      "confidence": 0.85
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_e_00002",
+        "label": "RESET PRG key",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00001",
+        "label": "emitted by"
+      },
+      "object": {
+        "id": "cand_e_00001",
+        "label": "CNC",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that alarms and messages from the PLC interface are described below.",
+      "confidence": 0.85
+    },
+    {
+      "triple_id": "triple_00002",
+      "subject": {
+        "id": "cand_e_00002",
+        "label": "RESET PRG key",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00002",
+        "label": "affects"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "Alarm Message",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that pressing the RESET PRG key allows you to see the alarm number and text.",
+      "confidence": 0.85
+    },
+    {
+      "triple_id": "triple_00003",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "Alarm Message",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00003",
+        "label": "alarms with immediate and controlled stop"
+      },
+      "object": {
+        "id": "cand_r_00003",
+        "label": "alarms with immediate and controlled stop",
+        "type": "relation"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that alarms are classified into categories including 'alarms with immediate and controlled stop'.",
+      "confidence": 0.85
+    },
+    {
+      "triple_id": "triple_00004",
+      "subject": {
+        "id": "cand_e_00002",
+        "label": "RESET PRG key",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00004",
+        "label": "stop at the end of the cycle"
+      },
+      "object": {
+        "id": "cand_e_00001",
+        "label": "CNC",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that alarms and messages from the PLC interface are classified into categories including 'alarms with stop at the end of the cycle'.",
+      "confidence": 0.85
+    },
+    {
+      "triple_id": "triple_00005",
+      "subject": {
+        "id": "cand_e_00002",
+        "label": "RESET PRG key",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00005",
+        "label": "causes do not persist"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "Alarm Message",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that by pressing the RESET PRG key, the alarm can be cleared if the causes do not persist.",
+      "confidence": 0.85
+    },
+    {
+      "triple_id": "triple_00006",
+      "subject": {
+        "id": "cand_s_00000",
+        "label": "EMERGENCY ACTIVE",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00006",
+        "label": "has cause"
+      },
+      "object": {
+        "id": "cand_e_00003",
+        "label": "Alarm 1001",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0001",
+      "justification": "The text states that Alarm 1001 has cause: Signals that the punch button has been pressed.",
+      "confidence": 0.95
+    },
+    {
+      "triple_id": "triple_00007",
+      "subject": {
+        "id": "cand_s_00000",
+        "label": "EMERGENCY ACTIVE",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00007",
+        "label": "Signals that the punch button has been pressed"
+      },
+      "object": {
+        "id": "cand_e_00003",
+        "label": "Alarm 1001",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0001",
+      "justification": "The text states that Alarm 1001 signals the EMERGENCY ACTIVE state.",
+      "confidence": 0.95
+    },
+    {
+      "triple_id": "triple_00008",
+      "subject": {
+        "id": "cand_s_00000",
+        "label": "EMERGENCY ACTIVE",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00010",
+        "label": "END OF CYCLE STOP"
+      },
+      "object": {
+        "id": "cand_r_00010",
+        "label": "END OF CYCLE STOP",
+        "type": "relation"
+      },
+      "chunk_id": "chunk_0001",
+      "justification": "The text states that END OF CYCLE STOP is a type of alarm.",
+      "confidence": 0.85
+    }
+  ]
+}

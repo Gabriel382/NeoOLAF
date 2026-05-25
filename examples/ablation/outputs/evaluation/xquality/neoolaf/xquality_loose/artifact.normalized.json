@@ -1,0 +1,1598 @@
+{
+  "method": "neoolaf",
+  "dataset": "xquality",
+  "profile": "xquality_loose",
+  "run_id": "neoolaf",
+  "documents": [
+    {
+      "document_id": "xquality",
+      "text": null,
+      "source_path": null,
+      "metadata": {
+        "dataset": "xquality"
+      }
+    }
+  ],
+  "entities_by_doc": {
+    "xquality": [
+      {
+        "label": "ActiveEmergencyEvent",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "Check and reset circuit breakers and/or thermomagnetic switches",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "Check mechanical resistance",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "Exit automatic mode and close the clamp",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "Machine",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "OPEN FORCEPS",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "Open side guard alarm",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "Part",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "alarm",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "check",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "clamp",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "consult",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "device",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "failure",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "operator/maintenance officer",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "process step",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      },
+      {
+        "label": "program rewind",
+        "id": null,
+        "type": null,
+        "evidence": null,
+        "provenance_present": false,
+        "provenance": {},
+        "raw": {}
+      }
+    ]
+  },
+  "relations_by_doc": {
+    "xquality": [
+      {
+        "head": "ActiveEmergencyEvent",
+        "relation": "alarms and messages of the CNC",
+        "tail": "Open side guard alarm",
+        "evidence": "The text indicates that the alarms listed (including ActiveEmergencyEvent and Open side guard alarm) are part of the category \"alarms and messages of the CNC\", implying a grouping relation between them.",
+        "confidence": 0.75,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0000"
+        },
+        "raw": {
+          "triple_id": "triple_00000",
+          "subject": {
+            "id": "cand_s_00001",
+            "label": "ActiveEmergencyEvent",
+            "type": "event"
+          },
+          "predicate": {
+            "id": "cand_r_00001",
+            "label": "alarms and messages of the CNC"
+          },
+          "object": {
+            "id": "cand_s_00002",
+            "label": "Open side guard alarm",
+            "type": "event"
+          },
+          "chunk_id": "chunk_0000",
+          "justification": "The text indicates that the alarms listed (including ActiveEmergencyEvent and Open side guard alarm) are part of the category \"alarms and messages of the CNC\", implying a grouping relation between them.",
+          "confidence": 0.75
+        }
+      },
+      {
+        "head": "ActiveEmergencyEvent",
+        "relation": "recognized with the key 'RESET PRG'",
+        "tail": "program rewind",
+        "evidence": "The text states that an alarm can be recognized with the key 'RESET PRG', which triggers a program rewind event.",
+        "confidence": 0.85,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0000"
+        },
+        "raw": {
+          "triple_id": "triple_00001",
+          "subject": {
+            "id": "cand_s_00001",
+            "label": "ActiveEmergencyEvent",
+            "type": "event"
+          },
+          "predicate": {
+            "id": "cand_r_00012",
+            "label": "recognized with the key 'RESET PRG'"
+          },
+          "object": {
+            "id": "cand_s_00000",
+            "label": "program rewind",
+            "type": "event"
+          },
+          "chunk_id": "chunk_0000",
+          "justification": "The text states that an alarm can be recognized with the key 'RESET PRG', which triggers a program rewind event.",
+          "confidence": 0.85
+        }
+      },
+      {
+        "head": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+        "relation": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+        "tail": "Check and reset circuit breakers and/or thermomagnetic switches",
+        "evidence": "The text states that the alarm THERMOMAGNET SWITCHES. END OF CYCLE STOP triggers the intervention \"Check and reset circuit breakers and/or thermomagnetic switches\".",
+        "confidence": 0.9,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0000"
+        },
+        "raw": {
+          "triple_id": "triple_00002",
+          "subject": {
+            "id": "cand_r_00038",
+            "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+            "type": "relation"
+          },
+          "predicate": {
+            "id": "cand_r_00038",
+            "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP"
+          },
+          "object": {
+            "id": "cand_s_00003",
+            "label": "Check and reset circuit breakers and/or thermomagnetic switches",
+            "type": "event"
+          },
+          "chunk_id": "chunk_0000",
+          "justification": "The text states that the alarm THERMOMAGNET SWITCHES. END OF CYCLE STOP triggers the intervention \"Check and reset circuit breakers and/or thermomagnetic switches\".",
+          "confidence": 0.9
+        }
+      },
+      {
+        "head": "ActiveEmergencyEvent",
+        "relation": "causes",
+        "tail": "program rewind",
+        "evidence": "The text states that the ACTIVE EMERGENCY alarm triggers a program rewind (RESET PRG) when the alarm is displayed, indicating that the alarm causes the program to be rewound.",
+        "confidence": 0.88,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0000"
+        },
+        "raw": {
+          "triple_id": "triple_00003",
+          "subject": {
+            "id": "cand_s_00001",
+            "label": "ActiveEmergencyEvent",
+            "type": "event"
+          },
+          "predicate": {
+            "id": "cand_r_00043",
+            "label": "causes"
+          },
+          "object": {
+            "id": "cand_s_00000",
+            "label": "program rewind",
+            "type": "event"
+          },
+          "chunk_id": "chunk_0000",
+          "justification": "The text states that the ACTIVE EMERGENCY alarm triggers a program rewind (RESET PRG) when the alarm is displayed, indicating that the alarm causes the program to be rewound.",
+          "confidence": 0.88
+        }
+      },
+      {
+        "head": "OPEN FORCEPS",
+        "relation": "Exit automatic mode and close the clamp",
+        "tail": "Exit automatic mode and close the clamp",
+        "evidence": "The alarm OPEN FORCEPS triggers the intervention Exit automatic mode and close the clamp.",
+        "confidence": 0.95,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0003"
+        },
+        "raw": {
+          "triple_id": "triple_00004",
+          "subject": {
+            "id": "cand_s_00008",
+            "label": "OPEN FORCEPS",
+            "type": "event"
+          },
+          "predicate": {
+            "id": "cand_r_00029",
+            "label": "Exit automatic mode and close the clamp"
+          },
+          "object": {
+            "id": "cand_r_00029",
+            "label": "Exit automatic mode and close the clamp",
+            "type": "relation"
+          },
+          "chunk_id": "chunk_0003",
+          "justification": "The alarm OPEN FORCEPS triggers the intervention Exit automatic mode and close the clamp.",
+          "confidence": 0.95
+        }
+      },
+      {
+        "head": "clamp",
+        "relation": "CLAMP OPENING FAILURE",
+        "tail": "Check mechanical resistance",
+        "evidence": "The alarm \"CLAMP OPENING FAILURE\" indicates that the clamp did not open within the 5‑second limit, and the recommended intervention is to check mechanical resistance.",
+        "confidence": 0.88,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0003"
+        },
+        "raw": {
+          "triple_id": "triple_00005",
+          "subject": {
+            "id": "cand_e_00004",
+            "label": "clamp",
+            "type": "entity"
+          },
+          "predicate": {
+            "id": "cand_r_00030",
+            "label": "CLAMP OPENING FAILURE"
+          },
+          "object": {
+            "id": "cand_s_00009",
+            "label": "Check mechanical resistance",
+            "type": "event"
+          },
+          "chunk_id": "chunk_0003",
+          "justification": "The alarm \"CLAMP OPENING FAILURE\" indicates that the clamp did not open within the 5‑second limit, and the recommended intervention is to check mechanical resistance.",
+          "confidence": 0.88
+        }
+      },
+      {
+        "head": "alarm",
+        "relation": "immediate and controlled shutdown",
+        "tail": "Machine",
+        "evidence": "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine.",
+        "confidence": 0.78,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0007"
+        },
+        "raw": {
+          "triple_id": "triple_00006",
+          "subject": {
+            "id": "cand_s_00002",
+            "label": "alarm",
+            "type": "event"
+          },
+          "predicate": {
+            "id": "cand_r_00014",
+            "label": "immediate and controlled shutdown"
+          },
+          "object": {
+            "id": "cand_e_00001",
+            "label": "Machine",
+            "type": "entity"
+          },
+          "chunk_id": "chunk_0007",
+          "justification": "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine.",
+          "confidence": 0.78
+        }
+      },
+      {
+        "head": "device",
+        "relation": "waiting for excessive feed",
+        "tail": "alarm",
+        "evidence": "The text states that the alarm \"waiting for excessive feed\" is triggered by the device \"CDS\".",
+        "confidence": 0.9,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0007"
+        },
+        "raw": {
+          "triple_id": "triple_00007",
+          "subject": {
+            "id": "cand_e_00000",
+            "label": "device",
+            "type": "entity"
+          },
+          "predicate": {
+            "id": "cand_r_00017",
+            "label": "waiting for excessive feed"
+          },
+          "object": {
+            "id": "cand_s_00002",
+            "label": "alarm",
+            "type": "event"
+          },
+          "chunk_id": "chunk_0007",
+          "justification": "The text states that the alarm \"waiting for excessive feed\" is triggered by the device \"CDS\".",
+          "confidence": 0.9
+        }
+      },
+      {
+        "head": "alarm",
+        "relation": "operator/maintenance officer",
+        "tail": "operator/maintenance officer",
+        "evidence": "The chunk contains the phrase \"responsible for operator/maintenance officer\" immediately following an alarm description, indicating that the alarm event is responsible for the operator/maintenance officer.",
+        "confidence": 0.88,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0007"
+        },
+        "raw": {
+          "triple_id": "triple_00008",
+          "subject": {
+            "id": "cand_s_00002",
+            "label": "alarm",
+            "type": "event"
+          },
+          "predicate": {
+            "id": "cand_r_00020",
+            "label": "operator/maintenance officer"
+          },
+          "object": {
+            "id": "cand_r_00020",
+            "label": "operator/maintenance officer",
+            "type": "relation"
+          },
+          "chunk_id": "chunk_0007",
+          "justification": "The chunk contains the phrase \"responsible for operator/maintenance officer\" immediately following an alarm description, indicating that the alarm event is responsible for the operator/maintenance officer.",
+          "confidence": 0.88
+        }
+      },
+      {
+        "head": "device",
+        "relation": "has detected",
+        "tail": "failure",
+        "evidence": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+        "confidence": 0.95,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0007"
+        },
+        "raw": {
+          "triple_id": "triple_00009",
+          "subject": {
+            "id": "cand_e_00000",
+            "label": "device",
+            "type": "entity"
+          },
+          "predicate": {
+            "id": "cand_r_00026",
+            "label": "has detected"
+          },
+          "object": {
+            "id": "cand_s_00003",
+            "label": "failure",
+            "type": "event"
+          },
+          "chunk_id": "chunk_0007",
+          "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+          "confidence": 0.95
+        }
+      },
+      {
+        "head": "device",
+        "relation": "has_had_problem",
+        "tail": "failure",
+        "evidence": "The chunk describes a device (e.g., Tool control device no. 4) that \"does not work\" or \"has detected tip breakage\", which is a failure event. This indicates the device has had a problem, matching the relation label \"has_had_problem\".",
+        "confidence": 0.92,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0007"
+        },
+        "raw": {
+          "triple_id": "triple_00010",
+          "subject": {
+            "id": "cand_e_00000",
+            "label": "device",
+            "type": "entity"
+          },
+          "predicate": {
+            "id": "cand_r_00027",
+            "label": "has_had_problem"
+          },
+          "object": {
+            "id": "cand_s_00003",
+            "label": "failure",
+            "type": "event"
+          },
+          "chunk_id": "chunk_0007",
+          "justification": "The chunk describes a device (e.g., Tool control device no. 4) that \"does not work\" or \"has detected tip breakage\", which is a failure event. This indicates the device has had a problem, matching the relation label \"has_had_problem\".",
+          "confidence": 0.92
+        }
+      },
+      {
+        "head": "device",
+        "relation": "causes",
+        "tail": "alarm",
+        "evidence": "The cause field in the alarm description indicates that the Tool control device no. 4 does not work, which is a device failure that triggers the alarm.",
+        "confidence": 0.92,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0007"
+        },
+        "raw": {
+          "triple_id": "triple_00011",
+          "subject": {
+            "id": "cand_e_00000",
+            "label": "device",
+            "type": "entity"
+          },
+          "predicate": {
+            "id": "cand_r_00030",
+            "label": "causes"
+          },
+          "object": {
+            "id": "cand_s_00002",
+            "label": "alarm",
+            "type": "event"
+          },
+          "chunk_id": "chunk_0007",
+          "justification": "The cause field in the alarm description indicates that the Tool control device no. 4 does not work, which is a device failure that triggers the alarm.",
+          "confidence": 0.92
+        }
+      },
+      {
+        "head": "check",
+        "relation": "check the core of the probe",
+        "tail": "Part",
+        "evidence": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+        "confidence": 0.85,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0007"
+        },
+        "raw": {
+          "triple_id": "triple_00012",
+          "subject": {
+            "id": "cand_s_00004",
+            "label": "check",
+            "type": "event"
+          },
+          "predicate": {
+            "id": "cand_r_00031",
+            "label": "check the core of the probe"
+          },
+          "object": {
+            "id": "cand_e_00002",
+            "label": "Part",
+            "type": "entity"
+          },
+          "chunk_id": "chunk_0007",
+          "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+          "confidence": 0.85
+        }
+      },
+      {
+        "head": "check",
+        "relation": "check the anomaly in the CDS operation panel",
+        "tail": "device",
+        "evidence": "The alarm text explicitly instructs operators to \"Check the anomaly on the CDS operator panel\", which is an action performed on the device (the CDS). The relation candidate therefore links the check event to the device entity.",
+        "confidence": 0.85,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0007"
+        },
+        "raw": {
+          "triple_id": "triple_00013",
+          "subject": {
+            "id": "cand_s_00004",
+            "label": "check",
+            "type": "event"
+          },
+          "predicate": {
+            "id": "cand_r_00033",
+            "label": "check the anomaly in the CDS operation panel"
+          },
+          "object": {
+            "id": "cand_e_00000",
+            "label": "device",
+            "type": "entity"
+          },
+          "chunk_id": "chunk_0007",
+          "justification": "The alarm text explicitly instructs operators to \"Check the anomaly on the CDS operator panel\", which is an action performed on the device (the CDS). The relation candidate therefore links the check event to the device entity.",
+          "confidence": 0.85
+        }
+      },
+      {
+        "head": "alarm",
+        "relation": "check the anomaly on the CDS operator panel and consult the documentation",
+        "tail": "check",
+        "evidence": "The chunk text for alarms 1070, 1071, and 1072 states that the intervention is \"Check the anomaly on the CDS operator panel and consult the documentation.\" This indicates that the alarm event (cand_s_00002) triggers the check action (cand_s_00004).",
+        "confidence": 0.92,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0007"
+        },
+        "raw": {
+          "triple_id": "triple_00014",
+          "subject": {
+            "id": "cand_s_00002",
+            "label": "alarm",
+            "type": "event"
+          },
+          "predicate": {
+            "id": "cand_r_00034",
+            "label": "check the anomaly on the CDS operator panel and consult the documentation"
+          },
+          "object": {
+            "id": "cand_s_00004",
+            "label": "check",
+            "type": "event"
+          },
+          "chunk_id": "chunk_0007",
+          "justification": "The chunk text for alarms 1070, 1071, and 1072 states that the intervention is \"Check the anomaly on the CDS operator panel and consult the documentation.\" This indicates that the alarm event (cand_s_00002) triggers the check action (cand_s_00004).",
+          "confidence": 0.92
+        }
+      },
+      {
+        "head": "check",
+        "relation": "check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the tower.",
+        "tail": "consult",
+        "evidence": "The text states that after checking the anomaly on the CDS operator panel, the operator consults the documentation, indicating a triggering relationship.",
+        "confidence": 0.85,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0007"
+        },
+        "raw": {
+          "triple_id": "triple_00015",
+          "subject": {
+            "id": "cand_s_00004",
+            "label": "check",
+            "type": "event"
+          },
+          "predicate": {
+            "id": "cand_r_00035",
+            "label": "check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the tower."
+          },
+          "object": {
+            "id": "cand_s_00005",
+            "label": "consult",
+            "type": "event"
+          },
+          "chunk_id": "chunk_0007",
+          "justification": "The text states that after checking the anomaly on the CDS operator panel, the operator consults the documentation, indicating a triggering relationship.",
+          "confidence": 0.85
+        }
+      },
+      {
+        "head": "alarm",
+        "relation": "check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the lathe.",
+        "tail": "process step",
+        "evidence": "The alarm 1070 triggers the intervention steps described in the relation candidate: checking the anomaly on the CDS operator panel, consulting documentation, and checking connections with the lathe.",
+        "confidence": 0.92,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0007"
+        },
+        "raw": {
+          "triple_id": "triple_00016",
+          "subject": {
+            "id": "cand_s_00002",
+            "label": "alarm",
+            "type": "event"
+          },
+          "predicate": {
+            "id": "cand_r_00036",
+            "label": "check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the lathe."
+          },
+          "object": {
+            "id": "cand_s_00000",
+            "label": "process step",
+            "type": "event"
+          },
+          "chunk_id": "chunk_0007",
+          "justification": "The alarm 1070 triggers the intervention steps described in the relation candidate: checking the anomaly on the CDS operator panel, consulting documentation, and checking connections with the lathe.",
+          "confidence": 0.92
+        }
+      },
+      {
+        "head": "alarm",
+        "relation": "intervention: Check the anomaly in the CDS operation panel and consult the documentation. If there is no sign, check the connections with the lathe.",
+        "tail": "check",
+        "evidence": "The chunk text for Alarm 1070 states that the alarm triggers the intervention to check the anomaly on the CDS operator panel, which is a check event.",
+        "confidence": 0.92,
+        "provenance_present": true,
+        "provenance": {
+          "chunk_id": "chunk_0007"
+        },
+        "raw": {
+          "triple_id": "triple_00017",
+          "subject": {
+            "id": "cand_s_00002",
+            "label": "alarm",
+            "type": "event"
+          },
+          "predicate": {
+            "id": "cand_r_00042",
+            "label": "intervention: Check the anomaly in the CDS operation panel and consult the documentation. If there is no sign, check the connections with the lathe."
+          },
+          "object": {
+            "id": "cand_s_00004",
+            "label": "check",
+            "type": "event"
+          },
+          "chunk_id": "chunk_0007",
+          "justification": "The chunk text for Alarm 1070 states that the alarm triggers the intervention to check the anomaly on the CDS operator panel, which is a check event.",
+          "confidence": 0.92
+        }
+      }
+    ]
+  },
+  "ontology_by_doc": {},
+  "global_ontology": {
+    "classes": [
+      {
+        "label": "Manufacturing Facility",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingFacility",
+        "description": "A manufacturing facility is a physical environment where manufacturing processes take place.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Sensor",
+        "iri": "http://www.w3.org/ns/sosa/Sensor",
+        "description": "A sensor is a device, agent, or software component that performs observations.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Logistic Process",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#LogisticProcess",
+        "description": "A logistic process is a process related to the movement, storage, or management of materials or products.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Manufacturing Process",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#ManufacturingProcess",
+        "description": "A manufacturing process is an industrial process carried out within a manufacturing facility to produce or transform products.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Action",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Action",
+        "description": "An action is an operation or intervention performed in response to a detected situation in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Workstation",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#WorkStation",
+        "description": "A workstation is a physical area in the manufacturing environment where one or more machines or resources are organized to perform a specific task.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Staff",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Staff",
+        "description": "Staff is a human agent involved in the operation or supervision of manufacturing processes.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Constraint",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Constraint",
+        "description": "A constraint is a condition or rule that restricts or defines acceptable states of a process, resource, or situation.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Operator",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Operator",
+        "description": "An operator is a worker responsible for operating machines or performing production tasks.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S4",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S4",
+        "description": "Situation S4 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Feature of Interest",
+        "iri": "http://www.w3.org/ns/sosa/FeatureOfInterest",
+        "description": "A feature of interest is the entity whose property is being observed.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S5",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S5",
+        "description": "Situation S5 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Instant",
+        "iri": "http://www.w3.org/2006/time#Instant",
+        "description": "An instant is a specific point in time.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S14",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S14",
+        "description": "Situation S14 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S3",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S3",
+        "description": "Situation S3 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S6",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S6",
+        "description": "Situation S6 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Resource",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Resource",
+        "description": "A resource is an entity used during manufacturing processes, such as a machine, material, or human resource.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Cause",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause",
+        "description": "A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Human Process",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#HumanProcess",
+        "description": "A human process is a process primarily performed by human operators within the manufacturing environment.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Machine",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Machine",
+        "description": "A machine is a device used to perform a manufacturing task, either autonomously or with human intervention.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Feature",
+        "iri": "http://www.opengis.net/ont/geosparql#Feature",
+        "description": "A feature is a spatial entity representing a physical object or location in the manufacturing environment.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Manager",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Manager",
+        "description": "A manager is a person responsible for supervising manufacturing operations and responding to detected situations.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S2",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S2",
+        "description": "Situation S2 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Interval",
+        "iri": "http://www.w3.org/2006/time#Interval",
+        "description": "An interval is a temporal extent with a beginning and an end.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Geometry",
+        "iri": "http://www.opengis.net/ont/geosparql#Geometry",
+        "description": "A geometry is the geometric representation of a spatial feature.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Spatial Object",
+        "iri": "http://www.opengis.net/ont/geosparql#SpatialObject",
+        "description": "A spatial object is an entity with a spatial extent in the manufacturing environment.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Product",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Product",
+        "description": "A product is an item produced or processed during manufacturing operations.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Result",
+        "iri": "http://www.w3.org/ns/sosa/Result",
+        "description": "A result is the outcome or value produced by an observation.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Platform",
+        "iri": "http://www.w3.org/ns/sosa/Platform",
+        "description": "A platform is an entity that hosts sensors, actuators, samplers, or other platforms.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S1",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S1",
+        "description": "Situation S1 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S13",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S13",
+        "description": "Situation S13 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Production Line",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Line",
+        "description": "A production line is a group of manufacturing cells arranged to carry out a sequence of production tasks.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S11",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S11",
+        "description": "Situation S11 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S9",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S9",
+        "description": "Situation S9 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Property",
+        "iri": "http://www.w3.org/ns/ssn/Property",
+        "description": "A property is a characteristic of an entity that can be observed or measured.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S10",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S10",
+        "description": "Situation S10 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S8",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S8",
+        "description": "Situation S8 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Observable Property",
+        "iri": "http://www.w3.org/ns/sosa/ObservableProperty",
+        "description": "An observable property is a property of a feature of interest that can be observed by a sensor.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S7",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S7",
+        "description": "Situation S7 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Temporal Entity",
+        "iri": "http://www.w3.org/2006/time#TemporalEntity",
+        "description": "A temporal entity is a temporal interval or instant used to represent the time of an observation or situation.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation",
+        "description": "A situation is a contextual state describing conditions in a manufacturing environment based on observations, processes, and contextual factors.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Situation S12",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Situation-S12",
+        "description": "Situation S12 is a specialized situation class representing a specific contextual state in the manufacturing system.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Technician",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Technician",
+        "description": "A technician is a technical specialist responsible for maintaining or repairing equipment.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Process",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Process",
+        "description": "A process is an activity that transforms inputs into outputs.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Manufacturing Cell",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cell",
+        "description": "A manufacturing cell is a group of workstations organized to perform a particular manufacturing task.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Observation",
+        "iri": "http://www.w3.org/ns/sosa/Observation",
+        "description": "An observation is an event in which a sensor measures or estimates the value of an observable property of a feature of interest.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "Part",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Part",
+        "description": "A part is a component or piece used in the assembly or production of a product.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "COInd Context Ontology for Industrial Situations",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4",
+        "description": "Ontology describing contextual situations in industrial environments, integrating sensor observations (SOSA/SSN), spatial context (GeoSPARQL), and temporal relations (OWL-Time).",
+        "evidence": null,
+        "raw": {}
+      }
+    ],
+    "properties": [
+      {
+        "label": "interval before",
+        "iri": "http://www.w3.org/2006/time#intervalBefore",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates a time interval that occurs completely before another interval.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "interval overlaps",
+        "iri": "http://www.w3.org/2006/time#intervalOverlaps",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates an interval that overlaps another interval without either interval containing the other.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "has time",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasTime",
+        "domain": "Observation",
+        "range": "TemporalEntity",
+        "description": "Relates an observation to the temporal entity that represents when it occurred.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "performs process",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#performsPorcess",
+        "domain": "Resource",
+        "range": "Process",
+        "description": "Relates a resource to a process that it performs or supports.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "tangential proper part inverse",
+        "iri": "http://www.opengis.net/ont/geosparql#rcc8tppi",
+        "domain": "SpatialObject",
+        "range": "SpatialObject",
+        "description": "Relates a spatial region that contains another region and touches its boundary.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "has beginning",
+        "iri": "http://www.w3.org/2006/time#hasBeginning",
+        "domain": "TemporalEntity",
+        "range": "Instant",
+        "description": "Relates a temporal interval to the instant that marks its beginning.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "interval contains",
+        "iri": "http://www.w3.org/2006/time#intervalContains",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates a time interval that fully contains another interval.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "made observation",
+        "iri": "http://www.w3.org/ns/sosa/madeObservation",
+        "domain": "Sensor",
+        "range": "Observation",
+        "description": "Relates a sensor to an observation that it made.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "has observation",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasObservation",
+        "domain": "Situation",
+        "range": "Observation",
+        "description": "Relates a situation to an observation associated with it.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "defined on",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#definedOn",
+        "domain": "Constraint",
+        "range": "ObservableProperty",
+        "description": "Relates a situation or property to the entity or context element on which it is defined.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "is in situation",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#isInSituation",
+        "domain": "Observation",
+        "range": "Situation",
+        "description": "Relates an observation to the situation with which it is associated.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "is part of",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#isPartOf",
+        "domain": "ManufacturingFacility",
+        "range": "ManufacturingFacility",
+        "description": "Relates an entity to a larger entity of which it is a component.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "disconnected",
+        "iri": "http://www.opengis.net/ont/geosparql#rcc8dc",
+        "domain": "SpatialObject",
+        "range": "SpatialObject",
+        "description": "Relates two spatial regions that are disconnected and share no common point.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "situation time",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#situationTime",
+        "domain": "Situation",
+        "range": "Interval",
+        "description": "Relates a situation to the temporal entity that represents when it occurs.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "requires action",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#requiresAction",
+        "domain": "Situation",
+        "range": "Action",
+        "description": "Relates a situation to an action that should be performed in response to it.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "interval during",
+        "iri": "http://www.w3.org/2006/time#intervalDuring",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates an interval that starts after another interval begins and ends before it ends.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "interval finishes",
+        "iri": "http://www.w3.org/2006/time#intervalFinishes",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates an interval that ends at the same time as another interval but starts later.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "associated constraint",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#associatedConstraint",
+        "domain": "Situation",
+        "range": "Constraint",
+        "description": "Relates a process, resource, or situation to a constraint that defines acceptable operational conditions.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "interval starts",
+        "iri": "http://www.w3.org/2006/time#intervalStarts",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates an interval that starts at the same time as another interval but ends sooner.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "interval in",
+        "iri": "http://www.w3.org/2006/time#intervalIn",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates an interval that is contained within another interval, without requiring both boundaries to coincide.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "concerned by",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#concernBy",
+        "domain": "Resource",
+        "range": "Situation",
+        "description": "Relates a situation or event to an entity, such as a machine, process, or product, that it concerns.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "has cause",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasCause",
+        "domain": "Situation",
+        "range": "Cause",
+        "description": "Relates a situation to the cause responsible for triggering or explaining it.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "asWKT",
+        "iri": "http://www.opengis.net/ont/geosparql#asWKT",
+        "domain": "Geometry",
+        "range": "wktLiteral",
+        "description": "Links a geometry to its WKT serialization.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "observed property",
+        "iri": "http://www.w3.org/ns/sosa/observedProperty",
+        "domain": "Observation",
+        "range": "ObservableProperty",
+        "description": "Relates an observation to the property that it observes.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "inXSDDateTimeStamp",
+        "iri": "http://www.w3.org/2006/time#inXSDDateTimeStamp",
+        "domain": "Instant",
+        "range": "dateTimeStamp",
+        "description": "Position of an instant in which the time-zone field is mandatory.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "located in",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#locatedIn",
+        "domain": "Sensor",
+        "range": "SpatialObject",
+        "description": "Relates a sensor to the spatial object in which it is located.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "partially overlapping",
+        "iri": "http://www.opengis.net/ont/geosparql#rcc8po",
+        "domain": "SpatialObject",
+        "range": "SpatialObject",
+        "description": "Relates two spatial regions whose interiors overlap, while neither region contains the other.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "interval started by",
+        "iri": "http://www.w3.org/2006/time#intervalStartedBy",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates an interval that starts at the same time as another interval but ends later.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "asGML",
+        "iri": "http://www.opengis.net/ont/geosparql#asGML",
+        "domain": "Geometry",
+        "range": "gmlLiteral",
+        "description": "Links a geometry to its GML serialization.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "has feature of interest",
+        "iri": "http://www.w3.org/ns/sosa/hasFeatureOfInterest",
+        "domain": "Observation",
+        "range": "FeatureOfInterest",
+        "description": "Relates an observation to the entity whose property is being observed.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "interval finished by",
+        "iri": "http://www.w3.org/2006/time#intervalFinishedBy",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates an interval that ends at the same time as another interval but starts earlier.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "hosts",
+        "iri": "http://www.w3.org/ns/sosa/hosts",
+        "domain": "Platform",
+        "range": "Sensor",
+        "description": "Relates a platform to a sensor, actuator, sampler, or platform that it hosts.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "non-tangential proper part",
+        "iri": "http://www.opengis.net/ont/geosparql#rcc8ntpp",
+        "domain": "SpatialObject",
+        "range": "SpatialObject",
+        "description": "Relates a spatial region that is completely inside another region without touching its boundary.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "interval met by",
+        "iri": "http://www.w3.org/2006/time#intervalMetBy",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates an interval that begins exactly when another interval ends.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "has duration",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasDuration",
+        "domain": "Process",
+        "range": "TemporalEntity",
+        "description": "Relates an event, process, or situation to the temporal interval during which it occurs.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "externally connected",
+        "iri": "http://www.opengis.net/ont/geosparql#rcc8ec",
+        "domain": "SpatialObject",
+        "range": "SpatialObject",
+        "description": "Relates two spatial regions that touch along their boundary but whose interiors do not overlap.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "hasDescription",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasDescription",
+        "domain": "Constraint",
+        "range": "string",
+        "description": "Links a constraint to its description.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "equals",
+        "iri": "http://www.opengis.net/ont/geosparql#rcc8eq",
+        "domain": "SpatialObject",
+        "range": "SpatialObject",
+        "description": "Relates two spatial regions that have exactly the same spatial extent.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "has property",
+        "iri": "http://www.w3.org/ns/ssn/hasProperty",
+        "domain": "FeatureOfInterest",
+        "range": "Property",
+        "description": "Relates an entity to one of its properties.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "has observable property",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#hasObservableProperty",
+        "domain": "Resource",
+        "range": "ObservableProperty",
+        "description": "Relates an entity in the manufacturing system to a property that can be observed by sensors.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "is defined for",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#definedOn_1",
+        "domain": null,
+        "range": null,
+        "description": "Relates an entity or context element to the situation or property for which it is defined.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "before",
+        "iri": "http://www.w3.org/2006/time#before",
+        "domain": "TemporalEntity",
+        "range": "TemporalEntity",
+        "description": "Relates a temporal entity that occurs before another temporal entity.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "inside",
+        "iri": "http://www.w3.org/2006/time#inside",
+        "domain": "Interval",
+        "range": "Instant",
+        "description": "Relates a temporal instant or interval that occurs within another interval.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "non-tangential proper part inverse",
+        "iri": "http://www.opengis.net/ont/geosparql#rcc8ntppi",
+        "domain": "SpatialObject",
+        "range": "SpatialObject",
+        "description": "Relates a spatial region that completely contains another region whose boundary it does not touch.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "has result",
+        "iri": "http://www.w3.org/ns/sosa/hasResult",
+        "domain": "Observation",
+        "range": "Result",
+        "description": "Relates an observation to the result that it produced.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "interval after",
+        "iri": "http://www.w3.org/2006/time#intervalAfter",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates a time interval that occurs completely after another interval.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "hasSimpleResult",
+        "iri": "http://www.w3.org/ns/sosa/hasSimpleResult",
+        "domain": "Observation",
+        "range": "integer",
+        "description": "Links an obervation to its result, which contains a value representing the value associated with the observed Property.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "tangential proper part",
+        "iri": "http://www.opengis.net/ont/geosparql#rcc8tpp",
+        "domain": "SpatialObject",
+        "range": "SpatialObject",
+        "description": "Relates a spatial region that is inside another region and touches its boundary.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "has geometry",
+        "iri": "http://www.opengis.net/ont/geosparql#hasGeometry",
+        "domain": "Feature",
+        "range": "Geometry",
+        "description": "Relates a feature to the geometry that represents its spatial extent.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "after",
+        "iri": "http://www.w3.org/2006/time#after",
+        "domain": "TemporalEntity",
+        "range": "TemporalEntity",
+        "description": "Relates a temporal entity that occurs after another temporal entity.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "has end",
+        "iri": "http://www.w3.org/2006/time#hasEnd",
+        "domain": "TemporalEntity",
+        "range": "Instant",
+        "description": "Relates a temporal interval to the instant that marks its end.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "is in location",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#isInlocation",
+        "domain": "Resource",
+        "range": "SpatialObject",
+        "description": "Relates a resource to the spatial object in which it is located.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "operates",
+        "iri": "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#operates",
+        "domain": "Staff",
+        "range": "ManufacturingFacility",
+        "description": "Relates a staff member or operator to the machine or workstation that they operate.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "interval disjoint",
+        "iri": "http://www.w3.org/2006/time#intervalDisjoint",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates two temporal intervals that do not overlap in time.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "interval equals",
+        "iri": "http://www.w3.org/2006/time#intervalEquals",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates two time intervals that have exactly the same temporal extent.",
+        "evidence": null,
+        "raw": {}
+      },
+      {
+        "label": "interval meets",
+        "iri": "http://www.w3.org/2006/time#intervalMeets",
+        "domain": "Interval",
+        "range": "Interval",
+        "description": "Relates an interval that ends exactly when another interval begins.",
+        "evidence": null,
+        "raw": {}
+      }
+    ],
+    "hierarchy_links": [],
+    "axioms": [],
+    "ttl_path": "..\\..\\examples\\KES2026\\runs\\run_20260408_091832\\data\\exports\\ontology_inferred.ttl"
+  },
+  "metadata": {
+    "modality": "unknown",
+    "kg_path": "..\\..\\examples\\KES2026\\runs\\run_20260408_091832\\data\\exports\\kg_inferred.json"
+  }
+}
