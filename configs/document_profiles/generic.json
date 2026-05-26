@@ -1,0 +1,32 @@
+{
+  "profile_name": "generic",
+  "description": "Default generic NeoOLAF profile for unstructured or semi-structured documents.",
+  "language": {
+    "source": null,
+    "target": "en",
+    "translate": false
+  },
+  "chunking": {
+    "strategies": ["fixed"],
+    "preferred_unit_for_extraction": "chunk",
+    "chunk_size": 1500,
+    "overlap": 200
+  },
+  "layers": {
+    "layer01_linguistic_expression_extraction": {
+      "strategy": "generic"
+    },
+    "layer05_candidate_triple_generation": {
+      "strategy": "generic"
+    }
+  },
+  "relations": {
+    "allowed": []
+  },
+  "rag": {
+    "allowed_spaces": {}
+  },
+  "evaluation": {
+    "profile_name": "xquality_loose"
+  }
+}

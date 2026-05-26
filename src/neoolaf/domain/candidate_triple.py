@@ -2,7 +2,7 @@ from __future__ import annotations
 
 # Dataclass utilities
 from dataclasses import dataclass, field
-from typing import List, Optional
+from typing import Any, List, Optional
 
 # Local imports
 from neoolaf.domain.linguistic_expression import Evidence

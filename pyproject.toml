@@ -1,0 +1,33 @@
+[project]
+name = "neoolaf"
+version = "0.1.0"
+description = "NeoOLAF layered ontology population and KG construction framework"
+requires-python = ">=3.10"
+dependencies = [
+    "python-dotenv",
+    "litellm",
+    "pydantic",
+    "rdflib",
+    "networkx",
+    "pandas",
+    "openpyxl",
+    "numpy",
+    "scikit-learn",
+    "rapidfuzz",
+    "tqdm",
+    "requests"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+    "mypy"
+]
+
+[project.scripts]
+neoolaf = "neoolaf.cli.main:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"

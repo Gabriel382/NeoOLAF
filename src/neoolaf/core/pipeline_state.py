@@ -2,7 +2,7 @@ from __future__ import annotations
 
 # Dataclass utilities
 from dataclasses import dataclass, field
-from typing import List, Optional
+from typing import Any, List, Optional
 
 # Local imports
 from neoolaf.domain.documents import Document
@@ -48,6 +48,10 @@ class PipelineState:
     # Directory where intermediate artifacts are stored
     artifact_dir: Optional[str] = None
 
+    # Document profile used to keep document-specific assumptions outside core layers.
+    profile_name: str = "generic"
+    profile_config: dict[str, Any] = field(default_factory=dict)
+
     # Layer 1 outputs
     linguistic_expressions: List[LinguisticExpression] = field(default_factory=list)
 
@@ -88,10 +92,55 @@ class PipelineState:
     completion_candidates: List[CompletionCandidate] = field(default_factory=list)
 
     # Execution logs
-    logs: List[str] = field(default_factory=list)
+    logs: List[Any] = field(default_factory=list)
 
-    def log(self, message: str) -> None:
+    def log(self, message: Any) -> None:
         """
         Append a message to the execution log.
+
+        Logs may be strings for humans or dictionaries for machine-readable
+        partial-run metadata.
         """
         self.logs.append(message)
+
+    def to_dict(self) -> dict[str, Any]:
+        """
+        Serialize this PipelineState into a JSON-safe dictionary.
+
+        Dataclass type information is preserved, so this file can be loaded and
+        used as the starting state for a later partial run.
+        """
+        from neoolaf.core.state_serialization import to_jsonable
+
+        data = to_jsonable(self)
+        if not isinstance(data, dict):
+            raise TypeError("PipelineState serialization did not produce a dictionary.")
+        return data
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "PipelineState":
+        """
+        Rebuild a PipelineState from a dictionary produced by :meth:`to_dict`.
+        """
+        from neoolaf.core.state_serialization import from_jsonable
+
+        state = from_jsonable(data)
+        if not isinstance(state, cls):
+            raise TypeError(f"Serialized object is not a PipelineState: {type(state)!r}")
+        return state
+
+    def save_json(self, path: str) -> None:
+        """Save this state as JSON."""
+        from neoolaf.core.state_serialization import dump_json
+
+        dump_json(path, self)
+
+    @classmethod
+    def load_json(cls, path: str) -> "PipelineState":
+        """Load a PipelineState from JSON."""
+        from neoolaf.core.state_serialization import load_json
+
+        state = load_json(path)
+        if not isinstance(state, cls):
+            raise TypeError(f"JSON file does not contain a PipelineState: {type(state)!r}")
+        return state

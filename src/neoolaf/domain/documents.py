@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import List, Optional
+from typing import Any, List, Optional
 
 
 @dataclass
@@ -13,6 +13,9 @@ class DocumentChunk:
     text: str
     start_char: int
     end_char: int
+
+    # Optional structured metadata, e.g. page/subsection/table provenance.
+    metadata: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
@@ -41,5 +44,17 @@ class Document:
     # Optional translated version used for downstream processing
     translated_text: Optional[str] = None
 
-    # Chunks created after preprocessing
+    # Chunks created after preprocessing.  ``chunks`` is the active view used by
+    # downstream layers.  The specialized views below are kept so a run can switch
+    # from page-level to subsection/table-level extraction without re-parsing the PDF.
     chunks: List[DocumentChunk] = field(default_factory=list)
+    page_chunks: List[DocumentChunk] = field(default_factory=list)
+    subsection_chunks: List[DocumentChunk] = field(default_factory=list)
+    table_chunks: List[DocumentChunk] = field(default_factory=list)
+
+    # Structured units produced by profile-specific preprocessing.
+    structured_units: List[dict[str, Any]] = field(default_factory=list)
+
+    # Optional profile-specific records, e.g. XQuality alarm records extracted
+    # from alarm tables before triple generation.
+    alarm_records: List[dict[str, Any]] = field(default_factory=list)

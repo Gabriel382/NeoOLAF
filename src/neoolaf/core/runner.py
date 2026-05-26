@@ -127,6 +127,17 @@ class Runner:
         raise ValueError(f"Checkpoint at {path} does not contain a valid PipelineState.")
 
     @staticmethod
+    def load_state_artifact(path: str | Path) -> PipelineState:
+        """
+        Load a PipelineState from either a layer `state.json` artifact or a
+        legacy gzipped pickle checkpoint.
+        """
+        path = Path(path)
+        if path.suffix == ".gz" or path.name.endswith(".pkl.gz"):
+            return Runner.load_checkpoint(path)
+        return PipelineState.load_json(str(path))
+
+    @staticmethod
     def load_latest_checkpoint(run_dir: str | Path) -> PipelineState:
         """
         Load the latest checkpoint from manifest.json inside a run directory.
@@ -148,23 +159,70 @@ class Runner:
     # ---------------------------------------------------------
     # Public run
     # ---------------------------------------------------------
-    def run(self, state: PipelineState) -> PipelineState:
-        if state.artifact_dir is None:
+    def run(
+        self,
+        state: PipelineState | None = None,
+        *,
+        from_layer: int = 0,
+        to_layer: int | None = None,
+        skip_layers: set[int | str] | list[int | str] | None = None,
+        resume_from: str | Path | None = None,
+        run_dir: str | Path | None = None,
+    ) -> PipelineState:
+        """
+        Execute the pipeline or a selected subpart of it.
+
+        Args:
+            state:
+                Initial state. Required unless `resume_from` is provided.
+            from_layer:
+                First layer index to run.
+            to_layer:
+                Last layer index to run. If None, runs until the final layer.
+            skip_layers:
+                Layer indexes or layer names to skip.
+            resume_from:
+                Path to a previous `<layer>/state.json` artifact or legacy
+                checkpoint. When provided, it becomes the initial state.
+            run_dir:
+                Optional explicit artifact directory. Useful for ablations.
+        """
+        if resume_from is not None:
+            state = self.load_state_artifact(resume_from)
+
+        if state is None:
+            raise ValueError("Runner.run requires either `state` or `resume_from`.")
+
+        if run_dir is not None:
+            state.artifact_dir = str(run_dir)
+        elif state.artifact_dir is None:
             state.artifact_dir = str(self.prepare_run_dir())
 
         if self.verbose:
             print(f"[NeoOLAF] Run directory: {state.artifact_dir}")
+            print(f"[NeoOLAF] from_layer={from_layer}, to_layer={to_layer}, skip_layers={skip_layers}")
 
         start_time = time.time()
 
+        partial_requested = from_layer != 0 or to_layer is not None or bool(skip_layers)
         if (
             self.execution_config.mode == "chunk_iterative_mode"
             and self.execution_config.chunk_loop_enabled
         ):
+            if partial_requested:
+                raise NotImplementedError(
+                    "Partial layer execution is currently supported in document mode. "
+                    "Disable chunk_iterative_mode for layer-wise ablation runs."
+                )
             state = self._run_chunk_iterative_mode(state)
         else:
-            state = self.pipeline.run(state)
-            self.save_checkpoint(state, "after_full_pipeline")
+            state = self.pipeline.run(
+                state,
+                from_layer=from_layer,
+                to_layer=to_layer,
+                skip_layers=skip_layers,
+            )
+            self.save_checkpoint(state, "after_selected_pipeline")
 
         elapsed = time.time() - start_time
 

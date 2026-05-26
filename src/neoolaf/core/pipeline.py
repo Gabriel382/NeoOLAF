@@ -4,11 +4,9 @@ Layers are executed in sequence and each one receives/returns PipelineState.
 """
 from __future__ import annotations
 
-# Standard library imports
 import time
 from typing import List, Set
 
-# Local imports
 from neoolaf.core.pipeline_state import PipelineState
 from neoolaf.core.base_layer import BaseLayer
 
@@ -17,9 +15,10 @@ class Pipeline:
     """
     Ordered execution container for NeoOLAF layers.
 
-    New feature:
-    - continue_from_last:
-      If True, skip layers that already appear as completed in state.logs.
+    Ablation features:
+    - run only an interval with from_layer / to_layer
+    - skip selected layers with skip_layers
+    - keep completed-layer resume support
     """
 
     def __init__(
@@ -28,27 +27,11 @@ class Pipeline:
         verbose: bool = False,
         continue_from_last: bool = False,
     ) -> None:
-        """
-        Args:
-            layers:
-                Ordered list of layer objects.
-            verbose:
-                If True, print pipeline-level progress.
-            continue_from_last:
-                If True, skip layers already marked as completed in state.logs.
-        """
         self.layers = layers
         self.verbose = verbose
         self.continue_from_last = continue_from_last
 
     def _get_completed_layer_names(self, state: PipelineState) -> Set[str]:
-        """
-        Extract completed layer names from state.logs.
-
-        Expected flexible log formats:
-        - {"layer": "layer_name", "status": "completed"}
-        - {"layer_name": "layer_name", "status": "completed"}
-        """
         completed: Set[str] = set()
 
         if not hasattr(state, "logs") or not state.logs:
@@ -66,26 +49,75 @@ class Pipeline:
 
         return completed
 
-    def run(self, state: PipelineState) -> PipelineState:
+    @staticmethod
+    def _normalize_skip_layers(skip_layers: set[int | str] | list[int | str] | None) -> set[int | str]:
+        if skip_layers is None:
+            return set()
+        return set(skip_layers)
+
+    def selected_layers(
+        self,
+        *,
+        from_layer: int = 0,
+        to_layer: int | None = None,
+        skip_layers: set[int | str] | list[int | str] | None = None,
+    ) -> list[tuple[int, BaseLayer]]:
+        """Return indexed layers selected for this run."""
+        if to_layer is None:
+            to_layer = len(self.layers) - 1
+
+        if from_layer < 0:
+            raise ValueError("from_layer must be >= 0")
+        if to_layer >= len(self.layers):
+            raise ValueError(f"to_layer={to_layer} is out of range for {len(self.layers)} layers")
+        if from_layer > to_layer:
+            raise ValueError("from_layer cannot be greater than to_layer")
+
+        skipped = self._normalize_skip_layers(skip_layers)
+        selected: list[tuple[int, BaseLayer]] = []
+
+        for index, layer in enumerate(self.layers):
+            if index < from_layer or index > to_layer:
+                continue
+            if index in skipped or layer.name in skipped:
+                continue
+            selected.append((index, layer))
+
+        return selected
+
+    def run(
+        self,
+        state: PipelineState,
+        *,
+        from_layer: int = 0,
+        to_layer: int | None = None,
+        skip_layers: set[int | str] | list[int | str] | None = None,
+    ) -> PipelineState:
         """
-        Execute all layers in order.
+        Execute selected layers in order.
         """
+        selected = self.selected_layers(
+            from_layer=from_layer,
+            to_layer=to_layer,
+            skip_layers=skip_layers,
+        )
         total_layers = len(self.layers)
         pipeline_start = time.time()
 
         completed_layers = self._get_completed_layer_names(state)
 
         if self.verbose:
-            print(f"[NeoOLAF] Pipeline started with {total_layers} layers")
+            selected_names = [layer.name for _, layer in selected]
+            print(f"[NeoOLAF] Pipeline has {total_layers} layers")
+            print(f"[NeoOLAF] Selected layers: {selected_names}")
             if self.continue_from_last:
-                print(f"[NeoOLAF] Resume mode enabled")
+                print("[NeoOLAF] Resume mode enabled")
                 print(f"[NeoOLAF] Completed layers found: {sorted(completed_layers)}")
 
-        for idx, layer in enumerate(self.layers, start=1):
+        for index, layer in selected:
             if self.verbose:
-                print(f"[NeoOLAF] Layer {idx-1}/{total_layers-1}: {layer.name}")
+                print(f"[NeoOLAF] Layer {index}/{total_layers-1}: {layer.name}")
 
-            # Skip already completed layers if resume mode is enabled.
             if self.continue_from_last and layer.name in completed_layers:
                 if self.verbose:
                     print(f"[NeoOLAF] Skipping already completed layer: {layer.name}")
