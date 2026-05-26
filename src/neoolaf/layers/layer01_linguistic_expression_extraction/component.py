@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 # Standard library imports
+import json
 import re
-from typing import List, Optional, Tuple
+from pathlib import Path
+from typing import Any, List, Optional, Tuple
 
 from neoolaf.core.base_layer import BaseLayer
+from neoolaf.config.prompt_loader import load_prompt_template, render_prompt_template
 from neoolaf.core.pipeline_state import PipelineState
 from neoolaf.domain.linguistic_expression import LinguisticExpression, Evidence
 from neoolaf.layers.layer01_linguistic_expression_extraction.prompt import (
@@ -61,6 +64,12 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
         """
         Run expression extraction over document chunks.
         """
+        strategy = (state.profile_config or {}).get("layers", {}).get(
+            self.name, {}
+        ).get("strategy", "generic")
+        if strategy == "alarm_table_record":
+            return self._run_alarm_table_record_extraction(state)
+
         expressions: List[LinguisticExpression] = []
         chunks = state.document.chunks
 
@@ -86,7 +95,18 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
                 temperature=self.temperature,
             )
 
-            parsed = self.ollama_backend.extract_json(raw_response)
+            # For ablation/debugging, never let one malformed or empty LLM
+            # response kill the whole layer. Save the raw response and the
+            # parsing error, then continue with the next chunk.
+            parsed = self._safe_extract_json(
+                raw_response=raw_response,
+                state=state,
+                chunk_id=chunk.chunk_id,
+                messages=messages,
+            )
+            if parsed is None:
+                continue
+
             items = parsed.get("expressions", [])
 
             for item in items:
@@ -146,6 +166,217 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
             f"{len(state.linguistic_expressions)} unique expressions"
         )
         return state
+
+
+    def _run_alarm_table_record_extraction(self, state: PipelineState) -> PipelineState:
+        """Extract structured alarm records from table chunks.
+
+        This is profile-specific behavior used by ``xquality_machine32``.  It is
+        intentionally selected by the profile, not hard-coded as the default
+        Layer 1 behavior.
+        """
+        prompt_path = (state.profile_config or {}).get("prompts", {}).get(self.name)
+        template = load_prompt_template(
+            prompt_path or "xquality_machine32/layer01_alarm_table_record_extraction.md",
+            fallback=""
+        )
+        if not template:
+            raise FileNotFoundError(
+                "Missing alarm-table prompt template for Layer 1. "
+                "Expected prompts/xquality_machine32/layer01_alarm_table_record_extraction.md"
+            )
+
+        chunks = state.document.chunks
+        if self.max_chunks is not None:
+            chunks = chunks[: self.max_chunks]
+
+        records: list[dict[str, Any]] = []
+        expressions: list[LinguisticExpression] = []
+        expr_counter = 0
+
+        chunk_iterator = chunks
+        if self.verbose:
+            chunk_iterator = tqdm(chunks, desc="Layer 1 - alarm tables", leave=False)
+
+        for chunk in chunk_iterator:
+            # Skip non-table chunks when the profile selected table-aware extraction.
+            if getattr(chunk, "metadata", {}).get("chunk_type") not in {"table", None}:
+                continue
+
+            user_prompt = render_prompt_template(
+                template,
+                chunk_metadata=json.dumps(getattr(chunk, "metadata", {}), ensure_ascii=False, indent=2),
+                chunk_text=chunk.text,
+            )
+            messages = [
+                {"role": "system", "content": "You are a strict JSON extractor for industrial alarm tables."},
+                {"role": "user", "content": user_prompt},
+            ]
+
+            raw_response = self.ollama_backend.chat(
+                model=state.llm_model,
+                messages=messages,
+                temperature=self.temperature,
+            )
+            parsed = self._safe_extract_json(
+                raw_response=raw_response,
+                state=state,
+                chunk_id=chunk.chunk_id,
+                messages=messages,
+            )
+            if parsed is None:
+                continue
+
+            record = parsed.get("alarm_record", parsed)
+            if not isinstance(record, dict):
+                continue
+            record.setdefault("chunk_id", chunk.chunk_id)
+            record.setdefault("page", getattr(chunk, "metadata", {}).get("page"))
+            record.setdefault("source_metadata", getattr(chunk, "metadata", {}))
+            records.append(record)
+
+            # Also expose record items as Layer-1 linguistic expressions so the
+            # generic downstream/evaluation machinery still sees Layer-1 labels.
+            for text, label in self._record_expression_items(record):
+                if not text:
+                    continue
+                match_span = self._find_expression_span(text, chunk.text)
+                if match_span is not None:
+                    chunk_start_char, chunk_end_char = match_span
+                    doc_start_char = chunk.start_char + chunk_start_char
+                    doc_end_char = chunk.start_char + chunk_end_char
+                    snippet = self._build_snippet(chunk.text, chunk_start_char, chunk_end_char)
+                else:
+                    chunk_start_char = chunk_end_char = doc_start_char = doc_end_char = -1
+                    snippet = chunk.text[:300]
+
+                expressions.append(
+                    LinguisticExpression(
+                        expr_id=f"expr_{expr_counter:05d}",
+                        text=text,
+                        label=label,
+                        justification="Extracted from structured alarm table record.",
+                        evidence=[
+                            Evidence(
+                                chunk_id=chunk.chunk_id,
+                                chunk_start_char=chunk_start_char,
+                                chunk_end_char=chunk_end_char,
+                                doc_start_char=doc_start_char,
+                                doc_end_char=doc_end_char,
+                                snippet=snippet,
+                            )
+                        ],
+                    )
+                )
+                expr_counter += 1
+
+        # Deduplicate expressions but keep all alarm records.
+        dedup: dict[tuple[str, str], LinguisticExpression] = {}
+        for expr in expressions:
+            key = (expr.text.lower(), expr.label.lower())
+            dedup.setdefault(key, expr)
+
+        state.document.alarm_records = records
+        state.linguistic_expressions = list(dedup.values())
+        state.log(
+            f"[{self.name}] extracted {len(records)} alarm records and "
+            f"{len(state.linguistic_expressions)} unique expressions"
+        )
+        return state
+
+    def _record_expression_items(self, record: dict[str, Any]) -> list[tuple[str, str]]:
+        """Return (text, label) pairs from one structured alarm record."""
+        items: list[tuple[str, str]] = []
+        alarm_label = str(record.get("alarm_label_en") or record.get("alarm_label_fr") or "").strip()
+        if alarm_label:
+            items.append((alarm_label, "alarm"))
+        for field_name, label in [
+            ("cause_items", "cause"),
+            ("effect_items", "effect"),
+            ("intervention_items", "intervention"),
+            ("responsible_items", "responsible"),
+            ("reference_items", "reference"),
+        ]:
+            for item in record.get(field_name, []) or []:
+                if isinstance(item, dict):
+                    text = str(item.get("text_en") or item.get("text_fr") or "").strip()
+                else:
+                    text = str(item).strip()
+                if text:
+                    items.append((text, label))
+        return items
+
+
+    def _safe_extract_json(
+        self,
+        *,
+        raw_response: str | None,
+        state: PipelineState,
+        chunk_id: str,
+        messages: list[dict[str, str]],
+    ) -> dict[str, Any] | None:
+        """Parse a layer-1 LLM response without breaking the whole run.
+
+        Empty responses are common when a provider silently fails or when the
+        model does not respect JSON output constraints. During ablation, it is
+        more useful to save the failed response and continue than to lose the
+        whole run.
+        """
+        try:
+            parsed = self.ollama_backend.extract_json(raw_response or "")
+            if not isinstance(parsed, dict):
+                raise ValueError(f"Expected a JSON object, got {type(parsed).__name__}.")
+            if "expressions" not in parsed:
+                parsed["expressions"] = []
+            return parsed
+        except Exception as exc:
+            self._save_failed_response(
+                state=state,
+                chunk_id=chunk_id,
+                raw_response=raw_response or "",
+                messages=messages,
+                error=str(exc),
+            )
+            state.log(
+                {
+                    "layer": self.name,
+                    "status": "json_parse_failed",
+                    "chunk_id": chunk_id,
+                    "error": str(exc),
+                    "raw_response_chars": len(raw_response or ""),
+                }
+            )
+            if self.verbose:
+                print(
+                    f"[NeoOLAF][{self.name}] JSON parse failed for chunk {chunk_id}; "
+                    "saved raw response and continued."
+                )
+            return None
+
+    def _save_failed_response(
+        self,
+        *,
+        state: PipelineState,
+        chunk_id: str,
+        raw_response: str,
+        messages: list[dict[str, str]],
+        error: str,
+    ) -> None:
+        """Save malformed LLM outputs for inspection."""
+        if state.artifact_dir is None:
+            return
+
+        errors_dir = Path(state.artifact_dir) / self.name / "json_errors"
+        errors_dir.mkdir(parents=True, exist_ok=True)
+        safe_chunk_id = re.sub(r"[^a-zA-Z0-9_.-]+", "_", str(chunk_id))
+        base = errors_dir / f"{safe_chunk_id}"
+
+        (base.with_suffix(".raw_response.txt")).write_text(raw_response, encoding="utf-8")
+        (base.with_suffix(".error.txt")).write_text(error, encoding="utf-8")
+        (base.with_suffix(".messages.json")).write_text(
+            json.dumps(messages, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
 
     def _find_expression_span(
         self,
@@ -232,6 +463,9 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
         """
         return {
             "layer": self.name,
+            "profile_name": state.profile_name,
+            "num_alarm_records": len(getattr(state.document, "alarm_records", []) or []),
+            "alarm_records": getattr(state.document, "alarm_records", []) or [],
             "num_expressions": len(state.linguistic_expressions),
             "expressions": [
                 {

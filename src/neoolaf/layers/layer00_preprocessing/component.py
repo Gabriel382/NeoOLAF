@@ -12,6 +12,7 @@ from neoolaf.preprocessing.pdf_parsing import (
     extract_tables_for_export,
     flatten_content_blocks,
 )
+from neoolaf.preprocessing.structured_chunking import build_structured_chunks
 from neoolaf.resources.ocr.base_engine import BaseOCREngine
 from neoolaf.resources.translation.base_backend import BaseTranslationBackend
 
@@ -23,8 +24,9 @@ class PreprocessingLayer(BaseLayer):
     Responsibilities:
     - extract raw content from PDF sources (text-based or OCR-based)
     - clean and normalize extracted plain text
-    - translate content blocks using a pluggable backend (NLLB-200 or DeepTranslator)
-    - chunk the final text for downstream consumption
+    - optionally translate content blocks using a pluggable backend
+    - create fixed, page-level, subsection-level, and table-level chunks
+    - select the active downstream chunk view from the document profile
     """
 
     name = "layer00_preprocessing"
@@ -42,40 +44,9 @@ class PreprocessingLayer(BaseLayer):
         ocr_dpi: int = 300,
         save_intermediate: bool = True,
         verbose: bool = False,
+        profile_config: dict | None = None,
     ) -> None:
-        """
-        Initialize Layer 00.
-
-        Args:
-            chunk_size:
-                Maximum character size of each text chunk.
-            overlap:
-                Number of overlapping characters between consecutive chunks.
-            enable_chunking:
-                Whether to split the final text into chunks.
-            translate:
-                Whether to apply translation to content blocks.
-                Requires a translator backend to be provided.
-            translator:
-                Translation backend instance (any BaseTranslationBackend).
-                Required when translate=True. Examples:
-                - DeepTranslatorBackend (free, online, Google Translate)
-                - NLLB200TranslatorBackend (local, offline, Meta model)
-            source_language:
-                ISO language code of the source document.
-                If None, language is detected automatically.
-            target_language:
-                ISO language code of the translation target (default: English).
-            ocr_engine:
-                Optional OCR engine instance for image-based PDFs.
-                If None, OCR is skipped.
-            ocr_dpi:
-                DPI resolution used when rasterizing PDF pages for OCR.
-            save_intermediate:
-                Whether to save intermediate artifacts.
-            verbose:
-                Whether to print progress information.
-        """
+        """Initialize Layer 00."""
         super().__init__(save_intermediate=save_intermediate, verbose=verbose)
         self.chunk_size = chunk_size
         self.overlap = overlap
@@ -86,6 +57,7 @@ class PreprocessingLayer(BaseLayer):
         self.ocr_engine = ocr_engine
         self.ocr_dpi = ocr_dpi
         self._translator = translator
+        self.profile_config = profile_config or {}
 
         if self.translate and self._translator is None:
             raise ValueError(
@@ -98,11 +70,13 @@ class PreprocessingLayer(BaseLayer):
         """Return the translation backend provided at init."""
         return self._translator
 
+    def _active_profile(self, state: PipelineState) -> dict:
+        return state.profile_config or self.profile_config or {}
+
     def _run(self, state: PipelineState) -> PipelineState:
-        """
-        Extract, clean, translate, and chunk document content.
-        """
+        """Extract, clean, translate, and chunk document content."""
         source = state.document.source_path
+        profile = self._active_profile(state)
 
         # ---------------------------------------------------------
         # 1. PDF extraction
@@ -129,7 +103,6 @@ class PreprocessingLayer(BaseLayer):
         # ---------------------------------------------------------
         if self.translate:
             translator = self._get_translator()
-            # Detect language once on full text, then reuse for all blocks
             source_lang = self.source_language
             if source_lang is None:
                 source_lang = self._detect_language(cleaned)
@@ -148,15 +121,49 @@ class PreprocessingLayer(BaseLayer):
             )
 
         # ---------------------------------------------------------
-        # 4. Chunking
+        # 4. Fixed + structured chunking
         # ---------------------------------------------------------
+        fixed_chunks = []
         if self.enable_chunking:
-            chunks = chunk_text(text_for_chunking, chunk_size=self.chunk_size, overlap=self.overlap)
-            state.document.chunks = chunks
-            state.log(f"[{self.name}] produced {len(chunks)} chunks")
+            fixed_chunks = chunk_text(text_for_chunking, chunk_size=self.chunk_size, overlap=self.overlap)
+
+        prefer_translated = bool(self.translate and getattr(state.document, "translated_text", None))
+        structured = build_structured_chunks(
+            state.document.content_blocks or [],
+            profile_config=profile,
+            prefer_translated=prefer_translated,
+        )
+        state.document.page_chunks = structured.get("page", [])
+        state.document.subsection_chunks = structured.get("subsection", [])
+        state.document.table_chunks = structured.get("table", [])
+        state.document.structured_units = [
+            {
+                "unit_type": key,
+                "num_chunks": len(value),
+                "chunk_ids": [chunk.chunk_id for chunk in value],
+            }
+            for key, value in structured.items()
+        ]
+
+        preferred_unit = profile.get("chunking", {}).get("preferred_unit_for_extraction", "chunk")
+        if preferred_unit == "page" and state.document.page_chunks:
+            state.document.chunks = state.document.page_chunks
+        elif preferred_unit == "subsection" and state.document.subsection_chunks:
+            state.document.chunks = state.document.subsection_chunks
+        elif preferred_unit == "table" and state.document.table_chunks:
+            state.document.chunks = state.document.table_chunks
+        elif self.enable_chunking:
+            state.document.chunks = fixed_chunks
         else:
             state.document.chunks = []
-            state.log(f"[{self.name}] chunking disabled")
+
+        state.log(
+            f"[{self.name}] produced active={len(state.document.chunks)} chunks "
+            f"(preferred_unit={preferred_unit}; fixed={len(fixed_chunks)}, "
+            f"page={len(state.document.page_chunks)}, "
+            f"subsection={len(state.document.subsection_chunks)}, "
+            f"table={len(state.document.table_chunks)})"
+        )
 
         return state
 
@@ -170,24 +177,7 @@ class PreprocessingLayer(BaseLayer):
             return None
 
     def _translate_content_blocks(self, content_blocks, translator, source_language):
-        """
-        Translate each content block using the provided translator backend.
-
-        Text blocks are translated from their ``text`` field; table blocks
-        use the ``html_text`` field as the source. The translated output is
-        stored in ``translated_text`` for all block types.
-
-        Args:
-            content_blocks:
-                List of content block dicts as produced by the PDF extraction step.
-            translator:
-                Instantiated translation backend (any BaseTranslationBackend).
-            source_language:
-                ISO language code of the source text (already detected or provided).
-
-        Returns:
-            List of updated content block dicts with a ``translated_text`` key.
-        """
+        """Translate each content block using the provided translator backend."""
         translated_blocks = []
         for block in content_blocks:
             updated = dict(block)
@@ -209,13 +199,12 @@ class PreprocessingLayer(BaseLayer):
         return translated_blocks
 
     def build_artifact_payload(self, state: PipelineState) -> dict:
-        """
-        Serialize Layer 00 outputs for debugging and reproducibility.
-        """
+        """Serialize Layer 00 outputs for debugging and reproducibility."""
         payload = {
             "layer": self.name,
             "doc_id": state.document.doc_id,
             "source_path": state.document.source_path,
+            "profile_name": state.profile_name,
             "pdf_type": state.document.pdf_type,
             "content_blocks": state.document.content_blocks,
             "tables": extract_tables_for_export(state.document.extraction_result),
@@ -227,8 +216,26 @@ class PreprocessingLayer(BaseLayer):
                     "chunk_id": c.chunk_id,
                     "start_char": c.start_char,
                     "end_char": c.end_char,
+                    "metadata": getattr(c, "metadata", {}),
                     "text_preview": c.text[:300],
                 }
                 for c in state.document.chunks
             ]
+        payload["structured_chunk_counts"] = {
+            "page": len(getattr(state.document, "page_chunks", []) or []),
+            "subsection": len(getattr(state.document, "subsection_chunks", []) or []),
+            "table": len(getattr(state.document, "table_chunks", []) or []),
+        }
+        payload["page_chunks"] = [
+            {"chunk_id": c.chunk_id, "metadata": c.metadata, "text_preview": c.text[:300]}
+            for c in getattr(state.document, "page_chunks", []) or []
+        ]
+        payload["subsection_chunks"] = [
+            {"chunk_id": c.chunk_id, "metadata": c.metadata, "text_preview": c.text[:300]}
+            for c in getattr(state.document, "subsection_chunks", []) or []
+        ]
+        payload["table_chunks"] = [
+            {"chunk_id": c.chunk_id, "metadata": c.metadata, "text_preview": c.text[:300]}
+            for c in getattr(state.document, "table_chunks", []) or []
+        ]
         return payload
