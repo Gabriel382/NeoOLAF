@@ -5,10 +5,16 @@
     "source": "fr",
     "target": "en",
     "translate": false,
-    "llm_translate_inside_extraction": true
+    "llm_translate_inside_extraction": true,
+    "translate_in_preprocessing": false
   },
   "chunking": {
-    "strategies": ["fixed", "page", "subsection", "table"],
+    "strategies": [
+      "fixed",
+      "page",
+      "subsection",
+      "table"
+    ],
     "preferred_unit_for_extraction": "table",
     "chunk_size": 1500,
     "overlap": 200,
@@ -20,17 +26,68 @@
     "enabled": true,
     "table_type": "alarm_table",
     "field_aliases": {
-      "alarm_no": ["Alarme n°", "Alarme no", "Alarm No.", "N° Alarme", "N° Alarme"],
-      "alarm_label": ["texte", "text", "alarm text", "libellé"],
-      "effect": ["effet", "effect", "effects"],
-      "cause": ["cause", "causes"],
-      "intervention": ["intervention", "action", "actions", "troubleshooting", "strategy"],
-      "responsible": ["chargé de l’intervention", "chargé de l'intervention", "responsible", "handled by"],
-      "reference": ["référence", "reference", "schema", "schéma", "diagram"]
-    }
+      "alarm_no": [
+        "Alarme n°",
+        "Alarme no",
+        "Alarm No.",
+        "N° Alarme",
+        "N° Alarme"
+      ],
+      "alarm_label": [
+        "texte",
+        "text",
+        "alarm text",
+        "libellé"
+      ],
+      "effect": [
+        "effet",
+        "effect",
+        "effects"
+      ],
+      "cause": [
+        "cause",
+        "causes"
+      ],
+      "intervention": [
+        "intervention",
+        "action",
+        "actions",
+        "troubleshooting",
+        "strategy"
+      ],
+      "responsible": [
+        "chargé de l’intervention",
+        "chargé de l'intervention",
+        "responsible",
+        "handled by"
+      ],
+      "reference": [
+        "référence",
+        "reference",
+        "schema",
+        "schéma",
+        "diagram"
+      ],
+      "message_no": [
+        "message n°",
+        "message no",
+        "Message No.",
+        "N° Message"
+      ]
+    },
+    "layout_hint": "field_value_rows",
+    "send_raw_html_to_llm": false,
+    "send_compact_table_to_llm": true,
+    "prompt_payload": "field_value_rows_only"
   },
   "relations": {
-    "allowed": ["TRIGGERS", "CAUSES", "REQUIRES", "HANDLED_BY", "REFERENCES"]
+    "allowed": [
+      "TRIGGERS",
+      "CAUSES",
+      "REQUIRES",
+      "HANDLED_BY",
+      "REFERENCES"
+    ]
   },
   "field_to_relation": {
     "cause": "TRIGGERS",
@@ -62,7 +119,8 @@
   "layers": {
     "layer01_linguistic_expression_extraction": {
       "strategy": "alarm_table_record",
-      "input_unit": "table"
+      "input_unit": "table",
+      "max_output_tokens": 2048
     },
     "layer05_candidate_triple_generation": {
       "strategy": "alarm_record_to_triples"
@@ -74,14 +132,44 @@
   },
   "rag": {
     "allowed_spaces": {
-      "layer01_linguistic_expression_extraction": ["source_document", "table_context"],
-      "layer05_candidate_triple_generation": ["source_document", "project_guidelines", "relation_mapping"],
-      "layer10_validation_reasoning": ["source_document", "ontology", "generated_triples"]
+      "layer01_linguistic_expression_extraction": [
+        "source_document",
+        "table_context"
+      ],
+      "layer05_candidate_triple_generation": [
+        "source_document",
+        "project_guidelines",
+        "relation_mapping"
+      ],
+      "layer10_validation_reasoning": [
+        "source_document",
+        "ontology",
+        "generated_triples"
+      ]
     }
   },
   "evaluation": {
     "profile_name": "xquality_loose",
-    "anchor_fields": ["alarm_no"],
+    "anchor_fields": [
+      "alarm_no"
+    ],
     "strict_relation_match": true
+  },
+  "canonical_value_mappings": {
+    "responsible": {
+      "opérateur": "Operator",
+      "operateur": "Operator",
+      "operator": "Operator",
+      "chargé de l’entretien": "Maintenance Technician",
+      "chargé de l'entretien": "Maintenance Technician",
+      "charge de l entretien": "Maintenance Technician",
+      "maintenance responsible": "Maintenance Technician",
+      "maintenance technician": "Maintenance Technician",
+      "programmeur": "Programmer",
+      "programmer": "Programmer",
+      "outilleur-régleur": "Tool Setter",
+      "outilleur-regleur": "Tool Setter",
+      "tool setter": "Tool Setter"
+    }
   }
 }

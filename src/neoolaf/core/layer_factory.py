@@ -20,6 +20,10 @@ def build_default_layers(
     overlap: int = 200,
     max_chunks_layer01: int | None = None,
     profile_config: dict | None = None,
+    translate_preprocessing: bool = False,
+    translator: Any | None = None,
+    source_language: str | None = None,
+    target_language: str = "en",
 ) -> list[BaseLayer]:
     """
     Build the standard layer list.
@@ -48,6 +52,10 @@ def build_default_layers(
             save_intermediate=save_intermediate,
             verbose=verbose,
             profile_config=profile_config,
+            translate=translate_preprocessing,
+            translator=translator,
+            source_language=source_language,
+            target_language=target_language,
         ),
         LinguisticExpressionExtractionLayer(
             ollama_backend=llm_backend,
