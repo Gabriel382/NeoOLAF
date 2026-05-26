@@ -67,6 +67,25 @@ def _build_litellm_backend(model: str) -> Any:
         ) from exc
 
 
+
+
+def _build_preprocessing_translator(name: str):
+    """Build a translation backend for optional Layer 0 translation."""
+    if name == "none":
+        return None
+    if name == "deep":
+        try:
+            from neoolaf.resources.translation.deep_translator_backend import DeepTranslatorBackend
+
+            return DeepTranslatorBackend()
+        except Exception as exc:
+            raise RuntimeError(
+                "Could not build DeepTranslatorBackend. Install deep-translator or "
+                "run without --translate-preprocessing."
+            ) from exc
+    raise ValueError(f"Unknown preprocessing translator: {name}")
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="NeoOLAF ablation CLI")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -86,6 +105,10 @@ def build_parser() -> argparse.ArgumentParser:
     run_parser.add_argument("--rag-backend", default="agentic", choices=["agentic", "none", "ragtree"], help="RAG backend for layer-compatible retrieval stubs")
     run_parser.add_argument("--profile", default="generic", help="Document profile name from configs/document_profiles or a profile file path")
     run_parser.add_argument("--profile-path", default=None, help="Explicit JSON/YAML document profile path")
+    run_parser.add_argument("--translate-preprocessing", action="store_true", help="Optionally translate content during Layer 0 preprocessing and cache it in the state. Disabled by default to avoid extra calls/tokens.")
+    run_parser.add_argument("--preprocessing-translator", default="deep", choices=["deep", "none"], help="Translator backend used only when --translate-preprocessing is enabled.")
+    run_parser.add_argument("--source-language", default=None, help="Optional source language code for preprocessing translation, e.g. fr. If omitted, Layer 0 may auto-detect.")
+    run_parser.add_argument("--target-language", default=None, help="Optional target language code for preprocessing translation. Defaults to the profile language target or en.")
 
     return parser
 
@@ -125,6 +148,14 @@ def run_command(args: argparse.Namespace) -> None:
 
     rag_backend = build_rag_backend(args.rag_backend)
 
+    language_cfg = profile_config.get("language", {}) if isinstance(profile_config, dict) else {}
+    target_language = args.target_language or language_cfg.get("target") or "en"
+    translator = None
+    if args.translate_preprocessing:
+        translator = _build_preprocessing_translator(args.preprocessing_translator)
+        if translator is None:
+            raise ValueError("--translate-preprocessing requires a preprocessing translator other than 'none'.")
+
     layers = build_default_layers(
         llm_backend=llm_backend,
         rag_backend=rag_backend,
@@ -133,7 +164,12 @@ def run_command(args: argparse.Namespace) -> None:
         overlap=args.overlap,
         max_chunks_layer01=args.max_chunks_layer01,
         profile_config=profile_config,
+        translate_preprocessing=bool(args.translate_preprocessing),
+        translator=translator,
+        source_language=args.source_language,
+        target_language=target_language,
     )
+
     pipeline = Pipeline(layers=layers, verbose=args.verbose)
     runner = Runner(pipeline=pipeline, verbose=args.verbose)
 
@@ -154,6 +190,10 @@ def run_command(args: argparse.Namespace) -> None:
             "profile_path": args.profile_path,
             "resolved_profile_name": document_profile.name,
             "profile_config": profile_config,
+            "translate_preprocessing": bool(args.translate_preprocessing),
+            "preprocessing_translator": args.preprocessing_translator,
+            "source_language": args.source_language,
+            "target_language": target_language,
         },
     )
 
