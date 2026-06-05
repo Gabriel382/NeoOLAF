@@ -195,6 +195,7 @@ def build_page_chunks(content_blocks: list[dict[str, Any]], *, prefer_translated
 def build_table_chunks(content_blocks: list[dict[str, Any]], *, prefer_translated: bool = False) -> list[DocumentChunk]:
     chunks: list[DocumentChunk] = []
     offset = 0
+    seen_chunk_ids: dict[str, int] = defaultdict(int)
     for idx, block in enumerate(content_blocks):
         if block.get("type") != "table":
             continue
@@ -204,7 +205,13 @@ def build_table_chunks(content_blocks: list[dict[str, Any]], *, prefer_translate
         text = _block_text(block, prefer_translated=prefer_translated)
         if not text:
             continue
-        chunk_id = f"table_p{str(page or 'unknown').zfill(4)}_{_clean_id(subsection)}"
+        base_chunk_id = f"table_p{str(page or 'unknown').zfill(4)}_{_clean_id(subsection)}"
+        seen_chunk_ids[base_chunk_id] += 1
+        chunk_id = (
+            base_chunk_id
+            if seen_chunk_ids[base_chunk_id] == 1
+            else f"{base_chunk_id}_{seen_chunk_ids[base_chunk_id]:02d}"
+        )
         compact_table = _compact_table_from_block(block)
         metadata = {
             "chunk_type": "table",

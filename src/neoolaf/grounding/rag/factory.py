@@ -17,6 +17,16 @@ class NullRAGBackend(AgenticRAGBackend):
     def __init__(self) -> None:
         super().__init__(engine=None)
 
+    def retrieve(self, request):
+        from neoolaf.grounding.rag.base import RAGResult
+
+        return RAGResult(
+            context="",
+            sources=[],
+            confidence=None,
+            metadata={"backend": self.name, "note": "RAG disabled."},
+        )
+
 
 def build_rag_backend(name: str = "agentic", **kwargs: Any) -> RAGBackend:
     normalized = (name or "agentic").strip().lower()

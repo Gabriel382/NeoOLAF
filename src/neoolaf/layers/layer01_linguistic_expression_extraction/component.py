@@ -4,12 +4,22 @@ from __future__ import annotations
 import json
 import re
 import shutil
+import time
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any, List, Optional, Tuple
 
 from neoolaf.core.base_layer import BaseLayer
 from neoolaf.config.prompt_loader import load_prompt_template, render_prompt_template
 from neoolaf.core.pipeline_state import PipelineState
+from neoolaf.grounding.rag.base import RAGBackend, RAGRequest
+from neoolaf.profiles.identity_policy import apply_record_identity_policy
+from neoolaf.schemas.structured_output import (
+    StructuredOutputConfig,
+    build_litellm_response_format,
+    validate_with_pydantic,
+)
 from neoolaf.domain.linguistic_expression import LinguisticExpression, Evidence
 from neoolaf.layers.layer01_linguistic_expression_extraction.prompt import (
     build_system_prompt,
@@ -40,6 +50,14 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
         temperature: float = 0.0,
         save_intermediate: bool = True,
         verbose: bool = False,
+        rag_backend: RAGBackend | None = None,
+        max_concurrency: int = 1,
+        retry_failed_calls: int = 0,
+        retry_sleep_seconds: float = 2.0,
+        rag_enabled: bool | None = None,
+        rag_top_k: int = 0,
+        rag_max_chars: int = 0,
+        failed_chunks_file: str | None = None,
     ) -> None:
         """
         Initialize Layer 1.
@@ -60,6 +78,15 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
         self.ollama_backend = ollama_backend
         self.max_chunks = max_chunks
         self.temperature = temperature
+        self.rag_backend = rag_backend
+        self.max_concurrency = max(1, int(max_concurrency or 1))
+        self.retry_failed_calls = max(0, int(retry_failed_calls or 0))
+        self.retry_sleep_seconds = float(retry_sleep_seconds or 0.0)
+        self.rag_enabled = rag_enabled
+        self.rag_top_k = max(0, int(rag_top_k or 0))
+        self.rag_max_chars = max(0, int(rag_max_chars or 0))
+        self.failed_chunks_file = failed_chunks_file
+        self._failure_lock = threading.Lock()
 
     def _run(self, state: PipelineState) -> PipelineState:
         """
@@ -189,7 +216,7 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
 
         # Avoid mixing stale JSON errors from older runs with the current run.
         # This makes the ablation artifacts much easier to inspect.
-        self._clear_json_errors(state)
+        self._clear_layer_runtime_artifacts(state)
 
         chunks = state.document.chunks
         if self.max_chunks is not None:
@@ -199,104 +226,105 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
         expressions: list[LinguisticExpression] = []
         expr_counter = 0
 
-        chunk_iterator = chunks
-        if self.verbose:
-            chunk_iterator = tqdm(chunks, desc="Layer 1 - alarm tables", leave=False)
-
-        for chunk in chunk_iterator:
+        selected_chunks = []
+        for chunk in chunks:
             # Skip non-table chunks when the profile selected table-aware extraction.
             if getattr(chunk, "metadata", {}).get("chunk_type") not in {"table", None}:
                 continue
+            selected_chunks.append(chunk)
 
-            compact_unit = self._build_prompt_unit(chunk, state)
-            language_cfg = (state.profile_config or {}).get("language", {})
-            output_language = str(language_cfg.get("target") or "en")
-            translate_inside_layer = bool(language_cfg.get("llm_translate_inside_extraction", True))
-            translation_instruction = (
-                f"Translate extracted source-language content to concise {output_language}."
-                if translate_inside_layer
-                else "Do not translate extracted content. Keep node labels in the source language."
-            )
+        failed_chunk_ids = self._load_failed_chunk_filter()
+        if failed_chunk_ids is not None:
+            before = len(selected_chunks)
+            selected_chunks = [chunk for chunk in selected_chunks if chunk.chunk_id in failed_chunk_ids]
+            state.log({
+                "layer": self.name,
+                "status": "filtered_to_failed_chunks",
+                "failed_chunks_file": self.failed_chunks_file,
+                "requested_failed_chunks": sorted(failed_chunk_ids),
+                "selected_before_filter": before,
+                "selected_after_filter": len(selected_chunks),
+            })
 
-            user_prompt = render_prompt_template(
-                template,
-                table_unit_json=json.dumps(compact_unit, ensure_ascii=False, indent=2),
-                output_language=output_language,
-                translation_instruction=translation_instruction,
-                # Backward-compatible variables for older prompt templates.
-                chunk_metadata=json.dumps(self._compact_metadata_for_prompt(chunk), ensure_ascii=False, indent=2),
-                chunk_text=chunk.text,
-            )
-            messages = [
-                {"role": "system", "content": "You are a strict JSON extractor for industrial alarm tables."},
-                {"role": "user", "content": user_prompt},
-            ]
-
-            max_output_tokens = self._layer_max_output_tokens(state)
-            raw_response = self._chat_with_optional_max_tokens(
-                model=state.llm_model,
-                messages=messages,
-                temperature=self.temperature,
-                max_tokens=max_output_tokens,
-            )
-            parsed = self._safe_extract_json(
-                raw_response=raw_response,
-                state=state,
-                chunk_id=chunk.chunk_id,
-                messages=messages,
-            )
-            if parsed is None:
-                continue
-
-            chunk_records = self._extract_alarm_records_from_parsed(parsed)
-            if not chunk_records:
-                self._save_failed_response(
-                    state=state,
-                    chunk_id=chunk.chunk_id,
-                    raw_response=raw_response or "",
-                    messages=messages,
-                    error="Parsed JSON did not contain an alarm_record object or list of records.",
+        # Layer 1 units are independent, so they can be processed in parallel.
+        # Keep max_concurrency=1 for deterministic/debug runs.
+        if self.max_concurrency > 1 and len(selected_chunks) > 1:
+            if self.verbose:
+                print(
+                    f"[NeoOLAF][{self.name}] Processing {len(selected_chunks)} units "
+                    f"with max_concurrency={self.max_concurrency}"
                 )
-                continue
-
-            for record in chunk_records:
-                record = self._postprocess_alarm_record(record, chunk, state)
-                records.append(record)
-
-                # Also expose record items as Layer-1 linguistic expressions so the
-                # generic downstream/evaluation machinery still sees Layer-1 labels.
-                for text, label in self._record_expression_items(record):
-                    if not text:
-                        continue
-                    match_span = self._find_expression_span(text, chunk.text)
-                    if match_span is not None:
-                        chunk_start_char, chunk_end_char = match_span
-                        doc_start_char = chunk.start_char + chunk_start_char
-                        doc_end_char = chunk.start_char + chunk_end_char
-                        snippet = self._build_snippet(chunk.text, chunk_start_char, chunk_end_char)
-                    else:
-                        chunk_start_char = chunk_end_char = doc_start_char = doc_end_char = -1
-                        snippet = chunk.text[:300]
-
-                    expressions.append(
-                        LinguisticExpression(
+            with ThreadPoolExecutor(max_workers=self.max_concurrency) as executor:
+                future_to_index = {
+                    executor.submit(self._process_alarm_table_chunk, chunk, state, template): index
+                    for index, chunk in enumerate(selected_chunks)
+                }
+                iterator = as_completed(future_to_index)
+                if self.verbose:
+                    iterator = tqdm(iterator, total=len(future_to_index), desc="Layer 1 - alarm tables", leave=False)
+                results: list[tuple[int, Any, list[dict[str, Any]]]] = []
+                for future in iterator:
+                    index = future_to_index[future]
+                    chunk = selected_chunks[index]
+                    try:
+                        results.append((index, chunk, future.result()))
+                    except Exception as exc:
+                        error = f"Unhandled parallel worker error: {type(exc).__name__}: {exc}"
+                        self._save_failed_response(
+                            state=state,
+                            chunk_id=chunk.chunk_id,
+                            raw_response="",
+                            messages=[],
+                            error=error,
+                        )
+                        self._record_failed_chunk(
+                            state=state,
+                            chunk=chunk,
+                            attempts=1 + self.retry_failed_calls,
+                            error=error,
+                            raw_response="",
+                            messages=[],
+                        )
+                        state.log({
+                            "layer": self.name,
+                            "status": "worker_failed",
+                            "chunk_id": chunk.chunk_id,
+                            "error": str(exc),
+                        })
+                results.sort(key=lambda item: item[0])
+                for _, chunk, chunk_records in results:
+                    for record in chunk_records:
+                        records.append(record)
+                        for text, label in self._record_expression_items(record):
+                            if not text:
+                                continue
+                            expr = self._make_linguistic_expression(
+                                expr_id=f"expr_{expr_counter:05d}",
+                                text=text,
+                                label=label,
+                                chunk=chunk,
+                            )
+                            expressions.append(expr)
+                            expr_counter += 1
+        else:
+            chunk_iterator = selected_chunks
+            if self.verbose:
+                chunk_iterator = tqdm(selected_chunks, desc="Layer 1 - alarm tables", leave=False)
+            for chunk in chunk_iterator:
+                chunk_records = self._process_alarm_table_chunk(chunk, state, template)
+                for record in chunk_records:
+                    records.append(record)
+                    for text, label in self._record_expression_items(record):
+                        if not text:
+                            continue
+                        expr = self._make_linguistic_expression(
                             expr_id=f"expr_{expr_counter:05d}",
                             text=text,
                             label=label,
-                            justification="Extracted from structured alarm table record.",
-                            evidence=[
-                                Evidence(
-                                    chunk_id=chunk.chunk_id,
-                                    chunk_start_char=chunk_start_char,
-                                    chunk_end_char=chunk_end_char,
-                                    doc_start_char=doc_start_char,
-                                    doc_end_char=doc_end_char,
-                                    snippet=snippet,
-                                )
-                            ],
+                            chunk=chunk,
                         )
-                    )
-                    expr_counter += 1
+                        expressions.append(expr)
+                        expr_counter += 1
 
         # Deduplicate expressions but keep all alarm records.
         dedup: dict[tuple[str, str], LinguisticExpression] = {}
@@ -311,6 +339,433 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
             f"{len(state.linguistic_expressions)} unique expressions"
         )
         return state
+
+
+    def _process_alarm_table_chunk(
+        self,
+        chunk,
+        state: PipelineState,
+        template: str,
+    ) -> list[dict[str, Any]]:
+        """Process one table/record unit and return post-processed records.
+
+        This method is intentionally side-effect-light so it can be called from
+        a ThreadPoolExecutor. It retries the whole unit on transport/API errors,
+        empty responses, JSON parsing failures, or schema problems. Only after
+        all attempts fail is the chunk written to ``failed_chunks.json``.
+        """
+        total_attempts = 1 + self.retry_failed_calls
+        last_error = ""
+        last_messages: list[dict[str, str]] = []
+        last_raw_response = ""
+
+        for attempt in range(total_attempts):
+            try:
+                compact_unit = self._build_prompt_unit(chunk, state)
+                rag_context = self._retrieve_optional_rag_context(compact_unit, chunk, state)
+                if rag_context:
+                    compact_unit["optional_rag_guidance"] = rag_context
+
+                language_cfg = (state.profile_config or {}).get("language", {})
+                output_language = str(language_cfg.get("target") or "en")
+                translate_inside_layer = bool(language_cfg.get("llm_translate_inside_extraction", True))
+                translation_instruction = (
+                    f"Translate extracted source-language content to concise {output_language}."
+                    if translate_inside_layer
+                    else "Do not translate extracted content. Keep node labels in the source language."
+                )
+
+                user_prompt = render_prompt_template(
+                    template,
+                    table_unit_json=json.dumps(compact_unit, ensure_ascii=False, indent=2),
+                    output_language=output_language,
+                    translation_instruction=translation_instruction,
+                    few_shot_examples=self._few_shot_examples_text(state),
+                    # Backward-compatible variables for older prompt templates.
+                    chunk_metadata=json.dumps(self._compact_metadata_for_prompt(chunk), ensure_ascii=False, indent=2),
+                    chunk_text=chunk.text,
+                )
+                messages = [
+                    {"role": "system", "content": "You are a strict JSON extractor for industrial alarm tables."},
+                    {"role": "user", "content": user_prompt},
+                ]
+                last_messages = messages
+
+                max_output_tokens = self._layer_max_output_tokens(state)
+                structured_cfg = StructuredOutputConfig.from_profile(state.profile_config, self.name)
+                response_format = build_litellm_response_format(structured_cfg)
+                raw_response = self._chat_with_optional_max_tokens(
+                    model=state.llm_model,
+                    messages=messages,
+                    temperature=self.temperature,
+                    max_tokens=max_output_tokens,
+                    response_format=response_format,
+                    fallback_to_json_parse=structured_cfg.fallback_to_json_parse,
+                )
+                last_raw_response = raw_response or ""
+
+                parsed = self._safe_extract_json(
+                    raw_response=raw_response,
+                    state=state,
+                    chunk_id=chunk.chunk_id,
+                    messages=messages,
+                )
+                if parsed is None:
+                    last_error = "JSON parse failed or model returned an empty/non-JSON response."
+                    raise ValueError(last_error)
+
+                chunk_records = self._extract_alarm_records_from_parsed(parsed)
+                if not chunk_records:
+                    last_error = "Parsed JSON did not contain an alarm_record object or list of records."
+                    self._save_failed_response(
+                        state=state,
+                        chunk_id=chunk.chunk_id,
+                        raw_response=raw_response or "",
+                        messages=messages,
+                        error=last_error,
+                    )
+                    raise ValueError(last_error)
+
+                validated_records = []
+                for record in chunk_records:
+                    validated_records.append(
+                        self._validate_alarm_record_with_optional_schema(
+                            record=record,
+                            state=state,
+                            chunk_id=chunk.chunk_id,
+                            messages=messages,
+                            raw_response=raw_response or "",
+                            structured_cfg=structured_cfg,
+                        )
+                    )
+
+                return [
+                    self._postprocess_alarm_record(record, chunk, state, compact_unit)
+                    for record in validated_records
+                ]
+
+            except Exception as exc:
+                last_error = f"{type(exc).__name__}: {exc}"
+                state.log({
+                    "layer": self.name,
+                    "status": "unit_attempt_failed",
+                    "chunk_id": getattr(chunk, "chunk_id", None),
+                    "attempt": attempt + 1,
+                    "max_attempts": total_attempts,
+                    "error": last_error,
+                })
+                self._save_failed_response(
+                    state=state,
+                    chunk_id=f"{chunk.chunk_id}.attempt_{attempt + 1}",
+                    raw_response=last_raw_response,
+                    messages=last_messages,
+                    error=last_error,
+                )
+                if attempt < total_attempts - 1 and self.retry_sleep_seconds > 0:
+                    time.sleep(self.retry_sleep_seconds)
+
+        self._record_failed_chunk(
+            state=state,
+            chunk=chunk,
+            attempts=total_attempts,
+            error=last_error or "Unknown Layer 1 unit failure.",
+            raw_response=last_raw_response,
+            messages=last_messages,
+        )
+        state.log({
+            "layer": self.name,
+            "status": "unit_failed_after_retries",
+            "chunk_id": chunk.chunk_id,
+            "attempts": total_attempts,
+            "error": last_error,
+        })
+        return []
+
+    def _few_shot_examples_text(self, state: PipelineState) -> str:
+        """Return optional tiny few-shot examples from the active profile.
+
+        Few-shot guidance can improve the alarm/message identity decision, but
+        it also increases prompt size.  Keeping this profile-controlled makes it
+        easy to disable for cheaper runs or other datasets.
+        """
+        layer_cfg = (state.profile_config or {}).get("layers", {}).get(self.name, {}) or {}
+        prompt_cfg = layer_cfg.get("prompt_options", {}) or {}
+        fewshot_cfg = prompt_cfg.get("few_shot_examples", {}) or {}
+        if not bool(fewshot_cfg.get("enabled", False)):
+            return ""
+
+        mode = str(fewshot_cfg.get("mode", "tiny")).lower()
+        if mode == "off":
+            return ""
+
+        examples = fewshot_cfg.get("examples")
+        if isinstance(examples, list) and examples:
+            lines = ["Tiny examples:"]
+            for example in examples:
+                if isinstance(example, str):
+                    lines.append(f"- {example.strip()}")
+                elif isinstance(example, dict):
+                    source = str(example.get("source") or example.get("input") or "").strip()
+                    target = str(example.get("target") or example.get("output") or "").strip()
+                    if source and target:
+                        lines.append(f"- {source} -> {target}")
+            return "\n".join(lines).strip() + "\n" if len(lines) > 1 else ""
+
+        # Default ultra-short examples for profiles that ask for tiny few-shot
+        # guidance but do not define custom examples.
+        return (
+            "Tiny examples:\n"
+            "- Alarm: header `Alarme n°: 1001`, label `URGENCE ACTIVE` "
+            "-> record_type=alarm, record_id=1001, alarm_no=1001, message_no=null.\n"
+            "- Message: header `message n°: 2060`, body mentions `voir alarme n° 1083` "
+            "-> record_type=message, record_id=2060, message_no=2060, alarm_no=null; 1083 is only a reference.\n"
+        )
+
+    def _failed_chunks_manifest_path(self, state: PipelineState) -> Path | None:
+        """Return the failed-chunk manifest path for the current run."""
+        if state.artifact_dir is None:
+            return None
+        return Path(state.artifact_dir) / self.name / "failed_chunks.json"
+
+    def _record_failed_chunk(
+        self,
+        *,
+        state: PipelineState,
+        chunk,
+        attempts: int,
+        error: str,
+        raw_response: str,
+        messages: list[dict[str, str]],
+    ) -> None:
+        """Append a final failed unit to failed_chunks.json and detail files.
+
+        This manifest allows a later run to process only failed chunks through
+        ``--layer01-failed-chunks-file`` instead of rerunning the entire layer.
+        """
+        manifest_path = self._failed_chunks_manifest_path(state)
+        if manifest_path is None:
+            return
+        manifest_path.parent.mkdir(parents=True, exist_ok=True)
+        details_dir = manifest_path.parent / "failed_chunk_details"
+        details_dir.mkdir(parents=True, exist_ok=True)
+
+        metadata = getattr(chunk, "metadata", {}) or {}
+        entry = {
+            "chunk_id": getattr(chunk, "chunk_id", None),
+            "page": metadata.get("page"),
+            "title": metadata.get("title"),
+            "subsection_key": metadata.get("subsection_key"),
+            "attempts": attempts,
+            "error": error,
+            "text_preview": str(getattr(chunk, "text", "") or "")[:500],
+        }
+
+        safe_chunk_id = self._safe_artifact_name(str(entry.get("chunk_id") or "unknown"))
+        (details_dir / f"{safe_chunk_id}.error.txt").write_text(error or "", encoding="utf-8")
+        (details_dir / f"{safe_chunk_id}.raw_response.txt").write_text(raw_response or "", encoding="utf-8")
+        (details_dir / f"{safe_chunk_id}.messages.json").write_text(
+            json.dumps(messages or [], ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
+        with self._failure_lock:
+            if manifest_path.exists():
+                try:
+                    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+                except Exception:
+                    manifest = {"failed_chunks": []}
+            else:
+                manifest = {"failed_chunks": []}
+
+            failed_chunks = manifest.setdefault("failed_chunks", [])
+            # Replace an existing entry for the same chunk id instead of
+            # duplicating it when retries/parallel workers are involved.
+            failed_chunks = [item for item in failed_chunks if item.get("chunk_id") != entry.get("chunk_id")]
+            failed_chunks.append(entry)
+            manifest["failed_chunks"] = sorted(failed_chunks, key=lambda item: str(item.get("chunk_id") or ""))
+            manifest["count"] = len(manifest["failed_chunks"])
+            manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    def _load_failed_chunk_filter(self) -> set[str] | None:
+        """Load a chunk-id filter for rerunning only failed Layer 1 units."""
+        if not self.failed_chunks_file:
+            return None
+        path = Path(self.failed_chunks_file)
+        if not path.exists():
+            raise FileNotFoundError(f"Layer 1 failed chunks file not found: {path}")
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(data, list):
+            chunk_ids = [str(item) for item in data]
+        else:
+            chunk_ids = []
+            for item in data.get("failed_chunks", []):
+                if isinstance(item, str):
+                    chunk_ids.append(item)
+                elif isinstance(item, dict) and item.get("chunk_id"):
+                    chunk_ids.append(str(item["chunk_id"]))
+        return set(chunk_ids)
+
+    def _safe_artifact_name(self, value: str) -> str:
+        """Return a filesystem-safe artifact stem."""
+        return re.sub(r"[^A-Za-z0-9_.-]+", "_", value).strip("_") or "unknown"
+
+    def _validate_alarm_record_with_optional_schema(
+        self,
+        *,
+        record: dict[str, Any],
+        state: PipelineState,
+        chunk_id: str,
+        messages: list[dict[str, str]],
+        raw_response: str,
+        structured_cfg: StructuredOutputConfig,
+    ) -> dict[str, Any]:
+        """Validate one Layer 1 record with optional Pydantic schema.
+
+        Validation is profile-controlled.  In non-strict mode, validation
+        failures are logged and the original record continues through the
+        deterministic profile post-processors.
+        """
+        if not structured_cfg.enabled:
+            return record
+
+        wrapped = {"alarm_record": record}
+        try:
+            validated = validate_with_pydantic(wrapped, structured_cfg)
+            if isinstance(validated, dict) and isinstance(validated.get("alarm_record"), dict):
+                return validated["alarm_record"]
+            return record
+        except Exception as exc:
+            error = f"Pydantic structured-output validation failed: {exc}"
+            self._save_failed_response(
+                state=state,
+                chunk_id=f"{chunk_id}.schema_validation",
+                raw_response=raw_response,
+                messages=messages,
+                error=error,
+            )
+            state.log({
+                "layer": self.name,
+                "status": "schema_validation_failed",
+                "chunk_id": chunk_id,
+                "schema_name": structured_cfg.schema_name,
+                "strict_validation": structured_cfg.strict_validation,
+                "error": str(exc),
+            })
+            if structured_cfg.strict_validation:
+                raise
+            return record
+
+
+    def _make_linguistic_expression(
+        self,
+        *,
+        expr_id: str,
+        text: str,
+        label: str,
+        chunk,
+    ) -> LinguisticExpression:
+        """Build a LinguisticExpression from one record item."""
+        match_span = self._find_expression_span(text, chunk.text)
+        if match_span is not None:
+            chunk_start_char, chunk_end_char = match_span
+            doc_start_char = chunk.start_char + chunk_start_char
+            doc_end_char = chunk.start_char + chunk_end_char
+            snippet = self._build_snippet(chunk.text, chunk_start_char, chunk_end_char)
+        else:
+            chunk_start_char = chunk_end_char = doc_start_char = doc_end_char = -1
+            snippet = chunk.text[:300]
+
+        return LinguisticExpression(
+            expr_id=expr_id,
+            text=text,
+            label=label,
+            justification="Extracted from structured alarm/message table record.",
+            evidence=[
+                Evidence(
+                    chunk_id=chunk.chunk_id,
+                    chunk_start_char=chunk_start_char,
+                    chunk_end_char=chunk_end_char,
+                    doc_start_char=doc_start_char,
+                    doc_end_char=doc_end_char,
+                    snippet=snippet,
+                )
+            ],
+        )
+
+    def _retrieve_optional_rag_context(
+        self,
+        compact_unit: dict[str, Any],
+        chunk,
+        state: PipelineState,
+    ) -> str:
+        """Return a tiny optional RAG hint for Layer 1, or an empty string.
+
+        Layer 1 should remain source-driven.  RAG is therefore disabled by
+        default and, when enabled, capped by both top_k and max_chars.  This
+        makes it a small guidance channel rather than a large context injection.
+        """
+        layer_cfg = (state.profile_config or {}).get("layers", {}).get(self.name, {}) or {}
+        rag_cfg = (state.profile_config or {}).get("rag", {}) or {}
+        enabled = self.rag_enabled
+        if enabled is None:
+            enabled = bool(layer_cfg.get("rag_enabled", False) or rag_cfg.get("enabled_for_layer01", False))
+        if not enabled or self.rag_backend is None:
+            return ""
+
+        top_k = self.rag_top_k or int(layer_cfg.get("rag_top_k") or rag_cfg.get("top_k_layer01") or 0)
+        max_chars = self.rag_max_chars or int(layer_cfg.get("rag_max_chars") or rag_cfg.get("max_chars_layer01") or 0)
+        if top_k <= 0 or max_chars <= 0:
+            return ""
+
+        snippets = self._build_lightweight_layer01_rag_snippets(state)
+        request = RAGRequest(
+            query="Guidance for extracting one structured record from an industrial table.",
+            layer_name=self.name,
+            document_id=getattr(state.document, "doc_id", None),
+            allowed_spaces=(rag_cfg.get("allowed_spaces", {}) or {}).get(self.name, []),
+            top_k=top_k,
+            metadata={
+                "chunk_id": getattr(chunk, "chunk_id", None),
+                "record_id_hint": compact_unit.get("record_id_hint"),
+                "record_type_hint": compact_unit.get("record_type_hint"),
+                "lightweight_profile_context": snippets,
+            },
+        )
+        try:
+            result = self.rag_backend.retrieve(request)
+        except Exception as exc:
+            state.log({
+                "layer": self.name,
+                "status": "rag_failed",
+                "chunk_id": getattr(chunk, "chunk_id", None),
+                "error": str(exc),
+            })
+            return ""
+
+        context = (result.context or "").strip()
+        if not context:
+            return ""
+        return context[:max_chars]
+
+    def _build_lightweight_layer01_rag_snippets(self, state: PipelineState) -> list[str]:
+        """Build tiny profile-derived snippets for the lightweight RAG stub.
+
+        Layer 1 already receives field aliases through ``profile_guidance``.
+        Repeating those aliases through RAG increases tokens and can make the
+        prompt look more important than the source table.  The lightweight RAG
+        context is therefore intentionally limited to short behavioral guidance.
+        """
+        return [
+            (
+                "Identifier rule: record_id_hint and record_type_hint are the source of truth. "
+                "Mentions such as 'voir alarme n° 1083' inside a cause/intervention cell are cross-references, "
+                "not the current record identifier."
+            ),
+            (
+                "Reference rule: page/input/diagram mentions and cross-references to other alarms/messages "
+                "should be concise reference_items, not duplicated as actions."
+            ),
+        ]
 
     def _layer_max_output_tokens(self, state: PipelineState) -> int | None:
         """Return per-layer output-token budget from the active profile."""
@@ -330,40 +785,63 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
         messages: list[dict[str, str]],
         temperature: float,
         max_tokens: int | None,
+        response_format: dict[str, Any] | None = None,
+        fallback_to_json_parse: bool = True,
     ) -> str:
         """Call the backend with max_tokens when the backend supports it.
 
         OpenAI/LiteLLM-compatible backends accept ``max_tokens``.  Some old
         local backends do not, so we fall back cleanly to the legacy call.
         """
-        if max_tokens is None:
-            return self.ollama_backend.chat(
-                model=model,
-                messages=messages,
-                temperature=temperature,
-            )
+        kwargs: dict[str, Any] = {}
+        if max_tokens is not None:
+            kwargs["max_tokens"] = max_tokens
+        if response_format is not None:
+            kwargs["response_format"] = response_format
+            kwargs["fallback_to_json_parse"] = fallback_to_json_parse
         try:
             return self.ollama_backend.chat(
                 model=model,
                 messages=messages,
                 temperature=temperature,
-                max_tokens=max_tokens,
+                **kwargs,
             )
         except TypeError:
+            # Legacy backends may not accept max_tokens/response_format.  Retry
+            # with the old minimal signature.
             return self.ollama_backend.chat(
                 model=model,
                 messages=messages,
                 temperature=temperature,
             )
 
-    def _clear_json_errors(self, state: PipelineState) -> None:
-        """Remove stale JSON error files for this layer before a new run."""
+    def _clear_layer_runtime_artifacts(self, state: PipelineState) -> None:
+        """Remove stale Layer 1 runtime artifacts before a new run.
+
+        This clears old JSON/API errors and the current run's failed chunk
+        manifest. Without this cleanup, stale failures from older experiments
+        are easily mistaken for current failures.
+        """
         if state.artifact_dir is None:
             return
-        errors_dir = Path(state.artifact_dir) / self.name / "json_errors"
+        layer_dir = Path(state.artifact_dir) / self.name
+        errors_dir = layer_dir / "json_errors"
         if errors_dir.exists():
             shutil.rmtree(errors_dir)
         errors_dir.mkdir(parents=True, exist_ok=True)
+
+        failed_details_dir = layer_dir / "failed_chunk_details"
+        if failed_details_dir.exists():
+            shutil.rmtree(failed_details_dir)
+        failed_details_dir.mkdir(parents=True, exist_ok=True)
+
+        failed_manifest = layer_dir / "failed_chunks.json"
+        if failed_manifest.exists():
+            failed_manifest.unlink()
+
+    # Backward-compatible alias used by older tests or notebooks.
+    def _clear_json_errors(self, state: PipelineState) -> None:
+        self._clear_layer_runtime_artifacts(state)
 
     def _build_prompt_unit(self, chunk, state: PipelineState) -> dict[str, Any]:
         """Build the compact structured unit sent to the LLM.
@@ -397,6 +875,7 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
             "llm_translate_inside_extraction": profile.get("language", {}).get("llm_translate_inside_extraction", True),
         }
 
+        current_header_text = self._current_record_header_text(chunk, field_value_rows)
         unit: dict[str, Any] = {
             "unit_id": chunk.chunk_id,
             "unit_type": metadata.get("chunk_type"),
@@ -404,6 +883,14 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
             "title": metadata.get("title"),
             "section_key": metadata.get("section_key"),
             "subsection_key": metadata.get("subsection_key"),
+            "current_header_text": current_header_text,
+            "record_identity_source": {
+                "current_header_text": current_header_text,
+                "record_type_hint": identifier_hint.get("record_type"),
+                "record_id_hint": identifier_hint.get("record_id"),
+                "alarm_no_hint": identifier_hint.get("alarm_no"),
+                "message_no_hint": identifier_hint.get("message_no"),
+            },
             "record_type_hint": identifier_hint.get("record_type"),
             "record_id_hint": identifier_hint.get("record_id"),
             "alarm_no_hint": identifier_hint.get("alarm_no"),
@@ -420,6 +907,35 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
             unit["fallback_text"] = str(getattr(chunk, "text", "") or "")[:1200]
 
         return unit
+
+    def _current_record_header_text(self, chunk, field_value_rows: list[dict[str, Any]]) -> str | None:
+        """Return a short header identifying the current structural record.
+
+        This is not XQuality-specific.  It simply prefers the first row/header
+        and falls back to text previews.  The profile identity policy interprets
+        the header patterns.
+        """
+        metadata = getattr(chunk, "metadata", {}) or {}
+        compact_table = metadata.get("compact_table") or {}
+        rows = compact_table.get("rows") or []
+        if rows:
+            first_row = rows[0]
+            texts = []
+            for cell in first_row:
+                if isinstance(cell, dict) and cell.get("text"):
+                    texts.append(str(cell.get("text")))
+            if texts:
+                # Add the recovered number if the table extraction stored it in
+                # preview text but not in the first compact row.
+                preview = str(metadata.get("html_text") or metadata.get("html_text_preview") or getattr(chunk, "text", "") or "")
+                first_line = preview.splitlines()[0] if preview else ""
+                number = re.search(r"\d{2,8}", first_line or preview[:80])
+                suffix = f" {number.group(0)}" if number and not re.search(r"\d", " ".join(texts)) else ""
+                return " ".join(texts).strip() + suffix
+
+        preview = str(metadata.get("html_text") or metadata.get("html_text_preview") or getattr(chunk, "text", "") or "")
+        return preview[:120].strip() or None
+
 
     def _compact_metadata_for_prompt(self, chunk) -> dict[str, Any]:
         """Return prompt-safe metadata without verbose raw HTML duplication."""
@@ -486,6 +1002,7 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
         record: dict[str, Any],
         chunk,
         state: PipelineState,
+        compact_unit: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
         """Apply deterministic, profile-aware cleanup after LLM extraction.
 
@@ -501,6 +1018,16 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
         # 1) Deterministic record identifier recovery.  Do not rely on the LLM
         # for identifiers used as evaluation anchors.
         record = self._recover_record_identifiers(record, chunk)
+
+        # 1b) Profile-driven identity policy. This is the generic hook that lets
+        # each dataset decide whether unit hints override the LLM identity.
+        # It prevents cross-references inside body text from replacing the
+        # current record id, without hard-coding XQuality-specific logic here.
+        record = apply_record_identity_policy(
+            record=record,
+            unit=compact_unit or self._build_prompt_unit(chunk, state),
+            profile_config=state.profile_config,
+        )
 
         # 2) Stable provenance fields.
         record.setdefault("chunk_id", chunk.chunk_id)
@@ -531,32 +1058,72 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
     def _recover_record_identifiers(self, record: dict[str, Any], chunk) -> dict[str, Any]:
         """Recover record_id, record_type, alarm_no and message_no.
 
-        The LLM can translate and segment text, but identifiers must be
-        deterministic because they anchor the evaluation.  This method supports
-        both alarm and message tables without making Layer 1 Machine32-only.
+        The chunk-level hints are the trusted source for the *current* record.
+        The LLM may see cross-references such as ``voir alarme n° 1083`` inside
+        a cause/intervention cell and accidentally replace the current message
+        id with that referenced alarm id.  This method prevents that: when a
+        chunk hint exists, it overrides any conflicting model identifier.
         """
         hints = self._recover_record_identifier_from_chunk(chunk)
+        hint_type = hints.get("record_type")
+        hint_record_id = hints.get("record_id")
+        hint_alarm_no = hints.get("alarm_no")
+        hint_message_no = hints.get("message_no")
 
-        record_type = record.get("record_type") or hints.get("record_type") or "unknown"
-        record_id = record.get("record_id") or hints.get("record_id")
-        alarm_no = record.get("alarm_no") or hints.get("alarm_no")
-        message_no = record.get("message_no") or hints.get("message_no")
+        # Highest-priority path: the preprocessor/chunk metadata identified the
+        # current record.  Trust it over the LLM output.
+        if hint_record_id:
+            if hint_type == "message":
+                record["record_type"] = "message"
+                record["record_id"] = hint_record_id
+                record["message_no"] = hint_message_no or hint_record_id
+                record["alarm_no"] = None
+                return record
+            if hint_type == "alarm":
+                record["record_type"] = "alarm"
+                record["record_id"] = hint_record_id
+                record["alarm_no"] = hint_alarm_no or hint_record_id
+                record["message_no"] = None
+                return record
 
-        # If the model only filled alarm_no/message_no, infer the generic fields.
-        if not record_id:
-            record_id = alarm_no or message_no
+            # Generic future-proof fallback when a profile has an identifier but
+            # not a known alarm/message type.
+            record["record_type"] = record.get("record_type") or hint_type or "unknown"
+            record["record_id"] = hint_record_id
+            record["alarm_no"] = hint_alarm_no
+            record["message_no"] = hint_message_no
+            return record
+
+        # No reliable chunk hint. Fall back to the model output, while keeping
+        # the generic fields consistent.
+        record_type = record.get("record_type") or "unknown"
+        alarm_no = record.get("alarm_no")
+        message_no = record.get("message_no")
+        record_id = record.get("record_id") or alarm_no or message_no
+
         if record_type in (None, "", "unknown"):
-            if alarm_no:
-                record_type = "alarm"
-            elif message_no:
+            if message_no:
                 record_type = "message"
+            elif alarm_no:
+                record_type = "alarm"
             else:
                 record_type = "unknown"
 
-        record["record_type"] = record_type
-        record["record_id"] = record_id
-        record["alarm_no"] = alarm_no if record_type == "alarm" or alarm_no else record.get("alarm_no")
-        record["message_no"] = message_no if record_type == "message" or message_no else record.get("message_no")
+        if record_type == "message":
+            record["record_type"] = "message"
+            record["record_id"] = record_id or message_no
+            record["message_no"] = message_no or record_id
+            record["alarm_no"] = None
+        elif record_type == "alarm":
+            record["record_type"] = "alarm"
+            record["record_id"] = record_id or alarm_no
+            record["alarm_no"] = alarm_no or record_id
+            record["message_no"] = None
+        else:
+            record["record_type"] = "unknown"
+            record["record_id"] = record_id
+            record["alarm_no"] = alarm_no
+            record["message_no"] = message_no
         return record
 
     def _recover_record_identifier_from_chunk(self, chunk) -> dict[str, str | None]:
@@ -602,15 +1169,21 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
                         return result("alarm", m.group(0))
                     return result(str(metadata.get("record_type") or "unknown"), m.group(0))
 
-        # Field/value rows: robust to table schemas that explicitly keep the id.
-        for row in compact_table.get("field_value_rows") or []:
-            field = str(row.get("field") or "")
-            values = row.get("values") or []
-            joined = " ".join(str(v) for v in values if v is not None)
-            haystack = f"{field} {joined}"
-            found = self._extract_record_identifier_from_text(haystack)
-            if found.get("record_id"):
-                return found
+        # Current header and source preview have priority over body rows.
+        # Body rows may contain cross-references such as "voir alarme n° 1083";
+        # these must not become the current record identity when the table starts
+        # with "message n°: 2060".
+        current_header = self._current_record_header_text(chunk, compact_table.get("field_value_rows") or [])
+        priority_texts = [
+            str(current_header or ""),
+            str(metadata.get("title") or ""),
+            str(metadata.get("html_text") or "")[:300],
+            str(getattr(chunk, "text", "") or "")[:300],
+        ]
+        priority_combined = "\n".join(t for t in priority_texts if t)
+        found = self._extract_record_identifier_from_text(priority_combined)
+        if found.get("record_id"):
+            return found
 
         # Fallback text and previews. This fixes rows where the compact header
         # was kept but the id value was lost.
@@ -626,6 +1199,18 @@ class LinguisticExpressionExtractionLayer(BaseLayer):
         found = self._extract_record_identifier_from_text(combined)
         if found.get("record_id"):
             return found
+
+        # Last resort: scan field/value rows. This is deliberately after the
+        # current header/source preview to avoid cross-reference overrides.
+        for row in compact_table.get("field_value_rows") or []:
+            field = str(row.get("field") or "")
+            values = row.get("values") or []
+            joined = " ".join(str(v) for v in values if v is not None)
+            haystack = f"{field} {joined}"
+            found = self._extract_record_identifier_from_text(haystack)
+            if found.get("record_id"):
+                return found
+
         return result(None, None)
 
     def _extract_record_identifier_from_text(self, text: str) -> dict[str, str | None]:

@@ -28,6 +28,9 @@ class CandidateTripleGenerationLayer(BaseLayer):
     def __init__(
         self,
         max_assertions: int | None = None,
+        max_concurrency: int = 1,
+        retry_failed_calls: int = 0,
+        retry_sleep_seconds: float = 2.0,
         save_intermediate: bool = True,
         verbose: bool = False,
     ) -> None:
@@ -44,6 +47,11 @@ class CandidateTripleGenerationLayer(BaseLayer):
         """
         super().__init__(save_intermediate=save_intermediate, verbose=verbose)
         self.max_assertions = max_assertions
+        # Layer 5 is deterministic for the ontology-aware XQuality strategy.
+        # These options are accepted for CLI/orchestrator consistency and future LLM variants.
+        self.max_concurrency = max(1, int(max_concurrency or 1))
+        self.retry_failed_calls = max(0, int(retry_failed_calls or 0))
+        self.retry_sleep_seconds = float(retry_sleep_seconds or 0.0)
 
     def _run(self, state: PipelineState) -> PipelineState:
         """
@@ -51,24 +59,65 @@ class CandidateTripleGenerationLayer(BaseLayer):
         """
         strategy = (state.profile_config or {}).get("layers", {}).get(
             self.name, {}
-        ).get("strategy", "generic")
+        ).get("strategy", "ontology_aware_assertion_to_triples")
+        strategy = str(strategy or "generic")
+
         if strategy == "alarm_record_to_triples" and getattr(state.document, "alarm_records", None):
             return self._run_alarm_record_to_triples(state)
 
-        assertions = state.candidate_relation_assertions
+        # Default and recommended path after Layer 4: convert candidate relation
+        # assertions into graph triples while preserving ontology hints.
+        if state.candidate_relation_assertions:
+            return self._run_assertions_to_triples(state)
 
-        # Optional debug limit
+        state.candidate_triples = []
+        state.log(f"[{self.name}] no candidate relation assertions available; generated 0 triples")
+        return state
+
+    def _run_assertions_to_triples(self, state: PipelineState) -> PipelineState:
+        """Convert Layer 4 relation assertions into ontology-aware candidate triples.
+
+        This strategy is deterministic. It does not call the LLM. The RAG backend
+        may be active at pipeline level, but Layer 5 only materializes the
+        ontology-aware assertions produced by Layer 4.
+        """
+        assertions = list(state.candidate_relation_assertions or [])
+
         if self.max_assertions is not None:
             assertions = assertions[: self.max_assertions]
+
+        candidate_by_id = self._candidate_index(state)
+        relation_by_id = {cand.candidate_id: cand for cand in state.relation_candidates}
 
         triples: List[CandidateTriple] = []
         triple_counter = 0
 
         assertion_iterator = assertions
         if self.verbose:
+            # No LLM calls are made here; the progress bar is only for very large runs.
             assertion_iterator = tqdm(assertions, desc="Layer 5 - assertions", leave=False)
 
         for assertion in assertion_iterator:
+            source_candidate = candidate_by_id.get(assertion.source_candidate_id)
+            target_candidate = candidate_by_id.get(assertion.target_candidate_id)
+            relation_candidate = relation_by_id.get(assertion.relation_candidate_id)
+
+            metadata = {
+                "strategy": "ontology_aware_assertion_to_triples",
+                "source_assertion_id": assertion.assertion_id,
+                "source_ontology_hints": getattr(source_candidate, "ontology_hints", []) if source_candidate else [],
+                "target_ontology_hints": getattr(target_candidate, "ontology_hints", []) if target_candidate else [],
+                "relation_ontology_hints": getattr(relation_candidate, "ontology_hints", []) if relation_candidate else [],
+                "source_definition": getattr(source_candidate, "definition", None) if source_candidate else None,
+                "target_definition": getattr(target_candidate, "definition", None) if target_candidate else None,
+                "relation_definition": getattr(relation_candidate, "definition", None) if relation_candidate else None,
+                "promote_to_ontology": self._should_promote_to_ontology(
+                    source_candidate=source_candidate,
+                    relation_candidate=relation_candidate,
+                    target_candidate=target_candidate,
+                ),
+            }
+
             triples.append(
                 CandidateTriple(
                     triple_id=f"triple_{triple_counter:05d}",
@@ -84,13 +133,13 @@ class CandidateTripleGenerationLayer(BaseLayer):
                     justification=assertion.justification,
                     confidence=assertion.confidence,
                     provenance=assertion.evidence,
-                    metadata={},
+                    metadata=metadata,
                 )
             )
             triple_counter += 1
 
-        # Deduplicate by semantic triple identity inside the same chunk
-        dedup = {}
+        # Deduplicate by semantic triple identity inside the same chunk.
+        dedup: dict[tuple[str, str, str, str], CandidateTriple] = {}
         for triple in triples:
             key = (
                 triple.subject_id,
@@ -98,15 +147,43 @@ class CandidateTripleGenerationLayer(BaseLayer):
                 triple.object_id,
                 triple.chunk_id,
             )
-            if key not in dedup:
-                dedup[key] = triple
+            dedup.setdefault(key, triple)
 
         state.candidate_triples = list(dedup.values())
         state.log(
-            f"[layer05_candidate_triple_generation] generated "
+            f"[{self.name}] strategy=ontology_aware_assertion_to_triples; generated "
             f"{len(state.candidate_triples)} candidate triples"
         )
         return state
+
+
+    def _candidate_index(self, state: PipelineState) -> dict[str, Any]:
+        """Index all typed candidates by ID."""
+        result: dict[str, Any] = {}
+        for candidate in (
+            list(state.entity_candidates or [])
+            + list(state.event_candidates or [])
+            + list(state.attribute_candidates or [])
+            + list(state.relation_candidates or [])
+        ):
+            candidate_id = getattr(candidate, "candidate_id", None)
+            if candidate_id:
+                result[str(candidate_id)] = candidate
+        return result
+
+    @staticmethod
+    def _should_promote_to_ontology(
+        *,
+        source_candidate: Any | None,
+        relation_candidate: Any | None,
+        target_candidate: Any | None,
+    ) -> bool:
+        """Return True if any involved candidate is marked for ontology promotion."""
+        for candidate in (source_candidate, relation_candidate, target_candidate):
+            for hint in getattr(candidate, "ontology_hints", []) or []:
+                if str(hint).strip().lower() == "promote_to_ontology:true":
+                    return True
+        return False
 
 
     def _run_alarm_record_to_triples(self, state: PipelineState) -> PipelineState:
