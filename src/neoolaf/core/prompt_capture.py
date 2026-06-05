@@ -7,6 +7,7 @@ from typing import Any, Dict, List
 import json
 import re
 import time
+import threading
 
 
 @dataclass
@@ -40,6 +41,7 @@ class PromptCaptureBackend:
         self.backend = backend
         self.layer_name = layer_name
         self.records: list[PromptRecord] = []
+        self._lock = threading.Lock()
 
     def chat(
         self,
@@ -48,8 +50,9 @@ class PromptCaptureBackend:
         temperature: float = 0.0,
         **kwargs: Any,
     ) -> str:
-        record = self._build_record(model=model, messages=messages, temperature=temperature)
-        self.records.append(record)
+        with self._lock:
+            record = self._build_record(model=model, messages=messages, temperature=temperature)
+            self.records.append(record)
         return self.backend.chat(model=model, messages=messages, temperature=temperature, **kwargs)
 
     def _build_record(

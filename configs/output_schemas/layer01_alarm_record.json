@@ -1,0 +1,232 @@
+{
+  "$defs": {
+    "ExtractedItem": {
+      "description": "Generic text item extracted from one source field.",
+      "properties": {
+        "text_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Text En"
+        },
+        "text_fr": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Text Fr"
+        },
+        "evidence_field": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Field"
+        }
+      },
+      "title": "ExtractedItem",
+      "type": "object"
+    },
+    "Layer01AlarmRecord": {
+      "description": "Layer 1 structured record used by XQuality-like table extraction.\n\nThe name keeps historical compatibility with `alarm_record`, but the schema\nsupports both alarms and messages through record_type/message_no.",
+      "properties": {
+        "record_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Record Id"
+        },
+        "record_type": {
+          "default": "unknown",
+          "description": "Usually alarm, message, or unknown.",
+          "title": "Record Type",
+          "type": "string"
+        },
+        "alarm_no": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alarm No"
+        },
+        "message_no": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Message No"
+        },
+        "alarm_label_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alarm Label En"
+        },
+        "alarm_label_fr": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alarm Label Fr"
+        },
+        "cause_items": {
+          "items": {
+            "$ref": "#/$defs/ExtractedItem"
+          },
+          "title": "Cause Items",
+          "type": "array"
+        },
+        "effect_items": {
+          "items": {
+            "$ref": "#/$defs/ExtractedItem"
+          },
+          "title": "Effect Items",
+          "type": "array"
+        },
+        "intervention_items": {
+          "items": {
+            "$ref": "#/$defs/ExtractedItem"
+          },
+          "title": "Intervention Items",
+          "type": "array"
+        },
+        "responsible_items": {
+          "items": {
+            "$ref": "#/$defs/ExtractedItem"
+          },
+          "title": "Responsible Items",
+          "type": "array"
+        },
+        "reference_items": {
+          "items": {
+            "$ref": "#/$defs/ReferenceItem"
+          },
+          "title": "Reference Items",
+          "type": "array"
+        }
+      },
+      "title": "Layer01AlarmRecord",
+      "type": "object"
+    },
+    "ReferenceItem": {
+      "description": "Reference to a page, input, diagram, document section, or another record.",
+      "properties": {
+        "text_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Text En"
+        },
+        "text_fr": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Text Fr"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "input": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Input"
+        },
+        "evidence_field": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Field"
+        }
+      },
+      "title": "ReferenceItem",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "alarm_record": {
+      "$ref": "#/$defs/Layer01AlarmRecord"
+    }
+  },
+  "required": [
+    "alarm_record"
+  ],
+  "title": "Layer01AlarmRecordOutput",
+  "type": "object"
+}

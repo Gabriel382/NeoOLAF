@@ -19,7 +19,12 @@ Critical rule for identifiers:
 - If `message_no_hint` is not null, copy it exactly into `alarm_record.message_no` and set `record_type` to `message`.
 - If hints are null but a field/value row contains an alarm or message number, extract it.
 - Never leave the identifier null when the table contains an alarm/message number.
+- The hints identify the current table record. Do not replace them with cross-references found inside cause/intervention text.
+- Mentions such as "voir alarme n° 1083" are references to another record, not the current record identifier. Put them in reference_items if useful.
+- If `current_header_text` starts with "message n°", the current record MUST be a message, even if the body mentions an alarm.
+- If `current_header_text` starts with "Alarme n°" or "alarme n°", the current record MUST be an alarm.
 
+$few_shot_examples
 Return this JSON shape only:
 {
   "alarm_record": {
