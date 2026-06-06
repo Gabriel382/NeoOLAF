@@ -35,12 +35,50 @@ def _parse_skip_layers(value: str | None) -> list[int | str]:
     return result
 
 
-def _needs_llm(from_layer: int, to_layer: int | None, skip_layers: list[int | str]) -> bool:
+def _profile_layer_strategy(profile_config: dict[str, Any] | None, layer_name: str) -> str:
+    """Return a profile strategy string for a layer, if configured."""
+    if not isinstance(profile_config, dict):
+        return ""
+    layers_cfg = profile_config.get("layers", {})
+    if not isinstance(layers_cfg, dict):
+        return ""
+    layer_cfg = layers_cfg.get(layer_name, {})
+    if not isinstance(layer_cfg, dict):
+        return ""
+    return str(layer_cfg.get("strategy", ""))
+
+
+def _needs_llm(
+    from_layer: int,
+    to_layer: int | None,
+    skip_layers: list[int | str],
+    profile_config: dict[str, Any] | None = None,
+) -> bool:
     to = 12 if to_layer is None else to_layer
     skipped = set(skip_layers)
+
+    deterministic_no_llm = {
+        5: {"ontology_aware_assertion_to_triples"},
+        6: {"ontology_aware_triple_concept_relation_induction"},
+        7: {"ontology_aware_parent_hint_hierarchy"},
+        8: {"ontology_aware_axiom_schema_generation"},
+        9: {"ontology_aware_schema_to_general_axioms"},
+    }
+    layer_names = {
+        5: "layer05_candidate_triple_generation",
+        6: "layer06_concept_relation_induction",
+        7: "layer07_hierarchisation",
+        8: "layer08_axiom_schemata_extraction",
+        9: "layer09_general_axiom_extraction",
+    }
+
     for idx in range(from_layer, to + 1):
         if idx in skipped:
             continue
+        if idx in deterministic_no_llm:
+            strategy = _profile_layer_strategy(profile_config, layer_names[idx])
+            if strategy in deterministic_no_llm[idx]:
+                continue
         if idx in LLM_LAYER_INDEXES:
             return True
     return False
@@ -126,6 +164,13 @@ def build_parser() -> argparse.ArgumentParser:
     run_parser.add_argument("--max-concurrency-layer03", type=int, default=None, help="Bounded parallel LLM calls for independent Layer 3 local typing. Defaults to profile setting or 1.")
     run_parser.add_argument("--max-concurrency-layer04", type=int, default=None, help="Bounded parallel relation assertion extraction for Layer 4 when the selected strategy needs it. The ontology-aware record strategy is deterministic and normally does not need LLM calls.")
     run_parser.add_argument("--max-concurrency-layer05", type=int, default=None, help="Accepted for Layer 5 CLI/orchestrator consistency. The ontology-aware assertion-to-triples strategy is deterministic and does not call the LLM.")
+    run_parser.add_argument("--max-concurrency-layer06", type=int, default=None, help="Accepted for Layer 6 CLI/orchestrator consistency. The ontology-aware concept/relation induction strategy is deterministic and does not call the LLM.")
+    run_parser.add_argument("--max-concurrency-layer07", type=int, default=None, help="Bounded parallel hierarchy induction for Layer 7 when the selected strategy needs it. The ontology-aware hierarchy strategy is deterministic and normally does not call the LLM.")
+    run_parser.add_argument("--max-concurrency-layer08", type=int, default=None, help="Bounded parallel axiom schema extraction for Layer 8 when the selected strategy needs it. The ontology-aware schema strategy is deterministic and normally does not call the LLM.")
+    run_parser.add_argument("--max-concurrency-layer09", type=int, default=None, help="Bounded parallel general axiom extraction for Layer 9 when the selected strategy needs it. The ontology-aware schema-to-axioms strategy is deterministic and normally does not call the LLM.")
+    run_parser.add_argument("--max-concurrency-layer10", type=int, default=None, help="Bounded parallel validation/reasoning checks for Layer 10. The ontology-aware validation strategy is deterministic and does not call the LLM.")
+    run_parser.add_argument("--max-concurrency-layer11", type=int, default=None, help="Bounded parallel inference/completion generation for Layer 11. The ontology-aware completion strategy is deterministic and does not call the LLM.")
+    run_parser.add_argument("--max-concurrency-layer12", type=int, default=None, help="Accepted for Layer 12 CLI/orchestrator consistency. Serialization is deterministic and normally does not use parallel calls.")
     run_parser.add_argument("--max-expressions-layer02", type=int, default=None, help="Optional expression limit for Layer 2 debugging/ablation.")
     run_parser.add_argument("--max-expressions-layer03", type=int, default=None, help="Optional expression limit for Layer 3 debugging/ablation.")
     run_parser.add_argument("--layer02-failed-expressions-file", default=None, help="Optional failed_expressions.json from a previous Layer 2 run. When provided, Layer 2 only reruns the listed expressions.")
@@ -188,6 +233,41 @@ def run_command(args: argparse.Namespace) -> None:
         if isinstance(profile_config, dict)
         else {}
     )
+    layer06_cfg = (
+        profile_config.get("layers", {}).get("layer06_concept_relation_induction", {})
+        if isinstance(profile_config, dict)
+        else {}
+    )
+    layer07_cfg = (
+        profile_config.get("layers", {}).get("layer07_hierarchisation", {})
+        if isinstance(profile_config, dict)
+        else {}
+    )
+    layer08_cfg = (
+        profile_config.get("layers", {}).get("layer08_axiom_schemata_extraction", {})
+        if isinstance(profile_config, dict)
+        else {}
+    )
+    layer09_cfg = (
+        profile_config.get("layers", {}).get("layer09_general_axiom_extraction", {})
+        if isinstance(profile_config, dict)
+        else {}
+    )
+    layer10_cfg = (
+        profile_config.get("layers", {}).get("layer10_validation_reasoning", {})
+        if isinstance(profile_config, dict)
+        else {}
+    )
+    layer11_cfg = (
+        profile_config.get("layers", {}).get("layer11_inference_completion", {})
+        if isinstance(profile_config, dict)
+        else {}
+    )
+    layer12_cfg = (
+        profile_config.get("layers", {}).get("layer12_serialization", {})
+        if isinstance(profile_config, dict)
+        else {}
+    )
     max_concurrency_layer01 = int(
         args.max_concurrency_layer01
         if args.max_concurrency_layer01 is not None
@@ -212,6 +292,41 @@ def run_command(args: argparse.Namespace) -> None:
         args.max_concurrency_layer05
         if args.max_concurrency_layer05 is not None
         else orchestration_cfg.get("max_concurrency_layer05", layer05_cfg.get("max_concurrency", 1))
+    )
+    max_concurrency_layer06 = int(
+        args.max_concurrency_layer06
+        if args.max_concurrency_layer06 is not None
+        else orchestration_cfg.get("max_concurrency_layer06", layer06_cfg.get("max_concurrency", 1))
+    )
+    max_concurrency_layer07 = int(
+        args.max_concurrency_layer07
+        if args.max_concurrency_layer07 is not None
+        else orchestration_cfg.get("max_concurrency_layer07", layer07_cfg.get("max_concurrency", 1))
+    )
+    max_concurrency_layer08 = int(
+        args.max_concurrency_layer08
+        if args.max_concurrency_layer08 is not None
+        else orchestration_cfg.get("max_concurrency_layer08", layer08_cfg.get("max_concurrency", 1))
+    )
+    max_concurrency_layer09 = int(
+        args.max_concurrency_layer09
+        if args.max_concurrency_layer09 is not None
+        else orchestration_cfg.get("max_concurrency_layer09", layer09_cfg.get("max_concurrency", 1))
+    )
+    max_concurrency_layer10 = int(
+        args.max_concurrency_layer10
+        if args.max_concurrency_layer10 is not None
+        else orchestration_cfg.get("max_concurrency_layer10", layer10_cfg.get("max_concurrency", 1))
+    )
+    max_concurrency_layer11 = int(
+        args.max_concurrency_layer11
+        if args.max_concurrency_layer11 is not None
+        else orchestration_cfg.get("max_concurrency_layer11", layer11_cfg.get("max_concurrency", 1))
+    )
+    max_concurrency_layer12 = int(
+        args.max_concurrency_layer12
+        if args.max_concurrency_layer12 is not None
+        else orchestration_cfg.get("max_concurrency_layer12", layer12_cfg.get("max_concurrency", 1))
     )
     retry_failed_calls = int(
         args.retry_failed_calls
@@ -270,7 +385,7 @@ def run_command(args: argparse.Namespace) -> None:
         )
 
     llm_backend = None
-    if _needs_llm(args.from_layer, args.to_layer, skip_layers):
+    if _needs_llm(args.from_layer, args.to_layer, skip_layers, profile_config):
         llm_backend = _build_litellm_backend(args.model)
 
     rag_backend = build_rag_backend(args.rag_backend)
@@ -295,6 +410,13 @@ def run_command(args: argparse.Namespace) -> None:
         max_concurrency_layer03=max_concurrency_layer03,
         max_concurrency_layer04=max_concurrency_layer04,
         max_concurrency_layer05=max_concurrency_layer05,
+        max_concurrency_layer06=max_concurrency_layer06,
+        max_concurrency_layer07=max_concurrency_layer07,
+        max_concurrency_layer08=max_concurrency_layer08,
+        max_concurrency_layer09=max_concurrency_layer09,
+        max_concurrency_layer10=max_concurrency_layer10,
+        max_concurrency_layer11=max_concurrency_layer11,
+        max_concurrency_layer12=max_concurrency_layer12,
         retry_failed_calls=retry_failed_calls,
         retry_sleep_seconds=retry_sleep_seconds,
         rag_layer01_enabled=rag_layer01_enabled,
@@ -324,6 +446,13 @@ def run_command(args: argparse.Namespace) -> None:
         max_concurrency_layer03=max_concurrency_layer03,
         max_concurrency_layer04=max_concurrency_layer04,
         max_concurrency_layer05=max_concurrency_layer05,
+        max_concurrency_layer06=max_concurrency_layer06,
+        max_concurrency_layer07=max_concurrency_layer07,
+        max_concurrency_layer08=max_concurrency_layer08,
+        max_concurrency_layer09=max_concurrency_layer09,
+        max_concurrency_layer10=max_concurrency_layer10,
+        max_concurrency_layer11=max_concurrency_layer11,
+        max_concurrency_layer12=max_concurrency_layer12,
         retry_failed_calls=retry_failed_calls,
         retry_sleep_seconds=retry_sleep_seconds,
         rag_backend=args.rag_backend,
@@ -361,6 +490,13 @@ def run_command(args: argparse.Namespace) -> None:
             "max_concurrency_layer03": max_concurrency_layer03,
             "max_concurrency_layer04": max_concurrency_layer04,
             "max_concurrency_layer05": max_concurrency_layer05,
+            "max_concurrency_layer06": max_concurrency_layer06,
+            "max_concurrency_layer07": max_concurrency_layer07,
+            "max_concurrency_layer08": max_concurrency_layer08,
+            "max_concurrency_layer09": max_concurrency_layer09,
+            "max_concurrency_layer10": max_concurrency_layer10,
+            "max_concurrency_layer11": max_concurrency_layer11,
+            "max_concurrency_layer12": max_concurrency_layer12,
             "retry_failed_calls": retry_failed_calls,
             "retry_sleep_seconds": retry_sleep_seconds,
             "rag_layer01_enabled": rag_layer01_enabled,

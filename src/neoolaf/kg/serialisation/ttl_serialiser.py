@@ -4,7 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 
 # Third-party imports
-from rdflib import Graph, Literal, Namespace, RDF, URIRef
+from rdflib import Graph, Literal, Namespace, RDF, RDFS, OWL, URIRef
 
 
 class KGTTLSerialiser:
@@ -23,6 +23,27 @@ class KGTTLSerialiser:
         self.base_uri = base_uri.rstrip("/") + "/"
         self.NEO = Namespace(self.base_uri)
 
+
+    @staticmethod
+    def _safe_local_name(value: str | None, fallback: str = "unnamed") -> str:
+        """Return a stable URI-safe local name while preserving readable labels."""
+        import re
+        raw = str(value or "").strip() or fallback
+        raw = raw.replace("&", "and")
+        raw = re.sub(r"[^A-Za-z0-9_]+", "_", raw)
+        raw = re.sub(r"_+", "_", raw).strip("_")
+        return raw or fallback
+
+    def _relation_uri(self, relation_id: str | None, relation_label: str | None) -> URIRef:
+        """Mint semantic relation URIs from labels, falling back to IDs only if needed."""
+        if relation_label:
+            return self.NEO[f"relation/{self._safe_local_name(relation_label, relation_id or 'relation')}"]
+        return self.NEO[f"relation/{self._safe_local_name(relation_id, 'relation')}"]
+
+    def _node_uri(self, node_id: str | None) -> URIRef:
+        """Mint stable node URI from candidate IDs."""
+        return self.NEO[f"node/{self._safe_local_name(node_id, 'node')}"]
+
     def serialise_local(self, state, output_path: str) -> None:
         """
         Serialize the local KG from candidate triples.
@@ -30,9 +51,9 @@ class KGTTLSerialiser:
         graph = self._build_base_graph()
 
         for triple in state.candidate_triples:
-            subject_uri = self.NEO[f"node/{triple.subject_id}"]
-            predicate_uri = self.NEO[f"relation/{triple.predicate_id}"]
-            object_uri = self.NEO[f"node/{triple.object_id}"]
+            subject_uri = self._node_uri(triple.subject_id)
+            predicate_uri = self._relation_uri(triple.predicate_id, triple.predicate_label)
+            object_uri = self._node_uri(triple.object_id)
 
             graph.add((subject_uri, predicate_uri, object_uri))
 
@@ -40,6 +61,7 @@ class KGTTLSerialiser:
             graph.add((subject_uri, self.NEO.label, Literal(triple.subject_label)))
             graph.add((object_uri, self.NEO.label, Literal(triple.object_label)))
             graph.add((predicate_uri, self.NEO.label, Literal(triple.predicate_label)))
+            graph.add((predicate_uri, RDF.type, OWL.ObjectProperty))
 
             # Types
             graph.add((subject_uri, self.NEO.nodeType, Literal(triple.subject_type)))
@@ -89,14 +111,15 @@ class KGTTLSerialiser:
                 dedup[key] = triple
 
         for triple in dedup.values():
-            subject_uri = self.NEO[f"node/{triple.subject_id}"]
-            predicate_uri = self.NEO[f"relation/{triple.predicate_id}"]
-            object_uri = self.NEO[f"node/{triple.object_id}"]
+            subject_uri = self._node_uri(triple.subject_id)
+            predicate_uri = self._relation_uri(triple.predicate_id, triple.predicate_label)
+            object_uri = self._node_uri(triple.object_id)
 
             graph.add((subject_uri, predicate_uri, object_uri))
             graph.add((subject_uri, self.NEO.label, Literal(triple.subject_label)))
             graph.add((object_uri, self.NEO.label, Literal(triple.object_label)))
             graph.add((predicate_uri, self.NEO.label, Literal(triple.predicate_label)))
+            graph.add((predicate_uri, RDF.type, OWL.ObjectProperty))
 
         self._write_graph(graph, output_path)
 
@@ -106,6 +129,8 @@ class KGTTLSerialiser:
         """
         graph = Graph()
         graph.bind("neo", self.NEO)
+        graph.bind("rdfs", RDFS)
+        graph.bind("owl", OWL)
         return graph
 
     def _write_graph(self, graph: Graph, output_path: str) -> None:

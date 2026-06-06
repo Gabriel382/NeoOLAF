@@ -26,6 +26,13 @@ class ExecutionPlan:
     max_concurrency_layer03: int = 1
     max_concurrency_layer04: int = 1
     max_concurrency_layer05: int = 1
+    max_concurrency_layer06: int = 1
+    max_concurrency_layer07: int = 1
+    max_concurrency_layer08: int = 1
+    max_concurrency_layer09: int = 1
+    max_concurrency_layer10: int = 1
+    max_concurrency_layer11: int = 1
+    max_concurrency_layer12: int = 1
     retry_failed_calls: int = 0
     retry_sleep_seconds: float = 2.0
     rag_backend: str = "agentic"
