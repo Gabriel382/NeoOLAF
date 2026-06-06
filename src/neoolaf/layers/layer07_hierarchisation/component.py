@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 # Standard library imports
+import re
+import time
 from itertools import permutations
 from typing import List
 
@@ -42,6 +44,9 @@ class HierarchisationLayer(BaseLayer):
         save_intermediate: bool = True,
         verbose: bool = False,
         rag_adapter=None,
+        max_concurrency: int = 1,
+        retry_failed_calls: int = 0,
+        retry_sleep_seconds: float = 2.0,
     ) -> None:
         """
         Initialize Layer 7.
@@ -66,23 +71,140 @@ class HierarchisationLayer(BaseLayer):
         self.max_relation_pairs = max_relation_pairs
         self.temperature = temperature
         self.rag_adapter = rag_adapter
+        self.max_concurrency = max(1, int(max_concurrency or 1))
+        self.retry_failed_calls = max(0, int(retry_failed_calls or 0))
+        self.retry_sleep_seconds = float(retry_sleep_seconds or 0.0)
 
     def _run(self, state: PipelineState) -> PipelineState:
         """
         Run hierarchisation over promoted concept and relation candidates.
+
+        The XQuality ablation profile uses a deterministic ontology-aware
+        strategy. It avoids the old expensive all-pairs LLM loop while still
+        producing hierarchy links that can be inspected and ablated. The old
+        LLM pairwise strategy remains available for generic profiles.
         """
-        concept_links = self._build_concept_hierarchy(state)
-        relation_links = self._build_relation_hierarchy(state)
+        strategy = self._get_strategy(state)
+
+        if strategy == "ontology_aware_parent_hint_hierarchy":
+            concept_links = self._build_ontology_aware_concept_hierarchy(state)
+            relation_links = self._build_ontology_aware_relation_hierarchy(state)
+        else:
+            concept_links = self._build_concept_hierarchy(state)
+            relation_links = self._build_relation_hierarchy(state)
 
         state.concept_hierarchy_links = concept_links
         state.relation_hierarchy_links = relation_links
 
         state.log(
             "[layer07_hierarchisation] "
+            f"strategy={strategy}, "
             f"concept_links={len(concept_links)}, "
             f"relation_links={len(relation_links)}"
         )
         return state
+
+    def _get_strategy(self, state: PipelineState) -> str:
+        """Return the profile strategy for Layer 7."""
+        profile_config = getattr(state, "profile_config", {}) or {}
+        layers_cfg = profile_config.get("layers", {}) if isinstance(profile_config, dict) else {}
+        layer_cfg = layers_cfg.get(self.name, {}) if isinstance(layers_cfg, dict) else {}
+        return str(layer_cfg.get("strategy", "llm_pairwise_hierarchy"))
+
+    @staticmethod
+    def _slug(value: str) -> str:
+        """Create a stable compact identifier fragment."""
+        text = re.sub(r"[^a-zA-Z0-9]+", "_", (value or "").strip().lower())
+        return text.strip("_") or "unknown"
+
+    def _build_ontology_aware_concept_hierarchy(self, state: PipelineState) -> List[ConceptHierarchyLink]:
+        """
+        Deterministically link each concept candidate to its ontology parent hint.
+
+        Layer 6 creates concept candidates with `parent_hint` derived from
+        ontology hints, for example PLC Alarm, Alarm Cause, Machine Effect,
+        Intervention Action, Responsible Actor, and Technical Reference. This
+        method materializes those hints as hierarchy links without asking the
+        LLM to compare every concept pair.
+        """
+        links: List[ConceptHierarchyLink] = []
+        seen: set[tuple[str, str]] = set()
+
+        for concept in state.concept_candidates:
+            parent_hint = (getattr(concept, "parent_hint", None) or "").strip()
+            if not parent_hint:
+                continue
+
+            child_label = (getattr(concept, "label", "") or "").strip()
+            if child_label and child_label.casefold() == parent_hint.casefold():
+                continue
+
+            parent_id = f"ontology_parent_{self._slug(parent_hint)}"
+            key = (concept.concept_id, parent_id)
+            if key in seen:
+                continue
+            seen.add(key)
+
+            links.append(
+                ConceptHierarchyLink(
+                    link_id=f"concept_h_{len(links):05d}",
+                    child_concept_id=concept.concept_id,
+                    child_label=concept.label,
+                    parent_concept_id=parent_id,
+                    parent_label=parent_hint,
+                    justification=(
+                        "Deterministic ontology-aware hierarchy induction: "
+                        "Layer 6 parent_hint is treated as the ontology parent "
+                        "class for the promoted concept candidate."
+                    ),
+                    confidence=getattr(concept, "confidence", None) or 1.0,
+                    evidence=getattr(concept, "evidence", []) or [],
+                )
+            )
+
+        return links
+
+    def _build_ontology_aware_relation_hierarchy(self, state: PipelineState) -> List[RelationHierarchyLink]:
+        """
+        Deterministically link ontology relation candidates to a generic parent.
+
+        The current XQuality relation set is controlled and flat. We still
+        materialize an explicit parent relation so downstream ontology
+        serialization has a traceable relation hierarchy artifact.
+        """
+        links: List[RelationHierarchyLink] = []
+        seen: set[tuple[str, str]] = set()
+        parent_id = "ontology_relation_parent_object_property"
+        parent_label = "Object Property"
+
+        for relation in state.ontology_relation_candidates:
+            child_label = (getattr(relation, "label", "") or "").strip()
+            if child_label.casefold() == parent_label.casefold():
+                continue
+
+            key = (relation.relation_id, parent_id)
+            if key in seen:
+                continue
+            seen.add(key)
+
+            links.append(
+                RelationHierarchyLink(
+                    link_id=f"relation_h_{len(links):05d}",
+                    child_relation_id=relation.relation_id,
+                    child_label=relation.label,
+                    parent_relation_id=parent_id,
+                    parent_label=parent_label,
+                    justification=(
+                        "Deterministic ontology-aware hierarchy induction: "
+                        "controlled ontology relation candidates are treated as "
+                        "domain-specific object properties."
+                    ),
+                    confidence=getattr(relation, "confidence", None) or 1.0,
+                    evidence=getattr(relation, "evidence", []) or [],
+                )
+            )
+
+        return links
 
     def _build_concept_hierarchy(self, state: PipelineState) -> List[ConceptHierarchyLink]:
         """
@@ -153,12 +275,11 @@ class HierarchisationLayer(BaseLayer):
                 },
             ]
 
-            raw = self.ollama_backend.chat(
-                model=state.llm_model,
+            parsed = self._call_llm_with_retries(
+                state=state,
                 messages=messages,
-                temperature=self.temperature,
+                task_label="concept_hierarchy",
             )
-            parsed = self.ollama_backend.extract_json(raw)
 
             if not parsed.get("is_subclass", False):
                 continue
@@ -257,12 +378,11 @@ class HierarchisationLayer(BaseLayer):
                 },
             ]
 
-            raw = self.ollama_backend.chat(
-                model=state.llm_model,
+            parsed = self._call_llm_with_retries(
+                state=state,
                 messages=messages,
-                temperature=self.temperature,
+                task_label="relation_hierarchy",
             )
-            parsed = self.ollama_backend.extract_json(raw)
 
             if not parsed.get("is_subrelation", False):
                 continue
@@ -293,12 +413,32 @@ class HierarchisationLayer(BaseLayer):
 
         return list(dedup.values())
 
+    def _call_llm_with_retries(self, state: PipelineState, messages: list[dict], task_label: str) -> dict:
+        """Call the LLM with simple retries for the generic pairwise strategy."""
+        last_error: Exception | None = None
+        for attempt in range(self.retry_failed_calls + 1):
+            try:
+                raw = self.ollama_backend.chat(
+                    model=state.llm_model,
+                    messages=messages,
+                    temperature=self.temperature,
+                )
+                return self.ollama_backend.extract_json(raw)
+            except Exception as exc:  # provider/JSON failures are retried together
+                last_error = exc
+                if attempt >= self.retry_failed_calls:
+                    break
+                if self.retry_sleep_seconds > 0:
+                    time.sleep(self.retry_sleep_seconds)
+        raise RuntimeError(f"Layer 7 {task_label} failed after retries: {last_error}") from last_error
+
     def build_artifact_payload(self, state: PipelineState) -> dict:
         """
         Serialize hierarchy outputs for debugging and reproducibility.
         """
         return {
             "layer": self.name,
+            "strategy": self._get_strategy(state),
             "num_concept_hierarchy_links": len(state.concept_hierarchy_links),
             "num_relation_hierarchy_links": len(state.relation_hierarchy_links),
             "concept_hierarchy_links": [

@@ -30,6 +30,7 @@ class SerializationLayer(BaseLayer):
         base_uri: str = "http://neoolaf.org/resource/",
         save_intermediate: bool = True,
         verbose: bool = False,
+        max_concurrency: int = 1,
     ) -> None:
         """
         Initialize Layer 12.
@@ -43,10 +44,13 @@ class SerializationLayer(BaseLayer):
                 Whether to save the layer artifact payload.
             verbose:
                 Whether to print progress information.
+            max_concurrency:
+                Accepted for orchestrator consistency. Serialization is currently deterministic and sequential.
         """
         super().__init__(save_intermediate=save_intermediate, verbose=verbose)
         self.output_subdir = output_subdir
         self.base_uri = base_uri
+        self.max_concurrency = max(1, int(max_concurrency or 1))
 
         self.ontology_serialiser = OntologyTTLSerialiser(base_uri=base_uri)
         self.kg_ttl_serialiser = KGTTLSerialiser(base_uri=base_uri)
@@ -98,4 +102,5 @@ class SerializationLayer(BaseLayer):
             "artifact_dir": state.artifact_dir,
             "output_subdir": self.output_subdir,
             "base_uri": self.base_uri,
+            "max_concurrency": self.max_concurrency,
         }

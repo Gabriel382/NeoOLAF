@@ -181,6 +181,38 @@
       "max_concurrency": 4,
       "retry_failed_calls": 3,
       "retry_sleep_seconds": 2.0
+    },
+    "layer06_concept_relation_induction": {
+      "strategy": "ontology_aware_triple_concept_relation_induction",
+      "max_concurrency": 4,
+      "description": "Deterministically promote Layer 3 typed node candidates and controlled relation candidates into ontology concept/relation candidates using ontology hints from Layers 2-5. No LLM calls for XQuality ablation."
+    },
+    "layer07_hierarchisation": {
+      "strategy": "ontology_aware_parent_hint_hierarchy",
+      "max_concurrency": 4,
+      "description": "Deterministically create hierarchy links from Layer 6 parent_hint and controlled ontology relation candidates. No LLM calls for XQuality ablation."
+    },
+    "layer08_axiom_schemata_extraction": {
+      "strategy": "ontology_aware_axiom_schema_generation",
+      "max_concurrency": 4
+    },
+    "layer09_general_axiom_extraction": {
+      "strategy": "ontology_aware_schema_to_general_axioms",
+      "max_concurrency": 4,
+      "description": "Deterministically promote Layer 8 axiom schemata into general axiom candidates and rdfs:description axioms. No LLM calls for XQuality ablation."
+    },
+    "layer10_validation_reasoning": {
+      "strategy": "ontology_aware_validation_reasoning",
+      "max_concurrency": 4,
+      "description": "Deterministically validate triples using ontology-aware compatibility from concept_kind, parent_hint, hierarchy links, and Layer 5 ontology hints. No LLM calls for XQuality ablation."
+    },
+    "layer11_inference_completion": {
+      "strategy": "ontology_aware_semantic_completion",
+      "max_concurrency": 4,
+      "description": "Deterministically generate explicit rdf:type, owl:sameAs, skos:prefLabel, skos:altLabel, and rdfs:comment completion axioms from candidate-to-concept alignments. No LLM calls for XQuality ablation."
+    },
+    "layer12_serialization": {
+      "max_concurrency": 4
     }
   },
   "prompts": {
@@ -208,6 +240,12 @@
         "typed_candidates",
         "relation_mapping",
         "record_context"
+      ],
+      "layer07_hierarchisation": [
+        "ontology",
+        "concept_candidates",
+        "ontology_relation_candidates",
+        "hierarchy_context"
       ]
     },
     "enabled_for_layer01": false,
@@ -245,7 +283,16 @@
     "retry_sleep_seconds": 2.0,
     "feedback_enabled": false,
     "max_concurrency_layer02": 4,
-    "max_concurrency_layer03": 4
+    "max_concurrency_layer03": 4,
+    "max_concurrency_layer04": 4,
+    "max_concurrency_layer05": 4,
+    "max_concurrency_layer06": 4,
+    "max_concurrency_layer07": 4,
+    "max_concurrency_layer08": 4,
+    "max_concurrency_layer09": 4,
+    "max_concurrency_layer10": 4,
+    "max_concurrency_layer11": 4,
+    "max_concurrency_layer12": 4
   },
   "record_identity_policy": {
     "enabled": true,
