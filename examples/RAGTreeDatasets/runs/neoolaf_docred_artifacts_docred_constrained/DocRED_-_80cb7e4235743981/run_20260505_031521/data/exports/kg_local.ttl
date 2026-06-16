@@ -1,0 +1,67 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that the grove of plane trees is located in Urgut, which is a city." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00000> ;
+    neo:predicate ns1:cand_r_00000 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The chunk states that Urguti people (an ethnic group) are heavily involved in farming, indicating a relation between the ethnic group and the activity of farming." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00000> ;
+    neo:predicate ns1:cand_r_00004 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00004> .
+
+<http://neoolaf.org/resource/triple/triple_00002> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00002/prov/0> ;
+    neo:justification "The text states that Urgut is a town in the Samarqand Region, indicating that the city is located in that administrative territorial entity." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00001> ;
+    neo:predicate ns1:cand_r_00006 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/node/cand_e_00004> neo:label "ethnic group" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00004 <http://neoolaf.org/resource/node/cand_s_00000> .
+
+<http://neoolaf.org/resource/node/cand_r_00000> neo:label "grove of plane trees" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00000 <http://neoolaf.org/resource/node/cand_e_00000> .
+
+ns1:cand_r_00000 neo:label "grove of plane trees" .
+
+ns1:cand_r_00004 neo:label "farming" .
+
+ns1:cand_r_00006 neo:label "P131 : located in the administrative territorial entity" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "nd Region of Uzbekistan and the capital of Urgut District . It is known for the grove of plane trees , some of which are more than 1000 years old . Urgut is located in mountainous" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "avily involved in basic mercantile trading in their respective locations and in farming . In the town craftsmanship is also well - known which has been maintained trad" .
+
+<http://neoolaf.org/resource/triple/triple_00002/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Urgut (; ) is a town in the Samarqand Region of Uzbekistan and the capital of Urgut District . It is kn" .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "Samarqand Region" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_s_00000> neo:label "activity" ;
+    neo:nodeType "event" .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "city" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00006 <http://neoolaf.org/resource/node/cand_e_00001> .
+

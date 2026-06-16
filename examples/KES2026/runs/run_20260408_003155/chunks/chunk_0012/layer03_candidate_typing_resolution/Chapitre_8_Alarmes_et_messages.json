@@ -1,0 +1,1303 @@
+{
+  "layer": "layer03_candidate_typing_resolution",
+  "entity_candidates": [],
+  "relation_candidates": [
+    {
+      "candidate_id": "cand_r_00000",
+      "canonical_label": "Alarm with program interruption, stopping of axes and spindles.",
+      "normalized_label": "alarm with program interruption stopping of axes and spindles",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: manufacturing process",
+        "CAUSES: machine shutdown",
+        "REQUIRES: maintenance intervention",
+        "HANDLED_BY: operator",
+        "REFERENCES: machine manual",
+        "Feature of Interest: alarm"
+      ],
+      "definition": "An alarm event that interrupts the machine’s program execution and stops the axes and spindles, thereby halting the manufacturing process.",
+      "aliases": [
+        "Program interruption alarm",
+        "Axes and spindles stop alarm",
+        "Machine stop alarm"
+      ],
+      "synonyms": [
+        "Alarm causing program interruption",
+        "Spindle stop alarm",
+        "Axis stop alarm"
+      ],
+      "lexical_variants": [
+        "Alarm that interrupts program and stops axes/spindles",
+        "Program interruption leading to axes/spindles stop",
+        "Machine alarm causing axes and spindles to halt"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00000",
+          "text": "Alarm with program interruption, stopping of axes and spindles.",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 15,
+              "chunk_end_char": 78,
+              "doc_start_char": 60015,
+              "doc_end_char": 60078,
+              "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position,"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00001",
+      "canonical_label": "FEED WRONG OR ABSENT",
+      "normalized_label": "feed wrong or absent",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest: feed material",
+        "Constraint: acceptable feed conditions",
+        "Temporal Entity: time of observation",
+        "Manufacturing Process",
+        "Manufacturing Facility"
+      ],
+      "definition": "Alarm indicating that the feed material is either incorrect or missing during a manufacturing process.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00001",
+          "text": "FEED WRONG OR ABSENT",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 363,
+              "chunk_end_char": 383,
+              "doc_start_char": 60363,
+              "doc_end_char": 60383,
+              "snippet": "e program. responsible for the intervention: programmer\n\nmessage n°: 3012 text: FEED WRONG OR ABSENT type: Standard: Optional: effect: Alarm with program interruption, stopping of"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00002",
+      "canonical_label": "AXIS NOT PROGRAMMED",
+      "normalized_label": "axis not programmed",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Sensor",
+        "ObservableProperty",
+        "ManufacturingProcess"
+      ],
+      "definition": "Alarm indicating that an axis has not been programmed in the machine control system.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00002",
+          "text": "AXIS NOT PROGRAMMED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 751,
+              "chunk_end_char": 770,
+              "doc_start_char": 60751,
+              "doc_end_char": 60770,
+              "snippet": "on. responsible for the intervention: programmer\n\nmessage no: 3013 - 3015\ntext: AXIS NOT PROGRAMMED\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00003",
+      "canonical_label": "POLIGONING MICRODETECTOR NOT OK",
+      "normalized_label": "poligoning microdetector not ok",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm",
+        "Microdetector",
+        "Manufacturing Cell",
+        "Production Line",
+        "Manufacturing Process",
+        "Logistic Process"
+      ],
+      "definition": "An alarm indicating that the polygoning microdetector component is not functioning properly, potentially affecting the manufacturing cell and related processes.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00003",
+          "text": "POLIGONING MICRODETECTOR NOT OK",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 2057,
+              "chunk_end_char": 2088,
+              "doc_start_char": 62057,
+              "doc_end_char": 62088,
+              "snippet": "struction. responsible for the intervention: programmer\n\nmessage n°: 3016 text: POLIGONING MICRODETECTOR NOT OK type: Standard: Optional: effect: Alarm with program interruption, stopping of"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00004",
+      "canonical_label": "PROGRAMMING ERROR",
+      "normalized_label": "programming error",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: ConstraintViolation",
+        "REQUIRES: Operator intervention",
+        "DETECTED_BY: ControlSystem",
+        "HANDLED_BY: MaintenanceStaff",
+        "REFERENCES: ProductionLine",
+        "DETECTED_AT: TemporalEntity"
+      ],
+      "definition": "An alarm that indicates a programming error, i.e., a violation of a software constraint in the machine’s control system, typically occurring during operation on a production line.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00004",
+          "text": "PROGRAMMING ERROR",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 1521,
+              "chunk_end_char": 1538,
+              "doc_start_char": 61521,
+              "doc_end_char": 61538,
+              "snippet": "input page 28 of the electrical diagram.\nresponsible for\nmessage no: 3020\ntext: PROGRAMMING ERROR\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00005",
+      "canonical_label": "CORRECTOR T NOT ACTIVATED",
+      "normalized_label": "corrector t not activated",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest: Corrector T",
+        "Workstation: [Workstation name]",
+        "Manufacturing Facility: [Facility name]",
+        "Temporal Entity: time of alarm detection",
+        "requires action: activate Corrector T",
+        "handled by: Operator",
+        "detected by: Sensor or monitoring system"
+      ],
+      "definition": "Alarm indicating that the Corrector T device is not activated.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00005",
+          "text": "CORRECTOR T NOT ACTIVATED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 2742,
+              "chunk_end_char": 2767,
+              "doc_start_char": 62742,
+              "doc_end_char": 62767,
+              "snippet": "cause: intervention: responsible for the intervention:\n\nmessage no: 3021\ntext: CORRECTOR T NOT ACTIVATED\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00006",
+      "canonical_label": "INVALID G CODE",
+      "normalized_label": "invalid g code",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm",
+        "MachineState",
+        "FailurePhenomenon",
+        "ShutdownState",
+        "InterventionType",
+        "Manager",
+        "ManufacturingCell",
+        "ObservableProperty",
+        "SpatialObject"
+      ],
+      "definition": "An alarm that is triggered when a machine receives a G-code command that is syntactically or semantically invalid, indicating a programming or communication error that may affect machine operation.",
+      "aliases": [
+        "G-code invalid alarm",
+        "G-code error alarm",
+        "Invalid G-code notification"
+      ],
+      "synonyms": [
+        "G-code error",
+        "G-code invalidity",
+        "G-code fault"
+      ],
+      "lexical_variants": [
+        "INVALID G CODE",
+        "INVALID G-Code",
+        "Invalid G code",
+        "invalid g code"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00006",
+          "text": "INVALID G CODE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 2930,
+              "chunk_end_char": 2944,
+              "doc_start_char": 62930,
+              "doc_end_char": 62944,
+              "snippet": "p:\nches.\ncause:\nintervention:\nresponsible for\nprogrammer\nmessage no: 3028\ntext: INVALID G CODE\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00007",
+      "canonical_label": "CDS OPTION NOT ACTIVATED",
+      "normalized_label": "cds option not activated",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm",
+        "Situation S1",
+        "requires Action"
+      ],
+      "definition": "Alarm indicating that the CDS option is not activated.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00007",
+          "text": "CDS OPTION NOT ACTIVATED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 3196,
+              "chunk_end_char": 3220,
+              "doc_start_char": 63196,
+              "doc_end_char": 63220,
+              "snippet": "is function from the program.\nresponsible for\nprogrammer\nmessage no: 3029\ntext: CDS OPTION NOT ACTIVATED\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00008",
+      "canonical_label": "CART DISABLED",
+      "normalized_label": "cart disabled",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Cause",
+        "Production Line",
+        "Part",
+        "Situation S1",
+        "Situation S2"
+      ],
+      "definition": "An alarm indicating that a cart is disabled, representing a manufacturing situation that can act as a cause affecting a production line or part.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00009",
+          "text": "CART DISABLED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 4599,
+              "chunk_end_char": 4612,
+              "doc_start_char": 64599,
+              "doc_end_char": 64612,
+              "snippet": "vice in the user page.\nresponsible for\nprogrammer\nmessage no: 3031 - 3034\ntext: CART DISABLED\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00009",
+      "canonical_label": "OPTIONS 9000 NOT ACTIVATED",
+      "normalized_label": "options 9000 not activated",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm",
+        "ProductionLine",
+        "SituationS9",
+        "SituationS10",
+        "Instant",
+        "SpatialObject",
+        "Option"
+      ],
+      "definition": "An alarm that is triggered when option 9000 is not activated in the production line system, indicating a missing or disabled configuration that may affect machine operation.",
+      "aliases": [
+        "Option 9000 not active",
+        "Option 9000 inactive",
+        "Option 9000 not enabled"
+      ],
+      "synonyms": [
+        "Option 9000 not activated",
+        "Option 9000 disabled",
+        "Option 9000 not operational"
+      ],
+      "lexical_variants": [
+        "OPTIONS 9000 NOT ACTIVATED",
+        "Option 9000 not activated",
+        "Option 9000 not active"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00010",
+          "text": "OPTIONS 9000 NOT ACTIVATED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 4916,
+              "chunk_end_char": 4942,
+              "doc_start_char": 64916,
+              "doc_end_char": 64942,
+              "snippet": "te cart 2 from the user page.\nresponsible for\nprogrammer\nmessage no: 3035\ntext: OPTIONS 9000 NOT ACTIVATED\ntype: Standard: Optional:\nAlarm with program interruption"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00010",
+      "canonical_label": "causes",
+      "normalized_label": "causes",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "maps to class Cause (http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause)",
+        "used as the subject of the has cause property linking a Process or Sensor observation to a Result or Feature",
+        "represents a causal relationship in industrial maintenance contexts, such as linking a fault to its underlying failure mechanism",
+        "TRIGGERS: G303 hidden time recharge function",
+        "CAUSES: cart 2 disabled in user page",
+        "HANDLED_BY: user page interface",
+        "REFERENCES: cart 2 status"
+      ],
+      "definition": "An event, factor, or agent that produces an effect or is responsible for the occurrence of a situation, providing the generative force behind an outcome.",
+      "aliases": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa",
+        "Causes",
+        "G303 function",
+        "hidden time recharge",
+        "time recharge function"
+      ],
+      "synonyms": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa",
+        "fails",
+        "does not function",
+        "is disabled",
+        "is deactivated",
+        "is turned off"
+      ],
+      "lexical_variants": [
+        "cause",
+        "reason",
+        "grounds",
+        "campaign",
+        "crusade",
+        "drive",
+        "movement",
+        "effort",
+        "causal agent",
+        "causal agency",
+        "lawsuit",
+        "suit",
+        "case",
+        "causa",
+        "cart 2 disabled",
+        "cart 2 deactivated",
+        "cart 2 turned off",
+        "cart 2 status check",
+        "user page cart 2"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00011",
+          "text": "causes",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. respon"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00028",
+          "text": "The G303 hidden time recharge function cannot work because: check if cart 2 has been disabled in the user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. respon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00011",
+      "canonical_label": "intervention",
+      "normalized_label": "intervention",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observation",
+        "TemporalEntity",
+        "Situation",
+        "process that changes a situation"
+      ],
+      "definition": "The act of intervening to resolve an issue or improve a situation, often involving a process that changes the current state.",
+      "aliases": [
+        "intervention",
+        "intercession",
+        "interference",
+        "interposition",
+        "treatment",
+        "Intervention"
+      ],
+      "synonyms": [
+        "intervention",
+        "intercession",
+        "interference",
+        "interposition",
+        "treatment"
+      ],
+      "lexical_variants": [
+        "intervention",
+        "intercession",
+        "interference",
+        "interposition",
+        "treatment"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00012",
+          "text": "intervention",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 235,
+              "chunk_end_char": 247,
+              "doc_start_char": 60235,
+              "doc_end_char": 60247,
+              "snippet": "n, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. responsible for the intervention:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00012",
+      "canonical_label": "responsible for",
+      "normalized_label": "responsible for",
+      "candidate_type": "relation",
+      "confidence": 0.9499999999999998,
+      "ontology_hints": [
+        "HANDLED_BY",
+        "RESPONSIBLE_FOR",
+        "ACCOUNTABLE_FOR",
+        "ROLE_OF_INTERVENTION",
+        "Agent role: Programmer",
+        "Responsibility relation: responsible for the intervention",
+        "Intervention context: maintenance or corrective action",
+        "hasResponsible",
+        "responsibleFor",
+        "interventionResponsible",
+        "maintenanceRole",
+        "role",
+        "person",
+        "staff"
+      ],
+      "definition": "The agent or role that has the duty, authority, or accountability to perform, oversee, or manage an intervention within a system or process.",
+      "aliases": [
+        "responsible for intervention",
+        "responsible for the intervention action",
+        "responsible for the intervention procedure",
+        "Responsible for maintenance",
+        "Responsible for the intervention"
+      ],
+      "synonyms": [
+        "accountable for the intervention",
+        "in charge of the intervention",
+        "liable for the intervention",
+        "in charge of maintenance",
+        "accountable for maintenance",
+        "liable for maintenance"
+      ],
+      "lexical_variants": [
+        "responsible for intervention",
+        "responsible for the intervention action",
+        "responsible for the intervention procedure",
+        "responsible for the intervention",
+        "responsible for maintenance"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00013",
+          "text": "responsible for the intervention",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 294,
+              "chunk_end_char": 326,
+              "doc_start_char": 60294,
+              "doc_end_char": 60326,
+              "snippet": "abutment on the part intervention: Check the machining, and review the program. responsible for the intervention: programmer\n\nmessage n°: 3012 text: FEED WRONG OR ABSENT type: Standard: Option"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00030",
+          "text": "responsible for the intervention: programmer",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 294,
+              "chunk_end_char": 338,
+              "doc_start_char": 60294,
+              "doc_end_char": 60338,
+              "snippet": "abutment on the part intervention: Check the machining, and review the program. responsible for the intervention: programmer\n\nmessage n°: 3012 text: FEED WRONG OR ABSENT type: Standard: Optional: effect:"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00031",
+          "text": "responsible for the intervention: Responsible for maintenance",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 2460,
+              "chunk_end_char": 2521,
+              "doc_start_char": 62460,
+              "doc_end_char": 62521,
+              "snippet": "hing reference microdetector. PLC X5.4 input page 28 of the electrical diagram. responsible for the intervention: Responsible for maintenance\n\nmessage no.: 3020 text: PROGRAMMING ERROR type: Standard: Optional: effect: Al"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00013",
+      "canonical_label": "without",
+      "normalized_label": "without",
+      "candidate_type": "relation",
+      "confidence": 0.92,
+      "ontology_hints": [
+        "exclusion of a parameter from a process",
+        "parameter omission",
+        "parameter exclusion"
+      ],
+      "definition": "A prepositional phrase indicating that the parameter F is not present or omitted in the operation or process.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00014",
+          "text": "without the parameter F",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 520,
+              "chunk_end_char": 543,
+              "doc_start_char": 60520,
+              "doc_end_char": 60543,
+              "snippet": "erruption, stopping of axes and spindles. cause: G84, G88, G188 were programmed without the parameter F which indicates the feed, or it was indicated with an incorrect value. interven"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00014",
+      "canonical_label": "searched unsuccessfully for the reference microdetector",
+      "normalized_label": "searched unsuccessfully for the reference microdetector",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Sensor",
+        "ObservableProperty",
+        "FeatureOfInterest",
+        "TemporalEntity",
+        "SpatialObject",
+        "FailureEvent",
+        "SearchAction",
+        "UnsuccessfulOutcome",
+        "TRIGGERS",
+        "CAUSES"
+      ],
+      "definition": "An attempt to locate or identify the reference microdetector that did not succeed, indicating a failure in the sensor search process.",
+      "aliases": [
+        "unsuccessful search for reference microdetector",
+        "failed search for reference microdetector"
+      ],
+      "synonyms": [
+        "could not locate the reference microdetector",
+        "failed to find the reference microdetector",
+        "search for reference microdetector was unsuccessful"
+      ],
+      "lexical_variants": [
+        "searching for reference microdetector failed",
+        "reference microdetector search failed",
+        "unsuccessful attempt to locate the reference microdetector"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00015",
+          "text": "searched unsuccessfully for the reference microdetector",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 2248,
+              "chunk_end_char": 2303,
+              "doc_start_char": 62248,
+              "doc_end_char": 62303,
+              "snippet": "axes and spindles. cause: The G305 polishing with milling with phasing function searched unsuccessfully for the reference microdetector for which it stopped. intervention: Check the correct operation of the polishin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00015",
+      "canonical_label": "Check the program and modify the instruction",
+      "normalized_label": "check the program and modify the instruction",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Action",
+        "SoftwareModification",
+        "InstructionChange",
+        "ProgramInspection",
+        "Requires: programmer",
+        "Handled_by: software engineer"
+      ],
+      "definition": "An action that involves inspecting a software program and making changes to its instruction set or command.",
+      "aliases": [
+        "Program review and instruction update",
+        "Software inspection and directive modification"
+      ],
+      "synonyms": [
+        "examine the program and adjust the instruction",
+        "inspect the code and alter the command",
+        "review the software and change the directive"
+      ],
+      "lexical_variants": [
+        "check program",
+        "modify instruction",
+        "review code",
+        "update command"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00016",
+          "text": "Check the program and modify the instruction",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 629,
+              "chunk_end_char": 673,
+              "doc_start_char": 60629,
+              "doc_end_char": 60673,
+              "snippet": "indicates the feed, or it was indicated with an incorrect value. intervention: Check the program and modify the instruction. responsible for the intervention: programmer\n\nmessage no: 3013 - 3015\ntext: AX"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00016",
+      "canonical_label": "Check the correct operation of the reference microdetector",
+      "normalized_label": "check the correct operation of the reference microdetector",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observation",
+        "Operator",
+        "Workstation",
+        "Observable Property",
+        "Feature of Interest",
+        "Sensor"
+      ],
+      "definition": "An action performed by an operator to verify that the reference microdetector is functioning correctly.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00017",
+          "text": "Check the correct operation of the reference microdetector",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 1347,
+              "chunk_end_char": 1405,
+              "doc_start_char": 61347,
+              "doc_end_char": 61405,
+              "snippet": "unsuccessfully searched for the reference microdetector for\nwhich she stopped.\nCheck the correct operation of the reference microdetector\nintervention:\npoligonage. PLC X5.4 input page 28 of the electrical diagram.\nres"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00017",
+      "canonical_label": "Check the correct operation of the polishing reference microdetector",
+      "normalized_label": "check the correct operation of the polishing reference microdetector",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "ManufacturingProcess",
+        "ManufacturingFacility",
+        "ProductionLine",
+        "Operator",
+        "sensing/monitoring",
+        "performed_by",
+        "observes",
+        "located_in",
+        "part_of"
+      ],
+      "definition": "An action performed by an operator to verify that the polishing reference microdetector is functioning correctly during a polishing process.",
+      "aliases": [
+        "polishing reference microdetector check",
+        "microdetector operation check"
+      ],
+      "synonyms": [
+        "verify operation",
+        "confirm operation",
+        "inspect operation",
+        "test operation"
+      ],
+      "lexical_variants": [
+        "check correct operation",
+        "verify correct operation",
+        "confirm correct operation"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00018",
+          "text": "Check the correct operation of the polishing reference microdetector",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 2340,
+              "chunk_end_char": 2408,
+              "doc_start_char": 62340,
+              "doc_end_char": 62408,
+              "snippet": "uccessfully for the reference microdetector for which it stopped. intervention: Check the correct operation of the polishing reference microdetector. PLC X5.4 input page 28 of the electrical diagram. responsible for the interven"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00018",
+      "canonical_label": "Check if cart 2 has been disabled in the user page",
+      "normalized_label": "check if cart 2 has been disabled in the user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest",
+        "Observable Property"
+      ],
+      "definition": "An action to verify whether cart 2 is disabled in the user page.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00019",
+          "text": "Check if cart 2 has been disabled in the user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 4764,
+              "chunk_end_char": 4814,
+              "doc_start_char": 64764,
+              "doc_end_char": 64814,
+              "snippet": "-effect stop:\nches.\nThe G303 hidden time recharge function cannot work because:\ncheck if cart 2 has been disabled in the user page.\nintervention: Activate cart 2 from the user page.\nresponsible for\nprogrammer\nm"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00019",
+      "canonical_label": "Activate cart 2 from the user page",
+      "normalized_label": "activate cart 2 from the user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "action",
+        "user interface",
+        "cart activation"
+      ],
+      "definition": "An action that enables or starts cart number 2 through the user page interface.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00020",
+          "text": "Activate cart 2 from the user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 4830,
+              "chunk_end_char": 4864,
+              "doc_start_char": 64830,
+              "doc_end_char": 64864,
+              "snippet": "work because:\ncheck if cart 2 has been disabled in the user page.\nintervention: Activate cart 2 from the user page.\nresponsible for\nprogrammer\nmessage no: 3035\ntext: OPTIONS 9000 NOT ACTIVATED\nt"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00020",
+      "canonical_label": "Activate the CDS device in the user page",
+      "normalized_label": "activate the cds device in the user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine",
+        "Feature of Interest",
+        "Technician"
+      ],
+      "definition": "An instruction to enable or start the CDS device through the user interface.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00021",
+          "text": "Activate the CDS device in the user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 3383,
+              "chunk_end_char": 3423,
+              "doc_start_char": 63383,
+              "doc_end_char": 63423,
+              "snippet": "p:\nches.\ncause: Function G304 was not activated in the user page,\nintervention: Activate the CDS device in the user page.\nresponsible for\nprogrammer\n\nmessage n°: 3021 text: CORRECTOR T NOT ACTIVATED t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00021",
+      "canonical_label": "Configure the CDS device in the user page",
+      "normalized_label": "configure the cds device in the user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "appliesConstraint",
+        "hasFeatureOfInterest",
+        "isDefinedFor",
+        "isInSituation"
+      ],
+      "definition": "The action of setting or adjusting the parameters of the CDS device within the user page interface.",
+      "aliases": [
+        "CDS device configuration",
+        "CDS device setup"
+      ],
+      "synonyms": [
+        "configure",
+        "set up",
+        "adjust",
+        "program"
+      ],
+      "lexical_variants": [
+        "configuring the CDS device",
+        "configuring CDS device in user page",
+        "setting up the CDS device"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00022",
+          "text": "Configure the CDS device in the user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 4499,
+              "chunk_end_char": 4540,
+              "doc_start_char": 64499,
+              "doc_end_char": 64540,
+              "snippet": "e unit has not been configured correctly\ncause:\nin the user page.\nintervention: Configure the CDS device in the user page.\nresponsible for\nprogrammer\nmessage no: 3031 - 3034\ntext: CART DISABLED\ntype: S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00022",
+      "canonical_label": "Delete this function from the program",
+      "normalized_label": "delete this function from the program",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "SoftwareModification",
+        "FunctionRemoval",
+        "ProgramEditing",
+        "CodeMaintenance",
+        "SoftwareArtifact"
+      ],
+      "definition": "An instruction to remove a specified function from a software program, thereby deleting its code and associated behavior from the program's source or compiled representation.",
+      "aliases": [
+        "Delete function",
+        "Remove function",
+        "Erase function"
+      ],
+      "synonyms": [
+        "remove this function from the program",
+        "eliminate this function from the program",
+        "delete this function in the program",
+        "erase this function from the program"
+      ],
+      "lexical_variants": [
+        "Delete function from program",
+        "Delete this function",
+        "Remove function from program",
+        "Erase function from program"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00023",
+          "text": "Delete this function from the program",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 3107,
+              "chunk_end_char": 3144,
+              "doc_start_char": 63107,
+              "doc_end_char": 63144,
+              "snippet": "p:\nches.\ncause: Programming of function G10 L50 is not permitted.\nintervention: Delete this function from the program.\nresponsible for\nprogrammer\nmessage no: 3029\ntext: CDS OPTION NOT ACTIVATED\ntyp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00023",
+      "canonical_label": "Function G304 was not activated in the user page",
+      "normalized_label": "function g304 was not activated in the user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest",
+        "Activation State (hasActivationState = false)",
+        "Constraint (function must be activated for normal operation)",
+        "User Page (interface context)"
+      ],
+      "definition": "The G304 function is a feature of interest within the manufacturing system that is currently not activated, indicating it is inactive or disabled in the user interface.",
+      "aliases": [
+        "G304 function",
+        "G304 feature"
+      ],
+      "synonyms": [
+        "inactive",
+        "disabled",
+        "not enabled"
+      ],
+      "lexical_variants": [
+        "G304 function inactive",
+        "G304 function not enabled",
+        "G304 function not activated"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00024",
+          "text": "Function G304 was not activated in the user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 3319,
+              "chunk_end_char": 3367,
+              "doc_start_char": 63319,
+              "doc_end_char": 63367,
+              "snippet": "tional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\ncause: Function G304 was not activated in the user page,\nintervention: Activate the CDS device in the user page.\nresponsible for\nprogra"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00024",
+      "canonical_label": "Function G10 L50 is not permitted",
+      "normalized_label": "function g10 l50 is not permitted",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Production Line",
+        "Feature of Interest",
+        "Situation S10",
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "has feature of interest",
+        "situation time"
+      ],
+      "definition": "A state indicating that the operation or function G10 on production line L50 is prohibited or disallowed in the current situation.",
+      "aliases": [
+        "G10 L50 function not allowed",
+        "G10 L50 operation disallowed",
+        "G10 L50 function disallowed"
+      ],
+      "synonyms": [
+        "G10 L50 function is forbidden",
+        "G10 L50 operation is prohibited",
+        "G10 L50 function is not allowed"
+      ],
+      "lexical_variants": [
+        "G10 L50 function prohibited",
+        "G10 L50 operation not permitted",
+        "G10 L50 function disallowed"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00025",
+          "text": "Function G10 L50 is not permitted",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 3058,
+              "chunk_end_char": 3091,
+              "doc_start_char": 63058,
+              "doc_end_char": 63091,
+              "snippet": "ith program interruption, axis and bro-effect stop:\nches.\ncause: Programming of function G10 L50 is not permitted.\nintervention: Delete this function from the program.\nresponsible for\nprogramme"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00025",
+      "canonical_label": "The high pressure unit has not been configured correctly",
+      "normalized_label": "the high pressure unit has not been configured correctly",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest",
+        "Manufacturing Process",
+        "Production Line",
+        "Temporal Entity"
+      ],
+      "definition": "A state indicating that the high pressure unit is not configured correctly, implying a configuration error that may affect machine operation.",
+      "aliases": [
+        "high pressure unit",
+        "high-pressure unit"
+      ],
+      "synonyms": [
+        "misconfigured high pressure unit",
+        "incorrectly configured high pressure unit",
+        "faulty configuration of the high pressure unit"
+      ],
+      "lexical_variants": [
+        "high pressure unit",
+        "high-pressure unit",
+        "HPU"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00026",
+          "text": "The high pressure unit has not been configured correctly",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 4403,
+              "chunk_end_char": 4459,
+              "doc_start_char": 64403,
+              "doc_end_char": 64459,
+              "snippet": "ard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nThe high pressure unit has not been configured correctly\ncause:\nin the user page.\nintervention: Configure the CDS device in the user pag"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00026",
+      "canonical_label": "The G305 polishing function with milling with phasing function searched unsuccessfully for the reference microdetector for which it stopped",
+      "normalized_label": "the g305 polishing function with milling with phasing function searched unsuccessfully for the reference microdetector for which it stopped",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: stop",
+        "CAUSES: reference microdetector not found",
+        "REQUIRES: reference microdetector",
+        "DETECTED_BY: sensors",
+        "HANDLED_BY: maintenance staff",
+        "Located in: Production Line",
+        "Feature of Interest: reference microdetector"
+      ],
+      "definition": "The cause of the stop is that the G305 polishing function, operating in milling and phasing mode, failed to locate the reference microdetector.",
+      "aliases": [
+        "G305 polishing function with milling and phasing function",
+        "G305 polishing function (milling/phasing)"
+      ],
+      "synonyms": [
+        "failed to locate reference microdetector",
+        "unsuccessful search for reference microdetector"
+      ],
+      "lexical_variants": [
+        "searching unsuccessfully for the reference microdetector",
+        "failed to find the reference microdetector"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00027",
+          "text": "The G305 polishing function with milling with phasing function searched unsuccessfully for the reference microdetector for which it stopped",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. respon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00027",
+      "canonical_label": "PLC X5.4 input page 28 of the electrical diagram",
+      "normalized_label": "plc x54 input page 28 of the electrical diagram",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest",
+        "Spatial Object",
+        "Temporal Entity",
+        "Component/Resource"
+      ],
+      "definition": "A specific input channel of a PLC X5.4 controller that is referenced on page 28 of the electrical diagram.",
+      "aliases": [
+        "PLC X5.4 input",
+        "PLC X5.4 input (page 28)",
+        "PLC X5.4 input on page 28"
+      ],
+      "synonyms": [
+        "PLC input",
+        "PLC X5.4 input signal"
+      ],
+      "lexical_variants": [
+        "PLC X5.4 input",
+        "PLC X5.4 input (page 28)",
+        "PLC X5.4 input on page 28"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00029",
+          "text": "PLC X5.4 input page 28 of the electrical diagram",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 1432,
+              "chunk_end_char": 1480,
+              "doc_start_char": 61432,
+              "doc_end_char": 61480,
+              "snippet": "the correct operation of the reference microdetector\nintervention:\npoligonage. PLC X5.4 input page 28 of the electrical diagram.\nresponsible for\nmessage no: 3020\ntext: PROGRAMMING ERROR\ntype: Standard: Optio"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attribute_candidates": [],
+  "event_candidates": [
+    {
+      "candidate_id": "cand_s_00000",
+      "canonical_label": "CDS Configuration Error",
+      "normalized_label": "cds configuration error",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Can be modeled as an event that triggers a specialized situation (e.g., Situation S1) in the manufacturing system.",
+        "May be linked via the TRIGGERS property to a situation representing a configuration error state."
+      ],
+      "definition": "An alarm indicating a configuration error in the CDS (Control Data System) component of a machine.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00008",
+          "text": "CDS CONFIGURATION ERROR",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0012",
+              "chunk_start_char": 4288,
+              "chunk_end_char": 4311,
+              "doc_start_char": 64288,
+              "doc_end_char": 64311,
+              "snippet": "user page. responsible for the intervention: programmer\n\nmessage no: 3030\ntext: CDS CONFIGURATION ERROR\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

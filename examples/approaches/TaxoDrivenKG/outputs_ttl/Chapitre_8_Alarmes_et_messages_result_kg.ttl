@@ -1,0 +1,679 @@
+@prefix ex: <http://taxodrivenkg-xquality.org/resource/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix voc: <http://taxodrivenkg-xquality.org/vocab/> .
+
+ex:ACTIVE_EMERGENCY a voc:alarm ;
+    rdfs:label "ACTIVE EMERGENCY" ;
+    voc:extractedFromChunk ex:chunk_0_2787 ;
+    voc:hasCause ex:punch_button ;
+    voc:hasIntervention ex:machine_start_button ;
+    voc:hasResponsible ex:operator_maintenance_officer ;
+    rdfs:comment "Alarm with immediate and controlled shutdown, opening of the hardware authorization to the axis/spindle feeder and CNC in emergency." .
+
+ex:AXIS_NOT_IN_POSITION a voc:alarm ;
+    rdfs:label "AXIS NOT IN POSITION" ;
+    voc:extractedFromChunk ex:chunk_58414_61073 ;
+    voc:hasCause ex:obstacle ;
+    rdfs:comment "Alarm with program interruption, stopping of axes and spindles." .
+
+ex:AXIS_NOT_IN_STOP a voc:alarm ;
+    rdfs:label "AXIS NOT IN STOP" ;
+    voc:extractedFromChunk ex:chunk_58414_61073 ;
+    voc:hasCause ex:part ;
+    rdfs:comment "Alarm with program interruption, stopping of axes and spindles." .
+
+ex:AXIS_NOT_PROGRAMMED a voc:alarm ;
+    rdfs:label "AXIS NOT PROGRAMMED" ;
+    voc:extractedFromChunk ex:chunk_58414_61073 ;
+    voc:hasCause ex:parameter_X,
+        ex:parameter_Y,
+        ex:parameter_Z ;
+    rdfs:comment "Alarm with program interruption, stopping of axes and spindles." .
+
+ex:Alarm_1013 a voc:alarm ;
+    rdfs:label "Alarm 1013" ;
+    voc:extractedFromChunk ex:chunk_8920_11608 ;
+    voc:hasCause ex:Cause_1013 ;
+    voc:hasMachine ex:Fanuc_160i_TB_CNC ;
+    rdfs:comment "Alarm No.: 1013 text: PSM FEEDER FAILURE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown, deactivation of the hardware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles." .
+
+ex:Alarm_1017 a voc:alarm ;
+    rdfs:label "Alarm 1017" ;
+    voc:extractedFromChunk ex:chunk_8920_11608 ;
+    voc:hasCause ex:Cause_1017 ;
+    voc:hasMachine ex:Fanuc_160i_TB_CNC ;
+    rdfs:comment "Alarm No.: 1017 text: CABINET OVERHEATING type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot." .
+
+ex:Alarm_1018 a voc:alarm ;
+    rdfs:label "Alarm 1018" ;
+    voc:extractedFromChunk ex:chunk_8920_11608 ;
+    voc:hasCause ex:Cause_1018 ;
+    voc:hasMachine ex:Fanuc_160i_TB_CNC ;
+    rdfs:comment "Alarm No.: 1018 text: LOW PRESSURE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The pressure of the pneumatic installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adjusted correctly." .
+
+ex:Alarm_1020 a voc:alarm ;
+    rdfs:label "Alarm 1020" ;
+    voc:extractedFromChunk ex:chunk_8920_11608 ;
+    voc:hasCause ex:Cause_1020 ;
+    voc:hasMachine ex:Fanuc_160i_TB_CNC ;
+    rdfs:comment "Alarm number: 1020 text: PROGRAMMING ERROR type: Standard: Optional: effect: Alarm with immediate arrest and control cause: An attempt was made to execute a program block containing a function M in one of the following situations which are not permitted: spindle removal when the bypass function is activated; spindle orientation when the rigid tapping function or pin synchronization is." .
+
+ex:Alarm_1022 a voc:Alarm ;
+    rdfs:label "Alarm 1022" ;
+    voc:extractedFromChunk ex:chunk_13576_16270 ;
+    voc:hasCause ex:cause1,
+        ex:cause2 ;
+    voc:responsibleFor ex:programmer ;
+    rdfs:comment "MANDATORY “S” CODE" .
+
+ex:Alarm_1026 a voc:Alarm ;
+    rdfs:label "Alarm 1026" ;
+    voc:extractedFromChunk ex:chunk_13576_16270 ;
+    voc:hasCause ex:cause3 ;
+    voc:responsibleFor ex:toolmaker_adjuster ;
+    rdfs:comment "DIFFERENT TROLLEY PROGRAM NUMBER" .
+
+ex:Alarm_1027 a voc:Alarm ;
+    rdfs:label "Alarm 1027" ;
+    voc:extractedFromChunk ex:chunk_13576_16270 ;
+    voc:hasCause ex:cause4 ;
+    voc:responsibleFor ex:operator ;
+    rdfs:comment "PROGRAM NOT REWOUND" .
+
+ex:Alarm_1071 a voc:Product ;
+    rdfs:label "Alarm 1071" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    voc:hasCause ex:Outdoor_sprinkler_system_CDS ;
+    voc:responsibleFor ex:Maintenance ;
+    rdfs:comment "Alarm indicating STOP AT END OF CYCLE for CDS." .
+
+ex:Alarm_1072 a voc:Product ;
+    rdfs:label "Alarm 1072" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    voc:hasCause ex:External_watering_system_CDS ;
+    voc:responsibleFor ex:Maintenance ;
+    rdfs:comment "Alarm indicating WAITING FOR EXCESSIVE FEED for CDS." .
+
+ex:Alarm_1078 a voc:Product ;
+    rdfs:label "Alarm 1078" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    voc:hasCause ex:Paired_tool_management_program ;
+    voc:responsibleFor ex:Operator ;
+    rdfs:comment "Alarm indicating STOP AT END OF CYCLE for SISTER TOOL." .
+
+ex:Alarm_1079 a voc:Product ;
+    rdfs:label "Alarm 1079" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    voc:hasCause ex:Feedrate_trimmer ;
+    voc:responsibleFor ex:Operator ;
+    rdfs:comment "Alarm indicating FEED DIFFERENT FROM 100% for LOAD MONITOR." .
+
+ex:Alarm_1080 a voc:Product ;
+    rdfs:label "Alarm 1080" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    rdfs:comment "Alarm indicating IMMEDIATE STOP for LOAD MONITOR." .
+
+ex:Alarm_1081 a voc:Product ;
+    rdfs:label "Alarm 1081" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    rdfs:comment "Alarm indicating STOP AT END OF CYCLE for LOAD MONITOR." .
+
+ex:Alarm_No_1009 voc:hasCause ex:A_thermal_switch_of_the_auxiliary_motors_has_been_triggered_with_high_priority .
+
+ex:Alarm_No_1011 voc:hasCause ex:Insufficient_quantity_of_coolant_in_the_linear_motor_coolant_circuit .
+
+ex:Alarm_No_1012 voc:hasCause ex:Insufficient_quantity_of_coolant_in_the_water_circuit,
+        ex:The_refrigerator_cannot_lower_the_temperature_of_the_linear_motor .
+
+ex:Alarm_No_1013 voc:hasCause ex:Hardware_problems_with_axes_and_spindles .
+
+ex:Alarm_No_1017 voc:hasCause ex:Electrical_cabinet_is_too_hot,
+        ex:The_fan_does_not_work,
+        ex:The_thermostat_is_not_set_correctly .
+
+ex:CDS_operator_panel a voc:Machine ;
+    rdfs:label "CDS operator panel" ;
+    voc:extractedFromChunk ex:chunk_51633_54367 ;
+    rdfs:comment "A control panel for the CDS system." .
+
+ex:CNC_battery_exhausted a voc:Cause ;
+    rdfs:label "CNC battery exhausted" ;
+    voc:extractedFromChunk ex:chunk_45039_47592 ;
+    voc:hasCause ex:CNC_machine ;
+    rdfs:comment "The buffer battery which powers the CNC memory with the machine off is exhausted." .
+
+ex:Cause_1040 a voc:Cause ;
+    rdfs:label "Cause 1040" ;
+    voc:extractedFromChunk ex:chunk_20215_22978 ;
+    rdfs:comment "An attempt was made to start the automatic cycle with the main spindle clamp open." .
+
+ex:Cause_1041 a voc:Cause ;
+    rdfs:label "Cause 1041" ;
+    voc:extractedFromChunk ex:chunk_20215_22978 ;
+    rdfs:comment "When the opening command was given, the clamp did not open within the time limit of 5 seconds." .
+
+ex:Cause_1042 a voc:Cause ;
+    rdfs:label "Cause 1042" ;
+    voc:extractedFromChunk ex:chunk_20215_22978 ;
+    rdfs:comment "When the opening command was given, the clamp did not close within the time limit of 5 seconds." .
+
+ex:Cause_1043 a voc:Cause ;
+    rdfs:label "Cause 1043" ;
+    voc:extractedFromChunk ex:chunk_20215_22978,
+        ex:chunk_22503_25252 ;
+    rdfs:comment "There are no conditions for opening the clamp, for example spindle stopped or the spindle rotation function with clamp open has not been programmed (M33)." .
+
+ex:Cause_1044 a voc:Cause ;
+    rdfs:label "Cause 1044" ;
+    voc:extractedFromChunk ex:chunk_20215_22978,
+        ex:chunk_22503_25252 ;
+    rdfs:comment "When the opening command is given, the microdetector has signaled the closing of the clamp, or, when the closing command is ordered, the microdetector has signaled the opening of the clamp.",
+        "When the opening command was given, the microdetector signaled the closure of the clamp, or, when the closing command was ordered, the microdetector signaled the clamp opening." .
+
+ex:Cause_1045 a voc:Cause ;
+    rdfs:label "Cause 1045" ;
+    voc:extractedFromChunk ex:chunk_22503_25252 ;
+    rdfs:comment "The flow control device does not signal the presence of coolant liquid, consequence of programming function M08." .
+
+ex:Cause_1046 a voc:Cause ;
+    rdfs:label "Cause 1046" ;
+    voc:extractedFromChunk ex:chunk_22503_25252 ;
+    rdfs:comment "The flow control device does not signal the presence of coolant liquid, consequence of programming function M208." .
+
+ex:Cause_for_AXIS_NOT_PROGRAMMED a voc:Cause ;
+    rdfs:label "Cause for AXIS NOT PROGRAMMED" ;
+    voc:extractedFromChunk ex:chunk_60650_63278 ;
+    rdfs:comment "When programming one of the functions G88, G84, G188, the parameter X, Z, or Y was respectively omitted." .
+
+ex:Cause_for_INVALID_G_CODE a voc:Cause ;
+    rdfs:label "Cause for INVALID G CODE" ;
+    voc:extractedFromChunk ex:chunk_60650_63278 ;
+    rdfs:comment "Programming of function G10 L50 is not permitted." .
+
+ex:Cause_for_POLIGONING_MICRODETECTOR_NOT_OK a voc:Cause ;
+    rdfs:label "Cause for POLIGONING MICRODETECTOR NOT OK" ;
+    voc:extractedFromChunk ex:chunk_60650_63278 ;
+    rdfs:comment "The G305 polishing with milling with phasing function searched unsuccessfully for the reference microdetector for which it stopped." .
+
+ex:Chip_conveyor_overload a voc:Cause ;
+    rdfs:label "Chip conveyor overload" ;
+    voc:extractedFromChunk ex:chunk_45039_47592 ;
+    voc:hasCause ex:CNC_machine ;
+    rdfs:comment "Chip conveyor is overloaded." .
+
+ex:FEED_WRONG_OR_ABSENT a voc:alarm ;
+    rdfs:label "FEED WRONG OR ABSENT" ;
+    voc:extractedFromChunk ex:chunk_58414_61073 ;
+    voc:hasCause ex:parameter_F ;
+    rdfs:comment "Alarm with program interruption, stopping of axes and spindles." .
+
+ex:Function_G304_not_activated a voc:Cause ;
+    rdfs:label "Function G304 not activated" ;
+    voc:extractedFromChunk ex:chunk_62864_65446 ;
+    rdfs:comment "Function G304 was not activated in the user page." .
+
+ex:High_pressure_unit_not_configured_correctly a voc:Cause ;
+    rdfs:label "High pressure unit not configured correctly" ;
+    voc:extractedFromChunk ex:chunk_62864_65446 ;
+    rdfs:comment "The high pressure unit has not been configured correctly on the user page." .
+
+ex:Lubrication_oil_level_low a voc:Cause ;
+    rdfs:label "Lubrication oil level low" ;
+    voc:extractedFromChunk ex:chunk_45039_47592 ;
+    voc:hasCause ex:CNC_machine ;
+    rdfs:comment "Indicates that the lubricating oil level is lower than the minimum." .
+
+ex:Lubrication_pressure_not_reached a voc:Cause ;
+    rdfs:label "Lubrication pressure not reached" ;
+    voc:extractedFromChunk ex:chunk_45039_47592 ;
+    voc:hasCause ex:CNC_machine ;
+    rdfs:comment "Lubrication pressure has not been restored in the installation." .
+
+ex:Machine a voc:Machine ;
+    rdfs:label "Machine" ;
+    voc:extractedFromChunk ex:chunk_56181_58847 ;
+    voc:hasCause ex:Axis_Not_In_Position_Cause,
+        ex:Axis_Not_Present_Cause,
+        ex:Caution_Vertical_Axis_Cause,
+        ex:Wrong_Torque_Reduction_Cause ;
+    rdfs:comment "The machine being operated in the maintenance context." .
+
+ex:OFF_CIRCUIT_MACHINE a voc:alarm ;
+    rdfs:label "OFF-CIRCUIT MACHINE" ;
+    voc:extractedFromChunk ex:chunk_0_2787 ;
+    voc:hasCause ex:power_circuits ;
+    voc:hasIntervention ex:machine_start_button ;
+    voc:hasResponsible ex:operator_maintenance_officer ;
+    rdfs:comment "Alarm with immediate and controlled shutdown, opening of authorization to the axis/spindle power supply." .
+
+ex:Programming_of_function_G10_L50_is_not_permitted a voc:Cause ;
+    rdfs:label "Programming of function G10 L50 is not permitted" ;
+    voc:extractedFromChunk ex:chunk_62864_65446 ;
+    rdfs:comment "The programming of function G10 L50 is not allowed in the system." .
+
+ex:SLIDING_DOOR_OPEN a voc:alarm ;
+    rdfs:label "SLIDING DOOR OPEN" ;
+    voc:extractedFromChunk ex:chunk_0_2787 ;
+    voc:hasCause ex:sliding_door ;
+    voc:hasIntervention ex:machine_start_button ;
+    voc:hasResponsible ex:operator_maintenance_officer ;
+    rdfs:comment "Alarm with immediate and controlled shutdown, opening of authorization to the axis/spindle power supply." .
+
+ex:Spindle_synchronization_when_tapping_function_rigid_or_pin_orientation_is_enabled a voc:Situation ;
+    rdfs:label "Spindle synchronization when tapping function rigid or pin orientation is enabled" ;
+    voc:extractedFromChunk ex:chunk_11129_13976 ;
+    voc:hasCause ex:PROGRAMMING_ERROR ;
+    rdfs:comment "Attempt to synchronize the spindle while the tapping function is rigid or pin orientation is enabled." .
+
+ex:Tool a voc:Part ;
+    rdfs:label "Tool" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    rdfs:comment "Tool breakage or wear." .
+
+ex:Tool_control_device_no_1 a voc:Cause ;
+    rdfs:label "Tool control device no. 1" ;
+    voc:extractedFromChunk ex:chunk_31547_34186 ;
+    rdfs:comment "Device that detected tip breakage in alarm 1061." .
+
+ex:Tool_control_device_no_2 a voc:Cause ;
+    rdfs:label "Tool control device no. 2" ;
+    voc:extractedFromChunk ex:chunk_31547_34186 ;
+    rdfs:comment "Device that did not work in alarms 1062, 1064, 1066." .
+
+ex:Tool_monitoring_device_No_3 a voc:Cause ;
+    rdfs:label "Tool monitoring device No. 3" ;
+    voc:extractedFromChunk ex:chunk_31547_34186 ;
+    rdfs:comment "Device that detected breakage in alarm 1065." .
+
+ex:Tooling_mode_selected a voc:Cause ;
+    rdfs:label "Tooling mode selected" ;
+    voc:extractedFromChunk ex:chunk_45039_47592 ;
+    voc:hasCause ex:CNC_machine ;
+    rdfs:comment "Tooling mode has been selected." .
+
+ex:Toolmaker_adjuster a voc:Operator ;
+    rdfs:label "Toolmaker-adjuster" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    rdfs:comment "Toolmaker-adjuster responsible for intervention." .
+
+ex:activation_of_bypass_mode_from_a_different_channel_of_that_of_which_the_pin_belongs a voc:Situation ;
+    rdfs:label "activation of bypass mode from a different channel of that of which the pin belongs" ;
+    voc:extractedFromChunk ex:chunk_11129_13976 ;
+    voc:hasCause ex:PROGRAMMING_ERROR ;
+    rdfs:comment "Attempt to activate bypass mode from a channel different from that to which the pin belongs." .
+
+ex:external_watering_system_CDS a voc:Machine ;
+    rdfs:label "external watering system (CDS)" ;
+    voc:extractedFromChunk ex:chunk_51633_54367 ;
+    rdfs:comment "The system that provides watering, requiring maintenance." .
+
+ex:input_X2_0 a voc:part ;
+    rdfs:label "input X2.0" ;
+    voc:extractedFromChunk ex:chunk_0_2787 ;
+    rdfs:comment "Electrical input responsible for the power circuits." .
+
+ex:input_X3_3 a voc:part ;
+    rdfs:label "input X3.3" ;
+    voc:extractedFromChunk ex:chunk_0_2787 ;
+    rdfs:comment "Electrical input responsible for the sliding door." .
+
+ex:input_X8_4 a voc:part ;
+    rdfs:label "input X8.4" ;
+    voc:extractedFromChunk ex:chunk_0_2787 ;
+    rdfs:comment "Electrical input responsible for the punch button." .
+
+ex:lathe a voc:Machine ;
+    rdfs:label "lathe" ;
+    voc:extractedFromChunk ex:chunk_51633_54367 ;
+    rdfs:comment "The machine that performs turning operations." .
+
+ex:machine a voc:Machine,
+        voc:machine ;
+    rdfs:label "machine" ;
+    voc:extractedFromChunk ex:chunk_0_2787,
+        ex:chunk_53894_56643 ;
+    voc:hasCause ex:alarm_no_1083,
+        ex:automatic_stop_function ;
+    rdfs:comment "The CNC machine that is stopped by alarms.",
+        "The machine that is being operated and can enter shutdown phase." .
+
+ex:machine_shutdown_time a voc:Cause ;
+    rdfs:label "machine shutdown time" ;
+    voc:extractedFromChunk ex:chunk_51633_54367 ;
+    rdfs:comment "The scheduled time at which the machine shuts down." .
+
+ex:maintenance a voc:Product ;
+    rdfs:label "maintenance" ;
+    voc:extractedFromChunk ex:chunk_53894_56643 ;
+    rdfs:comment "Maintenance process." .
+
+ex:message_no_2050 a voc:Product ;
+    rdfs:label "message no: 2050" ;
+    voc:extractedFromChunk ex:chunk_51633_54367 ;
+    rdfs:comment "A message displayed on the CDS operator panel indicating maintenance required." .
+
+ex:message_no_2051 a voc:Product ;
+    rdfs:label "message no: 2051" ;
+    voc:extractedFromChunk ex:chunk_51633_54367 ;
+    rdfs:comment "A message indicating waiting for authorization from external watering system." .
+
+ex:message_no_2060 a voc:Product ;
+    rdfs:label "message no: 2060" ;
+    voc:extractedFromChunk ex:chunk_51633_54367 ;
+    rdfs:comment "A message indicating machine shutdown time reached." .
+
+ex:message_no_2061 a voc:Product ;
+    rdfs:label "message no: 2061" ;
+    voc:extractedFromChunk ex:chunk_51633_54367 ;
+    rdfs:comment "A message indicating production quantity reached." .
+
+ex:operator_maintenance_manager a voc:Manager ;
+    rdfs:label "operator/maintenance manager" ;
+    voc:extractedFromChunk ex:chunk_31547_34186 ;
+    rdfs:comment "Person managing intervention in some alarms." .
+
+ex:operator_programmer a voc:Operator ;
+    rdfs:label "operator/programmer" ;
+    voc:extractedFromChunk ex:chunk_20215_22978,
+        ex:chunk_22503_25252 ;
+    rdfs:comment "Responsible for intervention on alarms 1043 and 1045.",
+        "Responsible for intervention." .
+
+ex:quantity_of_pieces a voc:Cause ;
+    rdfs:label "quantity of pieces" ;
+    voc:extractedFromChunk ex:chunk_51633_54367 ;
+    rdfs:comment "The number of pieces produced as set in production data." .
+
+ex:rigid_tapping_when_the_spindle_synchronization_function_is_activated a voc:Situation ;
+    rdfs:label "rigid tapping when the spindle synchronization function is activated" ;
+    voc:extractedFromChunk ex:chunk_11129_13976 ;
+    voc:hasCause ex:PROGRAMMING_ERROR ;
+    rdfs:comment "Attempt to perform rigid tapping while the spindle synchronization function is activated." .
+
+ex:shutdown_phase a voc:Product ;
+    rdfs:label "shutdown phase" ;
+    voc:extractedFromChunk ex:chunk_53894_56643 ;
+    voc:hasCause ex:alarm_no_1083 ;
+    rdfs:comment "The phase of stopping the machine." .
+
+ex:spindle_bypass_mode_when_rigid_tapping_function_or_spindle_synchronization_is_enabled a voc:Situation ;
+    rdfs:label "spindle bypass mode when rigid tapping function or spindle synchronization is enabled" ;
+    voc:extractedFromChunk ex:chunk_11129_13976 ;
+    voc:hasCause ex:PROGRAMMING_ERROR ;
+    rdfs:comment "Attempt to use spindle bypass mode while the rigid tapping function or spindle synchronization is enabled." .
+
+ex:spindle_orientation_when_the_rigid_tapping_function_or_pin_synchronization_is_enabled a voc:Situation ;
+    rdfs:label "spindle orientation when the rigid tapping function or pin synchronization is enabled" ;
+    voc:extractedFromChunk ex:chunk_11129_13976 ;
+    voc:hasCause ex:PROGRAMMING_ERROR ;
+    rdfs:comment "Attempt to orient the spindle while the rigid tapping function or pin synchronization is enabled." .
+
+ex:spindle_removal_when_the_bypass_function_is_activated a voc:Situation ;
+    rdfs:label "spindle removal when the bypass function is activated" ;
+    voc:extractedFromChunk ex:chunk_11129_13976 ;
+    voc:hasCause ex:PROGRAMMING_ERROR ;
+    rdfs:comment "Attempt to remove the spindle while the bypass function is activated." .
+
+ex:spindle_rotation_function_M_without_S_argument a voc:Situation ;
+    rdfs:label "spindle rotation function M without S argument" ;
+    voc:extractedFromChunk ex:chunk_11129_13976 ;
+    voc:hasCause ex:MANDATORY_S_CODE ;
+    rdfs:comment "Attempt to execute spindle rotation functions M (M3, M4, M73, M74, M203, M204, M273, M274) without specifying the speed argument “S”." .
+
+ex:spindle_rotation_when_the_rigid_tapping_function_is_activated a voc:Situation ;
+    rdfs:label "spindle rotation when the rigid tapping function is activated" ;
+    voc:extractedFromChunk ex:chunk_11129_13976 ;
+    voc:hasCause ex:PROGRAMMING_ERROR ;
+    rdfs:comment "Attempt to rotate the spindle while the rigid tapping function is activated." .
+
+ex:toolmaker_adjuster_in_charge_of_maintenance a voc:Manager ;
+    rdfs:label "toolmaker-adjuster/in charge of maintenance" ;
+    voc:extractedFromChunk ex:chunk_31547_34186 ;
+    rdfs:comment "Person managing intervention in some alarms." .
+
+ex:toolmaker_adjuster_maintenance_officer a voc:Operator ;
+    rdfs:label "toolmaker-adjuster/maintenance officer" ;
+    voc:extractedFromChunk ex:chunk_31547_34186 ;
+    rdfs:comment "Person responsible for intervention in some alarms." .
+
+ex:A_thermal_switch_of_the_auxiliary_motors_has_been_triggered_with_high_priority a voc:Cause ;
+    rdfs:label "A thermal switch of the auxiliary motors has been triggered, with high priority" ;
+    voc:extractedFromChunk ex:chunk_6627_9354 ;
+    rdfs:comment "A thermal switch of the auxiliary motors has been triggered, with high priority" .
+
+ex:Axis_Not_In_Position_Cause a voc:Cause ;
+    rdfs:label "Axis Not In Position Cause" ;
+    voc:extractedFromChunk ex:chunk_56181_58847 ;
+    rdfs:comment "The axis subject to torque reduction has not reached the position causing an obstacle on its route." .
+
+ex:Axis_Not_Present_Cause a voc:Cause ;
+    rdfs:label "Axis Not Present Cause" ;
+    voc:extractedFromChunk ex:chunk_56181_58847 ;
+    rdfs:comment "It is requested to reduce the torque to an axis which is not present in the Path." .
+
+ex:Cause_1013 a voc:Cause ;
+    rdfs:label "Cause 1013" ;
+    voc:extractedFromChunk ex:chunk_8920_11608 ;
+    rdfs:comment "Hardware problems concerning the axes and spindles." .
+
+ex:Cause_1017 a voc:Cause ;
+    rdfs:label "Cause 1017" ;
+    voc:extractedFromChunk ex:chunk_8920_11608 ;
+    rdfs:comment "The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot." .
+
+ex:Cause_1018 a voc:Cause ;
+    rdfs:label "Cause 1018" ;
+    voc:extractedFromChunk ex:chunk_8920_11608 ;
+    rdfs:comment "The pressure of the pneumatic installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adjusted correctly." .
+
+ex:Cause_1020 a voc:Cause ;
+    rdfs:label "Cause 1020" ;
+    voc:extractedFromChunk ex:chunk_8920_11608 ;
+    rdfs:comment "An attempt was made to execute a program block containing a function M in one of the following situations which are not permitted: spindle removal when the bypass function is activated; spindle orientation when the rigid tapping function or pin synchronization is." .
+
+ex:Caution_Vertical_Axis_Cause a voc:Cause ;
+    rdfs:label "Caution Vertical Axis Cause" ;
+    voc:extractedFromChunk ex:chunk_56181_58847 ;
+    rdfs:comment "It is requested to reduce the torque to a vertical axis, this is not allowed." .
+
+ex:Electrical_cabinet_is_too_hot a voc:Cause ;
+    rdfs:label "Electrical cabinet is too hot" ;
+    voc:extractedFromChunk ex:chunk_6627_9354 ;
+    rdfs:comment "Electrical cabinet is too hot" .
+
+ex:External_watering_system_CDS a voc:Product ;
+    rdfs:label "External watering system (CDS)" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    rdfs:comment "External watering system (CDS) delay." .
+
+ex:Feedrate_trimmer a voc:Part ;
+    rdfs:label "Feedrate trimmer" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    rdfs:comment "Feedrate trimmer set to different percentage." .
+
+ex:Hardware_problems_with_axes_and_spindles a voc:Cause ;
+    rdfs:label "Hardware problems with axes and spindles" ;
+    voc:extractedFromChunk ex:chunk_6627_9354 ;
+    rdfs:comment "Hardware problems with axes and spindles" .
+
+ex:Insufficient_quantity_of_coolant_in_the_linear_motor_coolant_circuit a voc:Cause ;
+    rdfs:label "Insufficient quantity of coolant in the linear motor coolant circuit" ;
+    voc:extractedFromChunk ex:chunk_6627_9354 ;
+    rdfs:comment "Insufficient quantity of coolant in the linear motor coolant circuit" .
+
+ex:Insufficient_quantity_of_coolant_in_the_water_circuit a voc:Cause ;
+    rdfs:label "Insufficient quantity of coolant in the water circuit" ;
+    voc:extractedFromChunk ex:chunk_6627_9354 ;
+    rdfs:comment "Insufficient quantity of coolant in the water circuit" .
+
+ex:MANDATORY_S_CODE a voc:Cause ;
+    rdfs:label "MANDATORY “S” CODE" ;
+    voc:extractedFromChunk ex:chunk_11129_13976 ;
+    rdfs:comment "An alarm indicating a mandatory “S” code error due to executing a program block containing spindle rotation functions without specifying the speed argument “S”." .
+
+ex:Outdoor_sprinkler_system_CDS a voc:Product ;
+    rdfs:label "Outdoor sprinkler system (CDS)" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    rdfs:comment "Outdoor sprinkler system (CDS) problem." .
+
+ex:Paired_tool_management_program a voc:Product ;
+    rdfs:label "Paired tool management program" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    rdfs:comment "Program detecting expired tool parts." .
+
+ex:The_fan_does_not_work a voc:Cause ;
+    rdfs:label "The fan does not work" ;
+    voc:extractedFromChunk ex:chunk_6627_9354 ;
+    rdfs:comment "The fan does not work" .
+
+ex:The_refrigerator_cannot_lower_the_temperature_of_the_linear_motor a voc:Cause ;
+    rdfs:label "The refrigerator cannot lower the temperature of the linear motor" ;
+    voc:extractedFromChunk ex:chunk_6627_9354 ;
+    rdfs:comment "The refrigerator cannot lower the temperature of the linear motor" .
+
+ex:The_thermostat_is_not_set_correctly a voc:Cause ;
+    rdfs:label "The thermostat is not set correctly" ;
+    voc:extractedFromChunk ex:chunk_6627_9354 ;
+    rdfs:comment "The thermostat is not set correctly" .
+
+ex:Wrong_Torque_Reduction_Cause a voc:Cause ;
+    rdfs:label "Wrong Torque Reduction Cause" ;
+    voc:extractedFromChunk ex:chunk_56181_58847 ;
+    rdfs:comment "The torque reduction requested at the indicated axis is outside the agreed limits." .
+
+ex:automatic_stop_function a voc:Cause ;
+    rdfs:label "automatic stop function" ;
+    voc:extractedFromChunk ex:chunk_53894_56643 ;
+    rdfs:comment "Function that triggers machine shutdown." .
+
+ex:cause1 a voc:Cause ;
+    rdfs:label "cause1" ;
+    voc:extractedFromChunk ex:chunk_13576_16270 ;
+    rdfs:comment "An attempt was made to execute a program block containing the spindle rotation function M (M3, M4, M73, M74, M203, M204, M273, M274) without having designated the speed argument “S”." .
+
+ex:cause2 a voc:Cause ;
+    rdfs:label "cause2" ;
+    voc:extractedFromChunk ex:chunk_13576_16270 ;
+    rdfs:comment "An attempt was made to execute a program block containing the pin orientation function M (M19, M219) without having designated the argument “B” concerning the positioning angle." .
+
+ex:cause3 a voc:Cause ;
+    rdfs:label "cause3" ;
+    voc:extractedFromChunk ex:chunk_13576_16270 ;
+    rdfs:comment "At the start of the execution of the cycle we noticed that the number of the program selected in the channel is different." .
+
+ex:cause4 a voc:Cause ;
+    rdfs:label "cause4" ;
+    voc:extractedFromChunk ex:chunk_13576_16270 ;
+    rdfs:comment "When we pressed the Reset button or we selected the automatic mode, rewinding was not carried out correctly." .
+
+ex:obstacle a voc:Part ;
+    rdfs:label "obstacle" ;
+    voc:extractedFromChunk ex:chunk_58414_61073 ;
+    rdfs:comment "an obstacle found in its path." .
+
+ex:operator a voc:Operator ;
+    rdfs:label "operator" ;
+    voc:extractedFromChunk ex:chunk_13576_16270,
+        ex:chunk_51633_54367,
+        ex:chunk_53894_56643 ;
+    rdfs:comment "The operator responsible for interventions.",
+        "The person responsible for interventions.",
+        "responsible for intervention: press the Reset key." .
+
+ex:parameter_F a voc:Cause ;
+    rdfs:label "parameter F" ;
+    voc:extractedFromChunk ex:chunk_58414_61073 ;
+    rdfs:comment "parameter F indicating feed." .
+
+ex:parameter_X a voc:Cause ;
+    rdfs:label "parameter X" ;
+    voc:extractedFromChunk ex:chunk_58414_61073 ;
+    rdfs:comment "parameter X omitted." .
+
+ex:parameter_Y a voc:Cause ;
+    rdfs:label "parameter Y" ;
+    voc:extractedFromChunk ex:chunk_58414_61073 ;
+    rdfs:comment "parameter Y omitted." .
+
+ex:parameter_Z a voc:Cause ;
+    rdfs:label "parameter Z" ;
+    voc:extractedFromChunk ex:chunk_58414_61073 ;
+    rdfs:comment "parameter Z omitted." .
+
+ex:part a voc:Part ;
+    rdfs:label "part" ;
+    voc:extractedFromChunk ex:chunk_58414_61073 ;
+    rdfs:comment "the part the axis cannot be in abutment on." .
+
+ex:power_circuits a voc:part ;
+    rdfs:label "power circuits" ;
+    voc:extractedFromChunk ex:chunk_0_2787 ;
+    rdfs:comment "The power circuits that supply the axis/spindle power supply." .
+
+ex:programmer a voc:Operator ;
+    rdfs:label "programmer" ;
+    voc:extractedFromChunk ex:chunk_13576_16270 ;
+    rdfs:comment "responsible for intervention: correct the program to insert argument “S”." .
+
+ex:punch_button a voc:component ;
+    rdfs:label "punch button" ;
+    voc:extractedFromChunk ex:chunk_0_2787 ;
+    rdfs:comment "A physical emergency stop button on the machine." .
+
+ex:sliding_door a voc:component ;
+    rdfs:label "sliding door" ;
+    voc:extractedFromChunk ex:chunk_0_2787 ;
+    rdfs:comment "The sliding door that must be closed during operation." .
+
+ex:toolmaker_adjuster a voc:Operator ;
+    rdfs:label "toolmaker-adjuster" ;
+    voc:extractedFromChunk ex:chunk_13576_16270,
+        ex:chunk_20215_22978,
+        ex:chunk_53894_56643 ;
+    rdfs:comment "Responsible for intervention.",
+        "The toolmaker-adjuster responsible for interventions.",
+        "responsible for intervention: deactivate control in the user page “GESTIÓN DES CHARIOTS”." .
+
+ex:Maintenance a voc:Operator ;
+    rdfs:label "Maintenance" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    rdfs:comment "Responsible for maintenance intervention." .
+
+ex:Operator a voc:Operator ;
+    rdfs:label "Operator" ;
+    voc:extractedFromChunk ex:chunk_38232_40935 ;
+    rdfs:comment "Operator responsible for intervention." .
+
+ex:alarm_no_1083 a voc:Cause ;
+    rdfs:label "alarm no. 1083" ;
+    voc:extractedFromChunk ex:chunk_53894_56643 ;
+    rdfs:comment "Alarm indicating shutdown phase start." .
+
+ex:machine_start_button a voc:component ;
+    rdfs:label "machine start button" ;
+    voc:extractedFromChunk ex:chunk_0_2787 ;
+    rdfs:comment "The button used to start the machine." .
+
+ex:operator_maintenance_officer a voc:Operator,
+        voc:operator ;
+    rdfs:label "operator/maintenance officer" ;
+    voc:extractedFromChunk ex:chunk_0_2787,
+        ex:chunk_31547_34186 ;
+    rdfs:comment "Person responsible for intervention in some alarms.",
+        "The person responsible for handling alarms." .
+
+ex:Fanuc_160i_TB_CNC a voc:Machine ;
+    rdfs:label "Fanuc 160i-TB CNC" ;
+    voc:extractedFromChunk ex:chunk_8920_11608 ;
+    rdfs:comment "Fanuc 160i-TB CNC service manual and maintenance manual." .
+
+ex:CNC_machine a voc:Machine ;
+    rdfs:label "CNC machine" ;
+    voc:extractedFromChunk ex:chunk_45039_47592 ;
+    rdfs:comment "The CNC machine that uses buffer battery, tooling mode, lubrication, etc." .
+
+ex:PROGRAMMING_ERROR a voc:Cause ;
+    rdfs:label "PROGRAMMING ERROR" ;
+    voc:extractedFromChunk ex:chunk_11129_13976 ;
+    rdfs:comment "An alarm indicating a programming error due to executing a program block containing a function M in a disallowed situation." .
+

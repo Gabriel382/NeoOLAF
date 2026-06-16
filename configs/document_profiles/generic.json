@@ -1,0 +1,57 @@
+{
+  "profile_name": "generic",
+  "description": "Default generic NeoOLAF profile for unstructured or semi-structured documents.",
+  "language": {
+    "source": null,
+    "target": "en",
+    "translate": false,
+    "translate_in_preprocessing": false,
+    "llm_translate_inside_extraction": false
+  },
+  "chunking": {
+    "strategies": [
+      "fixed"
+    ],
+    "preferred_unit_for_extraction": "chunk",
+    "chunk_size": 1500,
+    "overlap": 200
+  },
+  "layers": {
+    "layer01_linguistic_expression_extraction": {
+      "strategy": "generic",
+      "structured_output": {
+        "enabled": false,
+        "mode": "json",
+        "schema_name": null,
+        "use_litellm_response_format": false,
+        "fallback_to_json_parse": true,
+        "strict_validation": false
+      }
+    },
+    "layer05_candidate_triple_generation": {
+      "strategy": "generic"
+    },
+    "layer02_candidate_enrichment": {
+      "max_concurrency": 1
+    },
+    "layer03_candidate_typing_resolution": {
+      "max_concurrency": 1
+    }
+  },
+  "relations": {
+    "allowed": []
+  },
+  "rag": {
+    "allowed_spaces": {}
+  },
+  "evaluation": {
+    "profile_name": "xquality_loose"
+  },
+  "record_identity_policy": {
+    "enabled": false
+  },
+  "orchestration": {
+    "max_concurrency_layer02": 1,
+    "max_concurrency_layer03": 1
+  }
+}

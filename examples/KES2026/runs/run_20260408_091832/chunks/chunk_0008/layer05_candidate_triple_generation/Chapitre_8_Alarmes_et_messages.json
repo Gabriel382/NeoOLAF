@@ -1,0 +1,186 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 6,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_s_00004",
+        "label": "Alarm No. 1083",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00007",
+        "label": "power supply"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "Machine",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0008",
+      "justification": "The chunk states that during the AUTOMATIC STOP IN PROGRESS (Alarm No. 1083) the power supply will be cut off to the lathe, indicating a functional link between the alarm event and the machine.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 2969,
+          "chunk_end_char": 2981,
+          "doc_start_char": 42969,
+          "doc_end_char": 42981,
+          "snippet": "tion of the time specified in the user page for the shutdown\nautomatically, the power supply will be cut off to the lathe.\nIf you want to stop the shutdown sequence, press"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_s_00004",
+        "label": "Alarm No. 1083",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00029",
+        "label": "Power supply will be cut off to the lathe"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "Machine",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0008",
+      "justification": "The chunk text states that Alarm No. 1083 causes the power supply to be cut off to the lathe.",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 2969,
+          "chunk_end_char": 3010,
+          "doc_start_char": 42969,
+          "doc_end_char": 43010,
+          "snippet": "tion of the time specified in the user page for the shutdown\nautomatically, the power supply will be cut off to the lathe.\nIf you want to stop the shutdown sequence, press\nintervention: R.A.Z. (RESET)"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00002",
+      "subject": {
+        "id": "cand_s_00005",
+        "label": "Alarm No.: 1084",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00030",
+        "label": "Cycle cannot continue"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "Machine",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0008",
+      "justification": "The chunk states that Alarm No. 1084 (MANDATORY MAINTENANCE) causes the cycle to stop, meaning the machine cannot continue.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 3408,
+          "chunk_end_char": 3429,
+          "doc_start_char": 43408,
+          "doc_end_char": 43429,
+          "snippet": "one or more counters relating to the inter-cause:\nYour time has elapsed, so the cycle cannot continue.\nCarry out maintenance operations for inter-intervention applications and confi"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00003",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "Machine",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00031",
+        "label": "Lathe is in alarm condition with automatic stop activated"
+      },
+      "object": {
+        "id": "cand_s_00004",
+        "label": "Alarm No. 1083",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0008",
+      "justification": "The chunk text states that the lathe (the machine) is in alarm condition with automatic stop activated, which is the description of Alarm No. 1083.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 2810,
+          "chunk_end_char": 2867,
+          "doc_start_char": 42810,
+          "doc_end_char": 42867,
+          "snippet": "he cycle\nThe established time or the target production has been reached, or\nthe lathe is in alarm condition with automatic stop activated; to\ncause:\nthe expiration of the time specified in the user page for the shutdo"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00004",
+      "subject": {
+        "id": "cand_e_00001",
+        "label": "counter",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00032",
+        "label": "Established time or target production has been reached"
+      },
+      "object": {
+        "id": "cand_s_00004",
+        "label": "Alarm No. 1083",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0008",
+      "justification": "The chunk text states that Alarm No. 1083 is triggered when the established time or target production has been reached, which is a counter-based condition. Thus the relation candidate connects the counter entity to the alarm event.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ominal.\nintervention: Set the priority (override) to 100% and repeat the cycle.\nresponsible for\noperator\nAlarm No.: 1080\ntext: LOAD MONITOR: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe Load Monitor tool monitoring system has detected a breakage\nc"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00005",
+      "subject": {
+        "id": "cand_e_00001",
+        "label": "counter",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00033",
+        "label": "Time set by counters has elapsed"
+      },
+      "object": {
+        "id": "cand_s_00005",
+        "label": "Alarm No.: 1084",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0008",
+      "justification": "The chunk text states that Alarm No. 1084 is caused by \"The time set by one or more counters concerning the maintenance has elapsed\", directly linking the counter resource to the alarm event.",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ominal.\nintervention: Set the priority (override) to 100% and repeat the cycle.\nresponsible for\noperator\nAlarm No.: 1080\ntext: LOAD MONITOR: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe Load Monitor tool monitoring system has detected a breakage\nc"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,598 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 37,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "bar change is completed",
+      "label": "event",
+      "justification": "This phrase describes the completion of a bar change operation, an event in the machine workflow.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 4,
+          "chunk_end_char": 27,
+          "doc_start_char": 50004,
+          "doc_end_char": 50027,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno interventi"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "self-intervention message clears",
+      "label": "action",
+      "justification": "This indicates the automatic clearing of a self-intervention message, an action performed by the system.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 33,
+          "chunk_end_char": 65,
+          "doc_start_char": 50033,
+          "doc_end_char": 50065,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BA"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "responsible for",
+      "label": "relation-bearing expression",
+      "justification": "This phrase links a role or entity to a responsibility, a key relational construct.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 78,
+          "chunk_end_char": 93,
+          "doc_start_char": 50078,
+          "doc_end_char": 50093,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "BARRIER: EMPTY BAR STORE",
+      "label": "alarm type",
+      "justification": "This is the name of an alarm that signals an empty bar store.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 143,
+          "chunk_end_char": 167,
+          "doc_start_char": 50143,
+          "doc_end_char": 50167,
+          "snippet": "rs:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the opera"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "effect: Only display of the message",
+      "label": "attribute",
+      "justification": "Describes the effect of the alarm, an observable property.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 194,
+          "chunk_end_char": 229,
+          "doc_start_char": 50194,
+          "doc_end_char": 50229,
+          "snippet": "ested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost empty.\ni"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "Informs the operator that the bar feeder bar magazine is almost empty.",
+      "label": "state",
+      "justification": "This sentence describes the state of the bar feeder magazine as almost empty.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 1233,
+          "chunk_end_char": 1303,
+          "doc_start_char": 51233,
+          "doc_end_char": 51303,
+          "snippet": "R MAGAZINE type: Standard: Optional: effect: Only display of the message cause: Informs the operator that the bar feeder bar magazine is almost empty. intervention: Add new bars to the store. responsible for the intervention: oper"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "cause: almost empty.",
+      "label": "cause",
+      "justification": "This phrase identifies the cause of the alarm as the bar magazine being almost empty.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "intervention: Add new bars to the store.",
+      "label": "intervention",
+      "justification": "This is the recommended action to resolve the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 308,
+          "chunk_end_char": 348,
+          "doc_start_char": 50308,
+          "doc_end_char": 50348,
+          "snippet": "e\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost empty.\nintervention: Add new bars to the store.\nresponsible for\noperator\n\nmessage n°: 2024 text: OVERLOAD CONTROL DEVICE FAILUR"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "OVERLOAD CONTROL DEVICE FAILURE",
+      "label": "alarm type",
+      "justification": "Name of an alarm indicating failure of the overload control device.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 398,
+          "chunk_end_char": 429,
+          "doc_start_char": 50398,
+          "doc_end_char": 50429,
+          "snippet": "on: Add new bars to the store.\nresponsible for\noperator\n\nmessage n°: 2024 text: OVERLOAD CONTROL DEVICE FAILURE type: Standard: Optional: effect: Only display of the message cause: The behavi"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "cause: The behavior of the “chip conveyor overload control device” is abnormal, for this reason the logic system considers it to be faulty.",
+      "label": "cause",
+      "justification": "Explains the underlying abnormal behavior causing the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 492,
+          "chunk_end_char": 631,
+          "doc_start_char": 50492,
+          "doc_end_char": 50631,
+          "snippet": "OL DEVICE FAILURE type: Standard: Optional: effect: Only display of the message cause: The behavior of the “chip conveyor overload control device” is abnormal, for this reason the logic system considers it to be faulty. intervention: Make sure that this device works correctly. responsible for inter"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "intervention: Make sure that this device works correctly.",
+      "label": "intervention",
+      "justification": "Recommended corrective action for the overload control device failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 632,
+          "chunk_end_char": 689,
+          "doc_start_char": 50632,
+          "doc_end_char": 50689,
+          "snippet": "evice” is abnormal, for this reason the logic system considers it to be faulty. intervention: Make sure that this device works correctly. responsible for intervention: responsible for maintenance\n\nmessage n°: 2040 tex"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "FEEDER: BAR CHANGE PHASE",
+      "label": "alarm type",
+      "justification": "Alarm indicating that the bar change phase is in progress.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 772,
+          "chunk_end_char": 796,
+          "doc_start_char": 50772,
+          "doc_end_char": 50796,
+          "snippet": "sponsible for intervention: responsible for maintenance\n\nmessage n°: 2040 text: FEEDER: BAR CHANGE PHASE type: Standard: Optional: effect: Only display of the message cause: Warns the"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "cause: Warns the operator that the machining cycle is suspended waiting for the bar change to be completed.",
+      "label": "cause",
+      "justification": "Describes why the alarm is triggered.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 859,
+          "chunk_end_char": 966,
+          "doc_start_char": 50859,
+          "doc_end_char": 50966,
+          "snippet": "BAR CHANGE PHASE type: Standard: Optional: effect: Only display of the message cause: Warns the operator that the machining cycle is suspended waiting for the bar change to be completed. intervention: When the bar change is completed, the message is automatically cl"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "intervention: When the bar change is completed, the message is automatically cleared.",
+      "label": "intervention",
+      "justification": "Specifies the automatic clearing of the alarm after bar change completion.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 967,
+          "chunk_end_char": 1052,
+          "doc_start_char": 50967,
+          "doc_end_char": 51052,
+          "snippet": "at the machining cycle is suspended waiting for the bar change to be completed. intervention: When the bar change is completed, the message is automatically cleared. responsible for the intervention: no intervention requested\n\nmessage n°: 2041 t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "FEEDER: EMPTY BAR MAGAZINE",
+      "label": "alarm type",
+      "justification": "Alarm indicating that the bar magazine is empty.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 1137,
+          "chunk_end_char": 1163,
+          "doc_start_char": 51137,
+          "doc_end_char": 51163,
+          "snippet": "onsible for the intervention: no intervention requested\n\nmessage n°: 2041 text: FEEDER: EMPTY BAR MAGAZINE type: Standard: Optional: effect: Only display of the message cause: Informs th"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "cause: Informs the operator that the bar feeder bar magazine is almost empty.",
+      "label": "cause",
+      "justification": "Cause of the alarm is the near-empty state of the bar magazine.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 1226,
+          "chunk_end_char": 1303,
+          "doc_start_char": 51226,
+          "doc_end_char": 51303,
+          "snippet": "MPTY BAR MAGAZINE type: Standard: Optional: effect: Only display of the message cause: Informs the operator that the bar feeder bar magazine is almost empty. intervention: Add new bars to the store. responsible for the intervention: oper"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "CDS: SIGNALING A MESSAGE OR NOTICE",
+      "label": "alarm type",
+      "justification": "Alarm type related to the CDS (exterior watering system) signaling.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 1412,
+          "chunk_end_char": 1446,
+          "doc_start_char": 51412,
+          "doc_end_char": 51446,
+          "snippet": "o the store. responsible for the intervention: operator\n\nmessage no: 2050\ntext: CDS: SIGNALING A MESSAGE OR NOTICE\ntype: Standard: Optional:\neffect: Only display of the message\nThe exterior wate"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "cause: immediate.",
+      "label": "cause",
+      "justification": "Indicates that the cause is immediate, a concise cause description.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "intervention: consult the documentation, in the absence of signals check connections with the tower.",
+      "label": "intervention",
+      "justification": "Recommended steps to address the CDS alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "CDS: ATTESA ABILITAZIONE AVANZAMENTO",
+      "label": "alarm type",
+      "justification": "Alarm indicating waiting for activation of advancement.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 1797,
+          "chunk_end_char": 1833,
+          "doc_start_char": 51797,
+          "doc_end_char": 51833,
+          "snippet": "ignals check\nconnections with the tower.\nresponsible for\nmessage no: 2051\ntext: CDS: ATTESA ABILITAZIONE AVANZAMENTO\ntype: Standard: Optional:\neffect: Only display of the message\nThis message indi"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "cause: further authorization from the outdoor watering device (CDS)",
+      "label": "cause",
+      "justification": "Cause is the lack of authorization from the CDS.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "intervention: automatically.",
+      "label": "intervention",
+      "justification": "Describes that the alarm clears automatically once authorization is received.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "AUTOMATIC OFF: SET TIME REACHED",
+      "label": "alarm type",
+      "justification": "Alarm indicating that the automatic off time has been reached.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 2234,
+          "chunk_end_char": 2265,
+          "doc_start_char": 52234,
+          "doc_end_char": 52265,
+          "snippet": "sage clears\nintervention:\nautomatically.\nresponsible for\nmessage no: 2060\ntext: AUTOMATIC OFF: SET TIME REACHED\ntype: Standard: Optional:\neffect: Only display of the message\nThe machine shutd"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "cause: the programs will be stopped at the same time as function M01 and the shutdown phase will be started (see alarm no. 1083)",
+      "label": "cause",
+      "justification": "Explains the sequence of events leading to the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "intervention: shutdown from the appropriate user page.",
+      "label": "intervention",
+      "justification": "Action to initiate shutdown via user page.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "CDS: MESSAGE OR NOTICE SIGNALING",
+      "label": "alarm type",
+      "justification": "Alarm type for CDS message or notice signaling.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 2700,
+          "chunk_end_char": 2732,
+          "doc_start_char": 52700,
+          "doc_end_char": 52732,
+          "snippet": "rom the appropriate user page.\nresponsible for\noperator\n\nmessage n°: 2050 text: CDS: MESSAGE OR NOTICE SIGNALING type: Standard: Optional: effect: Only display of the message cause: The exteri"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "cause: The exterior watering system (CDS) requires non-immediate maintenance.",
+      "label": "cause",
+      "justification": "Cause is the need for maintenance of the CDS.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 2795,
+          "chunk_end_char": 2872,
+          "doc_start_char": 52795,
+          "doc_end_char": 52872,
+          "snippet": "NOTICE SIGNALING type: Standard: Optional: effect: Only display of the message cause: The exterior watering system (CDS) requires non-immediate maintenance. intervention: Check the type of maintenance requested on the CDS operator panel"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "intervention: Check the type of maintenance requested on the CDS operator panel and consult the documentation, in the absence of signals check the connections with the lathe.",
+      "label": "intervention",
+      "justification": "Steps to perform maintenance for the CDS alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 2873,
+          "chunk_end_char": 3047,
+          "doc_start_char": 52873,
+          "doc_end_char": 53047,
+          "snippet": "e cause: The exterior watering system (CDS) requires non-immediate maintenance. intervention: Check the type of maintenance requested on the CDS operator panel and consult the documentation, in the absence of signals check the connections with the lathe. responsible for intervention: responsible for maintenance\n\nmessage n°: 2051 tex"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "AUTOMATIC STOP: CONFIGURED TIME REACHED",
+      "label": "alarm type",
+      "justification": "Alarm indicating that the configured stop time has been reached.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 3598,
+          "chunk_end_char": 3637,
+          "doc_start_char": 53598,
+          "doc_end_char": 53637,
+          "snippet": "utomatically cleared. responsible for the intervention:\n\nmessage n°: 2060 text: AUTOMATIC STOP: CONFIGURED TIME REACHED type: Standard: Optional: effect: Only display of the message cause: The machin"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "cause: The machine shutdown time has been reached; if the condition persists, the programs will be stopped at the same time as function M01 and the shutdown phase will be started (see alarm no. 1083)",
+      "label": "cause",
+      "justification": "Describes the cause and subsequent actions for the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 3700,
+          "chunk_end_char": 3899,
+          "doc_start_char": 53700,
+          "doc_end_char": 53899,
+          "snippet": "URED TIME REACHED type: Standard: Optional: effect: Only display of the message cause: The machine shutdown time has been reached; if the condition persists, the programs will be stopped at the same time as function M01 and the shutdown phase will be started (see alarm no. 1083) intervention: It is possible to interrupt the shutdown phase changing the shutd"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00030",
+      "text": "intervention: It is possible to interrupt the shutdown phase changing the shutdown time from the appropriate user page.",
+      "label": "intervention",
+      "justification": "Action to modify shutdown time to interrupt the shutdown phase.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 3900,
+          "chunk_end_char": 4019,
+          "doc_start_char": 53900,
+          "doc_end_char": 54019,
+          "snippet": "ime as function M01 and the shutdown phase will be started (see alarm no. 1083) intervention: It is possible to interrupt the shutdown phase changing the shutdown time from the appropriate user page. responsible for the intervention: operator\n\nmessage no: 2061\ntext: CONFIGURED P"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00031",
+      "text": "CONFIGURED PRODUCTION REACHED",
+      "label": "alarm type",
+      "justification": "Alarm indicating that the configured production quantity has been reached.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 4087,
+          "chunk_end_char": 4116,
+          "doc_start_char": 54087,
+          "doc_end_char": 54116,
+          "snippet": "e user page. responsible for the intervention: operator\n\nmessage no: 2061\ntext: CONFIGURED PRODUCTION REACHED\ntype: Standard: Optional:\neffect: Only display of the message\nThe quantity of p"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00032",
+      "text": "cause: will be stopped at the same time as function M01 and phase shutdown will be started (see alarm no. 1083).",
+      "label": "cause",
+      "justification": "Cause of the alarm is the planned shutdown after production completion.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00033",
+      "text": "intervention: of deposit documents from the appropriate user page.",
+      "label": "intervention",
+      "justification": "Action to change deposit documents to interrupt the shutdown.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00034",
+      "text": "AUTOMATIC STOP: MACHINE IN ALARM",
+      "label": "alarm type",
+      "justification": "Alarm indicating that the machine is in an alarm state.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": 4607,
+          "chunk_end_char": 4639,
+          "doc_start_char": 54607,
+          "doc_end_char": 54639,
+          "snippet": "ppropriate user page.\nresponsible for\ntoolmaker-adjuster\nmessage no: 2062\ntext: AUTOMATIC STOP: MACHINE IN ALARM\ntype: Standard: Optional:\neffect: Only display of the message\nThe AUTOMATIC OFF"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00035",
+      "text": "cause: or an alarm has occurred, therefore the shutdown phase of the machine has started.",
+      "label": "cause",
+      "justification": "Cause is the occurrence of an alarm triggering shutdown.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00036",
+      "text": "intervention: engage it and turn on the machine",
+      "label": "intervention",
+      "justification": "Recommended action to resume machine operation after alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0010",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "the bar change is completed, the self-intervention message clears:\nmatically.\nresponsible for\nno intervention requested\nmessage no: 2041\ntext: BARRIER: EMPTY BAR STORE\ntype: Standard: Optional:\neffect: Only display of the message\nInforms the operator that the bar feeder bar magazine is\ncause:\nalmost"
+        }
+      ]
+    }
+  ]
+}

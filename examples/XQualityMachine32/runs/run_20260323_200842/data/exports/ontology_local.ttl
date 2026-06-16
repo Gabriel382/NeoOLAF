@@ -1,0 +1,41 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://neoolaf.org/resource/concept/concept_00000> a owl:Class ;
+    rdfs:label "CNCMachine" ;
+    neo:conceptKind "Machine" ;
+    neo:parentHint "Machine" ;
+    rdfs:comment "A computer-controlled machine tool for automated manufacturing." .
+
+<http://neoolaf.org/resource/concept/concept_00001> a owl:Class ;
+    rdfs:label "EmergencySituation" ;
+    neo:conceptKind "situation" ;
+    neo:parentHint "TemporalEntity" ;
+    rdfs:comment "A state indicating a serious and immediate threat requiring urgent action." .
+
+<http://neoolaf.org/resource/relation/ont_rel_00000> a owl:ObjectProperty ;
+    rdfs:label "emittedBy" ;
+    neo:domainHint "SignalEvent" ;
+    neo:rangeHint "Device" ;
+    rdfs:comment "Relates an entity or event to the source that produces or generates it." ;
+    rdfs:domain "SignalEvent" ;
+    rdfs:range "Device" ;
+    rdfs:subPropertyOf <http://neoolaf.org/resource/relation/ont_rel_00002> .
+
+<http://neoolaf.org/resource/relation/ont_rel_00001> a owl:ObjectProperty ;
+    rdfs:label "negativelyImpacts" ;
+    neo:domainHint "ObservableProperty" ;
+    neo:rangeHint "Machine" ;
+    rdfs:comment "Relates a factor or condition to its negative effect on the functionality of a machine or system." ;
+    rdfs:domain "ObservableProperty" ;
+    rdfs:range "MachineState" .
+
+<http://neoolaf.org/resource/relation/ont_rel_00002> a owl:ObjectProperty ;
+    rdfs:label "indicates" ;
+    neo:domainHint "Situation" ;
+    neo:rangeHint "ObservableEntity" ;
+    rdfs:comment "Relates a situation or event to an observable signal or property." ;
+    rdfs:domain "Situation" ;
+    rdfs:range "ObservableEntity" .
+

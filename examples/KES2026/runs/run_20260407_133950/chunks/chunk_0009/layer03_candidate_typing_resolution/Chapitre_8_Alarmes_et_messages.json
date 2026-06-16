@@ -1,0 +1,1545 @@
+{
+  "layer": "layer03_candidate_typing_resolution",
+  "entity_candidates": [
+    {
+      "candidate_id": "cand_e_00000",
+      "canonical_label": "CNC memory",
+      "normalized_label": "cnc memory",
+      "candidate_type": "entity",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "part-of Machine",
+        "component of CNC controller",
+        "electronic memory device",
+        "affected by battery status"
+      ],
+      "definition": "The memory component within a CNC machine that stores control programs, operational data, and firmware, enabling the machine to execute machining tasks.",
+      "aliases": [
+        "CNC controller memory",
+        "CNC computer memory",
+        "CNC system memory"
+      ],
+      "synonyms": [
+        "controller memory",
+        "control unit memory"
+      ],
+      "lexical_variants": [
+        "CNC memory module",
+        "CNC memory chip"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00009",
+          "text": "CNC memory",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 226,
+              "chunk_end_char": 236,
+              "doc_start_char": 45226,
+              "doc_end_char": 45236,
+              "snippet": "tional:\neffect: Only display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nReplace the battery with the m"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_e_00001",
+      "canonical_label": "Machine component",
+      "normalized_label": "machine component",
+      "candidate_type": "entity",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine component",
+        "Transport device",
+        "Used in chip manufacturing processes",
+        "Operated by an Operator",
+        "Maintained by a Technician",
+        "Associated with Action events such as loading, unloading, or monitoring"
+      ],
+      "definition": "A conveyor system designed to transport chips or chip components within a manufacturing environment, facilitating their evacuation or relocation.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00014",
+          "text": "chip conveyor",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 2531,
+              "chunk_end_char": 2544,
+              "doc_start_char": 47531,
+              "doc_end_char": 47544,
+              "snippet": "X2.7 page 14 of the electrical diagram.\nresponsible for\nmessage no: 2022\ntext: CHIP CONVEYOR OVERLOAD\ntype: Standard: Optional:\neffect: Only display of the message\nExcessiv"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_e_00002",
+      "canonical_label": "overload control device",
+      "normalized_label": "overload control device",
+      "candidate_type": "entity",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observable Property",
+        "Constraint",
+        "Production Line",
+        "Logistic Process",
+        "Observation"
+      ],
+      "definition": "A device that monitors observable properties such as current or voltage and enforces constraints to prevent overload conditions in manufacturing or logistic processes.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00015",
+          "text": "overload control device",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 4467,
+              "chunk_end_char": 4490,
+              "doc_start_char": 49467,
+              "doc_end_char": 49490,
+              "snippet": "cal diagram. responsible for the intervention: operator\n\nmessage no: 2024\ntext: OVERLOAD CONTROL DEVICE FAILURE\ntype: Standard: Optional:\neffect: Only display of the message\nThe behav"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_e_00003",
+      "canonical_label": "feeder",
+      "normalized_label": "feeder",
+      "candidate_type": "entity",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature",
+        "FeatureOfInterest",
+        "Sensor",
+        "Component",
+        "MachinePart"
+      ],
+      "definition": "A machine or device that automatically supplies a continuous flow of material to a process or downstream equipment.",
+      "aliases": [
+        "feeder",
+        "eater",
+        "tributary",
+        "confluent",
+        "affluent",
+        "self-feeder",
+        "bird feeder",
+        "birdfeeder",
+        "Feeder"
+      ],
+      "synonyms": [
+        "feeder",
+        "eater",
+        "tributary",
+        "confluent",
+        "affluent",
+        "self-feeder",
+        "bird feeder",
+        "birdfeeder"
+      ],
+      "lexical_variants": [
+        "feeder",
+        "eater",
+        "tributary",
+        "confluent",
+        "affluent",
+        "self-feeder",
+        "bird feeder",
+        "birdfeeder"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00016",
+          "text": "feeder",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 4799,
+              "chunk_end_char": 4805,
+              "doc_start_char": 49799,
+              "doc_end_char": 49805,
+              "snippet": "e sure that this device works correctly.\nresponsible for\nmessage no: 2040\ntext: FEEDER: BAR CHANGE PHASE\ntype: Standard: Optional:\neffect: Only display of the message"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "relation_candidates": [
+    {
+      "candidate_id": "cand_r_00000",
+      "canonical_label": "CNC BATTERY EXHAUSTED",
+      "normalized_label": "cnc battery exhausted",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmType",
+        "BatteryFailure",
+        "CNCMachine",
+        "BatteryDepleted",
+        "ManagerResponsibility",
+        "MaintenanceIntervention",
+        "Interval",
+        "FeatureOfInterest",
+        "Cause",
+        "TRIGGERS",
+        "CAUSES",
+        "HANDLED_BY",
+        "REQUIRES",
+        "REFERENCES",
+        "part-of",
+        "affects",
+        "observed-by",
+        "temporal"
+      ],
+      "definition": "An alarm indicating that the battery powering a CNC machine has been depleted, requiring recharge or replacement.",
+      "aliases": [
+        "CNC battery exhausted alarm"
+      ],
+      "synonyms": [
+        "CNC battery depleted",
+        "CNC battery drained"
+      ],
+      "lexical_variants": [
+        "CNC battery exhausted alarm",
+        "CNC battery low alarm"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00000",
+          "text": "CNC BATTERY EXHAUSTED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 106,
+              "chunk_end_char": 127,
+              "doc_start_char": 45106,
+              "doc_end_char": 45127,
+              "snippet": "sponsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype: Standard: Optional:\neffect: Only display of the message\nThe buffer batter"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00001",
+      "canonical_label": "MACHINE IN TOOLING MODE",
+      "normalized_label": "machine in tooling mode",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine",
+        "Manufacturing Cell",
+        "Manufacturing Facility",
+        "Manufacturing Process"
+      ],
+      "definition": "Alarm indicating that a machine is operating in tooling mode, a state where the machine is configured for tool changes or tool‑related operations.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00001",
+          "text": "MACHINE IN TOOLING MODE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 418,
+              "chunk_end_char": 441,
+              "doc_start_char": 45418,
+              "doc_end_char": 45441,
+              "snippet": "avoid unnecessary intervention:\ndisplay the stored data.\nmessage no: 2002\ntext: MACHINE IN TOOLING MODE\ntype: Standard: Optional:\neffect: Only display of the message\ncause: Tooling mo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00002",
+      "canonical_label": "LUBRICATION AT LOSS: PRESSURE NOT REACHED",
+      "normalized_label": "lubrication at loss pressure not reached",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm type",
+        "Human Process",
+        "Feature of Interest",
+        "Manufacturing Process",
+        "Production Line"
+      ],
+      "definition": "An alarm triggered when the lubrication pressure fails to reach the required threshold during a manufacturing process, indicating a lubrication failure.",
+      "aliases": [
+        "LUBRICATION AT LOSS: PRESSURE NOT REACHED"
+      ],
+      "synonyms": [
+        "Lubrication pressure not reached alarm",
+        "Lubrication pressure failure"
+      ],
+      "lexical_variants": [
+        "Lubrication at loss: pressure not reached",
+        "Lubrication loss: pressure not reached"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00003",
+          "text": "LUBRICATION AT LOSS: PRESSURE NOT REACHED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 2109,
+              "chunk_end_char": 2150,
+              "doc_start_char": 47109,
+              "doc_end_char": 47150,
+              "snippet": "sible for the intervention: responsible for maintenance\n\nmessage no: 2021\ntext: LUBRICATION AT LOSS: PRESSURE NOT REACHED\ntype: Standard: Optional:\neffect: Only display of the message\nIndicates that th"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00003",
+      "canonical_label": "CHIP CONVEYOR BLOCKED",
+      "normalized_label": "chip conveyor blocked",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine: Conveyor",
+        "Process: Manufacturing Process",
+        "Technician: Maintenance Technician",
+        "Alarm type: Conveyor Blockage Alarm",
+        "Event: Conveyor Blockage Event",
+        "part-of: Chip Processing Line",
+        "causes: Production slowdown",
+        "requires: Technician intervention",
+        "handled_by: Technician",
+        "affects: Production throughput",
+        "observed-by: PLC",
+        "temporal: real-time"
+      ],
+      "definition": "An alarm indicating that the chip conveyor is blocked, preventing chips from moving through the conveyor system.",
+      "aliases": [
+        "CHIP CONVEYOR BLOCKED"
+      ],
+      "synonyms": [
+        "Chip conveyor jammed",
+        "Chip conveyor obstruction",
+        "Chip conveyor blockage"
+      ],
+      "lexical_variants": [
+        "chip conveyor blocked",
+        "chip conveyor jam",
+        "chip conveyor obstruction"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00005",
+          "text": "CHIP CONVEYOR BLOCKED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 2847,
+              "chunk_end_char": 2868,
+              "doc_start_char": 47847,
+              "doc_end_char": 47868,
+              "snippet": "e 13 of the electrical diagram.\nresponsible for\noperator\nmessage no: 2023\ntext: CHIP CONVEYOR BLOCKED\ntype: Standard: Optional:\neffect: Only display of the message\nDespite attempts"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00004",
+      "canonical_label": "OVERLOAD CONTROL DEVICE FAILURE",
+      "normalized_label": "overload control device failure",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observable Property",
+        "Constraint violation",
+        "Feature: Overload Control Device",
+        "Production Line",
+        "Logistic Process"
+      ],
+      "definition": "Failure of the overload control device, indicating that the device responsible for protecting equipment from overload conditions has malfunctioned.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00006",
+          "text": "OVERLOAD CONTROL DEVICE FAILURE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 4467,
+              "chunk_end_char": 4498,
+              "doc_start_char": 49467,
+              "doc_end_char": 49498,
+              "snippet": "cal diagram. responsible for the intervention: operator\n\nmessage no: 2024\ntext: OVERLOAD CONTROL DEVICE FAILURE\ntype: Standard: Optional:\neffect: Only display of the message\nThe behavior of t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00005",
+      "canonical_label": "buffer battery",
+      "normalized_label": "buffer battery",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature",
+        "Component",
+        "Power supply",
+        "Backup power source"
+      ],
+      "definition": "A battery that provides backup power to the CNC memory in a manufacturing environment.",
+      "aliases": [
+        "buffer battery"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00008",
+          "text": "buffer battery",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 194,
+              "chunk_end_char": 208,
+              "doc_start_char": 45194,
+              "doc_end_char": 45208,
+              "snippet": "ERY EXHAUSTED\ntype: Standard: Optional:\neffect: Only display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nRe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00006",
+      "canonical_label": "machine off",
+      "normalized_label": "machine off",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine",
+        "Action",
+        "Manager",
+        "Manufacturing Facility",
+        "Manufacturing Cell",
+        "state",
+        "shutdown",
+        "inactive"
+      ],
+      "definition": "An operational state of a machine where it is not running, typically resulting from a shutdown action performed by a manager or automated system.",
+      "aliases": [
+        "machine off"
+      ],
+      "synonyms": [
+        "inactive"
+      ],
+      "lexical_variants": [
+        "machine-off",
+        "machine off"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00010",
+          "text": "machine off",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 1236,
+              "chunk_end_char": 1247,
+              "doc_start_char": 46236,
+              "doc_end_char": 46247,
+              "snippet": "y of the message cause: The buffer battery which powers the CNC memory with the machine off is exhausted. intervention: Replace the battery with the machine switched on to"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00007",
+      "canonical_label": "tooling mode",
+      "normalized_label": "tooling mode",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "state",
+        "configuration",
+        "tooling",
+        "manufacturing process",
+        "production line",
+        "manufacturing cell",
+        "action",
+        "trigger"
+      ],
+      "definition": "A specific operational state of a manufacturing system that reflects the configuration of tools within a production line or manufacturing cell, influencing the manufacturing process and potentially triggering actions.",
+      "aliases": [
+        "tooling mode",
+        "tooling-mode"
+      ],
+      "synonyms": [
+        "tooling configuration",
+        "tooling state",
+        "tooling condition"
+      ],
+      "lexical_variants": [
+        "tooling-mode",
+        "tooling configuration state"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00011",
+          "text": "tooling mode",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 429,
+              "chunk_end_char": 441,
+              "doc_start_char": 45429,
+              "doc_end_char": 45441,
+              "snippet": "essary intervention:\ndisplay the stored data.\nmessage no: 2002\ntext: MACHINE IN TOOLING MODE\ntype: Standard: Optional:\neffect: Only display of the message\ncause: Tooling mo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00008",
+      "canonical_label": "excessive machining residue",
+      "normalized_label": "excessive machining residue",
+      "candidate_type": "relation",
+      "confidence": 0.99,
+      "ontology_hints": [
+        "attribute of Feature of Interest",
+        "observed in Machine or Manufacturing Cell",
+        "linked to Manufacturing Facility",
+        "affects conveyor overload",
+        "requires Technician intervention"
+      ],
+      "definition": "A measurable property indicating an abnormally high amount of residue produced during machining operations, which can lead to conveyor overload and affect product quality and maintenance schedules.",
+      "aliases": [
+        "excess machining residue",
+        "excessive machining chips",
+        "excessive machining waste"
+      ],
+      "synonyms": [
+        "excessive machining debris",
+        "excessive machining waste",
+        "excessive machining chips"
+      ],
+      "lexical_variants": [
+        "excess machining residue",
+        "excessive machining residue",
+        "excessive machining debris"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00018",
+          "text": "excessive machining residue",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 2616,
+              "chunk_end_char": 2643,
+              "doc_start_char": 47616,
+              "doc_end_char": 47643,
+              "snippet": "CONVEYOR OVERLOAD\ntype: Standard: Optional:\neffect: Only display of the message\nExcessive machining residue prevents the operation of the\ncause:\nchip conveyor.\nRemove material from chip e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00009",
+      "canonical_label": "machining cycle suspended on hold",
+      "normalized_label": "machining cycle suspended on hold",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Machine",
+        "Manufacturing Cell",
+        "Manufacturing Facility",
+        "Action (suspend)",
+        "Process State",
+        "Alarm Trigger",
+        "Maintenance Intervention",
+        "Operator"
+      ],
+      "definition": "A state in which the machining cycle of a manufacturing process is temporarily halted, typically due to an alarm or maintenance requirement, resulting in the process being suspended until the issue is resolved.",
+      "aliases": [
+        "machining cycle paused",
+        "machining cycle halted",
+        "machining cycle stopped",
+        "process suspended",
+        "cycle on hold"
+      ],
+      "synonyms": [
+        "paused",
+        "halted",
+        "stopped",
+        "on hold",
+        "suspended"
+      ],
+      "lexical_variants": [
+        "machining cycle suspended",
+        "machining cycle on hold",
+        "machining cycle paused",
+        "process suspended",
+        "cycle suspended"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00019",
+          "text": "machining cycle suspended on hold",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "e to restart the cycle. responsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype: Standard: Optional:\neffect: Only display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nReplace the ba"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00010",
+      "canonical_label": "operator",
+      "normalized_label": "operator",
+      "candidate_type": "relation",
+      "confidence": 0.99,
+      "ontology_hints": [
+        "Operator is a subclass of Staff and represents a human actor.",
+        "Operator operates a Platform (machine or workstation).",
+        "Operator is linked to Observations via has observation or made observation.",
+        "Operator is involved in failure chains as a trigger for interventions and is responsible for handling alarms."
+      ],
+      "definition": "A worker responsible for operating machines or performing production tasks in an industrial setting.",
+      "aliases": [
+        "operator",
+        "manipulator",
+        "hustler",
+        "wheeler dealer",
+        "Operator"
+      ],
+      "synonyms": [
+        "operator",
+        "manipulator",
+        "hustler",
+        "wheeler dealer"
+      ],
+      "lexical_variants": [
+        "operator",
+        "manipulator",
+        "hustler",
+        "wheeler dealer"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00021",
+          "text": "operator",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 2815,
+              "chunk_end_char": 2823,
+              "doc_start_char": 47815,
+              "doc_end_char": 47823,
+              "snippet": "ea.\nintervention:\nEntry X4.4 page 13 of the electrical diagram.\nresponsible for\noperator\nmessage no: 2023\ntext: CHIP CONVEYOR BLOCKED\ntype: Standard: Optional:\neffect:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00011",
+      "canonical_label": "maintenance",
+      "normalized_label": "maintenance",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "performed_by: Technician",
+        "performed_by: Manager",
+        "related_to: Machine",
+        "type_of: Activity",
+        "type_of: Task",
+        "category: IndustrialMaintenance"
+      ],
+      "definition": "An activity involved in maintaining something in good working order, especially functional checks, servicing, repairing or replacing of necessary devices, equipment, machinery, building infrastructure and supporting utilities in industrial, business, and residential installations.",
+      "aliases": [
+        "care",
+        "maintenance",
+        "upkeep",
+        "alimony",
+        "sustenance",
+        "sustentation",
+        "sustainment",
+        "criminal maintenance",
+        "Maintenance"
+      ],
+      "synonyms": [
+        "care",
+        "maintenance",
+        "upkeep",
+        "alimony",
+        "sustenance",
+        "sustentation",
+        "sustainment",
+        "criminal maintenance"
+      ],
+      "lexical_variants": [
+        "care",
+        "maintenance",
+        "upkeep",
+        "alimony",
+        "sustenance",
+        "sustentation",
+        "sustainment",
+        "criminal maintenance"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00022",
+          "text": "maintenance",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 70,
+              "chunk_end_char": 81,
+              "doc_start_char": 45070,
+              "doc_end_char": 45081,
+              "snippet": "e to restart the cycle. responsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype: Standard: Optional:\neffect:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00012",
+      "canonical_label": "toolmaker-adjuster",
+      "normalized_label": "toolmaker-adjuster",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Staff",
+        "Manager",
+        "Cause",
+        "Observation",
+        "Observable Property",
+        "Property"
+      ],
+      "definition": "A specialist responsible for adjusting tools within a manufacturing context, acting as a cause for changes in observable properties of equipment.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00023",
+          "text": "toolmaker-adjuster",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 668,
+              "chunk_end_char": 686,
+              "doc_start_char": 45668,
+              "doc_end_char": 45686,
+              "snippet": "intervention:\nonly with the door open, by the two-hand control.\nresponsible for\ntoolmaker-adjuster\nmessage no: 2020\ntext: LOW LOSS LUBRICATION OIL LEVEL\ntype: Standard: Optional:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00013",
+      "canonical_label": "has cause",
+      "normalized_label": "has cause",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Cause",
+        "has cause",
+        "TRIGGERS",
+        "Feature",
+        "Sensor",
+        "Machine",
+        "Manager"
+      ],
+      "definition": "A factor or event responsible for the occurrence of a situation in the manufacturing system.",
+      "aliases": [
+        "cause:"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00024",
+          "text": "cause:",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 246,
+              "chunk_end_char": 252,
+              "doc_start_char": 45246,
+              "doc_end_char": 45252,
+              "snippet": "display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nReplace the battery with the machine switched"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00014",
+      "canonical_label": "intervention:",
+      "normalized_label": "intervention",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observation",
+        "Situation",
+        "Temporal Entity",
+        "Interval",
+        "Instant"
+      ],
+      "definition": "An intervention is an event or contextual state that occurs within a manufacturing environment, typically involving a sensor measurement or a maintenance action, aimed at addressing a fault, failure, or degradation. It is temporally situated as an Observation or Situation within a Temporal Entity (Instant or Interval).",
+      "aliases": [
+        "intervention",
+        "interventions"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "intervention",
+        "interventions"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00025",
+          "text": "intervention:",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 40,
+              "chunk_end_char": 53,
+              "doc_start_char": 45040,
+              "doc_end_char": 45053,
+              "snippet": "e to restart the cycle. responsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00015",
+      "canonical_label": "responsible for",
+      "normalized_label": "responsible for",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Resource responsible for Result",
+        "Platform responsible for Sensor",
+        "Sensor responsible for Observable Property"
+      ],
+      "definition": "A relation indicating that an entity (actor) has the duty or obligation to perform or ensure a task or outcome.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "responsible for"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00026",
+          "text": "responsible for",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 24,
+              "chunk_end_char": 39,
+              "doc_start_char": 45024,
+              "doc_end_char": 45039,
+              "snippet": "e to restart the cycle. responsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00016",
+      "canonical_label": "display only",
+      "normalized_label": "display only",
+      "candidate_type": "relation",
+      "confidence": 0.85,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "Platform"
+      ],
+      "definition": "The message is displayed exclusively, without additional logging, transmission, or other actions.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00027",
+          "text": "only display of the message",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 162,
+              "chunk_end_char": 189,
+              "doc_start_char": 45162,
+              "doc_end_char": 45189,
+              "snippet": "message no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype: Standard: Optional:\neffect: Only display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned o"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00017",
+      "canonical_label": "indicates that",
+      "normalized_label": "indicates that",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "used to express implication between a process or observation and a resulting state or property",
+        "serves as a relational connector in temporal or logistic contexts"
+      ],
+      "definition": "A phrase that introduces a statement or observation that follows from or is implied by preceding information, often used to link a process or event to a consequent state or property.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00028",
+          "text": "indicates that",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 803,
+              "chunk_end_char": 817,
+              "doc_start_char": 45803,
+              "doc_end_char": 45817,
+              "snippet": "ICATION OIL LEVEL\ntype: Standard: Optional:\neffect: Only display of the message\nIndicates that the lubricating oil level is lower than the minimum cause:\nmum.\nAdd oil. If thi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00018",
+      "canonical_label": "warns the operator that",
+      "normalized_label": "warns the operator that",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmEvent alerts Operator",
+        "Sensor observation triggers warning to Operator",
+        "has observation",
+        "made observation",
+        "has property"
+      ],
+      "definition": "An action performed by an alarm or sensor that informs an operator of a condition, event, or deviation requiring attention.",
+      "aliases": [
+        "warns operator",
+        "warns the operator"
+      ],
+      "synonyms": [
+        "alerts the operator",
+        "notifies the operator",
+        "signals to the operator"
+      ],
+      "lexical_variants": [
+        "warns the operator that",
+        "warns operator that",
+        "warns the operator"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00029",
+          "text": "warns the operator that",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 4886,
+              "chunk_end_char": 4909,
+              "doc_start_char": 49886,
+              "doc_end_char": 49909,
+              "snippet": "BAR CHANGE PHASE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns the operator that the machining cycle is suspended on hold\ncause:\nof the completion of the bar ch"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00019",
+      "canonical_label": "behavior of the overload control device is abnormal",
+      "normalized_label": "behavior of the overload control device is abnormal",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observable Property",
+        "Feature of Interest",
+        "requires Technician",
+        "part of Human Process",
+        "occurs within Temporal Entity",
+        "triggers intervention"
+      ],
+      "definition": "An abnormal behavior observed in the overload control device, indicating a potential fault or malfunction.",
+      "aliases": [
+        "device abnormal behavior"
+      ],
+      "synonyms": [
+        "abnormal behavior"
+      ],
+      "lexical_variants": [
+        "abnormal behavior of the overload control device",
+        "overload control device abnormal behavior"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00030",
+          "text": "behavior of the overload control device is abnormal",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": "e to restart the cycle. responsible for intervention: responsible for maintenance\n\nmessage no: 2001\ntext: CNC BATTERY EXHAUSTED\ntype: Standard: Optional:\neffect: Only display of the message\nThe buffer battery which powers the CNC memory with the\ncause:\nmachine turned off is exhausted.\nReplace the ba"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00020",
+      "canonical_label": "logic system considers it to be faulty",
+      "normalized_label": "logic system considers it to be faulty",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ObservableProperty",
+        "TemporalEntity",
+        "Constraint",
+        "LogisticProcess",
+        "FaultyState",
+        "assesses",
+        "determines",
+        "labels",
+        "observes",
+        "evaluates"
+      ],
+      "definition": "A process in which a logic system observes an observable property over a temporal interval, evaluates it against a constraint, and determines that the property violates the constraint, thereby labeling the state as faulty.",
+      "aliases": [
+        "fault detection by logic system",
+        "fault assessment by logic system"
+      ],
+      "synonyms": [
+        "logic system deems it faulty",
+        "logic system identifies it as faulty",
+        "logic system considers it defective"
+      ],
+      "lexical_variants": [
+        "logic system considers it faulty",
+        "logic system considers it to be defective",
+        "logic system deems it defective"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00031",
+          "text": "logic system considers it to be faulty",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 4662,
+              "chunk_end_char": 4700,
+              "doc_start_char": 49662,
+              "doc_end_char": 49700,
+              "snippet": "concause overload control device: chip voyeur” is abnormal, for this reason the logic system considers it to be faulty.\nintervention: Make sure that this device works correctly.\nresponsible for\nmess"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00021",
+      "canonical_label": "the completion of the bar change",
+      "normalized_label": "the completion of the bar change",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Temporal Entity",
+        "Feature of Interest",
+        "Machine",
+        "Production Line",
+        "has feature of interest",
+        "situation time",
+        "causes"
+      ],
+      "definition": "The point in time when the bar change operation on a machine is finished, marking the end of the change event.",
+      "aliases": [
+        "bar change completion",
+        "completion of bar change",
+        "bar change finished"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "bar change completion",
+        "completion of bar change",
+        "bar change finished"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00032",
+          "text": "the completion of the bar change",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 4961,
+              "chunk_end_char": 4993,
+              "doc_start_char": 49961,
+              "doc_end_char": 49993,
+              "snippet": "sage\nWarns the operator that the machining cycle is suspended on hold\ncause:\nof the completion of the bar change.\nWhen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00022",
+      "canonical_label": "input X2.6 page 14 of the electrical diagram",
+      "normalized_label": "input x26 page 14 of the electrical diagram",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest",
+        "Spatial Object",
+        "Temporal Entity (page reference)",
+        "Reference",
+        "part-of: electrical diagram"
+      ],
+      "definition": "A reference to the input component labeled X2.6 located on page 14 of an electrical diagram, indicating its position within the schematic.",
+      "aliases": [
+        "X2.6 input on page 14",
+        "input X2.6 (page 14)",
+        "input X2.6, page 14 of the electrical diagram"
+      ],
+      "synonyms": [
+        "diagram reference to input X2.6",
+        "reference to input X2.6 on page 14"
+      ],
+      "lexical_variants": [
+        "input X2.6 page 14 of the electrical diagram",
+        "input X2.6, page 14 of the electrical diagram",
+        "input X2.6 (page 14) of the electrical diagram"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00033",
+          "text": "input X2.6 page 14 of the electrical diagram",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 941,
+              "chunk_end_char": 985,
+              "doc_start_char": 45941,
+              "doc_end_char": 45985,
+              "snippet": "minimum cause:\nmum.\nAdd oil. If this was not insufficient, check\nintervention: input X2.6 page 14 of the electrical diagram (0 = level lower than\nminimum, 1 = level greater than minimum)\nresponsible for"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00023",
+      "canonical_label": "Entry X4.4 page 13 of the electrical diagram",
+      "normalized_label": "entry x44 page 13 of the electrical diagram",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "SpatialObject",
+        "locatedIn ManufacturingFacility",
+        "partOf ProductionLine"
+      ],
+      "definition": "A specific reference to a location within an electrical schematic, indicating the entry point X4.4 on page 13.",
+      "aliases": [
+        "Entry X4.4 on page 13 of the electrical diagram",
+        "X4.4 entry page 13",
+        "Electrical diagram entry X4.4 page 13"
+      ],
+      "synonyms": [
+        "diagram reference",
+        "schematic entry"
+      ],
+      "lexical_variants": [
+        "Entry X4.4, page 13",
+        "X4.4 entry, page 13"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00034",
+          "text": "Entry X4.4 page 13 of the electrical diagram",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 2753,
+              "chunk_end_char": 2797,
+              "doc_start_char": 47753,
+              "doc_end_char": 47797,
+              "snippet": "cause:\nchip conveyor.\nRemove material from chip evacuation area.\nintervention:\nEntry X4.4 page 13 of the electrical diagram.\nresponsible for\noperator\nmessage no: 2023\ntext: CHIP CONVEYOR BLOCKED\ntype: St"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00024",
+      "canonical_label": "Input X2.7 page 14 of the electrical diagram",
+      "normalized_label": "input x27 page 14 of the electrical diagram",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "SpatialObject"
+      ],
+      "definition": "A specific input component labeled X2.7 located on page 14 of an electrical diagram, representing a feature of interest within the manufacturing environment.",
+      "aliases": [
+        "X2.7 input",
+        "input X2.7",
+        "X2.7 input (page 14)"
+      ],
+      "synonyms": [
+        "input pin X2.7"
+      ],
+      "lexical_variants": [
+        "Input X2.7 on page 14"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00035",
+          "text": "Input X2.7 page 14 of the electrical diagram",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 2446,
+              "chunk_end_char": 2490,
+              "doc_start_char": 47446,
+              "doc_end_char": 47490,
+              "snippet": "k the operation of the pump or any faults\nintervention: of the pressure switch.\nInput X2.7 page 14 of the electrical diagram.\nresponsible for\nmessage no: 2022\ntext: CHIP CONVEYOR OVERLOAD\ntype: Standard:"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attribute_candidates": [
+    {
+      "candidate_id": "cand_v_00000",
+      "canonical_label": "lubrication oil level",
+      "normalized_label": "lubrication oil level",
+      "candidate_type": "attribute",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observation",
+        "Production Line",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Measurement"
+      ],
+      "definition": "Quantitative attribute monitored for low level.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00012",
+          "text": "lubrication oil level",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 719,
+              "chunk_end_char": 740,
+              "doc_start_char": 45719,
+              "doc_end_char": 45740,
+              "snippet": "and control.\nresponsible for\ntoolmaker-adjuster\nmessage no: 2020\ntext: LOW LOSS LUBRICATION OIL LEVEL\ntype: Standard: Optional:\neffect: Only display of the message\nIndicates that th"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_v_00001",
+      "canonical_label": "pressure",
+      "normalized_label": "pressure",
+      "candidate_type": "attribute",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Property",
+        "Measurement",
+        "PhysicalQuantity",
+        "ForcePerUnitArea",
+        "Pressure",
+        "PressureSensor",
+        "ProcessParameter",
+        "Result",
+        "Resource"
+      ],
+      "definition": "The force applied per unit area of a surface, typically measured in pascals (Pa) or other units such as psi, atm, or torr.",
+      "aliases": [
+        "pressure",
+        "pressure level",
+        "force per unit area",
+        "press",
+        "pressing",
+        "imperativeness",
+        "insistence",
+        "insistency",
+        "pressure sensation",
+        "Pressure"
+      ],
+      "synonyms": [
+        "pressure",
+        "pressure level",
+        "force per unit area",
+        "press",
+        "pressing",
+        "imperativeness",
+        "insistence",
+        "insistency",
+        "pressure sensation"
+      ],
+      "lexical_variants": [
+        "pressure",
+        "pressure level",
+        "force per unit area",
+        "press",
+        "pressing",
+        "imperativeness",
+        "insistence",
+        "insistency",
+        "pressure sensation"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00013",
+          "text": "pressure",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 2130,
+              "chunk_end_char": 2138,
+              "doc_start_char": 47130,
+              "doc_end_char": 47138,
+              "snippet": "ntion: responsible for maintenance\n\nmessage no: 2021\ntext: LUBRICATION AT LOSS: PRESSURE NOT REACHED\ntype: Standard: Optional:\neffect: Only display of the message\nIndic"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event_candidates": [
+    {
+      "candidate_id": "cand_s_00000",
+      "canonical_label": "Low Lubrication Oil Level Alarm",
+      "normalized_label": "low lubrication oil level alarm",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observation",
+        "Workstation",
+        "Production Line",
+        "Situation S1",
+        "Situation S2",
+        "alarm type"
+      ],
+      "definition": "An alarm indicating that the lubrication oil level in a machine or workstation is below the acceptable threshold, prompting maintenance actions.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00002",
+          "text": "LOW LUBRICATION OIL LEVEL",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 1697,
+              "chunk_end_char": 1722,
+              "doc_start_char": 46697,
+              "doc_end_char": 46722,
+              "snippet": "l. responsible for the intervention: toolmaker-adjuster\n\nmessage n°: 2020 text: LOW LUBRICATION OIL LEVEL type: Standard: Optional: effect: Only display of the message cause: Indicates"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00001",
+      "canonical_label": "chip conveyor overload alarm",
+      "normalized_label": "chip conveyor overload alarm",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Alarm type",
+        "Constraint violation",
+        "Machine",
+        "Interval",
+        "Constraint",
+        "Technician",
+        "Manufacturing Cell"
+      ],
+      "definition": "An alarm indicating that the chip conveyor has exceeded its load capacity, violating a constraint on the machine’s operation within a manufacturing cell.",
+      "aliases": [
+        "CHIP CONVEYOR OVERLOAD ALARM"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00004",
+          "text": "CHIP CONVEYOR OVERLOAD",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 2531,
+              "chunk_end_char": 2553,
+              "doc_start_char": 47531,
+              "doc_end_char": 47553,
+              "snippet": "X2.7 page 14 of the electrical diagram.\nresponsible for\nmessage no: 2022\ntext: CHIP CONVEYOR OVERLOAD\ntype: Standard: Optional:\neffect: Only display of the message\nExcessive machini"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00002",
+      "canonical_label": "Feeder Bar Change Phase Alarm",
+      "normalized_label": "feeder bar change phase alarm",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmType",
+        "Machine",
+        "HumanProcess",
+        "Technician",
+        "FeatureOfInterest",
+        "ObservableProperty"
+      ],
+      "definition": "Alarm indicating that the feeder machine is in the bar change phase, a human‑operated process where a bar is being replaced.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00007",
+          "text": "FEEDER: BAR CHANGE PHASE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 4799,
+              "chunk_end_char": 4823,
+              "doc_start_char": 49799,
+              "doc_end_char": 49823,
+              "snippet": "e sure that this device works correctly.\nresponsible for\nmessage no: 2040\ntext: FEEDER: BAR CHANGE PHASE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns the operato"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00003",
+      "canonical_label": "bar change phase",
+      "normalized_label": "bar change phase",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Process",
+        "Machine",
+        "Observable Property",
+        "TRIGGERS",
+        "CAUSES"
+      ],
+      "definition": "An event in which the phase of a bar changes, potentially triggering a feeder alarm in an industrial maintenance context.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00017",
+          "text": "bar change phase",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 4807,
+              "chunk_end_char": 4823,
+              "doc_start_char": 49807,
+              "doc_end_char": 49823,
+              "snippet": "hat this device works correctly.\nresponsible for\nmessage no: 2040\ntext: FEEDER: BAR CHANGE PHASE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns the operato"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00004",
+      "canonical_label": "two-hand control",
+      "normalized_label": "two-hand control",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "belongs to Human Process",
+        "occurs at Workstation",
+        "subject to Constraint",
+        "occurs within Temporal Entity"
+      ],
+      "definition": "A human‑performed process in which two hands are used to control machine axes during tooling mode, carried out at a workstation under defined operational constraints and occurring at a specific instant within a temporal interval.",
+      "aliases": [
+        "dual-hand control",
+        "bimanual control"
+      ],
+      "synonyms": [
+        "bimanual operation",
+        "two-handed operation"
+      ],
+      "lexical_variants": [
+        "two-hand operation",
+        "two-hand manipulation"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00020",
+          "text": "two-hand control",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0009",
+              "chunk_start_char": 634,
+              "chunk_end_char": 650,
+              "doc_start_char": 45634,
+              "doc_end_char": 45650,
+              "snippet": "oved as well with the door closed\nintervention:\nonly with the door open, by the two-hand control.\nresponsible for\ntoolmaker-adjuster\nmessage no: 2020\ntext: LOW LOSS LUBRICATION"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

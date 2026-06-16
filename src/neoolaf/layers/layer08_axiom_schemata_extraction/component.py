@@ -44,6 +44,9 @@ class AxiomSchemataExtractionLayer(BaseLayer):
         rag_adapter=None,
         save_intermediate: bool = True,
         verbose: bool = False,
+        max_concurrency: int = 1,
+        retry_failed_calls: int = 0,
+        retry_sleep_seconds: float = 2.0,
     ) -> None:
         """
         Initialize Layer 8.
@@ -70,11 +73,33 @@ class AxiomSchemataExtractionLayer(BaseLayer):
         self.max_subclass_inputs = max_subclass_inputs
         self.temperature = temperature
         self.rag_adapter = rag_adapter
+        self.max_concurrency = max(1, int(max_concurrency or 1))
+        self.retry_failed_calls = max(0, int(retry_failed_calls or 0))
+        self.retry_sleep_seconds = float(retry_sleep_seconds or 0.0)
+
+    def _layer_config(self, state: PipelineState) -> dict:
+        """Return this layer configuration from the document profile."""
+        profile_config = getattr(state, "profile_config", None) or {}
+        return (
+            profile_config.get("layers", {})
+            .get("layer08_axiom_schemata_extraction", {})
+        )
+
+    def _strategy(self, state: PipelineState) -> str:
+        """Return the configured Layer 8 strategy."""
+        return str(self._layer_config(state).get("strategy", "llm_axiom_schemata_extraction"))
 
     def _run(self, state: PipelineState) -> PipelineState:
         """
         Run axiom schemata extraction.
         """
+        strategy = self._strategy(state)
+        if self.verbose:
+            print(f"[NeoOLAF][Layer 8] strategy={strategy}")
+
+        if strategy == "ontology_aware_axiom_schema_generation":
+            return self._run_ontology_aware_axiom_schema_generation(state)
+
         axiom_schemata: List[AxiomSchemaCandidate] = []
 
         # ---------------------------------------------------------
@@ -297,12 +322,159 @@ class AxiomSchemataExtractionLayer(BaseLayer):
         )
         return state
 
+
+    def _run_ontology_aware_axiom_schema_generation(self, state: PipelineState) -> PipelineState:
+        """Generate axiom schema candidates deterministically from Layers 6 and 7.
+
+        This profile-driven strategy is useful for structured manuals where
+        previous layers already produced ontology-aware concept candidates,
+        ontology relation candidates, and hierarchy links. It avoids one LLM
+        call per relation/concept and is therefore appropriate for ablation
+        runs and reproducible benchmarks.
+        """
+        axiom_schemata: List[AxiomSchemaCandidate] = []
+        schema_counter = 0
+
+        relation_candidates = list(getattr(state, "ontology_relation_candidates", []) or [])
+        if self.max_relation_schema_inputs is not None:
+            relation_candidates = relation_candidates[: self.max_relation_schema_inputs]
+
+        # Relation domain/range schemata.
+        for relation in relation_candidates:
+            related_triples = [
+                triple
+                for triple in (getattr(state, "candidate_triples", []) or [])
+                if getattr(triple, "predicate_label", None) == relation.label
+                or getattr(triple, "predicate_id", None) in relation.source_candidate_ids
+                or getattr(triple, "triple_id", None) in relation.source_triple_ids
+            ]
+            source_triple_ids = sorted({triple.triple_id for triple in related_triples})
+
+            if relation.domain_hint:
+                domain_label = str(relation.domain_hint).strip()
+                if domain_label:
+                    axiom_schemata.append(
+                        AxiomSchemaCandidate(
+                            schema_id=f"schema_{schema_counter:05d}",
+                            schema_type="relation_domain",
+                            subject_id=relation.relation_id,
+                            subject_label=relation.label,
+                            predicate="domain",
+                            object_id=f"ontology_class::{self._normalize_identifier(domain_label)}",
+                            object_label=domain_label,
+                            justification=(
+                                "Deterministic ontology-aware axiom schema generation: "
+                                "Layer 6 domain_hint is promoted as the relation domain."
+                            ),
+                            confidence=relation.confidence if relation.confidence is not None else 1.0,
+                            source_relation_ids=[relation.relation_id],
+                            source_concept_ids=[],
+                            source_triple_ids=source_triple_ids,
+                            evidence=relation.evidence,
+                        )
+                    )
+                    schema_counter += 1
+
+            if relation.range_hint:
+                range_label = str(relation.range_hint).strip()
+                if range_label:
+                    axiom_schemata.append(
+                        AxiomSchemaCandidate(
+                            schema_id=f"schema_{schema_counter:05d}",
+                            schema_type="relation_range",
+                            subject_id=relation.relation_id,
+                            subject_label=relation.label,
+                            predicate="range",
+                            object_id=f"ontology_class::{self._normalize_identifier(range_label)}",
+                            object_label=range_label,
+                            justification=(
+                                "Deterministic ontology-aware axiom schema generation: "
+                                "Layer 6 range_hint is promoted as the relation range."
+                            ),
+                            confidence=relation.confidence if relation.confidence is not None else 1.0,
+                            source_relation_ids=[relation.relation_id],
+                            source_concept_ids=[],
+                            source_triple_ids=source_triple_ids,
+                            evidence=relation.evidence,
+                        )
+                    )
+                    schema_counter += 1
+
+        concept_links = list(getattr(state, "concept_hierarchy_links", []) or [])
+        if self.max_subclass_inputs is not None:
+            concept_links = concept_links[: self.max_subclass_inputs]
+
+        # Concept subclass schemata.
+        for link in concept_links:
+            axiom_schemata.append(
+                AxiomSchemaCandidate(
+                    schema_id=f"schema_{schema_counter:05d}",
+                    schema_type="subclass",
+                    subject_id=link.child_concept_id,
+                    subject_label=link.child_label,
+                    predicate="subclassOf",
+                    object_id=link.parent_concept_id,
+                    object_label=link.parent_label,
+                    justification=(
+                        "Deterministic ontology-aware axiom schema generation: "
+                        "Layer 7 concept hierarchy link is promoted as a subclass schema."
+                    ),
+                    confidence=link.confidence if link.confidence is not None else 1.0,
+                    source_relation_ids=[],
+                    source_concept_ids=[link.child_concept_id, link.parent_concept_id],
+                    source_triple_ids=[],
+                    evidence=link.evidence,
+                )
+            )
+            schema_counter += 1
+
+        # Relation hierarchy schemata as subproperty candidates.
+        for link in (getattr(state, "relation_hierarchy_links", []) or []):
+            axiom_schemata.append(
+                AxiomSchemaCandidate(
+                    schema_id=f"schema_{schema_counter:05d}",
+                    schema_type="subproperty",
+                    subject_id=link.child_relation_id,
+                    subject_label=link.child_label,
+                    predicate="subPropertyOf",
+                    object_id=link.parent_relation_id,
+                    object_label=link.parent_label,
+                    justification=(
+                        "Deterministic ontology-aware axiom schema generation: "
+                        "Layer 7 relation hierarchy link is promoted as a subproperty schema."
+                    ),
+                    confidence=link.confidence if link.confidence is not None else 1.0,
+                    source_relation_ids=[link.child_relation_id, link.parent_relation_id],
+                    source_concept_ids=[],
+                    source_triple_ids=[],
+                    evidence=link.evidence,
+                )
+            )
+            schema_counter += 1
+
+        state.axiom_schema_candidates = axiom_schemata
+        state.log(
+            f"[layer08_axiom_schemata_extraction] deterministically generated "
+            f"{len(state.axiom_schema_candidates)} axiom schemata"
+        )
+        return state
+
+    @staticmethod
+    def _normalize_identifier(label: str) -> str:
+        """Create a stable lightweight identifier suffix from a label."""
+        return "_".join(
+            part for part in "".join(
+                char.lower() if char.isalnum() else " " for char in label
+            ).split() if part
+        )
+
     def build_artifact_payload(self, state: PipelineState) -> dict:
         """
         Serialize Layer 8 outputs for debugging and reproducibility.
         """
         return {
             "layer": self.name,
+            "strategy": self._strategy(state),
             "num_axiom_schema_candidates": len(state.axiom_schema_candidates),
             "axiom_schema_candidates": [
                 {

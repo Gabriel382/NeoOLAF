@@ -1,0 +1,3248 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 60,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "MAINTENANCE NOTICE",
+        "label": "event/state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An event or state indicating that maintenance is required or has been scheduled for a machine.",
+      "ontology_hints": [
+        "requires",
+        "handled_by",
+        "references"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An event or state indicating that maintenance is required or has been scheduled for a machine.\", \"ontology_hints\": [\"requires\", \"handled_by\", \"references\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "CONFIGURED PRODUCTION REACHED",
+        "label": "event/state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An event indicating that the configured production target has been achieved, typically triggering an alarm in industrial maintenance systems.",
+      "ontology_hints": [
+        "Situation S1",
+        "Production Line",
+        "Manufacturing Process",
+        "Product",
+        "Alarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An event indicating that the configured production target has been achieved, typically triggering an alarm in industrial maintenance systems.\", \"ontology_hints\": [\"Situation S1\", \"Production Line\", \"Manufacturing Process\", \"Product\", \"Alarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00002",
+        "text": "AUTOMATIC STOP: MACHINE IN ALARM",
+        "label": "event/state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An event where a machine enters an alarm state, triggering an automatic stop of its operation.",
+      "ontology_hints": [
+        "Machine",
+        "Alarm",
+        "Automatic Stop",
+        "Shutdown",
+        "Manufacturing Facility",
+        "Manufacturing Cell",
+        "Production Line"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An event where a machine enters an alarm state, triggering an automatic stop of its operation.\", \"ontology_hints\": [\"Machine\", \"Alarm\", \"Automatic Stop\", \"Shutdown\", \"Manufacturing Facility\", \"Manufacturing Cell\", \"Production Line\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00003",
+        "text": "WRONG TORQUE REDUCTION",
+        "label": "event/state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An event where the torque applied to a machine component is reduced beyond the specified limits, potentially compromising product quality and triggering corrective actions.",
+      "ontology_hints": [
+        "TRIGGERS: requires action",
+        "is in situation: Production Line, Workstation",
+        "has duration: event",
+        "references: alarm reference",
+        "handled by: maintenance staff",
+        "related to: Product, Action"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An event where the torque applied to a machine component is reduced beyond the specified limits, potentially compromising product quality and triggering corrective actions.\", \"ontology_hints\": [\"TRIGGERS: requires action\", \"is in situation: Production Line, Workstation\", \"has duration: event\", \"references: alarm reference\", \"handled by: maintenance staff\", \"related to: Product, Action\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00004",
+        "text": "CAUTION VERTICAL AXIS",
+        "label": "event/state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm indicating that torque reduction on a vertical axis is not allowed.",
+      "ontology_hints": [
+        "Alarm",
+        "Caution",
+        "VerticalAxis",
+        "TorqueReduction"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm indicating that torque reduction on a vertical axis is not allowed.\", \"ontology_hints\": [\"Alarm\", \"Caution\", \"VerticalAxis\", \"TorqueReduction\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00005",
+        "text": "AXIS NOT PRESENT",
+        "label": "event/state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An event indicating that a mechanical axis is missing or not present, which triggers a torque‑reduction alarm.",
+      "ontology_hints": [
+        "ManufacturingProcess",
+        "FeatureOfInterest",
+        "Result"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An event indicating that a mechanical axis is missing or not present, which triggers a torque‑reduction alarm.\", \"ontology_hints\": [\"ManufacturingProcess\", \"FeatureOfInterest\", \"Result\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00006",
+        "text": "AXIS NOT IN POSITION",
+        "label": "event/state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that a machine axis has failed to reach its programmed position, representing a manufacturing situation where the axis is out of its expected position.",
+      "ontology_hints": [
+        "Situation",
+        "Feature of Interest: axis",
+        "Action: corrective action",
+        "Alarm: triggers action",
+        "Cause: misalignment or mechanical failure",
+        "Requires: maintenance intervention"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that a machine axis has failed to reach its programmed position, representing a manufacturing situation where the axis is out of its expected position.\", \"ontology_hints\": [\"Situation\", \"Feature of Interest: axis\", \"Action: corrective action\", \"Alarm: triggers action\", \"Cause: misalignment or mechanical failure\", \"Requires: maintenance intervention\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00007",
+        "text": "AXIS NOT IN STOP",
+        "label": "event/state"
+      },
+      "aliases": [
+        "Axis not in stop",
+        "Axis not stopped"
+      ],
+      "synonyms": [
+        "Axis not stopped",
+        "Axis not in stop state"
+      ],
+      "lexical_variants": [
+        "Axis not in stop",
+        "Axis not stopped"
+      ],
+      "alias_sources": {
+        "Axis not in stop": [
+          "llm"
+        ],
+        "Axis not stopped": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Axis not stopped": [
+          "llm"
+        ],
+        "Axis not in stop state": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Axis not in stop": [
+          "llm"
+        ],
+        "Axis not stopped": [
+          "llm"
+        ]
+      },
+      "definition": "Alarm indicating that the machine axis has failed to enter the stop position or state.",
+      "ontology_hints": [
+        "FeatureOfInterest: Axis",
+        "Situation: S4 (not stop)",
+        "is in situation: S4",
+        "is defined for: Axis"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Axis not in stop\", \"Axis not stopped\"], \"synonyms\": [\"Axis not stopped\", \"Axis not in stop state\"], \"lexical_variants\": [\"Axis not in stop\", \"Axis not stopped\"], \"definition\": \"Alarm indicating that the machine axis has failed to enter the stop position or state.\", \"ontology_hints\": [\"FeatureOfInterest: Axis\", \"Situation: S4 (not stop)\", \"is in situation: S4\", \"is defined for: Axis\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00008",
+        "text": "WRONG OR MISSING FEED",
+        "label": "event/state"
+      },
+      "aliases": [
+        "Feed error",
+        "Feed fault"
+      ],
+      "synonyms": [
+        "Incorrect feed",
+        "Missing feed"
+      ],
+      "lexical_variants": [
+        "Wrong feed",
+        "Feed missing",
+        "Feed incorrect"
+      ],
+      "alias_sources": {
+        "Feed error": [
+          "llm"
+        ],
+        "Feed fault": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Incorrect feed": [
+          "llm"
+        ],
+        "Missing feed": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Wrong feed": [
+          "llm"
+        ],
+        "Feed missing": [
+          "llm"
+        ],
+        "Feed incorrect": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating that the feed parameter supplied to a machine or manufacturing cell is either incorrect or absent, thereby violating a production constraint.",
+      "ontology_hints": [
+        "TRIGGERS: Wrong or missing feed alarm",
+        "CAUSES: Feed parameter incorrect or missing",
+        "REQUIRES: Feed adjustment or replacement",
+        "HANDLED_BY: Maintenance staff",
+        "REFERENCES: Production line documentation",
+        "CONCERNED_BY: Machine or Manufacturing Cell",
+        "CONSTRAINT_VIOLATION: Production constraint on feed"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Feed error\", \"Feed fault\"], \"synonyms\": [\"Incorrect feed\", \"Missing feed\"], \"lexical_variants\": [\"Wrong feed\", \"Feed missing\", \"Feed incorrect\"], \"definition\": \"An alarm indicating that the feed parameter supplied to a machine or manufacturing cell is either incorrect or absent, thereby violating a production constraint.\", \"ontology_hints\": [\"TRIGGERS: Wrong or missing feed alarm\", \"CAUSES: Feed parameter incorrect or missing\", \"REQUIRES: Feed adjustment or replacement\", \"HANDLED_BY: Maintenance staff\", \"REFERENCES: Production line documentation\", \"CONCERNED_BY: Machine or Manufacturing Cell\", \"CONSTRAINT_VIOLATION: Production constraint on feed\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00009",
+        "text": "Alarm with program interruption, stopping of axes and spindles.",
+        "label": "effect"
+      },
+      "aliases": [
+        "Program interruption alarm",
+        "Axis/spindle stop alarm"
+      ],
+      "synonyms": [
+        "Machine halt alarm",
+        "Shutdown alarm",
+        "Axis stop due to alarm",
+        "Spindle stop due to alarm"
+      ],
+      "lexical_variants": [
+        "Alarm causing program interruption and stopping axes and spindles",
+        "Alarm that interrupts program and stops axes/spindles"
+      ],
+      "alias_sources": {
+        "Program interruption alarm": [
+          "llm"
+        ],
+        "Axis/spindle stop alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Machine halt alarm": [
+          "llm"
+        ],
+        "Shutdown alarm": [
+          "llm"
+        ],
+        "Axis stop due to alarm": [
+          "llm"
+        ],
+        "Spindle stop due to alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm causing program interruption and stopping axes and spindles": [
+          "llm"
+        ],
+        "Alarm that interrupts program and stops axes/spindles": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm event that interrupts the machine’s program execution, resulting in the immediate cessation of movement of the machine’s axes and spindles, effectively halting the manufacturing process.",
+      "ontology_hints": [
+        "Production Line",
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "Feature of Interest",
+        "Machine Shutdown",
+        "Alarm",
+        "Axis",
+        "Spindle"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Program interruption alarm\", \"Axis/spindle stop alarm\"], \"synonyms\": [\"Machine halt alarm\", \"Shutdown alarm\", \"Axis stop due to alarm\", \"Spindle stop due to alarm\"], \"lexical_variants\": [\"Alarm causing program interruption and stopping axes and spindles\", \"Alarm that interrupts program and stops axes/spindles\"], \"definition\": \"An alarm event that interrupts the machine’s program execution, resulting in the immediate cessation of movement of the machine’s axes and spindles, effectively halting the manufacturing process.\", \"ontology_hints\": [\"Production Line\", \"Manufacturing Process\", \"Manufacturing Facility\", \"Feature of Interest\", \"Machine Shutdown\", \"Alarm\", \"Axis\", \"Spindle\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00010",
+        "text": "Alarm with program interruption, axis and bro-effect stop",
+        "label": "effect"
+      },
+      "aliases": [
+        "Program interruption alarm",
+        "Axis and spindle stop alarm",
+        "Bro-effect stop alarm"
+      ],
+      "synonyms": [
+        "Alarm indicating program interruption",
+        "Alarm causing axis and spindle stop",
+        "Program interruption leading to axis stop"
+      ],
+      "lexical_variants": [
+        "Alarm with program interruption causing axis and spindle stop",
+        "Program interruption alarm leading to axis and spindle stop",
+        "Axis and spindle stop due to program interruption alarm"
+      ],
+      "alias_sources": {
+        "Program interruption alarm": [
+          "llm"
+        ],
+        "Axis and spindle stop alarm": [
+          "llm"
+        ],
+        "Bro-effect stop alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Alarm indicating program interruption": [
+          "llm"
+        ],
+        "Alarm causing axis and spindle stop": [
+          "llm"
+        ],
+        "Program interruption leading to axis stop": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm with program interruption causing axis and spindle stop": [
+          "llm"
+        ],
+        "Program interruption alarm leading to axis and spindle stop": [
+          "llm"
+        ],
+        "Axis and spindle stop due to program interruption alarm": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that signals a program interruption, resulting in the stopping of the machine axis and spindle, thereby interrupting the manufacturing process on a production line.",
+      "ontology_hints": [
+        "Feature of Interest: Alarm",
+        "Production Line: affected",
+        "Manufacturing Process: interrupted",
+        "Situation: S1",
+        "has effect: axis stop",
+        "has effect: spindle stop",
+        "requires: maintenance intervention",
+        "handled by: operator",
+        "detected by: machine control system",
+        "references: Alarm with program interruption, axis and bro-effect stop"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Program interruption alarm\", \"Axis and spindle stop alarm\", \"Bro-effect stop alarm\"], \"synonyms\": [\"Alarm indicating program interruption\", \"Alarm causing axis and spindle stop\", \"Program interruption leading to axis stop\"], \"lexical_variants\": [\"Alarm with program interruption causing axis and spindle stop\", \"Program interruption alarm leading to axis and spindle stop\", \"Axis and spindle stop due to program interruption alarm\"], \"definition\": \"An alarm that signals a program interruption, resulting in the stopping of the machine axis and spindle, thereby interrupting the manufacturing process on a production line.\", \"ontology_hints\": [\"Feature of Interest: Alarm\", \"Production Line: affected\", \"Manufacturing Process: interrupted\", \"Situation: S1\", \"has effect: axis stop\", \"has effect: spindle stop\", \"requires: maintenance intervention\", \"handled by: operator\", \"detected by: machine control system\", \"references: Alarm with program interruption, axis and bro-effect stop\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00011",
+        "text": "message no: 2065",
+        "label": "entity"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Identifier for a specific alarm message.",
+      "ontology_hints": [],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Identifier for a specific alarm message.\", \"ontology_hints\": []}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00012",
+        "text": "message no: 2061",
+        "label": "entity"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Identifier for a specific alarm message in a machine maintenance context.",
+      "ontology_hints": [
+        "AlarmMessage",
+        "AlarmIdentifier"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Identifier for a specific alarm message in a machine maintenance context.\", \"ontology_hints\": [\"AlarmMessage\", \"AlarmIdentifier\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00013",
+        "text": "message no: 2062",
+        "label": "entity"
+      },
+      "aliases": [
+        "Alarm 2062",
+        "Msg 2062",
+        "Message 2062"
+      ],
+      "synonyms": [
+        "alarm code",
+        "alarm number",
+        "message ID"
+      ],
+      "lexical_variants": [
+        "msg no 2062",
+        "msg #2062",
+        "message no. 2062"
+      ],
+      "alias_sources": {
+        "Alarm 2062": [
+          "llm"
+        ],
+        "Msg 2062": [
+          "llm"
+        ],
+        "Message 2062": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "alarm code": [
+          "llm"
+        ],
+        "alarm number": [
+          "llm"
+        ],
+        "message ID": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "msg no 2062": [
+          "llm"
+        ],
+        "msg #2062": [
+          "llm"
+        ],
+        "message no. 2062": [
+          "llm"
+        ]
+      },
+      "definition": "A unique identifier assigned to a specific alarm message in a machine's diagnostic system, used to reference the alarm's details and handling procedures.",
+      "ontology_hints": [
+        "AlarmMessage",
+        "DiagnosticMessage",
+        "AlarmIdentifier",
+        "MachineAlarm",
+        "EventIdentifier"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 2062\", \"Msg 2062\", \"Message 2062\"], \"synonyms\": [\"alarm code\", \"alarm number\", \"message ID\"], \"lexical_variants\": [\"msg no 2062\", \"msg #2062\", \"message no. 2062\"], \"definition\": \"A unique identifier assigned to a specific alarm message in a machine's diagnostic system, used to reference the alarm's details and handling procedures.\", \"ontology_hints\": [\"AlarmMessage\", \"DiagnosticMessage\", \"AlarmIdentifier\", \"MachineAlarm\", \"EventIdentifier\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00014",
+        "text": "message no: 3001 to 3003",
+        "label": "entity"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Identifier range for a group of alarm messages.",
+      "ontology_hints": [],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Identifier range for a group of alarm messages.\", \"ontology_hints\": []}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00015",
+        "text": "message no: 3004",
+        "label": "entity"
+      },
+      "aliases": [
+        "Alarm 3004",
+        "Alert 3004",
+        "Diagnostic Message 3004"
+      ],
+      "synonyms": [
+        "alarm code 3004",
+        "alert number 3004",
+        "notification 3004"
+      ],
+      "lexical_variants": [
+        "msg 3004",
+        "message 3004",
+        "msg no. 3004",
+        "message no. 3004"
+      ],
+      "alias_sources": {
+        "Alarm 3004": [
+          "llm"
+        ],
+        "Alert 3004": [
+          "llm"
+        ],
+        "Diagnostic Message 3004": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "alarm code 3004": [
+          "llm"
+        ],
+        "alert number 3004": [
+          "llm"
+        ],
+        "notification 3004": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "msg 3004": [
+          "llm"
+        ],
+        "message 3004": [
+          "llm"
+        ],
+        "msg no. 3004": [
+          "llm"
+        ],
+        "message no. 3004": [
+          "llm"
+        ]
+      },
+      "definition": "A unique identifier assigned to a specific alarm message within a machine's diagnostic or monitoring system, used to reference the alarm in documentation, logs, and maintenance procedures.",
+      "ontology_hints": [
+        "AlarmMessage",
+        "AlarmIdentifier",
+        "DiagnosticMessage",
+        "AlarmCode"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 3004\", \"Alert 3004\", \"Diagnostic Message 3004\"], \"synonyms\": [\"alarm code 3004\", \"alert number 3004\", \"notification 3004\"], \"lexical_variants\": [\"msg 3004\", \"message 3004\", \"msg no. 3004\", \"message no. 3004\"], \"definition\": \"A unique identifier assigned to a specific alarm message within a machine's diagnostic or monitoring system, used to reference the alarm in documentation, logs, and maintenance procedures.\", \"ontology_hints\": [\"AlarmMessage\", \"AlarmIdentifier\", \"DiagnosticMessage\", \"AlarmCode\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00016",
+        "text": "message no: 3005",
+        "label": "entity"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Identifier for a specific alarm message in a machine maintenance system.",
+      "ontology_hints": [
+        "AlarmMessage",
+        "AlarmCode",
+        "MachineAlarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Identifier for a specific alarm message in a machine maintenance system.\", \"ontology_hints\": [\"AlarmMessage\", \"AlarmCode\", \"MachineAlarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00017",
+        "text": "message no: 3006 - 3008",
+        "label": "entity"
+      },
+      "aliases": [
+        "message no: 3006 - 3008"
+      ],
+      "synonyms": [
+        "message numbers 3006-3008",
+        "alarm codes 3006-3008"
+      ],
+      "lexical_variants": [
+        "msg no 3006-3008",
+        "message 3006-3008"
+      ],
+      "alias_sources": {
+        "message no: 3006 - 3008": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "message numbers 3006-3008": [
+          "llm"
+        ],
+        "alarm codes 3006-3008": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "msg no 3006-3008": [
+          "llm"
+        ],
+        "message 3006-3008": [
+          "llm"
+        ]
+      },
+      "definition": "Identifier range for a group of alarm messages.",
+      "ontology_hints": [
+        "AlarmMessage",
+        "AlarmIdentifier",
+        "MessageNumber"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"message no: 3006 - 3008\"], \"synonyms\": [\"message numbers 3006-3008\", \"alarm codes 3006-3008\"], \"lexical_variants\": [\"msg no 3006-3008\", \"message 3006-3008\"], \"definition\": \"Identifier range for a group of alarm messages.\", \"ontology_hints\": [\"AlarmMessage\", \"AlarmIdentifier\", \"MessageNumber\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00018",
+        "text": "message no: 3009 - 3011",
+        "label": "entity"
+      },
+      "aliases": [
+        "msg 3009-3011",
+        "message numbers 3009-3011"
+      ],
+      "synonyms": [
+        "alarm codes 3009-3011",
+        "alert numbers 3009-3011"
+      ],
+      "lexical_variants": [
+        "messages 3009-3011",
+        "message identifiers 3009 to 3011"
+      ],
+      "alias_sources": {
+        "msg 3009-3011": [
+          "llm"
+        ],
+        "message numbers 3009-3011": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "alarm codes 3009-3011": [
+          "llm"
+        ],
+        "alert numbers 3009-3011": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "messages 3009-3011": [
+          "llm"
+        ],
+        "message identifiers 3009 to 3011": [
+          "llm"
+        ]
+      },
+      "definition": "A contiguous range of alarm message identifiers used in an industrial maintenance manual to denote specific alarm conditions that may be triggered by machine sensors or human processes.",
+      "ontology_hints": [
+        "AlarmMessageRange",
+        "AlarmCode",
+        "MessageIdentifier",
+        "MaintenanceManualReference",
+        "belongs_to: AlarmCategory",
+        "used_in: IndustrialMaintenanceOntology"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"msg 3009-3011\", \"message numbers 3009-3011\"], \"synonyms\": [\"alarm codes 3009-3011\", \"alert numbers 3009-3011\"], \"lexical_variants\": [\"messages 3009-3011\", \"message identifiers 3009 to 3011\"], \"definition\": \"A contiguous range of alarm message identifiers used in an industrial maintenance manual to denote specific alarm conditions that may be triggered by machine sensors or human processes.\", \"ontology_hints\": [\"AlarmMessageRange\", \"AlarmCode\", \"MessageIdentifier\", \"MaintenanceManualReference\", \"belongs_to: AlarmCategory\", \"used_in: IndustrialMaintenanceOntology\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00019",
+        "text": "message no: 3012",
+        "label": "entity"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Identifier for a specific alarm message.",
+      "ontology_hints": [
+        "AlarmMessage",
+        "Alarm",
+        "Event"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Identifier for a specific alarm message.\", \"ontology_hints\": [\"AlarmMessage\", \"Alarm\", \"Event\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00020",
+        "text": "alarm no. 1083",
+        "label": "entity"
+      },
+      "aliases": [
+        "Alarm 1083",
+        "Alarm #1083",
+        "Alarm No. 1083"
+      ],
+      "synonyms": [
+        "Alarm 1083"
+      ],
+      "lexical_variants": [
+        "Alarm 1083",
+        "Alarm #1083",
+        "Alarm No. 1083"
+      ],
+      "alias_sources": {
+        "Alarm 1083": [
+          "llm"
+        ],
+        "Alarm #1083": [
+          "llm"
+        ],
+        "Alarm No. 1083": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Alarm 1083": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm 1083": [
+          "llm"
+        ],
+        "Alarm #1083": [
+          "llm"
+        ],
+        "Alarm No. 1083": [
+          "llm"
+        ]
+      },
+      "definition": "A specific alarm instance identified by the number 1083 in a manufacturing system, indicating a particular situation or failure that requires attention.",
+      "ontology_hints": [
+        "instance of Situation S10 or Situation S13",
+        "occurs on a Platform that hosts sensors",
+        "detected by sensors on the Platform",
+        "requires intervention by a Manager",
+        "related to a Manufacturing Process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 1083\", \"Alarm #1083\", \"Alarm No. 1083\"], \"synonyms\": [\"Alarm 1083\"], \"lexical_variants\": [\"Alarm 1083\", \"Alarm #1083\", \"Alarm No. 1083\"], \"definition\": \"A specific alarm instance identified by the number 1083 in a manufacturing system, indicating a particular situation or failure that requires attention.\", \"ontology_hints\": [\"instance of Situation S10 or Situation S13\", \"occurs on a Platform that hosts sensors\", \"detected by sensors on the Platform\", \"requires intervention by a Manager\", \"related to a Manufacturing Process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00021",
+        "text": "function M01",
+        "label": "function"
+      },
+      "aliases": [
+        "function M01",
+        "M01 function"
+      ],
+      "synonyms": [
+        "M01 function"
+      ],
+      "lexical_variants": [
+        "function M01",
+        "M01 function"
+      ],
+      "alias_sources": {
+        "function M01": [
+          "llm"
+        ],
+        "M01 function": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "M01 function": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "function M01": [
+          "llm"
+        ],
+        "M01 function": [
+          "llm"
+        ]
+      },
+      "definition": "A specific machine function identified by the code M01, typically referenced as the cause of an alarm in industrial maintenance documentation.",
+      "ontology_hints": [
+        "MachineFunction",
+        "AlarmCause",
+        "MaintenanceEvent"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"function M01\", \"M01 function\"], \"synonyms\": [\"M01 function\"], \"lexical_variants\": [\"function M01\", \"M01 function\"], \"definition\": \"A specific machine function identified by the code M01, typically referenced as the cause of an alarm in industrial maintenance documentation.\", \"ontology_hints\": [\"MachineFunction\", \"AlarmCause\", \"MaintenanceEvent\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00022",
+        "text": "PRODUCTION DATA page",
+        "label": "resource"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "Production data sheet",
+        "Production data record"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "Production data sheet": [
+          "llm"
+        ],
+        "Production data record": [
+          "llm"
+        ]
+      },
+      "definition": "A page or document containing production data referenced in an alarm.",
+      "ontology_hints": [
+        "Production Line",
+        "Product",
+        "Manufacturing Facility",
+        "Alarm reference",
+        "Production data"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"Production data sheet\", \"Production data record\"], \"definition\": \"A page or document containing production data referenced in an alarm.\", \"ontology_hints\": [\"Production Line\", \"Product\", \"Manufacturing Facility\", \"Alarm reference\", \"Production data\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00023",
+        "text": "MAINTENANCE page",
+        "label": "resource"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Page containing maintenance information referenced in the alarm.",
+      "ontology_hints": [
+        "resource",
+        "maintenance information",
+        "alarm reference"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Page containing maintenance information referenced in the alarm.\", \"ontology_hints\": [\"resource\", \"maintenance information\", \"alarm reference\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00024",
+        "text": "user page",
+        "label": "resource"
+      },
+      "aliases": [
+        "User profile"
+      ],
+      "synonyms": [
+        "User profile"
+      ],
+      "lexical_variants": [
+        "user page",
+        "user profile page"
+      ],
+      "alias_sources": {
+        "User profile": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "User profile": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "user page": [
+          "llm"
+        ],
+        "user profile page": [
+          "llm"
+        ]
+      },
+      "definition": "A page where user settings are configured, representing a collection of settings and information associated with a user.",
+      "ontology_hints": [
+        "User profile",
+        "digital identity",
+        "user settings",
+        "user account"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "A user profile is a collection of settings and information associated with a user. It contains critical information that is used to identify an individual, such as their name, age, portrait photograph and individual characteristics such as knowledge or expertise. User profiles are most commonly present on social media websites such as Facebook, Instagram, and LinkedIn; and serve as voluntary digital identity of an individual, highlighting their key features and traits. In personal computing and operating systems, user profiles serve to categorise files, settings, and documents by individual user environments, known as 'accounts', allowing the operating system to be more friendly and catered to the user. Physical user profiles serve as identity documents such as passports, driving licenses and legal documents that are used to identify an individual under the legal system.\nA user profile can also be considered as the computer representation of a user model. A user model is a (data) structure that is used to capture certain characteristics about an individual user, and the process of obtaining the user profile is called user modeling or profiling.",
+          "reference": "https://en.wikipedia.org/wiki/User_profile"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"User profile\"], \"synonyms\": [\"User profile\"], \"lexical_variants\": [\"user page\", \"user profile page\"], \"definition\": \"A page where user settings are configured, representing a collection of settings and information associated with a user.\", \"ontology_hints\": [\"User profile\", \"digital identity\", \"user settings\", \"user account\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00025",
+        "text": "main switch",
+        "label": "component"
+      },
+      "aliases": [
+        "Distribution board",
+        "main circuit breaker"
+      ],
+      "synonyms": [
+        "main circuit breaker"
+      ],
+      "lexical_variants": [
+        "main switch"
+      ],
+      "alias_sources": {
+        "Distribution board": [
+          "wikipedia"
+        ],
+        "main circuit breaker": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "main circuit breaker": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "main switch": [
+          "llm"
+        ]
+      },
+      "definition": "The main switch is the primary circuit breaker in a distribution board that provides over‑current protection and controls the main power feed to subsidiary circuits.",
+      "ontology_hints": [
+        "Component of Machine",
+        "Electrical component",
+        "Located in Distribution board",
+        "Used in shutdown procedure",
+        "Provides over‑current protection"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "A distribution board (also known as panelboard, circuit breaker panel, breaker panel, electric panel, fuse box or DB box) is a component of an electricity supply system that divides an electrical power feed into subsidiary circuits while providing a protective fuse or circuit breaker for each circuit in a common enclosure. Normally, a main switch, and in recent boards, one or more residual-current devices (RCDs) or residual current breakers with overcurrent protection (RCBOs) are also incorporated.\nIn the United Kingdom, a distribution board designed for domestic installations is known as a consumer unit.",
+          "reference": "https://en.wikipedia.org/wiki/Distribution_board"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"main circuit breaker\"], \"synonyms\": [\"main circuit breaker\"], \"lexical_variants\": [\"main switch\"], \"definition\": \"The main switch is the primary circuit breaker in a distribution board that provides over‑current protection and controls the main power feed to subsidiary circuits.\", \"ontology_hints\": [\"Component of Machine\", \"Electrical component\", \"Located in Distribution board\", \"Used in shutdown procedure\", \"Provides over‑current protection\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00026",
+        "text": "machine shutdown phase",
+        "label": "state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "The state of a machine during its shutdown process within a manufacturing operation.",
+      "ontology_hints": [
+        "Machine",
+        "Manufacturing Process",
+        "Instant",
+        "Human Process",
+        "Manufacturing Facility"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"The state of a machine during its shutdown process within a manufacturing operation.\", \"ontology_hints\": [\"Machine\", \"Manufacturing Process\", \"Instant\", \"Human Process\", \"Manufacturing Facility\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00027",
+        "text": "stopping phase",
+        "label": "state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "State of the machine during stopping.",
+      "ontology_hints": [
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4",
+        "Situation S5"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"State of the machine during stopping.\", \"ontology_hints\": [\"Situation S1\", \"Situation S2\", \"Situation S3\", \"Situation S4\", \"Situation S5\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00028",
+        "text": "torque reduction",
+        "label": "parameter"
+      },
+      "aliases": [
+        "torque decrease",
+        "torque drop"
+      ],
+      "synonyms": [
+        "torque decrease",
+        "torque drop"
+      ],
+      "lexical_variants": [
+        "torque reduction",
+        "reduction of torque"
+      ],
+      "alias_sources": {
+        "torque decrease": [
+          "llm"
+        ],
+        "torque drop": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "torque decrease": [
+          "llm"
+        ],
+        "torque drop": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "torque reduction": [
+          "llm"
+        ],
+        "reduction of torque": [
+          "llm"
+        ]
+      },
+      "definition": "A decrease in the torque applied to or generated by a machine component, often indicating a change in load, drive performance, or mechanical condition.",
+      "ontology_hints": [
+        "Parameter",
+        "Torque",
+        "Reduction",
+        "MechanicalParameter"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"torque decrease\", \"torque drop\"], \"synonyms\": [\"torque decrease\", \"torque drop\"], \"lexical_variants\": [\"torque reduction\", \"reduction of torque\"], \"definition\": \"A decrease in the torque applied to or generated by a machine component, often indicating a change in load, drive performance, or mechanical condition.\", \"ontology_hints\": [\"Parameter\", \"Torque\", \"Reduction\", \"MechanicalParameter\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00029",
+        "text": "vertical axis",
+        "label": "component"
+      },
+      "aliases": [
+        "Cartesian coordinate system"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "vertical axis",
+        "vertical axis of the machine",
+        "vertical coordinate axis"
+      ],
+      "alias_sources": {
+        "Cartesian coordinate system": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "vertical axis": [
+          "llm"
+        ],
+        "vertical axis of the machine": [
+          "llm"
+        ],
+        "vertical coordinate axis": [
+          "llm"
+        ]
+      },
+      "definition": "The vertical axis is one of the perpendicular coordinate axes in a Cartesian coordinate system, representing the y‑axis in two‑dimensional space or the z‑axis in three‑dimensional space, and is used to specify the vertical position of points or machine components.",
+      "ontology_hints": [
+        "component of a machine",
+        "coordinate axis",
+        "used in machine alarms",
+        "vertical orientation"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "In geometry, a Cartesian coordinate system (UK: , US: ) in a plane is a coordinate system that specifies each point uniquely by a pair of real numbers called coordinates, which are the signed distances to the point from two fixed perpendicular oriented lines, called coordinate lines, coordinate axes or just axes (plural of axis) of the system. The point where the axes meet is called the origin and has (0, 0) as coordinates. The axes directions represent an orthogonal basis. The combination of origin and basis forms a coordinate frame called the Cartesian frame.\nSimilarly, the position of any point in three-dimensional space can be specified by three Cartesian coordinates, which are the signed distances from the point to three mutually perpendicular planes. More generally, n Cartesian coordinates specify the point in an n-dimensional Euclidean space for any dimension n. These coordinates are the signed distances from the point to n mutually perpendicular fixed hyperplanes.\n\nCartesian coordinates are named for René Descartes, whose invention thereof in the 17th century revolutionized mathematics by allowing the expression of problems of geometry in terms of algebra and calculus. Usin",
+          "reference": "https://en.wikipedia.org/wiki/Cartesian_coordinate_system"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Cartesian coordinate system\"], \"synonyms\": [], \"lexical_variants\": [\"vertical axis\", \"vertical axis of the machine\", \"vertical coordinate axis\"], \"definition\": \"The vertical axis is one of the perpendicular coordinate axes in a Cartesian coordinate system, representing the y‑axis in two‑dimensional space or the z‑axis in three‑dimensional space, and is used to specify the vertical position of points or machine components.\", \"ontology_hints\": [\"component of a machine\", \"coordinate axis\", \"used in machine alarms\", \"vertical orientation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00030",
+        "text": "axis",
+        "label": "component"
+      },
+      "aliases": [
+        "axis",
+        "Axis",
+        "bloc",
+        "axis vertebra"
+      ],
+      "synonyms": [
+        "axis",
+        "Axis",
+        "bloc",
+        "axis vertebra"
+      ],
+      "lexical_variants": [
+        "axis",
+        "Axis",
+        "bloc",
+        "axis vertebra"
+      ],
+      "alias_sources": {
+        "axis": [
+          "wordnet",
+          "llm"
+        ],
+        "Axis": [
+          "wordnet",
+          "wikipedia",
+          "llm"
+        ],
+        "bloc": [
+          "wordnet"
+        ],
+        "axis vertebra": [
+          "wordnet"
+        ]
+      },
+      "synonym_sources": {
+        "axis": [
+          "wordnet",
+          "llm"
+        ],
+        "Axis": [
+          "wordnet",
+          "llm"
+        ],
+        "bloc": [
+          "wordnet"
+        ],
+        "axis vertebra": [
+          "wordnet"
+        ]
+      },
+      "lexical_variant_sources": {
+        "axis": [
+          "wordnet",
+          "llm"
+        ],
+        "Axis": [
+          "wordnet",
+          "llm"
+        ],
+        "bloc": [
+          "wordnet"
+        ],
+        "axis vertebra": [
+          "wordnet"
+        ]
+      },
+      "definition": "A straight line or pivot point around which a mechanical system rotates or translates; a central component in machinery that provides rotational or translational motion.",
+      "ontology_hints": [
+        "MechanicalComponent",
+        "RotationalAxis",
+        "TranslationalAxis",
+        "PivotPoint"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a straight line through a body or figure that satisfies certain conditions",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "the main stem or central part about which plant organs or plant parts such as branches are arranged",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "in World War II the alliance of Germany and Italy in 1936 which later included Japan and other nations",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a group of countries in special alliance",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "the 2nd cervical vertebra; serves as a pivot for turning the head",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "An axis (pl.: axes)  may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/Axis"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"axis\", \"Axis\"], \"synonyms\": [\"axis\", \"Axis\"], \"lexical_variants\": [\"axis\", \"Axis\"], \"definition\": \"A straight line or pivot point around which a mechanical system rotates or translates; a central component in machinery that provides rotational or translational motion.\", \"ontology_hints\": [\"MechanicalComponent\", \"RotationalAxis\", \"TranslationalAxis\", \"PivotPoint\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00031",
+        "text": "spindles",
+        "label": "component"
+      },
+      "aliases": [
+        "spindle",
+        "mandrel",
+        "mandril",
+        "arbor",
+        "spike",
+        "Spindle"
+      ],
+      "synonyms": [
+        "spindle",
+        "mandrel",
+        "mandril",
+        "arbor",
+        "spike"
+      ],
+      "lexical_variants": [
+        "spindle",
+        "mandrel",
+        "mandril",
+        "arbor",
+        "spike"
+      ],
+      "alias_sources": {
+        "spindle": [
+          "wordnet",
+          "llm"
+        ],
+        "mandrel": [
+          "wordnet",
+          "llm"
+        ],
+        "mandril": [
+          "wordnet",
+          "llm"
+        ],
+        "arbor": [
+          "wordnet",
+          "llm"
+        ],
+        "spike": [
+          "wordnet",
+          "llm"
+        ],
+        "Spindle": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "spindle": [
+          "wordnet",
+          "llm"
+        ],
+        "mandrel": [
+          "wordnet",
+          "llm"
+        ],
+        "mandril": [
+          "wordnet",
+          "llm"
+        ],
+        "arbor": [
+          "wordnet",
+          "llm"
+        ],
+        "spike": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "spindle": [
+          "wordnet",
+          "llm"
+        ],
+        "mandrel": [
+          "wordnet",
+          "llm"
+        ],
+        "mandril": [
+          "wordnet",
+          "llm"
+        ],
+        "arbor": [
+          "wordnet",
+          "llm"
+        ],
+        "spike": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "any of various rotating shafts that serve as axes for larger rotating parts",
+      "ontology_hints": [
+        "spindle is a Spatial Object within a Machine",
+        "spindle is a component of a Machine",
+        "spindle can be monitored by a Sensor",
+        "spindle is involved in a Process that transforms inputs into outputs"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "(biology) tiny fibers that are seen in cell division; the fibers radiate from two poles and meet at the equator in the middle",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a piece of wood that has been turned on a lathe; used as a baluster, chair leg, etc.",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "any of various rotating shafts that serve as axes for larger rotating parts",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a stick or pin used to twist the yarn in spinning",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "any holding device consisting of a rigid, sharp-pointed object",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Spindle may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/Spindle"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"spindle\", \"mandrel\", \"mandril\", \"arbor\", \"spike\"], \"synonyms\": [\"spindle\", \"mandrel\", \"mandril\", \"arbor\", \"spike\"], \"lexical_variants\": [\"spindle\", \"mandrel\", \"mandril\", \"arbor\", \"spike\"], \"definition\": \"any of various rotating shafts that serve as axes for larger rotating parts\", \"ontology_hints\": [\"spindle is a Spatial Object within a Machine\", \"spindle is a component of a Machine\", \"spindle can be monitored by a Sensor\", \"spindle is involved in a Process that transforms inputs into outputs\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00032",
+        "text": "obstacle",
+        "label": "obstacle"
+      },
+      "aliases": [
+        "obstacle",
+        "obstruction",
+        "Obstacle"
+      ],
+      "synonyms": [
+        "obstacle",
+        "obstruction",
+        "barrier",
+        "impediment",
+        "stumbling block"
+      ],
+      "lexical_variants": [
+        "obstacle",
+        "obstruction"
+      ],
+      "alias_sources": {
+        "obstacle": [
+          "wordnet",
+          "llm"
+        ],
+        "obstruction": [
+          "wordnet",
+          "llm"
+        ],
+        "Obstacle": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "obstacle": [
+          "wordnet",
+          "llm"
+        ],
+        "obstruction": [
+          "wordnet",
+          "llm"
+        ],
+        "barrier": [
+          "llm"
+        ],
+        "impediment": [
+          "llm"
+        ],
+        "stumbling block": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "obstacle": [
+          "wordnet",
+          "llm"
+        ],
+        "obstruction": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "An obstruction that stands in the way and must be removed or surmounted, often causing a machine axis to fail to reach its intended position.",
+      "ontology_hints": [
+        "Constraint",
+        "Observable Property",
+        "Workstation",
+        "Observation"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "something immaterial that stands in the way and must be circumvented or surmounted",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "an obstruction that stands in the way (and must be removed or surmounted or circumvented)",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "An obstacle (also called a barrier, impediment, or stumbling block) is an object, thing, action or situation that causes an obstruction. A obstacle blocks or hinders our way forward. Different types of obstacles include physical, economic, biopsychosocial, cultural, political, technological and military.",
+          "reference": "https://en.wikipedia.org/wiki/Obstacle"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"obstacle\", \"obstruction\"], \"synonyms\": [\"obstacle\", \"obstruction\", \"barrier\", \"impediment\", \"stumbling block\"], \"lexical_variants\": [\"obstacle\", \"obstruction\"], \"definition\": \"An obstruction that stands in the way and must be removed or surmounted, often causing a machine axis to fail to reach its intended position.\", \"ontology_hints\": [\"Constraint\", \"Observable Property\", \"Workstation\", \"Observation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00033",
+        "text": "programmed reduction value",
+        "label": "parameter"
+      },
+      "aliases": [
+        "programmed reduction value",
+        "configured reduction value",
+        "preset reduction value",
+        "programmed decrement value"
+      ],
+      "synonyms": [
+        "configured reduction value",
+        "preset reduction value",
+        "programmed decrement value"
+      ],
+      "lexical_variants": [
+        "programmed reduction value"
+      ],
+      "alias_sources": {
+        "programmed reduction value": [
+          "llm"
+        ],
+        "configured reduction value": [
+          "llm"
+        ],
+        "preset reduction value": [
+          "llm"
+        ],
+        "programmed decrement value": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "configured reduction value": [
+          "llm"
+        ],
+        "preset reduction value": [
+          "llm"
+        ],
+        "programmed decrement value": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "programmed reduction value": [
+          "llm"
+        ]
+      },
+      "definition": "A parameter that specifies the amount by which a process variable or setting is reduced as part of a programmed intervention or adjustment in a manufacturing operation.",
+      "ontology_hints": [
+        "Parameter",
+        "ReductionParameter",
+        "AdjustmentParameter",
+        "ProgrammedParameter",
+        "hasParameter",
+        "parameterOf",
+        "configuredBy",
+        "ReductionAction",
+        "AdjustmentAction",
+        "Action",
+        "ProductionLine",
+        "ManufacturingCell",
+        "ManufacturingFacility"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"programmed reduction value\", \"configured reduction value\", \"preset reduction value\", \"programmed decrement value\"], \"synonyms\": [\"configured reduction value\", \"preset reduction value\", \"programmed decrement value\"], \"lexical_variants\": [\"programmed reduction value\"], \"definition\": \"A parameter that specifies the amount by which a process variable or setting is reduced as part of a programmed intervention or adjustment in a manufacturing operation.\", \"ontology_hints\": [\"Parameter\", \"ReductionParameter\", \"AdjustmentParameter\", \"ProgrammedParameter\", \"hasParameter\", \"parameterOf\", \"configuredBy\", \"ReductionAction\", \"AdjustmentAction\", \"Action\", \"ProductionLine\", \"ManufacturingCell\", \"ManufacturingFacility\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00034",
+        "text": "programmed position",
+        "label": "position"
+      },
+      "aliases": [
+        "target position",
+        "setpoint position",
+        "desired position"
+      ],
+      "synonyms": [
+        "target location",
+        "setpoint"
+      ],
+      "lexical_variants": [
+        "programmed location",
+        "programmed target"
+      ],
+      "alias_sources": {
+        "target position": [
+          "llm"
+        ],
+        "setpoint position": [
+          "llm"
+        ],
+        "desired position": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "target location": [
+          "llm"
+        ],
+        "setpoint": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "programmed location": [
+          "llm"
+        ],
+        "programmed target": [
+          "llm"
+        ]
+      },
+      "definition": "A predefined spatial location that a machine axis is commanded to reach during operation.",
+      "ontology_hints": [
+        "hasPosition",
+        "locatedAt",
+        "belongsToWorkstation",
+        "occursInProductionLine",
+        "associatedWithTemporalEntity",
+        "triggeredByAction"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"target position\", \"setpoint position\", \"desired position\"], \"synonyms\": [\"target location\", \"setpoint\"], \"lexical_variants\": [\"programmed location\", \"programmed target\"], \"definition\": \"A predefined spatial location that a machine axis is commanded to reach during operation.\", \"ontology_hints\": [\"hasPosition\", \"locatedAt\", \"belongsToWorkstation\", \"occursInProductionLine\", \"associatedWithTemporalEntity\", \"triggeredByAction\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00035",
+        "text": "tracking error",
+        "label": "symptom"
+      },
+      "aliases": [
+        "Tracking error"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "Tracking error": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Deviation from the expected stopping position of a machine axis, indicating a symptom that the axis is not stopping correctly.",
+      "ontology_hints": [
+        "Symptom of machine axis control",
+        "Related to deviation from process constraints",
+        "Detected by machine sensors",
+        "Requires intervention by operator or maintenance staff",
+        "Can trigger a shutdown if severity exceeds safety thresholds"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "In finance, tracking error or active risk is a measure of the risk in an investment portfolio that is due to active management decisions made by the portfolio manager; it indicates how closely a portfolio follows the index to which it is benchmarked. The best measure is the standard deviation of the difference between the portfolio and index returns.\nMany portfolios are managed to a benchmark, typically an index. Some portfolios, notably index funds, are expected to replicate, before trading and other costs, the returns of an index exactly, while others 'actively manage' the portfolio by deviating from the index in order to generate active returns. Tracking error measures the deviation from the benchmark: an index fund has a near-zero tracking error, while an actively managed portfolio would normally have a higher tracking error. Thus the tracking error does not include any risk (return) that is merely a function of the market's movement. In addition to risk (return) from specific stock selection or industry and factor \"betas\", it can also include risk (return) from market timing decisions.\nDividing portfolio active return by portfolio tracking error gives the information ratio, wh",
+          "reference": "https://en.wikipedia.org/wiki/Tracking_error"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Tracking error\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Deviation from the expected stopping position of a machine axis, indicating a symptom that the axis is not stopping correctly.\", \"ontology_hints\": [\"Symptom of machine axis control\", \"Related to deviation from process constraints\", \"Detected by machine sensors\", \"Requires intervention by operator or maintenance staff\", \"Can trigger a shutdown if severity exceeds safety thresholds\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00036",
+        "text": "feed",
+        "label": "parameter"
+      },
+      "aliases": [
+        "feed",
+        "provender",
+        "give",
+        "feed in",
+        "Feed"
+      ],
+      "synonyms": [
+        "feed",
+        "provender",
+        "give",
+        "feed in"
+      ],
+      "lexical_variants": [
+        "feed",
+        "provender",
+        "give",
+        "feed in"
+      ],
+      "alias_sources": {
+        "feed": [
+          "wordnet",
+          "llm"
+        ],
+        "provender": [
+          "wordnet",
+          "llm"
+        ],
+        "give": [
+          "wordnet",
+          "llm"
+        ],
+        "feed in": [
+          "wordnet",
+          "llm"
+        ],
+        "Feed": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "feed": [
+          "wordnet",
+          "llm"
+        ],
+        "provender": [
+          "wordnet",
+          "llm"
+        ],
+        "give": [
+          "wordnet",
+          "llm"
+        ],
+        "feed in": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "feed": [
+          "wordnet",
+          "llm"
+        ],
+        "provender": [
+          "wordnet",
+          "llm"
+        ],
+        "give": [
+          "wordnet",
+          "llm"
+        ],
+        "feed in": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "A substance or material supplied to a machine or animal, often continuously, to sustain operation or nutrition.",
+      "ontology_hints": [
+        "Resource",
+        "Feature of Interest",
+        "Cause"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "food for domestic livestock",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "provide as food",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "give food to",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "feed into; supply",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "introduce continuously",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Feed or The Feed may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/Feed"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"feed\", \"provender\", \"give\", \"feed in\"], \"synonyms\": [\"feed\", \"provender\", \"give\", \"feed in\"], \"lexical_variants\": [\"feed\", \"provender\", \"give\", \"feed in\"], \"definition\": \"A substance or material supplied to a machine or animal, often continuously, to sustain operation or nutrition.\", \"ontology_hints\": [\"Resource\", \"Feature of Interest\", \"Cause\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00037",
+        "text": "G84, G88, G188",
+        "label": "program code"
+      },
+      "aliases": [
+        "G‑code command"
+      ],
+      "synonyms": [
+        "G‑code"
+      ],
+      "lexical_variants": [
+        "G84",
+        "G88",
+        "G188"
+      ],
+      "alias_sources": {
+        "G‑code command": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "G‑code": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "G84": [
+          "llm"
+        ],
+        "G88": [
+          "llm"
+        ],
+        "G188": [
+          "llm"
+        ]
+      },
+      "definition": "G‑code commands used in CNC machine control, referenced in feed alarms.",
+      "ontology_hints": [
+        "program code",
+        "G‑code command",
+        "CNC command"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"G‑code command\"], \"synonyms\": [\"G‑code\"], \"lexical_variants\": [\"G84\", \"G88\", \"G188\"], \"definition\": \"G‑code commands used in CNC machine control, referenced in feed alarms.\", \"ontology_hints\": [\"program code\", \"G‑code command\", \"CNC command\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00038",
+        "text": "parameter F",
+        "label": "parameter"
+      },
+      "aliases": [
+        "F parameter"
+      ],
+      "synonyms": [
+        "parameter F"
+      ],
+      "lexical_variants": [
+        "parameter F",
+        "F parameter"
+      ],
+      "alias_sources": {
+        "F parameter": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "parameter F": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "parameter F": [
+          "llm"
+        ],
+        "F parameter": [
+          "llm"
+        ]
+      },
+      "definition": "A specific numeric or symbolic value, labeled F, that is part of a machine’s feed system. When this parameter is missing or incorrect, it triggers a feed alarm.",
+      "ontology_hints": [
+        "Parameter",
+        "MachineComponent",
+        "AlarmParameter",
+        "FeedSystem"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"F parameter\"], \"synonyms\": [\"parameter F\"], \"lexical_variants\": [\"parameter F\", \"F parameter\"], \"definition\": \"A specific numeric or symbolic value, labeled F, that is part of a machine’s feed system. When this parameter is missing or incorrect, it triggers a feed alarm.\", \"ontology_hints\": [\"Parameter\", \"MachineComponent\", \"AlarmParameter\", \"FeedSystem\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00039",
+        "text": "program",
+        "label": "action"
+      },
+      "aliases": [
+        "plan",
+        "program",
+        "programme",
+        "broadcast",
+        "platform",
+        "political platform",
+        "political program",
+        "Program"
+      ],
+      "synonyms": [
+        "plan",
+        "program",
+        "programme",
+        "broadcast",
+        "platform",
+        "political platform",
+        "political program"
+      ],
+      "lexical_variants": [
+        "plan",
+        "program",
+        "programme",
+        "broadcast",
+        "platform",
+        "political platform",
+        "political program"
+      ],
+      "alias_sources": {
+        "plan": [
+          "wordnet",
+          "llm"
+        ],
+        "program": [
+          "wordnet"
+        ],
+        "programme": [
+          "wordnet",
+          "llm"
+        ],
+        "broadcast": [
+          "wordnet"
+        ],
+        "platform": [
+          "wordnet"
+        ],
+        "political platform": [
+          "wordnet"
+        ],
+        "political program": [
+          "wordnet"
+        ],
+        "Program": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "plan": [
+          "wordnet",
+          "llm"
+        ],
+        "program": [
+          "wordnet"
+        ],
+        "programme": [
+          "wordnet",
+          "llm"
+        ],
+        "broadcast": [
+          "wordnet"
+        ],
+        "platform": [
+          "wordnet"
+        ],
+        "political platform": [
+          "wordnet"
+        ],
+        "political program": [
+          "wordnet"
+        ]
+      },
+      "lexical_variant_sources": {
+        "plan": [
+          "wordnet",
+          "llm"
+        ],
+        "program": [
+          "wordnet"
+        ],
+        "programme": [
+          "wordnet",
+          "llm"
+        ],
+        "broadcast": [
+          "wordnet"
+        ],
+        "platform": [
+          "wordnet"
+        ],
+        "political platform": [
+          "wordnet"
+        ],
+        "political program": [
+          "wordnet"
+        ]
+      },
+      "definition": "a series of steps to be carried out or goals to be accomplished",
+      "ontology_hints": [
+        "Process",
+        "Plan",
+        "Action"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a series of steps to be carried out or goals to be accomplished",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a system of projects or services intended to meet a public need",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a radio or television show",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a document stating the aims and principles of a political party",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "an announcement of the events that will occur as part of a theatrical or sporting event",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Program (American English; also Commonwealth English in terms of computer programming and related activities) or programme (Commonwealth English in all other meanings), programmer, or programming may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/Program"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"plan\", \"programme\"], \"synonyms\": [\"plan\", \"programme\"], \"lexical_variants\": [\"plan\", \"programme\"], \"definition\": \"a series of steps to be carried out or goals to be accomplished\", \"ontology_hints\": [\"Process\", \"Plan\", \"Action\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00040",
+        "text": "maintenance parameters",
+        "label": "parameter"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Parameters that are referenced in maintenance alarms, indicating settings or thresholds for machine operation.",
+      "ontology_hints": [
+        "parameter is an attribute of Machine",
+        "parameter is an attribute of Feature of Interest",
+        "parameter is monitored or adjusted by Human Process",
+        "parameter is used in maintenance alarms"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Parameters that are referenced in maintenance alarms, indicating settings or thresholds for machine operation.\", \"ontology_hints\": [\"parameter is an attribute of Machine\", \"parameter is an attribute of Feature of Interest\", \"parameter is monitored or adjusted by Human Process\", \"parameter is used in maintenance alarms\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00041",
+        "text": "maintenance settings",
+        "label": "setting"
+      },
+      "aliases": [
+        "maintenance configuration",
+        "maintenance parameters"
+      ],
+      "synonyms": [
+        "configuration parameters",
+        "system settings",
+        "parameter settings",
+        "maintenance configuration"
+      ],
+      "lexical_variants": [
+        "maintenance setting",
+        "maintenance settings"
+      ],
+      "alias_sources": {
+        "maintenance configuration": [
+          "llm"
+        ],
+        "maintenance parameters": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "configuration parameters": [
+          "llm"
+        ],
+        "system settings": [
+          "llm"
+        ],
+        "parameter settings": [
+          "llm"
+        ],
+        "maintenance configuration": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "maintenance setting": [
+          "llm"
+        ],
+        "maintenance settings": [
+          "llm"
+        ]
+      },
+      "definition": "Configuration parameters that influence the execution of manufacturing or human processes and the actions taken in response to detected situations, often referenced in maintenance alarms.",
+      "ontology_hints": [
+        "Feature of Interest",
+        "Manufacturing Process",
+        "Human Process",
+        "Action",
+        "Instant"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"maintenance configuration\", \"maintenance parameters\"], \"synonyms\": [\"configuration parameters\", \"system settings\", \"parameter settings\", \"maintenance configuration\"], \"lexical_variants\": [\"maintenance setting\", \"maintenance settings\"], \"definition\": \"Configuration parameters that influence the execution of manufacturing or human processes and the actions taken in response to detected situations, often referenced in maintenance alarms.\", \"ontology_hints\": [\"Feature of Interest\", \"Manufacturing Process\", \"Human Process\", \"Action\", \"Instant\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00043",
+        "text": "maintenance parameters are about to run out",
+        "label": "symptom"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A symptom indicating that the maintenance parameters of a feature of interest are approaching depletion, signaling the need for intervention by a manager or operator.",
+      "ontology_hints": [
+        "Feature of Interest",
+        "Observable Property",
+        "Manager",
+        "Operator",
+        "Instant",
+        "Symptom",
+        "Requires intervention",
+        "Future event"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A symptom indicating that the maintenance parameters of a feature of interest are approaching depletion, signaling the need for intervention by a manager or operator.\", \"ontology_hints\": [\"Feature of Interest\", \"Observable Property\", \"Manager\", \"Operator\", \"Instant\", \"Symptom\", \"Requires intervention\", \"Future event\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00044",
+        "text": "maintenance parameters are about to be exhausted",
+        "label": "symptom"
+      },
+      "aliases": [
+        "maintenance parameters depletion",
+        "maintenance parameter exhaustion"
+      ],
+      "synonyms": [
+        "maintenance parameters nearing depletion",
+        "maintenance parameters approaching exhaustion",
+        "maintenance parameters about to run out"
+      ],
+      "lexical_variants": [
+        "maintenance parameters are about to be exhausted",
+        "maintenance parameters are nearing exhaustion",
+        "maintenance parameters are approaching depletion"
+      ],
+      "alias_sources": {
+        "maintenance parameters depletion": [
+          "llm"
+        ],
+        "maintenance parameter exhaustion": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "maintenance parameters nearing depletion": [
+          "llm"
+        ],
+        "maintenance parameters approaching exhaustion": [
+          "llm"
+        ],
+        "maintenance parameters about to run out": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "maintenance parameters are about to be exhausted": [
+          "llm"
+        ],
+        "maintenance parameters are nearing exhaustion": [
+          "llm"
+        ],
+        "maintenance parameters are approaching depletion": [
+          "llm"
+        ]
+      },
+      "definition": "A symptom indicating that the parameters governing maintenance are approaching their critical threshold, signaling imminent need for human intervention by a manager.",
+      "ontology_hints": [
+        "symptom",
+        "maintenance parameters",
+        "exhaustion",
+        "imminent depletion",
+        "human intervention",
+        "Feature of Interest: machine component",
+        "Observable Property: maintenance parameters",
+        "Manufacturing Process: maintenance process",
+        "Human Process: maintenance intervention",
+        "Manager: responsible for addressing the symptom"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"maintenance parameters depletion\", \"maintenance parameter exhaustion\"], \"synonyms\": [\"maintenance parameters nearing depletion\", \"maintenance parameters approaching exhaustion\", \"maintenance parameters about to run out\"], \"lexical_variants\": [\"maintenance parameters are about to be exhausted\", \"maintenance parameters are nearing exhaustion\", \"maintenance parameters are approaching depletion\"], \"definition\": \"A symptom indicating that the parameters governing maintenance are approaching their critical threshold, signaling imminent need for human intervention by a manager.\", \"ontology_hints\": [\"symptom\", \"maintenance parameters\", \"exhaustion\", \"imminent depletion\", \"human intervention\", \"Feature of Interest: machine component\", \"Observable Property: maintenance parameters\", \"Manufacturing Process: maintenance process\", \"Human Process: maintenance intervention\", \"Manager: responsible for addressing the symptom\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00045",
+        "text": "Check on the “MAINTENANCE” page which of the items listed",
+        "label": "intervention"
+      },
+      "aliases": [
+        "intervention"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "intervention": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An action performed by a human operator to verify the status of maintenance items listed on a maintenance page.",
+      "ontology_hints": [
+        "Human Process",
+        "Manufacturing Facility",
+        "Feature of Interest",
+        "Constraint",
+        "Manufacturing Process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"intervention\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An action performed by a human operator to verify the status of maintenance items listed on a maintenance page.\", \"ontology_hints\": [\"Human Process\", \"Manufacturing Facility\", \"Feature of Interest\", \"Constraint\", \"Manufacturing Process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00046",
+        "text": "Check in the “MAINTENANCE” page which of the listed items requires maintenance",
+        "label": "intervention"
+      },
+      "aliases": [
+        "Inspect maintenance page",
+        "Review maintenance section",
+        "Examine maintenance documentation"
+      ],
+      "synonyms": [
+        "Check",
+        "Inspect",
+        "Review"
+      ],
+      "lexical_variants": [
+        "Check the maintenance page for items requiring maintenance",
+        "Review the maintenance page to identify items that need maintenance",
+        "Examine the maintenance section to see which items require servicing"
+      ],
+      "alias_sources": {
+        "Inspect maintenance page": [
+          "llm"
+        ],
+        "Review maintenance section": [
+          "llm"
+        ],
+        "Examine maintenance documentation": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Check": [
+          "llm"
+        ],
+        "Inspect": [
+          "llm"
+        ],
+        "Review": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Check the maintenance page for items requiring maintenance": [
+          "llm"
+        ],
+        "Review the maintenance page to identify items that need maintenance": [
+          "llm"
+        ],
+        "Examine the maintenance section to see which items require servicing": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention action that involves reviewing the maintenance documentation to determine which listed items require maintenance.",
+      "ontology_hints": [
+        "requires action",
+        "has feature of interest",
+        "MaintenanceItem",
+        "MaintenanceManual",
+        "MaintenancePage",
+        "MaintenanceRequirement",
+        "MaintenanceIntervention",
+        "InspectionEvent"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Inspect maintenance page\", \"Review maintenance section\", \"Examine maintenance documentation\"], \"synonyms\": [\"Check\", \"Inspect\", \"Review\"], \"lexical_variants\": [\"Check the maintenance page for items requiring maintenance\", \"Review the maintenance page to identify items that need maintenance\", \"Examine the maintenance section to see which items require servicing\"], \"definition\": \"An intervention action that involves reviewing the maintenance documentation to determine which listed items require maintenance.\", \"ontology_hints\": [\"requires action\", \"has feature of interest\", \"MaintenanceItem\", \"MaintenanceManual\", \"MaintenancePage\", \"MaintenanceRequirement\", \"MaintenanceIntervention\", \"InspectionEvent\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00047",
+        "text": "Wait for the main switch to trip, then turn it on and turn on the machine",
+        "label": "intervention"
+      },
+      "aliases": [
+        "reset main switch and restart machine",
+        "reboot machine after main switch trip",
+        "restart machine after main switch trip"
+      ],
+      "synonyms": [
+        "wait for the main switch to trip, then switch it on and start the machine",
+        "wait for the main switch to trip, then power on the machine",
+        "wait for the main switch to trip, then turn it on and power on the machine"
+      ],
+      "lexical_variants": [
+        "main switch",
+        "main breaker",
+        "main circuit breaker",
+        "trip",
+        "trip the main switch",
+        "turn on",
+        "switch on",
+        "power on",
+        "machine",
+        "equipment",
+        "device"
+      ],
+      "alias_sources": {
+        "reset main switch and restart machine": [
+          "llm"
+        ],
+        "reboot machine after main switch trip": [
+          "llm"
+        ],
+        "restart machine after main switch trip": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "wait for the main switch to trip, then switch it on and start the machine": [
+          "llm"
+        ],
+        "wait for the main switch to trip, then power on the machine": [
+          "llm"
+        ],
+        "wait for the main switch to trip, then turn it on and power on the machine": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "main switch": [
+          "llm"
+        ],
+        "main breaker": [
+          "llm"
+        ],
+        "main circuit breaker": [
+          "llm"
+        ],
+        "trip": [
+          "llm"
+        ],
+        "trip the main switch": [
+          "llm"
+        ],
+        "turn on": [
+          "llm"
+        ],
+        "switch on": [
+          "llm"
+        ],
+        "power on": [
+          "llm"
+        ],
+        "machine": [
+          "llm"
+        ],
+        "equipment": [
+          "llm"
+        ],
+        "device": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention procedure in which an operator waits for the main switch to trip (i.e., the circuit opens), then re‑energizes the switch and starts the machine to resume operation after an automatic stop.",
+      "ontology_hints": [
+        "intervention",
+        "requires main switch to trip",
+        "handled_by Technician",
+        "restarts Machine",
+        "shutdown state",
+        "restart event",
+        "Manufacturing Facility",
+        "Manufacturing Cell",
+        "Manufacturing Process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"reset main switch and restart machine\", \"reboot machine after main switch trip\", \"restart machine after main switch trip\"], \"synonyms\": [\"wait for the main switch to trip, then switch it on and start the machine\", \"wait for the main switch to trip, then power on the machine\", \"wait for the main switch to trip, then turn it on and power on the machine\"], \"lexical_variants\": [\"main switch\", \"main breaker\", \"main circuit breaker\", \"trip\", \"trip the main switch\", \"turn on\", \"switch on\", \"power on\", \"machine\", \"equipment\", \"device\"], \"definition\": \"An intervention procedure in which an operator waits for the main switch to trip (i.e., the circuit opens), then re‑energizes the switch and starts the machine to resume operation after an automatic stop.\", \"ontology_hints\": [\"intervention\", \"requires main switch to trip\", \"handled_by Technician\", \"restarts Machine\", \"shutdown state\", \"restart event\", \"Manufacturing Facility\", \"Manufacturing Cell\", \"Manufacturing Process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00048",
+        "text": "Modify the programmed reduction value",
+        "label": "intervention"
+      },
+      "aliases": [
+        "Modify the programmed reduction value"
+      ],
+      "synonyms": [
+        "Adjust the programmed reduction value",
+        "Change the programmed reduction value",
+        "Alter the programmed reduction value"
+      ],
+      "lexical_variants": [
+        "programmed reduction value",
+        "reduction value",
+        "reduction setting"
+      ],
+      "alias_sources": {
+        "Modify the programmed reduction value": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Adjust the programmed reduction value": [
+          "llm"
+        ],
+        "Change the programmed reduction value": [
+          "llm"
+        ],
+        "Alter the programmed reduction value": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "programmed reduction value": [
+          "llm"
+        ],
+        "reduction value": [
+          "llm"
+        ],
+        "reduction setting": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention action that changes the programmed reduction value in a manufacturing cell or production line, typically to correct torque reduction.",
+      "ontology_hints": [
+        "intervention",
+        "process parameter",
+        "manufacturing cell",
+        "production line",
+        "manufacturing facility",
+        "situation S1",
+        "observation",
+        "parameter adjustment",
+        "torque reduction"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Modify the programmed reduction value\"], \"synonyms\": [\"Adjust the programmed reduction value\", \"Change the programmed reduction value\", \"Alter the programmed reduction value\"], \"lexical_variants\": [\"programmed reduction value\", \"reduction value\", \"reduction setting\"], \"definition\": \"An intervention action that changes the programmed reduction value in a manufacturing cell or production line, typically to correct torque reduction.\", \"ontology_hints\": [\"intervention\", \"process parameter\", \"manufacturing cell\", \"production line\", \"manufacturing facility\", \"situation S1\", \"observation\", \"parameter adjustment\", \"torque reduction\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00049",
+        "text": "Modify the program",
+        "label": "intervention"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An intervention action to modify or correct a program, typically performed by a human operator to address program errors or update functionality.",
+      "ontology_hints": [
+        "HumanProcess",
+        "ManufacturingProcess",
+        "LogisticProcess",
+        "Interval",
+        "ObservableProperty"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An intervention action to modify or correct a program, typically performed by a human operator to address program errors or update functionality.\", \"ontology_hints\": [\"HumanProcess\", \"ManufacturingProcess\", \"LogisticProcess\", \"Interval\", \"ObservableProperty\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00050",
+        "text": "Check the machining and remove the obstacle",
+        "label": "intervention"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An intervention action to inspect machining operations and remove any obstacles that may hinder the process.",
+      "ontology_hints": [
+        "intervention",
+        "maintenance",
+        "obstacle removal",
+        "machining inspection"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An intervention action to inspect machining operations and remove any obstacles that may hinder the process.\", \"ontology_hints\": [\"intervention\", \"maintenance\", \"obstacle removal\", \"machining inspection\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00051",
+        "text": "Check the machining, and review the program",
+        "label": "intervention"
+      },
+      "aliases": [
+        "Inspect machining and review program",
+        "Examine machining and verify program"
+      ],
+      "synonyms": [
+        "Review machining and program",
+        "Check machining and program"
+      ],
+      "lexical_variants": [
+        "Check the machining and review the program",
+        "Check machining, and review program"
+      ],
+      "alias_sources": {
+        "Inspect machining and review program": [
+          "llm"
+        ],
+        "Examine machining and verify program": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Review machining and program": [
+          "llm"
+        ],
+        "Check machining and program": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Check the machining and review the program": [
+          "llm"
+        ],
+        "Check machining, and review program": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention performed by a human operator in which the machining process is inspected and the associated program is verified to ensure correct operation.",
+      "ontology_hints": [
+        "intervention",
+        "human process",
+        "manufacturing process",
+        "machine operation",
+        "inspection",
+        "verification"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Inspect machining and review program\", \"Examine machining and verify program\"], \"synonyms\": [\"Review machining and program\", \"Check machining and program\"], \"lexical_variants\": [\"Check the machining and review the program\", \"Check machining, and review program\"], \"definition\": \"An intervention performed by a human operator in which the machining process is inspected and the associated program is verified to ensure correct operation.\", \"ontology_hints\": [\"intervention\", \"human process\", \"manufacturing process\", \"machine operation\", \"inspection\", \"verification\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00052",
+        "text": "Check the program and modify the instruction",
+        "label": "intervention"
+      },
+      "aliases": [
+        "program review and instruction update"
+      ],
+      "synonyms": [
+        "review the program and adjust the instruction",
+        "examine the program and modify the instruction",
+        "inspect the program and update the instruction"
+      ],
+      "lexical_variants": [
+        "check program and modify instruction",
+        "check the program and modify the instruction"
+      ],
+      "alias_sources": {
+        "program review and instruction update": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "review the program and adjust the instruction": [
+          "llm"
+        ],
+        "examine the program and modify the instruction": [
+          "llm"
+        ],
+        "inspect the program and update the instruction": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "check program and modify instruction": [
+          "llm"
+        ],
+        "check the program and modify the instruction": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention action that involves inspecting a program and altering its instruction set to correct or improve its behavior.",
+      "ontology_hints": [
+        "intervention",
+        "program modification",
+        "instruction update",
+        "software maintenance"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"program review and instruction update\"], \"synonyms\": [\"review the program and adjust the instruction\", \"examine the program and modify the instruction\", \"inspect the program and update the instruction\"], \"lexical_variants\": [\"check program and modify instruction\", \"check the program and modify the instruction\"], \"definition\": \"An intervention action that involves inspecting a program and altering its instruction set to correct or improve its behavior.\", \"ontology_hints\": [\"intervention\", \"program modification\", \"instruction update\", \"software maintenance\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00053",
+        "text": "cause:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "cause"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "cause"
+      ],
+      "alias_sources": {
+        "cause": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "cause": [
+          "llm"
+        ]
+      },
+      "definition": "A factor or event responsible for the occurrence of a situation in the manufacturing system.",
+      "ontology_hints": [
+        "Cause class (http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause)",
+        "has cause property linking situations to their causes",
+        "used to relate alarms to their causes in industrial maintenance contexts"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"cause\"], \"synonyms\": [], \"lexical_variants\": [\"cause\"], \"definition\": \"A factor or event responsible for the occurrence of a situation in the manufacturing system.\", \"ontology_hints\": [\"Cause class (http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Cause)\", \"has cause property linking situations to their causes\", \"used to relate alarms to their causes in industrial maintenance contexts\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00054",
+        "text": "intervention:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "intervention"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "intervention",
+        "intervention:"
+      ],
+      "alias_sources": {
+        "intervention": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "intervention": [
+          "llm"
+        ],
+        "intervention:": [
+          "llm"
+        ]
+      },
+      "definition": "An event or action taken to address or resolve an alarm or failure in a machine, typically involving maintenance or corrective measures.",
+      "ontology_hints": [
+        "Observation",
+        "Situation",
+        "Interval",
+        "Instant",
+        "TemporalEntity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"intervention\"], \"synonyms\": [], \"lexical_variants\": [\"intervention\", \"intervention:\"], \"definition\": \"An event or action taken to address or resolve an alarm or failure in a machine, typically involving maintenance or corrective measures.\", \"ontology_hints\": [\"Observation\", \"Situation\", \"Interval\", \"Instant\", \"TemporalEntity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00055",
+        "text": "responsible for",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [
+        "accountable for",
+        "in charge of",
+        "liable for"
+      ],
+      "lexical_variants": [
+        "responsible for"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {
+        "accountable for": [
+          "llm"
+        ],
+        "in charge of": [
+          "llm"
+        ],
+        "liable for": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for": [
+          "llm"
+        ]
+      },
+      "definition": "to be accountable for or in charge of a task, duty, or outcome",
+      "ontology_hints": [
+        "role is responsible for intervention",
+        "responsibility relation",
+        "accountability",
+        "ownership"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [\"accountable for\", \"in charge of\", \"liable for\"], \"lexical_variants\": [\"responsible for\"], \"definition\": \"to be accountable for or in charge of a task, duty, or outcome\", \"ontology_hints\": [\"role is responsible for intervention\", \"responsibility relation\", \"accountability\", \"ownership\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00056",
+        "text": "effect:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "effect"
+      ],
+      "synonyms": [
+        "consequence",
+        "outcome",
+        "result"
+      ],
+      "lexical_variants": [
+        "effect",
+        "effects"
+      ],
+      "alias_sources": {
+        "effect": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "consequence": [
+          "llm"
+        ],
+        "outcome": [
+          "llm"
+        ],
+        "result": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "effect": [
+          "llm"
+        ],
+        "effects": [
+          "llm"
+        ]
+      },
+      "definition": "The outcome or result produced by an action or intervention in a manufacturing system.",
+      "ontology_hints": [
+        "Action → Result",
+        "hasEffect",
+        "causes",
+        "produces",
+        "Result"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"effect\"], \"synonyms\": [\"consequence\", \"outcome\", \"result\"], \"lexical_variants\": [\"effect\", \"effects\"], \"definition\": \"The outcome or result produced by an action or intervention in a manufacturing system.\", \"ontology_hints\": [\"Action → Result\", \"hasEffect\", \"causes\", \"produces\", \"Result\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00057",
+        "text": "responsible for the intervention:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "responsible for the intervention"
+      ],
+      "synonyms": [
+        "accountable for the intervention",
+        "in charge of the intervention",
+        "liable for the intervention",
+        "responsible party for the intervention"
+      ],
+      "lexical_variants": [
+        "responsible for the intervention",
+        "responsible for intervention",
+        "responsible for the intervention:"
+      ],
+      "alias_sources": {
+        "responsible for the intervention": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "accountable for the intervention": [
+          "llm"
+        ],
+        "in charge of the intervention": [
+          "llm"
+        ],
+        "liable for the intervention": [
+          "llm"
+        ],
+        "responsible party for the intervention": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for the intervention": [
+          "llm"
+        ],
+        "responsible for intervention": [
+          "llm"
+        ],
+        "responsible for the intervention:": [
+          "llm"
+        ]
+      },
+      "definition": "The person or role that is accountable for performing or overseeing a specific intervention.",
+      "ontology_hints": [
+        "HANDLED_BY",
+        "RESPONSIBLE_FOR",
+        "has_responsible_party",
+        "intervention -> HANDLED_BY -> person/role"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"responsible for the intervention\"], \"synonyms\": [\"accountable for the intervention\", \"in charge of the intervention\", \"liable for the intervention\", \"responsible party for the intervention\"], \"lexical_variants\": [\"responsible for the intervention\", \"responsible for intervention\", \"responsible for the intervention:\"], \"definition\": \"The person or role that is accountable for performing or overseeing a specific intervention.\", \"ontology_hints\": [\"HANDLED_BY\", \"RESPONSIBLE_FOR\", \"has_responsible_party\", \"intervention -> HANDLED_BY -> person/role\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00058",
+        "text": "responsible for the maintenance",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "in charge of maintenance",
+        "accountable for maintenance",
+        "liable for maintenance"
+      ],
+      "synonyms": [
+        "in charge of maintenance",
+        "accountable for maintenance",
+        "liable for maintenance"
+      ],
+      "lexical_variants": [
+        "responsible for maintenance",
+        "responsible for the upkeep"
+      ],
+      "alias_sources": {
+        "in charge of maintenance": [
+          "llm"
+        ],
+        "accountable for maintenance": [
+          "llm"
+        ],
+        "liable for maintenance": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "in charge of maintenance": [
+          "llm"
+        ],
+        "accountable for maintenance": [
+          "llm"
+        ],
+        "liable for maintenance": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for maintenance": [
+          "llm"
+        ],
+        "responsible for the upkeep": [
+          "llm"
+        ]
+      },
+      "definition": "A responsibility relation in which a resource (e.g., staff or machine) is tasked with ensuring that maintenance constraints on a feature of interest are satisfied.",
+      "ontology_hints": [
+        "responsible_for_maintenance",
+        "Resource",
+        "Constraint",
+        "Feature_of_Interest",
+        "has_responsibility",
+        "fulfills_constraint"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"in charge of maintenance\", \"accountable for maintenance\", \"liable for maintenance\"], \"synonyms\": [\"in charge of maintenance\", \"accountable for maintenance\", \"liable for maintenance\"], \"lexical_variants\": [\"responsible for maintenance\", \"responsible for the upkeep\"], \"definition\": \"A responsibility relation in which a resource (e.g., staff or machine) is tasked with ensuring that maintenance constraints on a feature of interest are satisfied.\", \"ontology_hints\": [\"responsible_for_maintenance\", \"Resource\", \"Constraint\", \"Feature_of_Interest\", \"has_responsibility\", \"fulfills_constraint\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00059",
+        "text": "responsible for the intervention: toolmaker-adjuster",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "toolmaker adjuster"
+      ],
+      "synonyms": [
+        "responsible for the intervention"
+      ],
+      "lexical_variants": [
+        "toolmaker adjuster",
+        "toolmaker-adjuster"
+      ],
+      "alias_sources": {
+        "toolmaker adjuster": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "responsible for the intervention": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "toolmaker adjuster": [
+          "llm"
+        ],
+        "toolmaker-adjuster": [
+          "llm"
+        ]
+      },
+      "definition": "The toolmaker‑adjuster is the person or role accountable for carrying out the intervention.",
+      "ontology_hints": [
+        "Use a property such as responsibleFor to link the agent (toolmaker‑adjuster) to the intervention event.",
+        "Model the intervention as a FeatureOfInterest.",
+        "Represent the time of the intervention with a TemporalEntity.",
+        "Situate the intervention within a specific Situation (e.g., Situation S1, S2, or S3)."
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"toolmaker adjuster\"], \"synonyms\": [\"responsible for the intervention\"], \"lexical_variants\": [\"toolmaker adjuster\", \"toolmaker-adjuster\"], \"definition\": \"The toolmaker‑adjuster is the person or role accountable for carrying out the intervention.\", \"ontology_hints\": [\"Use a property such as responsibleFor to link the agent (toolmaker‑adjuster) to the intervention event.\", \"Model the intervention as a FeatureOfInterest.\", \"Represent the time of the intervention with a TemporalEntity.\", \"Situate the intervention within a specific Situation (e.g., Situation S1, S2, or S3).\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00060",
+        "text": "responsible for the intervention: programmer",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "The programmer is the entity responsible for carrying out the intervention.",
+      "ontology_hints": [
+        "HANDLED_BY",
+        "ResponsibleFor",
+        "Intervention"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"The programmer is the entity responsible for carrying out the intervention.\", \"ontology_hints\": [\"HANDLED_BY\", \"ResponsibleFor\", \"Intervention\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

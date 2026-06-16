@@ -1,0 +1,1760 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 35,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "AUXILIARY WATERING ALARM",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "auxiliary water alarm",
+        "auxiliary watering alert",
+        "secondary watering alarm"
+      ],
+      "synonyms": [
+        "auxiliary water supply alarm",
+        "auxiliary watering fault alarm"
+      ],
+      "lexical_variants": [
+        "auxiliary watering alarm",
+        "auxiliary water alarm",
+        "auxiliary watering alert"
+      ],
+      "alias_sources": {
+        "auxiliary water alarm": [
+          "llm"
+        ],
+        "auxiliary watering alert": [
+          "llm"
+        ],
+        "secondary watering alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "auxiliary water supply alarm": [
+          "llm"
+        ],
+        "auxiliary watering fault alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "auxiliary watering alarm": [
+          "llm"
+        ],
+        "auxiliary water alarm": [
+          "llm"
+        ],
+        "auxiliary watering alert": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that signals a fault, abnormal condition, or failure in the auxiliary watering system of a manufacturing machine, typically indicating that the system is not delivering the required water flow or pressure for cooling, lubrication, or other process needs.",
+      "ontology_hints": [
+        "occurs in: Manufacturing Facility",
+        "occurs in: Manufacturing Cell",
+        "part of: Manufacturing Process",
+        "temporal containment: Interval",
+        "situated within: Situation S1",
+        "TRIGGERS: abnormal water flow or pressure",
+        "CAUSES: pump failure, valve blockage, sensor fault",
+        "REQUIRES: maintenance intervention",
+        "HANDLED_BY: maintenance technician",
+        "REFERENCES: machine manual section on auxiliary watering",
+        "DETECTED_BY: water flow sensor, pressure sensor"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"auxiliary water alarm\", \"auxiliary watering alert\", \"secondary watering alarm\"], \"synonyms\": [\"auxiliary water supply alarm\", \"auxiliary watering fault alarm\"], \"lexical_variants\": [\"auxiliary watering alarm\", \"auxiliary water alarm\", \"auxiliary watering alert\"], \"definition\": \"An alarm that signals a fault, abnormal condition, or failure in the auxiliary watering system of a manufacturing machine, typically indicating that the system is not delivering the required water flow or pressure for cooling, lubrication, or other process needs.\", \"ontology_hints\": [\"occurs in: Manufacturing Facility\", \"occurs in: Manufacturing Cell\", \"part of: Manufacturing Process\", \"temporal containment: Interval\", \"situated within: Situation S1\", \"TRIGGERS: abnormal water flow or pressure\", \"CAUSES: pump failure, valve blockage, sensor fault\", \"REQUIRES: maintenance intervention\", \"HANDLED_BY: maintenance technician\", \"REFERENCES: machine manual section on auxiliary watering\", \"DETECTED_BY: water flow sensor, pressure sensor\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "PART NOT EJECTED",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "Part not ejected"
+      ],
+      "synonyms": [
+        "ejection failure",
+        "ejection fault",
+        "ejection error"
+      ],
+      "lexical_variants": [
+        "PART NOT EJECTED",
+        "Part not ejected",
+        "part not ejected"
+      ],
+      "alias_sources": {
+        "Part not ejected": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "ejection failure": [
+          "llm"
+        ],
+        "ejection fault": [
+          "llm"
+        ],
+        "ejection error": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "PART NOT EJECTED": [
+          "llm"
+        ],
+        "Part not ejected": [
+          "llm"
+        ],
+        "part not ejected": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating that a part intended to be ejected from a machine or process was not successfully removed, potentially causing a blockage or interruption in the production line.",
+      "ontology_hints": [
+        "AlarmType",
+        "FailureEvent",
+        "MachineState",
+        "ShutdownState",
+        "InterventionType",
+        "Part"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Part not ejected\"], \"synonyms\": [\"ejection failure\", \"ejection fault\", \"ejection error\"], \"lexical_variants\": [\"PART NOT EJECTED\", \"Part not ejected\", \"part not ejected\"], \"definition\": \"An alarm indicating that a part intended to be ejected from a machine or process was not successfully removed, potentially causing a blockage or interruption in the production line.\", \"ontology_hints\": [\"AlarmType\", \"FailureEvent\", \"MachineState\", \"ShutdownState\", \"InterventionType\", \"Part\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00002",
+        "text": "PART MISSING",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "PART MISSING"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "part missing"
+      ],
+      "alias_sources": {
+        "PART MISSING": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "part missing": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating that a required component (Part) is absent from the machine or assembly, typically triggering an intervention action within the production line.",
+      "ontology_hints": [
+        "Alarm type",
+        "Triggers missing part condition",
+        "Causes need for Action",
+        "References Part class",
+        "Detected by sensor platform"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"PART MISSING\"], \"synonyms\": [], \"lexical_variants\": [\"part missing\"], \"definition\": \"An alarm indicating that a required component (Part) is absent from the machine or assembly, typically triggering an intervention action within the production line.\", \"ontology_hints\": [\"Alarm type\", \"Triggers missing part condition\", \"Causes need for Action\", \"References Part class\", \"Detected by sensor platform\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00003",
+        "text": "ANOMALY IN UNLOADING THE PART",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating a fault detected during the unloading phase of a manufacturing process, where a part is being removed from a machine or cell.",
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Feature of Interest",
+        "Manufacturing Cell",
+        "Manager",
+        "Alarm type"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating a fault detected during the unloading phase of a manufacturing process, where a part is being removed from a machine or cell.\", \"ontology_hints\": [\"Manufacturing Process\", \"Feature of Interest\", \"Manufacturing Cell\", \"Manager\", \"Alarm type\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00004",
+        "text": "UNLOADER OF THE WORKPIECE FORWARD",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Alarm triggered when the forward unloading of a workpiece does not occur as expected.",
+      "ontology_hints": [
+        "AlarmType",
+        "UnloadingFailure",
+        "Workpiece",
+        "ForwardDirection",
+        "OperatorAction",
+        "Workstation",
+        "FeatureOfInterest"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Alarm triggered when the forward unloading of a workpiece does not occur as expected.\", \"ontology_hints\": [\"AlarmType\", \"UnloadingFailure\", \"Workpiece\", \"ForwardDirection\", \"OperatorAction\", \"Workstation\", \"FeatureOfInterest\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00005",
+        "text": "Z2-Y2 AXES IN COLLISION ZONE",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that the Z2 and Y2 axes have collided within the designated collision zone of a manufacturing cell or line.",
+      "ontology_hints": [
+        "AlarmType",
+        "CollisionEvent",
+        "Axis",
+        "ManufacturingCell",
+        "ManufacturingFacility",
+        "SituationS1",
+        "Action"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that the Z2 and Y2 axes have collided within the designated collision zone of a manufacturing cell or line.\", \"ontology_hints\": [\"AlarmType\", \"CollisionEvent\", \"Axis\", \"ManufacturingCell\", \"ManufacturingFacility\", \"SituationS1\", \"Action\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00006",
+        "text": "FEEDER FAULT",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating a fault in the feeder component of a machine.",
+      "ontology_hints": [
+        "Result",
+        "FeatureOfInterest",
+        "ManufacturingFacility",
+        "AlarmEvent"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating a fault in the feeder component of a machine.\", \"ontology_hints\": [\"Result\", \"FeatureOfInterest\", \"ManufacturingFacility\", \"AlarmEvent\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00007",
+        "text": "immediate and controlled shutdown",
+        "label": "effect"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An immediate and controlled shutdown is a human process that terminates a feature of interest in a manufacturing context, typically triggered by a specific situation (e.g., S1, S2, or S3).",
+      "ontology_hints": [
+        "Human Process",
+        "Feature of Interest",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An immediate and controlled shutdown is a human process that terminates a feature of interest in a manufacturing context, typically triggered by a specific situation (e.g., S1, S2, or S3).\", \"ontology_hints\": [\"Human Process\", \"Feature of Interest\", \"Situation S1\", \"Situation S2\", \"Situation S3\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00008",
+        "text": "immediate and controlled stop",
+        "label": "effect"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An immediate and controlled stop is a human‑initiated process that abruptly terminates machine operation while maintaining safety, occurring within a specific situational context and affecting a feature of interest.",
+      "ontology_hints": [
+        "HumanProcess",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "FeatureOfInterest",
+        "hasFeatureOfInterest",
+        "associatedConstraint"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An immediate and controlled stop is a human‑initiated process that abruptly terminates machine operation while maintaining safety, occurring within a specific situational context and affecting a feature of interest.\", \"ontology_hints\": [\"HumanProcess\", \"Situation S1\", \"Situation S2\", \"Situation S3\", \"FeatureOfInterest\", \"hasFeatureOfInterest\", \"associatedConstraint\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00009",
+        "text": "The flow control device does not signal the presence of watering liquid",
+        "label": "cause"
+      },
+      "aliases": [
+        "flow control device non-detection of watering liquid",
+        "flow control device failure to detect watering liquid"
+      ],
+      "synonyms": [
+        "failure to detect watering liquid",
+        "non-detection of watering liquid by flow control device",
+        "flow control device does not signal watering liquid presence"
+      ],
+      "lexical_variants": [
+        "flow control device does not detect watering liquid",
+        "flow control device fails to signal watering liquid",
+        "flow control device does not indicate presence of watering liquid"
+      ],
+      "alias_sources": {
+        "flow control device non-detection of watering liquid": [
+          "llm"
+        ],
+        "flow control device failure to detect watering liquid": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "failure to detect watering liquid": [
+          "llm"
+        ],
+        "non-detection of watering liquid by flow control device": [
+          "llm"
+        ],
+        "flow control device does not signal watering liquid presence": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "flow control device does not detect watering liquid": [
+          "llm"
+        ],
+        "flow control device fails to signal watering liquid": [
+          "llm"
+        ],
+        "flow control device does not indicate presence of watering liquid": [
+          "llm"
+        ]
+      },
+      "definition": "A failure of a flow control device to detect or signal the presence of watering liquid, which triggers an auxiliary watering alarm.",
+      "ontology_hints": [
+        "has observable property",
+        "constraint violation",
+        "sensor failure",
+        "alarm cause",
+        "observable property of feature of interest"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"flow control device non-detection of watering liquid\", \"flow control device failure to detect watering liquid\"], \"synonyms\": [\"failure to detect watering liquid\", \"non-detection of watering liquid by flow control device\", \"flow control device does not signal watering liquid presence\"], \"lexical_variants\": [\"flow control device does not detect watering liquid\", \"flow control device fails to signal watering liquid\", \"flow control device does not indicate presence of watering liquid\"], \"definition\": \"A failure of a flow control device to detect or signal the presence of watering liquid, which triggers an auxiliary watering alarm.\", \"ontology_hints\": [\"has observable property\", \"constraint violation\", \"sensor failure\", \"alarm cause\", \"observable property of feature of interest\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00010",
+        "text": "The part was not ejected by the counter spindle after opening the gripper",
+        "label": "cause"
+      },
+      "aliases": [
+        "ejection failure",
+        "part retention",
+        "counter spindle failure to eject"
+      ],
+      "synonyms": [
+        "part not ejected",
+        "ejection failure",
+        "counter spindle ejection failure",
+        "gripper opened but part remained"
+      ],
+      "lexical_variants": [
+        "part was not ejected by counter spindle after gripper opening",
+        "counter spindle failed to eject part after gripper opened",
+        "part remained after counter spindle ejection attempt"
+      ],
+      "alias_sources": {
+        "ejection failure": [
+          "llm"
+        ],
+        "part retention": [
+          "llm"
+        ],
+        "counter spindle failure to eject": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "part not ejected": [
+          "llm"
+        ],
+        "ejection failure": [
+          "llm"
+        ],
+        "counter spindle ejection failure": [
+          "llm"
+        ],
+        "gripper opened but part remained": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "part was not ejected by counter spindle after gripper opening": [
+          "llm"
+        ],
+        "counter spindle failed to eject part after gripper opened": [
+          "llm"
+        ],
+        "part remained after counter spindle ejection attempt": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which a part remains in the machine after the counter spindle is expected to eject it following the opening of the gripper, indicating a failure of the ejection mechanism.",
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Manufacturing Cell",
+        "Manufacturing Facility",
+        "Feature of Interest",
+        "Temporal Entity",
+        "Alarm: PART NOT EJECTED",
+        "Counter Spindle",
+        "Gripper",
+        "Failure Phenomenon",
+        "Alarm Cause"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"ejection failure\", \"part retention\", \"counter spindle failure to eject\"], \"synonyms\": [\"part not ejected\", \"ejection failure\", \"counter spindle ejection failure\", \"gripper opened but part remained\"], \"lexical_variants\": [\"part was not ejected by counter spindle after gripper opening\", \"counter spindle failed to eject part after gripper opened\", \"part remained after counter spindle ejection attempt\"], \"definition\": \"An event in which a part remains in the machine after the counter spindle is expected to eject it following the opening of the gripper, indicating a failure of the ejection mechanism.\", \"ontology_hints\": [\"Manufacturing Process\", \"Manufacturing Cell\", \"Manufacturing Facility\", \"Feature of Interest\", \"Temporal Entity\", \"Alarm: PART NOT EJECTED\", \"Counter Spindle\", \"Gripper\", \"Failure Phenomenon\", \"Alarm Cause\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00011",
+        "text": "collision between them",
+        "label": "cause"
+      },
+      "aliases": [
+        "collision",
+        "impact",
+        "crash"
+      ],
+      "synonyms": [
+        "collision",
+        "impact",
+        "crash"
+      ],
+      "lexical_variants": [
+        "collision between them",
+        "collision between the two",
+        "collision of the two"
+      ],
+      "alias_sources": {
+        "collision": [
+          "llm"
+        ],
+        "impact": [
+          "llm"
+        ],
+        "crash": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "collision": [
+          "llm"
+        ],
+        "impact": [
+          "llm"
+        ],
+        "crash": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "collision between them": [
+          "llm"
+        ],
+        "collision between the two": [
+          "llm"
+        ],
+        "collision of the two": [
+          "llm"
+        ]
+      },
+      "definition": "An event in which two entities come into contact with force, typically within a manufacturing environment, that triggers a machine alarm such as the Z2‑Y2 AXES IN COLLISION ZONE alarm.",
+      "ontology_hints": [
+        "Event",
+        "ConstraintViolation",
+        "ProductionLine",
+        "Workstation",
+        "LogisticProcess",
+        "TemporalEntity",
+        "TRIGGERS",
+        "CAUSES"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"collision\", \"impact\", \"crash\"], \"synonyms\": [\"collision\", \"impact\", \"crash\"], \"lexical_variants\": [\"collision between them\", \"collision between the two\", \"collision of the two\"], \"definition\": \"An event in which two entities come into contact with force, typically within a manufacturing environment, that triggers a machine alarm such as the Z2‑Y2 AXES IN COLLISION ZONE alarm.\", \"ontology_hints\": [\"Event\", \"ConstraintViolation\", \"ProductionLine\", \"Workstation\", \"LogisticProcess\", \"TemporalEntity\", \"TRIGGERS\", \"CAUSES\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00012",
+        "text": "bar feeder is off circuit and does not transmit the “ready” signal to the CNC machine",
+        "label": "cause"
+      },
+      "aliases": [
+        "bar feeder offline",
+        "bar feeder disconnected",
+        "bar feeder not powered"
+      ],
+      "synonyms": [
+        "bar feeder fault",
+        "bar feeder failure"
+      ],
+      "lexical_variants": [
+        "bar feeder is off circuit",
+        "bar feeder is not on circuit",
+        "bar feeder is off the circuit"
+      ],
+      "alias_sources": {
+        "bar feeder offline": [
+          "llm"
+        ],
+        "bar feeder disconnected": [
+          "llm"
+        ],
+        "bar feeder not powered": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "bar feeder fault": [
+          "llm"
+        ],
+        "bar feeder failure": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "bar feeder is off circuit": [
+          "llm"
+        ],
+        "bar feeder is not on circuit": [
+          "llm"
+        ],
+        "bar feeder is off the circuit": [
+          "llm"
+        ]
+      },
+      "definition": "The bar feeder is not connected to the electrical circuit and fails to transmit the ready signal to the CNC machine, causing a feeder fault alarm.",
+      "ontology_hints": [
+        "Feature of Interest: bar feeder",
+        "Observable Property: ready signal",
+        "Manufacturing Facility: CNC machine environment",
+        "Logistic Process: bar feeder operation",
+        "requires action: reconnect bar feeder"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"bar feeder offline\", \"bar feeder disconnected\", \"bar feeder not powered\"], \"synonyms\": [\"bar feeder fault\", \"bar feeder failure\"], \"lexical_variants\": [\"bar feeder is off circuit\", \"bar feeder is not on circuit\", \"bar feeder is off the circuit\"], \"definition\": \"The bar feeder is not connected to the electrical circuit and fails to transmit the ready signal to the CNC machine, causing a feeder fault alarm.\", \"ontology_hints\": [\"Feature of Interest: bar feeder\", \"Observable Property: ready signal\", \"Manufacturing Facility: CNC machine environment\", \"Logistic Process: bar feeder operation\", \"requires action: reconnect bar feeder\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00013",
+        "text": "deactivate the control from the “MACHINE MANAGEMENT” user page",
+        "label": "intervention"
+      },
+      "aliases": [
+        "deactivate the control",
+        "disable the control",
+        "turn off the control"
+      ],
+      "synonyms": [
+        "disable",
+        "turn off",
+        "shut down"
+      ],
+      "lexical_variants": [
+        "deactivate control",
+        "deactivate the control",
+        "disable control",
+        "disable the control"
+      ],
+      "alias_sources": {
+        "deactivate the control": [
+          "llm"
+        ],
+        "disable the control": [
+          "llm"
+        ],
+        "turn off the control": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "disable": [
+          "llm"
+        ],
+        "turn off": [
+          "llm"
+        ],
+        "shut down": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "deactivate control": [
+          "llm"
+        ],
+        "deactivate the control": [
+          "llm"
+        ],
+        "disable control": [
+          "llm"
+        ],
+        "disable the control": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention that turns off or disables a control (constraint) within the machine management interface to resolve an alarm.",
+      "ontology_hints": [
+        "deactivates a Constraint",
+        "performed in a Manufacturing Facility",
+        "affects a Production Line",
+        "occurs during a Manufacturing Process",
+        "requires Operator role",
+        "occurs at a specific Temporal Entity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"deactivate the control\", \"disable the control\", \"turn off the control\"], \"synonyms\": [\"disable\", \"turn off\", \"shut down\"], \"lexical_variants\": [\"deactivate control\", \"deactivate the control\", \"disable control\", \"disable the control\"], \"definition\": \"An intervention that turns off or disables a control (constraint) within the machine management interface to resolve an alarm.\", \"ontology_hints\": [\"deactivates a Constraint\", \"performed in a Manufacturing Facility\", \"affects a Production Line\", \"occurs during a Manufacturing Process\", \"requires Operator role\", \"occurs at a specific Temporal Entity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00014",
+        "text": "Check the presence of the watering liquid, the hydraulic connections, the watering liquid passage solenoid valves, the M1671 pump",
+        "label": "intervention"
+      },
+      "aliases": [
+        "watering liquid inspection",
+        "hydraulic connection check",
+        "solenoid valve verification",
+        "pump presence check"
+      ],
+      "synonyms": [
+        "inspect",
+        "verify",
+        "confirm",
+        "check for presence of"
+      ],
+      "lexical_variants": [
+        "Check for the presence of the watering liquid",
+        "Inspect the hydraulic connections",
+        "Verify the watering liquid passage solenoid valves",
+        "Confirm the M1671 pump is present"
+      ],
+      "alias_sources": {
+        "watering liquid inspection": [
+          "llm"
+        ],
+        "hydraulic connection check": [
+          "llm"
+        ],
+        "solenoid valve verification": [
+          "llm"
+        ],
+        "pump presence check": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "inspect": [
+          "llm"
+        ],
+        "verify": [
+          "llm"
+        ],
+        "confirm": [
+          "llm"
+        ],
+        "check for presence of": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Check for the presence of the watering liquid": [
+          "llm"
+        ],
+        "Inspect the hydraulic connections": [
+          "llm"
+        ],
+        "Verify the watering liquid passage solenoid valves": [
+          "llm"
+        ],
+        "Confirm the M1671 pump is present": [
+          "llm"
+        ]
+      },
+      "definition": "A maintenance intervention that involves inspecting and confirming the presence and integrity of the watering liquid, hydraulic connections, solenoid valves controlling the watering liquid passage, and the M1671 pump as part of troubleshooting an auxiliary watering alarm.",
+      "ontology_hints": [
+        "Maintenance Intervention",
+        "Diagnostic Procedure",
+        "Hydraulic System",
+        "Pump",
+        "Solenoid Valve",
+        "Fluid System",
+        "Watering System",
+        "Alarm Troubleshooting"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"watering liquid inspection\", \"hydraulic connection check\", \"solenoid valve verification\", \"pump presence check\"], \"synonyms\": [\"inspect\", \"verify\", \"confirm\", \"check for presence of\"], \"lexical_variants\": [\"Check for the presence of the watering liquid\", \"Inspect the hydraulic connections\", \"Verify the watering liquid passage solenoid valves\", \"Confirm the M1671 pump is present\"], \"definition\": \"A maintenance intervention that involves inspecting and confirming the presence and integrity of the watering liquid, hydraulic connections, solenoid valves controlling the watering liquid passage, and the M1671 pump as part of troubleshooting an auxiliary watering alarm.\", \"ontology_hints\": [\"Maintenance Intervention\", \"Diagnostic Procedure\", \"Hydraulic System\", \"Pump\", \"Solenoid Valve\", \"Fluid System\", \"Watering System\", \"Alarm Troubleshooting\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00015",
+        "text": "Check the tightening elements",
+        "label": "intervention"
+      },
+      "aliases": [
+        "tightening elements inspection"
+      ],
+      "synonyms": [
+        "inspect tightening components",
+        "verify fasteners",
+        "examine bolts and screws"
+      ],
+      "lexical_variants": [
+        "tightening elements",
+        "tightening components",
+        "fasteners",
+        "bolts",
+        "screws"
+      ],
+      "alias_sources": {
+        "tightening elements inspection": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "inspect tightening components": [
+          "llm"
+        ],
+        "verify fasteners": [
+          "llm"
+        ],
+        "examine bolts and screws": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "tightening elements": [
+          "llm"
+        ],
+        "tightening components": [
+          "llm"
+        ],
+        "fasteners": [
+          "llm"
+        ],
+        "bolts": [
+          "llm"
+        ],
+        "screws": [
+          "llm"
+        ]
+      },
+      "definition": "A maintenance intervention that involves inspecting or verifying the fasteners or tightening components of a machine to ensure they are properly secured, typically performed in response to a PART MISSING alarm.",
+      "ontology_hints": [
+        "intervention",
+        "maintenance activity",
+        "diagnostic procedure",
+        "fastener inspection",
+        "tightening check",
+        "Feature of Interest: tightening elements",
+        "Manufacturing Process: tightening operation"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"tightening elements inspection\"], \"synonyms\": [\"inspect tightening components\", \"verify fasteners\", \"examine bolts and screws\"], \"lexical_variants\": [\"tightening elements\", \"tightening components\", \"fasteners\", \"bolts\", \"screws\"], \"definition\": \"A maintenance intervention that involves inspecting or verifying the fasteners or tightening components of a machine to ensure they are properly secured, typically performed in response to a PART MISSING alarm.\", \"ontology_hints\": [\"intervention\", \"maintenance activity\", \"diagnostic procedure\", \"fastener inspection\", \"tightening check\", \"Feature of Interest: tightening elements\", \"Manufacturing Process: tightening operation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00016",
+        "text": "Check that the unloader is not mechanically retained",
+        "label": "intervention"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A diagnostic intervention performed by a technician to verify that the unloader is not mechanically retained, ensuring proper operation during unloading.",
+      "ontology_hints": [
+        "Logistic Process",
+        "Manufacturing Process",
+        "Technician",
+        "Feature of Interest",
+        "Observable Property",
+        "intervention"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A diagnostic intervention performed by a technician to verify that the unloader is not mechanically retained, ensuring proper operation during unloading.\", \"ontology_hints\": [\"Logistic Process\", \"Manufacturing Process\", \"Technician\", \"Feature of Interest\", \"Observable Property\", \"intervention\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00017",
+        "text": "Move the part unloader back using function M521",
+        "label": "intervention"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An intervention that involves repositioning the part unloader to its rear position by executing function M521, typically performed to resolve the UNLOADER OF THE WORKPIECE FORWARD alarm.",
+      "ontology_hints": [
+        "intervention",
+        "function M521",
+        "part unloader",
+        "alarm UNLOADER OF THE WORKPIECE FORWARD",
+        "manufacturing cell",
+        "manufacturing facility",
+        "Situation S1",
+        "Situation S2"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An intervention that involves repositioning the part unloader to its rear position by executing function M521, typically performed to resolve the UNLOADER OF THE WORKPIECE FORWARD alarm.\", \"ontology_hints\": [\"intervention\", \"function M521\", \"part unloader\", \"alarm UNLOADER OF THE WORKPIECE FORWARD\", \"manufacturing cell\", \"manufacturing facility\", \"Situation S1\", \"Situation S2\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00018",
+        "text": "Manually move the axes away from the collision zone and delete the alarm",
+        "label": "intervention"
+      },
+      "aliases": [
+        "intervention",
+        "manual intervention"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "manual axis relocation",
+        "clear the alarm"
+      ],
+      "alias_sources": {
+        "intervention": [
+          "llm"
+        ],
+        "manual intervention": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "manual axis relocation": [
+          "llm"
+        ],
+        "clear the alarm": [
+          "llm"
+        ]
+      },
+      "definition": "A corrective action performed by a human operator to physically move machine axes out of a collision zone and subsequently clear the associated alarm.",
+      "ontology_hints": [
+        "Human Process",
+        "Manufacturing Process",
+        "Production Line",
+        "Feature of Interest",
+        "Manufacturing Facility"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"intervention\", \"manual intervention\"], \"synonyms\": [], \"lexical_variants\": [\"manual axis relocation\", \"clear the alarm\"], \"definition\": \"A corrective action performed by a human operator to physically move machine axes out of a collision zone and subsequently clear the associated alarm.\", \"ontology_hints\": [\"Human Process\", \"Manufacturing Process\", \"Production Line\", \"Feature of Interest\", \"Manufacturing Facility\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00019",
+        "text": "Check the connections, consult the bar feeder documentation for details of the anomaly",
+        "label": "intervention"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A maintenance intervention that involves verifying the integrity of electrical or mechanical connections and consulting the bar feeder documentation to diagnose and resolve an anomaly.",
+      "ontology_hints": [
+        "intervention",
+        "diagnostic procedure",
+        "maintenance activity",
+        "bar feeder component",
+        "anomaly detection",
+        "requires: CheckConnections",
+        "handled_by: MaintenanceEngineer",
+        "references: BarFeederDocumentation"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A maintenance intervention that involves verifying the integrity of electrical or mechanical connections and consulting the bar feeder documentation to diagnose and resolve an anomaly.\", \"ontology_hints\": [\"intervention\", \"diagnostic procedure\", \"maintenance activity\", \"bar feeder component\", \"anomaly detection\", \"requires: CheckConnections\", \"handled_by: MaintenanceEngineer\", \"references: BarFeederDocumentation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00020",
+        "text": "responsible for maintenance",
+        "label": "responsibility"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A constraint indicating that a resource or platform is accountable for performing maintenance tasks.",
+      "ontology_hints": [
+        "Constraint",
+        "Resource",
+        "Platform",
+        "FeatureOfInterest",
+        "ObservableProperty"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A constraint indicating that a resource or platform is accountable for performing maintenance tasks.\", \"ontology_hints\": [\"Constraint\", \"Resource\", \"Platform\", \"FeatureOfInterest\", \"ObservableProperty\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00021",
+        "text": "responsible for operator/maintenance officer",
+        "label": "responsibility"
+      },
+      "aliases": [
+        "operator responsibility",
+        "maintenance officer responsibility",
+        "responsibility of operator",
+        "responsibility of maintenance officer"
+      ],
+      "synonyms": [
+        "accountable to",
+        "in charge of",
+        "overseeing"
+      ],
+      "lexical_variants": [
+        "responsible for operator",
+        "responsible for maintenance officer",
+        "responsibility for operator",
+        "responsibility for maintenance officer"
+      ],
+      "alias_sources": {
+        "operator responsibility": [
+          "llm"
+        ],
+        "maintenance officer responsibility": [
+          "llm"
+        ],
+        "responsibility of operator": [
+          "llm"
+        ],
+        "responsibility of maintenance officer": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "accountable to": [
+          "llm"
+        ],
+        "in charge of": [
+          "llm"
+        ],
+        "overseeing": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for operator": [
+          "llm"
+        ],
+        "responsible for maintenance officer": [
+          "llm"
+        ],
+        "responsibility for operator": [
+          "llm"
+        ],
+        "responsibility for maintenance officer": [
+          "llm"
+        ]
+      },
+      "definition": "The duty or role assigned to an operator or maintenance officer to handle, monitor, or resolve machine alarms and related maintenance tasks.",
+      "ontology_hints": [
+        "Operator",
+        "Maintenance Officer",
+        "Constraint",
+        "has observable property",
+        "Feature of Interest",
+        "Spatial Object"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"operator responsibility\", \"maintenance officer responsibility\", \"responsibility of operator\", \"responsibility of maintenance officer\"], \"synonyms\": [\"accountable to\", \"in charge of\", \"overseeing\"], \"lexical_variants\": [\"responsible for operator\", \"responsible for maintenance officer\", \"responsibility for operator\", \"responsibility for maintenance officer\"], \"definition\": \"The duty or role assigned to an operator or maintenance officer to handle, monitor, or resolve machine alarms and related maintenance tasks.\", \"ontology_hints\": [\"Operator\", \"Maintenance Officer\", \"Constraint\", \"has observable property\", \"Feature of Interest\", \"Spatial Object\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00022",
+        "text": "responsible for operator/maintenance manager",
+        "label": "responsibility"
+      },
+      "aliases": [
+        "responsible for operator",
+        "responsible for maintenance manager"
+      ],
+      "synonyms": [
+        "accountable for",
+        "in charge of"
+      ],
+      "lexical_variants": [
+        "responsible for operator/maintenance manager"
+      ],
+      "alias_sources": {
+        "responsible for operator": [
+          "llm"
+        ],
+        "responsible for maintenance manager": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "accountable for": [
+          "llm"
+        ],
+        "in charge of": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for operator/maintenance manager": [
+          "llm"
+        ]
+      },
+      "definition": "The role or person who is accountable for operating machines or managing maintenance tasks within a manufacturing environment.",
+      "ontology_hints": [
+        "Operator",
+        "Maintenance Manager",
+        "Responsibility",
+        "Constraint"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"responsible for operator\", \"responsible for maintenance manager\"], \"synonyms\": [\"accountable for\", \"in charge of\"], \"lexical_variants\": [\"responsible for operator/maintenance manager\"], \"definition\": \"The role or person who is accountable for operating machines or managing maintenance tasks within a manufacturing environment.\", \"ontology_hints\": [\"Operator\", \"Maintenance Manager\", \"Responsibility\", \"Constraint\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00023",
+        "text": "responsible for operator/tool adjuster",
+        "label": "responsibility"
+      },
+      "aliases": [
+        "responsible for operator/tool adjuster",
+        "responsible for operator or tool adjuster"
+      ],
+      "synonyms": [
+        "has responsibility for",
+        "is responsible for",
+        "is accountable for",
+        "is liable for"
+      ],
+      "lexical_variants": [
+        "responsible for operator",
+        "responsible for tool adjuster",
+        "responsible for operator or tool adjuster"
+      ],
+      "alias_sources": {
+        "responsible for operator/tool adjuster": [
+          "llm"
+        ],
+        "responsible for operator or tool adjuster": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "has responsibility for": [
+          "llm"
+        ],
+        "is responsible for": [
+          "llm"
+        ],
+        "is accountable for": [
+          "llm"
+        ],
+        "is liable for": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for operator": [
+          "llm"
+        ],
+        "responsible for tool adjuster": [
+          "llm"
+        ],
+        "responsible for operator or tool adjuster": [
+          "llm"
+        ]
+      },
+      "definition": "The assignment of duty or obligation to an entity—such as an operator or a tool adjuster—to perform or oversee a specific task or function within an industrial maintenance context.",
+      "ontology_hints": [
+        "hasResponsibility",
+        "isResponsibleFor",
+        "responsibility",
+        "role",
+        "Operator",
+        "ToolAdjuster",
+        "ObservableProperty",
+        "Property"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"responsible for operator/tool adjuster\", \"responsible for operator or tool adjuster\"], \"synonyms\": [\"has responsibility for\", \"is responsible for\", \"is accountable for\", \"is liable for\"], \"lexical_variants\": [\"responsible for operator\", \"responsible for tool adjuster\", \"responsible for operator or tool adjuster\"], \"definition\": \"The assignment of duty or obligation to an entity—such as an operator or a tool adjuster—to perform or oversee a specific task or function within an industrial maintenance context.\", \"ontology_hints\": [\"hasResponsibility\", \"isResponsibleFor\", \"responsibility\", \"role\", \"Operator\", \"ToolAdjuster\", \"ObservableProperty\", \"Property\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00024",
+        "text": "responsible for operator/maintenance person",
+        "label": "responsibility"
+      },
+      "aliases": [
+        "responsible for operator/maintenance person"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "responsible for operator/maintenance person": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "The role or person who holds responsibility for handling an alarm or performing maintenance tasks.",
+      "ontology_hints": [
+        "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Operator",
+        "http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Constraint",
+        "hasResponsibility",
+        "isResponsibleFor"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"responsible for operator/maintenance person\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"The role or person who holds responsibility for handling an alarm or performing maintenance tasks.\", \"ontology_hints\": [\"http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Operator\", \"http://semanticweb.org/STEaMINg/ContextOntology-COInd4#Constraint\", \"hasResponsibility\", \"isResponsibleFor\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00025",
+        "text": "input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant)",
+        "label": "reference"
+      },
+      "aliases": [
+        "X4.2 coolant input",
+        "input X4.2",
+        "X4.2 input"
+      ],
+      "synonyms": [
+        "coolant presence input",
+        "coolant flow indicator"
+      ],
+      "lexical_variants": [
+        "input X4.2 page 11 of the electrical diagram",
+        "X4.2 input on page 11",
+        "electrical diagram input X4.2"
+      ],
+      "alias_sources": {
+        "X4.2 coolant input": [
+          "llm"
+        ],
+        "input X4.2": [
+          "llm"
+        ],
+        "X4.2 input": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "coolant presence input": [
+          "llm"
+        ],
+        "coolant flow indicator": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "input X4.2 page 11 of the electrical diagram": [
+          "llm"
+        ],
+        "X4.2 input on page 11": [
+          "llm"
+        ],
+        "electrical diagram input X4.2": [
+          "llm"
+        ]
+      },
+      "definition": "A diagnostic input signal labeled X4.2 on page 11 of the electrical diagram that indicates the presence of coolant: 0 means coolant absent, 1 means coolant present.",
+      "ontology_hints": [
+        "FeatureOfInterest: coolant presence",
+        "TemporalEntity: time of input reading",
+        "LogisticProcess: coolant monitoring",
+        "ManufacturingProcess: cooling system operation",
+        "Technician: responsible for monitoring the input"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"X4.2 coolant input\", \"input X4.2\", \"X4.2 input\"], \"synonyms\": [\"coolant presence input\", \"coolant flow indicator\"], \"lexical_variants\": [\"input X4.2 page 11 of the electrical diagram\", \"X4.2 input on page 11\", \"electrical diagram input X4.2\"], \"definition\": \"A diagnostic input signal labeled X4.2 on page 11 of the electrical diagram that indicates the presence of coolant: 0 means coolant absent, 1 means coolant present.\", \"ontology_hints\": [\"FeatureOfInterest: coolant presence\", \"TemporalEntity: time of input reading\", \"LogisticProcess: coolant monitoring\", \"ManufacturingProcess: cooling system operation\", \"Technician: responsible for monitoring the input\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00026",
+        "text": "input X4.1 page 16 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant)",
+        "label": "reference"
+      },
+      "aliases": [
+        "coolant presence input X4.1",
+        "X4.1 coolant sensor",
+        "coolant flow input"
+      ],
+      "synonyms": [
+        "coolant detection input",
+        "coolant flow indicator"
+      ],
+      "lexical_variants": [
+        "input X4.1 (coolant presence)",
+        "X4.1 (coolant)",
+        "coolant presence indicator"
+      ],
+      "alias_sources": {
+        "coolant presence input X4.1": [
+          "llm"
+        ],
+        "X4.1 coolant sensor": [
+          "llm"
+        ],
+        "coolant flow input": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "coolant detection input": [
+          "llm"
+        ],
+        "coolant flow indicator": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "input X4.1 (coolant presence)": [
+          "llm"
+        ],
+        "X4.1 (coolant)": [
+          "llm"
+        ],
+        "coolant presence indicator": [
+          "llm"
+        ]
+      },
+      "definition": "An electrical input labeled X4.1 on page 16 of the machine's electrical diagram that indicates the presence or absence of coolant; a binary value of 0 means no coolant, 1 means coolant is flowing.",
+      "ontology_hints": [
+        "FeatureOfInterest: coolant sensor",
+        "Observation: reading of coolant presence",
+        "TemporalEntity: instant of reading",
+        "LogisticProcess: coolant management",
+        "ManufacturingProcess: machine operation",
+        "Technician: responsible for monitoring input"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"coolant presence input X4.1\", \"X4.1 coolant sensor\", \"coolant flow input\"], \"synonyms\": [\"coolant detection input\", \"coolant flow indicator\"], \"lexical_variants\": [\"input X4.1 (coolant presence)\", \"X4.1 (coolant)\", \"coolant presence indicator\"], \"definition\": \"An electrical input labeled X4.1 on page 16 of the machine's electrical diagram that indicates the presence or absence of coolant; a binary value of 0 means no coolant, 1 means coolant is flowing.\", \"ontology_hints\": [\"FeatureOfInterest: coolant sensor\", \"Observation: reading of coolant presence\", \"TemporalEntity: instant of reading\", \"LogisticProcess: coolant management\", \"ManufacturingProcess: machine operation\", \"Technician: responsible for monitoring input\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00027",
+        "text": "input X5.0 page 71 of the electrical diagram (0 = part present, 1 = part ejected)",
+        "label": "reference"
+      },
+      "aliases": [
+        "X5.0 page 71 input",
+        "page 71 input X5.0",
+        "diagnostic input reference"
+      ],
+      "synonyms": [
+        "diagnostic input reference",
+        "electrical diagram input reference"
+      ],
+      "lexical_variants": [
+        "input X5.0 page 71",
+        "page 71 input X5.0",
+        "X5.0 input page 71"
+      ],
+      "alias_sources": {
+        "X5.0 page 71 input": [
+          "llm"
+        ],
+        "page 71 input X5.0": [
+          "llm"
+        ],
+        "diagnostic input reference": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "diagnostic input reference": [
+          "llm"
+        ],
+        "electrical diagram input reference": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "input X5.0 page 71": [
+          "llm"
+        ],
+        "page 71 input X5.0": [
+          "llm"
+        ],
+        "X5.0 input page 71": [
+          "llm"
+        ]
+      },
+      "definition": "A reference to a specific diagnostic input located on page 71 of the X5.0 electrical diagram, where the input value indicates part presence (0) or part ejection (1).",
+      "ontology_hints": [
+        "FeatureOfInterest: the part whose presence status is observed",
+        "ObservableProperty: presence status (present/ejected)",
+        "SpatialObject: the electrical diagram page",
+        "TemporalEntity: the instant of observation",
+        "LogisticProcess: the ejection action that changes the part state"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"X5.0 page 71 input\", \"page 71 input X5.0\", \"diagnostic input reference\"], \"synonyms\": [\"diagnostic input reference\", \"electrical diagram input reference\"], \"lexical_variants\": [\"input X5.0 page 71\", \"page 71 input X5.0\", \"X5.0 input page 71\"], \"definition\": \"A reference to a specific diagnostic input located on page 71 of the X5.0 electrical diagram, where the input value indicates part presence (0) or part ejection (1).\", \"ontology_hints\": [\"FeatureOfInterest: the part whose presence status is observed\", \"ObservableProperty: presence status (present/ejected)\", \"SpatialObject: the electrical diagram page\", \"TemporalEntity: the instant of observation\", \"LogisticProcess: the ejection action that changes the part state\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00028",
+        "text": "M208 function intervention",
+        "label": "intervention"
+      },
+      "aliases": [
+        "M208 function"
+      ],
+      "synonyms": [
+        "intervention"
+      ],
+      "lexical_variants": [
+        "M208 function intervention"
+      ],
+      "alias_sources": {
+        "M208 function": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "intervention": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "M208 function intervention": [
+          "llm"
+        ]
+      },
+      "definition": "A specific intervention activity identified as M208 function, used to address a machine alarm within a production line. It is performed over a defined temporal interval and targets a particular feature of interest.",
+      "ontology_hints": [
+        "Production Line",
+        "Feature of Interest",
+        "Interval",
+        "Constraint",
+        "has feature of interest",
+        "interval contains",
+        "situation time"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"M208 function\"], \"synonyms\": [\"intervention\"], \"lexical_variants\": [\"M208 function intervention\"], \"definition\": \"A specific intervention activity identified as M208 function, used to address a machine alarm within a production line. It is performed over a defined temporal interval and targets a particular feature of interest.\", \"ontology_hints\": [\"Production Line\", \"Feature of Interest\", \"Interval\", \"Constraint\", \"has feature of interest\", \"interval contains\", \"situation time\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00029",
+        "text": "M1671 pump",
+        "label": "entity"
+      },
+      "aliases": [
+        "M1671 pump",
+        "pump M1671"
+      ],
+      "synonyms": [
+        "pump"
+      ],
+      "lexical_variants": [
+        "M1671 pump",
+        "pump M1671"
+      ],
+      "alias_sources": {
+        "M1671 pump": [
+          "llm"
+        ],
+        "pump M1671": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "pump": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "M1671 pump": [
+          "llm"
+        ],
+        "pump M1671": [
+          "llm"
+        ]
+      },
+      "definition": "A pump model designated M1671, a machine component used in industrial manufacturing processes and subject to maintenance and alarm monitoring.",
+      "ontology_hints": [
+        "Product",
+        "Machine component",
+        "Equipment",
+        "Manufacturing Process",
+        "has property",
+        "observed property"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"M1671 pump\", \"pump M1671\"], \"synonyms\": [\"pump\"], \"lexical_variants\": [\"M1671 pump\", \"pump M1671\"], \"definition\": \"A pump model designated M1671, a machine component used in industrial manufacturing processes and subject to maintenance and alarm monitoring.\", \"ontology_hints\": [\"Product\", \"Machine component\", \"Equipment\", \"Manufacturing Process\", \"has property\", \"observed property\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00030",
+        "text": "M521 function",
+        "label": "entity"
+      },
+      "aliases": [
+        "M521 operation",
+        "M521 mode",
+        "M521 feature"
+      ],
+      "synonyms": [
+        "M521 operation",
+        "M521 mode",
+        "M521 feature"
+      ],
+      "lexical_variants": [
+        "M521 function",
+        "M521 function code",
+        "M521 function identifier"
+      ],
+      "alias_sources": {
+        "M521 operation": [
+          "llm"
+        ],
+        "M521 mode": [
+          "llm"
+        ],
+        "M521 feature": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "M521 operation": [
+          "llm"
+        ],
+        "M521 mode": [
+          "llm"
+        ],
+        "M521 feature": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "M521 function": [
+          "llm"
+        ],
+        "M521 function code": [
+          "llm"
+        ],
+        "M521 function identifier": [
+          "llm"
+        ]
+      },
+      "definition": "A specific machine function identified by the code M521, used in maintenance interventions to control or monitor a particular aspect of the machine's operation.",
+      "ontology_hints": [
+        "Action",
+        "Situation",
+        "Production Line",
+        "MachineFunction",
+        "MaintenanceAction",
+        "MachineOperationMode",
+        "MaintenanceProcedure"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"M521 operation\", \"M521 mode\", \"M521 feature\"], \"synonyms\": [\"M521 operation\", \"M521 mode\", \"M521 feature\"], \"lexical_variants\": [\"M521 function\", \"M521 function code\", \"M521 function identifier\"], \"definition\": \"A specific machine function identified by the code M521, used in maintenance interventions to control or monitor a particular aspect of the machine's operation.\", \"ontology_hints\": [\"Action\", \"Situation\", \"Production Line\", \"MachineFunction\", \"MaintenanceAction\", \"MachineOperationMode\", \"MaintenanceProcedure\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00031",
+        "text": "M208 function",
+        "label": "entity"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "M208 function refers to a specific machine function identified by the code M208, which is involved in the alarm system of the manufacturing equipment.",
+      "ontology_hints": [
+        "Action",
+        "Situation",
+        "Production Line"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"M208 function refers to a specific machine function identified by the code M208, which is involved in the alarm system of the manufacturing equipment.\", \"ontology_hints\": [\"Action\", \"Situation\", \"Production Line\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00032",
+        "text": "counter spindle",
+        "label": "entity"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A spindle component used in a machine, typically for counteracting or supporting another spindle.",
+      "ontology_hints": [
+        "Machine",
+        "Manufacturing Cell",
+        "Production Line"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A spindle component used in a machine, typically for counteracting or supporting another spindle.\", \"ontology_hints\": [\"Machine\", \"Manufacturing Cell\", \"Production Line\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00033",
+        "text": "hydraulic connections",
+        "label": "entity"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A hydraulic connection is a spatial object within a production line that links hydraulic components, enabling the transfer of hydraulic fluid and participating in logistic processes.",
+      "ontology_hints": [
+        "Spatial Object",
+        "Production Line",
+        "Logistic Process",
+        "Temporal Entity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A hydraulic connection is a spatial object within a production line that links hydraulic components, enabling the transfer of hydraulic fluid and participating in logistic processes.\", \"ontology_hints\": [\"Spatial Object\", \"Production Line\", \"Logistic Process\", \"Temporal Entity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00034",
+        "text": "watering liquid passage solenoid valves",
+        "label": "entity"
+      },
+      "aliases": [
+        "watering liquid passage solenoid valves"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "watering liquid passage solenoid valves": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A solenoid valve that regulates the flow of liquid in a watering passage within a manufacturing process.",
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "Production Line"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"watering liquid passage solenoid valves\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A solenoid valve that regulates the flow of liquid in a watering passage within a manufacturing process.\", \"ontology_hints\": [\"Manufacturing Process\", \"Manufacturing Facility\", \"Production Line\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

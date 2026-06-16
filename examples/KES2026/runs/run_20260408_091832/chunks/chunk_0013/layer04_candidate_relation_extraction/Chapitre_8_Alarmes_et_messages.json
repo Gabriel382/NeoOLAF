@@ -1,0 +1,174 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 7,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00000",
+      "relation_label": "Alarm with program interruption, stopping of axes and spindles",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "G188 function",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_r_00000",
+      "target_candidate_label": "Alarm with program interruption, stopping of axes and spindles",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk text explicitly links the alarm effect \"Alarm with program interruption, stopping of axes and spindles\" to the cause of function G188 being programmed in a machine model that does not have the Y2 axis. This establishes a causal relation between the G188 function event and the alarm effect.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 287,
+          "chunk_end_char": 349,
+          "doc_start_char": 65287,
+          "doc_end_char": 65349,
+          "snippet": "ssage no.: 3030 text: CDS CONFIGURATION ERROR type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The high pressure unit has not been configured correctly on the user pa"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00001",
+      "relation_label": "Alarm with program interruption, axis and bro-effect stop",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "G188 function",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00000",
+      "target_candidate_label": "machine component",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk describes that the alarm effect \"Alarm with program interruption, stopping of axes and spindles\" is caused by the function G188 being programmed in a machine model that lacks the Y2 axis. This indicates that the G188 function triggers the alarm, which in turn stops machine components (axes). Therefore the relation connects the G188 function event to the machine component entity.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1296,
+          "chunk_end_char": 1353,
+          "doc_start_char": 66296,
+          "doc_end_char": 66353,
+          "snippet": "er\n\nmessage no: 3036 - 3038\ntext: AXIS TRACKING ERROR\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nWith the G300 function we have reduced the torque so much that the axis"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00002",
+      "relation_label": "CARRIAGE DISABLED",
+      "source_candidate_id": "cand_e_00002",
+      "source_candidate_label": "cart 2",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00002",
+      "target_candidate_label": "G303 function",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk states that the hidden time recharge function G303 cannot work if cart 2 has been deactivated, which results in the CARRIAGE DISABLED state. Thus the state connects cart 2 (source) to the G303 function (target).",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 567,
+          "chunk_end_char": 584,
+          "doc_start_char": 65567,
+          "doc_end_char": 65584,
+          "snippet": "e. responsible for the intervention: programmer\n\nmessage no.: 3031 - 3034 text: CARRIAGE DISABLED type: Standard: Optional: effect: Alarm with program interruption, stopping of"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00003",
+      "relation_candidate_id": "cand_r_00003",
+      "relation_label": "OPTIONS 9000 NOT ACTIVATED",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "G188 function",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_r_00003",
+      "target_candidate_label": "OPTIONS 9000 NOT ACTIVATED",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0013",
+      "justification": "The text states that the alarm OPTIONS 9000 NOT ACTIVATED is caused by the function G188 being programmed in a machine model that lacks the Y2 axis.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 909,
+          "chunk_end_char": 935,
+          "doc_start_char": 65909,
+          "doc_end_char": 65935,
+          "snippet": "user page. responsible for the intervention: programmer\n\nmessage n°: 3035 text: OPTIONS 9000 NOT ACTIVATED type: Standard: Optional: effect: Alarm with program interruption, stopping of"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00004",
+      "relation_candidate_id": "cand_r_00006",
+      "relation_label": "Configure the CDS device in the user page",
+      "source_candidate_id": "cand_e_00001",
+      "source_candidate_label": "MachineComponent",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00003",
+      "target_candidate_label": "program",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0013",
+      "justification": "The chunk text explicitly states that the intervention is to \"Configure the CDS device in the user page.\" This indicates a relationship between the machine component (the CDS device) and the program/interface (the user page).",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 447,
+          "chunk_end_char": 488,
+          "doc_start_char": 65447,
+          "doc_end_char": 65488,
+          "snippet": "pressure unit has not been configured correctly on the user page. intervention: Configure the CDS device in the user page. responsible for the intervention: programmer\n\nmessage no.: 3031 - 3034 text: C"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00005",
+      "relation_candidate_id": "cand_r_00008",
+      "relation_label": "causes",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "G188 function",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00000",
+      "target_candidate_label": "AXIS CHASE ERROR",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0013",
+      "justification": "The message states that Function G188 was programmed in a machine model that does not have the Y2 axis, which caused an alarm (AXIS CHASE ERROR).",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 690,
+          "chunk_end_char": 788,
+          "doc_start_char": 65690,
+          "doc_end_char": 65788,
+          "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: The hidden time recharge function G303 cannot work if cart 2 has been deactivated in the user page. intervention: Activate cart 2 from the user page. responsible for the interven"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00009",
+      "relation_candidate_id": "cand_r_00013",
+      "relation_label": "user page",
+      "source_candidate_id": "cand_e_00002",
+      "source_candidate_label": "cart 2",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00002",
+      "target_candidate_label": "G303 function",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0013",
+      "justification": "The text states that the hidden time recharge function G303 cannot work if cart 2 has been deactivated in the user page, indicating a relationship between cart 2 and G303 function via the user page.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 422,
+          "chunk_end_char": 431,
+          "doc_start_char": 65422,
+          "doc_end_char": 65431,
+          "snippet": "pindles. cause: The high pressure unit has not been configured correctly on the user page. intervention: Configure the CDS device in the user page. responsible for the i"
+        }
+      ]
+    }
+  ]
+}

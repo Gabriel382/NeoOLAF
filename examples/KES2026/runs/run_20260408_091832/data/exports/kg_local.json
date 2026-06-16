@@ -1,0 +1,544 @@
+{
+  "triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "ActiveEmergencyEvent",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00001",
+        "label": "alarms and messages of the CNC"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "Open side guard alarm",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text indicates that the alarms listed (including ActiveEmergencyEvent and Open side guard alarm) are part of the category \"alarms and messages of the CNC\", implying a grouping relation between them.",
+      "confidence": 0.75,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 81,
+          "chunk_end_char": 111,
+          "doc_start_char": 81,
+          "doc_end_char": 111,
+          "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "ActiveEmergencyEvent",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00012",
+        "label": "recognized with the key 'RESET PRG'"
+      },
+      "object": {
+        "id": "cand_s_00000",
+        "label": "program rewind",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that an alarm can be recognized with the key 'RESET PRG', which triggers a program rewind event.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00002",
+      "subject": {
+        "id": "cand_r_00038",
+        "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00038",
+        "label": "THERMOMAGNET SWITCHES. END OF CYCLE STOP"
+      },
+      "object": {
+        "id": "cand_s_00003",
+        "label": "Check and reset circuit breakers and/or thermomagnetic switches",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that the alarm THERMOMAGNET SWITCHES. END OF CYCLE STOP triggers the intervention \"Check and reset circuit breakers and/or thermomagnetic switches\".",
+      "confidence": 0.9,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4566,
+          "chunk_end_char": 4606,
+          "doc_start_char": 4566,
+          "doc_end_char": 4606,
+          "snippet": ", input X2.5\nresponsible for\noperator/maintenance officer\nAlarm No.: 1008\ntext: THERMOMAGNET SWITCHES. END OF CYCLE STOP\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00003",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "ActiveEmergencyEvent",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00043",
+        "label": "causes"
+      },
+      "object": {
+        "id": "cand_s_00000",
+        "label": "program rewind",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that the ACTIVE EMERGENCY alarm triggers a program rewind (RESET PRG) when the alarm is displayed, indicating that the alarm causes the program to be rewound.",
+      "confidence": 0.88,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00004",
+      "subject": {
+        "id": "cand_s_00008",
+        "label": "OPEN FORCEPS",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00029",
+        "label": "Exit automatic mode and close the clamp"
+      },
+      "object": {
+        "id": "cand_r_00029",
+        "label": "Exit automatic mode and close the clamp",
+        "type": "relation"
+      },
+      "chunk_id": "chunk_0003",
+      "justification": "The alarm OPEN FORCEPS triggers the intervention Exit automatic mode and close the clamp.",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4322,
+          "chunk_end_char": 4361,
+          "doc_start_char": 19322,
+          "doc_end_char": 19361,
+          "snippet": "the automatic cycle with the pliers of the\ncause:\nmain pin open.\nintervention: Exit automatic mode and close the clamp.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1041\ntext: CLAMP OPENING FAILURE"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00005",
+      "subject": {
+        "id": "cand_e_00004",
+        "label": "clamp",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00030",
+        "label": "CLAMP OPENING FAILURE"
+      },
+      "object": {
+        "id": "cand_s_00009",
+        "label": "Check mechanical resistance",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0003",
+      "justification": "The alarm \"CLAMP OPENING FAILURE\" indicates that the clamp did not open within the 5‑second limit, and the recommended intervention is to check mechanical resistance.",
+      "confidence": 0.88,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4420,
+          "chunk_end_char": 4441,
+          "doc_start_char": 19420,
+          "doc_end_char": 19441,
+          "snippet": "e and close the clamp.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1041\ntext: CLAMP OPENING FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00006",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "alarm",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00014",
+        "label": "immediate and controlled shutdown"
+      },
+      "object": {
+        "id": "cand_e_00001",
+        "label": "Machine",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "Each alarm entry lists its effect as \"Alarm with immediate and controlled shutdown\", indicating that the alarm triggers an immediate, controlled shutdown of the machine.",
+      "confidence": 0.78,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 248,
+          "chunk_end_char": 281,
+          "doc_start_char": 35248,
+          "doc_end_char": 35281,
+          "snippet": "068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, th"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00007",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "device",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00017",
+        "label": "waiting for excessive feed"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "alarm",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The text states that the alarm \"waiting for excessive feed\" is triggered by the device \"CDS\".",
+      "confidence": 0.9,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2457,
+          "chunk_end_char": 2483,
+          "doc_start_char": 37457,
+          "doc_end_char": 37483,
+          "snippet": "k the connections with the tower.\nresponsible for\nAlarm number: 1072\ntext: CDS: WAITING FOR EXCESSIVE FEED\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00008",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "alarm",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00020",
+        "label": "operator/maintenance officer"
+      },
+      "object": {
+        "id": "cand_r_00020",
+        "label": "operator/maintenance officer",
+        "type": "relation"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk contains the phrase \"responsible for operator/maintenance officer\" immediately following an alarm description, indicating that the alarm event is responsible for the operator/maintenance officer.",
+      "confidence": 0.88,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 476,
+          "chunk_end_char": 504,
+          "doc_start_char": 35476,
+          "doc_end_char": 35504,
+          "snippet": "tion document:\ntation of the device for details of the anomaly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1070\ntext: CDS: IMMEDIATE STOP\ntype: Standard: Optional:\neffect:"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00009",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "device",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00026",
+        "label": "has detected"
+      },
+      "object": {
+        "id": "cand_s_00003",
+        "label": "failure",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk contains the sentence \"Tool control device no. 4 has detected tip breakage,\" linking the device to the failure event.",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 1050,
+          "chunk_end_char": 1062,
+          "doc_start_char": 36050,
+          "doc_end_char": 36062,
+          "snippet": ": Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00010",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "device",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00027",
+        "label": "has_had_problem"
+      },
+      "object": {
+        "id": "cand_s_00003",
+        "label": "failure",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk describes a device (e.g., Tool control device no. 4) that \"does not work\" or \"has detected tip breakage\", which is a failure event. This indicates the device has had a problem, matching the relation label \"has_had_problem\".",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 664,
+          "chunk_end_char": 681,
+          "doc_start_char": 35664,
+          "doc_end_char": 35681,
+          "snippet": "Alarm with immediate and controlled shutdown\nThe outdoor sprinkler system (CDS) has had a problem that is preventing:\nche to continue the operation.\nCheck the anomaly on the CDS"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00011",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "device",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00030",
+        "label": "causes"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "alarm",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The cause field in the alarm description indicates that the Tool control device no. 4 does not work, which is a device failure that triggers the alarm.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 3076,
+          "chunk_end_char": 3082,
+          "doc_start_char": 38076,
+          "doc_end_char": 38082,
+          "snippet": "of the proeffect:\ngram.\nThe paired tool management program found that the name causes:\nnumber of spare parts for one or more tools is completed.\nCheck the page dedic"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00012",
+      "subject": {
+        "id": "cand_s_00004",
+        "label": "check",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00031",
+        "label": "check the core of the probe"
+      },
+      "object": {
+        "id": "cand_e_00002",
+        "label": "Part",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk text states that the check event is performed on the core of the probe, which is a part of the device. Thus the relation connects the check event to the part.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 330,
+          "chunk_end_char": 357,
+          "doc_start_char": 35330,
+          "doc_end_char": 35357,
+          "snippet": "mediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention document:\ntation of the device for d"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00013",
+      "subject": {
+        "id": "cand_s_00004",
+        "label": "check",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00033",
+        "label": "check the anomaly in the CDS operation panel"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "device",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The alarm text explicitly instructs operators to \"Check the anomaly on the CDS operator panel\", which is an action performed on the device (the CDS). The relation candidate therefore links the check event to the device entity.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2263,
+          "chunk_end_char": 2307,
+          "doc_start_char": 37263,
+          "doc_end_char": 37307,
+          "snippet": "CDS) had a problem that did not\ncause:\ndoes not require immediate intervention.\nCheck the anomaly in the CDS operation panel and consult\nintervention: documentation. If there is no signage, check the conn"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00014",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "alarm",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00034",
+        "label": "check the anomaly on the CDS operator panel and consult the documentation"
+      },
+      "object": {
+        "id": "cand_s_00004",
+        "label": "check",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk text for alarms 1070, 1071, and 1072 states that the intervention is \"Check the anomaly on the CDS operator panel and consult the documentation.\" This indicates that the alarm event (cand_s_00002) triggers the check action (cand_s_00004).",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 1830,
+          "chunk_end_char": 1903,
+          "doc_start_char": 36830,
+          "doc_end_char": 36903,
+          "snippet": ") has had a problem which prevents the operation from continuing. intervention: Check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the lathe. responsible for int"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00015",
+      "subject": {
+        "id": "cand_s_00004",
+        "label": "check",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00035",
+        "label": "check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the tower."
+      },
+      "object": {
+        "id": "cand_s_00005",
+        "label": "consult",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The text states that after checking the anomaly on the CDS operator panel, the operator consults the documentation, indicating a triggering relationship.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00016",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "alarm",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00036",
+        "label": "check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the lathe."
+      },
+      "object": {
+        "id": "cand_s_00000",
+        "label": "process step",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The alarm 1070 triggers the intervention steps described in the relation candidate: checking the anomaly on the CDS operator panel, consulting documentation, and checking connections with the lathe.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 1830,
+          "chunk_end_char": 1963,
+          "doc_start_char": 36830,
+          "doc_end_char": 36963,
+          "snippet": ") has had a problem which prevents the operation from continuing. intervention: Check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the lathe. responsible for intervention: responsible for maintenance\n\nAlarm number: 1071\nt"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00017",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "alarm",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00042",
+        "label": "intervention: Check the anomaly in the CDS operation panel and consult the documentation. If there is no sign, check the connections with the lathe."
+      },
+      "object": {
+        "id": "cand_s_00004",
+        "label": "check",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0007",
+      "justification": "The chunk text for Alarm 1070 states that the alarm triggers the intervention to check the anomaly on the CDS operator panel, which is a check event.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 3536,
+          "chunk_end_char": 3684,
+          "doc_start_char": 38536,
+          "doc_end_char": 38684,
+          "snippet": "er system (CDS) has had a problem that does not require immediate intervention. intervention: Check the anomaly in the CDS operation panel and consult the documentation. If there is no sign, check the connections with the lathe. responsible for intervention: responsible for maintenance\n\nAlarm n°: 1072 text:"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,726 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 24,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "Alarm 1043",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00001",
+        "label": "CLAMP CLOSURE FAILURE"
+      },
+      "object": {
+        "id": "cand_s_00008",
+        "label": "effect",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text states that Alarm 1042, labeled \"CLAMP CLOSURE FAILURE\", has the effect \"Alarm with immediate and controlled shutdown\", indicating a causal link from the alarm event to the effect.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 1118,
+          "chunk_end_char": 1139,
+          "doc_start_char": 21118,
+          "doc_end_char": 21139,
+          "snippet": "onsible for intervention: responsible for maintenance\n\nAlarm number: 1042\ntext: CLAMP CLOSURE FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_r_00003",
+        "label": "CLAMP WIRING ERROR",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00003",
+        "label": "CLAMP WIRING ERROR"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "Alarm 1043",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk explicitly states that Alarm 1044 is of type CLAMP WIRING ERROR, linking the alarm type to the specific alarm instance.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 1961,
+          "chunk_end_char": 1979,
+          "doc_start_char": 21961,
+          "doc_end_char": 21979,
+          "snippet": "nt in the program.\nresponsible for\noperator/programmer\nAlarm number: 1044\ntext: CLAMP WIRING ERROR\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00002",
+      "subject": {
+        "id": "cand_e_00006",
+        "label": "programming function",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00004",
+        "label": "MAIN REFRIGERANT alarm"
+      },
+      "object": {
+        "id": "cand_r_00004",
+        "label": "MAIN REFRIGERANT alarm",
+        "type": "relation"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text indicates that the MAIN REFRIGERANT alarm is caused by a programming function (M08) that fails to signal coolant presence, establishing a causal link between the programming function and the alarm.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 3665,
+          "chunk_end_char": 3687,
+          "doc_start_char": 23665,
+          "doc_end_char": 23687,
+          "snippet": "esponsible for intervention: responsible for maintenance\n\nAlarm No.: 1045\ntext: MAIN REFRIGERANT alarm\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00003",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "Alarm 1043",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00006",
+        "label": "immediate and controlled stop"
+      },
+      "object": {
+        "id": "cand_s_00008",
+        "label": "effect",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text states that Alarm 1043 has the effect \"Alarm with immediate and controlled stop\", linking the alarm event to the immediate and controlled stop outcome.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 409,
+          "chunk_end_char": 438,
+          "doc_start_char": 20409,
+          "doc_end_char": 20438,
+          "snippet": "e\n\nAlarm n°: 1040 text: CLAMP OPEN type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to start the automatic cycle with the main spindle c"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00004",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "Alarm 1043",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00007",
+        "label": "immediate and controlled shutdown"
+      },
+      "object": {
+        "id": "cand_s_00008",
+        "label": "effect",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text states that Alarm 1043 has the effect \"Alarm with immediate and controlled shutdown\", which matches the relation candidate \"immediate and controlled shutdown\".",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 1185,
+          "chunk_end_char": 1218,
+          "doc_start_char": 21185,
+          "doc_end_char": 21218,
+          "snippet": ": 1042\ntext: CLAMP CLOSURE FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nWhen the opening command was given, the clamp did not close in the\ncause:\ntime"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00005",
+      "subject": {
+        "id": "cand_r_00015",
+        "label": "coolant fluid passage solenoid valves",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00015",
+        "label": "coolant fluid passage solenoid valves"
+      },
+      "object": {
+        "id": "cand_e_00002",
+        "label": "hydraulic connections",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text states that the coolant fluid passage solenoid valves are part of the hydraulic connections, indicating a component relationship.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 4446,
+          "chunk_end_char": 4483,
+          "doc_start_char": 24446,
+          "doc_end_char": 24483,
+          "snippet": "nction M208\nCheck the presence of coolant fluid, the hydraulic connections, the coolant fluid passage solenoid valves, the\nintervention: pump M1671; if no problem is detected, check the input\nX4.1"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00006",
+      "subject": {
+        "id": "cand_e_00007",
+        "label": "CoolantDetectionFunction",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00017",
+        "label": "input X4.2"
+      },
+      "object": {
+        "id": "cand_s_00003",
+        "label": "Alarm No.: 1045",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The text states that input X4.2 is used to detect coolant presence for the MAIN REFRIGERANT alarm (Alarm 1045) and triggers an immediate shutdown.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 3999,
+          "chunk_end_char": 4009,
+          "doc_start_char": 23999,
+          "doc_end_char": 24009,
+          "snippet": "draulic connections, pump M1171; If no problem is detected, check\nintervention:\ninput X4.2 page 11 of the electrical diagram (0 = absence of liquid\nwatering, 1 = passage"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00007",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "clamp",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00019",
+        "label": "automatic cycle"
+      },
+      "object": {
+        "id": "cand_s_00005",
+        "label": "CLAMP OPEN",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk states that the automatic cycle was attempted with the main spindle clamp open, directly linking the cycle to the CLAMP OPEN event.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 479,
+          "chunk_end_char": 494,
+          "doc_start_char": 20479,
+          "doc_end_char": 20494,
+          "snippet": "larm with immediate and controlled stop cause: An attempt was made to start the automatic cycle with the main spindle clamp open. intervention: Exit automatic mode and close t"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00008",
+      "subject": {
+        "id": "cand_e_00006",
+        "label": "programming function",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00023",
+        "label": "spindle rotation function with clamp open"
+      },
+      "object": {
+        "id": "cand_s_00005",
+        "label": "CLAMP OPEN",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text states that the spindle rotation function with clamp open has not been programmed (M33), linking the programming function to the CLAMP OPEN event.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 2983,
+          "chunk_end_char": 3024,
+          "doc_start_char": 22983,
+          "doc_end_char": 23024,
+          "snippet": "ere are no conditions for opening the clamp, for example spindle stopped or the spindle rotation function with clamp open has not been programmed (M33) intervention: Make sure that the spindle is stopp"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00009",
+      "subject": {
+        "id": "cand_r_00026",
+        "label": "clamp opening command",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00026",
+        "label": "clamp opening command"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "Alarm 1043",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk explicitly states that when the opening command was given, the clamp did not open within the 5‑second limit, which triggers Alarm 1041 (CLAMP OPENING FAILURE). Thus the relation candidate \"clamp opening command\" connects the command to the alarm event.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ot reached the defined position within the time limit of 1 second. intervention: Check any mechanical resistance to the rotation of the spindle, note the error code on the actuation identified with the acronym A2721 and consult the Fanuc 160i-TB maintenance manual responsible for the intervention: r"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00010",
+      "subject": {
+        "id": "cand_s_00003",
+        "label": "Alarm No.: 1045",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00031",
+        "label": "Check the presence of coolant"
+      },
+      "object": {
+        "id": "cand_s_00007",
+        "label": "intervention action",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text for Alarm No.: 1045 states that the flow control device does not signal the presence of coolant liquid and prescribes the intervention \"Check the presence of coolant\". This indicates that the alarm event requires the intervention action.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 3886,
+          "chunk_end_char": 3915,
+          "doc_start_char": 23886,
+          "doc_end_char": 23915,
+          "snippet": "the presence of\ncause: coolant liquid, consequence of programming function M08\nCheck the presence of coolant, hydraulic connections, pump M1171; If no problem is detected, check\ninterventi"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00011",
+      "subject": {
+        "id": "cand_s_00000",
+        "label": "Alarm instance",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00032",
+        "label": "Check the setting of the microdetector at input X3.0"
+      },
+      "object": {
+        "id": "cand_s_00007",
+        "label": "intervention action",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text states that the alarm triggers the intervention action \"Check the setting of the microdetector at input X3.0\".",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 946,
+          "chunk_end_char": 998,
+          "doc_start_char": 20946,
+          "doc_end_char": 20998,
+          "snippet": "tion: Check any mechanical resistance; if the clamp was open despite the alarm, check the setting of the microdetector at input X3.0 page 15 of the electrical diagram. responsible for intervention: responsible fo"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00012",
+      "subject": {
+        "id": "cand_s_00003",
+        "label": "Alarm No.: 1045",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00033",
+        "label": "Check the presence of coolant liquid"
+      },
+      "object": {
+        "id": "cand_s_00007",
+        "label": "intervention action",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The alarm text for Alarm No.: 1045 explicitly states the intervention \"Check the presence of coolant liquid\", linking the alarm event to the intervention action.",
+      "confidence": 0.9,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 4920,
+          "chunk_end_char": 4956,
+          "doc_start_char": 24920,
+          "doc_end_char": 24956,
+          "snippet": "esence of coolant liquid, consequence of programming function M08 intervention: Check the presence of coolant liquid, the hydraulic connections, the M1171 pump;"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00013",
+      "subject": {
+        "id": "cand_s_00004",
+        "label": "Alarm 1046",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00034",
+        "label": "Check the presence of coolant fluid"
+      },
+      "object": {
+        "id": "cand_s_00007",
+        "label": "intervention action",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text indicates that Alarm No.: 1046 (AUXILIARY WATERING ALARM) triggers the intervention action \"Check the presence of coolant fluid\", which is represented by the intervention action candidate.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 4378,
+          "chunk_end_char": 4413,
+          "doc_start_char": 24378,
+          "doc_end_char": 24413,
+          "snippet": "the presence of\ncause: coolant liquid, consequence of programming function M208\nCheck the presence of coolant fluid, the hydraulic connections, the coolant fluid passage solenoid valves, the\ninte"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00014",
+      "subject": {
+        "id": "cand_s_00003",
+        "label": "Alarm No.: 1045",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00035",
+        "label": "Check the presence of coolant liquid, the hydraulic connections, the M1171 pump"
+      },
+      "object": {
+        "id": "cand_e_00003",
+        "label": "pump",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The intervention for Alarm No.: 1045 includes the instruction 'Check the presence of coolant liquid, the hydraulic connections, the M1171 pump', linking the alarm event to the pump entity.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 4920,
+          "chunk_end_char": 4999,
+          "doc_start_char": 24920,
+          "doc_end_char": 24999,
+          "snippet": "esence of coolant liquid, consequence of programming function M08 intervention: Check the presence of coolant liquid, the hydraulic connections, the M1171 pump;"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00015",
+      "subject": {
+        "id": "cand_s_00005",
+        "label": "CLAMP OPEN",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00036",
+        "label": "Exit automatic mode and close the clamp"
+      },
+      "object": {
+        "id": "cand_s_00007",
+        "label": "intervention action",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk states that the alarm \"CLAMP OPEN\" (Alarm 1040) triggers the intervention \"Exit automatic mode and close the clamp\", which is represented by the intervention action candidate.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 543,
+          "chunk_end_char": 582,
+          "doc_start_char": 20543,
+          "doc_end_char": 20582,
+          "snippet": "de to start the automatic cycle with the main spindle clamp open. intervention: Exit automatic mode and close the clamp. responsible for the intervention: toolmaker-adjuster\n\nAlarm n°: 1041 text: CLA"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00016",
+      "subject": {
+        "id": "cand_s_00007",
+        "label": "intervention action",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00038",
+        "label": "Check any mechanical resistance to the rotation of the spindle"
+      },
+      "object": {
+        "id": "cand_e_00009",
+        "label": "Document",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The text states that the intervention \"Check any mechanical resistance to the rotation of the spindle\" requires consulting the Fanuc 160i‑TB maintenance manual, which is represented by the Document entity.",
+      "confidence": 0.75,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 81,
+          "chunk_end_char": 143,
+          "doc_start_char": 20081,
+          "doc_end_char": 20143,
+          "snippet": "t reached the defined position within the time limit of 1 second. intervention: Check any mechanical resistance to the rotation of the spindle, note the error code on the actuation identified with the acronym A2721 and con"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00017",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "Alarm 1043",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00039",
+        "label": "Check any mechanical resistance; if the clamp was open despite the alarm, check the setting of the microdetector at input X3.0 page 15 of the electrical diagram"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "clamp",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The relation candidate describes an intervention that is triggered by an alarm event, specifically checking the clamp when the alarm indicates it is open.",
+      "confidence": 0.78,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 872,
+          "chunk_end_char": 1032,
+          "doc_start_char": 20872,
+          "doc_end_char": 21032,
+          "snippet": "given, the clamp did not open within the time limit of 5 seconds. intervention: Check any mechanical resistance; if the clamp was open despite the alarm, check the setting of the microdetector at input X3.0 page 15 of the electrical diagram. responsible for intervention: responsible for maintenance\n\nAlarm number: 1042"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00018",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "Alarm 1043",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00040",
+        "label": "Check any mechanical resistance; if the clamp was closed despite the alarm, check the setting of the microdetector at input X3.0 page 15 of the electrical diagram"
+      },
+      "object": {
+        "id": "cand_s_00007",
+        "label": "intervention action",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The relation candidate describes the intervention action that must be performed when Alarm 1042 (clamp closing failure) occurs, linking the alarm event to the required intervention.",
+      "confidence": 0.88,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 2547,
+          "chunk_end_char": 2709,
+          "doc_start_char": 22547,
+          "doc_end_char": 22709,
+          "snippet": "ered, the clamp did not close within the time limit of 5 seconds. intervention: Check any mechanical resistance; if the clamp was closed despite the alarm, check the setting of the microdetector at input X3.0 page 15 of the electrical diagram. responsible for intervention: responsible for maintenance\n\nAlarm n°: 1043 text"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00019",
+      "subject": {
+        "id": "cand_s_00003",
+        "label": "Alarm No.: 1045",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00041",
+        "label": "Check the presence of coolant, hydraulic connections, pump M1171; If no problem is detected, check the input X4.2 page 11 of the electrical diagram"
+      },
+      "object": {
+        "id": "cand_s_00007",
+        "label": "intervention action",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The alarm event 1045 (MAIN REFRIGERANT alarm) triggers the intervention action that includes checking coolant, hydraulic connections, pump M1171 and, if no problem is detected, checking input X4.2 on page 11 of the electrical diagram.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ot reached the defined position within the time limit of 1 second. intervention: Check any mechanical resistance to the rotation of the spindle, note the error code on the actuation identified with the acronym A2721 and consult the Fanuc 160i-TB maintenance manual responsible for the intervention: r"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00020",
+      "subject": {
+        "id": "cand_s_00003",
+        "label": "Alarm No.: 1045",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00043",
+        "label": "causes"
+      },
+      "object": {
+        "id": "cand_e_00006",
+        "label": "programming function",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text states that Alarm No.: 1045 has a cause described as \"consequence of programming function M08\", indicating that the alarm is caused by the programming function.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ot reached the defined position within the time limit of 1 second. intervention: Check any mechanical resistance to the rotation of the spindle, note the error code on the actuation identified with the acronym A2721 and consult the Fanuc 160i-TB maintenance manual responsible for the intervention: r"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00021",
+      "subject": {
+        "id": "cand_s_00003",
+        "label": "Alarm No.: 1045",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00044",
+        "label": "intervention"
+      },
+      "object": {
+        "id": "cand_s_00007",
+        "label": "intervention action",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text for Alarm No.: 1045 contains an intervention directive: 'input X4.2 page 11 of the electrical diagram', which is an intervention action linked to the alarm event.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 67,
+          "chunk_end_char": 79,
+          "doc_start_char": 20067,
+          "doc_end_char": 20079,
+          "snippet": "ot reached the defined position within the time limit of 1 second. intervention: Check any mechanical resistance to the rotation of the spindle, note the error"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00022",
+      "subject": {
+        "id": "cand_e_00009",
+        "label": "Document",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00047",
+        "label": "page 15 of the electrical diagram"
+      },
+      "object": {
+        "id": "cand_r_00047",
+        "label": "page 15 of the electrical diagram",
+        "type": "relation"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The chunk text refers to 'page 15 of the electrical diagram' as a specific location within the electrical diagram document, indicating a reference relationship between the Document entity and this page.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 999,
+          "chunk_end_char": 1032,
+          "doc_start_char": 20999,
+          "doc_end_char": 21032,
+          "snippet": "as open despite the alarm, check the setting of the microdetector at input X3.0 page 15 of the electrical diagram. responsible for intervention: responsible for maintenance\n\nAlarm number: 1042"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00023",
+      "subject": {
+        "id": "cand_s_00003",
+        "label": "Alarm No.: 1045",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00048",
+        "label": "page 11 of the electrical diagram"
+      },
+      "object": {
+        "id": "cand_e_00009",
+        "label": "Document",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0004",
+      "justification": "The alarm event for Alarm No.: 1045 includes an intervention that references input X4.2 page 11 of the electrical diagram, linking the alarm to that page in the document.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 4010,
+          "chunk_end_char": 4043,
+          "doc_start_char": 24010,
+          "doc_end_char": 24043,
+          "snippet": "nections, pump M1171; If no problem is detected, check\nintervention:\ninput X4.2 page 11 of the electrical diagram (0 = absence of liquid\nwatering, 1 = passage of the watering liquid)\nresponsibl"
+        }
+      ]
+    }
+  ]
+}

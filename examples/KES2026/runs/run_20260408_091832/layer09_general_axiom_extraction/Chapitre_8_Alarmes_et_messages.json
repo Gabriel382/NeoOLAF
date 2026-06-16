@@ -1,0 +1,2205 @@
+{
+  "layer": "layer09_general_axiom_extraction",
+  "num_general_axiom_candidates": 75,
+  "general_axiom_candidates": [
+    {
+      "axiom_id": "axiom_00000",
+      "axiom_type": "relation_domain",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "hasCNCAlarm",
+      "predicate": "domain",
+      "object_id": "domain_hint::Platform",
+      "object_label": "Platform",
+      "literal_value": null,
+      "justification": "The relation candidate *hasCNCAlarm* is intended to link a CNC machine, which is a Feature of Interest and can be modeled as a Platform, to the alarm events it generates. The supporting triple shows an ActiveEmergencyEvent producing an \"Open side guard alarm\", confirming that the range is an AlarmEvent.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00000"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 81,
+          "chunk_end_char": 111,
+          "doc_start_char": 81,
+          "doc_end_char": 111,
+          "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00001",
+      "axiom_type": "range",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "hasCNCAlarm",
+      "predicate": "range",
+      "object_id": "range_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "literal_value": null,
+      "justification": "The relation candidate *hasCNCAlarm* is intended to link a CNC machine, which is a Feature of Interest and can be modeled as a Platform (an entity that hosts sensors/actuators), to the alarm events it generates. The supporting triple shows an ActiveEmergencyEvent producing an \"Open side guard alarm\", confirming that the range is an AlarmEvent.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00001"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 81,
+          "chunk_end_char": 111,
+          "doc_start_char": 81,
+          "doc_end_char": 111,
+          "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00002",
+      "axiom_type": "relation_domain",
+      "subject_id": "ont_rel_00001",
+      "subject_label": "generatesAlarmMessage",
+      "predicate": "domain",
+      "object_id": "domain_hint::Resource",
+      "object_label": "Resource",
+      "literal_value": null,
+      "justification": "The relation *generatesAlarmMessage* explicitly indicates that a PLC interface (a type of Resource) generates alarm messages, establishing Resource as the domain of this relation.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00002"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00001"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 192,
+          "chunk_end_char": 234,
+          "doc_start_char": 192,
+          "doc_end_char": 234,
+          "snippet": "for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detect"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00003",
+      "axiom_type": "relation_range",
+      "subject_id": "ont_rel_00001",
+      "subject_label": "generatesAlarmMessage",
+      "predicate": "range",
+      "object_id": "range_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "literal_value": null,
+      "justification": "The relation candidate *generatesAlarmMessage* explicitly states that a PLC interface (a type of Resource) generates alarm messages or alerts, implying the range is an AlarmEvent.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00003"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00001"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 192,
+          "chunk_end_char": 234,
+          "doc_start_char": 192,
+          "doc_end_char": 234,
+          "snippet": "for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detect"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00004",
+      "axiom_type": "relation domain",
+      "subject_id": "ont_rel_00002",
+      "subject_label": "issuedBy",
+      "predicate": "domain",
+      "object_id": "domain_hint::Result",
+      "object_label": "Result",
+      "literal_value": null,
+      "justification": "The relation candidate *issuedBy* explicitly links an alarm, result, or sensor to the entity that issues or generates it. The ontology defines *Result* as the outcome of an observation and *Resource* as an entity used in manufacturing processes, making these classes the natural domain and range for the relation.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00004"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00002"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 277,
+          "chunk_end_char": 286,
+          "doc_start_char": 277,
+          "doc_end_char": 286,
+          "snippet": "s and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper fun"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00005",
+      "axiom_type": "range",
+      "subject_id": "ont_rel_00002",
+      "subject_label": "issuedBy",
+      "predicate": "range",
+      "object_id": "range_hint::Resource",
+      "object_label": "Resource",
+      "literal_value": null,
+      "justification": "The relation candidate *issuedBy* explicitly links an alarm, result, or sensor to the entity that issues or generates it. The ontology defines *Result* as the outcome of an observation and *Resource* as an entity used in manufacturing processes, making these classes the natural domain and range for the relation.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00005"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00002"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 277,
+          "chunk_end_char": 286,
+          "doc_start_char": 277,
+          "doc_end_char": 286,
+          "snippet": "s and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper fun"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00006",
+      "axiom_type": "domain",
+      "subject_id": "ont_rel_00003",
+      "subject_label": "detectedBy",
+      "predicate": "domain",
+      "object_id": "domain_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "literal_value": null,
+      "justification": "The relation candidate detectedBy explicitly links an alarm or abnormal condition event (domain AlarmEvent) to the monitoring system that identifies it (range MonitoringSystem).",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00006"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00003"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 308,
+          "chunk_end_char": 320,
+          "doc_start_char": 308,
+          "doc_end_char": 320,
+          "snippet": "erface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper functioning of the machine and the\nma"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00007",
+      "axiom_type": "relation_range",
+      "subject_id": "ont_rel_00003",
+      "subject_label": "detectedBy",
+      "predicate": "range",
+      "object_id": "range_hint::MonitoringSystem",
+      "object_label": "MonitoringSystem",
+      "literal_value": null,
+      "justification": "The relation detectedBy explicitly links an AlarmEvent to the monitoring system that identifies it, so its range is MonitoringSystem.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00007"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00003"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 308,
+          "chunk_end_char": 320,
+          "doc_start_char": 308,
+          "doc_end_char": 320,
+          "snippet": "erface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper functioning of the machine and the\nma"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00008",
+      "axiom_type": "relation_domain",
+      "subject_id": "ont_rel_00004",
+      "subject_label": "triggersReset",
+      "predicate": "domain",
+      "object_id": "domain_hint::OperatorAction",
+      "object_label": "OperatorAction",
+      "literal_value": null,
+      "justification": "The relation candidate \"triggersReset\" explicitly links an operator action (e.g., pressing the 'RESET PRG' key) to the reset of a program or process. The supporting triple shows an ActiveEmergencyEvent recognized with the key 'RESET PRG' that results in a program rewind, which is a reset of the process. This aligns with the domain hint OperatorAction and the range hint LogisticProcess, fitting the manufacturing or process control context.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00008"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00004"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00009",
+      "axiom_type": "relation_range",
+      "subject_id": "ont_rel_00004",
+      "subject_label": "triggersReset",
+      "predicate": "range",
+      "object_id": "range_hint::LogisticProcess",
+      "object_label": "LogisticProcess",
+      "literal_value": null,
+      "justification": "The relation 'triggersReset' explicitly links an operator action, such as pressing the 'RESET PRG' key, to the reset of a program or process, which is a logistic process. The supporting triple shows an ActiveEmergencyEvent recognized with the key 'RESET PRG' that results in a program rewind, a reset of the process. This aligns with the domain hint OperatorAction and the range hint LogisticProcess.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00009"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00004"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00010",
+      "axiom_type": "relation_domain",
+      "subject_id": "ont_rel_00005",
+      "subject_label": "requiresNoPersistingCauses",
+      "predicate": "domain",
+      "object_id": "domain_hint::ManufacturingProcess",
+      "object_label": "ManufacturingProcess",
+      "literal_value": null,
+      "justification": "The relation *requiresNoPersistingCauses* explicitly links a manufacturing process to a condition that must be satisfied before the process can resume. The domain hint is \"ManufacturingProcess\" and the range hint is \"Condition\", matching the description that the process can only restart when all underlying causes of failure are eliminated.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00010"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00005"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1074,
+          "chunk_end_char": 1149,
+          "doc_start_char": 1074,
+          "doc_end_char": 1149,
+          "snippet": "an be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with i"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00011",
+      "axiom_type": "range",
+      "subject_id": "ont_rel_00005",
+      "subject_label": "requiresNoPersistingCauses",
+      "predicate": "range",
+      "object_id": "range_hint::Condition",
+      "object_label": "Condition",
+      "literal_value": null,
+      "justification": "The relation *requiresNoPersistingCauses* explicitly links a manufacturing process to a condition that must be satisfied before the process can resume. The domain hint is \"ManufacturingProcess\" and the range hint is \"Condition\", matching the description that the process can only restart when all underlying causes of failure are eliminated.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00011"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00005"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1074,
+          "chunk_end_char": 1149,
+          "doc_start_char": 1074,
+          "doc_end_char": 1149,
+          "snippet": "an be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with i"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00012",
+      "axiom_type": "subclass",
+      "subject_id": "ont_rel_00006",
+      "subject_label": "punchButtonPress",
+      "predicate": "domain",
+      "object_id": "domain_hint::HumanProcess",
+      "object_label": "HumanProcess",
+      "literal_value": null,
+      "justification": "The relation candidate \"punchButtonPress\" explicitly links a human-initiated action (a punch button press) to the resulting alarm event, indicating that the domain of the relation is a HumanProcess.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00012"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00006"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1373,
+          "chunk_end_char": 1421,
+          "doc_start_char": 1373,
+          "doc_end_char": 1421,
+          "snippet": "fect: hardware operation to the axis/spindle feeder and CNC in\nemergency\ncause: Indicates that the punch button has been pressed\nRelease the button and press the start button on the\nintervention: machine.\nSee"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00013",
+      "axiom_type": "range",
+      "subject_id": "ont_rel_00006",
+      "subject_label": "punchButtonPress",
+      "predicate": "range",
+      "object_id": "range_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "literal_value": null,
+      "justification": "The relation \"punchButtonPress\" explicitly links a human-initiated action to an AlarmEvent, indicating that the range of this relation is AlarmEvent.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00013"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00006"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1373,
+          "chunk_end_char": 1421,
+          "doc_start_char": 1373,
+          "doc_end_char": 1421,
+          "snippet": "fect: hardware operation to the axis/spindle feeder and CNC in\nemergency\ncause: Indicates that the punch button has been pressed\nRelease the button and press the start button on the\nintervention: machine.\nSee"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00014",
+      "axiom_type": "relation_domain",
+      "subject_id": "ont_rel_00007",
+      "subject_label": "referencesDiagram",
+      "predicate": "domain",
+      "object_id": "domain_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "literal_value": null,
+      "justification": "The relation candidate *referencesDiagram* explicitly connects an alarm event (domain) to a specific page in an electrical diagram (range) for troubleshooting purposes, as supported by the retrieved evidence and the related triple indicating an alarm event triggered by a device.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00014"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00007"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1498,
+          "chunk_end_char": 1546,
+          "doc_start_char": 1498,
+          "doc_end_char": 1546,
+          "snippet": "sed\nRelease the button and press the start button on the\nintervention: machine.\nSee page 5 of the electrical diagram, input X8.4\nresponsible for\noperator/maintenance officer\nAlarm No.: 1002\ntext: OFF-CIRCUIT"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00015",
+      "axiom_type": "range",
+      "subject_id": "ont_rel_00007",
+      "subject_label": "referencesDiagram",
+      "predicate": "range",
+      "object_id": "range_hint::DiagramPage",
+      "object_label": "DiagramPage",
+      "literal_value": null,
+      "justification": "The relation candidate *referencesDiagram* explicitly connects an alarm event (domain) to a specific page in an electrical diagram (range) for troubleshooting purposes, as supported by the retrieved evidence and the related triple indicating an alarm event triggered by a device.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00015"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00007"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1498,
+          "chunk_end_char": 1546,
+          "doc_start_char": 1498,
+          "doc_end_char": 1546,
+          "snippet": "sed\nRelease the button and press the start button on the\nintervention: machine.\nSee page 5 of the electrical diagram, input X8.4\nresponsible for\noperator/maintenance officer\nAlarm No.: 1002\ntext: OFF-CIRCUIT"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00016",
+      "axiom_type": "relation_domain",
+      "subject_id": "ont_rel_00008",
+      "subject_label": "hasResponsibility",
+      "predicate": "domain",
+      "object_id": "domain_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "literal_value": null,
+      "justification": "The relation hasResponsibility explicitly links an alarm or emitted signal (AlarmEvent) to the personnel (Staff) responsible for handling it, as described in the ontology.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00016"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00008"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00017",
+      "axiom_type": "relation_range",
+      "subject_id": "ont_rel_00008",
+      "subject_label": "hasResponsibility",
+      "predicate": "range",
+      "object_id": "range_hint::Staff",
+      "object_label": "Staff",
+      "literal_value": null,
+      "justification": "The relation hasResponsibility explicitly links an alarm or emitted signal (AlarmEvent) to the personnel (Staff) responsible for handling it, as described in the ontology.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00017"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00008"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00018",
+      "axiom_type": "relation_domain",
+      "subject_id": "ont_rel_00009",
+      "subject_label": "references",
+      "predicate": "domain",
+      "object_id": "domain_hint::Resource",
+      "object_label": "Resource",
+      "literal_value": null,
+      "justification": "The 'references' relation candidate explicitly defines its domain as Resource and its range as FeatureOfInterest, matching the seed ontology classes. Grounding evidence confirms that a Resource (e.g., a document or diagram) can reference a FeatureOfInterest within it.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00018"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00009"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2355,
+          "chunk_end_char": 2404,
+          "doc_start_char": 2355,
+          "doc_end_char": 2404,
+          "snippet": "door is open.\nCheck that the door is in an acceptable condition.\nintervention:\nSee page 19 of the electrical diagram, input X3.3\nresponsible for\noperator/maintenance officer\n\nAlarm n°: 1001 text: EMERGENCY AC"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4450,
+          "chunk_end_char": 4498,
+          "doc_start_char": 4450,
+          "doc_end_char": 4498,
+          "snippet": "en.\nCheck that the side protections are closed, check for any possible rusting.\nSee page 7 of the electrical diagram, input X2.5\nresponsible for\noperator/maintenance officer\nAlarm No.: 1008\ntext: THERMOMAGNET"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4848,
+          "chunk_end_char": 4896,
+          "doc_start_char": 4848,
+          "doc_end_char": 4896,
+          "snippet": "Check and reset circuit breakers and/or thermomagnetic switches.\nintervention:\nSee page 7 of the electrical diagram, input X2.4\n(0 = ALARM, 1 = OK)\nresponsible for\n\nAlarm n°: 1004 text: SLIDING DOOR UNLOCKED"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00019",
+      "axiom_type": "relation_range",
+      "subject_id": "ont_rel_00009",
+      "subject_label": "references",
+      "predicate": "range",
+      "object_id": "range_hint::FeatureOfInterest",
+      "object_label": "FeatureOfInterest",
+      "literal_value": null,
+      "justification": "The 'references' relation candidate explicitly defines its domain as Resource and its range as FeatureOfInterest, matching the seed ontology classes. Grounding evidence confirms that a Resource (e.g., a document or diagram) can reference a FeatureOfInterest within it.",
+      "confidence": 0.93,
+      "source_schema_ids": [
+        "schema_00019"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00009"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2355,
+          "chunk_end_char": 2404,
+          "doc_start_char": 2355,
+          "doc_end_char": 2404,
+          "snippet": "door is open.\nCheck that the door is in an acceptable condition.\nintervention:\nSee page 19 of the electrical diagram, input X3.3\nresponsible for\noperator/maintenance officer\n\nAlarm n°: 1001 text: EMERGENCY AC"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4450,
+          "chunk_end_char": 4498,
+          "doc_start_char": 4450,
+          "doc_end_char": 4498,
+          "snippet": "en.\nCheck that the side protections are closed, check for any possible rusting.\nSee page 7 of the electrical diagram, input X2.5\nresponsible for\noperator/maintenance officer\nAlarm No.: 1008\ntext: THERMOMAGNET"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4848,
+          "chunk_end_char": 4896,
+          "doc_start_char": 4848,
+          "doc_end_char": 4896,
+          "snippet": "Check and reset circuit breakers and/or thermomagnetic switches.\nintervention:\nSee page 7 of the electrical diagram, input X2.4\n(0 = ALARM, 1 = OK)\nresponsible for\n\nAlarm n°: 1004 text: SLIDING DOOR UNLOCKED"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00020",
+      "axiom_type": "relation_domain",
+      "subject_id": "ont_rel_00010",
+      "subject_label": "triggersShutdownAtCycleEnd",
+      "predicate": "domain",
+      "object_id": "domain_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "literal_value": null,
+      "justification": "The relation triggersShutdownAtCycleEnd explicitly links an AlarmEvent to a ShutdownEvent that is initiated at the conclusion of a production cycle, matching the domain hint AlarmEvent and range hint ShutdownEvent.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00020"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00010"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4641,
+          "chunk_end_char": 4684,
+          "doc_start_char": 4641,
+          "doc_end_char": 4684,
+          "snippet": "ext: THERMOMAGNET SWITCHES. END OF CYCLE STOP\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA thermal switch on the motors was triggered\ncause:\nauxiliaries, with low prior"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00021",
+      "axiom_type": "range",
+      "subject_id": "ont_rel_00010",
+      "subject_label": "triggersShutdownAtCycleEnd",
+      "predicate": "range",
+      "object_id": "range_hint::ShutdownEvent",
+      "object_label": "ShutdownEvent",
+      "literal_value": null,
+      "justification": "The relation triggersShutdownAtCycleEnd explicitly links an AlarmEvent to a ShutdownEvent that is initiated at the conclusion of a production cycle, matching the domain hint AlarmEvent and range hint ShutdownEvent.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00021"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00010"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4641,
+          "chunk_end_char": 4684,
+          "doc_start_char": 4641,
+          "doc_end_char": 4684,
+          "snippet": "ext: THERMOMAGNET SWITCHES. END OF CYCLE STOP\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA thermal switch on the motors was triggered\ncause:\nauxiliaries, with low prior"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00022",
+      "axiom_type": "relation_domain",
+      "subject_id": "ont_rel_00011",
+      "subject_label": "immediateAndControlledShutdown",
+      "predicate": "domain",
+      "object_id": "domain_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "literal_value": null,
+      "justification": "The relation immediateAndControlledShutdown explicitly links an alarm event to a machine that must be shut down immediately and in a controlled manner, as evidenced by the intervention triple describing actions to be taken upon the alarm.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00022"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00011"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1228,
+          "chunk_end_char": 1261,
+          "doc_start_char": 1228,
+          "doc_end_char": 1261,
+          "snippet": "t.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening of the authorizationeffect: hardware operation to the axis/spindle fee"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00023",
+      "axiom_type": "relation_range",
+      "subject_id": "ont_rel_00011",
+      "subject_label": "immediateAndControlledShutdown",
+      "predicate": "range",
+      "object_id": "range_hint::Machine",
+      "object_label": "Machine",
+      "literal_value": null,
+      "justification": "The relation immediateAndControlledShutdown explicitly links an alarm event to a machine that must be shut down immediately and in a controlled manner, as evidenced by the intervention triple describing actions to be taken upon the alarm.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00023"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00011"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1228,
+          "chunk_end_char": 1261,
+          "doc_start_char": 1228,
+          "doc_end_char": 1261,
+          "snippet": "t.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening of the authorizationeffect: hardware operation to the axis/spindle fee"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00024",
+      "axiom_type": "relation_domain",
+      "subject_id": "ont_rel_00012",
+      "subject_label": "causes",
+      "predicate": "domain",
+      "object_id": "domain_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "literal_value": null,
+      "justification": "The relation candidate \"causes\" is described as linking a source event or entity (e.g., an alarm, sensor reading, or failure) to the resulting effect or disabling of machine components. The domain hint provided is AlarmEvent, and the supporting triples show that the source is an event or entity, consistent with the idea that the source is an AlarmEvent. Therefore, the domain of the relation \"causes\" is AlarmEvent.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00024"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00012"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00025",
+      "axiom_type": "relation_range",
+      "subject_id": "ont_rel_00012",
+      "subject_label": "causes",
+      "predicate": "range",
+      "object_id": "range_hint::MachineComponent",
+      "object_label": "MachineComponent",
+      "literal_value": null,
+      "justification": "The relation \"causes\" is defined to link a source event or entity to the resulting effect or disabling of machine components. The supporting triples and seed ontology indicate that the effect side of the relation is a machine component, thus the range of \"causes\" is MachineComponent.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00025"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00012"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00026",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00001",
+      "subject_label": "ThermalCutoffDevice",
+      "predicate": "subClassOf",
+      "object_id": "concept_00002",
+      "object_label": "CircuitBreakerComponent",
+      "literal_value": null,
+      "justification": "ThermalCutoffDevice is a specialized electrical safety device that interrupts current based on temperature, which is a specific type of CircuitBreakerComponent that interrupts current based on overcurrent. This specialization relationship is logically consistent with typical electrical component hierarchies and does not conflict with the seed ontology context.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00026"
+      ],
+      "source_concept_ids": [
+        "concept_00001",
+        "concept_00002"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 865,
+          "chunk_end_char": 879,
+          "doc_start_char": 5865,
+          "doc_end_char": 5879,
+          "snippet": "e: Standard: Optional: effect: Alarm with stop at the end of the cycle cause: A thermal switch for the auxiliary motors has been triggered, with low priority. intervention: C"
+        },
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4183,
+          "chunk_end_char": 4193,
+          "doc_start_char": 9183,
+          "doc_end_char": 9193,
+          "snippet": "e: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe thermostat is not set correctly, the fan or the cause:\neditor does not work, the electrica"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00027",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00003",
+      "subject_label": "ThermomagneticSwitchComponent",
+      "predicate": "subClassOf",
+      "object_id": "concept_00001",
+      "object_label": "ThermalCutoffDevice",
+      "literal_value": null,
+      "justification": "ThermomagneticSwitchComponent is a reusable subclass of ThermalCutoffDevice.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00027"
+      ],
+      "source_concept_ids": [
+        "concept_00003",
+        "concept_00001"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1002,
+          "chunk_end_char": 1025,
+          "doc_start_char": 6002,
+          "doc_end_char": 6025,
+          "snippet": "d, with low priority. intervention: Check and reset the circuit breakers and/or thermomagnetic switches. See page 7 of the electrical diagram, input X2.4 (0 = ALARM, 1 = OK) responsib"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00028",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00005",
+      "subject_label": "CoolantResource",
+      "predicate": "subclassOf",
+      "object_id": "concept_00011",
+      "object_label": "FeedResource",
+      "literal_value": null,
+      "justification": "CoolantResource is a specific type of FeedResource, as it is a material supplied to a machine for cooling purposes, fitting within the broader category of FeedResource.",
+      "confidence": 0.93,
+      "source_schema_ids": [
+        "schema_00028"
+      ],
+      "source_concept_ids": [
+        "concept_00005",
+        "concept_00011"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1699,
+          "chunk_end_char": 1706,
+          "doc_start_char": 6699,
+          "doc_end_char": 6706,
+          "snippet": ":\neffect: Alarm with shutdown at the end of the cycle.\nInsufficient quantity of coolant in the water circuit:\nwise of the linear motor.\nCheck the liquid level in the w"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00029",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00006",
+      "subject_label": "Compressor",
+      "predicate": "subClassOf",
+      "object_id": "concept_00007",
+      "object_label": "FanMachine",
+      "literal_value": null,
+      "justification": "Compressor is a specialized device that compresses gases, which is a specific type of fan machine that creates airflow for cooling or other purposes. Thus, Compressor is a more specific kind of FanMachine, making the subclass relationship semantically valid within a typical manufacturing ontology.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00029"
+      ],
+      "source_concept_ids": [
+        "concept_00006",
+        "concept_00007"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 2192,
+          "chunk_end_char": 2202,
+          "doc_start_char": 7192,
+          "doc_end_char": 7202,
+          "snippet": "gine temperature\ncause:\nlinear.\nCheck the correct operation of the refrigerator compressor.\nintervention: Check the PLC X4.7 input on page 84 of the electrical diagram an"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00030",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00013",
+      "subject_label": "ProgramRewindEvent",
+      "predicate": "subClassOf",
+      "object_id": "concept_00016",
+      "object_label": "TriggeredEvent",
+      "literal_value": null,
+      "justification": "ProgramRewindEvent is a specific type of event that is initiated by a reset command or control signal, which fits the definition of a TriggeredEvent. Therefore, it is semantically valid to declare ProgramRewindEvent as a reusable subclass of TriggeredEvent.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00030"
+      ],
+      "source_concept_ids": [
+        "concept_00013",
+        "concept_00016"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1047,
+          "chunk_end_char": 1065,
+          "doc_start_char": 1047,
+          "doc_end_char": 1065,
+          "snippet": "text: of the alarm which can be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not per"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00031",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00014",
+      "subject_label": "ActiveEmergencyEvent",
+      "predicate": "subClassOf",
+      "object_id": "concept_00016",
+      "object_label": "TriggeredEvent",
+      "literal_value": null,
+      "justification": "ActiveEmergencyEvent is a reusable subclass of TriggeredEvent.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00031"
+      ],
+      "source_concept_ids": [
+        "concept_00014",
+        "concept_00016"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1174,
+          "chunk_end_char": 1190,
+          "doc_start_char": 1174,
+          "doc_end_char": 1190,
+          "snippet": "rted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00032",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00015",
+      "subject_label": "OpenSideGuardAlarmEvent",
+      "predicate": "subClassOf",
+      "object_id": "concept_00000",
+      "object_label": "InformationalAlarmEvent",
+      "literal_value": null,
+      "justification": "OpenSideGuardAlarmEvent is a specific type of InformationalAlarmEvent that notifies operators about a safety condition (open side guards) without changing machine operation, fitting the definition of an InformationalAlarmEvent. Therefore, it can be considered a reusable subclass of InformationalAlarmEvent.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00032"
+      ],
+      "source_concept_ids": [
+        "concept_00015",
+        "concept_00000"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4172,
+          "chunk_end_char": 4188,
+          "doc_start_char": 4172,
+          "doc_end_char": 4188,
+          "snippet": "e electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00033",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00015",
+      "subject_label": "OpenSideGuardAlarmEvent",
+      "predicate": "subClassOf",
+      "object_id": "concept_00016",
+      "object_label": "TriggeredEvent",
+      "literal_value": null,
+      "justification": "An OpenSideGuardAlarmEvent is a specific type of alarm that is activated (triggered) when side guards are open, so it is a more specific instance of a TriggeredEvent.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00033"
+      ],
+      "source_concept_ids": [
+        "concept_00015",
+        "concept_00016"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4172,
+          "chunk_end_char": 4188,
+          "doc_start_char": 4172,
+          "doc_end_char": 4188,
+          "snippet": "e electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00034",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00018",
+      "subject_label": "PneumaticReleaseEvent",
+      "predicate": "subClassOf",
+      "object_id": "concept_00016",
+      "object_label": "TriggeredEvent",
+      "literal_value": null,
+      "justification": "PneumaticReleaseEvent is a specific type of event that is initiated (triggered) by a control signal or alarm to release pressure in a pneumatic system, making it a valid subclass of the more general TriggeredEvent.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00034"
+      ],
+      "source_concept_ids": [
+        "concept_00018",
+        "concept_00016"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2313,
+          "chunk_end_char": 2330,
+          "doc_start_char": 17313,
+          "doc_end_char": 17330,
+          "snippet": "ect: Alarm with immediate and controlled shutdown\nInsufficient air pressure for pneumatic release of\ncause:\nthe X1 axis, the movement of which is prohibited.\nCheck line pressure"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00035",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00018",
+      "subject_label": "PneumaticReleaseEvent",
+      "predicate": "subClassOf",
+      "object_id": "concept_00017",
+      "object_label": "NormalOperationEvent",
+      "literal_value": null,
+      "justification": "PneumaticReleaseEvent is a reusable subclass of NormalOperationEvent.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00035"
+      ],
+      "source_concept_ids": [
+        "concept_00018",
+        "concept_00017"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2313,
+          "chunk_end_char": 2330,
+          "doc_start_char": 17313,
+          "doc_end_char": 17330,
+          "snippet": "ect: Alarm with immediate and controlled shutdown\nInsufficient air pressure for pneumatic release of\ncause:\nthe X1 axis, the movement of which is prohibited.\nCheck line pressure"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00036",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00020",
+      "subject_label": "OpenForcepsEvent",
+      "predicate": "subClassOf",
+      "object_id": "concept_00000",
+      "object_label": "InformationalAlarmEvent",
+      "literal_value": null,
+      "justification": "OpenForcepsEvent is a specific alarm event that reports the open state of forceps, which is a concrete instance of an informational alarm. InformationalAlarmEvent is a generic alarm type that delivers messages to operators without changing machine status. Therefore, OpenForcepsEvent is a more specific subclass of InformationalAlarmEvent.",
+      "confidence": 0.92,
+      "source_schema_ids": [
+        "schema_00036"
+      ],
+      "source_concept_ids": [
+        "concept_00020",
+        "concept_00000"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4133,
+          "chunk_end_char": 4145,
+          "doc_start_char": 19133,
+          "doc_end_char": 19145,
+          "snippet": "sult the Fanuc 160i-TB maintenance manual\nresponsible for\nAlarm No.: 1040\ntext: OPEN FORCEPS\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00037",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00020",
+      "subject_label": "OpenForcepsEvent",
+      "predicate": "subClassOf",
+      "object_id": "concept_00011",
+      "object_label": "FeedResource",
+      "literal_value": null,
+      "justification": "OpenForcepsEvent is a specialized event that should be positioned as a subclass of FeedResource, which itself is a specialized type of Resource. This placement aligns with the ontology’s existing Resource and Process families and preserves the is‑a relationship required for semantic reasoning.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00037"
+      ],
+      "source_concept_ids": [
+        "concept_00020",
+        "concept_00011"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4133,
+          "chunk_end_char": 4145,
+          "doc_start_char": 19133,
+          "doc_end_char": 19145,
+          "snippet": "sult the Fanuc 160i-TB maintenance manual\nresponsible for\nAlarm No.: 1040\ntext: OPEN FORCEPS\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00038",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00020",
+      "subject_label": "OpenForcepsEvent",
+      "predicate": "subClassOf",
+      "object_id": "concept_00016",
+      "object_label": "TriggeredEvent",
+      "literal_value": null,
+      "justification": "OpenForcepsEvent is a specific alarm event that is triggered by a sensor detecting the open position of forceps. TriggeredEvent is a generic event that represents the activation or initiation of a component, system, or personnel action, typically triggered by an alarm or control signal. Therefore, OpenForcepsEvent is a more specific kind of TriggeredEvent.",
+      "confidence": 0.95,
+      "source_schema_ids": [
+        "schema_00038"
+      ],
+      "source_concept_ids": [
+        "concept_00020",
+        "concept_00016"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4133,
+          "chunk_end_char": 4145,
+          "doc_start_char": 19133,
+          "doc_end_char": 19145,
+          "snippet": "sult the Fanuc 160i-TB maintenance manual\nresponsible for\nAlarm No.: 1040\ntext: OPEN FORCEPS\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00039",
+      "axiom_type": "subclass",
+      "subject_id": "concept_00021",
+      "subject_label": "CheckMechanicalResistanceEvent",
+      "predicate": "subClassOf",
+      "object_id": "concept_00016",
+      "object_label": "TriggeredEvent",
+      "literal_value": null,
+      "justification": "CheckMechanicalResistanceEvent is a specific type of event that occurs when a technician inspects or verifies mechanical resistance, typically initiated by a maintenance schedule or fault detection. Such an event is a concrete instance of a TriggeredEvent, which represents any event that is activated or initiated by a signal, alarm, or scheduled trigger. Therefore, CheckMechanicalResistanceEvent can be considered a more specific subclass of TriggeredEvent.",
+      "confidence": 0.93,
+      "source_schema_ids": [
+        "schema_00039"
+      ],
+      "source_concept_ids": [
+        "concept_00021",
+        "concept_00016"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3897,
+          "chunk_end_char": 3928,
+          "doc_start_char": 18897,
+          "doc_end_char": 18928,
+          "snippet": "ndle did not\ncause:\nreaches the set position within the time limit of 1 second.\nCheck any mechanical resistance to the rotation of the\nintervention: spindle, note the error code on the actuat"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00040",
+      "axiom_type": "description",
+      "subject_id": "concept_00000",
+      "subject_label": "InformationalAlarmEvent",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "An alarm type that delivers messages to operators indicating a condition without triggering a change in machine status.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00000"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 722,
+          "chunk_end_char": 740,
+          "doc_start_char": 722,
+          "doc_end_char": 740,
+          "snippet": "ith stop at end of cycle: the machine is stopped\nwhen launching function M01;\n• read-only messages: these are used to draw the operator's attention to a particular circumstance w"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00041",
+      "axiom_type": "description",
+      "subject_id": "concept_00001",
+      "subject_label": "ThermalCutoffDevice",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "An electrical safety device that interrupts current when a set temperature is reached, and can be reset manually or automatically.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00001"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 865,
+          "chunk_end_char": 879,
+          "doc_start_char": 5865,
+          "doc_end_char": 5879,
+          "snippet": "e: Standard: Optional: effect: Alarm with stop at the end of the cycle cause: A thermal switch for the auxiliary motors has been triggered, with low priority. intervention: C"
+        },
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4183,
+          "chunk_end_char": 4193,
+          "doc_start_char": 9183,
+          "doc_end_char": 9193,
+          "snippet": "e: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe thermostat is not set correctly, the fan or the cause:\neditor does not work, the electrica"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00042",
+      "axiom_type": "description",
+      "subject_id": "concept_00002",
+      "subject_label": "CircuitBreakerComponent",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "An electrical safety device that interrupts overcurrent to protect equipment and prevent fire, and can be reset manually or automatically.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00002"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 978,
+          "chunk_end_char": 994,
+          "doc_start_char": 5978,
+          "doc_end_char": 5994,
+          "snippet": "motors has been triggered, with low priority. intervention: Check and reset the circuit breakers and/or thermomagnetic switches. See page 7 of the electrical diagram, input X2."
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00043",
+      "axiom_type": "description",
+      "subject_id": "concept_00003",
+      "subject_label": "ThermomagneticSwitchComponent",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A thermally activated magnetic switch used as a temperature sensor and circuit interrupter in industrial machinery, typically reset during maintenance.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00003"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1002,
+          "chunk_end_char": 1025,
+          "doc_start_char": 6002,
+          "doc_end_char": 6025,
+          "snippet": "d, with low priority. intervention: Check and reset the circuit breakers and/or thermomagnetic switches. See page 7 of the electrical diagram, input X2.4 (0 = ALARM, 1 = OK) responsib"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00044",
+      "axiom_type": "description",
+      "subject_id": "concept_00004",
+      "subject_label": "ProgrammableLogicController",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A digital computer used for automation of electromechanical processes, controlling machinery in industrial settings.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00004"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1827,
+          "chunk_end_char": 1830,
+          "doc_start_char": 6827,
+          "doc_end_char": 6830,
+          "snippet": "motor.\nCheck the liquid level in the watering circuit.\nintervention: Check the PLC X4.6 input on page 84 of the electrical diagram and\nthe indication on the refri"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00045",
+      "axiom_type": "description",
+      "subject_id": "concept_00005",
+      "subject_label": "CoolantResource",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A fluid or liquid substance used to transfer heat away from a system, typically with high thermal capacity, low viscosity, and chemical inertness, employed in industrial processing and machine cooling.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00005"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1699,
+          "chunk_end_char": 1706,
+          "doc_start_char": 6699,
+          "doc_end_char": 6706,
+          "snippet": ":\neffect: Alarm with shutdown at the end of the cycle.\nInsufficient quantity of coolant in the water circuit:\nwise of the linear motor.\nCheck the liquid level in the w"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00046",
+      "axiom_type": "description",
+      "subject_id": "concept_00006",
+      "subject_label": "Compressor",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A mechanical device that compresses gases by reducing their volume, thereby increasing pressure (and temperature if not intercoolled).",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00006"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 2192,
+          "chunk_end_char": 2202,
+          "doc_start_char": 7192,
+          "doc_end_char": 7202,
+          "snippet": "gine temperature\ncause:\nlinear.\nCheck the correct operation of the refrigerator compressor.\nintervention: Check the PLC X4.7 input on page 84 of the electrical diagram an"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00047",
+      "axiom_type": "description",
+      "subject_id": "concept_00007",
+      "subject_label": "FanMachine",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A device that creates airflow for cooling purposes in industrial equipment.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00007"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 3988,
+          "chunk_end_char": 3991,
+          "doc_start_char": 8988,
+          "doc_end_char": 8991,
+          "snippet": "es.\nNote the power supply error code marked A2831 and consult\nintervention: the Fanuc 160i-TB CNC service manual for more information\nresponsible for\nAlarm No.: 10"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00048",
+      "axiom_type": "description",
+      "subject_id": "concept_00008",
+      "subject_label": "AlarmIdentifier",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A unique identifier that distinguishes a specific alarm instance within a manufacturing system, typically expressed as a numeric or alphanumeric code.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00008"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1159,
+          "chunk_end_char": 1174,
+          "doc_start_char": 6159,
+          "doc_end_char": 6174,
+          "snippet": "= ALARM, 1 = OK) responsible for the intervention: responsible for maintenance\n\nAlarm No.: 1009\ntext: THERMOMAGNETIC SWITCHES IMMEDIATE STOP\ntype: Standard: Optional:\neffect:"
+        },
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4058,
+          "chunk_end_char": 4073,
+          "doc_start_char": 9058,
+          "doc_end_char": 9073,
+          "snippet": "tion: the Fanuc 160i-TB CNC service manual for more information\nresponsible for\nAlarm No.: 1017\ntext: CABINET OVERHEATING\ntype: Standard: Optional:\neffect: Alarm with immediat"
+        },
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4435,
+          "chunk_end_char": 4450,
+          "doc_start_char": 9435,
+          "doc_end_char": 9450,
+          "snippet": "page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1\n=OK)\nresponsible for\nAlarm No.: 1018\ntext: LOW PRESSURE\ntype: Standard: Optional:\neffect: Alarm with immediate and c"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00049",
+      "axiom_type": "description",
+      "subject_id": "concept_00009",
+      "subject_label": "MechanicalComponent",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A mechanical component that provides rotational or translational motion, such as an axis or pivot point.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00009"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1737,
+          "chunk_end_char": 1741,
+          "doc_start_char": 56737,
+          "doc_end_char": 56741,
+          "snippet": "ONG TORQUE REDUCTION\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nThe torque reduction requested at the indicated axis"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00050",
+      "axiom_type": "description",
+      "subject_id": "concept_00010",
+      "subject_label": "Obstacle",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "An obstruction that blocks or hinders progress, often causing a machine axis to fail to reach its intended position. Obstacles can be physical or abstract and act as constraints on machine operation.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00010"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 3701,
+          "chunk_end_char": 3709,
+          "doc_start_char": 58701,
+          "doc_end_char": 58709,
+          "snippet": "o torque reduction, HAS NOT reached the position causing:\ngrammed because of an obstacle he found on his route.\nintervention: Check the machining and remove the obstacl"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00051",
+      "axiom_type": "description",
+      "subject_id": "concept_00011",
+      "subject_label": "FeedResource",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A material or substance supplied to a machine or animal to sustain operation or nutrition, commonly used as a manufacturing resource.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00011"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4233,
+          "chunk_end_char": 4237,
+          "doc_start_char": 59233,
+          "doc_end_char": 59237,
+          "snippet": "the program.\nresponsible for\nprogrammer\nmessage no: 3012\ntext: WRONG OR MISSING FEED\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00052",
+      "axiom_type": "description",
+      "subject_id": "concept_00012",
+      "subject_label": "GCodeCommandAction",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A G‑code command used in CNC machine control, typically referenced in feed alarms.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00012"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4329,
+          "chunk_end_char": 4343,
+          "doc_start_char": 59329,
+          "doc_end_char": 59343,
+          "snippet": "ard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nG84, G88, G188 have been programmed without parameter F which indicates:\nthan the feed, or it"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00053",
+      "axiom_type": "description",
+      "subject_id": "concept_00013",
+      "subject_label": "ProgramRewindEvent",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "An event where a machine program is reversed to a previous state, typically as part of a reset operation.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00013"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1047,
+          "chunk_end_char": 1065,
+          "doc_start_char": 1047,
+          "doc_end_char": 1065,
+          "snippet": "text: of the alarm which can be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not per"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00054",
+      "axiom_type": "description",
+      "subject_id": "concept_00014",
+      "subject_label": "ActiveEmergencyEvent",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "An alarm event indicating an active emergency condition in a manufacturing system.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00014"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1174,
+          "chunk_end_char": 1190,
+          "doc_start_char": 1174,
+          "doc_end_char": 1190,
+          "snippet": "rted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00055",
+      "axiom_type": "description",
+      "subject_id": "concept_00015",
+      "subject_label": "OpenSideGuardAlarmEvent",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "An alarm event indicating that the side guards of a machine or production line are open, creating a safety hazard for operators and potentially disrupting the production process.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00015"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4172,
+          "chunk_end_char": 4188,
+          "doc_start_char": 4172,
+          "doc_end_char": 4188,
+          "snippet": "e electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00056",
+      "axiom_type": "description",
+      "subject_id": "concept_00016",
+      "subject_label": "TriggeredEvent",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "An event representing the activation or initiation of a component, system, or personnel action, typically triggered by an alarm or control signal.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00016"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 914,
+          "chunk_end_char": 923,
+          "doc_start_char": 5914,
+          "doc_end_char": 5923,
+          "snippet": "the end of the cycle cause: A thermal switch for the auxiliary motors has been triggered, with low priority. intervention: Check and reset the circuit breakers and/or t"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00057",
+      "axiom_type": "description",
+      "subject_id": "concept_00017",
+      "subject_label": "NormalOperationEvent",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "The state in which a machine operates as intended, without alarms or faults, representing the desired operational condition.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00017"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4620,
+          "chunk_end_char": 4636,
+          "doc_start_char": 9620,
+          "doc_end_char": 9636,
+          "snippet": "shutdown\nThe pressure of the pneumatic installation is not sufficient to\ncause: normal operation of the machine, or the pressure switch\nline is not set correctly.\nCheck the lin"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00058",
+      "axiom_type": "description",
+      "subject_id": "concept_00018",
+      "subject_label": "PneumaticReleaseEvent",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "An event that releases pressure in a pneumatic system, typically used to disengage or reset a brake mechanism.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00018"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2313,
+          "chunk_end_char": 2330,
+          "doc_start_char": 17313,
+          "doc_end_char": 17330,
+          "snippet": "ect: Alarm with immediate and controlled shutdown\nInsufficient air pressure for pneumatic release of\ncause:\nthe X1 axis, the movement of which is prohibited.\nCheck line pressure"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00059",
+      "axiom_type": "description",
+      "subject_id": "concept_00019",
+      "subject_label": "PositioningState",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A machine state event representing the intended or target position of a component, such as a spindle, that the system aims to achieve during operation.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00019"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3849,
+          "chunk_end_char": 3861,
+          "doc_start_char": 18849,
+          "doc_end_char": 18861,
+          "snippet": "After programming the orientation, the main spindle did not\ncause:\nreaches the set position within the time limit of 1 second.\nCheck any mechanical resistance to the rotat"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00060",
+      "axiom_type": "description",
+      "subject_id": "concept_00020",
+      "subject_label": "OpenForcepsEvent",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "An alarm indicating that forceps are in an open state, typically triggered by a sensor detecting the open position.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00020"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4133,
+          "chunk_end_char": 4145,
+          "doc_start_char": 19133,
+          "doc_end_char": 19145,
+          "snippet": "sult the Fanuc 160i-TB maintenance manual\nresponsible for\nAlarm No.: 1040\ntext: OPEN FORCEPS\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00061",
+      "axiom_type": "description",
+      "subject_id": "concept_00021",
+      "subject_label": "CheckMechanicalResistanceEvent",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "An intervention event where a technician inspects, measures, or verifies the mechanical resistance of a component or system as part of routine maintenance or fault diagnosis.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00021"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 3897,
+          "chunk_end_char": 3928,
+          "doc_start_char": 18897,
+          "doc_end_char": 18928,
+          "snippet": "ndle did not\ncause:\nreaches the set position within the time limit of 1 second.\nCheck any mechanical resistance to the rotation of the\nintervention: spindle, note the error code on the actuat"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00062",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "hasCNCAlarm",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates a CNC machine (Feature of Interest) to the alarms and messages it generates, representing abnormal operating conditions, faults, or required actions.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 81,
+          "chunk_end_char": 111,
+          "doc_start_char": 81,
+          "doc_end_char": 111,
+          "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00063",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00001",
+      "subject_label": "generatesAlarmMessage",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates a PLC interface (resource) to the alarm messages or alerts it generates, indicating abnormal conditions or events within a manufacturing system.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00001"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 192,
+          "chunk_end_char": 234,
+          "doc_start_char": 192,
+          "doc_end_char": 234,
+          "snippet": "for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detect"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00064",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00002",
+      "subject_label": "issuedBy",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates an alarm, result, or sensor to the entity that issues or generates it.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00002"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 277,
+          "chunk_end_char": 286,
+          "doc_start_char": 277,
+          "doc_end_char": 286,
+          "snippet": "s and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper fun"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00065",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00003",
+      "subject_label": "detectedBy",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates an alarm or abnormal condition event to the monitoring system (e.g., PLC, sensor) that identifies or senses it.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00003"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 308,
+          "chunk_end_char": 320,
+          "doc_start_char": 308,
+          "doc_end_char": 320,
+          "snippet": "erface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper functioning of the machine and the\nma"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00066",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00004",
+      "subject_label": "triggersReset",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates an operator action, such as pressing a designated key, to the reset of a program or process.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00004"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00067",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00005",
+      "subject_label": "requiresNoPersistingCauses",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates a manufacturing process to the condition that it can be restarted only when the underlying causes of failure are no longer present.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00005"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1074,
+          "chunk_end_char": 1149,
+          "doc_start_char": 1074,
+          "doc_end_char": 1149,
+          "snippet": "an be recognized with the key\n“RESET PRG”: thus, the program is rewound and the program can be restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with i"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00068",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00006",
+      "subject_label": "punchButtonPress",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates a human-initiated punch button press to the alarm event it triggers.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00006"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1373,
+          "chunk_end_char": 1421,
+          "doc_start_char": 1373,
+          "doc_end_char": 1421,
+          "snippet": "fect: hardware operation to the axis/spindle feeder and CNC in\nemergency\ncause: Indicates that the punch button has been pressed\nRelease the button and press the start button on the\nintervention: machine.\nSee"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00069",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00007",
+      "subject_label": "referencesDiagram",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates an alarm or event to a specific page and input within an electrical diagram used for troubleshooting.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00007"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1498,
+          "chunk_end_char": 1546,
+          "doc_start_char": 1498,
+          "doc_end_char": 1546,
+          "snippet": "sed\nRelease the button and press the start button on the\nintervention: machine.\nSee page 5 of the electrical diagram, input X8.4\nresponsible for\noperator/maintenance officer\nAlarm No.: 1002\ntext: OFF-CIRCUIT"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00070",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00008",
+      "subject_label": "hasResponsibility",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates an alarm or emitted signal to the personnel responsible for handling it.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00008"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00071",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00009",
+      "subject_label": "references",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates a resource such as a document, diagram, or page to a feature of interest or specific reference point within that resource.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00009"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2355,
+          "chunk_end_char": 2404,
+          "doc_start_char": 2355,
+          "doc_end_char": 2404,
+          "snippet": "door is open.\nCheck that the door is in an acceptable condition.\nintervention:\nSee page 19 of the electrical diagram, input X3.3\nresponsible for\noperator/maintenance officer\n\nAlarm n°: 1001 text: EMERGENCY AC"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4450,
+          "chunk_end_char": 4498,
+          "doc_start_char": 4450,
+          "doc_end_char": 4498,
+          "snippet": "en.\nCheck that the side protections are closed, check for any possible rusting.\nSee page 7 of the electrical diagram, input X2.5\nresponsible for\noperator/maintenance officer\nAlarm No.: 1008\ntext: THERMOMAGNET"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4848,
+          "chunk_end_char": 4896,
+          "doc_start_char": 4848,
+          "doc_end_char": 4896,
+          "snippet": "Check and reset circuit breakers and/or thermomagnetic switches.\nintervention:\nSee page 7 of the electrical diagram, input X2.4\n(0 = ALARM, 1 = OK)\nresponsible for\n\nAlarm n°: 1004 text: SLIDING DOOR UNLOCKED"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00072",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00010",
+      "subject_label": "triggersShutdownAtCycleEnd",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates an alarm event to a shutdown event that is initiated at the conclusion of a production cycle.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00010"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4641,
+          "chunk_end_char": 4684,
+          "doc_start_char": 4641,
+          "doc_end_char": 4684,
+          "snippet": "ext: THERMOMAGNET SWITCHES. END OF CYCLE STOP\ntype: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle\nA thermal switch on the motors was triggered\ncause:\nauxiliaries, with low prior"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00073",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00011",
+      "subject_label": "immediateAndControlledShutdown",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates an alarm to a machine or system that triggers an immediate and controlled shutdown.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00011"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1228,
+          "chunk_end_char": 1261,
+          "doc_start_char": 1228,
+          "doc_end_char": 1261,
+          "snippet": "t.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening of the authorizationeffect: hardware operation to the axis/spindle fee"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00074",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00012",
+      "subject_label": "causes",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates a source event or entity (e.g., an alarm, sensor reading, or failure) to the resulting effect or disabling of machine components.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00012"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    }
+  ]
+}

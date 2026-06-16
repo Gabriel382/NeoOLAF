@@ -1,0 +1,306 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 10,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "CDS device",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00007",
+        "label": "user page"
+      },
+      "object": {
+        "id": "cand_e_00003",
+        "label": "programmer",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0012",
+      "justification": "The text states that the CDS device is configured in the user page and the programmer is responsible for the intervention, indicating a link between the CDS device and the programmer via the user page.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 3358,
+          "chunk_end_char": 3367,
+          "doc_start_char": 63358,
+          "doc_end_char": 63367,
+          "snippet": ", axis and bro-effect stop:\nches.\ncause: Function G304 was not activated in the user page,\nintervention: Activate the CDS device in the user page.\nresponsible for\nprogra"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_r_00013",
+        "label": "Function G304 was not activated in the user page.",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00013",
+        "label": "Function G304 was not activated in the user page."
+      },
+      "object": {
+        "id": "cand_s_00001",
+        "label": "CDS configuration error",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk text states that the CDS configuration error (event) is caused by the function G304 not being activated in the user page, which is the content of the relation candidate.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. respon"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00002",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "CDS configuration error",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00014",
+        "label": "The high pressure unit has not been configured correctly."
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "CDS device",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk indicates that the cause of the CDS configuration error is that the high pressure unit (the CDS device) has not been configured correctly.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. respon"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00003",
+      "subject": {
+        "id": "cand_s_00000",
+        "label": "poligonage",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00017",
+        "label": "Check the correct operation of the polishing reference microdetector"
+      },
+      "object": {
+        "id": "cand_r_00017",
+        "label": "Check the correct operation of the polishing reference microdetector",
+        "type": "relation"
+      },
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk text describes that during the poligonage process the alarm is triggered because the polishing reference microdetector was not found, and the intervention explicitly states to \"Check the correct operation of the polishing reference microdetector\". This indicates that the poligonage event requires or triggers that intervention.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 2340,
+          "chunk_end_char": 2408,
+          "doc_start_char": 62340,
+          "doc_end_char": 62408,
+          "snippet": "uccessfully for the reference microdetector for which it stopped. intervention: Check the correct operation of the polishing reference microdetector. PLC X5.4 input page 28 of the electrical diagram. responsible for the interven"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00004",
+      "subject": {
+        "id": "cand_e_00003",
+        "label": "programmer",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00018",
+        "label": "Check the machining, and review the program"
+      },
+      "object": {
+        "id": "cand_e_00002",
+        "label": "program",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk text states that the intervention \"Check the machining, and review the program\" is performed by the programmer and targets the program.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 249,
+          "chunk_end_char": 292,
+          "doc_start_char": 60249,
+          "doc_end_char": 60292,
+          "snippet": "esent any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. responsible for the intervention: programmer\n\nmessage n°: 3012 text: FEED WRON"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00005",
+      "subject": {
+        "id": "cand_e_00003",
+        "label": "programmer",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00019",
+        "label": "Check the program and modify the instruction"
+      },
+      "object": {
+        "id": "cand_e_00002",
+        "label": "program",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk explicitly states that the intervention \"Check the program and modify the instruction\" is performed by the programmer, implying a directed action from the programmer to the program.",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 629,
+          "chunk_end_char": 673,
+          "doc_start_char": 60629,
+          "doc_end_char": 60673,
+          "snippet": "indicates the feed, or it was indicated with an incorrect value. intervention: Check the program and modify the instruction. responsible for the intervention: programmer\n\nmessage no: 3013 - 3015\ntext: AX"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00006",
+      "subject": {
+        "id": "cand_e_00003",
+        "label": "programmer",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00020",
+        "label": "Delete this function from the program."
+      },
+      "object": {
+        "id": "cand_e_00002",
+        "label": "program",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk states that the intervention is to delete the function from the program, performed by the programmer.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 3107,
+          "chunk_end_char": 3145,
+          "doc_start_char": 63107,
+          "doc_end_char": 63145,
+          "snippet": "p:\nches.\ncause: Programming of function G10 L50 is not permitted.\nintervention: Delete this function from the program.\nresponsible for\nprogrammer\nmessage no: 3029\ntext: CDS OPTION NOT ACTIVATED\ntype"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00007",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "CDS device",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00022",
+        "label": "Activate the CDS device in the user page."
+      },
+      "object": {
+        "id": "cand_e_00002",
+        "label": "program",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk text (message 3029) states that the CDS device must be activated in the user page, which is part of the program. The relation candidate is the instruction to activate the CDS device in that page, linking the CDS device to the program.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 3383,
+          "chunk_end_char": 3424,
+          "doc_start_char": 63383,
+          "doc_end_char": 63424,
+          "snippet": "p:\nches.\ncause: Function G304 was not activated in the user page,\nintervention: Activate the CDS device in the user page.\nresponsible for\nprogrammer\n\nmessage n°: 3021 text: CORRECTOR T NOT ACTIVATED ty"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00008",
+      "subject": {
+        "id": "cand_e_00003",
+        "label": "programmer",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00025",
+        "label": "responsible for"
+      },
+      "object": {
+        "id": "cand_s_00000",
+        "label": "poligonage",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk contains the phrase \"responsible for the intervention: programmer\" immediately following the description of the poligonage event, indicating that the programmer is responsible for that intervention.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 294,
+          "chunk_end_char": 327,
+          "doc_start_char": 60294,
+          "doc_end_char": 60327,
+          "snippet": "abutment on the part intervention: Check the machining, and review the program. responsible for the intervention: programmer\n\nmessage n°: 3012 text: FEED WRONG OR ABSENT type: Standard: Optiona"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00009",
+      "subject": {
+        "id": "cand_s_00000",
+        "label": "poligonage",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00027",
+        "label": "handled by"
+      },
+      "object": {
+        "id": "cand_e_00003",
+        "label": "programmer",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk contains the phrase \"responsible for the intervention: programmer\" following the intervention description for poligonage, indicating that the programmer handles the poligonage event.",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 294,
+          "chunk_end_char": 338,
+          "doc_start_char": 60294,
+          "doc_end_char": 60338,
+          "snippet": "abutment on the part intervention: Check the machining, and review the program. responsible for the intervention: programmer\n\nmessage n°: 3012 text: FEED WRONG OR ABSENT type: Standard: Optional: effect:"
+        }
+      ]
+    }
+  ]
+}

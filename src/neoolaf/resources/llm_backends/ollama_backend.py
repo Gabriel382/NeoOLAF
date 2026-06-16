@@ -22,13 +22,80 @@ class OllamaBackend:
         payload = {
             "model": model,
             "messages": messages,
-            "stream": False,
-            "options": {"temperature": temperature},
+            "stream": True,
+            "think": "low",
+            "keep_alive": "10m",
+            "options": {
+                "temperature": temperature,
+                "num_predict": 2048,
+            },
         }
-        response = requests.post(url, json=payload, timeout=self.timeout)
-        response.raise_for_status()
-        data = response.json()
-        return data["message"]["content"]
+
+        #print(f"[Ollama] URL: {url}")
+        #print(f"[Ollama] Model: {model}")
+        #print(f"[Ollama] Payload: {payload}")
+        #print(f"[Ollama] Number of messages: {len(messages)}")
+
+        for i, message in enumerate(messages):
+            role = message.get("role", "unknown")
+            content = message.get("content", "")
+            #print(f"[Ollama] Message {i} role={role} length={len(content)}")
+            #print(content[:1000])
+            #print("-" * 80)
+
+        try:
+            response = requests.post(
+                url,
+                json=payload,
+                timeout=self.timeout,
+                stream=True,
+            )
+            response.raise_for_status()
+        except requests.exceptions.RequestException as e:
+            raise RuntimeError(f"Ollama request failed before streaming: {e}") from e
+
+        final_content_parts = []
+        thinking_preview_parts = []
+        last_done_reason = None
+
+        try:
+            for line in response.iter_lines(decode_unicode=True):
+                if not line:
+                    continue
+
+                data = json.loads(line)
+
+                message = data.get("message", {}) or {}
+                chunk_content = message.get("content", "")
+                chunk_thinking = message.get("thinking", "")
+
+                if chunk_thinking and len("".join(thinking_preview_parts)) < 1200:
+                    thinking_preview_parts.append(chunk_thinking)
+
+                if chunk_content:
+                    final_content_parts.append(chunk_content)
+
+                if data.get("done"):
+                    last_done_reason = data.get("done_reason")
+                    break
+
+        except Exception as e:
+            raise RuntimeError(f"Ollama streaming parse failed: {e}") from e
+
+        final_content = "".join(final_content_parts).strip()
+
+        #print(f"[Ollama] Done reason: {last_done_reason}")
+        #print(f"[Ollama] Final content length: {len(final_content)}")
+
+        if not final_content:
+            thinking_preview = "".join(thinking_preview_parts)[:1200]
+            raise RuntimeError(
+                "Ollama returned no final content. "
+                f"done_reason={last_done_reason}. "
+                f"Thinking preview: {thinking_preview}"
+            )
+
+        return final_content
 
     @staticmethod
     def extract_json(text: str) -> Any:

@@ -1,0 +1,134 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 8,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "alarms and messages",
+      "label": "concept",
+      "justification": "Recurring concept in industrial maintenance documentation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 40,
+          "chunk_end_char": 59,
+          "doc_start_char": 40,
+          "doc_end_char": 59,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-en Page 8-4 8 Alarms and messages 8.1 Introduction Alarms and messages are divided into two main categories: 1 al"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "emitted by",
+      "label": "relation-bearing expression",
+      "justification": "Links alarms to their source (e.g., PLC).",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 335,
+          "chunk_end_char": 345,
+          "doc_start_char": 335,
+          "doc_end_char": 345,
+          "snippet": "s and messages from the PLC interface, described below. The messages and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper f"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "compromise the proper functioning",
+      "label": "failure symptom",
+      "justification": "Describes a negative impact on machine operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 402,
+          "chunk_end_char": 435,
+          "doc_start_char": 402,
+          "doc_end_char": 435,
+          "snippet": "s and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper functioning of the machine and the machining cycle. Depending on the effect they produce, t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "alarms with immediate and controlled stop",
+      "label": "alarm type",
+      "justification": "Specific category of alarms with defined behavior.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 542,
+          "chunk_end_char": 583,
+          "doc_start_char": 542,
+          "doc_end_char": 583,
+          "snippet": "hining cycle. Depending on the effect they produce, they are classified into: • alarms with immediate and controlled stop: the machine is stopped and the axes and spindles blocked at maximum torque in"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "stop at the end of the cycle",
+      "label": "alarm effect",
+      "justification": "Describes the consequence of a specific alarm type.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 707,
+          "chunk_end_char": 735,
+          "doc_start_char": 707,
+          "doc_end_char": 735,
+          "snippet": "indles blocked at maximum torque in controlled mode; • alarms and messages with stop at the end of the cycle: the machine is stopped when function M01 is launched; • read-only messages: th"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "read-only messages",
+      "label": "message type",
+      "justification": "Distinct category of messages with informational purpose.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 793,
+          "chunk_end_char": 811,
+          "doc_start_char": 793,
+          "doc_end_char": 811,
+          "snippet": "t the end of the cycle: the machine is stopped when function M01 is launched; • read-only messages: these are used to draw the operator's attention to a particular circumstance w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "causes",
+      "label": "relation-bearing expression",
+      "justification": "Indicates a causal relationship between events or states.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1193,
+          "chunk_end_char": 1199,
+          "doc_start_char": 1193,
+          "doc_end_char": 1199,
+          "snippet": "ogram is rewound and you can restart the program from the beginning only if the causes do not persist. SPRINT32linear-FA-MP-v0.1-fr Page 8-5 8.2 List of alarms and de"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "persist",
+      "label": "state",
+      "justification": "Describes a continuing condition.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1207,
+          "chunk_end_char": 1214,
+          "doc_start_char": 1207,
+          "doc_end_char": 1214,
+          "snippet": "nd and you can restart the program from the beginning only if the causes do not persist. SPRINT32linear-FA-MP-v0.1-fr Page 8-5 8.2 List of alarms and description SPRIN"
+        }
+      ]
+    }
+  ]
+}

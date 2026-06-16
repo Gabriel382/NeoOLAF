@@ -1,0 +1,886 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 55,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "Alarm number: 1068",
+      "label": "alarm number",
+      "justification": "identifies a specific alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 153,
+          "chunk_end_char": 171,
+          "doc_start_char": 35153,
+          "doc_end_char": 35171,
+          "snippet": "he\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with imm"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "POINT 4: CONTROL FAILURE",
+      "label": "alarm type",
+      "justification": "describes the type of alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 178,
+          "chunk_end_char": 202,
+          "doc_start_char": 35178,
+          "doc_end_char": 35202,
+          "snippet": "responsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "Alarm with immediate and controlled shutdown",
+      "label": "alarm effect",
+      "justification": "describes the effect of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 237,
+          "chunk_end_char": 281,
+          "doc_start_char": 35237,
+          "doc_end_char": 35281,
+          "snippet": "m number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, th"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "Tool control device no. 4 does not work",
+      "label": "failure symptom",
+      "justification": "failure symptom of a machine component.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 289,
+          "chunk_end_char": 328,
+          "doc_start_char": 35289,
+          "doc_end_char": 35328,
+          "snippet": "Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention documen"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "Check the core of the probe, the connections, consult the intervention document",
+      "label": "intervention",
+      "justification": "action to resolve the failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 330,
+          "chunk_end_char": 409,
+          "doc_start_char": 35330,
+          "doc_end_char": 35409,
+          "snippet": "mediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention document:\ntation of the device for details of the anomaly.\nresponsible for\noperator/main"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "responsible for operator/maintenance officer",
+      "label": "responsible party",
+      "justification": "identifies the actor responsible for the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "Alarm number: 1070",
+      "label": "alarm number",
+      "justification": "identifies a specific alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 505,
+          "chunk_end_char": 523,
+          "doc_start_char": 35505,
+          "doc_end_char": 35523,
+          "snippet": "device for details of the anomaly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1070\ntext: CDS: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediat"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "CDS: IMMEDIATE STOP",
+      "label": "alarm type",
+      "justification": "describes the type of alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 530,
+          "chunk_end_char": 549,
+          "doc_start_char": 35530,
+          "doc_end_char": 35549,
+          "snippet": "anomaly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1070\ntext: CDS: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "The outdoor sprinkler system (CDS) has had a problem that is preventing",
+      "label": "cause",
+      "justification": "cause of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 629,
+          "chunk_end_char": 700,
+          "doc_start_char": 35629,
+          "doc_end_char": 35700,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe outdoor sprinkler system (CDS) has had a problem that is preventing:\nche to continue the operation.\nCheck the anomaly on the CDS operator panel and"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "Check the anomaly on the CDS operator panel and consult the intervention: documentation",
+      "label": "intervention",
+      "justification": "action to resolve the failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "If there is no signage, check the connections with the tower.",
+      "label": "intervention",
+      "justification": "action to resolve the failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 822,
+          "chunk_end_char": 883,
+          "doc_start_char": 35822,
+          "doc_end_char": 35883,
+          "snippet": "anomaly on the CDS operator panel and consult the\nintervention: documentation. If there is no signage, check the connections with the tower.\nresponsible for\n\nAlarm n°: 1067 text: TIP 4: BREAKAGE type: Standard: Optional:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "Alarm n°: 1067",
+      "label": "alarm number",
+      "justification": "identifies a specific alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 901,
+          "chunk_end_char": 915,
+          "doc_start_char": 35901,
+          "doc_end_char": 35915,
+          "snippet": "If there is no signage, check the connections with the tower.\nresponsible for\n\nAlarm n°: 1067 text: TIP 4: BREAKAGE type: Standard: Optional: effect: Alarm with immediate an"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "TIP 4: BREAKAGE",
+      "label": "alarm type",
+      "justification": "describes the type of alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 922,
+          "chunk_end_char": 937,
+          "doc_start_char": 35922,
+          "doc_end_char": 35937,
+          "snippet": "ge, check the connections with the tower.\nresponsible for\n\nAlarm n°: 1067 text: TIP 4: BREAKAGE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "Tool control device no. 4 has detected tip breakage",
+      "label": "cause",
+      "justification": "cause of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 1024,
+          "chunk_end_char": 1075,
+          "doc_start_char": 36024,
+          "doc_end_char": 36075,
+          "snippet": "Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibrati"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "Replace the tool. If the tool is not broken, check the calibration of the device.",
+      "label": "intervention",
+      "justification": "action to resolve the failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 1091,
+          "chunk_end_char": 1172,
+          "doc_start_char": 36091,
+          "doc_end_char": 36172,
+          "snippet": "tdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibration of the device. in charge of the intervention: toolmaker-adjuster/in charge of maintenance\n\nAla"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "toolmaker-adjuster/in charge of maintenance",
+      "label": "responsible party",
+      "justification": "identifies the actor responsible for the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 1204,
+          "chunk_end_char": 1247,
+          "doc_start_char": 36204,
+          "doc_end_char": 36247,
+          "snippet": "not broken, check the calibration of the device. in charge of the intervention: toolmaker-adjuster/in charge of maintenance\n\nAlarm no.: 1068 text: POINT 4: CONTROL ANOMALY type: Standard: Optional: effec"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "POINT 4: CONTROL ANOMALY",
+      "label": "alarm type",
+      "justification": "describes the type of alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 1271,
+          "chunk_end_char": 1295,
+          "doc_start_char": 36271,
+          "doc_end_char": 36295,
+          "snippet": "ntervention: toolmaker-adjuster/in charge of maintenance\n\nAlarm no.: 1068 text: POINT 4: CONTROL ANOMALY type: Standard: Optional: effect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "Check the probe core, the connections, consult the device documentation for details of the anomaly.",
+      "label": "intervention",
+      "justification": "action to resolve the failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 1437,
+          "chunk_end_char": 1536,
+          "doc_start_char": 36437,
+          "doc_end_char": 36536,
+          "snippet": "ntrolled shutdown cause: Tool control device no. 4 does not work, intervention: Check the probe core, the connections, consult the device documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm no.: 1070 text: CDS:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "intervention manager: operator/maintenance manager",
+      "label": "responsible party",
+      "justification": "identifies the actor responsible for the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 1537,
+          "chunk_end_char": 1587,
+          "doc_start_char": 36537,
+          "doc_end_char": 36587,
+          "snippet": ", the connections, consult the device documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm no.: 1070 text: CDS: IMMEDIATE STOP type: Standard: Optional: effect: Al"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "CDS: STOP AT END OF CYCLE",
+      "label": "alarm type",
+      "justification": "describes the type of alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2048,
+          "chunk_end_char": 2073,
+          "doc_start_char": 37048,
+          "doc_end_char": 37073,
+          "snippet": "onsible for intervention: responsible for maintenance\n\nAlarm number: 1071\ntext: CDS: STOP AT END OF CYCLE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "does not require immediate intervention.",
+      "label": "state",
+      "justification": "indicates no immediate action is needed.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2222,
+          "chunk_end_char": 2262,
+          "doc_start_char": 37222,
+          "doc_end_char": 37262,
+          "snippet": "d shutdown\nThe outdoor sprinkler system (CDS) had a problem that did not\ncause:\ndoes not require immediate intervention.\nCheck the anomaly in the CDS operation panel and consult\nintervention: document"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "CDS: WAITING FOR EXCESSIVE FEED",
+      "label": "alarm type",
+      "justification": "describes the type of alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2452,
+          "chunk_end_char": 2483,
+          "doc_start_char": 37452,
+          "doc_end_char": 37483,
+          "snippet": "check the connections with the tower.\nresponsible for\nAlarm number: 1072\ntext: CDS: WAITING FOR EXCESSIVE FEED\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "The outdoor sprinkler system (CDS) delayed more than a minute",
+      "label": "cause",
+      "justification": "cause of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2563,
+          "chunk_end_char": 2624,
+          "doc_start_char": 37563,
+          "doc_end_char": 37624,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe outdoor sprinkler system (CDS) delayed more than a minute\ncause: in the validation of the authorization of the advance of the axes; in th"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "in the validation of the authorization of the advance of the axes; in this situation the work cycle must be stopped.",
+      "label": "cause",
+      "justification": "cause leading to shutdown.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "SISTER TOOL: STOP AT END OF CYCLE",
+      "label": "alarm type",
+      "justification": "describes the type of alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2876,
+          "chunk_end_char": 2909,
+          "doc_start_char": 37876,
+          "doc_end_char": 37909,
+          "snippet": "consult the\nintervention:\ndocumentation.\nresponsible for\nAlarm No.: 1078\ntext: SISTER TOOL: STOP AT END OF CYCLE\ntype: Standard: Optional:\nAt the end of the cycle (M01), stops the automatic ex"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "At the end of the cycle (M01), stops the automatic execution of the program.",
+      "label": "effect",
+      "justification": "effect of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 4281,
+          "chunk_end_char": 4357,
+          "doc_start_char": 39281,
+          "doc_end_char": 39357,
+          "snippet": "1078 text: SISTER TOOL: STOP AT END OF CYCLE type: Standard: Optional: effect: At the end of the cycle (M01), stops the automatic execution of the program. cause: The paired tool management program has found that the set number of part"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "The paired tool management program found that the name causes number of spare parts for one or more tools is completed.",
+      "label": "cause",
+      "justification": "cause of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "Check the page dedicated to SISTER TOOL for the expired tool, replace the wafer and reload the defined number of pieces.",
+      "label": "intervention",
+      "justification": "action to resolve the failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "LOAD MONITOR: FEED DIFFERENT FROM 100%",
+      "label": "alarm type",
+      "justification": "describes the type of alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 4677,
+          "chunk_end_char": 4715,
+          "doc_start_char": 39677,
+          "doc_end_char": 39715,
+          "snippet": "of parts. responsible for the intervention: operator\n\nAlarm number: 1079\ntext: LOAD MONITOR: FEED DIFFERENT FROM 100%\ntype: Standard: Optional:\neffect: Alarms or messages with shutdown at the end o"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "Alarms or messages with shutdown at the end of the cycle.",
+      "label": "effect",
+      "justification": "effect of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 4750,
+          "chunk_end_char": 4807,
+          "doc_start_char": 39750,
+          "doc_end_char": 39807,
+          "snippet": "text: LOAD MONITOR: FEED DIFFERENT FROM 100%\ntype: Standard: Optional:\neffect: Alarms or messages with shutdown at the end of the cycle.\nThe Load Monitor tool monitoring system has detected that the\nfeedrate trimmer"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00030",
+      "text": "The Load Monitor tool monitoring system has detected that the feedrate trimmer is set to a different percentage",
+      "label": "cause",
+      "justification": "cause of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00031",
+      "text": "immediate and controlled shutdown",
+      "label": "relation-bearing expression",
+      "justification": "links effect to alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 248,
+          "chunk_end_char": 281,
+          "doc_start_char": 35248,
+          "doc_end_char": 35281,
+          "snippet": "068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, th"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00032",
+      "text": "immediate stop",
+      "label": "relation-bearing expression",
+      "justification": "links effect to alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 535,
+          "chunk_end_char": 549,
+          "doc_start_char": 35535,
+          "doc_end_char": 35549,
+          "snippet": "aly.\nresponsible for\noperator/maintenance officer\nAlarm number: 1070\ntext: CDS: IMMEDIATE STOP\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00033",
+      "text": "immediate and controlled stop",
+      "label": "relation-bearing expression",
+      "justification": "links effect to alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 3842,
+          "chunk_end_char": 3871,
+          "doc_start_char": 38842,
+          "doc_end_char": 38871,
+          "snippet": "t: CDS: WAITING FOR EXCESSIVE FEED type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The external watering system (CDS) delayed more than one minute in valid"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00034",
+      "text": "stop at end of cycle",
+      "label": "relation-bearing expression",
+      "justification": "links effect to alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2053,
+          "chunk_end_char": 2073,
+          "doc_start_char": 37053,
+          "doc_end_char": 37073,
+          "snippet": "le for intervention: responsible for maintenance\n\nAlarm number: 1071\ntext: CDS: STOP AT END OF CYCLE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00035",
+      "text": "check the anomaly",
+      "label": "relation-bearing expression",
+      "justification": "indicates action to resolve failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 733,
+          "chunk_end_char": 750,
+          "doc_start_char": 35733,
+          "doc_end_char": 35750,
+          "snippet": "stem (CDS) has had a problem that is preventing:\nche to continue the operation.\nCheck the anomaly on the CDS operator panel and consult the\nintervention: documentation. If there"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00036",
+      "text": "consult the documentation",
+      "label": "relation-bearing expression",
+      "justification": "indicates action to resolve failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 1878,
+          "chunk_end_char": 1903,
+          "doc_start_char": 36878,
+          "doc_end_char": 36903,
+          "snippet": "from continuing. intervention: Check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the lathe. responsible for int"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00037",
+      "text": "check the connections",
+      "label": "relation-bearing expression",
+      "justification": "indicates action to resolve failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 846,
+          "chunk_end_char": 867,
+          "doc_start_char": 35846,
+          "doc_end_char": 35867,
+          "snippet": "ator panel and consult the\nintervention: documentation. If there is no signage, check the connections with the tower.\nresponsible for\n\nAlarm n°: 1067 text: TIP 4: BREAKAGE type: Sta"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00038",
+      "text": "replace the tool",
+      "label": "relation-bearing expression",
+      "justification": "indicates action to resolve failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2,
+          "chunk_end_char": 18,
+          "doc_start_char": 35002,
+          "doc_end_char": 35018,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice."
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00039",
+      "text": "replace the wafer",
+      "label": "relation-bearing expression",
+      "justification": "indicates action to resolve failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00040",
+      "text": "reload the defined number of pieces",
+      "label": "relation-bearing expression",
+      "justification": "indicates action to resolve failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 3240,
+          "chunk_end_char": 3275,
+          "doc_start_char": 38240,
+          "doc_end_char": 38275,
+          "snippet": "icated to SISTER TOOL for the expired tool, replace\nintervention:\nthe wafer and reload the defined number of pieces.\nresponsible for\noperator\n\nAlarm no.: 1071 text: CDS: STOP AT END OF CYCLE type"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00041",
+      "text": "does not require immediate intervention",
+      "label": "relation-bearing expression",
+      "justification": "indicates state.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2222,
+          "chunk_end_char": 2261,
+          "doc_start_char": 37222,
+          "doc_end_char": 37261,
+          "snippet": "d shutdown\nThe outdoor sprinkler system (CDS) had a problem that did not\ncause:\ndoes not require immediate intervention.\nCheck the anomaly in the CDS operation panel and consult\nintervention: documen"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00042",
+      "text": "has had a problem",
+      "label": "relation-bearing expression",
+      "justification": "indicates cause.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 664,
+          "chunk_end_char": 681,
+          "doc_start_char": 35664,
+          "doc_end_char": 35681,
+          "snippet": "Alarm with immediate and controlled shutdown\nThe outdoor sprinkler system (CDS) has had a problem that is preventing:\nche to continue the operation.\nCheck the anomaly on the CDS"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00043",
+      "text": "has detected tip breakage",
+      "label": "relation-bearing expression",
+      "justification": "indicates detection.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 1050,
+          "chunk_end_char": 1075,
+          "doc_start_char": 36050,
+          "doc_end_char": 36075,
+          "snippet": ": Alarm with immediate and controlled shutdown cause: Tool control device no. 4 has detected tip breakage. intervention: Replace the tool. If the tool is not broken, check the calibrati"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00044",
+      "text": "has detected that the feedrate trimmer is set to a different percentage",
+      "label": "relation-bearing expression",
+      "justification": "indicates detection.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00045",
+      "text": "delayed more than a minute",
+      "label": "relation-bearing expression",
+      "justification": "indicates cause.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2598,
+          "chunk_end_char": 2624,
+          "doc_start_char": 37598,
+          "doc_end_char": 37624,
+          "snippet": "Alarm with immediate and controlled shutdown\nThe outdoor sprinkler system (CDS) delayed more than a minute\ncause: in the validation of the authorization of the advance of the axes; in th"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00046",
+      "text": "preventing",
+      "label": "relation-bearing expression",
+      "justification": "indicates effect.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 690,
+          "chunk_end_char": 700,
+          "doc_start_char": 35690,
+          "doc_end_char": 35700,
+          "snippet": "ontrolled shutdown\nThe outdoor sprinkler system (CDS) has had a problem that is preventing:\nche to continue the operation.\nCheck the anomaly on the CDS operator panel and"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00047",
+      "text": "causes",
+      "label": "relation-bearing expression",
+      "justification": "indicates causality.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 3076,
+          "chunk_end_char": 3082,
+          "doc_start_char": 38076,
+          "doc_end_char": 38082,
+          "snippet": "of the proeffect:\ngram.\nThe paired tool management program found that the name causes:\nnumber of spare parts for one or more tools is completed.\nCheck the page dedic"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00048",
+      "text": "effect",
+      "label": "relation-bearing expression",
+      "justification": "indicates outcome.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 229,
+          "chunk_end_char": 235,
+          "doc_start_char": 35229,
+          "doc_end_char": 35235,
+          "snippet": "cer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00049",
+      "text": "intervention",
+      "label": "relation-bearing expression",
+      "justification": "indicates action.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 76,
+          "chunk_end_char": 88,
+          "doc_start_char": 35076,
+          "doc_end_char": 35088,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00050",
+      "text": "responsible for",
+      "label": "relation-bearing expression",
+      "justification": "indicates responsibility.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 98,
+          "chunk_end_char": 113,
+          "doc_start_char": 35098,
+          "doc_end_char": 35113,
+          "snippet": ". If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTRO"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00051",
+      "text": "Alarm number: 1071",
+      "label": "alarm number",
+      "justification": "identifies a specific alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2023,
+          "chunk_end_char": 2041,
+          "doc_start_char": 37023,
+          "doc_end_char": 37041,
+          "snippet": "ions with the lathe. responsible for intervention: responsible for maintenance\n\nAlarm number: 1071\ntext: CDS: STOP AT END OF CYCLE\ntype: Standard: Optional:\neffect: Alarm with im"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00052",
+      "text": "Alarm number: 1072",
+      "label": "alarm number",
+      "justification": "identifies a specific alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 2427,
+          "chunk_end_char": 2445,
+          "doc_start_char": 37427,
+          "doc_end_char": 37445,
+          "snippet": ". If there is no signage, check the connections with the tower.\nresponsible for\nAlarm number: 1072\ntext: CDS: WAITING FOR EXCESSIVE FEED\ntype: Standard: Optional:\neffect: Alarm w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00053",
+      "text": "Alarm number: 1078",
+      "label": "alarm number",
+      "justification": "identifies a specific alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ".\nReplace the tool. If the tool is not broken, check the calibration of the\nintervention:\ndevice.\nresponsible for\ntoolmaker-adjuster/maintenance officer\nAlarm number: 1068\ntext: POINT 4: CONTROL FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool contro"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00054",
+      "text": "Alarm number: 1079",
+      "label": "alarm number",
+      "justification": "identifies a specific alarm instance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 4652,
+          "chunk_end_char": 4670,
+          "doc_start_char": 39652,
+          "doc_end_char": 39670,
+          "snippet": "reload the defined number of parts. responsible for the intervention: operator\n\nAlarm number: 1079\ntext: LOAD MONITOR: FEED DIFFERENT FROM 100%\ntype: Standard: Optional:\neffect:"
+        }
+      ]
+    }
+  ]
+}

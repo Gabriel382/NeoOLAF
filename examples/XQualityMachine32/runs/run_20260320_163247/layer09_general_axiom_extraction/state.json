@@ -1,0 +1,277 @@
+{
+  "layer": "layer09_general_axiom_extraction",
+  "num_general_axiom_candidates": 9,
+  "general_axiom_candidates": [
+    {
+      "axiom_id": "axiom_00000",
+      "axiom_type": "relation domain",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "emittedBy",
+      "predicate": "domain",
+      "object_id": "domain_hint::AlarmEvent",
+      "object_label": "AlarmEvent",
+      "literal_value": null,
+      "justification": "The relation emittedBy directly connects AlarmEvents to Devices based on the provided context.",
+      "confidence": 0.93,
+      "source_schema_ids": [
+        "schema_00000"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00001",
+      "axiom_type": "relation range",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "emittedBy",
+      "predicate": "range",
+      "object_id": "range_hint::Device",
+      "object_label": "Device",
+      "literal_value": null,
+      "justification": "The relation emittedBy directly connects AlarmEvents to Devices based on the provided context.",
+      "confidence": 0.93,
+      "source_schema_ids": [
+        "schema_00001"
+      ],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00002",
+      "axiom_type": "description",
+      "subject_id": "concept_00000",
+      "subject_label": "CNC",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A computer-controlled system for automating the machining process.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00000"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 183,
+          "chunk_end_char": 186,
+          "doc_start_char": 183,
+          "doc_end_char": 186,
+          "snippet": "s sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ..."
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00003",
+      "axiom_type": "description",
+      "subject_id": "concept_00001",
+      "subject_label": "PLC",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A programmable logic controller used to control machinery and processes.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00001"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 313,
+          "chunk_end_char": 316,
+          "doc_start_char": 313,
+          "doc_end_char": 316,
+          "snippet": "tretien de la CNC Fanuc série ........ 2 les alarmes et messages de l’interface PLC, décrits ci-après. Les messages et les alarmes émises par la PLC indiquent la d"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00004",
+      "axiom_type": "description",
+      "subject_id": "concept_00002",
+      "subject_label": "Cycle",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A recurring sequence of events or phenomena.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00002"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 483,
+          "chunk_end_char": 488,
+          "doc_start_char": 483,
+          "doc_end_char": 488,
+          "snippet": "n d’un problème qui peut compromettre le bon fonctionnement de la machine et du cycle d’usinage. En fonction de l’effet qu’ils produisent, ils sont classés dans : •"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00005",
+      "axiom_type": "description",
+      "subject_id": "concept_00003",
+      "subject_label": "Axes",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Movable parts of a machine.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00003"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 644,
+          "chunk_end_char": 648,
+          "doc_start_char": 644,
+          "doc_end_char": 648,
+          "snippet": ": • les alarmes avec arrêt immédiat et contrôlé : la machine est arrêtée et les axes et broches bloqués au couple maximum en mode contrôlé ; • les alarmes et messag"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00006",
+      "axiom_type": "description",
+      "subject_id": "concept_00004",
+      "subject_label": "Reset",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "An action that returns a machine or system to its default state.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00004"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1156,
+          "chunk_end_char": 1165,
+          "doc_start_char": 1156,
+          "doc_end_char": 1165,
+          "snippet": "ut voir le numéro et le texte : de l’alarme que l’on reconnaît avec la touche « RESET PRG »: ainsi, le programme est rembobiné et l’on pourra faire repar- tir le program"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00007",
+      "axiom_type": "description",
+      "subject_id": "concept_00005",
+      "subject_label": "UrgencyActive",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "A type of alarm indicating an urgent situation requiring immediate attention.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [
+        "concept_00005"
+      ],
+      "source_relation_ids": [],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 196,
+          "chunk_end_char": 210,
+          "doc_start_char": 1496,
+          "doc_end_char": 1510,
+          "snippet": ".1 Alarme n°1001 8.2.2 Alarme n°1002 8.2.3 Alarme n°1003 Alarme n°: 1001 texte: URGENCE ACTIVE type: Standard: Optionnel: effet: Alarme avec arrêt immédiate et contrôlée, ouv"
+        }
+      ]
+    },
+    {
+      "axiom_id": "axiom_00008",
+      "axiom_type": "description",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "emittedBy",
+      "predicate": "rdfs:description",
+      "object_id": null,
+      "object_label": null,
+      "literal_value": "Relates an alarm or emitted signal to the system or device that emits it.",
+      "justification": "Interpretability rule: all ontology entities, concepts, and relations receive rdfs:description.",
+      "confidence": 1.0,
+      "source_schema_ids": [],
+      "source_concept_ids": [],
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de"
+        }
+      ]
+    }
+  ]
+}

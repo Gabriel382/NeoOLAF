@@ -1,0 +1,123 @@
+{
+  "layer": "layer10_validation_reasoning",
+  "validation_report": {
+    "is_valid": true,
+    "issues": []
+  },
+  "reasoning_report": {
+    "notes": [
+      "Inferred graph initialized from validated candidate triples.",
+      "Inferred axiom schemata copied from extracted reusable schemata.",
+      "Inferred general axioms copied from candidate general axioms."
+    ],
+    "inferred_triples": [
+      {
+        "triple_id": "triple_00000",
+        "subject_id": "cand_r_00000",
+        "subject_label": "Edward P. \" Ned \" Mc Evoy",
+        "subject_type": "relation",
+        "predicate_id": "cand_r_00000",
+        "predicate_label": "Edward P. \" Ned \" Mc Evoy",
+        "object_id": "cand_e_00000",
+        "object_label": "Thomas Davis club",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The chunk states that Mc Evoy won a championship medal with the Thomas Davis club.",
+        "confidence": 0.95
+      },
+      {
+        "triple_id": "triple_00001",
+        "subject_id": "cand_e_00001",
+        "subject_label": "entity",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00003",
+        "predicate_label": "Born in Abbeyleix , County Laois",
+        "object_id": "cand_e_00003",
+        "object_label": "County Laois",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The chunk states that Edward P. \"Ned\" Mc Evoy was born in Abbeyleix, County Laois, linking the person (represented by the generic entity candidate) to the location County Laois.",
+        "confidence": 0.92
+      }
+    ],
+    "inferred_axiom_schemata": [
+      {
+        "schema_id": "schema_00000",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "dual player",
+        "predicate": "domain",
+        "object_id": "domain_hint::athlete",
+        "object_label": "athlete",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00001",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "dual player",
+        "predicate": "range",
+        "object_id": "range_hint::sport",
+        "object_label": "sport",
+        "confidence": 0.95
+      }
+    ],
+    "inferred_general_axioms": [
+      {
+        "axiom_id": "axiom_00000",
+        "axiom_type": "relation_domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "dual player",
+        "predicate": "domain",
+        "object_id": "domain_hint::athlete",
+        "object_label": "athlete",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00001",
+        "axiom_type": "relation_range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "dual player",
+        "predicate": "range",
+        "object_id": "range_hint::sport",
+        "object_label": "sport",
+        "literal_value": null,
+        "confidence": 0.92
+      },
+      {
+        "axiom_id": "axiom_00002",
+        "axiom_type": "description",
+        "subject_id": "concept_00000",
+        "subject_label": "town",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "A human settlement larger than a village but smaller than a city, typically featuring centralized services, infrastructure, and municipal governance.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00003",
+        "axiom_type": "description",
+        "subject_id": "concept_00001",
+        "subject_label": "WonMedalEvent",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "An event in which an individual or group receives a medal for a specific achievement, typically in a competitive or ceremonial context.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00004",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "dual player",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Relates a sportsperson to the sports they compete in, indicating that the individual plays multiple sports.",
+        "confidence": 1.0
+      }
+    ]
+  }
+}

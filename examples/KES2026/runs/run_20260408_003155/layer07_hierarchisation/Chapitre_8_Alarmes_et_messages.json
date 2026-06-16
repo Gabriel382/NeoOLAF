@@ -1,0 +1,798 @@
+{
+  "layer": "layer07_hierarchisation",
+  "num_concept_hierarchy_links": 10,
+  "num_relation_hierarchy_links": 29,
+  "concept_hierarchy_links": [
+    {
+      "link_id": "concept_h_00000",
+      "child_concept_id": "concept_00002",
+      "child_label": "Component",
+      "parent_concept_id": "concept_00003",
+      "parent_label": "FlowControlDevice",
+      "justification": "The description of Component indicates it is a generic part that directly influences fluid flow (e.g., valves, pumps, actuators). Such parts are precisely what a FlowControlDevice is defined to be: a device that imposes constraints on fluid movement to regulate flow rates or pressures. Therefore, Component is a more specific instance of FlowControlDevice, making the subclass relation valid.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 4468,
+          "chunk_end_char": 4483,
+          "doc_start_char": 24468,
+          "doc_end_char": 24483,
+          "snippet": "presence of coolant fluid, the hydraulic connections, the coolant fluid passage solenoid valves, the\nintervention: pump M1671; if no problem is detected, check the input\nX4.1"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00001",
+      "child_concept_id": "concept_00003",
+      "child_label": "FlowControlDevice",
+      "parent_concept_id": "concept_00002",
+      "parent_label": "Component",
+      "justification": "A FlowControlDevice is a specific type of device that imposes constraints on fluid or material flow, which is a more specific instance of a generic Component that controls or influences fluid flow within a manufacturing system.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 3771,
+          "chunk_end_char": 3790,
+          "doc_start_char": 23771,
+          "doc_end_char": 23790,
+          "snippet": "e: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe flow control device does not signal the presence of\ncause: coolant liquid, consequence of programmi"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00002",
+      "child_concept_id": "concept_00010",
+      "child_label": "ActiveEmergencyEvent",
+      "parent_concept_id": "concept_00009",
+      "parent_label": "AlarmEvent",
+      "justification": "An ActiveEmergencyEvent represents a specific type of alarm that indicates an ongoing emergency condition requiring immediate intervention, whereas an AlarmEvent is a broader class that signals any potential failure or abnormal condition. Therefore, ActiveEmergencyEvent is a more specific subclass of AlarmEvent.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1168,
+          "chunk_end_char": 1190,
+          "doc_start_char": 1168,
+          "doc_end_char": 1190,
+          "snippet": "restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00003",
+      "child_concept_id": "concept_00010",
+      "child_label": "ActiveEmergencyEvent",
+      "parent_concept_id": "concept_00011",
+      "parent_label": "AlarmEvent",
+      "justification": "An ActiveEmergencyEvent is a specific type of alarm that indicates an ongoing emergency condition, whereas an AlarmEvent is a broader class covering any alarm triggered in the system. Therefore, ActiveEmergencyEvent is more specific and can be considered a subclass of AlarmEvent.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1168,
+          "chunk_end_char": 1190,
+          "doc_start_char": 1168,
+          "doc_end_char": 1190,
+          "snippet": "restarted at the beginning only if the causes do not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00004",
+      "child_concept_id": "concept_00011",
+      "child_label": "AlarmEvent",
+      "parent_concept_id": "concept_00009",
+      "parent_label": "AlarmEvent",
+      "justification": "The child concept \"AlarmEvent\" is a more specific instance of an alarm event, describing a particular event that triggers a fault or abnormal condition. The parent concept is a broader definition of an alarm event that includes both events and states, sensor detection, and potential shutdowns. Therefore, the child is a subclass of the parent.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1592,
+          "chunk_end_char": 1607,
+          "doc_start_char": 1592,
+          "doc_end_char": 1607,
+          "snippet": "the electrical diagram, input X8.4\nresponsible for\noperator/maintenance officer\nAlarm No.: 1002\ntext: OFF-CIRCUIT MACHINE\ntype: Standard: Optional:\nAlarm with immediate and co"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4150,
+          "chunk_end_char": 4165,
+          "doc_start_char": 4150,
+          "doc_end_char": 4165,
+          "snippet": "cle.\nSee page 19 of the electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and contr"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00005",
+      "child_concept_id": "concept_00011",
+      "child_label": "AlarmEvent",
+      "parent_concept_id": "concept_00013",
+      "parent_label": "FailureEvent",
+      "justification": "An AlarmEvent is a specific type of event that signals a fault or abnormal condition in a manufacturing system, which is precisely what a FailureEvent denotes. Therefore, AlarmEvent is a more specific kind of FailureEvent.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1592,
+          "chunk_end_char": 1607,
+          "doc_start_char": 1592,
+          "doc_end_char": 1607,
+          "snippet": "the electrical diagram, input X8.4\nresponsible for\noperator/maintenance officer\nAlarm No.: 1002\ntext: OFF-CIRCUIT MACHINE\ntype: Standard: Optional:\nAlarm with immediate and co"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4150,
+          "chunk_end_char": 4165,
+          "doc_start_char": 4150,
+          "doc_end_char": 4165,
+          "snippet": "cle.\nSee page 19 of the electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and contr"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00006",
+      "child_concept_id": "concept_00012",
+      "child_label": "OpenSideGuardStateEvent",
+      "parent_concept_id": "concept_00009",
+      "parent_label": "AlarmEvent",
+      "justification": "OpenSideGuardStateEvent is a specific type of alarm that indicates the side guard is open, which is a particular instance of an AlarmEvent. The child inherits the generic alarm semantics while adding domain‑specific details, making it a more specific subclass.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4166,
+          "chunk_end_char": 4188,
+          "doc_start_char": 4166,
+          "doc_end_char": 4188,
+          "snippet": "of the electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00007",
+      "child_concept_id": "concept_00012",
+      "child_label": "OpenSideGuardStateEvent",
+      "parent_concept_id": "concept_00011",
+      "parent_label": "AlarmEvent",
+      "justification": "OpenSideGuardStateEvent is a specialized event that signals the state of a side guard and is logically a more specific kind of AlarmEvent, which itself is a subtype of Event.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4166,
+          "chunk_end_char": 4188,
+          "doc_start_char": 4166,
+          "doc_end_char": 4188,
+          "snippet": "of the electrical diagram, input X3.2\nresponsible for\noperator\nAlarm No.: 1005\ntext: OPEN SIDE GUARDS\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00008",
+      "child_concept_id": "concept_00013",
+      "child_label": "FailureEvent",
+      "parent_concept_id": "concept_00009",
+      "parent_label": "AlarmEvent",
+      "justification": "A FailureEvent describes an actual malfunction or breakdown, which is a specific instance of an AlarmEvent that signals a potential or actual abnormal condition. Therefore, FailureEvent is a more specific subclass of AlarmEvent.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 315,
+          "chunk_end_char": 328,
+          "doc_start_char": 35315,
+          "doc_end_char": 35328,
+          "snippet": ": Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention documen"
+        }
+      ]
+    },
+    {
+      "link_id": "concept_h_00009",
+      "child_concept_id": "concept_00013",
+      "child_label": "FailureEvent",
+      "parent_concept_id": "concept_00011",
+      "parent_label": "AlarmEvent",
+      "justification": "In manufacturing contexts, a FailureEvent is a specific type of event that signals a component or system has failed. An AlarmEvent is a broader category of events that notify operators of faults or abnormal conditions, which includes failures. Therefore, FailureEvent can be considered a subclass of AlarmEvent.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0007",
+          "chunk_start_char": 315,
+          "chunk_end_char": 328,
+          "doc_start_char": 35315,
+          "doc_end_char": 35328,
+          "snippet": ": Alarm with immediate and controlled shutdown\ncause: Tool control device no. 4 does not work,\nCheck the core of the probe, the connections, consult the intervention documen"
+        }
+      ]
+    }
+  ],
+  "relation_hierarchy_links": [
+    {
+      "link_id": "relation_h_00000",
+      "child_relation_id": "ont_rel_00000",
+      "child_label": "generatesCNCAlarm",
+      "parent_relation_id": "ont_rel_00005",
+      "parent_label": "causes",
+      "justification": "The relation *generatesCNCAlarm* is a specific instance of the more general *causes* relation. It captures the causal link where a CNC machine (a type of resource) triggers an alarm event, which is a particular case of a cause leading to an alarm. Therefore, *generatesCNCAlarm* is more specific than *causes* and can be placed as a sub‑relation.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 81,
+          "chunk_end_char": 111,
+          "doc_start_char": 81,
+          "doc_end_char": 111,
+          "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00001",
+      "child_relation_id": "ont_rel_00000",
+      "child_label": "generatesCNCAlarm",
+      "parent_relation_id": "ont_rel_00009",
+      "parent_label": "misconfigured",
+      "justification": "The relation 'generatesCNCAlarm' describes a specific event (an alarm produced by a CNC machine) that typically occurs as a consequence of a misconfiguration. The parent relation 'misconfigured' captures a more general state of a manufacturing resource where configuration settings are incorrect. Therefore, 'generatesCNCAlarm' is a more specific, derived event that logically follows from the broader misconfiguration state, making it a valid subrelation.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 81,
+          "chunk_end_char": 111,
+          "doc_start_char": 81,
+          "doc_end_char": 111,
+          "snippet": ".1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00002",
+      "child_relation_id": "ont_rel_00001",
+      "child_label": "issuedBy",
+      "parent_relation_id": "ont_rel_00017",
+      "parent_label": "differsFrom",
+      "justification": "The relation 'issuedBy' is a specific instance of a difference relation, indicating that a command or instruction is distinguished by the issuing PLC. This makes it a more specific subproperty of the general difference relation 'differsFrom', which simply states that two entities are not equivalent. Therefore, 'issuedBy' can be hierarchically placed under 'differsFrom'.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 277,
+          "chunk_end_char": 294,
+          "doc_start_char": 277,
+          "doc_end_char": 294,
+          "snippet": "s and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indicate the detection of a\nproblem which may compromise the proper functioning"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00003",
+      "child_relation_id": "ont_rel_00003",
+      "child_label": "drawsOperatorAttention",
+      "parent_relation_id": "ont_rel_00005",
+      "parent_label": "causes",
+      "justification": "The relation \"drawsOperatorAttention\" is a more specific instance of the generic causal relation \"causes\". Both share the same domain (AlarmEvent) and the child relation specifies a particular effect (operator attention) that is a concrete outcome of the causal event, making it a subrelation of the broader \"causes\" relation.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 760,
+          "chunk_end_char": 789,
+          "doc_start_char": 760,
+          "doc_end_char": 789,
+          "snippet": "is stopped\nwhen launching function M01;\n• read-only messages: these are used to draw the operator's attention to a particular circumstance without changing the operating status of the machi"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00004",
+      "child_relation_id": "ont_rel_00003",
+      "child_label": "drawsOperatorAttention",
+      "parent_relation_id": "ont_rel_00012",
+      "parent_label": "isNotPermitted",
+      "justification": "The relation \"drawsOperatorAttention\" describes a specific action (an alarm or device action that alerts an operator) that is disallowed in the modeled context. It is therefore a more specific instance of the general prohibition relation \"isNotPermitted\", which captures any action that is not allowed. The domain and range of the child are compatible with the parent’s generic action domain, making the hierarchy semantically coherent.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 760,
+          "chunk_end_char": 789,
+          "doc_start_char": 760,
+          "doc_end_char": 789,
+          "snippet": "is stopped\nwhen launching function M01;\n• read-only messages: these are used to draw the operator's attention to a particular circumstance without changing the operating status of the machi"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00005",
+      "child_relation_id": "ont_rel_00005",
+      "child_label": "causes",
+      "parent_relation_id": "ont_rel_00017",
+      "parent_label": "differsFrom",
+      "justification": "\"causes\" is a specific type of difference relation that indicates a causal change between states, making it a more specific relation than the generic \"differsFrom\". Therefore, it can be hierarchically placed as a subrelation of \"differsFrom\".",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1366,
+          "chunk_end_char": 1421,
+          "doc_start_char": 1366,
+          "doc_end_char": 1421,
+          "snippet": "ationeffect: hardware operation to the axis/spindle feeder and CNC in\nemergency\ncause: Indicates that the punch button has been pressed\nRelease the button and press the start button on the\nintervention: machine.\nSee"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 3081,
+          "chunk_end_char": 3145,
+          "doc_start_char": 3081,
+          "doc_end_char": 3145,
+          "snippet": "ed stop, opening of the hardware authorization to the axis/spindle power supply cause: Indicates that the power circuits have not been activated, in this condition the machine cannot operate in any way. intervention: Press t"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 2231,
+          "chunk_end_char": 2288,
+          "doc_start_char": 2231,
+          "doc_end_char": 2288,
+          "snippet": "own, opening of authorization\neffect:\nhardware to the axis/spindle power supply\ncause: At the start of the cycle the sliding door is open.\nCheck that the door is in an acceptable condition.\nintervention:\nSee page 19 o"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 4336,
+          "chunk_end_char": 4372,
+          "doc_start_char": 4336,
+          "doc_end_char": 4372,
+          "snippet": "own, opening of authorization\neffect:\nhardware to the axis/spindle power supply\ncause: The side protections are open.\nCheck that the side protections are closed, check for any possible rusting.\nSe"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00006",
+      "child_relation_id": "ont_rel_00007",
+      "child_label": "handledBy",
+      "parent_relation_id": "ont_rel_00017",
+      "parent_label": "differsFrom",
+      "justification": "The relation 'handledBy' is a specific type of relationship that indicates responsibility for an alarm event, which is a more specific instance of the generic 'differsFrom' relation that simply states two entities are not equivalent. Therefore, 'handledBy' can be considered a subrelation of 'differsFrom'.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "8.1 Introduction\nAlarms and messages are divided into two main categories:\n1 the alarms and messages of the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........\n2 alarms and messages from the PLC interface, described below.\nThe messages and alarms issued by the PLC indic"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00007",
+      "child_relation_id": "ont_rel_00008",
+      "child_label": "triggersControlledShutdown",
+      "parent_relation_id": "ont_rel_00005",
+      "parent_label": "causes",
+      "justification": "The relation \"triggersControlledShutdown\" is a specific instance of a causal relationship where an alarm event directly initiates a controlled shutdown. This is a more specific type of causal link than the general \"causes\" relation, which can cover any triggering event or condition leading to an alarm or process state. Therefore, \"triggersControlledShutdown\" can be considered a subrelation of \"causes\".",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1217,
+          "chunk_end_char": 1261,
+          "doc_start_char": 1217,
+          "doc_end_char": 1261,
+          "snippet": "not persist.\n\nAlarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\nAlarm with immediate and controlled shutdown, opening of the authorizationeffect: hardware operation to the axis/spindle fee"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00008",
+      "child_relation_id": "ont_rel_00009",
+      "child_label": "misconfigured",
+      "parent_relation_id": "ont_rel_00005",
+      "parent_label": "causes",
+      "justification": "The relation \"misconfigured\" describes a specific type of cause – a configuration error on a machine – that can trigger alarms or fault conditions. The parent relation \"causes\" is a generic cause relation that links any triggering event or condition to a resulting alarm or process state. Therefore, \"misconfigured\" is a more specific instance of a cause relation and can be considered a subrelation of \"causes\".",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 458,
+          "chunk_end_char": 478,
+          "doc_start_char": 10458,
+          "doc_end_char": 10478,
+          "snippet": "nal: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot."
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00009",
+      "child_relation_id": "ont_rel_00009",
+      "child_label": "misconfigured",
+      "parent_relation_id": "ont_rel_00011",
+      "parent_label": "failsToSatisfy",
+      "justification": "The relation \"misconfigured\" describes a specific failure mode where a machine’s configuration setting is incorrect, which is a concrete instance of not meeting a required condition. The parent relation \"failsToSatisfy\" captures the general concept of an entity not meeting a requirement. Since a misconfiguration is a particular type of failure to satisfy a requirement, it is semantically more specific and can be placed as a subrelation of \"failsToSatisfy\". The domain of Machine is a subclass of Resource, and a ConfigurationSetting can be viewed as a specialized form of Requirement, making the hierarchy compatible with the ontology structure.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 458,
+          "chunk_end_char": 478,
+          "doc_start_char": 10458,
+          "doc_end_char": 10478,
+          "snippet": "nal: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot."
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00010",
+      "child_relation_id": "ont_rel_00009",
+      "child_label": "misconfigured",
+      "parent_relation_id": "ont_rel_00012",
+      "parent_label": "isNotPermitted",
+      "justification": "The relation \"misconfigured\" describes a specific prohibited state of a manufacturing resource, which is a concrete instance of the more general prohibition expressed by \"isNotPermitted\". Therefore, \"misconfigured\" is a subrelation of \"isNotPermitted\".",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 458,
+          "chunk_end_char": 478,
+          "doc_start_char": 10458,
+          "doc_end_char": 10478,
+          "snippet": "nal: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot."
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00011",
+      "child_relation_id": "ont_rel_00009",
+      "child_label": "misconfigured",
+      "parent_relation_id": "ont_rel_00016",
+      "parent_label": "incorrectExecution",
+      "justification": "The relation 'misconfigured' describes a specific type of configuration error that is a subset of the broader concept of 'incorrectExecution', which captures any incorrectly performed action or process. Thus, 'misconfigured' is more specific and can be hierarchically placed under 'incorrectExecution'.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 458,
+          "chunk_end_char": 478,
+          "doc_start_char": 10458,
+          "doc_end_char": 10478,
+          "snippet": "nal: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot."
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00012",
+      "child_relation_id": "ont_rel_00009",
+      "child_label": "misconfigured",
+      "parent_relation_id": "ont_rel_00017",
+      "parent_label": "differsFrom",
+      "justification": "The relation \"misconfigured\" describes a specific type of deviation—an incorrect configuration of a resource—making it a more specific instance of the general difference relation \"differsFrom\". Therefore, \"misconfigured\" can be subsumed under \"differsFrom\" in a hierarchy.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 458,
+          "chunk_end_char": 478,
+          "doc_start_char": 10458,
+          "doc_end_char": 10478,
+          "snippet": "nal: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot."
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00013",
+      "child_relation_id": "ont_rel_00010",
+      "child_label": "isInFaultState",
+      "parent_relation_id": "ont_rel_00005",
+      "parent_label": "causes",
+      "justification": "The property *isInFaultState* describes a specific state that results from a fault condition, making it a more specific instance of a causal relationship. The broader *causes* relation captures any triggering event or condition leading to an outcome, so *isInFaultState* can be viewed as a subproperty that narrows the focus to fault states.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 507,
+          "chunk_end_char": 522,
+          "doc_start_char": 10507,
+          "doc_end_char": 10522,
+          "snippet": "shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot. intervention: Check the thermostat, fan or"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00014",
+      "child_relation_id": "ont_rel_00010",
+      "child_label": "isInFaultState",
+      "parent_relation_id": "ont_rel_00011",
+      "parent_label": "failsToSatisfy",
+      "justification": "The relation \"isInFaultState\" describes a specific state of an entity (being in a fault condition). This state is a concrete reason why an entity might fail to satisfy a requirement, which is captured by the more general relation \"failsToSatisfy\". Therefore, \"isInFaultState\" can be considered a subrelation of \"failsToSatisfy\".",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 507,
+          "chunk_end_char": 522,
+          "doc_start_char": 10507,
+          "doc_end_char": 10522,
+          "snippet": "shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot. intervention: Check the thermostat, fan or"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00015",
+      "child_relation_id": "ont_rel_00011",
+      "child_label": "failsToSatisfy",
+      "parent_relation_id": "ont_rel_00017",
+      "parent_label": "differsFrom",
+      "justification": "The relation \"failsToSatisfy\" expresses a specific kind of non-equivalence: an entity (a Resource) does not meet a Requirement. This is a concrete instance of the more general notion that two Things differ, captured by \"differsFrom\". Therefore, \"failsToSatisfy\" is a more specific relation and can be hierarchically placed under \"differsFrom\".",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 906,
+          "chunk_end_char": 923,
+          "doc_start_char": 10906,
+          "doc_end_char": 10923,
+          "snippet": "immediate and controlled stop cause: The pressure of the pneumatic installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adj"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00016",
+      "child_relation_id": "ont_rel_00012",
+      "child_label": "isNotPermitted",
+      "parent_relation_id": "ont_rel_00011",
+      "parent_label": "failsToSatisfy",
+      "justification": "\"isNotPermitted\" is a specific type of failure: it denotes that an action is explicitly disallowed, which is a particular case of failing to satisfy a requirement. Therefore, it can be considered a subrelation of the broader \"failsToSatisfy\" relation.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00017",
+      "child_relation_id": "ont_rel_00012",
+      "child_label": "isNotPermitted",
+      "parent_relation_id": "ont_rel_00017",
+      "parent_label": "differsFrom",
+      "justification": "The relation \"isNotPermitted\" expresses a specific type of difference – a prohibition between two actions – whereas \"differsFrom\" is a generic relation indicating any non-equivalence between two entities. Therefore, \"isNotPermitted\" is more specific and can be considered a subrelation of \"differsFrom\".",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00018",
+      "child_relation_id": "ont_rel_00013",
+      "child_label": "isNotAllowed",
+      "parent_relation_id": "ont_rel_00010",
+      "parent_label": "isInFaultState",
+      "justification": "The relation *isNotAllowed* is a specific type of restriction that applies when an entity is in a fault state.  It is therefore more specific than the general state property *isInFaultState*, making *isNotAllowed* a sub‑relation of *isInFaultState*.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00019",
+      "child_relation_id": "ont_rel_00013",
+      "child_label": "isNotAllowed",
+      "parent_relation_id": "ont_rel_00011",
+      "parent_label": "failsToSatisfy",
+      "justification": "The relation \"isNotAllowed\" expresses a specific failure to satisfy a permission or prohibition, which is a concrete instance of the more general failure to satisfy a requirement expressed by \"failsToSatisfy\".  In an ontology, a negated permission can be viewed as a particular kind of requirement that is not met, making \"isNotAllowed\" a subproperty of \"failsToSatisfy\".  The domain and range hints are compatible if we interpret a Staff member as a type of Resource and a Permission as a type of Requirement.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00020",
+      "child_relation_id": "ont_rel_00013",
+      "child_label": "isNotAllowed",
+      "parent_relation_id": "ont_rel_00012",
+      "parent_label": "isNotPermitted",
+      "justification": "\"isNotAllowed\" is a more specific prohibition that applies to a staff member’s permission, whereas \"isNotPermitted\" is a general prohibition on actions. The former can be seen as a specialized instance of the latter.",
+      "confidence": 0.68,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00021",
+      "child_relation_id": "ont_rel_00013",
+      "child_label": "isNotAllowed",
+      "parent_relation_id": "ont_rel_00017",
+      "parent_label": "differsFrom",
+      "justification": "The relation \"isNotAllowed\" expresses a specific type of difference – a prohibition or negated permission – which is a more concrete instance of the general notion of difference captured by \"differsFrom\". Thus, \"isNotAllowed\" can be considered a subproperty of \"differsFrom\".",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00022",
+      "child_relation_id": "ont_rel_00014",
+      "child_label": "isActivated",
+      "parent_relation_id": "ont_rel_00005",
+      "parent_label": "causes",
+      "justification": "The relation \"isActivated\" describes a specific activation event that causes a machine to transition to an active state, which is a concrete instance of a causal event. The parent relation \"causes\" is a generic causal link between any triggering event or condition and a resulting state. Therefore, \"isActivated\" is a more specific subrelation of \"causes\".",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1515,
+          "chunk_end_char": 1527,
+          "doc_start_char": 11515,
+          "doc_end_char": 11527,
+          "snippet": "situations which are not permitted:\n• spindle removal when the bypass function is activated;\n• spindle orientation when the rigid tapping function or\npin synchronization i"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00023",
+      "child_relation_id": "ont_rel_00014",
+      "child_label": "isActivated",
+      "parent_relation_id": "ont_rel_00017",
+      "parent_label": "differsFrom",
+      "justification": "The relation \"isActivated\" describes a specific type of difference—transitioning a Machine to an active state—making it a more specific instance of the generic \"differsFrom\" relation, which simply indicates any non-equivalence between two entities.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1515,
+          "chunk_end_char": 1527,
+          "doc_start_char": 11515,
+          "doc_end_char": 11527,
+          "snippet": "situations which are not permitted:\n• spindle removal when the bypass function is activated;\n• spindle orientation when the rigid tapping function or\npin synchronization i"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00024",
+      "child_relation_id": "ont_rel_00015",
+      "child_label": "isEnabled",
+      "parent_relation_id": "ont_rel_00017",
+      "parent_label": "differsFrom",
+      "justification": "The \"isEnabled\" relation specifies a particular state difference (enabled vs. not enabled) between an entity and its enabled state, which is a concrete instance of a difference. Therefore, it is a more specific relation than the general \"differsFrom\" relation that simply indicates any two entities are not equivalent.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1606,
+          "chunk_end_char": 1616,
+          "doc_start_char": 11606,
+          "doc_end_char": 11616,
+          "snippet": "d;\n• spindle orientation when the rigid tapping function or\npin synchronization is enabled;\n• spindle bypass mode when rigid tapping function or spindle synchronization i"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00025",
+      "child_relation_id": "ont_rel_00016",
+      "child_label": "incorrectExecution",
+      "parent_relation_id": "ont_rel_00010",
+      "parent_label": "isInFaultState",
+      "justification": "The relation \"incorrectExecution\" describes a specific failure mode of a process (an action performed incorrectly), which can be viewed as a particular type of fault state. Therefore it is more specific than the general relation \"isInFaultState\", which applies to any entity in a fault state. The domain and range hints are compatible if we treat a Process as a kind of Entity and an ExecutionStatus as a subtype of FaultState, making the hierarchy semantically coherent.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00026",
+      "child_relation_id": "ont_rel_00016",
+      "child_label": "incorrectExecution",
+      "parent_relation_id": "ont_rel_00011",
+      "parent_label": "failsToSatisfy",
+      "justification": "The relation 'incorrectExecution' describes a process that fails to meet correctness standards, which is a specific instance of the broader notion of 'failsToSatisfy'—an entity not meeting a required condition. Although the domain hints differ (Process vs Resource), in many ontologies a Process is a kind of Resource, making the subrelation plausible.",
+      "confidence": 0.62,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00027",
+      "child_relation_id": "ont_rel_00016",
+      "child_label": "incorrectExecution",
+      "parent_relation_id": "ont_rel_00017",
+      "parent_label": "differsFrom",
+      "justification": "The relation 'incorrectExecution' describes a specific type of deviation from expected behavior (an action performed incorrectly). The relation 'differsFrom' is a generic statement that two entities are not equivalent. Therefore, 'incorrectExecution' is a more specific instance of a difference, making it a subrelation of 'differsFrom'.",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00028",
+      "child_relation_id": "ont_rel_00018",
+      "child_label": "hasType",
+      "parent_relation_id": "ont_rel_00010",
+      "parent_label": "isInFaultState",
+      "justification": "hasType is a more specific relation that assigns a type to an event, while isInFaultState is a general relation indicating that an entity is in a fault state. In the ontology, hasType can be used to specify the fault type within the broader fault state context, making it a sub‑property of isInFaultState.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0004",
+          "chunk_start_char": 364,
+          "chunk_end_char": 368,
+          "doc_start_char": 20364,
+          "doc_end_char": 20368,
+          "snippet": "intervention: responsible for the maintenance\n\nAlarm n°: 1040 text: CLAMP OPEN type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An"
+        }
+      ]
+    }
+  ]
+}

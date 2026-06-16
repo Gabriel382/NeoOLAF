@@ -2,8 +2,13 @@ from __future__ import annotations
 
 # Standard library imports
 import copy
+import gzip
+import json
+import os
 import time
+import pickle
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Local imports
 from neoolaf.core.pipeline import Pipeline
@@ -17,6 +22,12 @@ class Runner:
     Execute a NeoOLAF pipeline in either:
     - document mode
     - chunk iterative mode
+
+    This version includes:
+    - real checkpoint saving/loading
+    - atomic checkpoint writes
+    - manifest tracking of latest checkpoint
+    - optional parallel chunk execution
     """
 
     def __init__(
@@ -25,54 +36,193 @@ class Runner:
         runs_root: str = "runs",
         verbose: bool = False,
         execution_config: ExecutionConfig | None = None,
+        max_workers: int = 1,
+        enable_checkpoints: bool = True,
+        save_chunk_checkpoints: bool = True,
     ) -> None:
-        """
-        Initialize the runner.
-
-        Args:
-            pipeline:
-                The pipeline instance to execute.
-            runs_root:
-                Root directory where execution artifacts are stored.
-            verbose:
-                Whether to print runner-level progress.
-            execution_config:
-                Optional execution configuration.
-        """
         self.pipeline = pipeline
         self.runs_root = Path(runs_root)
         self.verbose = verbose
         self.execution_config = execution_config or ExecutionConfig()
         self.state_merger = StateMerger()
+        self.max_workers = max_workers
+        self.enable_checkpoints = enable_checkpoints
+        self.save_chunk_checkpoints = save_chunk_checkpoints
 
+    # ---------------------------------------------------------
+    # Run directory / checkpoint paths
+    # ---------------------------------------------------------
     def prepare_run_dir(self) -> Path:
-        """
-        Create a run directory.
-        """
         timestamp = time.strftime("%Y%m%d_%H%M%S")
         run_dir = self.runs_root / f"run_{timestamp}"
         run_dir.mkdir(parents=True, exist_ok=True)
         return run_dir
 
-    def run(self, state: PipelineState) -> PipelineState:
+    def _checkpoint_dir(self, state: PipelineState) -> Path:
+        ckpt_dir = Path(state.artifact_dir) / "checkpoints"
+        ckpt_dir.mkdir(parents=True, exist_ok=True)
+        return ckpt_dir
+
+    def _manifest_path(self, state: PipelineState) -> Path:
+        return self._checkpoint_dir(state) / "manifest.json"
+
+    # ---------------------------------------------------------
+    # Checkpoint save/load
+    # ---------------------------------------------------------
+    def save_checkpoint(self, state: PipelineState, name: str) -> Path:
         """
-        Execute the pipeline according to the configured execution mode.
+        Save a full PipelineState checkpoint atomically as gzipped pickle.
+        Also updates manifest.json and verifies reloadability immediately.
         """
-        if state.artifact_dir is None:
+        if not self.enable_checkpoints:
+            return Path("")
+
+        ckpt_dir = self._checkpoint_dir(state)
+        final_path = ckpt_dir / f"{name}.pkl.gz"
+        temp_path = ckpt_dir / f"{name}.tmp.pkl.gz"
+
+        payload = {
+            "checkpoint_name": name,
+            "saved_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "state": state,
+        }
+
+        # Atomic write
+        with gzip.open(temp_path, "wb") as f:
+            pickle.dump(payload, f, protocol=pickle.HIGHEST_PROTOCOL)
+
+        os.replace(temp_path, final_path)
+
+        # Immediate verification
+        _ = self.load_checkpoint(final_path)
+
+        manifest = {
+            "latest_checkpoint": str(final_path),
+            "checkpoint_name": name,
+            "saved_at": payload["saved_at"],
+        }
+        with open(self._manifest_path(state), "w", encoding="utf-8") as f:
+            json.dump(manifest, f, indent=2)
+
+        if self.verbose:
+            print(f"[NeoOLAF] Saved checkpoint: {final_path}")
+
+        return final_path
+
+    @staticmethod
+    def load_checkpoint(path: str | Path) -> PipelineState:
+        """
+        Load a PipelineState checkpoint from gzipped pickle.
+        """
+        path = Path(path)
+        with gzip.open(path, "rb") as f:
+            payload = pickle.load(f)
+
+        if isinstance(payload, dict) and "state" in payload:
+            return payload["state"]
+
+        if isinstance(payload, PipelineState):
+            return payload
+
+        raise ValueError(f"Checkpoint at {path} does not contain a valid PipelineState.")
+
+    @staticmethod
+    def load_state_artifact(path: str | Path) -> PipelineState:
+        """
+        Load a PipelineState from either a layer `state.json` artifact or a
+        legacy gzipped pickle checkpoint.
+        """
+        path = Path(path)
+        if path.suffix == ".gz" or path.name.endswith(".pkl.gz"):
+            return Runner.load_checkpoint(path)
+        return PipelineState.load_json(str(path))
+
+    @staticmethod
+    def load_latest_checkpoint(run_dir: str | Path) -> PipelineState:
+        """
+        Load the latest checkpoint from manifest.json inside a run directory.
+        """
+        run_dir = Path(run_dir)
+        manifest_path = run_dir / "checkpoints" / "manifest.json"
+        if not manifest_path.exists():
+            raise FileNotFoundError(f"Manifest not found: {manifest_path}")
+
+        with open(manifest_path, "r", encoding="utf-8") as f:
+            manifest = json.load(f)
+
+        checkpoint_path = manifest.get("latest_checkpoint")
+        if not checkpoint_path:
+            raise ValueError(f"No latest_checkpoint entry found in {manifest_path}")
+
+        return Runner.load_checkpoint(checkpoint_path)
+
+    # ---------------------------------------------------------
+    # Public run
+    # ---------------------------------------------------------
+    def run(
+        self,
+        state: PipelineState | None = None,
+        *,
+        from_layer: int = 0,
+        to_layer: int | None = None,
+        skip_layers: set[int | str] | list[int | str] | None = None,
+        resume_from: str | Path | None = None,
+        run_dir: str | Path | None = None,
+    ) -> PipelineState:
+        """
+        Execute the pipeline or a selected subpart of it.
+
+        Args:
+            state:
+                Initial state. Required unless `resume_from` is provided.
+            from_layer:
+                First layer index to run.
+            to_layer:
+                Last layer index to run. If None, runs until the final layer.
+            skip_layers:
+                Layer indexes or layer names to skip.
+            resume_from:
+                Path to a previous `<layer>/state.json` artifact or legacy
+                checkpoint. When provided, it becomes the initial state.
+            run_dir:
+                Optional explicit artifact directory. Useful for ablations.
+        """
+        if resume_from is not None:
+            state = self.load_state_artifact(resume_from)
+
+        if state is None:
+            raise ValueError("Runner.run requires either `state` or `resume_from`.")
+
+        if run_dir is not None:
+            state.artifact_dir = str(run_dir)
+        elif state.artifact_dir is None:
             state.artifact_dir = str(self.prepare_run_dir())
 
         if self.verbose:
             print(f"[NeoOLAF] Run directory: {state.artifact_dir}")
+            print(f"[NeoOLAF] from_layer={from_layer}, to_layer={to_layer}, skip_layers={skip_layers}")
 
         start_time = time.time()
 
-        # ---------------------------------------------------------
-        # Dispatch by execution mode
-        # ---------------------------------------------------------
-        if self.execution_config.mode == "chunk_iterative_mode" and self.execution_config.chunk_loop_enabled:
+        partial_requested = from_layer != 0 or to_layer is not None or bool(skip_layers)
+        if (
+            self.execution_config.mode == "chunk_iterative_mode"
+            and self.execution_config.chunk_loop_enabled
+        ):
+            if partial_requested:
+                raise NotImplementedError(
+                    "Partial layer execution is currently supported in document mode. "
+                    "Disable chunk_iterative_mode for layer-wise ablation runs."
+                )
             state = self._run_chunk_iterative_mode(state)
         else:
-            state = self.pipeline.run(state)
+            state = self.pipeline.run(
+                state,
+                from_layer=from_layer,
+                to_layer=to_layer,
+                skip_layers=skip_layers,
+            )
+            self.save_checkpoint(state, "after_selected_pipeline")
 
         elapsed = time.time() - start_time
 
@@ -81,23 +231,13 @@ class Runner:
 
         return state
 
+    # ---------------------------------------------------------
+    # Chunk iterative mode
+    # ---------------------------------------------------------
     def _run_chunk_iterative_mode(self, state: PipelineState) -> PipelineState:
-        """
-        Execute the pipeline in chunk iterative mode.
-
-        Strategy:
-        1. run preprocessing globally to obtain chunks
-        2. run selected layers independently per chunk
-        3. merge chunk-level states
-        4. run remaining layers globally
-        """
         if self.verbose:
             print("[NeoOLAF] Execution mode: chunk_iterative_mode")
 
-        # Split pipeline into:
-        # - preprocessing layers
-        # - chunk layers
-        # - global layers
         preprocessing_layers = []
         chunk_layers = []
         global_layers = []
@@ -110,8 +250,6 @@ class Runner:
             elif layer.name in self.execution_config.global_layer_names:
                 global_layers.append(layer)
             else:
-                # Fallback:
-                # if not explicitly configured, run globally
                 global_layers.append(layer)
 
         # ---------------------------------------------------------
@@ -120,8 +258,10 @@ class Runner:
         preprocessing_pipeline = Pipeline(
             layers=preprocessing_layers,
             verbose=self.pipeline.verbose,
+            continue_from_last=self.pipeline.continue_from_last,
         )
         preprocessed_state = preprocessing_pipeline.run(state)
+        self.save_checkpoint(preprocessed_state, "after_layer00_preprocessing")
 
         chunks = list(preprocessed_state.document.chunks)
         if self.execution_config.max_chunks is not None:
@@ -129,59 +269,123 @@ class Runner:
 
         if self.verbose:
             print(f"[NeoOLAF] Chunk iterative mode will process {len(chunks)} chunks")
+            print(f"[NeoOLAF] Parallel workers: {self.max_workers}")
 
         # ---------------------------------------------------------
-        # 2. Run selected chunk layers per chunk
+        # 2. Chunk layers
         # ---------------------------------------------------------
-        chunk_states = []
-
-        for idx, chunk in enumerate(chunks, start=1):
-            if self.verbose:
-                print(f"[NeoOLAF] Processing chunk {idx}/{len(chunks)}: {chunk.chunk_id}")
-
-            # Deep copy the preprocessed document-level state
-            chunk_state = copy.deepcopy(preprocessed_state)
-
-            # Restrict the document chunks to the current chunk only
-            chunk_state.document.chunks = [chunk]
-
-            # Optional: reset chunk-level outputs so they don't carry over
-            chunk_state.linguistic_expressions = []
-            chunk_state.enriched_expressions = []
-            chunk_state.entity_candidates = []
-            chunk_state.relation_candidates = []
-            chunk_state.attribute_candidates = []
-            chunk_state.event_candidates = []
-            chunk_state.candidate_relation_assertions = []
-            chunk_state.candidate_triples = []
-
-            # Run the chunk-layer subpipeline
-            chunk_pipeline = Pipeline(
-                layers=chunk_layers,
-                verbose=self.pipeline.verbose,
+        if self.max_workers <= 1:
+            chunk_states = []
+            for idx, chunk in enumerate(chunks, start=1):
+                chunk_state = self._run_single_chunk(
+                    base_state=preprocessed_state,
+                    chunk=chunk,
+                    chunk_layers=chunk_layers,
+                    chunk_index=idx,
+                    total_chunks=len(chunks),
+                )
+                chunk_states.append(chunk_state)
+        else:
+            chunk_states = self._run_chunks_in_parallel(
+                base_state=preprocessed_state,
+                chunks=chunks,
+                chunk_layers=chunk_layers,
             )
-            chunk_state = chunk_pipeline.run(chunk_state)
-            chunk_states.append(chunk_state)
 
         # ---------------------------------------------------------
-        # 3. Merge chunk-level states into one document-level state
+        # 3. Merge
         # ---------------------------------------------------------
         merged_state = self.state_merger.merge_chunk_states(
             base_state=preprocessed_state,
             chunk_states=chunk_states,
         )
+        self.save_checkpoint(merged_state, "after_chunk_merge")
 
         if self.verbose:
             print("[NeoOLAF] Chunk states merged into document-level state")
 
         # ---------------------------------------------------------
-        # 4. Run global layers after aggregation
+        # 4. Global layers
         # ---------------------------------------------------------
+        current_state = merged_state
         if global_layers:
-            global_pipeline = Pipeline(
-                layers=global_layers,
-                verbose=self.pipeline.verbose,
-            )
-            merged_state = global_pipeline.run(merged_state)
+            for layer in global_layers:
+                single_pipeline = Pipeline(
+                    layers=[layer],
+                    verbose=self.pipeline.verbose,
+                    continue_from_last=self.pipeline.continue_from_last,
+                )
+                current_state = single_pipeline.run(current_state)
+                self.save_checkpoint(current_state, f"after_{layer.name}")
 
-        return merged_state
+        return current_state
+
+    # ---------------------------------------------------------
+    # Parallel chunk execution
+    # ---------------------------------------------------------
+    def _run_chunks_in_parallel(
+        self,
+        base_state: PipelineState,
+        chunks: list,
+        chunk_layers: list,
+    ) -> list:
+        chunk_results = [None] * len(chunks)
+
+        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+            future_to_index = {
+                executor.submit(
+                    self._run_single_chunk,
+                    base_state,
+                    chunk,
+                    chunk_layers,
+                    idx + 1,
+                    len(chunks),
+                ): idx
+                for idx, chunk in enumerate(chunks)
+            }
+
+            for future in as_completed(future_to_index):
+                idx = future_to_index[future]
+                chunk_results[idx] = future.result()
+
+        return chunk_results
+
+    def _run_single_chunk(
+        self,
+        base_state: PipelineState,
+        chunk,
+        chunk_layers: list,
+        chunk_index: int,
+        total_chunks: int,
+    ) -> PipelineState:
+        if self.verbose:
+            print(f"[NeoOLAF] Processing chunk {chunk_index}/{total_chunks}: {chunk.chunk_id}")
+
+        chunk_state = copy.deepcopy(base_state)
+        chunk_state.document.chunks = [chunk]
+
+        if chunk_state.artifact_dir is not None:
+            chunk_dir = Path(chunk_state.artifact_dir) / "chunks" / chunk.chunk_id
+            chunk_dir.mkdir(parents=True, exist_ok=True)
+            chunk_state.artifact_dir = str(chunk_dir)
+
+        chunk_state.linguistic_expressions = []
+        chunk_state.enriched_expressions = []
+        chunk_state.entity_candidates = []
+        chunk_state.relation_candidates = []
+        chunk_state.attribute_candidates = []
+        chunk_state.event_candidates = []
+        chunk_state.candidate_relation_assertions = []
+        chunk_state.candidate_triples = []
+
+        chunk_pipeline = Pipeline(
+            layers=chunk_layers,
+            verbose=self.pipeline.verbose,
+            continue_from_last=self.pipeline.continue_from_last,
+        )
+        chunk_state = chunk_pipeline.run(chunk_state)
+
+        if self.enable_checkpoints and self.save_chunk_checkpoints:
+            self.save_checkpoint(chunk_state, f"after_{chunk.chunk_id}")
+
+        return chunk_state

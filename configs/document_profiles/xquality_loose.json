@@ -1,0 +1,521 @@
+{
+  "profile_name": "xquality_loose",
+  "description": "XQuality Machine 32 alarm-table profile. Keeps Machine-32 assumptions outside core NeoOLAF layers. Alias/profile variant for xquality_loose.",
+  "language": {
+    "source": "fr",
+    "target": "en",
+    "translate": false,
+    "llm_translate_inside_extraction": true,
+    "translate_in_preprocessing": false
+  },
+  "chunking": {
+    "strategies": [
+      "fixed",
+      "page",
+      "subsection",
+      "table"
+    ],
+    "preferred_unit_for_extraction": "table",
+    "chunk_size": 1500,
+    "overlap": 200,
+    "subsection_patterns": [
+      "(?P<section>\\d+\\.\\d+\\.\\d+)\\s+Alarme\\s+n[°o]\\s*(?P<alarm_no>\\d+)"
+    ]
+  },
+  "table_extraction": {
+    "enabled": true,
+    "table_type": "alarm_table",
+    "field_aliases": {
+      "alarm_no": [
+        "Alarme n°",
+        "Alarme no",
+        "Alarm No.",
+        "N° Alarme",
+        "N° Alarme"
+      ],
+      "alarm_label": [
+        "texte",
+        "text",
+        "alarm text",
+        "libellé"
+      ],
+      "effect": [
+        "effet",
+        "effect",
+        "effects"
+      ],
+      "cause": [
+        "cause",
+        "causes"
+      ],
+      "intervention": [
+        "intervention",
+        "action",
+        "actions",
+        "troubleshooting",
+        "strategy"
+      ],
+      "responsible": [
+        "chargé de l’intervention",
+        "chargé de l'intervention",
+        "responsible",
+        "handled by"
+      ],
+      "reference": [
+        "référence",
+        "reference",
+        "schema",
+        "schéma",
+        "diagram"
+      ],
+      "message_no": [
+        "message n°",
+        "message no",
+        "Message No.",
+        "N° Message"
+      ]
+    },
+    "layout_hint": "field_value_rows",
+    "send_raw_html_to_llm": false,
+    "send_compact_table_to_llm": true,
+    "prompt_payload": "field_value_rows_only"
+  },
+  "relations": {
+    "allowed": [
+      "TRIGGERS",
+      "CAUSES",
+      "REQUIRES",
+      "HANDLED_BY",
+      "REFERENCES"
+    ]
+  },
+  "field_to_relation": {
+    "cause": "TRIGGERS",
+    "effect": "CAUSES",
+    "intervention": "REQUIRES",
+    "responsible": "HANDLED_BY",
+    "reference": "REFERENCES"
+  },
+  "triplet_type_by_relation": {
+    "TRIGGERS": "Cause → Alarm",
+    "CAUSES": "Alarm → Effect",
+    "REQUIRES": "Alarm → Intervention",
+    "HANDLED_BY": "Alarm → Responsible",
+    "REFERENCES": "Alarm → Diagram"
+  },
+  "triple_schema": {
+    "head_col": "Node 1",
+    "relation_col": "RELATION",
+    "tail_col": "Node 2",
+    "metadata": {
+      "alarm_no": "Alarm No.",
+      "category": "Category",
+      "triplet_type": "Triplet Type"
+    }
+  },
+  "defaults": {
+    "category": "PLC Alarm"
+  },
+  "layers": {
+    "layer01_linguistic_expression_extraction": {
+      "strategy": "alarm_table_record",
+      "input_unit": "table",
+      "max_output_tokens": 2048,
+      "max_concurrency": 1,
+      "retry_failed_calls": 3,
+      "retry_sleep_seconds": 2.0,
+      "rag_enabled": false,
+      "rag_top_k": 0,
+      "rag_max_chars": 0,
+      "structured_output": {
+        "enabled": true,
+        "mode": "pydantic",
+        "schema_name": "layer01_alarm_record",
+        "schema_path": "configs/output_schemas/layer01_alarm_record.json",
+        "use_litellm_response_format": false,
+        "fallback_to_json_parse": true,
+        "strict_validation": false
+      },
+      "prompt_options": {
+        "few_shot_examples": {
+          "enabled": true,
+          "mode": "tiny",
+          "examples": [
+            {
+              "source": "Alarm header Alarme n°: 1001",
+              "target": "record_type=alarm, record_id=1001, alarm_no=1001, message_no=null"
+            },
+            {
+              "source": "Message header message n°: 2060, body says voir alarme n°1083",
+              "target": "record_type=message, record_id=2060, message_no=2060, alarm_no=null; 1083 is only a reference"
+            }
+          ]
+        }
+      }
+    },
+    "layer05_candidate_triple_generation": {
+      "strategy": "ontology_aware_assertion_to_triples",
+      "max_concurrency": 4,
+      "description": "Deterministically materialize Layer 4 ontology-aware relation assertions into candidate triples."
+    },
+    "layer02_candidate_enrichment": {
+      "max_concurrency": 4,
+      "retry_failed_calls": 3,
+      "retry_sleep_seconds": 2.0,
+      "max_expressions": null,
+      "use_web_search": false,
+      "strategy": "ontology_aware_conservative_normalization",
+      "description": "Profile-driven conservative normalization. No open-domain web enrichment; each expression is linked to an ontology role/class."
+    },
+    "layer03_candidate_typing_resolution": {
+      "max_concurrency": 4,
+      "retry_failed_calls": 3,
+      "retry_sleep_seconds": 2.0,
+      "max_expressions": null,
+      "strategy": "ontology_aware_role_based_typing",
+      "description": "Deterministic role-based typing from Layer 1 semantic roles, plus controlled relation candidates linked to the ontology."
+    },
+    "layer04_candidate_relation_extraction": {
+      "strategy": "ontology_aware_record_relation_extraction",
+      "description": "Deterministic record-aware relation extraction. It links candidates belonging to the same alarm/message record using ontology-linked controlled relations from field_to_relation.",
+      "max_concurrency": 4,
+      "retry_failed_calls": 3,
+      "retry_sleep_seconds": 2.0
+    },
+    "layer06_concept_relation_induction": {
+      "strategy": "ontology_aware_triple_concept_relation_induction",
+      "max_concurrency": 4,
+      "description": "Deterministically promote Layer 3 typed node candidates and controlled relation candidates into ontology concept/relation candidates using ontology hints from Layers 2-5. No LLM calls for XQuality ablation."
+    },
+    "layer07_hierarchisation": {
+      "strategy": "ontology_aware_parent_hint_hierarchy",
+      "max_concurrency": 4,
+      "description": "Deterministically create hierarchy links from Layer 6 parent_hint and controlled ontology relation candidates. No LLM calls for XQuality ablation."
+    },
+    "layer08_axiom_schemata_extraction": {
+      "strategy": "ontology_aware_axiom_schema_generation",
+      "max_concurrency": 4
+    },
+    "layer09_general_axiom_extraction": {
+      "strategy": "ontology_aware_schema_to_general_axioms",
+      "max_concurrency": 4,
+      "description": "Deterministically promote Layer 8 axiom schemata into general axiom candidates and rdfs:description axioms. No LLM calls for XQuality ablation."
+    },
+    "layer10_validation_reasoning": {
+      "strategy": "ontology_aware_validation_reasoning",
+      "max_concurrency": 4,
+      "description": "Deterministically validate triples using ontology-aware compatibility from concept_kind, parent_hint, hierarchy links, and Layer 5 ontology hints. No LLM calls for XQuality ablation."
+    },
+    "layer11_inference_completion": {
+      "strategy": "ontology_aware_semantic_completion",
+      "max_concurrency": 4,
+      "description": "Deterministically generate explicit rdf:type, owl:sameAs, skos:prefLabel, skos:altLabel, and rdfs:comment completion axioms from candidate-to-concept alignments. No LLM calls for XQuality ablation."
+    },
+    "layer12_serialization": {
+      "max_concurrency": 4
+    }
+  },
+  "prompts": {
+    "layer01_linguistic_expression_extraction": "xquality_machine32/layer01_alarm_table_record_extraction.md",
+    "layer05_candidate_triple_generation": "xquality_machine32/layer05_alarm_record_to_triples.md"
+  },
+  "rag": {
+    "allowed_spaces": {
+      "layer01_linguistic_expression_extraction": [
+        "source_document",
+        "table_context"
+      ],
+      "layer05_candidate_triple_generation": [
+        "source_document",
+        "project_guidelines",
+        "relation_mapping"
+      ],
+      "layer10_validation_reasoning": [
+        "source_document",
+        "ontology",
+        "generated_triples"
+      ],
+      "layer04_candidate_relation_extraction": [
+        "ontology",
+        "typed_candidates",
+        "relation_mapping",
+        "record_context"
+      ],
+      "layer07_hierarchisation": [
+        "ontology",
+        "concept_candidates",
+        "ontology_relation_candidates",
+        "hierarchy_context"
+      ]
+    },
+    "enabled_for_layer01": false,
+    "top_k_layer01": 0,
+    "max_chars_layer01": 0
+  },
+  "evaluation": {
+    "profile_name": "xquality_loose",
+    "anchor_fields": [
+      "alarm_no"
+    ],
+    "strict_relation_match": true
+  },
+  "canonical_value_mappings": {
+    "responsible": {
+      "opérateur": "Operator",
+      "operateur": "Operator",
+      "operator": "Operator",
+      "chargé de l’entretien": "Maintenance Technician",
+      "chargé de l'entretien": "Maintenance Technician",
+      "charge de l entretien": "Maintenance Technician",
+      "maintenance responsible": "Maintenance Technician",
+      "maintenance technician": "Maintenance Technician",
+      "programmeur": "Programmer",
+      "programmer": "Programmer",
+      "outilleur-régleur": "Tool Setter",
+      "outilleur-regleur": "Tool Setter",
+      "tool setter": "Tool Setter"
+    }
+  },
+  "orchestration": {
+    "mode": "pipeline",
+    "max_concurrency_layer01": 1,
+    "retry_failed_calls": 3,
+    "retry_sleep_seconds": 2.0,
+    "feedback_enabled": false,
+    "max_concurrency_layer02": 4,
+    "max_concurrency_layer03": 4,
+    "max_concurrency_layer04": 4,
+    "max_concurrency_layer05": 4,
+    "max_concurrency_layer06": 4,
+    "max_concurrency_layer07": 4,
+    "max_concurrency_layer08": 4,
+    "max_concurrency_layer09": 4,
+    "max_concurrency_layer10": 4,
+    "max_concurrency_layer11": 4,
+    "max_concurrency_layer12": 4
+  },
+  "record_identity_policy": {
+    "enabled": true,
+    "source_of_truth": "unit_header_and_hints",
+    "override_llm_identity": true,
+    "record_types": {
+      "alarm": {
+        "id_field": "alarm_no",
+        "hint_field": "alarm_no_hint",
+        "patterns": [
+          "(?i)\\balarme\\s*n\\s*[°o.]?\\s*[:#-]?\\s*(\\d{3,6})\\b",
+          "(?i)\\balarm\\s*(?:no\\.?|number|#)?\\s*[:#-]?\\s*(\\d{3,6})\\b"
+        ]
+      },
+      "message": {
+        "id_field": "message_no",
+        "hint_field": "message_no_hint",
+        "patterns": [
+          "(?i)\\bmessage\\s*n\\s*[°o.]?\\s*[:#-]?\\s*(\\d{3,6})\\b",
+          "(?i)\\bmessage\\s*(?:no\\.?|number|#)?\\s*[:#-]?\\s*(\\d{3,6})\\b"
+        ]
+      }
+    },
+    "cross_reference_patterns": [
+      "(?i)voir\\s+alarme\\s+n[°o.]?\\s*\\d+",
+      "(?i)see\\s+alarm\\s+(?:no\\.?|number)?\\s*\\d+",
+      "(?i)voir\\s+message\\s+n[°o.]?\\s*\\d+",
+      "(?i)see\\s+message\\s+(?:no\\.?|number)?\\s*\\d+"
+    ]
+  },
+  "ontology_linking": {
+    "base_uri": "http://neoolaf.org/ontology/xquality#",
+    "seed_ontology": "ContextOntology-COInd4.owl",
+    "node_roles": {
+      "alarm": {
+        "class_label": "PLC Alarm",
+        "class_uri": "http://neoolaf.org/ontology/xquality#PLCAlarm",
+        "candidate_family": "entity",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": true,
+        "definition": "A PLC alarm record emitted by the machine interface and described in the industrial manual.",
+        "synonyms": [
+          "Alarm",
+          "PLC Alarm",
+          "Machine Alarm"
+        ]
+      },
+      "message": {
+        "class_label": "PLC Message",
+        "class_uri": "http://neoolaf.org/ontology/xquality#PLCMessage",
+        "candidate_family": "entity",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": true,
+        "definition": "A PLC message record emitted by the machine interface and described in the industrial manual.",
+        "synonyms": [
+          "Message",
+          "PLC Message",
+          "Machine Message"
+        ]
+      },
+      "cause": {
+        "class_label": "Alarm Cause",
+        "class_uri": "http://neoolaf.org/ontology/xquality#AlarmCause",
+        "candidate_family": "event",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": true,
+        "definition": "Condition, event, or circumstance that triggers an alarm or message.",
+        "synonyms": [
+          "Cause",
+          "Triggering condition",
+          "Fault cause"
+        ]
+      },
+      "effect": {
+        "class_label": "Machine Effect",
+        "class_uri": "http://neoolaf.org/ontology/xquality#MachineEffect",
+        "candidate_family": "event",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": true,
+        "definition": "Operational effect produced by an alarm or message on the machine.",
+        "synonyms": [
+          "Effect",
+          "Consequence",
+          "Machine state effect"
+        ]
+      },
+      "intervention": {
+        "class_label": "Intervention Action",
+        "class_uri": "http://neoolaf.org/ontology/xquality#InterventionAction",
+        "candidate_family": "event",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": true,
+        "definition": "Corrective or diagnostic action recommended to resolve an alarm or message.",
+        "synonyms": [
+          "Intervention",
+          "Corrective action",
+          "Troubleshooting action"
+        ]
+      },
+      "responsible": {
+        "class_label": "Responsible Actor",
+        "class_uri": "http://neoolaf.org/ontology/xquality#ResponsibleActor",
+        "candidate_family": "entity",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": true,
+        "definition": "Human actor or role responsible for handling an alarm or message.",
+        "synonyms": [
+          "Responsible",
+          "Operator",
+          "Maintenance role",
+          "Programmer",
+          "Tool Setter"
+        ]
+      },
+      "reference": {
+        "class_label": "Technical Reference",
+        "class_uri": "http://neoolaf.org/ontology/xquality#TechnicalReference",
+        "candidate_family": "entity",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": true,
+        "definition": "Reference to an electrical diagram, page, PLC input, component code, or external manual.",
+        "synonyms": [
+          "Reference",
+          "Diagram reference",
+          "PLC input reference",
+          "Manual reference"
+        ]
+      },
+      "unknown": {
+        "class_label": "Unresolved Technical Expression",
+        "class_uri": "http://neoolaf.org/ontology/xquality#UnresolvedTechnicalExpression",
+        "candidate_family": "entity",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false,
+        "definition": "Technical expression whose role is not yet resolved.",
+        "synonyms": [
+          "Unresolved expression"
+        ]
+      }
+    },
+    "relation_roles": {
+      "TRIGGERS": {
+        "property_label": "triggers",
+        "property_uri": "http://neoolaf.org/ontology/xquality#triggers",
+        "domain": "AlarmCause",
+        "range": "PLCAlarmOrMessage",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "definition": "Links a cause or condition to the alarm/message it triggers.",
+        "synonyms": [
+          "causes alarm",
+          "triggers alarm"
+        ]
+      },
+      "CAUSES": {
+        "property_label": "causes",
+        "property_uri": "http://neoolaf.org/ontology/xquality#causes",
+        "domain": "PLCAlarmOrMessage",
+        "range": "MachineEffect",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "definition": "Links an alarm/message to its operational effect.",
+        "synonyms": [
+          "has effect",
+          "produces effect"
+        ]
+      },
+      "REQUIRES": {
+        "property_label": "requires",
+        "property_uri": "http://neoolaf.org/ontology/xquality#requires",
+        "domain": "PLCAlarmOrMessage",
+        "range": "InterventionAction",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "definition": "Links an alarm/message to a required intervention action.",
+        "synonyms": [
+          "requires intervention",
+          "needs action"
+        ]
+      },
+      "HANDLED_BY": {
+        "property_label": "handled by",
+        "property_uri": "http://neoolaf.org/ontology/xquality#handledBy",
+        "domain": "PLCAlarmOrMessage",
+        "range": "ResponsibleActor",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "definition": "Links an alarm/message to the responsible actor or role.",
+        "synonyms": [
+          "assigned to",
+          "responsible actor"
+        ]
+      },
+      "REFERENCES": {
+        "property_label": "references",
+        "property_uri": "http://neoolaf.org/ontology/xquality#references",
+        "domain": "PLCAlarmOrMessage",
+        "range": "TechnicalReference",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "definition": "Links an alarm/message to a diagram, PLC input, page, component, or manual reference.",
+        "synonyms": [
+          "has reference",
+          "points to"
+        ]
+      }
+    }
+  },
+  "canonical_node_label_mappings": {
+    "alarm": {
+      "ACTIVE EMERGENCY": "EMERGENCY ACTIVE",
+      "URGENCE ACTIVE": "EMERGENCY ACTIVE",
+      "Machine off circuit": "MACHINE OFFLINE",
+      "MACHINE HORS CIRCUIT": "MACHINE OFFLINE",
+      "LOW FLOW OF IRRIGATION LIQUID": "LOW COOLANT FLOW",
+      "LOW WATER FLOW": "LOW COOLANT FLOW",
+      "FLUX BAS DU LIQUIDE D’ARROSAGE": "LOW COOLANT FLOW"
+    },
+    "responsible": {
+      "Operator": "Operator",
+      "Maintenance Technician": "Maintenance Technician",
+      "Programmer": "Programmer",
+      "Tool Setter": "Tool Setter"
+    }
+  }
+}

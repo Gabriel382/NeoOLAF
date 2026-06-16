@@ -1,0 +1,237 @@
+{
+  "layer": "layer10_validation_reasoning",
+  "validation_report": {
+    "is_valid": true,
+    "issues": []
+  },
+  "reasoning_report": {
+    "notes": [
+      "Inferred graph initialized from validated candidate triples.",
+      "Inferred axiom schemata copied from extracted reusable schemata.",
+      "Inferred general axioms copied from candidate general axioms."
+    ],
+    "inferred_triples": [
+      {
+        "triple_id": "triple_00000",
+        "subject_id": "cand_e_00002",
+        "subject_label": "PLC",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00000",
+        "predicate_label": "emitted by",
+        "object_id": "cand_e_00000",
+        "object_label": "message",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that messages are emitted by the PLC.",
+        "confidence": 0.95
+      },
+      {
+        "triple_id": "triple_00001",
+        "subject_id": "cand_e_00002",
+        "subject_label": "PLC",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00001",
+        "predicate_label": "compromises",
+        "object_id": "cand_s_00000",
+        "object_label": "reset",
+        "object_type": "event",
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that messages emitted by the PLC can indicate a problem that may compromise the proper functioning of the machine and its machining cycle. These messages can trigger an immediate controlled stop, which is reset by pressing the RESET PRG button.",
+        "confidence": 0.85
+      },
+      {
+        "triple_id": "triple_00002",
+        "subject_id": "cand_e_00002",
+        "subject_label": "PLC",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00002",
+        "predicate_label": "machine",
+        "object_id": "cand_e_00003",
+        "object_label": "cycle",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The text states that messages from the PLC indicate a problem that can compromise the proper functioning of the machine and the machining cycle.",
+        "confidence": 0.85
+      },
+      {
+        "triple_id": "triple_00003",
+        "subject_id": "cand_s_00002",
+        "subject_label": "URGENCE ACTIVE",
+        "subject_type": "event",
+        "predicate_id": "cand_r_00005",
+        "predicate_label": "bouton coup-de-poing",
+        "object_id": "cand_e_00006",
+        "object_label": "Alarm n°1002",
+        "object_type": "entity",
+        "chunk_id": "chunk_0001",
+        "justification": "The text states that the URGENCE ACTIVE alarm is triggered when the bouton coup-de-poing is pressed.",
+        "confidence": 0.95
+      },
+      {
+        "triple_id": "triple_00004",
+        "subject_id": "cand_e_00006",
+        "subject_label": "Alarm n°1002",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00006",
+        "predicate_label": "indicates",
+        "object_id": "cand_s_00002",
+        "object_label": "URGENCE ACTIVE",
+        "object_type": "event",
+        "chunk_id": "chunk_0001",
+        "justification": "The text states that Alarm n°1002 indicates URGENCE ACTIVE.",
+        "confidence": 0.95
+      },
+      {
+        "triple_id": "triple_00005",
+        "subject_id": "cand_s_00001",
+        "subject_label": "alarm",
+        "subject_type": "event",
+        "predicate_id": "cand_r_00007",
+        "predicate_label": "Relâcher le bouton et appuyer sur la touche de démarrage",
+        "object_id": "cand_e_00006",
+        "object_label": "Alarm n°1002",
+        "object_type": "entity",
+        "chunk_id": "chunk_0001",
+        "justification": "The text states that the intervention for Alarm n°1002 is to release the button and press the start button.",
+        "confidence": 0.85
+      },
+      {
+        "triple_id": "triple_00006",
+        "subject_id": "cand_e_00006",
+        "subject_label": "Alarm n°1002",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00008",
+        "predicate_label": "MACHINE HORS CIRCUIT",
+        "object_id": "cand_s_00002",
+        "object_label": "URGENCE ACTIVE",
+        "object_type": "event",
+        "chunk_id": "chunk_0001",
+        "justification": "The text states that Alarm n°1002 has the type 'MACHINE HORS CIRCUIT' and that 'MACHINE HORS CIRCUIT' is associated with 'URGENCE ACTIVE'.",
+        "confidence": 0.85
+      }
+    ],
+    "inferred_axiom_schemata": [
+      {
+        "schema_id": "schema_00000",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "domain",
+        "object_id": "domain_hint::AlarmEvent",
+        "object_label": "AlarmEvent",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00001",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "range",
+        "object_id": "range_hint::Device",
+        "object_label": "Device",
+        "confidence": 0.95
+      }
+    ],
+    "inferred_general_axioms": [
+      {
+        "axiom_id": "axiom_00000",
+        "axiom_type": "relation domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "domain",
+        "object_id": "domain_hint::AlarmEvent",
+        "object_label": "AlarmEvent",
+        "literal_value": null,
+        "confidence": 0.93
+      },
+      {
+        "axiom_id": "axiom_00001",
+        "axiom_type": "relation range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "range",
+        "object_id": "range_hint::Device",
+        "object_label": "Device",
+        "literal_value": null,
+        "confidence": 0.93
+      },
+      {
+        "axiom_id": "axiom_00002",
+        "axiom_type": "description",
+        "subject_id": "concept_00000",
+        "subject_label": "CNC",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "A computer-controlled system for automating the machining process.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00003",
+        "axiom_type": "description",
+        "subject_id": "concept_00001",
+        "subject_label": "PLC",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "A programmable logic controller used to control machinery and processes.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00004",
+        "axiom_type": "description",
+        "subject_id": "concept_00002",
+        "subject_label": "Cycle",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "A recurring sequence of events or phenomena.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00005",
+        "axiom_type": "description",
+        "subject_id": "concept_00003",
+        "subject_label": "Axes",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Movable parts of a machine.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00006",
+        "axiom_type": "description",
+        "subject_id": "concept_00004",
+        "subject_label": "Reset",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "An action that returns a machine or system to its default state.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00007",
+        "axiom_type": "description",
+        "subject_id": "concept_00005",
+        "subject_label": "UrgencyActive",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "A type of alarm indicating an urgent situation requiring immediate attention.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00008",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Relates an alarm or emitted signal to the system or device that emits it.",
+        "confidence": 1.0
+      }
+    ]
+  }
+}

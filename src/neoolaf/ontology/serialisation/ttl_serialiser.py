@@ -68,7 +68,7 @@ class OntologyTTLSerialiser:
         # 2. Add inferred general axioms from reasoning
         if state.reasoning_report is not None:
             for axiom in state.reasoning_report.inferred_general_axioms:
-                subject_uri = self._resolve_axiom_subject_uri(axiom)
+                subject_uri = self._resolve_axiom_subject_uri_with_state(axiom, state)
 
                 if axiom.predicate == "subClassOf" and axiom.object_id is not None:
                     object_uri = self._resolve_object_uri(axiom.object_id, axiom.object_label)
@@ -80,8 +80,22 @@ class OntologyTTLSerialiser:
                 elif axiom.predicate == "range" and axiom.object_label is not None:
                     graph.add((subject_uri, RDFS.range, Literal(axiom.object_label)))
 
-                elif axiom.predicate == "rdfs:description" and axiom.literal_value is not None:
+                elif axiom.predicate in {"rdfs:description", "rdfs:comment"} and axiom.literal_value is not None:
                     graph.add((subject_uri, RDFS.comment, Literal(axiom.literal_value)))
+
+                elif axiom.predicate == "rdf:type" and axiom.object_id is not None:
+                    object_uri = self._resolve_object_uri(axiom.object_id, axiom.object_label)
+                    graph.add((subject_uri, RDF.type, object_uri))
+
+                elif axiom.predicate == "owl:sameAs" and axiom.object_id is not None:
+                    object_uri = self._resolve_object_uri(axiom.object_id, axiom.object_label)
+                    graph.add((subject_uri, OWL.sameAs, object_uri))
+
+                elif axiom.predicate == "skos:prefLabel" and axiom.literal_value is not None:
+                    graph.add((subject_uri, self.SKOS.prefLabel, Literal(axiom.literal_value)))
+
+                elif axiom.predicate == "skos:altLabel" and axiom.literal_value is not None:
+                    graph.add((subject_uri, self.SKOS.altLabel, Literal(axiom.literal_value)))
 
         # 3. Add completed ontology axioms from Layer 11
         for completion in state.completion_candidates:
@@ -89,7 +103,7 @@ class OntologyTTLSerialiser:
                 continue
 
             axiom = completion.completed_axiom
-            subject_uri = self._resolve_axiom_subject_uri(axiom)
+            subject_uri = self._resolve_axiom_subject_uri_with_state(axiom, state)
 
             if axiom.predicate == "subClassOf" and axiom.object_id is not None:
                 object_uri = self._resolve_object_uri(axiom.object_id, axiom.object_label)
@@ -101,8 +115,22 @@ class OntologyTTLSerialiser:
             elif axiom.predicate == "range" and axiom.object_label is not None:
                 graph.add((subject_uri, RDFS.range, Literal(axiom.object_label)))
 
-            elif axiom.predicate == "rdfs:description" and axiom.literal_value is not None:
+            elif axiom.predicate in {"rdfs:description", "rdfs:comment"} and axiom.literal_value is not None:
                 graph.add((subject_uri, RDFS.comment, Literal(axiom.literal_value)))
+
+            elif axiom.predicate == "rdf:type" and axiom.object_id is not None:
+                object_uri = self._resolve_object_uri(axiom.object_id, axiom.object_label)
+                graph.add((subject_uri, RDF.type, object_uri))
+
+            elif axiom.predicate == "owl:sameAs" and axiom.object_id is not None:
+                object_uri = self._resolve_object_uri(axiom.object_id, axiom.object_label)
+                graph.add((subject_uri, OWL.sameAs, object_uri))
+
+            elif axiom.predicate == "skos:prefLabel" and axiom.literal_value is not None:
+                graph.add((subject_uri, self.SKOS.prefLabel, Literal(axiom.literal_value)))
+
+            elif axiom.predicate == "skos:altLabel" and axiom.literal_value is not None:
+                graph.add((subject_uri, self.SKOS.altLabel, Literal(axiom.literal_value)))
 
         # 4. Write the merged inferred ontology to disk
         self._write_graph(graph, output_path)
@@ -117,6 +145,55 @@ class OntologyTTLSerialiser:
         graph.bind("owl", OWL)
         graph.bind("skos", self.SKOS)
         return graph
+
+
+    @staticmethod
+    def _safe_local_name(value: str | None, fallback: str = "unnamed") -> str:
+        """Return a stable URI-safe local name for RDF resources."""
+        import re
+        raw = str(value or "").strip() or fallback
+        raw = raw.replace("&", "and")
+        raw = re.sub(r"[^A-Za-z0-9_]+", "_", raw)
+        raw = re.sub(r"_+", "_", raw).strip("_")
+        return raw or fallback
+
+    def _relation_uri(self, relation_id: str | None, relation_label: str | None = None) -> URIRef:
+        """Mint semantic relation URIs from relation labels when available."""
+        if relation_label:
+            return self.NEO[f"relation/{self._safe_local_name(relation_label, relation_id or 'relation')}"]
+        return self.NEO[f"relation/{self._safe_local_name(relation_id, 'relation')}"]
+
+    def _concept_uri(self, concept_id: str | None) -> URIRef:
+        """Mint stable concept URIs from concept IDs."""
+        return self.NEO[f"concept/{self._safe_local_name(concept_id, 'concept')}"]
+
+    def _candidate_uri(self, candidate_id: str | None) -> URIRef:
+        """Mint stable candidate URIs from candidate IDs."""
+        return self.NEO[f"candidate/{self._safe_local_name(candidate_id, 'candidate')}"]
+
+    def _relation_label_by_id(self, state) -> dict[str, str]:
+        """Build a relation-id to label index from ontology and candidate relations."""
+        index: dict[str, str] = {}
+        for relation in getattr(state, "ontology_relation_candidates", []) or []:
+            index[str(relation.relation_id)] = str(relation.label)
+        for relation in getattr(state, "relation_candidates", []) or []:
+            rid = getattr(relation, "candidate_id", None) or getattr(relation, "relation_id", None)
+            label = getattr(relation, "canonical_label", None) or getattr(relation, "label", None)
+            if rid and label:
+                index[str(rid)] = str(label)
+        return index
+
+    def _resolve_axiom_subject_uri_with_state(self, axiom, state) -> URIRef:
+        """Resolve axiom subject URI while using semantic relation labels when possible."""
+        subject_id = str(axiom.subject_id)
+        if subject_id.startswith("ont_rel_") or subject_id.startswith("cand_r_"):
+            label = self._relation_label_by_id(state).get(subject_id, getattr(axiom, "subject_label", None))
+            return self._relation_uri(subject_id, label)
+        if subject_id.startswith("concept_"):
+            return self._concept_uri(subject_id)
+        if subject_id.startswith("cand_"):
+            return self._candidate_uri(subject_id)
+        return self.NEO[f"resource/{self._safe_local_name(subject_id, 'resource')}"]
 
     def _resolve_axiom_subject_uri(self, axiom) -> URIRef:
         """
@@ -228,7 +305,7 @@ class OntologyTTLSerialiser:
 
         # Ontology relation candidates
         for relation in state.ontology_relation_candidates:
-            relation_uri = self.NEO[f"relation/{relation.relation_id}"]
+            relation_uri = self._relation_uri(relation.relation_id, relation.label)
             graph.add((relation_uri, RDF.type, OWL.ObjectProperty))
             graph.add((relation_uri, RDFS.label, Literal(relation.label)))
 
@@ -249,13 +326,14 @@ class OntologyTTLSerialiser:
 
         # Relation hierarchy
         for link in state.relation_hierarchy_links:
-            child_uri = self.NEO[f"relation/{link.child_relation_id}"]
-            parent_uri = self.NEO[f"relation/{link.parent_relation_id}"]
+            rel_index = self._relation_label_by_id(state)
+            child_uri = self._relation_uri(link.child_relation_id, rel_index.get(str(link.child_relation_id)))
+            parent_uri = self._relation_uri(link.parent_relation_id, rel_index.get(str(link.parent_relation_id)))
             graph.add((child_uri, RDFS.subPropertyOf, parent_uri))
 
         # General axioms
         for axiom in state.general_axiom_candidates:
-            subject_uri = self._resolve_axiom_subject_uri(axiom)
+            subject_uri = self._resolve_axiom_subject_uri_with_state(axiom, state)
 
             if axiom.predicate == "subClassOf" and axiom.object_id is not None:
                 object_uri = self._resolve_object_uri(axiom.object_id, axiom.object_label)
@@ -267,5 +345,19 @@ class OntologyTTLSerialiser:
             elif axiom.predicate == "range" and axiom.object_label is not None:
                 graph.add((subject_uri, RDFS.range, Literal(axiom.object_label)))
 
-            elif axiom.predicate == "rdfs:description" and axiom.literal_value is not None:
+            elif axiom.predicate in {"rdfs:description", "rdfs:comment"} and axiom.literal_value is not None:
                 graph.add((subject_uri, RDFS.comment, Literal(axiom.literal_value)))
+
+            elif axiom.predicate == "rdf:type" and axiom.object_id is not None:
+                object_uri = self._resolve_object_uri(axiom.object_id, axiom.object_label)
+                graph.add((subject_uri, RDF.type, object_uri))
+
+            elif axiom.predicate == "owl:sameAs" and axiom.object_id is not None:
+                object_uri = self._resolve_object_uri(axiom.object_id, axiom.object_label)
+                graph.add((subject_uri, OWL.sameAs, object_uri))
+
+            elif axiom.predicate == "skos:prefLabel" and axiom.literal_value is not None:
+                graph.add((subject_uri, self.SKOS.prefLabel, Literal(axiom.literal_value)))
+
+            elif axiom.predicate == "skos:altLabel" and axiom.literal_value is not None:
+                graph.add((subject_uri, self.SKOS.altLabel, Literal(axiom.literal_value)))

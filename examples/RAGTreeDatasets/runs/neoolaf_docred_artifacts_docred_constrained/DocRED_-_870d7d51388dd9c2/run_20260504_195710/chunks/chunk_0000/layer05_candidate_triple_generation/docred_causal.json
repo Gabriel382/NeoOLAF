@@ -1,0 +1,66 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 2,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_r_00000",
+        "label": "Edward P. \" Ned \" Mc Evoy",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00000",
+        "label": "Edward P. \" Ned \" Mc Evoy"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "Thomas Davis club",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The chunk states that Mc Evoy won a championship medal with the Thomas Davis club.",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 0,
+          "chunk_end_char": 25,
+          "doc_start_char": 0,
+          "doc_end_char": 25,
+          "snippet": "Edward P. \" Ned \" Mc Evoy ( born 1886 ) was an Irish hurler who played for the Dublin and Laois senior te"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_e_00001",
+        "label": "entity",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00003",
+        "label": "Born in Abbeyleix , County Laois"
+      },
+      "object": {
+        "id": "cand_e_00003",
+        "label": "County Laois",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The chunk states that Edward P. \"Ned\" Mc Evoy was born in Abbeyleix, County Laois, linking the person (represented by the generic entity candidate) to the location County Laois.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 111,
+          "chunk_end_char": 143,
+          "doc_start_char": 111,
+          "doc_end_char": 143,
+          "snippet": "n 1886 ) was an Irish hurler who played for the Dublin and Laois senior teams . Born in Abbeyleix , County Laois , Mc Evoy first played competitive hurling and Gaelic football in his youth . H"
+        }
+      ]
+    }
+  ]
+}

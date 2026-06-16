@@ -1,0 +1,31 @@
+case_id,triple_id,subject,predicate,object,subject_type,object_type,confidence,page,evidence,tag_condition,tag_sensor,tag_feature,tag_direction,tag_operation
+feedrate_80,1,FEEDRATE_80,HAS_PART_RANGE,PART_61_70,event,entity,0.95,3,Part #61 to Part #70 : Feedrate reduced to 80%,feedrate_80,unknown,unknown,unknown,unknown
+feedrate_80,2,FEEDRATE_80,OCCURS_DURING,OP_120_EBAUCHE_EXTER,event,entity,0.9,4,Operation 120: EBAUCHE EXTER,feedrate_80,unknown,unknown,unknown,OP120
+feedrate_80,3,FEEDRATE_80,CAUSES,SPINDLE_POWER_DECREASES_FEEDRATE,event,event,0.9,6,Spindle power decreases when feedrate decreases => OK,feedrate_80,AI1,power,decrease,OP120
+feedrate_80,4,FEEDRATE_80,CAUSES,CUTTING_FORCE_DECREASES_FEEDRATE,event,event,0.9,7,Cutting Force decreases when feedrate decreases => OK,feedrate_80,Vib2,force,decrease,OP120
+feedrate_80,5,VIB1_RMS_STABLE_FEEDRATE,REMAINS_STABLE,FEEDRATE_80,event,event,0.9,8,RMS remains the same when feedrate decreases,feedrate_80,Vib1,rms,stable,unknown
+feedrate_80,6,FEEDRATE_80,CAUSES,VIB1_RMS_INCREASES_SECOND_PART_FEEDRATE,event,event,0.9,14,RMS increases (in the 2nd part of the signal) when feedrate decreases,feedrate_80,Vib1,rms,increase,unknown
+feedrate_80,7,FEEDRATE_80,CAUSES,AUDIO_RMS_INCREASES_FEEDRATE,event,event,0.9,15,RMS audio increases when feedrate decreases => OK,feedrate_80,Vib11,audio,increase,unknown
+feedrate_80,8,FEEDRATE_80,CAUSES,AUDIO_RMS_DECREASES_FEEDRATE,event,event,0.9,22,"Audio RMS, decreases when feedrate decreases",feedrate_80,Vib11,audio,decrease,unknown
+feedrate_80,9,FEEDRATE_80,CAUSES,CUTTING_TIME_INCREASES_FEEDRATE,event,event,0.9,31,Cutting time increases when feedrate decreases => OK,feedrate_80,unknown,time,increase,unknown
+feedrate_80,10,FEEDRATE_80,CAUSES,TEMPORAL_SHIFTS_SOMETIMES,event,event,0.8,6,Rem : Temporal shifts sometimes !,feedrate_80,unknown,time shift,uncertain,unknown
+feedrate_80,11,SPINDLE_POWER_DECREASES_FEEDRATE,OBSERVED_IN,AI1,event,entity,0.9,6,Spindle power decreases when feedrate decreases => OK,feedrate_80,AI1,power,decrease,OP120
+feedrate_80,12,CUTTING_FORCE_DECREASES_FEEDRATE,OBSERVED_IN,Vib2,event,entity,0.9,7,Cutting Force decreases when feedrate decreases => OK,feedrate_80,Vib2,force,decrease,OP120
+feedrate_80,13,VIB1_RMS_STABLE_FEEDRATE,OBSERVED_IN,Vib1,event,entity,0.9,8,RMS remains the same when feedrate decreases,feedrate_80,Vib1,rms,stable,OP120
+feedrate_80,14,VIB1_RMS_INCREASES_SECOND_PART_FEEDRATE,OBSERVED_IN,Vib1,event,entity,0.9,14,RMS increases (in the 2nd part of the signal) when feedrate decreases,feedrate_80,Vib1,rms,increase,OP120
+feedrate_80,15,AUDIO_RMS_INCREASES_FEEDRATE,OBSERVED_IN,Vib11,event,entity,0.9,15,RMS audio increases when feedrate decreases => OK,feedrate_80,Vib11,audio,increase,OP120
+feedrate_80,16,AUDIO_RMS_DECREASES_FEEDRATE,OBSERVED_IN,Vib11,event,entity,0.9,22,"Audio RMS, decreases when feedrate decreases",feedrate_80,Vib11,audio,decrease,OP120
+feedrate_80,17,AI1,MEASURED_BY,OP_120_EBAUCHE_EXTER,entity,entity,0.8,5,AI1 (main spindle) in operation 120,unknown,AI1,power,unknown,OP120
+feedrate_80,18,Vib1,MEASURED_BY,OP_120_EBAUCHE_EXTER,entity,entity,0.8,5,Vib1 (// feedrate on the roughing turning tool T104) in operation 120,unknown,Vib1,rms,unknown,OP120
+feedrate_80,19,Vib2,MEASURED_BY,OP_120_EBAUCHE_EXTER,entity,entity,0.8,5,Vib2 (// main cutting force on the roughing turning tool T104) in operation 120,unknown,Vib2,force,unknown,OP120
+feedrate_80,20,Vib11,MEASURED_BY,OP_120_EBAUCHE_EXTER,entity,entity,0.8,5,Vib11 (audio micro) in operation 120,unknown,Vib11,audio,unknown,OP120
+material_316L,1,316L grade instead of 303 stainless steel,INCREASES,Spindle Power (AI1),event,entity,0.9,6,Spindle power increases when 316L grade => OK,material_316L,AI1,power,increase,unknown
+material_316L,2,316L grade instead of 303 stainless steel,INCREASES,Cutting Force (Fz),event,entity,0.9,7,Cutting Force increases when 316L grade => OK,material_316L,unknown,force,increase,unknown
+material_316L,3,316L grade instead of 303 stainless steel,DECREASES,Vibration RMS (Vib1),event,entity,0.9,8,RMS decreases when 316L grade,material_316L,Vib1,rms,decrease,unknown
+material_316L,4,316L grade instead of 303 stainless steel,INCREASES,Vibration RMS (Vib1),event,entity,0.8,14,RMS increases when 316L grade,material_316L,Vib1,rms,increase,unknown
+material_316L,5,316L grade instead of 303 stainless steel,DECREASES,Audio RMS (Vib11),event,entity,0.9,9,RMS decreases when 316L grade,material_316L,Vib11,audio,decrease,unknown
+material_316L,6,316L grade instead of 303 stainless steel,INCREASES,Audio RMS (Vib11),event,entity,0.8,31,Audio RMS increases when 316L grade,material_316L,Vib11,audio,increase,unknown
+material_316L,7,316L grade instead of 303 stainless steel,DECREASES,Audio RMS (Vib11),event,entity,0.8,28,Audio RMS decreases a little when 316L grade,material_316L,Vib11,audio,decrease,unknown
+material_316L,8,316L grade instead of 303 stainless steel,INCREASES,Audio RMS (Vib11),event,entity,0.8,38,Audio RMS seems to increase when 316L grade,material_316L,Vib11,audio,increase,unknown
+material_316L,9,316L grade instead of 303 stainless steel,REMAINS_STABLE,Spindle Power (AI1),event,entity,0.7,40,Spindle power remains the same with 316L grade ?,material_316L,AI1,power,stable,unknown
+material_316L,10,316L grade instead of 303 stainless steel,INCREASES,Spindle Power (AI1),event,entity,0.9,17,Spindle power increases a little when 316L grade,material_316L,AI1,power,increase,unknown

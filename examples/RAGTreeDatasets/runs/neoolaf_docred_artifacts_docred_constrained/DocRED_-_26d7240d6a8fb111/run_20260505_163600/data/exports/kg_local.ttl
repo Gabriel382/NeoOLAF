@@ -1,0 +1,23 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that Bluetooth Low Energy devices are supported by Android smartphones." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00002> ;
+    neo:predicate ns1:cand_r_00002 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+ns1:cand_r_00002 neo:label "Bluetooth Low Energy devices" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "pecialized in indoor positioning and navigation utilising i Beacons , which are Bluetooth Low Energy devices formalised by Apple Inc. Pointr have created a GPS - like experience with true" .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "Android" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00002 <http://neoolaf.org/resource/node/cand_e_00002> .
+

@@ -1,0 +1,54 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 2,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00003",
+      "relation_label": "Delaware House of Representatives",
+      "source_candidate_id": "cand_r_00003",
+      "source_candidate_label": "Delaware House of Representatives",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_e_00000",
+      "target_candidate_label": "Legislative Hall",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that the Delaware House of Representatives meets at Legislative Hall.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 168,
+          "chunk_end_char": 201,
+          "doc_start_char": 168,
+          "doc_end_char": 201,
+          "snippet": "bicameral legislature composed of the Delaware Senate with 21 Senators and the Delaware House of Representatives with 41 Representatives . It meets at Legislative Hall in Dover , Delaware , co"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00004",
+      "relation_label": "Dover, Delaware",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "Legislative Hall",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_r_00004",
+      "target_candidate_label": "Dover, Delaware",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that Legislative Hall is located in Dover, Delaware.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "The Delaware General Assembly is the legislature of the U.S. state of Delaware . It is a bicameral legislature composed of the Delaware Senate with 21 Senators and the Delaware House of Representatives with 41 Representatives . It meets at Legislative Hall in Dover , Delaware , convening on the seco"
+        }
+      ]
+    }
+  ]
+}

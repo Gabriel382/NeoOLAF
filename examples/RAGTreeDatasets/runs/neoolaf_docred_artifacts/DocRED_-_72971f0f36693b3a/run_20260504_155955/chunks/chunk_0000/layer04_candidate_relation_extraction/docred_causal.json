@@ -1,0 +1,78 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 3,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00008",
+      "relation_label": "West Virginia Route 28",
+      "source_candidate_id": "cand_e_00003",
+      "source_candidate_label": "geographic location",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00001",
+      "target_candidate_label": "town",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0000",
+      "justification": "The text indicates that West Virginia Route 28 runs along the hills north of Romney, linking the geographic location (the route) to the town of Romney.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 465,
+          "chunk_end_char": 487,
+          "doc_start_char": 465,
+          "doc_end_char": 487,
+          "snippet": "m Washington later acquired other properties on the hills north of Romney along West Virginia Route 28 and became the first African - American land developer in the state of West Vir"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00009",
+      "relation_label": "first African-American land developer",
+      "source_candidate_id": "cand_e_00002",
+      "source_candidate_label": "person",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00003",
+      "target_candidate_label": "geographic location",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that William Washington became the first African‑American land developer in the state of West Virginia.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Washington Place ( William Washington House ) is one of the first homes built by freed slaves after the Emancipation Proclamation of 1863 in Hampshire County , West Virginia , United States . Washington Place was built by William and Annie Washington in north Romney between 1863 and 1874 on land giv"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00011",
+      "relation_label": "Ralph W. Haines",
+      "source_candidate_id": "cand_r_00011",
+      "source_candidate_label": "Ralph W. Haines",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_e_00003",
+      "target_candidate_label": "geographic location",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0000",
+      "justification": "The chunk states that Washington Place was bought and restored by Ralph W. Haines.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 736,
+          "chunk_end_char": 751,
+          "doc_start_char": 736,
+          "doc_end_char": 751,
+          "snippet": "to the Washington Place homestead . Washington Place was bought and restored by Ralph W. Haines , a local attomey and historic preservationist ."
+        }
+      ]
+    }
+  ]
+}

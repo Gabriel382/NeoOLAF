@@ -1,0 +1,26 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that South Sudan became an independent state on 9 July 2011." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00005> ;
+    neo:predicate ns1:cand_r_00010 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "country" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00010 <http://neoolaf.org/resource/node/cand_e_00005> .
+
+ns1:cand_r_00010 neo:label "independent state" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "y the White Nile and known locally as the Bahr al Jabal . South Sudan became an independent state on 9 July 2011 , following a referendum that passed with 98.83 % of the vote ." .
+
+<http://neoolaf.org/resource/node/cand_e_00005> neo:label "date" ;
+    neo:nodeType "entity" .
+

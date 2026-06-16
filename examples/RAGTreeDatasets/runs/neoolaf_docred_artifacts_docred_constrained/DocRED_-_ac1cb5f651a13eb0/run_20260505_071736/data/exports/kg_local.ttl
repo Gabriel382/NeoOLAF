@@ -1,0 +1,26 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that Johan Gottlieb Gahn died on 8 December 1818." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00000> ;
+    neo:predicate ns1:cand_r_00000 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00004> .
+
+<http://neoolaf.org/resource/node/cand_e_00004> neo:label "person" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00000 <http://neoolaf.org/resource/node/cand_r_00000> .
+
+ns1:cand_r_00000 neo:label "8 December 1818" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Johan Gottlieb Gahn ( 19 August 1745 – 8 December 1818 ) was a Swedish chemist and metallurgist who discovered manganese in 1774 . Gah" .
+
+<http://neoolaf.org/resource/node/cand_r_00000> neo:label "8 December 1818" ;
+    neo:nodeType "relation" .
+

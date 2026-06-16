@@ -1,0 +1,199 @@
+{
+  "layer": "layer06_concept_relation_induction",
+  "num_concept_candidates": 6,
+  "num_ontology_relation_candidates": 1,
+  "concept_candidates": [
+    {
+      "concept_id": "concept_00000",
+      "label": "CNC",
+      "normalized_label": "cnc",
+      "description": "A computer-controlled system for automating the machining process.",
+      "concept_kind": "IndustrialEquipment",
+      "parent_hint": "MachineTool",
+      "source_candidate_ids": [
+        "cand_e_00001"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "The candidate represents a reusable type of industrial equipment with a clear definition and established usage in manufacturing.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 183,
+          "chunk_end_char": 186,
+          "doc_start_char": 183,
+          "doc_end_char": 186,
+          "snippet": "s sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ..."
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00001",
+      "label": "PLC",
+      "normalized_label": "plc",
+      "description": "A programmable logic controller used to control machinery and processes.",
+      "concept_kind": "component",
+      "parent_hint": "IndustrialEquipment",
+      "source_candidate_ids": [
+        "cand_e_00002"
+      ],
+      "source_triple_ids": [
+        "triple_00000",
+        "triple_00001",
+        "triple_00002"
+      ],
+      "confidence": 0.95,
+      "justification": "The candidate represents a reusable type of industrial control system component with a clear definition and wide applicability.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 313,
+          "chunk_end_char": 316,
+          "doc_start_char": 313,
+          "doc_end_char": 316,
+          "snippet": "tretien de la CNC Fanuc série ........ 2 les alarmes et messages de l’interface PLC, décrits ci-après. Les messages et les alarmes émises par la PLC indiquent la d"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00002",
+      "label": "Cycle",
+      "normalized_label": "cycle",
+      "description": "A recurring sequence of events or phenomena.",
+      "concept_kind": "process",
+      "parent_hint": "TemporalEntity",
+      "source_candidate_ids": [
+        "cand_e_00003"
+      ],
+      "source_triple_ids": [
+        "triple_00002"
+      ],
+      "confidence": 0.85,
+      "justification": "The candidate represents a reusable concept with clear semantic stability and relevance to temporal modeling.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 483,
+          "chunk_end_char": 488,
+          "doc_start_char": 483,
+          "doc_end_char": 488,
+          "snippet": "n d’un problème qui peut compromettre le bon fonctionnement de la machine et du cycle d’usinage. En fonction de l’effet qu’ils produisent, ils sont classés dans : •"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00003",
+      "label": "Axes",
+      "normalized_label": "axes",
+      "description": "Movable parts of a machine.",
+      "concept_kind": "component",
+      "parent_hint": "MachinePart",
+      "source_candidate_ids": [
+        "cand_e_00004"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.85,
+      "justification": "The candidate represents a reusable component type with clear definition and multiple aliases.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 644,
+          "chunk_end_char": 648,
+          "doc_start_char": 644,
+          "doc_end_char": 648,
+          "snippet": ": • les alarmes avec arrêt immédiat et contrôlé : la machine est arrêtée et les axes et broches bloqués au couple maximum en mode contrôlé ; • les alarmes et messag"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00004",
+      "label": "Reset",
+      "normalized_label": "reset",
+      "description": "An action that returns a machine or system to its default state.",
+      "concept_kind": "action",
+      "parent_hint": "Action",
+      "source_candidate_ids": [
+        "cand_s_00000"
+      ],
+      "source_triple_ids": [
+        "triple_00001"
+      ],
+      "confidence": 0.85,
+      "justification": "The candidate represents a reusable action type with clear definition and synonyms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1156,
+          "chunk_end_char": 1165,
+          "doc_start_char": 1156,
+          "doc_end_char": 1165,
+          "snippet": "ut voir le numéro et le texte : de l’alarme que l’on reconnaît avec la touche « RESET PRG »: ainsi, le programme est rembobiné et l’on pourra faire repar- tir le program"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00005",
+      "label": "UrgencyActive",
+      "normalized_label": "urgencyactive",
+      "description": "A type of alarm indicating an urgent situation requiring immediate attention.",
+      "concept_kind": "alarm_type",
+      "parent_hint": "Alarm",
+      "source_candidate_ids": [
+        "cand_s_00002"
+      ],
+      "source_triple_ids": [
+        "triple_00003",
+        "triple_00004",
+        "triple_00006"
+      ],
+      "confidence": 0.85,
+      "justification": "The candidate represents a reusable alarm type with safety implications, supported by synonyms and ontology hints.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 196,
+          "chunk_end_char": 210,
+          "doc_start_char": 1496,
+          "doc_end_char": 1510,
+          "snippet": ".1 Alarme n°1001 8.2.2 Alarme n°1002 8.2.3 Alarme n°1003 Alarme n°: 1001 texte: URGENCE ACTIVE type: Standard: Optionnel: effet: Alarme avec arrêt immédiate et contrôlée, ouv"
+        }
+      ]
+    }
+  ],
+  "ontology_relation_candidates": [
+    {
+      "relation_id": "ont_rel_00000",
+      "label": "emittedBy",
+      "normalized_label": "emittedby",
+      "description": "Relates an alarm or emitted signal to the system or device that emits it.",
+      "domain_hint": "AlarmEvent",
+      "range_hint": "Device",
+      "source_candidate_ids": [
+        "cand_r_00000"
+      ],
+      "source_triple_ids": [
+        "triple_00000"
+      ],
+      "confidence": 0.92,
+      "justification": "The relation is semantically stable, reusable across documents and meaningful beyond isolated mentions. It connects events (alarms) to their sources (devices).",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de"
+        },
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-fr Page 8-4 8 Alarmes et messages 8.1 Introduction Les alarmes et les messages sont divisés en deux catégories principales : 1 les alarmes et messages de la CNC, pour lesquels nous renvoyons au ma- nuel d’entretien de la CNC Fanuc série ........ 2 les alarmes et messages de"
+        }
+      ]
+    }
+  ]
+}

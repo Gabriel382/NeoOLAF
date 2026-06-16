@@ -1,0 +1,186 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 6,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_r_00007",
+        "label": "WRONG OR MISSING FEED",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00007",
+        "label": "WRONG OR MISSING FEED"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "Programmer",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0011",
+      "justification": "The text states that the alarm 'WRONG OR MISSING FEED' is responsible for the programmer.",
+      "confidence": 0.9,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4216,
+          "chunk_end_char": 4237,
+          "doc_start_char": 59216,
+          "doc_end_char": 59237,
+          "snippet": "ning, and review the program.\nresponsible for\nprogrammer\nmessage no: 3012\ntext: WRONG OR MISSING FEED\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_s_00000",
+        "label": "Vertical Axis Caution Alarm",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00010",
+        "label": "intervention:"
+      },
+      "object": {
+        "id": "cand_s_00001",
+        "label": "Modify the program",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0011",
+      "justification": "The chunk text contains the message \"CAUTION VERTICAL AXIS\" (cand_s_00000) followed by \"intervention: Modify the program\" (cand_s_00001), indicating that the alarm triggers the intervention.",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 259,
+          "chunk_end_char": 272,
+          "doc_start_char": 55259,
+          "doc_end_char": 55272,
+          "snippet": "e:\nto exhaust oneself\nCheck on the “MAINTENANCE” page which of the items listed\nintervention:\nrequest an interview\nresponsible for\n\nmessage n°: 2061 text: CONFIGURED PRODUCT"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00002",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "Programmer",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00011",
+        "label": "responsible for"
+      },
+      "object": {
+        "id": "cand_s_00001",
+        "label": "Modify the program",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0011",
+      "justification": "The chunk text contains the phrase 'responsible for\nprogrammer' following the intervention 'Modify the program', indicating that the Programmer is responsible for the event 'Modify the program'.",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 2,
+          "chunk_end_char": 17,
+          "doc_start_char": 55002,
+          "doc_end_char": 55017,
+          "snippet": ".\nresponsible for\nmessage no: 2065\ntext: MAINTENANCE NOTICE\ntype: Standard: Optional:\neffect: Onl"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00003",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "Modify the program",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00011",
+        "label": "responsible for"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "Programmer",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0011",
+      "justification": "In the chunk, the line \"intervention: Modify the program\" is immediately followed by \"responsible for the intervention: programmer\", indicating that the programmer is responsible for the intervention event \"Modify the program\".",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1591,
+          "chunk_end_char": 1622,
+          "doc_start_char": 56591,
+          "doc_end_char": 56622,
+          "snippet": "hich of the listed items requires maintenance responsible for the intervention: responsible for the maintenance\n\nmessage no: 3001 to 3003\ntext: WRONG TORQUE REDUCTION\ntype: Standard: Optional"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00004",
+      "subject": {
+        "id": "cand_r_00021",
+        "label": "the torque reduction requested at the indicated axis is beyond the limits",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00021",
+        "label": "the torque reduction requested at the indicated axis is beyond the limits"
+      },
+      "object": {
+        "id": "cand_s_00001",
+        "label": "Modify the program",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0011",
+      "justification": "The text states that the torque reduction requested at the indicated axis is beyond the limits, which triggers the intervention to modify the program.",
+      "confidence": 0.88,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 1769,
+          "chunk_end_char": 1842,
+          "doc_start_char": 56769,
+          "doc_end_char": 56842,
+          "snippet": "ard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nThe torque reduction requested at the indicated axis is beyond the limits:\nyour consents.\nintervention: Modify the programmed reduction value.\nresponsibl"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00005",
+      "subject": {
+        "id": "cand_e_00000",
+        "label": "Programmer",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00032",
+        "label": "Check the program and modify the instruction"
+      },
+      "object": {
+        "id": "cand_s_00001",
+        "label": "Modify the program",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0011",
+      "justification": "The chunk text states that the intervention \"Check the program and modify the instruction\" is performed by the programmer, which is equivalent to the event \"Modify the program\". Thus the relation connects the entity Programmer to the event Modify the program.",
+      "confidence": 0.9,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0011",
+          "chunk_start_char": 4476,
+          "chunk_end_char": 4520,
+          "doc_start_char": 59476,
+          "doc_end_char": 59520,
+          "snippet": "ates:\nthan the feed, or it was indicated with an incorrect value.\nintervention: Check the program and modify the instruction.\nresponsible for\nprogrammer\n\nmessage n°: 3006 - 3008 text: AXIS NOT IN POSITION"
+        }
+      ]
+    }
+  ]
+}

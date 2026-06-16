@@ -1,0 +1,48 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The chunk states that Mc Evoy won a championship medal with the Thomas Davis club." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00000> ;
+    neo:predicate ns1:cand_r_00000 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The chunk states that Edward P. \"Ned\" Mc Evoy was born in Abbeyleix, County Laois, linking the person (represented by the generic entity candidate) to the location County Laois." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00003> ;
+    neo:predicate ns1:cand_r_00003 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00001> .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "entity" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00003 <http://neoolaf.org/resource/node/cand_e_00003> .
+
+<http://neoolaf.org/resource/node/cand_r_00000> neo:label "Edward P. \" Ned \" Mc Evoy" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00000 <http://neoolaf.org/resource/node/cand_e_00000> .
+
+ns1:cand_r_00000 neo:label "Edward P. \" Ned \" Mc Evoy" .
+
+ns1:cand_r_00003 neo:label "Born in Abbeyleix , County Laois" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Edward P. \" Ned \" Mc Evoy ( born 1886 ) was an Irish hurler who played for the Dublin and Laois senior te" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "n 1886 ) was an Irish hurler who played for the Dublin and Laois senior teams . Born in Abbeyleix , County Laois , Mc Evoy first played competitive hurling and Gaelic football in his youth . H" .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "Thomas Davis club" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_e_00003> neo:label "County Laois" ;
+    neo:nodeType "entity" .
+

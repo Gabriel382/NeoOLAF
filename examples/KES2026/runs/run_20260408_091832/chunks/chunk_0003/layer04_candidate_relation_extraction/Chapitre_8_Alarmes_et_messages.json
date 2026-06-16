@@ -1,0 +1,150 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 6,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00005",
+      "relation_label": "responsible for",
+      "source_candidate_id": "cand_s_00002",
+      "source_candidate_label": "Press the R.A.Z. key",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00000",
+      "target_candidate_label": "programmer",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0003",
+      "justification": "The chunk text contains the line \"responsible for the intervention: operator\" immediately following the event description \"Press the R.A.Z. key\", indicating that the operator is responsible for that intervention.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 455,
+          "chunk_end_char": 499,
+          "doc_start_char": 15455,
+          "doc_end_char": 15499,
+          "snippet": "oning angle. intervention: Correct the program so as to insert the argument “B” responsible for the intervention: programmer\n\nAlarm n°: 1026 text: DIFFERENT TROLLEY PROGRAM N° type: Standard: Optional: ef"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00013",
+      "relation_label": "X2 axis migrated into channel 1",
+      "source_candidate_id": "cand_e_00003",
+      "source_candidate_label": "machine component",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00002",
+      "target_candidate_label": "channel",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0003",
+      "justification": "The chunk text states that the X2 axis migrated into channel 1, indicating a relation between the axis (represented by the machine component candidate) and the channel (represented by the channel candidate).",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "rvention programs:\nstart from the first sentence.\nresponsible for\noperator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins ("
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00019",
+      "relation_label": "Insufficient air pressure",
+      "source_candidate_id": "cand_r_00019",
+      "source_candidate_label": "Insufficient air pressure",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_s_00006",
+      "target_candidate_label": "pneumatic release",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0003",
+      "justification": "The chunk states that \"Insufficient air pressure for pneumatic release\" is the cause of the brake block, implying that the insufficient air pressure causes the pneumatic release event to fail.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 2283,
+          "chunk_end_char": 2308,
+          "doc_start_char": 17283,
+          "doc_end_char": 17308,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nInsufficient air pressure for pneumatic release of\ncause:\nthe X1 axis, the movement of which is prohibite"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00003",
+      "relation_candidate_id": "cand_r_00020",
+      "relation_label": "movement prohibited",
+      "source_candidate_id": "cand_e_00003",
+      "source_candidate_label": "machine component",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00006",
+      "target_candidate_label": "pneumatic release",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0003",
+      "justification": "The chunk states that the X1 axis movement is prohibited because of insufficient air pressure for pneumatic release, linking the machine component (X1 axis) to the event of pneumatic release.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "rvention programs:\nstart from the first sentence.\nresponsible for\noperator\n\nAlarm n°: 1022 text: CODE “S” MANDATORY type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: An attempt was made to execute a program block containing the function M for orientation of the pins ("
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00004",
+      "relation_candidate_id": "cand_r_00029",
+      "relation_label": "Exit automatic mode and close the clamp",
+      "source_candidate_id": "cand_s_00008",
+      "source_candidate_label": "OPEN FORCEPS",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_r_00029",
+      "target_candidate_label": "Exit automatic mode and close the clamp",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0003",
+      "justification": "The alarm OPEN FORCEPS triggers the intervention Exit automatic mode and close the clamp.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4322,
+          "chunk_end_char": 4361,
+          "doc_start_char": 19322,
+          "doc_end_char": 19361,
+          "snippet": "the automatic cycle with the pliers of the\ncause:\nmain pin open.\nintervention: Exit automatic mode and close the clamp.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1041\ntext: CLAMP OPENING FAILURE"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00005",
+      "relation_candidate_id": "cand_r_00030",
+      "relation_label": "CLAMP OPENING FAILURE",
+      "source_candidate_id": "cand_e_00004",
+      "source_candidate_label": "clamp",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00009",
+      "target_candidate_label": "Check mechanical resistance",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0003",
+      "justification": "The alarm \"CLAMP OPENING FAILURE\" indicates that the clamp did not open within the 5‑second limit, and the recommended intervention is to check mechanical resistance.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0003",
+          "chunk_start_char": 4420,
+          "chunk_end_char": 4441,
+          "doc_start_char": 19420,
+          "doc_end_char": 19441,
+          "snippet": "e and close the clamp.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1041\ntext: CLAMP OPENING FAILURE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    }
+  ]
+}

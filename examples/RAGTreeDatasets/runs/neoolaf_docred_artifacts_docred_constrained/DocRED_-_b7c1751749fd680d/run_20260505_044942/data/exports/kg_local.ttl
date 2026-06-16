@@ -1,0 +1,48 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The chunk states that Meat Loaf re‑recorded the song for his 2016 album Braver Than We Are, linking the artist (Meat Loaf) to the album." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00004> ;
+    neo:predicate ns1:cand_r_00005 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00003> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The chunk states that the song \"More\" was co‑written by Andrew Eldritch and Jim Steinman, establishing a co‑written relation between the song entity and each person entity." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00002> ;
+    neo:predicate ns1:cand_r_00008 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "song" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00008 <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/node/cand_e_00003> neo:label "artist" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00005 <http://neoolaf.org/resource/node/cand_e_00004> .
+
+ns1:cand_r_00005 neo:label "2016 album Braver Than We Are" .
+
+ns1:cand_r_00008 neo:label "co-written" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "his musical Batman . The song has also been re - recorded by Meat Loaf for his 2016 album Braver Than We Are ." .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "\" More \" is a song by The Sisters of Mercy , from their album Vision Thing . It was the first single from the album , reaching number one on the Billboard Modern Rock Tracks chart for five weeks , starting 15 December 1990 . The song was co - written and co - produced by Andrew Eldritch and Jim Stei" .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "person" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_e_00004> neo:label "album" ;
+    neo:nodeType "entity" .
+

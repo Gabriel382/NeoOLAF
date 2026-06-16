@@ -1,0 +1,1069 @@
+{
+  "layer": "layer03_candidate_typing_resolution",
+  "entity_candidates": [
+    {
+      "candidate_id": "cand_e_00000",
+      "canonical_label": "machine component",
+      "normalized_label": "machine component",
+      "candidate_type": "entity",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Component of machine",
+        "Functional unit in manufacturing system",
+        "Part of production line",
+        "Resource",
+        "Component",
+        "Machine part"
+      ],
+      "definition": "A specific functional component of a machine, designated as G300, that performs a particular operation within the manufacturing system.",
+      "aliases": [
+        "G300 function"
+      ],
+      "synonyms": [
+        "function component"
+      ],
+      "lexical_variants": [
+        "G300 function"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00017",
+          "text": "G300 function",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 1370,
+              "chunk_end_char": 1383,
+              "doc_start_char": 66370,
+              "doc_end_char": 66383,
+              "snippet": "onal:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nWith the G300 function we have reduced the torque so much that the axis\ncause:\nfails to achieve the re"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00021",
+          "text": "CDS device",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 461,
+              "chunk_end_char": 471,
+              "doc_start_char": 65461,
+              "doc_end_char": 65471,
+              "snippet": "has not been configured correctly on the user page. intervention: Configure the CDS device in the user page. responsible for the intervention: programmer\n\nmessage no.: 30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_e_00001",
+      "canonical_label": "MachineComponent",
+      "normalized_label": "machinecomponent",
+      "candidate_type": "entity",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "MachineComponent",
+        "Axis",
+        "MechanicalComponent",
+        "MotionComponent",
+        "partOf Machine"
+      ],
+      "definition": "The Y2 axis is a mechanical component of a machine that provides motion or positioning along the Y-axis, typically the second Y-axis in a multi‑axis system.",
+      "aliases": [
+        "Y2 axis"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "Y2 axis",
+        "Y2-Axis",
+        "Y2 Axis"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00019",
+          "text": "Y2 axis",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 115,
+              "chunk_end_char": 122,
+              "doc_start_char": 65115,
+              "doc_end_char": 65122,
+              "snippet": "unction G188 is programmed in a machine model that is not\ncause:\nnot having the Y2 axis.\nintervention: Delete function G188 from the program.\nresponsible for\nprogramme"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_e_00002",
+      "canonical_label": "cart 2",
+      "normalized_label": "cart 2",
+      "candidate_type": "entity",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Part",
+        "Situation S2",
+        "Situation S12"
+      ],
+      "definition": "A machine component referred to as cart 2.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "cart 2"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00020",
+          "text": "cart 2",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 744,
+              "chunk_end_char": 750,
+              "doc_start_char": 65744,
+              "doc_end_char": 65750,
+              "snippet": "axes and spindles. cause: The hidden time recharge function G303 cannot work if cart 2 has been deactivated in the user page. intervention: Activate cart 2 from the u"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_e_00003",
+      "canonical_label": "program",
+      "normalized_label": "program",
+      "candidate_type": "entity",
+      "confidence": 0.92,
+      "ontology_hints": [
+        "Process",
+        "Resource",
+        "Configuration"
+      ],
+      "definition": "a series of steps to be carried out or goals to be accomplished",
+      "aliases": [
+        "plan",
+        "program",
+        "programme",
+        "broadcast",
+        "platform",
+        "political platform",
+        "political program",
+        "Program"
+      ],
+      "synonyms": [
+        "plan",
+        "program",
+        "programme",
+        "broadcast",
+        "platform",
+        "political platform",
+        "political program"
+      ],
+      "lexical_variants": [
+        "plan",
+        "program",
+        "programme",
+        "broadcast",
+        "platform",
+        "political platform",
+        "political program"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00024",
+          "text": "program",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 51,
+              "chunk_end_char": 58,
+              "doc_start_char": 65051,
+              "doc_end_char": 65058,
+              "snippet": ", axis and bro-effect stop:\nches.\nFunction G188 is programmed in a machine model that is not\ncause:\nnot having the Y2 axis.\nintervention:"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "relation_candidates": [
+    {
+      "candidate_id": "cand_r_00000",
+      "canonical_label": "Alarm with program interruption, stopping of axes and spindles",
+      "normalized_label": "alarm with program interruption stopping of axes and spindles",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: program interruption",
+        "CAUSES: stopping of axes and spindles",
+        "REFERENCES: machine axes, spindles",
+        "HANDLED_BY: maintenance staff",
+        "REQUIRES: shutdown procedure"
+      ],
+      "definition": "An alarm event that interrupts the ongoing manufacturing program and causes the machine’s axes and spindles to stop operating.",
+      "aliases": [
+        "Program interruption alarm",
+        "Axis and spindle stop alarm",
+        "Machine shutdown alarm"
+      ],
+      "synonyms": [
+        "Alarm causing program halt",
+        "Alarm that stops axes and spindles",
+        "Shutdown-triggering alarm"
+      ],
+      "lexical_variants": [
+        "Alarm with program interruption and stopping of axes and spindles",
+        "Alarm that interrupts the program and halts machine axes and spindles",
+        "Program interruption leading to axis and spindle stop"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00000",
+          "text": "Alarm with program interruption, stopping of axes and spindles",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 287,
+              "chunk_end_char": 349,
+              "doc_start_char": 65287,
+              "doc_end_char": 65349,
+              "snippet": "ssage no.: 3030 text: CDS CONFIGURATION ERROR type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The high pressure unit has not been configured correctly on the user pa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00001",
+      "canonical_label": "Alarm with program interruption, axis and bro-effect stop",
+      "normalized_label": "alarm with program interruption axis and bro-effect stop",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "ProductionLine",
+        "ManufacturingProcess",
+        "SituationS1"
+      ],
+      "definition": "An alarm that interrupts the manufacturing program and stops the machine axis, resulting in a break effect on the operation.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00001",
+          "text": "Alarm with program interruption, axis and bro-effect stop",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 1296,
+              "chunk_end_char": 1353,
+              "doc_start_char": 66296,
+              "doc_end_char": 66353,
+              "snippet": "er\n\nmessage no: 3036 - 3038\ntext: AXIS TRACKING ERROR\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nWith the G300 function we have reduced the torque so much that the axis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00002",
+      "canonical_label": "CARRIAGE DISABLED",
+      "normalized_label": "carriage disabled",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Result",
+        "Feature of Interest",
+        "Manufacturing Cell",
+        "Manager",
+        "Manufacturing Process",
+        "Alarm Type"
+      ],
+      "definition": "An alarm indicating that the carriage component is disabled or not operational within a manufacturing cell.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00002",
+          "text": "CARRIAGE DISABLED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 567,
+              "chunk_end_char": 584,
+              "doc_start_char": 65567,
+              "doc_end_char": 65584,
+              "snippet": "e. responsible for the intervention: programmer\n\nmessage no.: 3031 - 3034 text: CARRIAGE DISABLED type: Standard: Optional: effect: Alarm with program interruption, stopping of"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00003",
+      "canonical_label": "OPTIONS 9000 NOT ACTIVATED",
+      "normalized_label": "options 9000 not activated",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Situation S9",
+        "Situation S10",
+        "Production Line",
+        "Instant",
+        "Spatial Object"
+      ],
+      "definition": "Alarm indicating that the Options 9000 feature is not activated on the machine.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00003",
+          "text": "OPTIONS 9000 NOT ACTIVATED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 909,
+              "chunk_end_char": 935,
+              "doc_start_char": 65909,
+              "doc_end_char": 65935,
+              "snippet": "user page. responsible for the intervention: programmer\n\nmessage n°: 3035 text: OPTIONS 9000 NOT ACTIVATED type: Standard: Optional: effect: Alarm with program interruption, stopping of"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00004",
+      "canonical_label": "AXIS TRACKING ERROR",
+      "normalized_label": "axis tracking error",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine",
+        "Manufacturing Process",
+        "Manufacturing Cell",
+        "Constraint",
+        "Manager"
+      ],
+      "definition": "An alarm indicating that the machine’s axis tracking deviates from its expected alignment, representing a constraint violation in the machine control system during a manufacturing process.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00004",
+          "text": "AXIS TRACKING ERROR",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 1250,
+              "chunk_end_char": 1269,
+              "doc_start_char": 66250,
+              "doc_end_char": 66269,
+              "snippet": "am. responsible for the intervention: programmer\n\nmessage no: 3036 - 3038\ntext: AXIS TRACKING ERROR\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00005",
+      "canonical_label": "The high pressure unit has not been configured correctly on the user page",
+      "normalized_label": "the high pressure unit has not been configured correctly on the user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest: high pressure unit",
+        "Situation: configuration error (S1–S4)",
+        "TRIGGERS: alarm",
+        "CAUSES: abnormal machine state",
+        "REQUIRES: corrective configuration intervention",
+        "HANDLED_BY: operator or maintenance staff"
+      ],
+      "definition": "A statement indicating that the high pressure unit has been set up incorrectly on the user interface, which is a configuration error that can trigger an alarm or abnormal machine state.",
+      "aliases": [
+        "high pressure unit misconfigured",
+        "HPU misconfigured",
+        "high pressure unit incorrectly configured"
+      ],
+      "synonyms": [
+        "misconfigured high pressure unit",
+        "incorrectly configured high pressure unit",
+        "high pressure unit not configured correctly"
+      ],
+      "lexical_variants": [
+        "The high pressure unit has not been configured correctly on the user page",
+        "The high pressure unit is incorrectly configured on the user page",
+        "The high pressure unit is misconfigured on the user page"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00006",
+          "text": "The high pressure unit has not been configured correctly on the user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 358,
+              "chunk_end_char": 431,
+              "doc_start_char": 65358,
+              "doc_end_char": 65431,
+              "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: The high pressure unit has not been configured correctly on the user page. intervention: Configure the CDS device in the user page. responsible for the i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00006",
+      "canonical_label": "Configure the CDS device in the user page",
+      "normalized_label": "configure the cds device in the user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "InterventionAction",
+        "Configuration",
+        "UserInterface",
+        "DeviceConfiguration",
+        "AlarmResolution",
+        "Requires",
+        "HandledBy"
+      ],
+      "definition": "An intervention action that involves setting or adjusting the parameters of the CDS device through the user page interface to resolve an alarm.",
+      "aliases": [
+        "CDS device configuration",
+        "CDS device setup"
+      ],
+      "synonyms": [
+        "set up",
+        "adjust",
+        "program",
+        "customize"
+      ],
+      "lexical_variants": [
+        "Configure the CDS device",
+        "Set up the CDS device",
+        "Adjust the CDS device"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00007",
+          "text": "Configure the CDS device in the user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 447,
+              "chunk_end_char": 488,
+              "doc_start_char": 65447,
+              "doc_end_char": 65488,
+              "snippet": "pressure unit has not been configured correctly on the user page. intervention: Configure the CDS device in the user page. responsible for the intervention: programmer\n\nmessage no.: 3031 - 3034 text: C"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00007",
+      "canonical_label": "responsible for",
+      "normalized_label": "responsible for",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "InterventionRole",
+        "ResponsibleRole",
+        "PersonRole"
+      ],
+      "definition": "A person who writes, tests, and maintains code, and is accountable for executing interventions in software systems.",
+      "aliases": [
+        "programmer"
+      ],
+      "synonyms": [
+        "software engineer",
+        "developer",
+        "coder"
+      ],
+      "lexical_variants": [
+        "programmer",
+        "software developer",
+        "software engineer"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00008",
+          "text": "responsible for the intervention: programmer",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 490,
+              "chunk_end_char": 534,
+              "doc_start_char": 65490,
+              "doc_end_char": 65534,
+              "snippet": "ctly on the user page. intervention: Configure the CDS device in the user page. responsible for the intervention: programmer\n\nmessage no.: 3031 - 3034 text: CARRIAGE DISABLED type: Standard: Optional: eff"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00008",
+      "canonical_label": "causes",
+      "normalized_label": "causes",
+      "candidate_type": "relation",
+      "confidence": 0.9425,
+      "ontology_hints": [
+        "causes",
+        "requires",
+        "deactivated",
+        "functionality",
+        "user interface",
+        "cart",
+        "time recharge",
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "Human Process",
+        "TRIGGERS: G300 function",
+        "CAUSES: torque reduction",
+        "REQUIRES: maintenance action to restore torque",
+        "HANDLED_BY: maintenance crew",
+        "REFERENCES: axis rating specification",
+        "DETECTED_BY: torque sensor alarm",
+        "TRIGGERS: torque reduction",
+        "CAUSES: axis dimension failure",
+        "REQUIRES: adjustment of torque or axis",
+        "HANDLED_BY: maintenance engineer",
+        "REFERENCES: G300 function documentation",
+        "DETECTED_BY: torque sensor"
+      ],
+      "definition": "A causal statement indicating that the hidden time recharge function G303 fails to operate when cart 2 is deactivated in the user page.",
+      "aliases": [
+        "G300 function",
+        "G300 setting",
+        "G300 mode",
+        "G300 function torque reduction",
+        "G300 torque decrease"
+      ],
+      "synonyms": [
+        "decrease torque",
+        "lower torque",
+        "reduce torque",
+        "fail to meet rating",
+        "not meet rating",
+        "underperform rating",
+        "as a result of torque reduction",
+        "because of reduced torque",
+        "due to decreased torque"
+      ],
+      "lexical_variants": [
+        "torque reduction",
+        "torque lowered",
+        "torque decreased",
+        "axis fails to meet required rating",
+        "axis does not meet required rating",
+        "reduced torque",
+        "decreased torque"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00009",
+          "text": "The hidden time recharge function G303 cannot work if cart 2 has been deactivated in the user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 690,
+              "chunk_end_char": 788,
+              "doc_start_char": 65690,
+              "doc_end_char": 65788,
+              "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: The hidden time recharge function G303 cannot work if cart 2 has been deactivated in the user page. intervention: Activate cart 2 from the user page. responsible for the interven"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00011",
+          "text": "Function G188 was programmed in a machine model that does not have the Y2 axis",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 1041,
+              "chunk_end_char": 1119,
+              "doc_start_char": 66041,
+              "doc_end_char": 66119,
+              "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: Function G188 was programmed in a machine model that does not have the Y2 axis. intervention: Delete function G188 from the program. responsible for the inter"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00013",
+          "text": "With the G300 function we have reduced the torque so much that the axis fails to achieve the required rating",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ", axis and bro-effect stop:\nches.\nFunction G188 is programmed in a machine model that is not\ncause:\nnot having the Y2 axis.\nintervention: Delete function G188 from the program.\nresponsible for\nprogrammer\n\nmessage no.: 3030 text: CDS CONFIGURATION ERROR type: Standard: Optional: effect: Alarm with pr"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00015",
+          "text": "With the G300 function we have reduced the torque so much that the axis cannot reach the required dimension",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 1712,
+              "chunk_end_char": 1819,
+              "doc_start_char": 66712,
+              "doc_end_char": 66819,
+              "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: With the G300 function we have reduced the torque so much that the axis cannot reach the required dimension. intervention: Increase the cut of the indicated axis responsible for the inter"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00009",
+      "canonical_label": "Activate cart 2 from the user page",
+      "normalized_label": "activate cart 2 from the user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention action",
+        "user interface interaction",
+        "cart activation",
+        "logistic process initiation"
+      ],
+      "definition": "An intervention action that initiates the operation of cart 2 by interacting with the user interface page.",
+      "aliases": [
+        "cart 2 start",
+        "cart 2 enable",
+        "cart 2 activation"
+      ],
+      "synonyms": [
+        "Start cart 2 via user interface",
+        "Enable cart 2 from the user page",
+        "Turn on cart 2 through the user interface"
+      ],
+      "lexical_variants": [
+        "activate cart 2",
+        "cart 2 activation",
+        "user page cart activation"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00010",
+          "text": "Activate cart 2 from the user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 804,
+              "chunk_end_char": 838,
+              "doc_start_char": 65804,
+              "doc_end_char": 65838,
+              "snippet": "G303 cannot work if cart 2 has been deactivated in the user page. intervention: Activate cart 2 from the user page. responsible for the intervention: programmer\n\nmessage n°: 3035 text: OPTIONS 9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00010",
+      "canonical_label": "Delete function G188 from the program",
+      "normalized_label": "delete function g188 from the program",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention action",
+        "program modification",
+        "function removal",
+        "alarm resolution",
+        "requires operator",
+        "requires program access"
+      ],
+      "definition": "An intervention action that removes the function G188 from the control program in order to resolve an alarm condition.",
+      "aliases": [
+        "Delete function G188",
+        "Delete G188 function"
+      ],
+      "synonyms": [
+        "Remove function G188 from the program",
+        "Erase function G188 from the program"
+      ],
+      "lexical_variants": [
+        "Delete G188 function",
+        "Delete function G188"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00012",
+          "text": "Delete function G188 from the program",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 138,
+              "chunk_end_char": 175,
+              "doc_start_char": 65138,
+              "doc_end_char": 65175,
+              "snippet": "med in a machine model that is not\ncause:\nnot having the Y2 axis.\nintervention: Delete function G188 from the program.\nresponsible for\nprogrammer\n\nmessage no.: 3030 text: CDS CONFIGURATION ERROR ty"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00011",
+      "canonical_label": "Increase the cut of the indicated axis",
+      "normalized_label": "increase the cut of the indicated axis",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "SituationS1",
+        "SituationS2",
+        "SituationS3",
+        "SituationS4"
+      ],
+      "definition": "An intervention action that increases the depth of the cut along a specified axis to adjust machining parameters and resolve an alarm.",
+      "aliases": [
+        "Raise the cut",
+        "Deepen the cut"
+      ],
+      "synonyms": [
+        "Increase cutting depth",
+        "Raise cut depth",
+        "Deepen cut"
+      ],
+      "lexical_variants": [
+        "Increase cut",
+        "Increase cut depth",
+        "Raise cut depth"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00014",
+          "text": "Increase the cut of the indicated axis",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 1492,
+              "chunk_end_char": 1530,
+              "doc_start_char": 66492,
+              "doc_end_char": 66530,
+              "snippet": "o much that the axis\ncause:\nfails to achieve the required rating.\nintervention: Increase the cut of the indicated axis\nresponsible for\nprogrammer\n\nmessage no.: 3036 - 3038 text: AXIS CHASE ERROR typ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00012",
+      "canonical_label": "high pressure unit",
+      "normalized_label": "high pressure unit",
+      "candidate_type": "relation",
+      "confidence": 0.97,
+      "ontology_hints": [
+        "Resource",
+        "Manufacturing Process",
+        "Component"
+      ],
+      "definition": "A machine component designed to operate under high pressure conditions, typically used within a manufacturing process.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "high-pressure unit"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00022",
+          "text": "high pressure unit",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 362,
+              "chunk_end_char": 380,
+              "doc_start_char": 65362,
+              "doc_end_char": 65380,
+              "snippet": "ect: Alarm with program interruption, stopping of axes and spindles. cause: The high pressure unit has not been configured correctly on the user page. intervention: Configure the"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00013",
+      "canonical_label": "user page",
+      "normalized_label": "user page",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "resource",
+        "digital identity",
+        "user profile",
+        "user account"
+      ],
+      "definition": "A user page is a digital resource that aggregates personal settings, identity data, and characteristics of an individual. It serves as a voluntary digital identity on social media, an account in operating systems, or a legal identity document, and typically contains attributes such as name, age, portrait photograph, expertise, and other personal information.",
+      "aliases": [
+        "User profile"
+      ],
+      "synonyms": [
+        "User profile",
+        "User account",
+        "User profile page"
+      ],
+      "lexical_variants": [
+        "user page",
+        "user profile page"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00023",
+          "text": "user page",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 422,
+              "chunk_end_char": 431,
+              "doc_start_char": 65422,
+              "doc_end_char": 65431,
+              "snippet": "pindles. cause: The high pressure unit has not been configured correctly on the user page. intervention: Configure the CDS device in the user page. responsible for the i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00014",
+      "canonical_label": "torque",
+      "normalized_label": "torque",
+      "candidate_type": "relation",
+      "confidence": 0.97,
+      "ontology_hints": [
+        "measurement",
+        "rotational force",
+        "moment of force",
+        "physical quantity",
+        "unit: newton‑metre",
+        "observable by Platform sensor",
+        "property of a Feature or Resource"
+      ],
+      "definition": "A twisting force or rotational moment of force applied to an object about a chosen axis, typically measured in newton‑metres.",
+      "aliases": [
+        "torsion",
+        "torque",
+        "Torque"
+      ],
+      "synonyms": [
+        "torsion",
+        "torque",
+        "moment"
+      ],
+      "lexical_variants": [
+        "torsion",
+        "torque",
+        "moment"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00025",
+          "text": "torque",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 1404,
+              "chunk_end_char": 1410,
+              "doc_start_char": 66404,
+              "doc_end_char": 66410,
+              "snippet": "ion, axis and bro-effect stop:\nches.\nWith the G300 function we have reduced the torque so much that the axis\ncause:\nfails to achieve the required rating.\nintervention"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00015",
+      "canonical_label": "required rating",
+      "normalized_label": "required rating",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "attribute of Resource",
+        "attribute of Observation",
+        "attribute of Action"
+      ],
+      "definition": "A specification indicating the minimum rating that a resource, observation, or action must achieve in order to satisfy operational or safety standards.",
+      "aliases": [
+        "rating requirement"
+      ],
+      "synonyms": [
+        "mandatory rating",
+        "necessary rating",
+        "required score",
+        "required level"
+      ],
+      "lexical_variants": [
+        "required rating",
+        "required rating level"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00026",
+          "text": "required rating",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 1461,
+              "chunk_end_char": 1476,
+              "doc_start_char": 66461,
+              "doc_end_char": 66476,
+              "snippet": "on we have reduced the torque so much that the axis\ncause:\nfails to achieve the required rating.\nintervention: Increase the cut of the indicated axis\nresponsible for\nprogramme"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00016",
+      "canonical_label": "required dimension",
+      "normalized_label": "required dimension",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Attribute of Resource or Workstation",
+        "Dimension property",
+        "Required specification"
+      ],
+      "definition": "A measurable attribute that is specified as necessary for a resource or workstation to operate correctly.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00027",
+          "text": "required dimension",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 1801,
+              "chunk_end_char": 1819,
+              "doc_start_char": 66801,
+              "doc_end_char": 66819,
+              "snippet": "G300 function we have reduced the torque so much that the axis cannot reach the required dimension. intervention: Increase the cut of the indicated axis responsible for the inter"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attribute_candidates": [],
+  "event_candidates": [
+    {
+      "candidate_id": "cand_s_00000",
+      "canonical_label": "AXIS CHASE ERROR",
+      "normalized_label": "axis chase error",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmType",
+        "MachineFailureEvent",
+        "AxisMalfunction"
+      ],
+      "definition": "An alarm indicating a malfunction on a machine axis, typically detected by a sensor and requiring operator or manager intervention.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00005",
+          "text": "AXIS CHASE ERROR",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": 1590,
+              "chunk_end_char": 1606,
+              "doc_start_char": 66590,
+              "doc_end_char": 66606,
+              "snippet": "f the indicated axis\nresponsible for\nprogrammer\n\nmessage no.: 3036 - 3038 text: AXIS CHASE ERROR type: Standard: Optional: effect: Alarm with program interruption, stopping of"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00001",
+      "canonical_label": "G188 function",
+      "normalized_label": "g188 function",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Action",
+        "Situation",
+        "Production Line",
+        "G188 function is an instance of Action",
+        "Triggered by Situation S1 or S2",
+        "Located on Production Line"
+      ],
+      "definition": "An operational action performed within a manufacturing context, specifically the G188 function, which is triggered in response to a detected situation on a production line.",
+      "aliases": [
+        "G188",
+        "G188 function"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "G188 function",
+        "G188 function component"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00016",
+          "text": "G188 function",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ", axis and bro-effect stop:\nches.\nFunction G188 is programmed in a machine model that is not\ncause:\nnot having the Y2 axis.\nintervention: Delete function G188 from the program.\nresponsible for\nprogrammer\n\nmessage no.: 3030 text: CDS CONFIGURATION ERROR type: Standard: Optional: effect: Alarm with pr"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00002",
+      "canonical_label": "G303 function",
+      "normalized_label": "g303 function",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Action",
+        "Triggered by Situation",
+        "Executed on Production Line"
+      ],
+      "definition": "G303 function is a specific machine function that represents an action performed in response to a detected situation within a production line.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00018",
+          "text": "G303 function",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0013",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ", axis and bro-effect stop:\nches.\nFunction G188 is programmed in a machine model that is not\ncause:\nnot having the Y2 axis.\nintervention: Delete function G188 from the program.\nresponsible for\nprogrammer\n\nmessage no.: 3030 text: CDS CONFIGURATION ERROR type: Standard: Optional: effect: Alarm with pr"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

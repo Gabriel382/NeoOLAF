@@ -1,0 +1,918 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 57,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "axes and spindles",
+      "label": "component",
+      "justification": "Refers to the machine parts involved in the hardware problem.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 88,
+          "chunk_end_char": 105,
+          "doc_start_char": 10088,
+          "doc_end_char": 10105,
+          "snippet": "thorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the m"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "feeder",
+      "label": "component",
+      "justification": "Component mentioned in the hardware problem context.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 41,
+          "chunk_end_char": 47,
+          "doc_start_char": 10041,
+          "doc_end_char": 10047,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "Hardware problems",
+      "label": "failure symptom",
+      "justification": "Describes the abnormal condition affecting the axes and spindles.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 55,
+          "chunk_end_char": 72,
+          "doc_start_char": 10055,
+          "doc_end_char": 10072,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feed"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "error code A2831",
+      "label": "event",
+      "justification": "Specific alarm occurrence identified by the error code.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "Fanuc 160i-TB CNC",
+      "label": "machine",
+      "justification": "The CNC machine referenced in the maintenance manual.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 210,
+          "chunk_end_char": 227,
+          "doc_start_char": 10210,
+          "doc_end_char": 10227,
+          "snippet": "error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for the main"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "maintenance manual",
+      "label": "resource",
+      "justification": "Document providing guidance for the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 184,
+          "chunk_end_char": 202,
+          "doc_start_char": 10184,
+          "doc_end_char": 10202,
+          "snippet": "s. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "responsible for maintenance",
+      "label": "role",
+      "justification": "Indicates the personnel accountable for the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 718,
+          "chunk_end_char": 745,
+          "doc_start_char": 10718,
+          "doc_end_char": 10745,
+          "snippet": "rical diagram, input X4.3 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenance\n\nAlarm n°: 1018 text: LOW PRESSURE type: Standard: Optional: effect: Alarm with"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "CABINET OVERHEATING",
+      "label": "alarm",
+      "justification": "Alarm type indicating overheating of the cabinet.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 337,
+          "chunk_end_char": 356,
+          "doc_start_char": 10337,
+          "doc_end_char": 10356,
+          "snippet": "ble for the intervention: responsible for the maintenance\n\nAlarm n°: 1017 text: CABINET OVERHEATING type: Standard: Optional: effect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "thermostat is not set correctly",
+      "label": "cause",
+      "justification": "Specific cause of the cabinet overheating alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 447,
+          "chunk_end_char": 478,
+          "doc_start_char": 10447,
+          "doc_end_char": 10478,
+          "snippet": "dard: Optional: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot."
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "fan or the conditioner are not working",
+      "label": "cause",
+      "justification": "Specific cause of the cabinet overheating alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 484,
+          "chunk_end_char": 522,
+          "doc_start_char": 10484,
+          "doc_end_char": 10522,
+          "snippet": "mediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot. intervention: Check the thermostat, fan or"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "electrical cabinet is too hot",
+      "label": "cause",
+      "justification": "Specific cause of the cabinet overheating alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 528,
+          "chunk_end_char": 557,
+          "doc_start_char": 10528,
+          "doc_end_char": 10557,
+          "snippet": "hermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot. intervention: Check the thermostat, fan or conditioner. See page 7 of the elec"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "Check the thermostat, fan or conditioner",
+      "label": "action",
+      "justification": "Recommended intervention to address the overheating alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 573,
+          "chunk_end_char": 613,
+          "doc_start_char": 10573,
+          "doc_end_char": 10613,
+          "snippet": "e conditioner are not working, the electrical cabinet is too hot. intervention: Check the thermostat, fan or conditioner. See page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1 = OK) responsib"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "page 7 of the electrical diagram",
+      "label": "resource",
+      "justification": "Reference to the diagram used for the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 619,
+          "chunk_end_char": 651,
+          "doc_start_char": 10619,
+          "doc_end_char": 10651,
+          "snippet": "cabinet is too hot. intervention: Check the thermostat, fan or conditioner. See page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1 = OK) responsible for the intervention: responsible f"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "input X4.3",
+      "label": "measurement",
+      "justification": "Electrical input used to monitor the cabinet status.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 653,
+          "chunk_end_char": 663,
+          "doc_start_char": 10653,
+          "doc_end_char": 10663,
+          "snippet": "Check the thermostat, fan or conditioner. See page 7 of the electrical diagram, input X4.3 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenan"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "LOW PRESSURE",
+      "label": "alarm",
+      "justification": "Alarm type indicating low pneumatic pressure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 768,
+          "chunk_end_char": 780,
+          "doc_start_char": 10768,
+          "doc_end_char": 10780,
+          "snippet": "onsible for the intervention: responsible for maintenance\n\nAlarm n°: 1018 text: LOW PRESSURE type: Standard: Optional: effect: Alarm with immediate and controlled stop caus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "pressure of the pneumatic installation is not sufficient",
+      "label": "cause",
+      "justification": "Specific cause of the low pressure alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 867,
+          "chunk_end_char": 923,
+          "doc_start_char": 10867,
+          "doc_end_char": 10923,
+          "snippet": "Standard: Optional: effect: Alarm with immediate and controlled stop cause: The pressure of the pneumatic installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adj"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "line pressure switch is not adjusted correctly",
+      "label": "cause",
+      "justification": "Specific cause of the low pressure alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 972,
+          "chunk_end_char": 1018,
+          "doc_start_char": 10972,
+          "doc_end_char": 11018,
+          "snippet": "installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adjusted correctly. intervention: Check the line pressure and the pressure switch setting. See pag"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "Check the line pressure and the pressure switch setting",
+      "label": "action",
+      "justification": "Recommended intervention to address the low pressure alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1034,
+          "chunk_end_char": 1089,
+          "doc_start_char": 11034,
+          "doc_end_char": 11089,
+          "snippet": "e machine, or the line pressure switch is not adjusted correctly. intervention: Check the line pressure and the pressure switch setting. See page 65 of the electrical diagram, input X3.5 (0 = ALARM, 1 = OK) responsi"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "page 65 of the electrical diagram",
+      "label": "resource",
+      "justification": "Reference to the diagram used for the intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1095,
+          "chunk_end_char": 1128,
+          "doc_start_char": 11095,
+          "doc_end_char": 11128,
+          "snippet": "tly. intervention: Check the line pressure and the pressure switch setting. See page 65 of the electrical diagram, input X3.5 (0 = ALARM, 1 = OK) responsible for the intervention: responsible f"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "input X3.5",
+      "label": "measurement",
+      "justification": "Electrical input used to monitor the pressure status.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1130,
+          "chunk_end_char": 1140,
+          "doc_start_char": 11130,
+          "doc_end_char": 11140,
+          "snippet": "ressure and the pressure switch setting. See page 65 of the electrical diagram, input X3.5 (0 = ALARM, 1 = OK) responsible for the intervention: responsible for maintenan"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "PROGRAMMING ERROR",
+      "label": "alarm",
+      "justification": "Alarm type indicating a programming fault.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1249,
+          "chunk_end_char": 1266,
+          "doc_start_char": 11249,
+          "doc_end_char": 11266,
+          "snippet": "ble for the intervention: responsible for maintenance\n\nAlarm number: 1020\ntext: PROGRAMMING ERROR\ntype: Standard: Optional:\neffect: Alarm with immediate arrest and control\nAn at"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "spindle removal when the bypass function is activated",
+      "label": "cause",
+      "justification": "Specific cause of the programming error alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1474,
+          "chunk_end_char": 1527,
+          "doc_start_char": 11474,
+          "doc_end_char": 11527,
+          "snippet": "ning a function M in one of the following situations which are not permitted:\n• spindle removal when the bypass function is activated;\n• spindle orientation when the rigid tapping function or\npin synchronization i"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "spindle orientation when the rigid tapping function or pin synchronization is enabled",
+      "label": "cause",
+      "justification": "Specific cause of the programming error alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "spindle bypass mode when rigid tapping function or spindle synchronization is enabled",
+      "label": "cause",
+      "justification": "Specific cause of the programming error alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1620,
+          "chunk_end_char": 1705,
+          "doc_start_char": 11620,
+          "doc_end_char": 11705,
+          "snippet": "rientation when the rigid tapping function or\npin synchronization is enabled;\n• spindle bypass mode when rigid tapping function or spindle synchronization is enabled;\ncause:\n• spindle rotation when the rigid tapping function is\nactivated;\n• Spin"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "spindle rotation when the rigid tapping function is activated",
+      "label": "cause",
+      "justification": "Specific cause of the programming error alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 3017,
+          "chunk_end_char": 3078,
+          "doc_start_char": 13017,
+          "doc_end_char": 13078,
+          "snippet": "ass mode when rigid tapping function or spindle synchronization is activated; • spindle rotation when the rigid tapping function is activated; • spindle synchronization when the rigid tapping function or spindle orientati"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "spindle synchronization when tapping function rigid or pin orientation is enabled",
+      "label": "cause",
+      "justification": "Specific cause of the programming error alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "rigid tapping when the spindle synchronization function is activated",
+      "label": "cause",
+      "justification": "Specific cause of the programming error alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1866,
+          "chunk_end_char": 1934,
+          "doc_start_char": 11866,
+          "doc_end_char": 11934,
+          "snippet": "le synchronization when tapping function\nrigid or pin orientation is enabled;\n• rigid tapping when the spindle synchronization function is activated;\n• activation of bypass mode from a different channel\nof that of which the pin"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "activation of bypass mode from a different channel of that of which the pin belongs",
+      "label": "cause",
+      "justification": "Specific cause of the programming error alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "Modify the program",
+      "label": "action",
+      "justification": "Recommended intervention to prevent the programming error.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 2023,
+          "chunk_end_char": 2041,
+          "doc_start_char": 12023,
+          "doc_end_char": 12041,
+          "snippet": "ation of bypass mode from a different channel\nof that of which the pin belongs.\nModify the program in order to prevent any erroneous situation:\nborn.\nresponsible for\nprogrammer\nA"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "programmer",
+      "label": "role",
+      "justification": "Personnel responsible for the programming intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 2109,
+          "chunk_end_char": 2119,
+          "doc_start_char": 12109,
+          "doc_end_char": 12119,
+          "snippet": "the program in order to prevent any erroneous situation:\nborn.\nresponsible for\nprogrammer\nAlarm number: 1021\ntext: MANDATORY “S” CODE\ntype: Standard: Optional:\neffect: A"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00030",
+      "text": "MANDATORY “S” CODE",
+      "label": "alarm",
+      "justification": "Alarm type indicating missing speed argument.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 2145,
+          "chunk_end_char": 2163,
+          "doc_start_char": 12145,
+          "doc_end_char": 12163,
+          "snippet": "erroneous situation:\nborn.\nresponsible for\nprogrammer\nAlarm number: 1021\ntext: MANDATORY “S” CODE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00031",
+      "text": "missing S argument",
+      "label": "cause",
+      "justification": "Specific cause of the mandatory S code alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00032",
+      "text": "Correct the program so as to insert the argument “S”",
+      "label": "action",
+      "justification": "Recommended intervention to resolve the mandatory S code alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 2437,
+          "chunk_end_char": 2489,
+          "doc_start_char": 12437,
+          "doc_end_char": 12489,
+          "snippet": "3,\nM274) without having designated the “S” argument of the speed.\nintervention: Correct the program so as to insert the argument “S”\nresponsible for\nprogrammer\n\nAlarm n°: 1020 text: PROGRAMMING ERROR type: Standa"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00033",
+      "text": "MANDATORY “B” CODE",
+      "label": "alarm",
+      "justification": "Alarm type indicating missing positioning angle argument.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00034",
+      "text": "missing B argument",
+      "label": "cause",
+      "justification": "Specific cause of the mandatory B code alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00035",
+      "text": "Correct the program so as to insert the argument “B”",
+      "label": "action",
+      "justification": "Recommended intervention to resolve the mandatory B code alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 4189,
+          "chunk_end_char": 4241,
+          "doc_start_char": 14189,
+          "doc_end_char": 14241,
+          "snippet": "ing designated\nthe argument “B” concerning the positioning angle.\nintervention: Correct the program so as to insert the argument “B”\nresponsible for\nprogrammer\nAlarm No.: 1026\ntext: DIFFERENT TROLLEY PROGRAM NUMB"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00036",
+      "text": "DIFFERENT TROLLEY PROGRAM NUMBER",
+      "label": "alarm",
+      "justification": "Alarm type indicating program number mismatch.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 4291,
+          "chunk_end_char": 4323,
+          "doc_start_char": 14291,
+          "doc_end_char": 14323,
+          "snippet": "as to insert the argument “B”\nresponsible for\nprogrammer\nAlarm No.: 1026\ntext: DIFFERENT TROLLEY PROGRAM NUMBER\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00037",
+      "text": "program number mismatch",
+      "label": "cause",
+      "justification": "Specific cause of the different trolley program number alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00038",
+      "text": "deactivate the control in the “CART MANAGEMENT” user page",
+      "label": "action",
+      "justification": "Recommended intervention to address the program number mismatch.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00039",
+      "text": "toolmaker-adjuster",
+      "label": "role",
+      "justification": "Personnel responsible for the trolley program number intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 4692,
+          "chunk_end_char": 4710,
+          "doc_start_char": 14692,
+          "doc_end_char": 14710,
+          "snippet": "rams, deactivate the control in\nthe “CART MANAGEMENT” user page\nresponsible for\ntoolmaker-adjuster\nAlarm number: 1027\ntext: PROGRAM NOT REWOUND\ntype: Standard: Optional:\neffect:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00040",
+      "text": "PROGRAM NOT REWOUND",
+      "label": "alarm",
+      "justification": "Alarm type indicating rewinding failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 4736,
+          "chunk_end_char": 4755,
+          "doc_start_char": 14736,
+          "doc_end_char": 14755,
+          "snippet": "NAGEMENT” user page\nresponsible for\ntoolmaker-adjuster\nAlarm number: 1027\ntext: PROGRAM NOT REWOUND\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00041",
+      "text": "rewinding not carried out correctly",
+      "label": "cause",
+      "justification": "Specific cause of the program not rewound alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00042",
+      "text": "Press the Reset key",
+      "label": "action",
+      "justification": "Recommended intervention to resolve the rewinding failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 4952,
+          "chunk_end_char": 4971,
+          "doc_start_char": 14952,
+          "doc_end_char": 14971,
+          "snippet": "we selected the\ncause: automatic mode, rewinding was not carried out correctly.\nPress the Reset key. and verify that the cominte"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00043",
+      "text": "immediate and controlled shutdown",
+      "label": "operational state",
+      "justification": "Describes the machine state during several alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 402,
+          "chunk_end_char": 435,
+          "doc_start_char": 10402,
+          "doc_end_char": 10435,
+          "snippet": "n°: 1017 text: CABINET OVERHEATING type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00044",
+      "text": "immediate and controlled stop",
+      "label": "operational state",
+      "justification": "Describes the machine state during several alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 826,
+          "chunk_end_char": 855,
+          "doc_start_char": 10826,
+          "doc_end_char": 10855,
+          "snippet": "Alarm n°: 1018 text: LOW PRESSURE type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The pressure of the pneumatic installation is not sufficient for the nor"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00045",
+      "text": "immediate arrest",
+      "label": "operational state",
+      "justification": "Describes the machine state during the programming error alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1312,
+          "chunk_end_char": 1328,
+          "doc_start_char": 11312,
+          "doc_end_char": 11328,
+          "snippet": "mber: 1020\ntext: PROGRAMMING ERROR\ntype: Standard: Optional:\neffect: Alarm with immediate arrest and control\nAn attempt was made to execute a program block containing a functio"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00046",
+      "text": "is not set correctly",
+      "label": "relation-bearing expression",
+      "justification": "Expresses a condition causing an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 458,
+          "chunk_end_char": 478,
+          "doc_start_char": 10458,
+          "doc_end_char": 10478,
+          "snippet": "nal: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot."
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00047",
+      "text": "are not working",
+      "label": "relation-bearing expression",
+      "justification": "Expresses a condition causing an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 507,
+          "chunk_end_char": 522,
+          "doc_start_char": 10507,
+          "doc_end_char": 10522,
+          "snippet": "shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot. intervention: Check the thermostat, fan or"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00048",
+      "text": "is too hot",
+      "label": "relation-bearing expression",
+      "justification": "Expresses a condition causing an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 547,
+          "chunk_end_char": 557,
+          "doc_start_char": 10547,
+          "doc_end_char": 10557,
+          "snippet": "t correctly, the fan or the conditioner are not working, the electrical cabinet is too hot. intervention: Check the thermostat, fan or conditioner. See page 7 of the elec"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00049",
+      "text": "is not sufficient",
+      "label": "relation-bearing expression",
+      "justification": "Expresses a condition causing an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 906,
+          "chunk_end_char": 923,
+          "doc_start_char": 10906,
+          "doc_end_char": 10923,
+          "snippet": "immediate and controlled stop cause: The pressure of the pneumatic installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adj"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00050",
+      "text": "is not adjusted correctly",
+      "label": "relation-bearing expression",
+      "justification": "Expresses a condition causing an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 993,
+          "chunk_end_char": 1018,
+          "doc_start_char": 10993,
+          "doc_end_char": 11018,
+          "snippet": "sufficient for the normal operation of the machine, or the line pressure switch is not adjusted correctly. intervention: Check the line pressure and the pressure switch setting. See pag"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00051",
+      "text": "is not permitted",
+      "label": "relation-bearing expression",
+      "justification": "Expresses a condition causing an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00052",
+      "text": "is not allowed",
+      "label": "relation-bearing expression",
+      "justification": "Expresses a condition causing an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00053",
+      "text": "is activated",
+      "label": "relation-bearing expression",
+      "justification": "Expresses a condition causing an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1515,
+          "chunk_end_char": 1527,
+          "doc_start_char": 11515,
+          "doc_end_char": 11527,
+          "snippet": "situations which are not permitted:\n• spindle removal when the bypass function is activated;\n• spindle orientation when the rigid tapping function or\npin synchronization i"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00054",
+      "text": "is enabled",
+      "label": "relation-bearing expression",
+      "justification": "Expresses a condition causing an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 1606,
+          "chunk_end_char": 1616,
+          "doc_start_char": 11606,
+          "doc_end_char": 11616,
+          "snippet": "d;\n• spindle orientation when the rigid tapping function or\npin synchronization is enabled;\n• spindle bypass mode when rigid tapping function or spindle synchronization i"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00055",
+      "text": "is not carried out correctly",
+      "label": "relation-bearing expression",
+      "justification": "Expresses a condition causing an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "dware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles. intervention: Note the error code of the feeder marked A2831 and consult the maintenance manual of the Fanuc 160i-TB CNC for more information responsible for the intervention: responsible for t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00056",
+      "text": "is different",
+      "label": "relation-bearing expression",
+      "justification": "Expresses a condition causing an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0002",
+          "chunk_start_char": 4519,
+          "chunk_end_char": 4531,
+          "doc_start_char": 14519,
+          "doc_end_char": 14531,
+          "snippet": "cycle we noticed that the number of the\ncause:\nprogram selected in the channel is different.\nCheck the program numbers or, if necessary,\nintervention: to run different pro"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,598 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 37,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "Alarm with program interruption, stopping of axes and spindles",
+      "label": "event/state",
+      "justification": "Describes an alarm event causing machine stoppage.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 15,
+          "chunk_end_char": 77,
+          "doc_start_char": 60015,
+          "doc_end_char": 60077,
+          "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position,"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "torque reduction",
+      "label": "failure symptom",
+      "justification": "Indicates a reduction in torque causing abnormal machine behavior.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 106,
+          "chunk_end_char": 122,
+          "doc_start_char": 60106,
+          "doc_end_char": 60122,
+          "snippet": "program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it c"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "tracking error",
+      "label": "failure symptom",
+      "justification": "Represents an error in tracking during operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 179,
+          "chunk_end_char": 193,
+          "doc_start_char": 60179,
+          "doc_end_char": 60193,
+          "snippet": "ect to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "parameter F missing",
+      "label": "failure symptom",
+      "justification": "Missing feed parameter leads to program interruption.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. respon"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "incorrect feed value",
+      "label": "failure symptom",
+      "justification": "Incorrect feed value causes program interruption.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. respon"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "reference microdetector",
+      "label": "component",
+      "justification": "Device referenced in the alarm description.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 1300,
+          "chunk_end_char": 1323,
+          "doc_start_char": 61300,
+          "doc_end_char": 61323,
+          "snippet": "shing function with milling with phasing\ncause: unsuccessfully searched for the reference microdetector for\nwhich she stopped.\nCheck the correct operation of the reference microdetect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "poligonage",
+      "label": "process",
+      "justification": "Process involved in polishing operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 1084,
+          "chunk_end_char": 1094,
+          "doc_start_char": 61084,
+          "doc_end_char": 61094,
+          "snippet": "m and modify the instruction.\nresponsible for\nprogrammer\nmessage no: 3016\ntext: POLIGONAGE MICRODETECTOR NOT OK\ntype: Standard: Optional:\nAlarm with program interruption,"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "high pressure unit",
+      "label": "component",
+      "justification": "Unit mentioned as not configured correctly.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 4407,
+          "chunk_end_char": 4425,
+          "doc_start_char": 64407,
+          "doc_end_char": 64425,
+          "snippet": "Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nThe high pressure unit has not been configured correctly\ncause:\nin the user page.\nintervention: Config"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "CDS device",
+      "label": "component",
+      "justification": "Device that must be activated in user page.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 3396,
+          "chunk_end_char": 3406,
+          "doc_start_char": 63396,
+          "doc_end_char": 63406,
+          "snippet": "e: Function G304 was not activated in the user page,\nintervention: Activate the CDS device in the user page.\nresponsible for\nprogrammer\n\nmessage n°: 3021 text: CORRECTOR"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "cart 2",
+      "label": "component",
+      "justification": "Cart that may be disabled causing alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 4773,
+          "chunk_end_char": 4779,
+          "doc_start_char": 64773,
+          "doc_end_char": 64779,
+          "snippet": "top:\nches.\nThe G303 hidden time recharge function cannot work because:\ncheck if cart 2 has been disabled in the user page.\nintervention: Activate cart 2 from the user"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "user page",
+      "label": "location",
+      "justification": "Location where configuration is performed.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 3358,
+          "chunk_end_char": 3367,
+          "doc_start_char": 63358,
+          "doc_end_char": 63367,
+          "snippet": ", axis and bro-effect stop:\nches.\ncause: Function G304 was not activated in the user page,\nintervention: Activate the CDS device in the user page.\nresponsible for\nprogra"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "program",
+      "label": "resource",
+      "justification": "Software program being edited.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 26,
+          "chunk_end_char": 33,
+          "doc_start_char": 60026,
+          "doc_end_char": 60033,
+          "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "PROGRAMMING ERROR",
+      "label": "failure",
+      "justification": "General programming error alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 1521,
+          "chunk_end_char": 1538,
+          "doc_start_char": 61521,
+          "doc_end_char": 61538,
+          "snippet": "input page 28 of the electrical diagram.\nresponsible for\nmessage no: 3020\ntext: PROGRAMMING ERROR\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "INVALID G CODE",
+      "label": "failure",
+      "justification": "Alarm for invalid G code usage.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 2930,
+          "chunk_end_char": 2944,
+          "doc_start_char": 62930,
+          "doc_end_char": 62944,
+          "snippet": "p:\nches.\ncause:\nintervention:\nresponsible for\nprogrammer\nmessage no: 3028\ntext: INVALID G CODE\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "CDS CONFIGURATION ERROR",
+      "label": "failure",
+      "justification": "Alarm for CDS configuration issue.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 4288,
+          "chunk_end_char": 4311,
+          "doc_start_char": 64288,
+          "doc_end_char": 64311,
+          "snippet": "user page. responsible for the intervention: programmer\n\nmessage no: 3030\ntext: CDS CONFIGURATION ERROR\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "CART DISABLED",
+      "label": "failure",
+      "justification": "Alarm indicating cart disabled.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 4599,
+          "chunk_end_char": 4612,
+          "doc_start_char": 64599,
+          "doc_end_char": 64612,
+          "snippet": "vice in the user page.\nresponsible for\nprogrammer\nmessage no: 3031 - 3034\ntext: CART DISABLED\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "OPTIONS 9000 NOT ACTIVATED",
+      "label": "failure",
+      "justification": "Alarm for options not activated.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 4916,
+          "chunk_end_char": 4942,
+          "doc_start_char": 64916,
+          "doc_end_char": 64942,
+          "snippet": "te cart 2 from the user page.\nresponsible for\nprogrammer\nmessage no: 3035\ntext: OPTIONS 9000 NOT ACTIVATED\ntype: Standard: Optional:\nAlarm with program interruption"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "Programming of function G10 L50 is not permitted.",
+      "label": "state",
+      "justification": "State indicating function not allowed.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 3043,
+          "chunk_end_char": 3092,
+          "doc_start_char": 63043,
+          "doc_end_char": 63092,
+          "snippet": "tional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\ncause: Programming of function G10 L50 is not permitted.\nintervention: Delete this function from the program.\nresponsible for\nprogrammer"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "Function G304 was not activated in the user page.",
+      "label": "state",
+      "justification": "State indicating function not activated.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. respon"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "The high pressure unit has not been configured correctly.",
+      "label": "state",
+      "justification": "State indicating misconfiguration.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. respon"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "The G303 hidden time recharge function cannot work because",
+      "label": "state",
+      "justification": "State indicating function cannot work due to disabled cart.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 4704,
+          "chunk_end_char": 4762,
+          "doc_start_char": 64704,
+          "doc_end_char": 64762,
+          "snippet": "ard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nThe G303 hidden time recharge function cannot work because:\ncheck if cart 2 has been disabled in the user page.\nintervention: Activate car"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "cart 2 has been disabled",
+      "label": "state",
+      "justification": "State indicating cart disabled.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 4773,
+          "chunk_end_char": 4797,
+          "doc_start_char": 64773,
+          "doc_end_char": 64797,
+          "snippet": "top:\nches.\nThe G303 hidden time recharge function cannot work because:\ncheck if cart 2 has been disabled in the user page.\nintervention: Activate cart 2 from the user page.\nresponsible"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "Check the correct operation of the reference microdetector",
+      "label": "intervention",
+      "justification": "Action to verify microdetector operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 1347,
+          "chunk_end_char": 1405,
+          "doc_start_char": 61347,
+          "doc_end_char": 61405,
+          "snippet": "unsuccessfully searched for the reference microdetector for\nwhich she stopped.\nCheck the correct operation of the reference microdetector\nintervention:\npoligonage. PLC X5.4 input page 28 of the electrical diagram.\nres"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "Check the correct operation of the polishing reference microdetector",
+      "label": "intervention",
+      "justification": "Action to verify polishing microdetector operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 2340,
+          "chunk_end_char": 2408,
+          "doc_start_char": 62340,
+          "doc_end_char": 62408,
+          "snippet": "uccessfully for the reference microdetector for which it stopped. intervention: Check the correct operation of the polishing reference microdetector. PLC X5.4 input page 28 of the electrical diagram. responsible for the interven"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "Check the machining, and review the program",
+      "label": "intervention",
+      "justification": "Action to review machining and program.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 249,
+          "chunk_end_char": 292,
+          "doc_start_char": 60249,
+          "doc_end_char": 60292,
+          "snippet": "esent any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. responsible for the intervention: programmer\n\nmessage n°: 3012 text: FEED WRON"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "Check the program and modify the instruction",
+      "label": "intervention",
+      "justification": "Action to modify program instruction.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 629,
+          "chunk_end_char": 673,
+          "doc_start_char": 60629,
+          "doc_end_char": 60673,
+          "snippet": "indicates the feed, or it was indicated with an incorrect value. intervention: Check the program and modify the instruction. responsible for the intervention: programmer\n\nmessage no: 3013 - 3015\ntext: AX"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "Delete this function from the program.",
+      "label": "intervention",
+      "justification": "Action to remove prohibited function.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 3107,
+          "chunk_end_char": 3145,
+          "doc_start_char": 63107,
+          "doc_end_char": 63145,
+          "snippet": "p:\nches.\ncause: Programming of function G10 L50 is not permitted.\nintervention: Delete this function from the program.\nresponsible for\nprogrammer\nmessage no: 3029\ntext: CDS OPTION NOT ACTIVATED\ntype"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "Activate cart 2 from the user page.",
+      "label": "intervention",
+      "justification": "Action to enable cart 2.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 4830,
+          "chunk_end_char": 4865,
+          "doc_start_char": 64830,
+          "doc_end_char": 64865,
+          "snippet": "work because:\ncheck if cart 2 has been disabled in the user page.\nintervention: Activate cart 2 from the user page.\nresponsible for\nprogrammer\nmessage no: 3035\ntext: OPTIONS 9000 NOT ACTIVATED\nty"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "Activate the CDS device in the user page.",
+      "label": "intervention",
+      "justification": "Action to enable CDS device.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 3383,
+          "chunk_end_char": 3424,
+          "doc_start_char": 63383,
+          "doc_end_char": 63424,
+          "snippet": "p:\nches.\ncause: Function G304 was not activated in the user page,\nintervention: Activate the CDS device in the user page.\nresponsible for\nprogrammer\n\nmessage n°: 3021 text: CORRECTOR T NOT ACTIVATED ty"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "cause:",
+      "label": "relation-bearing expression",
+      "justification": "Links cause to alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 79,
+          "chunk_end_char": 85,
+          "doc_start_char": 60079,
+          "doc_end_char": 60085,
+          "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NO"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00030",
+      "text": "intervention:",
+      "label": "relation-bearing expression",
+      "justification": "Links intervention to alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 235,
+          "chunk_end_char": 248,
+          "doc_start_char": 60235,
+          "doc_end_char": 60248,
+          "snippet": "n, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. responsible for the intervention:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00031",
+      "text": "responsible for the intervention:",
+      "label": "relation-bearing expression",
+      "justification": "Links responsible entity to intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 294,
+          "chunk_end_char": 327,
+          "doc_start_char": 60294,
+          "doc_end_char": 60327,
+          "snippet": "abutment on the part intervention: Check the machining, and review the program. responsible for the intervention: programmer\n\nmessage n°: 3012 text: FEED WRONG OR ABSENT type: Standard: Optiona"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00032",
+      "text": "effect:",
+      "label": "relation-bearing expression",
+      "justification": "Links effect to alarm event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 7,
+          "chunk_end_char": 14,
+          "doc_start_char": 60007,
+          "doc_end_char": 60014,
+          "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00033",
+      "text": "responsible for the intervention: programmer",
+      "label": "relation-bearing expression",
+      "justification": "Specifies programmer responsible for intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 294,
+          "chunk_end_char": 338,
+          "doc_start_char": 60294,
+          "doc_end_char": 60338,
+          "snippet": "abutment on the part intervention: Check the machining, and review the program. responsible for the intervention: programmer\n\nmessage n°: 3012 text: FEED WRONG OR ABSENT type: Standard: Optional: effect:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00034",
+      "text": "responsible for the intervention: Responsible for maintenance",
+      "label": "relation-bearing expression",
+      "justification": "Specifies maintenance responsible for intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 2460,
+          "chunk_end_char": 2521,
+          "doc_start_char": 62460,
+          "doc_end_char": 62521,
+          "snippet": "hing reference microdetector. PLC X5.4 input page 28 of the electrical diagram. responsible for the intervention: Responsible for maintenance\n\nmessage no.: 3020 text: PROGRAMMING ERROR type: Standard: Optional: effect: Al"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00035",
+      "text": "programmer",
+      "label": "role",
+      "justification": "Person responsible for programming.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 328,
+          "chunk_end_char": 338,
+          "doc_start_char": 60328,
+          "doc_end_char": 60338,
+          "snippet": "Check the machining, and review the program. responsible for the intervention: programmer\n\nmessage n°: 3012 text: FEED WRONG OR ABSENT type: Standard: Optional: effect:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00036",
+      "text": "Responsible for maintenance",
+      "label": "role",
+      "justification": "Person responsible for maintenance.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 2494,
+          "chunk_end_char": 2521,
+          "doc_start_char": 62494,
+          "doc_end_char": 62521,
+          "snippet": "X5.4 input page 28 of the electrical diagram. responsible for the intervention: Responsible for maintenance\n\nmessage no.: 3020 text: PROGRAMMING ERROR type: Standard: Optional: effect: Al"
+        }
+      ]
+    }
+  ]
+}

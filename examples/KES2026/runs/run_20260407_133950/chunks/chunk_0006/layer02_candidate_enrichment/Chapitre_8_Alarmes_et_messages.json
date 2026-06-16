@@ -1,0 +1,1545 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 33,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "Alarm with immediate and controlled stop",
+        "label": "alarm event"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm event that triggers an immediate and controlled halt of operations.",
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "SituationS1",
+        "SituationS2",
+        "SituationS3",
+        "SituationS4",
+        "AlarmEvent"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm event that triggers an immediate and controlled halt of operations.\", \"ontology_hints\": [\"FeatureOfInterest\", \"SituationS1\", \"SituationS2\", \"SituationS3\", \"SituationS4\", \"AlarmEvent\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "Alarm with immediate and controlled shutdown",
+        "label": "alarm event"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm event that triggers an immediate and controlled shutdown of a machine or system.",
+      "ontology_hints": [
+        "AlarmEvent",
+        "ShutdownEvent",
+        "ImmediateShutdown",
+        "ControlledShutdown",
+        "SafetySystem",
+        "TRIGGERS",
+        "HANDLED_BY",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4",
+        "Situation S5"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm event that triggers an immediate and controlled shutdown of a machine or system.\", \"ontology_hints\": [\"AlarmEvent\", \"ShutdownEvent\", \"ImmediateShutdown\", \"ControlledShutdown\", \"SafetySystem\", \"TRIGGERS\", \"HANDLED_BY\", \"Situation S1\", \"Situation S2\", \"Situation S3\", \"Situation S4\", \"Situation S5\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00002",
+        "text": "causes them to collide with each other",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "causes collision",
+        "triggers collision",
+        "leads to collision"
+      ],
+      "synonyms": [
+        "triggers a collision",
+        "results in a collision",
+        "causes them to collide"
+      ],
+      "lexical_variants": [
+        "causes them to collide with each other",
+        "causes them to collide",
+        "causes collision between them"
+      ],
+      "alias_sources": {
+        "causes collision": [
+          "llm"
+        ],
+        "triggers collision": [
+          "llm"
+        ],
+        "leads to collision": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "triggers a collision": [
+          "llm"
+        ],
+        "results in a collision": [
+          "llm"
+        ],
+        "causes them to collide": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "causes them to collide with each other": [
+          "llm"
+        ],
+        "causes them to collide": [
+          "llm"
+        ],
+        "causes collision between them": [
+          "llm"
+        ]
+      },
+      "definition": "A causal relationship in which a factor or event causes two spatial objects to collide with each other.",
+      "ontology_hints": [
+        "TRIGGERS",
+        "CAUSES",
+        "affects",
+        "observed-by",
+        "Temporal Entity",
+        "Observable Property",
+        "Spatial Object",
+        "Sensor"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"causes collision\", \"triggers collision\", \"leads to collision\"], \"synonyms\": [\"triggers a collision\", \"results in a collision\", \"causes them to collide\"], \"lexical_variants\": [\"causes them to collide with each other\", \"causes them to collide\", \"causes collision between them\"], \"definition\": \"A causal relationship in which a factor or event causes two spatial objects to collide with each other.\", \"ontology_hints\": [\"TRIGGERS\", \"CAUSES\", \"affects\", \"observed-by\", \"Temporal Entity\", \"Observable Property\", \"Spatial Object\", \"Sensor\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00003",
+        "text": "does not transmit the 'ready' signal to the machine's CNC",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "ready signal transmission failure",
+        "ready signal not transmitted"
+      ],
+      "synonyms": [
+        "fails to transmit the ready signal to the CNC",
+        "doesn't transmit the ready signal to the CNC"
+      ],
+      "lexical_variants": [
+        "does not transmit the ready signal to the CNC",
+        "does not send the ready signal to the CNC",
+        "does not transmit ready signal to CNC"
+      ],
+      "alias_sources": {
+        "ready signal transmission failure": [
+          "llm"
+        ],
+        "ready signal not transmitted": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "fails to transmit the ready signal to the CNC": [
+          "llm"
+        ],
+        "doesn't transmit the ready signal to the CNC": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "does not transmit the ready signal to the CNC": [
+          "llm"
+        ],
+        "does not send the ready signal to the CNC": [
+          "llm"
+        ],
+        "does not transmit ready signal to CNC": [
+          "llm"
+        ]
+      },
+      "definition": "A failure event in which the ready signal is not transmitted from the source (e.g., a bar feeder or sensor) to the CNC controller of a machine, violating the expected constraint that the signal must be delivered.",
+      "ontology_hints": [
+        "ObservableProperty (ready signal) -[does_not_transmit]-> Machine (CNC)",
+        "Constraint: ready signal must be transmitted",
+        "SpatialObject: machine located within a Manufacturing Cell",
+        "Event: signal transmission failure"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"ready signal transmission failure\", \"ready signal not transmitted\"], \"synonyms\": [\"fails to transmit the ready signal to the CNC\", \"doesn't transmit the ready signal to the CNC\"], \"lexical_variants\": [\"does not transmit the ready signal to the CNC\", \"does not send the ready signal to the CNC\", \"does not transmit ready signal to CNC\"], \"definition\": \"A failure event in which the ready signal is not transmitted from the source (e.g., a bar feeder or sensor) to the CNC controller of a machine, violating the expected constraint that the signal must be delivered.\", \"ontology_hints\": [\"ObservableProperty (ready signal) -[does_not_transmit]-> Machine (CNC)\", \"Constraint: ready signal must be transmitted\", \"SpatialObject: machine located within a Manufacturing Cell\", \"Event: signal transmission failure\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00004",
+        "text": "has detected the breakage of the point",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "breakage detection at point",
+        "breakage observation at point"
+      ],
+      "synonyms": [
+        "detected",
+        "observed",
+        "identified"
+      ],
+      "lexical_variants": [
+        "has detected the breakage of the point",
+        "detected breakage of the point",
+        "breakage of the point detected"
+      ],
+      "alias_sources": {
+        "breakage detection at point": [
+          "llm"
+        ],
+        "breakage observation at point": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "detected": [
+          "llm"
+        ],
+        "observed": [
+          "llm"
+        ],
+        "identified": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "has detected the breakage of the point": [
+          "llm"
+        ],
+        "detected breakage of the point": [
+          "llm"
+        ],
+        "breakage of the point detected": [
+          "llm"
+        ]
+      },
+      "definition": "An event where a monitoring device or technician observes a breakage (failure) in a specific point (feature) within a manufacturing process.",
+      "ontology_hints": [
+        "has_detected_breakage_of_point is a relation between a Technician (or monitoring device) and an Observable Property (breakage) of a Feature of Interest (point).",
+        "breakage is an Observable Property of a Feature of Interest.",
+        "point is a Feature of Interest within a Manufacturing Process.",
+        "has_detected_breakage_of_point triggers a breakage_event.",
+        "breakage_event is a type of Failure in the Manufacturing Process.",
+        "has_detected_breakage_of_point is a subproperty of has_detected or observed_by."
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"breakage detection at point\", \"breakage observation at point\"], \"synonyms\": [\"detected\", \"observed\", \"identified\"], \"lexical_variants\": [\"has detected the breakage of the point\", \"detected breakage of the point\", \"breakage of the point detected\"], \"definition\": \"An event where a monitoring device or technician observes a breakage (failure) in a specific point (feature) within a manufacturing process.\", \"ontology_hints\": [\"has_detected_breakage_of_point is a relation between a Technician (or monitoring device) and an Observable Property (breakage) of a Feature of Interest (point).\", \"breakage is an Observable Property of a Feature of Interest.\", \"point is a Feature of Interest within a Manufacturing Process.\", \"has_detected_breakage_of_point triggers a breakage_event.\", \"breakage_event is a type of Failure in the Manufacturing Process.\", \"has_detected_breakage_of_point is a subproperty of has_detected or observed_by.\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00005",
+        "text": "has detected tip breakage",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An action where a control device or technician observes a tip breakage event in a manufacturing environment.",
+      "ontology_hints": [
+        "Action",
+        "Technician",
+        "Feature of Interest",
+        "Logistic Process",
+        "Spatial Object"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An action where a control device or technician observes a tip breakage event in a manufacturing environment.\", \"ontology_hints\": [\"Action\", \"Technician\", \"Feature of Interest\", \"Logistic Process\", \"Spatial Object\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00006",
+        "text": "does not work",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "not working",
+        "doesn't work",
+        "fails to function"
+      ],
+      "synonyms": [
+        "fails to work",
+        "is non‑operational",
+        "is malfunctioning"
+      ],
+      "lexical_variants": [
+        "does not function",
+        "doesn't function",
+        "is not working"
+      ],
+      "alias_sources": {
+        "not working": [
+          "llm"
+        ],
+        "doesn't work": [
+          "llm"
+        ],
+        "fails to function": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "fails to work": [
+          "llm"
+        ],
+        "is non‑operational": [
+          "llm"
+        ],
+        "is malfunctioning": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "does not function": [
+          "llm"
+        ],
+        "doesn't function": [
+          "llm"
+        ],
+        "is not working": [
+          "llm"
+        ]
+      },
+      "definition": "A relation‑bearing expression indicating that an entity (e.g., an operator, sensor, resource, or constraint) is not performing its intended function or is in a non‑operational state.",
+      "ontology_hints": [
+        "negated functional relation",
+        "non‑functional state",
+        "failure of intended function",
+        "subject: Operator | Sensor | Resource | Constraint",
+        "object: Resource | Constraint",
+        "relation type: does_not_work"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"not working\", \"doesn't work\", \"fails to function\"], \"synonyms\": [\"fails to work\", \"is non‑operational\", \"is malfunctioning\"], \"lexical_variants\": [\"does not function\", \"doesn't function\", \"is not working\"], \"definition\": \"A relation‑bearing expression indicating that an entity (e.g., an operator, sensor, resource, or constraint) is not performing its intended function or is in a non‑operational state.\", \"ontology_hints\": [\"negated functional relation\", \"non‑functional state\", \"failure of intended function\", \"subject: Operator | Sensor | Resource | Constraint\", \"object: Resource | Constraint\", \"relation type: does_not_work\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00007",
+        "text": "responsible for the intervention",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A relation indicating that an agent is accountable for initiating or managing an intervention.",
+      "ontology_hints": [
+        "relates an agent to a Situation or Observation representing an intervention",
+        "property: responsible for",
+        "intervention is modeled as a Situation or Observation",
+        "agent is an entity (person, team, system) responsible for the intervention",
+        "TemporalEntity can be used to capture the time of the intervention",
+        "Feature of Interest, Observable Property, and Observation are related to the intervention context"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A relation indicating that an agent is accountable for initiating or managing an intervention.\", \"ontology_hints\": [\"relates an agent to a Situation or Observation representing an intervention\", \"property: responsible for\", \"intervention is modeled as a Situation or Observation\", \"agent is an entity (person, team, system) responsible for the intervention\", \"TemporalEntity can be used to capture the time of the intervention\", \"Feature of Interest, Observable Property, and Observation are related to the intervention context\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00008",
+        "text": "intervention manager",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A person responsible for supervising manufacturing operations and responding to detected situations, specifically overseeing interventions.",
+      "ontology_hints": [
+        "Manager",
+        "Production Line",
+        "Observation",
+        "Situation S1",
+        "Interval"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A person responsible for supervising manufacturing operations and responding to detected situations, specifically overseeing interventions.\", \"ontology_hints\": [\"Manager\", \"Production Line\", \"Observation\", \"Situation S1\", \"Interval\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00009",
+        "text": "in charge of the intervention",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A relation indicating that an agent is responsible for overseeing or managing an intervention event.",
+      "ontology_hints": [
+        "hasAgent",
+        "manages",
+        "responsibleFor"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A relation indicating that an agent is responsible for overseeing or managing an intervention event.\", \"ontology_hints\": [\"hasAgent\", \"manages\", \"responsibleFor\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00010",
+        "text": "Replace the tool",
+        "label": "action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An action performed to replace a tool within a manufacturing system, typically carried out by an operator and targeting the tool resource, resulting in an updated tool state.",
+      "ontology_hints": [
+        "Action targets Resource",
+        "Action performed by Operator",
+        "Action results in Result",
+        "Action occurs on Platform"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An action performed to replace a tool within a manufacturing system, typically carried out by an operator and targeting the tool resource, resulting in an updated tool state.\", \"ontology_hints\": [\"Action targets Resource\", \"Action performed by Operator\", \"Action results in Result\", \"Action occurs on Platform\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00011",
+        "text": "Check the connections",
+        "label": "action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Diagnostic action to verify electrical or mechanical connections.",
+      "ontology_hints": [
+        "Action",
+        "Workstation",
+        "Feature of Interest",
+        "Situation S1",
+        "Situation S2"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Diagnostic action to verify electrical or mechanical connections.\", \"ontology_hints\": [\"Action\", \"Workstation\", \"Feature of Interest\", \"Situation S1\", \"Situation S2\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00012",
+        "text": "Check the core of the probe",
+        "label": "action"
+      },
+      "aliases": [
+        "probe core inspection",
+        "probe core check"
+      ],
+      "synonyms": [
+        "inspect the core of the probe",
+        "examine the core of the probe"
+      ],
+      "lexical_variants": [
+        "probe core inspection",
+        "probe core check",
+        "probe core diagnostic"
+      ],
+      "alias_sources": {
+        "probe core inspection": [
+          "llm"
+        ],
+        "probe core check": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "inspect the core of the probe": [
+          "llm"
+        ],
+        "examine the core of the probe": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "probe core inspection": [
+          "llm"
+        ],
+        "probe core check": [
+          "llm"
+        ],
+        "probe core diagnostic": [
+          "llm"
+        ]
+      },
+      "definition": "A diagnostic procedure to examine the core component of a probe sensor for faults or degradation.",
+      "ontology_hints": [
+        "DiagnosticAction",
+        "Probe",
+        "CoreComponent",
+        "Inspection",
+        "FaultDetection",
+        "SensorComponent"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"probe core inspection\", \"probe core check\"], \"synonyms\": [\"inspect the core of the probe\", \"examine the core of the probe\"], \"lexical_variants\": [\"probe core inspection\", \"probe core check\", \"probe core diagnostic\"], \"definition\": \"A diagnostic procedure to examine the core component of a probe sensor for faults or degradation.\", \"ontology_hints\": [\"DiagnosticAction\", \"Probe\", \"CoreComponent\", \"Inspection\", \"FaultDetection\", \"SensorComponent\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00013",
+        "text": "Check the calibration of the device",
+        "label": "action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An action performed to verify that a device's calibration is within acceptable parameters, typically by measuring or estimating the device's output against known standards.",
+      "ontology_hints": [
+        "Observation event",
+        "Targets FeatureOfInterest (the device)",
+        "Performed at a Workstation",
+        "Occurs within a Situation (e.g., S1 or S2)",
+        "Diagnostic action"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An action performed to verify that a device's calibration is within acceptable parameters, typically by measuring or estimating the device's output against known standards.\", \"ontology_hints\": [\"Observation event\", \"Targets FeatureOfInterest (the device)\", \"Performed at a Workstation\", \"Occurs within a Situation (e.g., S1 or S2)\", \"Diagnostic action\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00014",
+        "text": "Check the calibration of the probe",
+        "label": "action"
+      },
+      "aliases": [
+        "Probe calibration check",
+        "Probe calibration verification"
+      ],
+      "synonyms": [
+        "Verify probe calibration",
+        "Confirm probe calibration",
+        "Inspect probe calibration"
+      ],
+      "lexical_variants": [
+        "probe calibration check",
+        "probe calibration verification",
+        "probe calibration inspection"
+      ],
+      "alias_sources": {
+        "Probe calibration check": [
+          "llm"
+        ],
+        "Probe calibration verification": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Verify probe calibration": [
+          "llm"
+        ],
+        "Confirm probe calibration": [
+          "llm"
+        ],
+        "Inspect probe calibration": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "probe calibration check": [
+          "llm"
+        ],
+        "probe calibration verification": [
+          "llm"
+        ],
+        "probe calibration inspection": [
+          "llm"
+        ]
+      },
+      "definition": "A human‑performed diagnostic action in a manufacturing setting that verifies the accuracy of a probe sensor measuring a feature of interest, ensuring the observable property is correctly recorded.",
+      "ontology_hints": [
+        "HumanProcess",
+        "ManufacturingProcess",
+        "Calibration",
+        "Probe",
+        "Sensor",
+        "ObservableProperty",
+        "FeatureOfInterest"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Probe calibration check\", \"Probe calibration verification\"], \"synonyms\": [\"Verify probe calibration\", \"Confirm probe calibration\", \"Inspect probe calibration\"], \"lexical_variants\": [\"probe calibration check\", \"probe calibration verification\", \"probe calibration inspection\"], \"definition\": \"A human‑performed diagnostic action in a manufacturing setting that verifies the accuracy of a probe sensor measuring a feature of interest, ensuring the observable property is correctly recorded.\", \"ontology_hints\": [\"HumanProcess\", \"ManufacturingProcess\", \"Calibration\", \"Probe\", \"Sensor\", \"ObservableProperty\", \"FeatureOfInterest\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00015",
+        "text": "Manually move the axes away from the collision zone and clear the alarm",
+        "label": "action"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Manual intervention to move machine axes away from a collision zone and reset the alarm.",
+      "ontology_hints": [
+        "Human Process",
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "Feature of Interest",
+        "Alarm Clearance"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Manual intervention to move machine axes away from a collision zone and reset the alarm.\", \"ontology_hints\": [\"Human Process\", \"Manufacturing Process\", \"Manufacturing Facility\", \"Feature of Interest\", \"Alarm Clearance\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00016",
+        "text": "Tool control device #1",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A specific tool control device identified as number 1.",
+      "ontology_hints": [
+        "Component",
+        "Feature of Interest"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A specific tool control device identified as number 1.\", \"ontology_hints\": [\"Component\", \"Feature of Interest\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00017",
+        "text": "Tool monitoring device #2",
+        "label": "component"
+      },
+      "aliases": [
+        "Tool monitor #2",
+        "Tool monitoring unit #2",
+        "Tool sensor #2"
+      ],
+      "synonyms": [
+        "tool monitor",
+        "tool sensor"
+      ],
+      "lexical_variants": [
+        "Tool monitoring device 2",
+        "Tool monitoring device #2"
+      ],
+      "alias_sources": {
+        "Tool monitor #2": [
+          "llm"
+        ],
+        "Tool monitoring unit #2": [
+          "llm"
+        ],
+        "Tool sensor #2": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "tool monitor": [
+          "llm"
+        ],
+        "tool sensor": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Tool monitoring device 2": [
+          "llm"
+        ],
+        "Tool monitoring device #2": [
+          "llm"
+        ]
+      },
+      "definition": "A device installed within a manufacturing cell that observes and reports the status, wear, or usage of tools, enabling early detection of tool-related faults or performance degradation.",
+      "ontology_hints": [
+        "Component of Manufacturing Cell",
+        "Part of Manufacturing Process",
+        "Feature of Interest",
+        "Subject to Constraint",
+        "Observed over Temporal Entity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Tool monitor #2\", \"Tool monitoring unit #2\", \"Tool sensor #2\"], \"synonyms\": [\"tool monitor\", \"tool sensor\"], \"lexical_variants\": [\"Tool monitoring device 2\", \"Tool monitoring device #2\"], \"definition\": \"A device installed within a manufacturing cell that observes and reports the status, wear, or usage of tools, enabling early detection of tool-related faults or performance degradation.\", \"ontology_hints\": [\"Component of Manufacturing Cell\", \"Part of Manufacturing Process\", \"Feature of Interest\", \"Subject to Constraint\", \"Observed over Temporal Entity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00018",
+        "text": "Tool control device no. 1",
+        "label": "component"
+      },
+      "aliases": [
+        "Tool Control Device 1",
+        "TCD-1",
+        "Tool Control Unit 1"
+      ],
+      "synonyms": [
+        "control device",
+        "tool controller"
+      ],
+      "lexical_variants": [
+        "Tool control device number one",
+        "Tool control device no.1"
+      ],
+      "alias_sources": {
+        "Tool Control Device 1": [
+          "llm"
+        ],
+        "TCD-1": [
+          "llm"
+        ],
+        "Tool Control Unit 1": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "control device": [
+          "llm"
+        ],
+        "tool controller": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Tool control device number one": [
+          "llm"
+        ],
+        "Tool control device no.1": [
+          "llm"
+        ]
+      },
+      "definition": "A specific tool control device, identified as number 1, that monitors or regulates the operation of a tool within an industrial maintenance context.",
+      "ontology_hints": [
+        "Feature of Interest",
+        "Component of Logistic Process",
+        "subject to Constraint",
+        "maintained by Technician",
+        "observed over Temporal Entity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Tool Control Device 1\", \"TCD-1\", \"Tool Control Unit 1\"], \"synonyms\": [\"control device\", \"tool controller\"], \"lexical_variants\": [\"Tool control device number one\", \"Tool control device no.1\"], \"definition\": \"A specific tool control device, identified as number 1, that monitors or regulates the operation of a tool within an industrial maintenance context.\", \"ontology_hints\": [\"Feature of Interest\", \"Component of Logistic Process\", \"subject to Constraint\", \"maintained by Technician\", \"observed over Temporal Entity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00019",
+        "text": "Tool control device no. 2",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A device that controls or regulates the operation of tools within a machine.",
+      "ontology_hints": [
+        "Component",
+        "Device",
+        "Tool Control Device",
+        "Machine component",
+        "Subject to operational constraints",
+        "Monitored by technicians"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A device that controls or regulates the operation of tools within a machine.\", \"ontology_hints\": [\"Component\", \"Device\", \"Tool Control Device\", \"Machine component\", \"Subject to operational constraints\", \"Monitored by technicians\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00020",
+        "text": "Tool control device no. 3",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Tool control device no. 3 is a specific component of the machinery used to regulate the operation of a tool, identified by its serial or model number.",
+      "ontology_hints": [
+        "Component",
+        "Feature of Interest",
+        "Constraint subject",
+        "Logistic Process participant"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Tool control device no. 3 is a specific component of the machinery used to regulate the operation of a tool, identified by its serial or model number.\", \"ontology_hints\": [\"Component\", \"Feature of Interest\", \"Constraint subject\", \"Logistic Process participant\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00021",
+        "text": "Tool control device no. 4",
+        "label": "component"
+      },
+      "aliases": [
+        "TC Device 4",
+        "Tool Control Unit 4"
+      ],
+      "synonyms": [
+        "Tool controller 4",
+        "Tool control apparatus 4"
+      ],
+      "lexical_variants": [
+        "Tool control device #4",
+        "Tool control device number 4"
+      ],
+      "alias_sources": {
+        "TC Device 4": [
+          "llm"
+        ],
+        "Tool Control Unit 4": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Tool controller 4": [
+          "llm"
+        ],
+        "Tool control apparatus 4": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Tool control device #4": [
+          "llm"
+        ],
+        "Tool control device number 4": [
+          "llm"
+        ]
+      },
+      "definition": "A device that regulates or monitors the operation of a specific tool within an industrial system, designated as number 4.",
+      "ontology_hints": [
+        "component",
+        "part-of",
+        "controlled-by",
+        "monitored-by",
+        "triggers alarm",
+        "subject to constraint",
+        "associated with technician",
+        "involved in logistic process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"TC Device 4\", \"Tool Control Unit 4\"], \"synonyms\": [\"Tool controller 4\", \"Tool control apparatus 4\"], \"lexical_variants\": [\"Tool control device #4\", \"Tool control device number 4\"], \"definition\": \"A device that regulates or monitors the operation of a specific tool within an industrial system, designated as number 4.\", \"ontology_hints\": [\"component\", \"part-of\", \"controlled-by\", \"monitored-by\", \"triggers alarm\", \"subject to constraint\", \"associated with technician\", \"involved in logistic process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00022",
+        "text": "Tool monitoring device No. 4",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [
+        "tool monitor",
+        "tool status sensor",
+        "tool monitoring unit"
+      ],
+      "lexical_variants": [
+        "Tool monitoring device #4",
+        "Tool monitoring device number 4"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {
+        "tool monitor": [
+          "llm"
+        ],
+        "tool status sensor": [
+          "llm"
+        ],
+        "tool monitoring unit": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Tool monitoring device #4": [
+          "llm"
+        ],
+        "Tool monitoring device number 4": [
+          "llm"
+        ]
+      },
+      "definition": "A device used to observe and report the status of a tool within a manufacturing cell, typically providing data for alarms and maintenance actions.",
+      "ontology_hints": [
+        "part_of: Manufacturing Cell",
+        "monitors: Tool",
+        "feature_of_interest: Tool monitoring device No. 4",
+        "associated_constraint: acceptable operational conditions for tool monitoring",
+        "temporal_entity: monitoring interval"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [\"tool monitor\", \"tool status sensor\", \"tool monitoring unit\"], \"lexical_variants\": [\"Tool monitoring device #4\", \"Tool monitoring device number 4\"], \"definition\": \"A device used to observe and report the status of a tool within a manufacturing cell, typically providing data for alarms and maintenance actions.\", \"ontology_hints\": [\"part_of: Manufacturing Cell\", \"monitors: Tool\", \"feature_of_interest: Tool monitoring device No. 4\", \"associated_constraint: acceptable operational conditions for tool monitoring\", \"temporal_entity: monitoring interval\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00023",
+        "text": "bar feeder",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A bar feeder is a manufacturing component that supplies bars to a process, functioning as a spatial entity (Feature) and resource used in manufacturing operations.",
+      "ontology_hints": [
+        "Resource",
+        "Feature",
+        "Feature of Interest",
+        "Property"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A bar feeder is a manufacturing component that supplies bars to a process, functioning as a spatial entity (Feature) and resource used in manufacturing operations.\", \"ontology_hints\": [\"Resource\", \"Feature\", \"Feature of Interest\", \"Property\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00024",
+        "text": "CNC",
+        "label": "component"
+      },
+      "aliases": [
+        "Computer numerical control"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "Computer numerical control": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Computer numerical control (CNC) is an automated control of machine tools by a computer, using G‑code and M‑code instructions to execute programmed machining operations.",
+      "ontology_hints": [
+        "Machine",
+        "Manufacturing Cell component",
+        "Computer-controlled machine tool",
+        "part-of"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "Computer numerical control (CNC) or CNC machining is the automated control of machine tools by a computer. It is an evolution of numerical control (NC),  where machine tools are directly managed by data storage media such as punched cards or punched tape. Because CNC allows for easier programming, modification, and real-time adjustments, it has gradually replaced NC as computing costs declined.\nA CNC machine is a motorized maneuverable tool and often a motorized maneuverable platform, which are both controlled by a computer, according to specific input instructions. Instructions are delivered to a CNC machine in the form of a sequential program of machine control instructions such as G-code and M-code, and then executed. The program can be written by a person or, far more often, generated by graphical computer-aided design (CAD) or computer-aided manufacturing (CAM) software. In the case of 3D printers, the part to be printed is \"sliced\" before the instructions (or the program) are generated. 3D printers also use G-Code.\nCNC offers greatly increased productivity over non-computerized machining for repetitive production, where the machine must be manually controlled (e.g. using devi",
+          "reference": "https://en.wikipedia.org/wiki/Computer_numerical_control"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Computer numerical control\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Computer numerical control (CNC) is an automated control of machine tools by a computer, using G‑code and M‑code instructions to execute programmed machining operations.\", \"ontology_hints\": [\"Machine\", \"Manufacturing Cell component\", \"Computer-controlled machine tool\", \"part-of\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00025",
+        "text": "operator",
+        "label": "actor"
+      },
+      "aliases": [
+        "operator",
+        "manipulator",
+        "hustler",
+        "wheeler dealer",
+        "Operator"
+      ],
+      "synonyms": [
+        "operator",
+        "manipulator",
+        "hustler",
+        "wheeler dealer"
+      ],
+      "lexical_variants": [
+        "operator",
+        "manipulator",
+        "hustler",
+        "wheeler dealer"
+      ],
+      "alias_sources": {
+        "operator": [
+          "wordnet",
+          "llm"
+        ],
+        "manipulator": [
+          "wordnet",
+          "llm"
+        ],
+        "hustler": [
+          "wordnet"
+        ],
+        "wheeler dealer": [
+          "wordnet"
+        ],
+        "Operator": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "operator": [
+          "wordnet",
+          "llm"
+        ],
+        "manipulator": [
+          "wordnet",
+          "llm"
+        ],
+        "hustler": [
+          "wordnet"
+        ],
+        "wheeler dealer": [
+          "wordnet"
+        ]
+      },
+      "lexical_variant_sources": {
+        "operator": [
+          "wordnet",
+          "llm"
+        ],
+        "manipulator": [
+          "wordnet",
+          "llm"
+        ],
+        "hustler": [
+          "wordnet"
+        ],
+        "wheeler dealer": [
+          "wordnet"
+        ]
+      },
+      "definition": "An agent that operates some apparatus or machine, typically a worker responsible for operating machines or performing production tasks.",
+      "ontology_hints": [
+        "Operator is a subclass of Staff.",
+        "Operator is a child of Platform, indicating it is part of the physical infrastructure.",
+        "Operator participates in the operates relation with machines or workstations.",
+        "Operator is responsible for interventions in industrial maintenance contexts."
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "(mathematics) a symbol or function representing a mathematical operation",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "an agent that operates some apparatus or machine",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "someone who owns or operates a business",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a shrewd or unscrupulous person who knows how to circumvent difficulties",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a speculator who trades aggressively on stock or commodity markets",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Operator may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/Operator"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"operator\", \"manipulator\"], \"synonyms\": [\"operator\", \"manipulator\"], \"lexical_variants\": [\"operator\", \"manipulator\"], \"definition\": \"An agent that operates some apparatus or machine, typically a worker responsible for operating machines or performing production tasks.\", \"ontology_hints\": [\"Operator is a subclass of Staff.\", \"Operator is a child of Platform, indicating it is part of the physical infrastructure.\", \"Operator participates in the operates relation with machines or workstations.\", \"Operator is responsible for interventions in industrial maintenance contexts.\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00026",
+        "text": "toolmaker-adjuster",
+        "label": "actor"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "toolmaker adjuster",
+        "toolmaker-adjuster"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "toolmaker adjuster": [
+          "llm"
+        ],
+        "toolmaker-adjuster": [
+          "llm"
+        ]
+      },
+      "definition": "Specialist responsible for tool adjustments in manufacturing operations.",
+      "ontology_hints": [
+        "Manager",
+        "Cause",
+        "Observation",
+        "Observable Property",
+        "Property"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"toolmaker adjuster\", \"toolmaker-adjuster\"], \"definition\": \"Specialist responsible for tool adjustments in manufacturing operations.\", \"ontology_hints\": [\"Manager\", \"Cause\", \"Observation\", \"Observable Property\", \"Property\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00027",
+        "text": "maintenance manager",
+        "label": "actor"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A manager is a person responsible for supervising manufacturing operations and responding to detected situations.",
+      "ontology_hints": [
+        "Manager",
+        "Technician",
+        "Staff",
+        "ManufacturingFacility",
+        "Machine"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A manager is a person responsible for supervising manufacturing operations and responding to detected situations.\", \"ontology_hints\": [\"Manager\", \"Technician\", \"Staff\", \"ManufacturingFacility\", \"Machine\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00028",
+        "text": "maintenance officer",
+        "label": "actor"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A person responsible for supervising maintenance operations in a manufacturing environment.",
+      "ontology_hints": [
+        "Manager",
+        "Staff member responsible for supervising maintenance operations"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A person responsible for supervising maintenance operations in a manufacturing environment.\", \"ontology_hints\": [\"Manager\", \"Staff member responsible for supervising maintenance operations\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00029",
+        "text": "operator/maintenance manager",
+        "label": "actor"
+      },
+      "aliases": [
+        "operator",
+        "maintenance manager",
+        "operator/maintenance manager"
+      ],
+      "synonyms": [
+        "operator",
+        "maintenance manager"
+      ],
+      "lexical_variants": [
+        "operator/maintenance manager"
+      ],
+      "alias_sources": {
+        "operator": [
+          "llm"
+        ],
+        "maintenance manager": [
+          "llm"
+        ],
+        "operator/maintenance manager": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "operator": [
+          "llm"
+        ],
+        "maintenance manager": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "operator/maintenance manager": [
+          "llm"
+        ]
+      },
+      "definition": "A worker who operates machines and supervises maintenance activities in a manufacturing environment.",
+      "ontology_hints": [
+        "subclass of Staff",
+        "responsible for operating machines",
+        "responsible for supervising maintenance",
+        "acts upon Features of Interest",
+        "generates Observations"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"operator\", \"maintenance manager\", \"operator/maintenance manager\"], \"synonyms\": [\"operator\", \"maintenance manager\"], \"lexical_variants\": [\"operator/maintenance manager\"], \"definition\": \"A worker who operates machines and supervises maintenance activities in a manufacturing environment.\", \"ontology_hints\": [\"subclass of Staff\", \"responsible for operating machines\", \"responsible for supervising maintenance\", \"acts upon Features of Interest\", \"generates Observations\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00030",
+        "text": "operator/maintenance officer",
+        "label": "actor"
+      },
+      "aliases": [
+        "operator",
+        "maintenance officer"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "operator/maintenance officer",
+        "operator and maintenance officer"
+      ],
+      "alias_sources": {
+        "operator": [
+          "llm"
+        ],
+        "maintenance officer": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "operator/maintenance officer": [
+          "llm"
+        ],
+        "operator and maintenance officer": [
+          "llm"
+        ]
+      },
+      "definition": "A worker who operates industrial machinery and performs maintenance tasks, combining the roles of operator and maintenance officer.",
+      "ontology_hints": [
+        "Operator (subclass of Staff)",
+        "MaintenanceOfficer (inferred role of Operator or Staff)",
+        "FeatureOfInterest",
+        "Observation",
+        "SpatialObject",
+        "Platform",
+        "handles",
+        "observes",
+        "located_on"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"operator\", \"maintenance officer\"], \"synonyms\": [], \"lexical_variants\": [\"operator/maintenance officer\", \"operator and maintenance officer\"], \"definition\": \"A worker who operates industrial machinery and performs maintenance tasks, combining the roles of operator and maintenance officer.\", \"ontology_hints\": [\"Operator (subclass of Staff)\", \"MaintenanceOfficer (inferred role of Operator or Staff)\", \"FeatureOfInterest\", \"Observation\", \"SpatialObject\", \"Platform\", \"handles\", \"observes\", \"located_on\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00031",
+        "text": "toolmaker-adjuster/maintenance officer",
+        "label": "actor"
+      },
+      "aliases": [
+        "toolmaker-adjuster",
+        "maintenance officer"
+      ],
+      "synonyms": [
+        "toolmaker",
+        "adjuster",
+        "maintenance officer"
+      ],
+      "lexical_variants": [
+        "toolmaker-adjuster",
+        "toolmaker/adjuster",
+        "maintenance officer"
+      ],
+      "alias_sources": {
+        "toolmaker-adjuster": [
+          "llm"
+        ],
+        "maintenance officer": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "toolmaker": [
+          "llm"
+        ],
+        "adjuster": [
+          "llm"
+        ],
+        "maintenance officer": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "toolmaker-adjuster": [
+          "llm"
+        ],
+        "toolmaker/adjuster": [
+          "llm"
+        ],
+        "maintenance officer": [
+          "llm"
+        ]
+      },
+      "definition": "An individual responsible for creating, adjusting, and maintaining tools and equipment in a manufacturing setting, typically working at a workstation or within a manufacturing cell, guided by constraints and performing observations of equipment conditions.",
+      "ontology_hints": [
+        "Actor",
+        "Toolmaker",
+        "Adjuster",
+        "MaintenanceOfficer",
+        "Workstation",
+        "ManufacturingCell",
+        "Constraint",
+        "Observation",
+        "TemporalEntity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"toolmaker-adjuster\", \"maintenance officer\"], \"synonyms\": [\"toolmaker\", \"adjuster\", \"maintenance officer\"], \"lexical_variants\": [\"toolmaker-adjuster\", \"toolmaker/adjuster\", \"maintenance officer\"], \"definition\": \"An individual responsible for creating, adjusting, and maintaining tools and equipment in a manufacturing setting, typically working at a workstation or within a manufacturing cell, guided by constraints and performing observations of equipment conditions.\", \"ontology_hints\": [\"Actor\", \"Toolmaker\", \"Adjuster\", \"MaintenanceOfficer\", \"Workstation\", \"ManufacturingCell\", \"Constraint\", \"Observation\", \"TemporalEntity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00032",
+        "text": "toolmaker-adjuster/in charge of maintenance",
+        "label": "actor"
+      },
+      "aliases": [
+        "toolmaker‑adjuster",
+        "maintenance supervisor",
+        "maintenance technician"
+      ],
+      "synonyms": [
+        "toolmaker",
+        "adjuster",
+        "maintenance engineer",
+        "maintenance supervisor"
+      ],
+      "lexical_variants": [
+        "toolmaker‑adjuster/in charge of maintenance",
+        "toolmaker‑adjuster",
+        "toolmaker‑adjuster in charge of maintenance"
+      ],
+      "alias_sources": {
+        "toolmaker‑adjuster": [
+          "llm"
+        ],
+        "maintenance supervisor": [
+          "llm"
+        ],
+        "maintenance technician": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "toolmaker": [
+          "llm"
+        ],
+        "adjuster": [
+          "llm"
+        ],
+        "maintenance engineer": [
+          "llm"
+        ],
+        "maintenance supervisor": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "toolmaker‑adjuster/in charge of maintenance": [
+          "llm"
+        ],
+        "toolmaker‑adjuster": [
+          "llm"
+        ],
+        "toolmaker‑adjuster in charge of maintenance": [
+          "llm"
+        ]
+      },
+      "definition": "A human operator who makes, adjusts, and maintains tools and machinery within a manufacturing facility, often responsible for overseeing maintenance activities.",
+      "ontology_hints": [
+        "HumanProcess",
+        "ManufacturingProcess",
+        "ManufacturingFacility",
+        "Constraint (maintenance rule)",
+        "MaintenanceActivity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"toolmaker‑adjuster\", \"maintenance supervisor\", \"maintenance technician\"], \"synonyms\": [\"toolmaker\", \"adjuster\", \"maintenance engineer\", \"maintenance supervisor\"], \"lexical_variants\": [\"toolmaker‑adjuster/in charge of maintenance\", \"toolmaker‑adjuster\", \"toolmaker‑adjuster in charge of maintenance\"], \"definition\": \"A human operator who makes, adjusts, and maintains tools and machinery within a manufacturing facility, often responsible for overseeing maintenance activities.\", \"ontology_hints\": [\"HumanProcess\", \"ManufacturingProcess\", \"ManufacturingFacility\", \"Constraint (maintenance rule)\", \"MaintenanceActivity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

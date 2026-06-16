@@ -1,0 +1,126 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 4,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_e_00001",
+        "label": "unloader",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00018",
+        "label": "move the part unloader back using function M521"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "M521 function",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0005",
+      "justification": "The chunk text states that the intervention is to move the part unloader back using function M521, linking the unloader entity to the M521 function event.",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 3787,
+          "chunk_end_char": 3834,
+          "doc_start_char": 28787,
+          "doc_end_char": 28834,
+          "snippet": "tart the cycle with the part unloader in\ncause:\nforward position.\nintervention: Move the part unloader back using function M521\nresponsible for\noperator/maintenance officer\nAlarm number: 1055\ntext: Z2-Y2 AXE"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "M521 function",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00019",
+        "label": "reverse the part unloader using function M521"
+      },
+      "object": {
+        "id": "cand_e_00001",
+        "label": "unloader",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0005",
+      "justification": "The chunk text includes the intervention \"Reverse the part unloader using function M521\", directly linking the M521 function to the unloader.",
+      "confidence": 0.95,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 4832,
+          "chunk_end_char": 4877,
+          "doc_start_char": 29832,
+          "doc_end_char": 29877,
+          "snippet": "rt the cycle with the workpiece unloader in the forward position. intervention: Reverse the part unloader using function M521 responsible for intervention: operator/maintenance person\n\nAlarm n°: 1055 text:"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00002",
+      "subject": {
+        "id": "cand_e_00002",
+        "label": "MechanicalAxis",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00020",
+        "label": "Manually move the axes away from the collision zone and delete the alarm"
+      },
+      "object": {
+        "id": "cand_e_00003",
+        "label": "collision zone",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0005",
+      "justification": "The chunk text explicitly states that the axes are manually moved away from the collision zone, indicating a direct action linking the MechanicalAxis to the collision zone.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00003",
+      "subject": {
+        "id": "cand_r_00024",
+        "label": "input X5.0 page 71 of the electrical diagram (0 = part present, 1 = part ejected)",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00024",
+        "label": "input X5.0 page 71 of the electrical diagram (0 = part present, 1 = part ejected)"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "machine component",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0005",
+      "justification": "The chunk explicitly states that checking input X5.0 page 71 of the electrical diagram is used to determine whether the part (a machine component) has been ejected. Thus the sensor input is an observable property of the machine component.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 4,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00006",
+      "relation_label": "bar feeder is off-circuit",
+      "source_candidate_id": "cand_r_00006",
+      "source_candidate_label": "bar feeder is off-circuit",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_s_00000",
+      "target_candidate_label": "ready signal missing",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0006",
+      "justification": "The chunk states that the bar feeder is off‑circuit and does not transmit the \"ready\" signal to the machine's CNC, indicating that the off‑circuit state causes the ready signal to be missing.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 426,
+          "chunk_end_char": 451,
+          "doc_start_char": 30426,
+          "doc_end_char": 30451,
+          "snippet": "Standard: Optional: effect: Alarm with immediate and controlled stop cause: The bar feeder is off-circuit and does not transmit the \"ready\" signal to the machine's CNC. intervention: Ch"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00008",
+      "relation_label": "operator/maintenance manager",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "Check the connections",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_r_00008",
+      "target_candidate_label": "operator/maintenance manager",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0006",
+      "justification": "The chunk contains the phrase \"intervention manager: operator/maintenance manager\" for the intervention that includes the event \"Check the connections\". This indicates that the operator/maintenance manager is responsible for handling that event.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 639,
+          "chunk_end_char": 667,
+          "doc_start_char": 30639,
+          "doc_end_char": 30667,
+          "snippet": "the bar feeder documentation for details of the anomaly. intervention manager: operator/maintenance manager\n\nAlarm No.: 1061\ntext: TIP 1: BREAKUP\ntype: Standard: Optional:\neffect: Alarm w"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00018",
+      "relation_label": "Tool control device no. 3 is not working",
+      "source_candidate_id": "cand_r_00018",
+      "source_candidate_label": "Tool control device no. 3 is not working",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "Check the connections",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0006",
+      "justification": "The chunk states that Alarm 1066 is caused by Tool control device no. 3 not working, and the recommended intervention is to check the connections.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 3553,
+          "chunk_end_char": 3593,
+          "doc_start_char": 33553,
+          "doc_end_char": 33593,
+          "snippet": "Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\ncause: Tool control device no. 3 is not working.\nCheck the core of the probe, the connections, consult the intervention documen"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00003",
+      "relation_candidate_id": "cand_r_00019",
+      "relation_label": "Tool control device no. 3 does not work",
+      "source_candidate_id": "cand_r_00019",
+      "source_candidate_label": "Tool control device no. 3 does not work",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "Check the connections",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0006",
+      "justification": "The chunk states that the cause of the alarm is \"Tool control device no. 3 does not work\" and the intervention includes \"Check the connections\", indicating that the failure requires checking the connections.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0006",
+          "chunk_start_char": 4591,
+          "chunk_end_char": 4630,
+          "doc_start_char": 34591,
+          "doc_end_char": 34630,
+          "snippet": "Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: Tool control device no. 3 does not work. intervention: Check the core of the probe, the connections, consult the device"
+        }
+      ]
+    }
+  ]
+}
