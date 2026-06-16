@@ -32,6 +32,7 @@ from pathlib import Path
 from neoolaf.evaluation.runners.compare_runs import compare_runs
 from neoolaf.evaluation.runners.evaluate_jsonl import evaluate_jsonl
 from neoolaf.evaluation.runners.evaluate_run import evaluate_run
+from neoolaf.evaluation.runners.evaluate_no_gold import evaluate_no_gold_state
 
 
 def parse_type_filter(raw: str) -> str | list[str]:
@@ -107,6 +108,81 @@ def build_parser() -> argparse.ArgumentParser:
     jsonl_parser.add_argument("--method", default="jsonl")
     jsonl_parser.add_argument("--run-id", default=None)
     jsonl_parser.add_argument("--output", required=True)
+
+    no_gold_parser = subparsers.add_parser(
+        "no-gold",
+        help="Run automatic no-gold evaluation from a saved NeoOLAF state.json",
+    )
+    no_gold_parser.add_argument("--state", required=True, help="Path to a saved NeoOLAF state.json")
+    no_gold_parser.add_argument("--output", required=True, help="Output directory")
+    no_gold_parser.add_argument(
+        "--reference-ontology",
+        default=None,
+        help="Optional reference/seed ontology path for automatic ontology alignment",
+    )
+    no_gold_parser.add_argument(
+        "--alignment-threshold",
+        type=float,
+        default=0.75,
+        help="Fuzzy matching threshold for ontology alignment",
+    )
+    no_gold_parser.add_argument(
+        "--no-bleu",
+        action="store_true",
+        help="Disable BLEU-style lexical overlap evaluation",
+    )
+    no_gold_parser.add_argument(
+        "--llm-judge",
+        action="store_true",
+        help="Enable optional LLM-as-a-judge evaluation. This may call a paid/provider API.",
+    )
+    no_gold_parser.add_argument(
+        "--llm-judge-panel",
+        action="store_true",
+        help="Use a multi-judge panel instead of a single judge: blue support, red critic, profile judge, and arbiter.",
+    )
+    no_gold_parser.add_argument(
+        "--judge-model",
+        default=None,
+        help="LiteLLM model name for LLM-as-a-judge, e.g. openrouter/openai/gpt-oss-20b",
+    )
+    no_gold_parser.add_argument(
+        "--judge-max-items",
+        type=int,
+        default=50,
+        help="Maximum number of triples to judge with the LLM",
+    )
+    no_gold_parser.add_argument(
+        "--judge-all",
+        action="store_true",
+        help="Judge all sampled triples instead of focusing on weak/unsupported triples",
+    )
+    no_gold_parser.add_argument(
+        "--judge-temperature",
+        type=float,
+        default=0.0,
+        help="Temperature used by the LLM judge",
+    )
+    no_gold_parser.add_argument(
+        "--judge-max-tokens",
+        type=int,
+        default=1200,
+        help="Maximum output tokens for each LLM judge call",
+    )
+    no_gold_parser.add_argument(
+        "--judge-max-workers",
+        type=int,
+        default=4,
+        help="Maximum parallel LLM judge calls. Lower this if your provider rate-limits requests.",
+    )
+    no_gold_parser.add_argument(
+        "--count-subjudge-parse-errors",
+        action="store_true",
+        help=(
+            "For --llm-judge-panel, count recoverable subjudge parse failures in parse_error_count. "
+            "Disabled by default because the panel can recover from individual subjudge failures."
+        ),
+    )
 
     compare_parser = subparsers.add_parser(
         "compare",
@@ -231,6 +307,27 @@ def main() -> None:
             type_filter=parse_type_filter(args.type_filter),
             output_dir=args.output,
             run_id=args.run_id,
+        )
+        return
+
+    if args.command == "no-gold":
+        if (args.llm_judge or args.llm_judge_panel) and not args.judge_model:
+            parser.error("--llm-judge or --llm-judge-panel requires --judge-model")
+
+        evaluate_no_gold_state(
+            state_path=args.state,
+            output_dir=args.output,
+            reference_ontology_path=args.reference_ontology,
+            alignment_threshold=args.alignment_threshold,
+            include_bleu=not args.no_bleu,
+            llm_judge_model=args.judge_model if (args.llm_judge or args.llm_judge_panel) else None,
+            llm_judge_max_items=args.judge_max_items,
+            llm_judge_only_weak=not args.judge_all,
+            llm_judge_temperature=args.judge_temperature,
+            llm_judge_max_tokens=args.judge_max_tokens,
+            llm_judge_max_workers=args.judge_max_workers,
+            llm_judge_panel=args.llm_judge_panel,
+            llm_judge_count_subjudge_parse_errors=args.count_subjudge_parse_errors,
         )
         return
 
