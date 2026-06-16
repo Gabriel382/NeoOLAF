@@ -1,0 +1,534 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 33,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "Function G188",
+      "label": "component",
+      "justification": "Identifies a specific function used in the machine program.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 34,
+          "chunk_end_char": 47,
+          "doc_start_char": 65034,
+          "doc_end_char": 65047,
+          "snippet": ", axis and bro-effect stop:\nches.\nFunction G188 is programmed in a machine model that is not\ncause:\nnot having the Y2 axis.\nint"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "Y2 axis",
+      "label": "component",
+      "justification": "Specifies a machine axis that is relevant to the failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 115,
+          "chunk_end_char": 122,
+          "doc_start_char": 65115,
+          "doc_end_char": 65122,
+          "snippet": "unction G188 is programmed in a machine model that is not\ncause:\nnot having the Y2 axis.\nintervention: Delete function G188 from the program.\nresponsible for\nprogramme"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "high pressure unit",
+      "label": "component",
+      "justification": "Component whose misconfiguration triggers an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 362,
+          "chunk_end_char": 380,
+          "doc_start_char": 65362,
+          "doc_end_char": 65380,
+          "snippet": "ect: Alarm with program interruption, stopping of axes and spindles. cause: The high pressure unit has not been configured correctly on the user page. intervention: Configure the"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "CDS device",
+      "label": "component",
+      "justification": "Device that must be configured correctly to avoid alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 461,
+          "chunk_end_char": 471,
+          "doc_start_char": 65461,
+          "doc_end_char": 65471,
+          "snippet": "has not been configured correctly on the user page. intervention: Configure the CDS device in the user page. responsible for the intervention: programmer\n\nmessage no.: 30"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "cart 2",
+      "label": "component",
+      "justification": "Machine cart whose deactivation causes a failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 744,
+          "chunk_end_char": 750,
+          "doc_start_char": 65744,
+          "doc_end_char": 65750,
+          "snippet": "axes and spindles. cause: The hidden time recharge function G303 cannot work if cart 2 has been deactivated in the user page. intervention: Activate cart 2 from the u"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "G303",
+      "label": "function",
+      "justification": "Hidden time recharge function referenced in a cause statement.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 724,
+          "chunk_end_char": 728,
+          "doc_start_char": 65724,
+          "doc_end_char": 65728,
+          "snippet": "uption, stopping of axes and spindles. cause: The hidden time recharge function G303 cannot work if cart 2 has been deactivated in the user page. intervention: Acti"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "G300 function",
+      "label": "function",
+      "justification": "Function that reduces torque, leading to axis errors.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1370,
+          "chunk_end_char": 1383,
+          "doc_start_char": 66370,
+          "doc_end_char": 66383,
+          "snippet": "onal:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nWith the G300 function we have reduced the torque so much that the axis\ncause:\nfails to achieve the re"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "axis",
+      "label": "component",
+      "justification": "General machine axis involved in tracking and chase errors.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 2,
+          "chunk_end_char": 6,
+          "doc_start_char": 65002,
+          "doc_end_char": 65006,
+          "snippet": ", axis and bro-effect stop:\nches.\nFunction G188 is programmed in a machine model that"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "torque",
+      "label": "attribute",
+      "justification": "Physical property affected by G300 function.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1404,
+          "chunk_end_char": 1410,
+          "doc_start_char": 66404,
+          "doc_end_char": 66410,
+          "snippet": "ion, axis and bro-effect stop:\nches.\nWith the G300 function we have reduced the torque so much that the axis\ncause:\nfails to achieve the required rating.\nintervention"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "cut",
+      "label": "attribute",
+      "justification": "Parameter to be increased as an intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1505,
+          "chunk_end_char": 1508,
+          "doc_start_char": 66505,
+          "doc_end_char": 66508,
+          "snippet": "he axis\ncause:\nfails to achieve the required rating.\nintervention: Increase the cut of the indicated axis\nresponsible for\nprogrammer\n\nmessage no.: 3036 - 3038 text"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "Alarm with program interruption, stopping of axes and spindles",
+      "label": "alarm type",
+      "justification": "Describes the event that interrupts the program and stops machine components.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 287,
+          "chunk_end_char": 349,
+          "doc_start_char": 65287,
+          "doc_end_char": 65349,
+          "snippet": "ssage no.: 3030 text: CDS CONFIGURATION ERROR type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The high pressure unit has not been configured correctly on the user pa"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "AXIS TRACKING ERROR",
+      "label": "alarm type",
+      "justification": "Specific error event related to axis tracking.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1250,
+          "chunk_end_char": 1269,
+          "doc_start_char": 66250,
+          "doc_end_char": 66269,
+          "snippet": "am. responsible for the intervention: programmer\n\nmessage no: 3036 - 3038\ntext: AXIS TRACKING ERROR\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "AXIS CHASE ERROR",
+      "label": "alarm type",
+      "justification": "Specific error event related to axis chase.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1590,
+          "chunk_end_char": 1606,
+          "doc_start_char": 66590,
+          "doc_end_char": 66606,
+          "snippet": "f the indicated axis\nresponsible for\nprogrammer\n\nmessage no.: 3036 - 3038 text: AXIS CHASE ERROR type: Standard: Optional: effect: Alarm with program interruption, stopping of"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "program interruption",
+      "label": "event",
+      "justification": "Operational state where the program stops.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 298,
+          "chunk_end_char": 318,
+          "doc_start_char": 65298,
+          "doc_end_char": 65318,
+          "snippet": "3030 text: CDS CONFIGURATION ERROR type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The high pressure unit has not been conf"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "stopping of axes and spindles",
+      "label": "event",
+      "justification": "Operational state indicating machine components are halted.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 320,
+          "chunk_end_char": 349,
+          "doc_start_char": 65320,
+          "doc_end_char": 65349,
+          "snippet": "RATION ERROR type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The high pressure unit has not been configured correctly on the user pa"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "high pressure unit has not been configured correctly on the user page",
+      "label": "cause",
+      "justification": "Cause statement explaining why the alarm is triggered.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 362,
+          "chunk_end_char": 431,
+          "doc_start_char": 65362,
+          "doc_end_char": 65431,
+          "snippet": "ect: Alarm with program interruption, stopping of axes and spindles. cause: The high pressure unit has not been configured correctly on the user page. intervention: Configure the CDS device in the user page. responsible for the i"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "hidden time recharge function G303 cannot work if cart 2 has been deactivated in the user page",
+      "label": "cause",
+      "justification": "Cause statement linking cart deactivation to function failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 694,
+          "chunk_end_char": 788,
+          "doc_start_char": 65694,
+          "doc_end_char": 65788,
+          "snippet": "ect: Alarm with program interruption, stopping of axes and spindles. cause: The hidden time recharge function G303 cannot work if cart 2 has been deactivated in the user page. intervention: Activate cart 2 from the user page. responsible for the interven"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "function G188 was programmed in a machine model that does not have the Y2 axis",
+      "label": "cause",
+      "justification": "Cause statement describing a mismatch between function and machine model.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1041,
+          "chunk_end_char": 1119,
+          "doc_start_char": 66041,
+          "doc_end_char": 66119,
+          "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: Function G188 was programmed in a machine model that does not have the Y2 axis. intervention: Delete function G188 from the program. responsible for the inter"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "With the G300 function we have reduced the torque so much that the axis fails to achieve the required rating",
+      "label": "cause",
+      "justification": "Cause statement showing how torque reduction leads to tracking error.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": ", axis and bro-effect stop:\nches.\nFunction G188 is programmed in a machine model that is not\ncause:\nnot having the Y2 axis.\nintervention: Delete function G188 from the program.\nresponsible for\nprogrammer\n\nmessage no.: 3030 text: CDS CONFIGURATION ERROR type: Standard: Optional: effect: Alarm with pr"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "With the G300 function we have reduced the torque so much that the axis cannot reach the required dimension",
+      "label": "cause",
+      "justification": "Cause statement showing how torque reduction leads to chase error.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1712,
+          "chunk_end_char": 1819,
+          "doc_start_char": 66712,
+          "doc_end_char": 66819,
+          "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: With the G300 function we have reduced the torque so much that the axis cannot reach the required dimension. intervention: Increase the cut of the indicated axis responsible for the inter"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "Configure the CDS device in the user page",
+      "label": "intervention",
+      "justification": "Action required to resolve the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 447,
+          "chunk_end_char": 488,
+          "doc_start_char": 65447,
+          "doc_end_char": 65488,
+          "snippet": "pressure unit has not been configured correctly on the user page. intervention: Configure the CDS device in the user page. responsible for the intervention: programmer\n\nmessage no.: 3031 - 3034 text: C"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "Activate cart 2 from the user page",
+      "label": "intervention",
+      "justification": "Action required to resolve the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 804,
+          "chunk_end_char": 838,
+          "doc_start_char": 65804,
+          "doc_end_char": 65838,
+          "snippet": "G303 cannot work if cart 2 has been deactivated in the user page. intervention: Activate cart 2 from the user page. responsible for the intervention: programmer\n\nmessage n°: 3035 text: OPTIONS 9"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "Delete function G188 from the program",
+      "label": "intervention",
+      "justification": "Action required to resolve the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 138,
+          "chunk_end_char": 175,
+          "doc_start_char": 65138,
+          "doc_end_char": 65175,
+          "snippet": "med in a machine model that is not\ncause:\nnot having the Y2 axis.\nintervention: Delete function G188 from the program.\nresponsible for\nprogrammer\n\nmessage no.: 3030 text: CDS CONFIGURATION ERROR ty"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "Increase the cut of the indicated axis",
+      "label": "intervention",
+      "justification": "Action required to resolve the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1492,
+          "chunk_end_char": 1530,
+          "doc_start_char": 66492,
+          "doc_end_char": 66530,
+          "snippet": "o much that the axis\ncause:\nfails to achieve the required rating.\nintervention: Increase the cut of the indicated axis\nresponsible for\nprogrammer\n\nmessage no.: 3036 - 3038 text: AXIS CHASE ERROR typ"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "programmer",
+      "label": "actor",
+      "justification": "Person responsible for performing interventions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 193,
+          "chunk_end_char": 203,
+          "doc_start_char": 65193,
+          "doc_end_char": 65203,
+          "snippet": "e Y2 axis.\nintervention: Delete function G188 from the program.\nresponsible for\nprogrammer\n\nmessage no.: 3030 text: CDS CONFIGURATION ERROR type: Standard: Optional: effe"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "is programmed in",
+      "label": "relation-bearing expression",
+      "justification": "Links a function to the machine model.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 48,
+          "chunk_end_char": 64,
+          "doc_start_char": 65048,
+          "doc_end_char": 65064,
+          "snippet": ", axis and bro-effect stop:\nches.\nFunction G188 is programmed in a machine model that is not\ncause:\nnot having the Y2 axis.\nintervention: Delete"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "has not been configured correctly",
+      "label": "relation-bearing expression",
+      "justification": "Describes the configuration status of a component.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 381,
+          "chunk_end_char": 414,
+          "doc_start_char": 65381,
+          "doc_end_char": 65414,
+          "snippet": "gram interruption, stopping of axes and spindles. cause: The high pressure unit has not been configured correctly on the user page. intervention: Configure the CDS device in the user page. resp"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "cannot work if",
+      "label": "relation-bearing expression",
+      "justification": "Conditional relation between function operation and cart status.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 729,
+          "chunk_end_char": 743,
+          "doc_start_char": 65729,
+          "doc_end_char": 65743,
+          "snippet": "n, stopping of axes and spindles. cause: The hidden time recharge function G303 cannot work if cart 2 has been deactivated in the user page. intervention: Activate cart 2 fro"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "was programmed in",
+      "label": "relation-bearing expression",
+      "justification": "Describes the programming of a function in a machine model.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1055,
+          "chunk_end_char": 1072,
+          "doc_start_char": 66055,
+          "doc_end_char": 66072,
+          "snippet": "with program interruption, stopping of axes and spindles. cause: Function G188 was programmed in a machine model that does not have the Y2 axis. intervention: Delete function G"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "reduced the torque so much that",
+      "label": "relation-bearing expression",
+      "justification": "Shows causal link between torque reduction and axis failure.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1392,
+          "chunk_end_char": 1423,
+          "doc_start_char": 66392,
+          "doc_end_char": 66423,
+          "snippet": "am interruption, axis and bro-effect stop:\nches.\nWith the G300 function we have reduced the torque so much that the axis\ncause:\nfails to achieve the required rating.\nintervention: Increase th"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00030",
+      "text": "fails to achieve",
+      "label": "relation-bearing expression",
+      "justification": "Describes the axis's inability to meet required rating.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1440,
+          "chunk_end_char": 1456,
+          "doc_start_char": 66440,
+          "doc_end_char": 66456,
+          "snippet": "With the G300 function we have reduced the torque so much that the axis\ncause:\nfails to achieve the required rating.\nintervention: Increase the cut of the indicated axis\nrespo"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00031",
+      "text": "cannot reach",
+      "label": "relation-bearing expression",
+      "justification": "Describes the axis's inability to meet required dimension.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 1784,
+          "chunk_end_char": 1796,
+          "doc_start_char": 66784,
+          "doc_end_char": 66796,
+          "snippet": "cause: With the G300 function we have reduced the torque so much that the axis cannot reach the required dimension. intervention: Increase the cut of the indicated axis re"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00032",
+      "text": "responsible for",
+      "label": "relation-bearing expression",
+      "justification": "Links the actor to the intervention action.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0013",
+          "chunk_start_char": 177,
+          "chunk_end_char": 192,
+          "doc_start_char": 65177,
+          "doc_end_char": 65192,
+          "snippet": "e:\nnot having the Y2 axis.\nintervention: Delete function G188 from the program.\nresponsible for\nprogrammer\n\nmessage no.: 3030 text: CDS CONFIGURATION ERROR type: Standard: Opt"
+        }
+      ]
+    }
+  ]
+}

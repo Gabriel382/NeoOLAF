@@ -1,0 +1,26 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that the implementation of the campaign (the policy initiative) has resulted in many construction projects." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00000> ;
+    neo:predicate ns1:cand_r_00007 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "policy initiative" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00007 <http://neoolaf.org/resource/node/cand_s_00000> .
+
+ns1:cand_r_00007 neo:label "implementation of the campaign" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "ent 's \" Go West \" strategy , to boost its less developed western regions . The implementation of the campaign , has resulted in many construction projects in cities on the Beibu Gulf Rim ," .
+
+<http://neoolaf.org/resource/node/cand_s_00000> neo:label "construction projects" ;
+    neo:nodeType "event" .
+

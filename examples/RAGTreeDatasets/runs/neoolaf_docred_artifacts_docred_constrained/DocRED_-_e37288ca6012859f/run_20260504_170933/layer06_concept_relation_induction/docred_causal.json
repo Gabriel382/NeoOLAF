@@ -1,0 +1,58 @@
+{
+  "layer": "layer06_concept_relation_induction",
+  "num_concept_candidates": 0,
+  "num_ontology_relation_candidates": 2,
+  "concept_candidates": [],
+  "ontology_relation_candidates": [
+    {
+      "relation_id": "ont_rel_00000",
+      "label": "broadcast_type",
+      "normalized_label": "broadcast_type",
+      "description": "Indicates the type of broadcast service, such as free-to-air, subscription-based, or other broadcast modalities.",
+      "domain_hint": "BroadcastService",
+      "range_hint": "BroadcastType",
+      "source_candidate_ids": [
+        "cand_r_00000"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "The relation is semantically stable and reusable across documents, aligning with ontology hints like broadcast_type, television_service, radio_service, and unencrypted_service. It captures a meaningful property of broadcast services beyond isolated mentions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its present form on lst of April 2006 in the Athens metropolitan area , and gradually spread its coverage nationwide . Besides"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00001",
+      "label": "dubbing",
+      "normalized_label": "dubbing",
+      "description": "Relates a media entity (e.g., a broadcaster or production company) to a work that it has produced or modified by replacing or augmenting the original soundtrack with new recordings, typically for translation or localization purposes.",
+      "domain_hint": "BroadcastingStation",
+      "range_hint": "TVShow",
+      "source_candidate_ids": [
+        "cand_r_00001"
+      ],
+      "source_triple_ids": [
+        "triple_00000"
+      ],
+      "confidence": 0.92,
+      "justification": "The relation is semantically stable, reusable across documents, and captures a meaningful process that occurs in media production. It does not duplicate existing ontology properties and aligns with the DocRED style of surface mentions.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 591,
+          "chunk_end_char": 598,
+          "doc_start_char": 591,
+          "doc_end_char": 598,
+          "snippet": "cing digital terrestrial transmission in Greece . At launch , Skai TV opted for dubbing all foreign language content into Greek , instead of using subtitles . This is"
+        }
+      ]
+    }
+  ]
+}

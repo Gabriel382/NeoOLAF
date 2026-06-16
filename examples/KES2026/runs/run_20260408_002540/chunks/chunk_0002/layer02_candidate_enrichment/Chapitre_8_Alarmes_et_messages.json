@@ -1,0 +1,102 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 2,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "chining cycle",
+        "label": "process"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A manufacturing process cycle referred to in the text.",
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "Machine"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A manufacturing process cycle referred to in the text.\", \"ontology_hints\": [\"Manufacturing Process\", \"Manufacturing Facility\", \"Machine\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "alarms with immediate and controlled stop",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "stop alarm",
+        "shutdown alarm",
+        "controlled stop alarm"
+      ],
+      "synonyms": [
+        "immediate shutdown alarm",
+        "controlled stop alarm",
+        "stop alarm"
+      ],
+      "lexical_variants": [
+        "alarm that triggers an immediate controlled stop",
+        "alarm with immediate controlled stop",
+        "alarm causing immediate shutdown"
+      ],
+      "alias_sources": {
+        "stop alarm": [
+          "llm"
+        ],
+        "shutdown alarm": [
+          "llm"
+        ],
+        "controlled stop alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "immediate shutdown alarm": [
+          "llm"
+        ],
+        "controlled stop alarm": [
+          "llm"
+        ],
+        "stop alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "alarm that triggers an immediate controlled stop": [
+          "llm"
+        ],
+        "alarm with immediate controlled stop": [
+          "llm"
+        ],
+        "alarm causing immediate shutdown": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm type that, when triggered, initiates an immediate and controlled shutdown of the machine or process to prevent damage or safety hazards.",
+      "ontology_hints": [
+        "AlarmType",
+        "SafetyAlarm",
+        "ShutdownEvent",
+        "hasFeatureOfInterest",
+        "hasObservableProperty"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"stop alarm\", \"shutdown alarm\", \"controlled stop alarm\"], \"synonyms\": [\"immediate shutdown alarm\", \"controlled stop alarm\", \"stop alarm\"], \"lexical_variants\": [\"alarm that triggers an immediate controlled stop\", \"alarm with immediate controlled stop\", \"alarm causing immediate shutdown\"], \"definition\": \"An alarm type that, when triggered, initiates an immediate and controlled shutdown of the machine or process to prevent damage or safety hazards.\", \"ontology_hints\": [\"AlarmType\", \"SafetyAlarm\", \"ShutdownEvent\", \"hasFeatureOfInterest\", \"hasObservableProperty\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

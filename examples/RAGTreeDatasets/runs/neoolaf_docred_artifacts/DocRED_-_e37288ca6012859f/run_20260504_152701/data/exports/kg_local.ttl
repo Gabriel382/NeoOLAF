@@ -1,0 +1,67 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The chunk states that Skai TV is based in Piraeus, a Greek city, implying Piraeus is located in Greece." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00006> ;
+    neo:predicate ns1:cand_r_00001 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00001> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The chunk states that Skai Group is \"one of the largest media groups in the country\", linking Skai Group to the country entity." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00006> ;
+    neo:predicate ns1:cand_r_00003 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/triple/triple_00002> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00002/prov/0> ;
+    neo:justification "The chunk states that Skai TV is available on the subscription‑based encrypted services of Nova and Cosmote TV, establishing an \"available on\" relation between Skai TV and Nova." ;
+    neo:object <http://neoolaf.org/resource/node/cand_s_00001> ;
+    neo:predicate ns1:cand_r_00005 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "entity" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00005 <http://neoolaf.org/resource/node/cand_s_00001> .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "port city" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00001 <http://neoolaf.org/resource/node/cand_e_00006> .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "Skai Group" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00003 <http://neoolaf.org/resource/node/cand_e_00006> .
+
+ns1:cand_r_00001 neo:label "located in" .
+
+ns1:cand_r_00003 neo:label "largest media groups in the country" .
+
+ns1:cand_r_00005 neo:label "available on" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its present form on lst of April 2006 in the Athens metr" .
+
+<http://neoolaf.org/resource/triple/triple_00002/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its present form on lst of April 2006 in the Athens metropolitan area , and gradually spread its coverage nationwide . Besides" .
+
+<http://neoolaf.org/resource/node/cand_s_00001> neo:label "Nova" ;
+    neo:nodeType "event" .
+
+<http://neoolaf.org/resource/node/cand_e_00006> neo:label "country" ;
+    neo:nodeType "entity" .
+

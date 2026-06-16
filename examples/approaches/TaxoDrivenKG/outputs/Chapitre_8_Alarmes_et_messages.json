@@ -1,0 +1,1108 @@
+{
+  "(0, 2787)": {
+    "entities": [
+      {
+        "name": "ACTIVE EMERGENCY",
+        "label": "alarm",
+        "description": "Alarm with immediate and controlled shutdown, opening of the hardware authorization to the axis/spindle feeder and CNC in emergency."
+      },
+      {
+        "name": "punch button",
+        "label": "component",
+        "description": "A physical emergency stop button on the machine."
+      },
+      {
+        "name": "machine",
+        "label": "machine",
+        "description": "The CNC machine that is stopped by alarms."
+      },
+      {
+        "name": "OFF-CIRCUIT MACHINE",
+        "label": "alarm",
+        "description": "Alarm with immediate and controlled shutdown, opening of authorization to the axis/spindle power supply."
+      },
+      {
+        "name": "power circuits",
+        "label": "part",
+        "description": "The power circuits that supply the axis/spindle power supply."
+      },
+      {
+        "name": "machine start button",
+        "label": "component",
+        "description": "The button used to start the machine."
+      },
+      {
+        "name": "SLIDING DOOR OPEN",
+        "label": "alarm",
+        "description": "Alarm with immediate and controlled shutdown, opening of authorization to the axis/spindle power supply."
+      },
+      {
+        "name": "sliding door",
+        "label": "component",
+        "description": "The sliding door that must be closed during operation."
+      },
+      {
+        "name": "operator/maintenance officer",
+        "label": "operator",
+        "description": "The person responsible for handling alarms."
+      },
+      {
+        "name": "input X8.4",
+        "label": "part",
+        "description": "Electrical input responsible for the punch button."
+      },
+      {
+        "name": "input X2.0",
+        "label": "part",
+        "description": "Electrical input responsible for the power circuits."
+      },
+      {
+        "name": "input X3.3",
+        "label": "part",
+        "description": "Electrical input responsible for the sliding door."
+      }
+    ],
+    "relationships": [
+      {
+        "source": "ACTIVE EMERGENCY",
+        "target": "punch button",
+        "relation": "hasCause"
+      },
+      {
+        "source": "OFF-CIRCUIT MACHINE",
+        "target": "power circuits",
+        "relation": "hasCause"
+      },
+      {
+        "source": "SLIDING DOOR OPEN",
+        "target": "sliding door",
+        "relation": "hasCause"
+      },
+      {
+        "source": "ACTIVE EMERGENCY",
+        "target": "machine start button",
+        "relation": "hasIntervention"
+      },
+      {
+        "source": "OFF-CIRCUIT MACHINE",
+        "target": "machine start button",
+        "relation": "hasIntervention"
+      },
+      {
+        "source": "SLIDING DOOR OPEN",
+        "target": "machine start button",
+        "relation": "hasIntervention"
+      },
+      {
+        "source": "ACTIVE EMERGENCY",
+        "target": "operator/maintenance officer",
+        "relation": "hasResponsible"
+      },
+      {
+        "source": "OFF-CIRCUIT MACHINE",
+        "target": "operator/maintenance officer",
+        "relation": "hasResponsible"
+      },
+      {
+        "source": "SLIDING DOOR OPEN",
+        "target": "operator/maintenance officer",
+        "relation": "hasResponsible"
+      }
+    ]
+  },
+  "(2312, 4943)": {
+    "entities": [],
+    "relationships": []
+  },
+  "(4570, 7064)": {
+    "entities": [],
+    "relationships": []
+  },
+  "(6627, 9354)": {
+    "entities": [
+      {
+        "name": "Insufficient quantity of coolant in the water circuit",
+        "label": "Cause",
+        "description": "Insufficient quantity of coolant in the water circuit"
+      },
+      {
+        "name": "The refrigerator cannot lower the temperature of the linear motor",
+        "label": "Cause",
+        "description": "The refrigerator cannot lower the temperature of the linear motor"
+      },
+      {
+        "name": "Insufficient quantity of coolant in the linear motor coolant circuit",
+        "label": "Cause",
+        "description": "Insufficient quantity of coolant in the linear motor coolant circuit"
+      },
+      {
+        "name": "A thermal switch of the auxiliary motors has been triggered, with high priority",
+        "label": "Cause",
+        "description": "A thermal switch of the auxiliary motors has been triggered, with high priority"
+      },
+      {
+        "name": "Hardware problems with axes and spindles",
+        "label": "Cause",
+        "description": "Hardware problems with axes and spindles"
+      },
+      {
+        "name": "The thermostat is not set correctly",
+        "label": "Cause",
+        "description": "The thermostat is not set correctly"
+      },
+      {
+        "name": "The fan does not work",
+        "label": "Cause",
+        "description": "The fan does not work"
+      },
+      {
+        "name": "Electrical cabinet is too hot",
+        "label": "Cause",
+        "description": "Electrical cabinet is too hot"
+      }
+    ],
+    "relationships": [
+      {
+        "source": "Alarm No.: 1012",
+        "target": "Insufficient quantity of coolant in the water circuit",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm No.: 1012",
+        "target": "The refrigerator cannot lower the temperature of the linear motor",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm No.: 1011",
+        "target": "Insufficient quantity of coolant in the linear motor coolant circuit",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm No.: 1009",
+        "target": "A thermal switch of the auxiliary motors has been triggered, with high priority",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm No.: 1013",
+        "target": "Hardware problems with axes and spindles",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm No.: 1017",
+        "target": "The thermostat is not set correctly",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm No.: 1017",
+        "target": "The fan does not work",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm No.: 1017",
+        "target": "Electrical cabinet is too hot",
+        "relation": "hasCause"
+      }
+    ]
+  },
+  "(8920, 11608)": {
+    "entities": [
+      {
+        "name": "Alarm 1017",
+        "label": "alarm",
+        "description": "Alarm No.: 1017 text: CABINET OVERHEATING type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot."
+      },
+      {
+        "name": "Alarm 1018",
+        "label": "alarm",
+        "description": "Alarm No.: 1018 text: LOW PRESSURE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The pressure of the pneumatic installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adjusted correctly."
+      },
+      {
+        "name": "Alarm 1013",
+        "label": "alarm",
+        "description": "Alarm No.: 1013 text: PSM FEEDER FAILURE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown, deactivation of the hardware authorization of the axes/spindles feeder cause: Hardware problems concerning the axes and spindles."
+      },
+      {
+        "name": "Alarm 1020",
+        "label": "alarm",
+        "description": "Alarm number: 1020 text: PROGRAMMING ERROR type: Standard: Optional: effect: Alarm with immediate arrest and control cause: An attempt was made to execute a program block containing a function M in one of the following situations which are not permitted: spindle removal when the bypass function is activated; spindle orientation when the rigid tapping function or pin synchronization is."
+      },
+      {
+        "name": "Cause 1017",
+        "label": "Cause",
+        "description": "The thermostat is not set correctly, the fan or the conditioner are not working, the electrical cabinet is too hot."
+      },
+      {
+        "name": "Cause 1018",
+        "label": "Cause",
+        "description": "The pressure of the pneumatic installation is not sufficient for the normal operation of the machine, or the line pressure switch is not adjusted correctly."
+      },
+      {
+        "name": "Cause 1013",
+        "label": "Cause",
+        "description": "Hardware problems concerning the axes and spindles."
+      },
+      {
+        "name": "Cause 1020",
+        "label": "Cause",
+        "description": "An attempt was made to execute a program block containing a function M in one of the following situations which are not permitted: spindle removal when the bypass function is activated; spindle orientation when the rigid tapping function or pin synchronization is."
+      },
+      {
+        "name": "Fanuc 160i-TB CNC",
+        "label": "Machine",
+        "description": "Fanuc 160i-TB CNC service manual and maintenance manual."
+      }
+    ],
+    "relationships": [
+      {
+        "source": "Alarm 1017",
+        "target": "Cause 1017",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm 1018",
+        "target": "Cause 1018",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm 1013",
+        "target": "Cause 1013",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm 1020",
+        "target": "Cause 1020",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm 1017",
+        "target": "Fanuc 160i-TB CNC",
+        "relation": "hasMachine"
+      },
+      {
+        "source": "Alarm 1018",
+        "target": "Fanuc 160i-TB CNC",
+        "relation": "hasMachine"
+      },
+      {
+        "source": "Alarm 1013",
+        "target": "Fanuc 160i-TB CNC",
+        "relation": "hasMachine"
+      },
+      {
+        "source": "Alarm 1020",
+        "target": "Fanuc 160i-TB CNC",
+        "relation": "hasMachine"
+      }
+    ]
+  },
+  "(11129, 13976)": {
+    "entities": [
+      {
+        "name": "PROGRAMMING ERROR",
+        "label": "Cause",
+        "description": "An alarm indicating a programming error due to executing a program block containing a function M in a disallowed situation."
+      },
+      {
+        "name": "spindle removal when the bypass function is activated",
+        "label": "Situation",
+        "description": "Attempt to remove the spindle while the bypass function is activated."
+      },
+      {
+        "name": "spindle orientation when the rigid tapping function or pin synchronization is enabled",
+        "label": "Situation",
+        "description": "Attempt to orient the spindle while the rigid tapping function or pin synchronization is enabled."
+      },
+      {
+        "name": "spindle bypass mode when rigid tapping function or spindle synchronization is enabled",
+        "label": "Situation",
+        "description": "Attempt to use spindle bypass mode while the rigid tapping function or spindle synchronization is enabled."
+      },
+      {
+        "name": "spindle rotation when the rigid tapping function is activated",
+        "label": "Situation",
+        "description": "Attempt to rotate the spindle while the rigid tapping function is activated."
+      },
+      {
+        "name": "Spindle synchronization when tapping function rigid or pin orientation is enabled",
+        "label": "Situation",
+        "description": "Attempt to synchronize the spindle while the tapping function is rigid or pin orientation is enabled."
+      },
+      {
+        "name": "rigid tapping when the spindle synchronization function is activated",
+        "label": "Situation",
+        "description": "Attempt to perform rigid tapping while the spindle synchronization function is activated."
+      },
+      {
+        "name": "activation of bypass mode from a different channel of that of which the pin belongs",
+        "label": "Situation",
+        "description": "Attempt to activate bypass mode from a channel different from that to which the pin belongs."
+      },
+      {
+        "name": "MANDATORY “S” CODE",
+        "label": "Cause",
+        "description": "An alarm indicating a mandatory “S” code error due to executing a program block containing spindle rotation functions without specifying the speed argument “S”."
+      },
+      {
+        "name": "spindle rotation function M without S argument",
+        "label": "Situation",
+        "description": "Attempt to execute spindle rotation functions M (M3, M4, M73, M74, M203, M204, M273, M274) without specifying the speed argument “S”."
+      }
+    ],
+    "relationships": [
+      {
+        "source": "spindle removal when the bypass function is activated",
+        "target": "PROGRAMMING ERROR",
+        "relation": "hasCause"
+      },
+      {
+        "source": "spindle orientation when the rigid tapping function or pin synchronization is enabled",
+        "target": "PROGRAMMING ERROR",
+        "relation": "hasCause"
+      },
+      {
+        "source": "spindle bypass mode when rigid tapping function or spindle synchronization is enabled",
+        "target": "PROGRAMMING ERROR",
+        "relation": "hasCause"
+      },
+      {
+        "source": "spindle rotation when the rigid tapping function is activated",
+        "target": "PROGRAMMING ERROR",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Spindle synchronization when tapping function rigid or pin orientation is enabled",
+        "target": "PROGRAMMING ERROR",
+        "relation": "hasCause"
+      },
+      {
+        "source": "rigid tapping when the spindle synchronization function is activated",
+        "target": "PROGRAMMING ERROR",
+        "relation": "hasCause"
+      },
+      {
+        "source": "activation of bypass mode from a different channel of that of which the pin belongs",
+        "target": "PROGRAMMING ERROR",
+        "relation": "hasCause"
+      },
+      {
+        "source": "spindle rotation function M without S argument",
+        "target": "MANDATORY “S” CODE",
+        "relation": "hasCause"
+      }
+    ]
+  },
+  "(13576, 16270)": {
+    "entities": [
+      {
+        "name": "Alarm 1022",
+        "label": "Alarm",
+        "description": "MANDATORY “S” CODE"
+      },
+      {
+        "name": "Alarm 1026",
+        "label": "Alarm",
+        "description": "DIFFERENT TROLLEY PROGRAM NUMBER"
+      },
+      {
+        "name": "Alarm 1027",
+        "label": "Alarm",
+        "description": "PROGRAM NOT REWOUND"
+      },
+      {
+        "name": "cause1",
+        "label": "Cause",
+        "description": "An attempt was made to execute a program block containing the spindle rotation function M (M3, M4, M73, M74, M203, M204, M273, M274) without having designated the speed argument “S”."
+      },
+      {
+        "name": "cause2",
+        "label": "Cause",
+        "description": "An attempt was made to execute a program block containing the pin orientation function M (M19, M219) without having designated the argument “B” concerning the positioning angle."
+      },
+      {
+        "name": "cause3",
+        "label": "Cause",
+        "description": "At the start of the execution of the cycle we noticed that the number of the program selected in the channel is different."
+      },
+      {
+        "name": "cause4",
+        "label": "Cause",
+        "description": "When we pressed the Reset button or we selected the automatic mode, rewinding was not carried out correctly."
+      },
+      {
+        "name": "programmer",
+        "label": "Operator",
+        "description": "responsible for intervention: correct the program to insert argument “S”."
+      },
+      {
+        "name": "toolmaker-adjuster",
+        "label": "Operator",
+        "description": "responsible for intervention: deactivate control in the user page “GESTIÓN DES CHARIOTS”."
+      },
+      {
+        "name": "operator",
+        "label": "Operator",
+        "description": "responsible for intervention: press the Reset key."
+      }
+    ],
+    "relationships": [
+      {
+        "source": "Alarm 1022",
+        "target": "cause1",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm 1022",
+        "target": "cause2",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm 1026",
+        "target": "cause3",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm 1027",
+        "target": "cause4",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm 1022",
+        "target": "programmer",
+        "relation": "responsibleFor"
+      },
+      {
+        "source": "Alarm 1026",
+        "target": "toolmaker-adjuster",
+        "relation": "responsibleFor"
+      },
+      {
+        "source": "Alarm 1027",
+        "target": "operator",
+        "relation": "responsibleFor"
+      }
+    ]
+  },
+  "(15802, 18455)": {
+    "entities": [],
+    "relationships": []
+  },
+  "(18003, 20680)": {
+    "entities": [],
+    "relationships": []
+  },
+  "(20215, 22978)": {
+    "entities": [
+      {
+        "name": "Cause 1040",
+        "label": "Cause",
+        "description": "An attempt was made to start the automatic cycle with the main spindle clamp open."
+      },
+      {
+        "name": "Cause 1041",
+        "label": "Cause",
+        "description": "When the opening command was given, the clamp did not open within the time limit of 5 seconds."
+      },
+      {
+        "name": "Cause 1042",
+        "label": "Cause",
+        "description": "When the opening command was given, the clamp did not close within the time limit of 5 seconds."
+      },
+      {
+        "name": "Cause 1043",
+        "label": "Cause",
+        "description": "There are no conditions for opening the clamp, for example spindle stopped or the spindle rotation function with clamp open has not been programmed (M33)."
+      },
+      {
+        "name": "Cause 1044",
+        "label": "Cause",
+        "description": "When the opening command was given, the microdetector signaled the closure of the clamp, or, when the closing command was ordered, the microdetector signaled the clamp opening."
+      },
+      {
+        "name": "toolmaker-adjuster",
+        "label": "Operator",
+        "description": "Responsible for intervention."
+      },
+      {
+        "name": "operator/programmer",
+        "label": "Operator",
+        "description": "Responsible for intervention."
+      }
+    ],
+    "relationships": []
+  },
+  "(22503, 25252)": {
+    "entities": [
+      {
+        "name": "operator/programmer",
+        "label": "Operator",
+        "description": "Responsible for intervention on alarms 1043 and 1045."
+      },
+      {
+        "name": "Cause 1043",
+        "label": "Cause",
+        "description": "There are no conditions for opening the clamp, for example spindle stopped or the spindle rotation function with clamp open has not been programmed (M33)."
+      },
+      {
+        "name": "Cause 1044",
+        "label": "Cause",
+        "description": "When the opening command is given, the microdetector has signaled the closing of the clamp, or, when the closing command is ordered, the microdetector has signaled the opening of the clamp."
+      },
+      {
+        "name": "Cause 1045",
+        "label": "Cause",
+        "description": "The flow control device does not signal the presence of coolant liquid, consequence of programming function M08."
+      },
+      {
+        "name": "Cause 1046",
+        "label": "Cause",
+        "description": "The flow control device does not signal the presence of coolant liquid, consequence of programming function M208."
+      }
+    ],
+    "relationships": []
+  },
+  "(24786, 27511)": {
+    "entities": [],
+    "relationships": []
+  },
+  "(27042, 29764)": {
+    "entities": [],
+    "relationships": []
+  },
+  "(29303, 31972)": {
+    "entities": [],
+    "relationships": []
+  },
+  "(31547, 34186)": {
+    "entities": [
+      {
+        "name": "Tool control device no. 1",
+        "label": "Cause",
+        "description": "Device that detected tip breakage in alarm 1061."
+      },
+      {
+        "name": "Tool control device no. 2",
+        "label": "Cause",
+        "description": "Device that did not work in alarms 1062, 1064, 1066."
+      },
+      {
+        "name": "Tool monitoring device No. 3",
+        "label": "Cause",
+        "description": "Device that detected breakage in alarm 1065."
+      },
+      {
+        "name": "operator/maintenance officer",
+        "label": "Operator",
+        "description": "Person responsible for intervention in some alarms."
+      },
+      {
+        "name": "operator/maintenance manager",
+        "label": "Manager",
+        "description": "Person managing intervention in some alarms."
+      },
+      {
+        "name": "toolmaker-adjuster/maintenance officer",
+        "label": "Operator",
+        "description": "Person responsible for intervention in some alarms."
+      },
+      {
+        "name": "toolmaker-adjuster/in charge of maintenance",
+        "label": "Manager",
+        "description": "Person managing intervention in some alarms."
+      }
+    ],
+    "relationships": []
+  },
+  "(33749, 36416)": {
+    "entities": [],
+    "relationships": []
+  },
+  "(35963, 38700)": {
+    "entities": [],
+    "relationships": []
+  },
+  "(38232, 40935)": {
+    "entities": [
+      {
+        "name": "Alarm 1071",
+        "label": "Product",
+        "description": "Alarm indicating STOP AT END OF CYCLE for CDS."
+      },
+      {
+        "name": "Alarm 1072",
+        "label": "Product",
+        "description": "Alarm indicating WAITING FOR EXCESSIVE FEED for CDS."
+      },
+      {
+        "name": "Alarm 1078",
+        "label": "Product",
+        "description": "Alarm indicating STOP AT END OF CYCLE for SISTER TOOL."
+      },
+      {
+        "name": "Alarm 1079",
+        "label": "Product",
+        "description": "Alarm indicating FEED DIFFERENT FROM 100% for LOAD MONITOR."
+      },
+      {
+        "name": "Alarm 1080",
+        "label": "Product",
+        "description": "Alarm indicating IMMEDIATE STOP for LOAD MONITOR."
+      },
+      {
+        "name": "Alarm 1081",
+        "label": "Product",
+        "description": "Alarm indicating STOP AT END OF CYCLE for LOAD MONITOR."
+      },
+      {
+        "name": "Outdoor sprinkler system (CDS)",
+        "label": "Product",
+        "description": "Outdoor sprinkler system (CDS) problem."
+      },
+      {
+        "name": "External watering system (CDS)",
+        "label": "Product",
+        "description": "External watering system (CDS) delay."
+      },
+      {
+        "name": "Paired tool management program",
+        "label": "Product",
+        "description": "Program detecting expired tool parts."
+      },
+      {
+        "name": "Feedrate trimmer",
+        "label": "Part",
+        "description": "Feedrate trimmer set to different percentage."
+      },
+      {
+        "name": "Tool",
+        "label": "Part",
+        "description": "Tool breakage or wear."
+      },
+      {
+        "name": "Maintenance",
+        "label": "Operator",
+        "description": "Responsible for maintenance intervention."
+      },
+      {
+        "name": "Operator",
+        "label": "Operator",
+        "description": "Operator responsible for intervention."
+      },
+      {
+        "name": "Toolmaker-adjuster",
+        "label": "Operator",
+        "description": "Toolmaker-adjuster responsible for intervention."
+      }
+    ],
+    "relationships": [
+      {
+        "source": "Alarm 1071",
+        "target": "Outdoor sprinkler system (CDS)",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm 1071",
+        "target": "Maintenance",
+        "relation": "responsibleFor"
+      },
+      {
+        "source": "Alarm 1072",
+        "target": "External watering system (CDS)",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm 1072",
+        "target": "Maintenance",
+        "relation": "responsibleFor"
+      },
+      {
+        "source": "Alarm 1078",
+        "target": "Paired tool management program",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm 1078",
+        "target": "Operator",
+        "relation": "responsibleFor"
+      },
+      {
+        "source": "Alarm 1079",
+        "target": "Feedrate trimmer",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Alarm 1079",
+        "target": "Operator",
+        "relation": "responsibleFor"
+      }
+    ]
+  },
+  "(40510, 43191)": {
+    "entities": [],
+    "relationships": []
+  },
+  "(42759, 45491)": {
+    "entities": [],
+    "relationships": []
+  },
+  "(45039, 47592)": {
+    "entities": [
+      {
+        "name": "CNC battery exhausted",
+        "label": "Cause",
+        "description": "The buffer battery which powers the CNC memory with the machine off is exhausted."
+      },
+      {
+        "name": "Tooling mode selected",
+        "label": "Cause",
+        "description": "Tooling mode has been selected."
+      },
+      {
+        "name": "Lubrication oil level low",
+        "label": "Cause",
+        "description": "Indicates that the lubricating oil level is lower than the minimum."
+      },
+      {
+        "name": "Lubrication pressure not reached",
+        "label": "Cause",
+        "description": "Lubrication pressure has not been restored in the installation."
+      },
+      {
+        "name": "Chip conveyor overload",
+        "label": "Cause",
+        "description": "Chip conveyor is overloaded."
+      },
+      {
+        "name": "CNC machine",
+        "label": "Machine",
+        "description": "The CNC machine that uses buffer battery, tooling mode, lubrication, etc."
+      }
+    ],
+    "relationships": [
+      {
+        "source": "CNC battery exhausted",
+        "target": "CNC machine",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Tooling mode selected",
+        "target": "CNC machine",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Lubrication oil level low",
+        "target": "CNC machine",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Lubrication pressure not reached",
+        "target": "CNC machine",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Chip conveyor overload",
+        "target": "CNC machine",
+        "relation": "hasCause"
+      }
+    ]
+  },
+  "(47177, 49805)": {
+    "entities": [],
+    "relationships": []
+  },
+  "(49364, 52041)": {
+    "entities": [],
+    "relationships": []
+  },
+  "(51633, 54367)": {
+    "entities": [
+      {
+        "name": "CDS operator panel",
+        "label": "Machine",
+        "description": "A control panel for the CDS system."
+      },
+      {
+        "name": "lathe",
+        "label": "Machine",
+        "description": "The machine that performs turning operations."
+      },
+      {
+        "name": "external watering system (CDS)",
+        "label": "Machine",
+        "description": "The system that provides watering, requiring maintenance."
+      },
+      {
+        "name": "machine shutdown time",
+        "label": "Cause",
+        "description": "The scheduled time at which the machine shuts down."
+      },
+      {
+        "name": "quantity of pieces",
+        "label": "Cause",
+        "description": "The number of pieces produced as set in production data."
+      },
+      {
+        "name": "message no: 2050",
+        "label": "Product",
+        "description": "A message displayed on the CDS operator panel indicating maintenance required."
+      },
+      {
+        "name": "message no: 2051",
+        "label": "Product",
+        "description": "A message indicating waiting for authorization from external watering system."
+      },
+      {
+        "name": "message no: 2060",
+        "label": "Product",
+        "description": "A message indicating machine shutdown time reached."
+      },
+      {
+        "name": "message no: 2061",
+        "label": "Product",
+        "description": "A message indicating production quantity reached."
+      },
+      {
+        "name": "operator",
+        "label": "Operator",
+        "description": "The person responsible for interventions."
+      }
+    ],
+    "relationships": []
+  },
+  "(53894, 56643)": {
+    "entities": [
+      {
+        "name": "machine",
+        "label": "Machine",
+        "description": "The machine that is being operated and can enter shutdown phase."
+      },
+      {
+        "name": "operator",
+        "label": "Operator",
+        "description": "The operator responsible for interventions."
+      },
+      {
+        "name": "toolmaker-adjuster",
+        "label": "Operator",
+        "description": "The toolmaker-adjuster responsible for interventions."
+      },
+      {
+        "name": "alarm no. 1083",
+        "label": "Cause",
+        "description": "Alarm indicating shutdown phase start."
+      },
+      {
+        "name": "shutdown phase",
+        "label": "Product",
+        "description": "The phase of stopping the machine."
+      },
+      {
+        "name": "automatic stop function",
+        "label": "Cause",
+        "description": "Function that triggers machine shutdown."
+      },
+      {
+        "name": "maintenance",
+        "label": "Product",
+        "description": "Maintenance process."
+      }
+    ],
+    "relationships": [
+      {
+        "source": "shutdown phase",
+        "target": "alarm no. 1083",
+        "relation": "hasCause"
+      },
+      {
+        "source": "machine",
+        "target": "automatic stop function",
+        "relation": "hasCause"
+      },
+      {
+        "source": "machine",
+        "target": "alarm no. 1083",
+        "relation": "hasCause"
+      }
+    ]
+  },
+  "(56181, 58847)": {
+    "entities": [
+      {
+        "name": "Machine",
+        "label": "Machine",
+        "description": "The machine being operated in the maintenance context."
+      },
+      {
+        "name": "Wrong Torque Reduction Cause",
+        "label": "Cause",
+        "description": "The torque reduction requested at the indicated axis is outside the agreed limits."
+      },
+      {
+        "name": "Caution Vertical Axis Cause",
+        "label": "Cause",
+        "description": "It is requested to reduce the torque to a vertical axis, this is not allowed."
+      },
+      {
+        "name": "Axis Not Present Cause",
+        "label": "Cause",
+        "description": "It is requested to reduce the torque to an axis which is not present in the Path."
+      },
+      {
+        "name": "Axis Not In Position Cause",
+        "label": "Cause",
+        "description": "The axis subject to torque reduction has not reached the position causing an obstacle on its route."
+      }
+    ],
+    "relationships": [
+      {
+        "source": "Machine",
+        "target": "Wrong Torque Reduction Cause",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Machine",
+        "target": "Caution Vertical Axis Cause",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Machine",
+        "target": "Axis Not Present Cause",
+        "relation": "hasCause"
+      },
+      {
+        "source": "Machine",
+        "target": "Axis Not In Position Cause",
+        "relation": "hasCause"
+      }
+    ]
+  },
+  "(58414, 61073)": {
+    "entities": [
+      {
+        "name": "AXIS NOT IN POSITION",
+        "label": "alarm",
+        "description": "Alarm with program interruption, stopping of axes and spindles."
+      },
+      {
+        "name": "AXIS NOT IN STOP",
+        "label": "alarm",
+        "description": "Alarm with program interruption, stopping of axes and spindles."
+      },
+      {
+        "name": "FEED WRONG OR ABSENT",
+        "label": "alarm",
+        "description": "Alarm with program interruption, stopping of axes and spindles."
+      },
+      {
+        "name": "AXIS NOT PROGRAMMED",
+        "label": "alarm",
+        "description": "Alarm with program interruption, stopping of axes and spindles."
+      },
+      {
+        "name": "obstacle",
+        "label": "Part",
+        "description": "an obstacle found in its path."
+      },
+      {
+        "name": "part",
+        "label": "Part",
+        "description": "the part the axis cannot be in abutment on."
+      },
+      {
+        "name": "parameter F",
+        "label": "Cause",
+        "description": "parameter F indicating feed."
+      },
+      {
+        "name": "parameter X",
+        "label": "Cause",
+        "description": "parameter X omitted."
+      },
+      {
+        "name": "parameter Y",
+        "label": "Cause",
+        "description": "parameter Y omitted."
+      },
+      {
+        "name": "parameter Z",
+        "label": "Cause",
+        "description": "parameter Z omitted."
+      }
+    ],
+    "relationships": [
+      {
+        "source": "AXIS NOT IN POSITION",
+        "target": "obstacle",
+        "relation": "hasCause"
+      },
+      {
+        "source": "AXIS NOT IN STOP",
+        "target": "part",
+        "relation": "hasCause"
+      },
+      {
+        "source": "FEED WRONG OR ABSENT",
+        "target": "parameter F",
+        "relation": "hasCause"
+      },
+      {
+        "source": "AXIS NOT PROGRAMMED",
+        "target": "parameter X",
+        "relation": "hasCause"
+      },
+      {
+        "source": "AXIS NOT PROGRAMMED",
+        "target": "parameter Y",
+        "relation": "hasCause"
+      },
+      {
+        "source": "AXIS NOT PROGRAMMED",
+        "target": "parameter Z",
+        "relation": "hasCause"
+      }
+    ]
+  },
+  "(60650, 63278)": {
+    "entities": [
+      {
+        "name": "Cause for AXIS NOT PROGRAMMED",
+        "label": "Cause",
+        "description": "When programming one of the functions G88, G84, G188, the parameter X, Z, or Y was respectively omitted."
+      },
+      {
+        "name": "Cause for POLIGONING MICRODETECTOR NOT OK",
+        "label": "Cause",
+        "description": "The G305 polishing with milling with phasing function searched unsuccessfully for the reference microdetector for which it stopped."
+      },
+      {
+        "name": "Cause for INVALID G CODE",
+        "label": "Cause",
+        "description": "Programming of function G10 L50 is not permitted."
+      }
+    ],
+    "relationships": []
+  },
+  "(62864, 65446)": {
+    "entities": [
+      {
+        "name": "Programming of function G10 L50 is not permitted",
+        "label": "Cause",
+        "description": "The programming of function G10 L50 is not allowed in the system."
+      },
+      {
+        "name": "Function G304 not activated",
+        "label": "Cause",
+        "description": "Function G304 was not activated in the user page."
+      },
+      {
+        "name": "High pressure unit not configured correctly",
+        "label": "Cause",
+        "description": "The high pressure unit has not been configured correctly on the user page."
+      }
+    ],
+    "relationships": []
+  },
+  "(65001, 66918)": {
+    "entities": [],
+    "relationships": []
+  }
+}

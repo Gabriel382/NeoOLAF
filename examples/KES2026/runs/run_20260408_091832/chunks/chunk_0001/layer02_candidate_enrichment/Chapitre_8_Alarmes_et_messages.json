@@ -1,0 +1,3633 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 58,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "Alarm with immediate and controlled stop",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm type that triggers an immediate and controlled stop of the machine.",
+      "ontology_hints": [
+        "Feature of Interest",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm type that triggers an immediate and controlled stop of the machine.\", \"ontology_hints\": [\"Feature of Interest\", \"Situation S1\", \"Situation S2\", \"Situation S3\", \"Situation S4\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "Alarm with stop at the end of the cycle",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "End-of-cycle stop alarm"
+      ],
+      "synonyms": [
+        "cycle completion stop alarm",
+        "end-of-cycle shutdown alarm"
+      ],
+      "lexical_variants": [
+        "stop alarm at cycle end",
+        "cycle end stop alarm"
+      ],
+      "alias_sources": {
+        "End-of-cycle stop alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "cycle completion stop alarm": [
+          "llm"
+        ],
+        "end-of-cycle shutdown alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "stop alarm at cycle end": [
+          "llm"
+        ],
+        "cycle end stop alarm": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that triggers a machine stop when a production cycle completes.",
+      "ontology_hints": [
+        "Alarm type",
+        "Machine state",
+        "Shutdown state",
+        "Manufacturing cycle",
+        "Manufacturing cell",
+        "Workstation",
+        "Temporal Entity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"End-of-cycle stop alarm\"], \"synonyms\": [\"cycle completion stop alarm\", \"end-of-cycle shutdown alarm\"], \"lexical_variants\": [\"stop alarm at cycle end\", \"cycle end stop alarm\"], \"definition\": \"An alarm that triggers a machine stop when a production cycle completes.\", \"ontology_hints\": [\"Alarm type\", \"Machine state\", \"Shutdown state\", \"Manufacturing cycle\", \"Manufacturing cell\", \"Workstation\", \"Temporal Entity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00002",
+        "text": "Alarm with immediate and controlled shutdown",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm that triggers both an immediate and a controlled shutdown of the machine.",
+      "ontology_hints": [
+        "AlarmType",
+        "ShutdownEvent",
+        "ImmediateShutdown",
+        "ControlledShutdown"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm that triggers both an immediate and a controlled shutdown of the machine.\", \"ontology_hints\": [\"AlarmType\", \"ShutdownEvent\", \"ImmediateShutdown\", \"ControlledShutdown\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00003",
+        "text": "Alarm with shutdown at the end of the cycle",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "end‑of‑cycle shutdown alarm",
+        "cycle completion shutdown alarm"
+      ],
+      "synonyms": [
+        "shutdown alarm at cycle end",
+        "alarm that triggers shutdown at cycle completion"
+      ],
+      "lexical_variants": [
+        "Alarm with shutdown at the end of the cycle",
+        "Shutdown alarm triggered at cycle end",
+        "Alarm that initiates shutdown when the cycle finishes"
+      ],
+      "alias_sources": {
+        "end‑of‑cycle shutdown alarm": [
+          "llm"
+        ],
+        "cycle completion shutdown alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "shutdown alarm at cycle end": [
+          "llm"
+        ],
+        "alarm that triggers shutdown at cycle completion": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm with shutdown at the end of the cycle": [
+          "llm"
+        ],
+        "Shutdown alarm triggered at cycle end": [
+          "llm"
+        ],
+        "Alarm that initiates shutdown when the cycle finishes": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that initiates a machine shutdown when a production cycle completes, typically used to ensure safe termination of the cycle and prevent damage or safety hazards.",
+      "ontology_hints": [
+        "Alarm type",
+        "Triggers shutdown event",
+        "Occurs at cycle completion (temporal entity)",
+        "Associated with manufacturing cell",
+        "Observes machine state (feature of interest)",
+        "Detected by sensor monitoring cycle progress"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"end‑of‑cycle shutdown alarm\", \"cycle completion shutdown alarm\"], \"synonyms\": [\"shutdown alarm at cycle end\", \"alarm that triggers shutdown at cycle completion\"], \"lexical_variants\": [\"Alarm with shutdown at the end of the cycle\", \"Shutdown alarm triggered at cycle end\", \"Alarm that initiates shutdown when the cycle finishes\"], \"definition\": \"An alarm that initiates a machine shutdown when a production cycle completes, typically used to ensure safe termination of the cycle and prevent damage or safety hazards.\", \"ontology_hints\": [\"Alarm type\", \"Triggers shutdown event\", \"Occurs at cycle completion (temporal entity)\", \"Associated with manufacturing cell\", \"Observes machine state (feature of interest)\", \"Detected by sensor monitoring cycle progress\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00004",
+        "text": "deactivation of authorization",
+        "label": "alarm effect"
+      },
+      "aliases": [
+        "deauthorization"
+      ],
+      "synonyms": [
+        "revocation of authorization",
+        "removal of authorization"
+      ],
+      "lexical_variants": [
+        "deactivation of authorization"
+      ],
+      "alias_sources": {
+        "deauthorization": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "revocation of authorization": [
+          "llm"
+        ],
+        "removal of authorization": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "deactivation of authorization": [
+          "llm"
+        ]
+      },
+      "definition": "The disabling or removal of authorization, resulting in loss of granted permissions or access rights within the system.",
+      "ontology_hints": [
+        "Action",
+        "Situation S1",
+        "Observation",
+        "Feature of Interest",
+        "Production Line",
+        "Alarm effect"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"deauthorization\"], \"synonyms\": [\"revocation of authorization\", \"removal of authorization\"], \"lexical_variants\": [\"deactivation of authorization\"], \"definition\": \"The disabling or removal of authorization, resulting in loss of granted permissions or access rights within the system.\", \"ontology_hints\": [\"Action\", \"Situation S1\", \"Observation\", \"Feature of Interest\", \"Production Line\", \"Alarm effect\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00005",
+        "text": "cause:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system.",
+      "ontology_hints": [
+        "Cause",
+        "has cause",
+        "Feature",
+        "Sensor",
+        "Machine",
+        "Manager"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system.\", \"ontology_hints\": [\"Cause\", \"has cause\", \"Feature\", \"Sensor\", \"Machine\", \"Manager\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00006",
+        "text": "intervention:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "intervention"
+      ],
+      "synonyms": [
+        "corrective action",
+        "remedial action",
+        "maintenance action"
+      ],
+      "lexical_variants": [
+        "intervention action"
+      ],
+      "alias_sources": {
+        "intervention": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "corrective action": [
+          "llm"
+        ],
+        "remedial action": [
+          "llm"
+        ],
+        "maintenance action": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "intervention action": [
+          "llm"
+        ]
+      },
+      "definition": "An action taken to correct or mitigate a fault or alarm in a machine, typically performed by maintenance personnel.",
+      "ontology_hints": [
+        "Intervention event",
+        "Corrective action",
+        "Maintenance activity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"intervention\"], \"synonyms\": [\"corrective action\", \"remedial action\", \"maintenance action\"], \"lexical_variants\": [\"intervention action\"], \"definition\": \"An action taken to correct or mitigate a fault or alarm in a machine, typically performed by maintenance personnel.\", \"ontology_hints\": [\"Intervention event\", \"Corrective action\", \"Maintenance activity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00007",
+        "text": "responsible for intervention:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "in charge of intervention",
+        "accountable for intervention",
+        "intervention overseer"
+      ],
+      "synonyms": [
+        "responsible for the intervention",
+        "intervention manager",
+        "intervention supervisor"
+      ],
+      "lexical_variants": [
+        "responsible for intervention",
+        "responsible for the intervention"
+      ],
+      "alias_sources": {
+        "in charge of intervention": [
+          "llm"
+        ],
+        "accountable for intervention": [
+          "llm"
+        ],
+        "intervention overseer": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "responsible for the intervention": [
+          "llm"
+        ],
+        "intervention manager": [
+          "llm"
+        ],
+        "intervention supervisor": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for intervention": [
+          "llm"
+        ],
+        "responsible for the intervention": [
+          "llm"
+        ]
+      },
+      "definition": "The role or person who is accountable for planning, executing, or supervising an intervention in an industrial maintenance context.",
+      "ontology_hints": [
+        "intervention",
+        "person",
+        "role",
+        "responsibility",
+        "hasResponsible",
+        "isResponsibleFor",
+        "interventionEvent",
+        "personRole"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"in charge of intervention\", \"accountable for intervention\", \"intervention overseer\"], \"synonyms\": [\"responsible for the intervention\", \"intervention manager\", \"intervention supervisor\"], \"lexical_variants\": [\"responsible for intervention\", \"responsible for the intervention\"], \"definition\": \"The role or person who is accountable for planning, executing, or supervising an intervention in an industrial maintenance context.\", \"ontology_hints\": [\"intervention\", \"person\", \"role\", \"responsibility\", \"hasResponsible\", \"isResponsibleFor\", \"interventionEvent\", \"personRole\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00008",
+        "text": "see page 19 of the electrical diagram, entry X3.2",
+        "label": "page reference"
+      },
+      "aliases": [
+        "page reference",
+        "document reference",
+        "diagram reference",
+        "page citation"
+      ],
+      "synonyms": [
+        "refer to page 19",
+        "consult page 19",
+        "see page 19"
+      ],
+      "lexical_variants": [
+        "page 19 of the electrical diagram, entry X3.2",
+        "page 19, entry X3.2 of the electrical diagram",
+        "see page 19 of the electrical diagram, entry X3.2"
+      ],
+      "alias_sources": {
+        "page reference": [
+          "llm"
+        ],
+        "document reference": [
+          "llm"
+        ],
+        "diagram reference": [
+          "llm"
+        ],
+        "page citation": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "refer to page 19": [
+          "llm"
+        ],
+        "consult page 19": [
+          "llm"
+        ],
+        "see page 19": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "page 19 of the electrical diagram, entry X3.2": [
+          "llm"
+        ],
+        "page 19, entry X3.2 of the electrical diagram": [
+          "llm"
+        ],
+        "see page 19 of the electrical diagram, entry X3.2": [
+          "llm"
+        ]
+      },
+      "definition": "A reference to a specific page and entry within an electrical diagram, used to locate information for intervention procedures.",
+      "ontology_hints": [
+        "has reference",
+        "has location",
+        "located_in",
+        "references"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"page reference\", \"document reference\", \"diagram reference\", \"page citation\"], \"synonyms\": [\"refer to page 19\", \"consult page 19\", \"see page 19\"], \"lexical_variants\": [\"page 19 of the electrical diagram, entry X3.2\", \"page 19, entry X3.2 of the electrical diagram\", \"see page 19 of the electrical diagram, entry X3.2\"], \"definition\": \"A reference to a specific page and entry within an electrical diagram, used to locate information for intervention procedures.\", \"ontology_hints\": [\"has reference\", \"has location\", \"located_in\", \"references\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00009",
+        "text": "see page 7 of the electrical diagram, entry X2.5",
+        "label": "page reference"
+      },
+      "aliases": [
+        "page 7 reference",
+        "page 7 of diagram",
+        "diagram entry X2.5 reference"
+      ],
+      "synonyms": [
+        "page reference",
+        "page citation",
+        "document locator"
+      ],
+      "lexical_variants": [
+        "see page 7 of the electrical diagram, entry X2.5"
+      ],
+      "alias_sources": {
+        "page 7 reference": [
+          "llm"
+        ],
+        "page 7 of diagram": [
+          "llm"
+        ],
+        "diagram entry X2.5 reference": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "page reference": [
+          "llm"
+        ],
+        "page citation": [
+          "llm"
+        ],
+        "document locator": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "see page 7 of the electrical diagram, entry X2.5": [
+          "llm"
+        ]
+      },
+      "definition": "A reference to a specific location within a document, indicating the page number and a particular entry in an electrical diagram.",
+      "ontology_hints": [
+        "has page reference",
+        "references document",
+        "located in"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"page 7 reference\", \"page 7 of diagram\", \"diagram entry X2.5 reference\"], \"synonyms\": [\"page reference\", \"page citation\", \"document locator\"], \"lexical_variants\": [\"see page 7 of the electrical diagram, entry X2.5\"], \"definition\": \"A reference to a specific location within a document, indicating the page number and a particular entry in an electrical diagram.\", \"ontology_hints\": [\"has page reference\", \"references document\", \"located in\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00010",
+        "text": "see page 7 of the electrical diagram, input X2.4",
+        "label": "page reference"
+      },
+      "aliases": [
+        "page 7 reference",
+        "diagram page 7",
+        "input X2.4 reference"
+      ],
+      "synonyms": [
+        "refer to page 7 of the electrical diagram",
+        "see diagram page 7"
+      ],
+      "lexical_variants": [
+        "see page 7 of the electrical diagram, input X2.4"
+      ],
+      "alias_sources": {
+        "page 7 reference": [
+          "llm"
+        ],
+        "diagram page 7": [
+          "llm"
+        ],
+        "input X2.4 reference": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "refer to page 7 of the electrical diagram": [
+          "llm"
+        ],
+        "see diagram page 7": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "see page 7 of the electrical diagram, input X2.4": [
+          "llm"
+        ]
+      },
+      "definition": "A reference to page 7 of an electrical diagram, indicating the location of input X2.4.",
+      "ontology_hints": [
+        "references",
+        "located_in",
+        "has_input"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"page 7 reference\", \"diagram page 7\", \"input X2.4 reference\"], \"synonyms\": [\"refer to page 7 of the electrical diagram\", \"see diagram page 7\"], \"lexical_variants\": [\"see page 7 of the electrical diagram, input X2.4\"], \"definition\": \"A reference to page 7 of an electrical diagram, indicating the location of input X2.4.\", \"ontology_hints\": [\"references\", \"located_in\", \"has_input\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00011",
+        "text": "see page 7 of the electrical diagram, input X2.3",
+        "label": "page reference"
+      },
+      "aliases": [
+        "page reference",
+        "diagram reference",
+        "instruction reference"
+      ],
+      "synonyms": [
+        "page citation",
+        "diagram page reference",
+        "instruction citation"
+      ],
+      "lexical_variants": [
+        "see page 7 of the electrical diagram, input X2.3"
+      ],
+      "alias_sources": {
+        "page reference": [
+          "llm"
+        ],
+        "diagram reference": [
+          "llm"
+        ],
+        "instruction reference": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "page citation": [
+          "llm"
+        ],
+        "diagram page reference": [
+          "llm"
+        ],
+        "instruction citation": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "see page 7 of the electrical diagram, input X2.3": [
+          "llm"
+        ]
+      },
+      "definition": "A reference to a specific page and input within an electrical diagram used to locate information for intervention procedures.",
+      "ontology_hints": [
+        "DocumentReference",
+        "PageReference",
+        "DiagramReference",
+        "InstructionReference"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"page reference\", \"diagram reference\", \"instruction reference\"], \"synonyms\": [\"page citation\", \"diagram page reference\", \"instruction citation\"], \"lexical_variants\": [\"see page 7 of the electrical diagram, input X2.3\"], \"definition\": \"A reference to a specific page and input within an electrical diagram used to locate information for intervention procedures.\", \"ontology_hints\": [\"DocumentReference\", \"PageReference\", \"DiagramReference\", \"InstructionReference\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00012",
+        "text": "see page 84 of the electrical diagram",
+        "label": "page reference"
+      },
+      "aliases": [
+        "page 84 reference",
+        "page 84 of diagram"
+      ],
+      "synonyms": [
+        "refer to page 84 of the electrical diagram",
+        "consult page 84 of the electrical diagram"
+      ],
+      "lexical_variants": [
+        "page 84 of the electrical diagram"
+      ],
+      "alias_sources": {
+        "page 84 reference": [
+          "llm"
+        ],
+        "page 84 of diagram": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "refer to page 84 of the electrical diagram": [
+          "llm"
+        ],
+        "consult page 84 of the electrical diagram": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "page 84 of the electrical diagram": [
+          "llm"
+        ]
+      },
+      "definition": "A reference to a specific page within an electrical diagram document, indicating where to find relevant information.",
+      "ontology_hints": [
+        "DocumentPageReference",
+        "PageReference",
+        "DocumentReference"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"page 84 reference\", \"page 84 of diagram\"], \"synonyms\": [\"refer to page 84 of the electrical diagram\", \"consult page 84 of the electrical diagram\"], \"lexical_variants\": [\"page 84 of the electrical diagram\"], \"definition\": \"A reference to a specific page within an electrical diagram document, indicating where to find relevant information.\", \"ontology_hints\": [\"DocumentPageReference\", \"PageReference\", \"DocumentReference\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00013",
+        "text": "see page 65 of the electrical diagram, input X3.5",
+        "label": "page reference"
+      },
+      "aliases": [
+        "page 65 reference",
+        "diagram page 65",
+        "page 65 of electrical diagram",
+        "input X3.5 reference"
+      ],
+      "synonyms": [
+        "page reference",
+        "page citation",
+        "diagram reference"
+      ],
+      "lexical_variants": [
+        "see page 65 of the electrical diagram, input X3.5",
+        "refer to page 65 of the electrical diagram for input X3.5",
+        "page 65, electrical diagram, input X3.5"
+      ],
+      "alias_sources": {
+        "page 65 reference": [
+          "llm"
+        ],
+        "diagram page 65": [
+          "llm"
+        ],
+        "page 65 of electrical diagram": [
+          "llm"
+        ],
+        "input X3.5 reference": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "page reference": [
+          "llm"
+        ],
+        "page citation": [
+          "llm"
+        ],
+        "diagram reference": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "see page 65 of the electrical diagram, input X3.5": [
+          "llm"
+        ],
+        "refer to page 65 of the electrical diagram for input X3.5": [
+          "llm"
+        ],
+        "page 65, electrical diagram, input X3.5": [
+          "llm"
+        ]
+      },
+      "definition": "A textual reference indicating that the location of input X3.5 can be found on page 65 of the electrical diagram.",
+      "ontology_hints": [
+        "Located within a Spatial Object (the electrical diagram)",
+        "Refers to a Feature of Interest (input X3.5)",
+        "Used by a Technician for maintenance procedures",
+        "Occurs within a Manufacturing Facility context",
+        "Associated with a Temporal Entity (the time the diagram was consulted)"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"page 65 reference\", \"diagram page 65\", \"page 65 of electrical diagram\", \"input X3.5 reference\"], \"synonyms\": [\"page reference\", \"page citation\", \"diagram reference\"], \"lexical_variants\": [\"see page 65 of the electrical diagram, input X3.5\", \"refer to page 65 of the electrical diagram for input X3.5\", \"page 65, electrical diagram, input X3.5\"], \"definition\": \"A textual reference indicating that the location of input X3.5 can be found on page 65 of the electrical diagram.\", \"ontology_hints\": [\"Located within a Spatial Object (the electrical diagram)\", \"Refers to a Feature of Interest (input X3.5)\", \"Used by a Technician for maintenance procedures\", \"Occurs within a Manufacturing Facility context\", \"Associated with a Temporal Entity (the time the diagram was consulted)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00014",
+        "text": "sliding door",
+        "label": "component"
+      },
+      "aliases": [
+        "Sliding door"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "Sliding door"
+      ],
+      "alias_sources": {
+        "Sliding door": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "Sliding door": [
+          "llm"
+        ]
+      },
+      "definition": "A sliding door is a type of door which opens horizontally by sliding, usually parallel to (and sometimes within) a wall. Sliding doors can be mounted either on top of a track below or be suspended from a track above. Some types slide into a space in the parallel wall in the direction of travel, rather than the door sliding along the outside of the parallel wall. There are several types of sliding doors, such as pocket doors, sliding glass doors, center-opening doors, and bypass doors.",
+      "ontology_hints": [
+        "Component",
+        "Sensor",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "Situation S4"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "A sliding door is a type of door which opens horizontally by sliding, usually parallel to (and sometimes within) a wall. Sliding doors can be mounted either on top of a track below or be suspended from a track above. Some types slide into a space in the parallel wall in the direction of travel, rather than the door sliding along the outside of the parallel wall. There are several types of sliding doors, such as pocket doors, sliding glass doors, center-opening doors, and bypass doors. Sliding doors are commonly used as shower doors and screen doors (typically made of glass), as wardrobe doors, and in vans.",
+          "reference": "https://en.wikipedia.org/wiki/Sliding_door"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Sliding door\"], \"synonyms\": [], \"lexical_variants\": [\"Sliding door\"], \"definition\": \"A sliding door is a type of door which opens horizontally by sliding, usually parallel to (and sometimes within) a wall. Sliding doors can be mounted either on top of a track below or be suspended from a track above. Some types slide into a space in the parallel wall in the direction of travel, rather than the door sliding along the outside of the parallel wall. There are several types of sliding doors, such as pocket doors, sliding glass doors, center-opening doors, and bypass doors.\", \"ontology_hints\": [\"Component\", \"Sensor\", \"Situation S1\", \"Situation S2\", \"Situation S3\", \"Situation S4\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00015",
+        "text": "side protections",
+        "label": "component"
+      },
+      "aliases": [
+        "side guard",
+        "side cover"
+      ],
+      "synonyms": [
+        "side guard",
+        "side cover",
+        "side shield"
+      ],
+      "lexical_variants": [
+        "side protection",
+        "side protection device",
+        "side protection guard"
+      ],
+      "alias_sources": {
+        "side guard": [
+          "llm"
+        ],
+        "side cover": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "side guard": [
+          "llm"
+        ],
+        "side cover": [
+          "llm"
+        ],
+        "side shield": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "side protection": [
+          "llm"
+        ],
+        "side protection device": [
+          "llm"
+        ],
+        "side protection guard": [
+          "llm"
+        ]
+      },
+      "definition": "A protective device or barrier mounted on the side of a machine that must be closed or engaged to prevent accidental contact, maintain safety, and avoid triggering a safety alarm.",
+      "ontology_hints": [
+        "SafetyGuard",
+        "MachineComponent",
+        "ProtectiveBarrier",
+        "GuardingDevice"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"side guard\", \"side cover\"], \"synonyms\": [\"side guard\", \"side cover\", \"side shield\"], \"lexical_variants\": [\"side protection\", \"side protection device\", \"side protection guard\"], \"definition\": \"A protective device or barrier mounted on the side of a machine that must be closed or engaged to prevent accidental contact, maintain safety, and avoid triggering a safety alarm.\", \"ontology_hints\": [\"SafetyGuard\", \"MachineComponent\", \"ProtectiveBarrier\", \"GuardingDevice\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00016",
+        "text": "axis/spindle feeder",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A hardware component that supplies material or drives the axis/spindle of a machine.",
+      "ontology_hints": [
+        "part of Machine",
+        "has observable property (e.g., speed, temperature)",
+        "located within a spatial region of the plant",
+        "may be monitored by sensors"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A hardware component that supplies material or drives the axis/spindle of a machine.\", \"ontology_hints\": [\"part of Machine\", \"has observable property (e.g., speed, temperature)\", \"located within a spatial region of the plant\", \"may be monitored by sensors\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00017",
+        "text": "thermal switch",
+        "label": "component"
+      },
+      "aliases": [
+        "Thermal cutoff"
+      ],
+      "synonyms": [
+        "Thermal cutoff"
+      ],
+      "lexical_variants": [],
+      "alias_sources": {
+        "Thermal cutoff": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Thermal cutoff": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {},
+      "definition": "An electrical safety device that interrupts current when a set temperature is reached, and can be reset manually or automatically.",
+      "ontology_hints": [
+        "Component",
+        "Safety Device",
+        "Temperature Constraint",
+        "Electrical Safety",
+        "Machine Component",
+        "Thermal Switch is a type of Thermal Cutoff"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "A thermal cutoff is an electrical safety device (either a thermal fuse or thermal switch) that interrupts electric current when heated to a specific temperature. These devices may be for one-time use (a thermal fuse), or may be reset manually or automatically (a thermal switch).",
+          "reference": "https://en.wikipedia.org/wiki/Thermal_cutoff"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Thermal cutoff\"], \"synonyms\": [\"Thermal cutoff\"], \"lexical_variants\": [], \"definition\": \"An electrical safety device that interrupts current when a set temperature is reached, and can be reset manually or automatically.\", \"ontology_hints\": [\"Component\", \"Safety Device\", \"Temperature Constraint\", \"Electrical Safety\", \"Machine Component\", \"Thermal Switch is a type of Thermal Cutoff\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00018",
+        "text": "auxiliary motors",
+        "label": "component"
+      },
+      "aliases": [
+        "secondary motors",
+        "support motors"
+      ],
+      "synonyms": [
+        "auxiliary motor"
+      ],
+      "lexical_variants": [
+        "auxiliary motor",
+        "auxiliary motors"
+      ],
+      "alias_sources": {
+        "secondary motors": [
+          "llm"
+        ],
+        "support motors": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "auxiliary motor": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "auxiliary motor": [
+          "llm"
+        ],
+        "auxiliary motors": [
+          "llm"
+        ]
+      },
+      "definition": "Small or secondary motors that support primary machinery, often equipped with thermal switches that can trigger alarms.",
+      "ontology_hints": [
+        "Component of a Platform",
+        "Located within a Manufacturing Facility",
+        "Operated or maintained by an Operator"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"secondary motors\", \"support motors\"], \"synonyms\": [\"auxiliary motor\"], \"lexical_variants\": [\"auxiliary motor\", \"auxiliary motors\"], \"definition\": \"Small or secondary motors that support primary machinery, often equipped with thermal switches that can trigger alarms.\", \"ontology_hints\": [\"Component of a Platform\", \"Located within a Manufacturing Facility\", \"Operated or maintained by an Operator\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00019",
+        "text": "circuit breakers",
+        "label": "component"
+      },
+      "aliases": [
+        "Circuit breaker"
+      ],
+      "synonyms": [
+        "overcurrent protection device",
+        "OCPD"
+      ],
+      "lexical_variants": [
+        "circuit breaker",
+        "overcurrent protection device"
+      ],
+      "alias_sources": {
+        "Circuit breaker": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "overcurrent protection device": [
+          "llm"
+        ],
+        "OCPD": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "circuit breaker": [
+          "llm"
+        ],
+        "overcurrent protection device": [
+          "llm"
+        ]
+      },
+      "definition": "A circuit breaker is an electrical safety device designed to protect an electrical circuit from damage caused by current in excess of that which the equipment can safely carry. It interrupts current flow to protect equipment and prevent fire, and can be reset manually or automatically to resume normal operation.",
+      "ontology_hints": [
+        "Feature of Interest",
+        "Component",
+        "Overcurrent protection device",
+        "Electrical safety device",
+        "Interrupts current flow",
+        "Resettable device"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "A circuit breaker is an electrical safety device designed to protect an electrical circuit from damage caused by current in excess of that which the equipment can safely carry (overcurrent). Its basic function is to interrupt current flow to protect equipment and to prevent fire. Unlike a fuse, which interrupts once and then must be replaced, a circuit breaker can be reset (either manually or automatically) to resume normal operation.  \nCircuit breakers are commonly installed in distribution boards.  Apart from its safety purpose, a circuit breaker is also often used as a main switch to manually disconnect (\"rack out\") and connect (\"rack in\") electrical power to a whole electrical sub-network.\nCircuit breakers are made in varying current ratings, from devices that protect low-current circuits or individual household appliances, to switchgear designed to protect high-voltage circuits feeding an entire city. Any device which protects against excessive current by automatically removing power from a faulty system, such as a circuit breaker or fuse, can be referred to as an over-current protection device (OCPD).",
+          "reference": "https://en.wikipedia.org/wiki/Circuit_breaker"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Circuit breaker\"], \"synonyms\": [\"overcurrent protection device\", \"OCPD\"], \"lexical_variants\": [\"circuit breaker\", \"overcurrent protection device\"], \"definition\": \"A circuit breaker is an electrical safety device designed to protect an electrical circuit from damage caused by current in excess of that which the equipment can safely carry. It interrupts current flow to protect equipment and prevent fire, and can be reset manually or automatically to resume normal operation.\", \"ontology_hints\": [\"Feature of Interest\", \"Component\", \"Overcurrent protection device\", \"Electrical safety device\", \"Interrupts current flow\", \"Resettable device\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00020",
+        "text": "thermomagnetic switches",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A thermomagnetic switch is a temperature‑sensitive device that uses a thermally activated magnetic material to open or close an electrical circuit, allowing reset during maintenance.",
+      "ontology_hints": [
+        "component",
+        "switch",
+        "temperature sensor",
+        "thermally activated device"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A thermomagnetic switch is a temperature‑sensitive device that uses a thermally activated magnetic material to open or close an electrical circuit, allowing reset during maintenance.\", \"ontology_hints\": [\"component\", \"switch\", \"temperature sensor\", \"thermally activated device\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00021",
+        "text": "PLC",
+        "label": "component"
+      },
+      "aliases": [
+        "PLC"
+      ],
+      "synonyms": [
+        "Programmable Logic Controller"
+      ],
+      "lexical_variants": [
+        "PLC"
+      ],
+      "alias_sources": {
+        "PLC": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Programmable Logic Controller": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "PLC": [
+          "llm"
+        ]
+      },
+      "definition": "A programmable logic controller (PLC) is a digital computer used for automation of electromechanical processes, such as controlling machinery in industrial settings.",
+      "ontology_hints": [
+        "Part",
+        "Platform"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "PLC or plc may refer to:\n\nPublic limited company, a type of public company",
+          "reference": "https://en.wikipedia.org/wiki/PLC"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"PLC\"], \"synonyms\": [\"Programmable Logic Controller\"], \"lexical_variants\": [\"PLC\"], \"definition\": \"A programmable logic controller (PLC) is a digital computer used for automation of electromechanical processes, such as controlling machinery in industrial settings.\", \"ontology_hints\": [\"Part\", \"Platform\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00022",
+        "text": "linear motor",
+        "label": "component"
+      },
+      "aliases": [
+        "Linear motor"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "linear motor"
+      ],
+      "alias_sources": {
+        "Linear motor": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "linear motor": [
+          "llm"
+        ]
+      },
+      "definition": "An electric motor whose stator and rotor have been unrolled to produce a linear force along its length, rather than a rotational torque.",
+      "ontology_hints": [
+        "Part",
+        "Motor",
+        "Actuator",
+        "Linear actuator",
+        "Lorentz-type actuator",
+        "CNC machining",
+        "Industrial robot"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "A linear motor is an electric motor that has had its stator and rotor \"unrolled\", thus it produces a linear force along its length, rather than a rotational force (torque). However, linear motors are not necessarily straight. Characteristically, a linear motor's active section has ends, whereas more conventional motors are arranged as a continuous loop.\nLinear motors are used by the millions in high accuracy CNC machining and in industrial robots. In 2024, this market was USD 1.8 billion.\nA typical mode of operation is as a Lorentz-type actuator, in which the applied force is linearly proportional to the current and the magnetic field \n  \n    \n      \n        (\n        \n          \n            \n              F\n              →\n            \n          \n        \n        =\n        I\n        \n          \n            \n              L\n              →\n            \n          \n        \n        ×\n        \n          \n            \n              B\n              →\n            \n          \n        \n        )\n      \n    \n    {\\displaystyle ({\\vec {F}}=I{\\vec {L}}\\times {\\vec {B}})}\n  \n.\nMany designs have been put forward for linear motors, falling into two major categories, low-acceleration and high-acc",
+          "reference": "https://en.wikipedia.org/wiki/Linear_motor"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"linear motor\"], \"definition\": \"An electric motor whose stator and rotor have been unrolled to produce a linear force along its length, rather than a rotational torque.\", \"ontology_hints\": [\"Part\", \"Motor\", \"Actuator\", \"Linear actuator\", \"Lorentz-type actuator\", \"CNC machining\", \"Industrial robot\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00023",
+        "text": "coolant",
+        "label": "resource"
+      },
+      "aliases": [
+        "coolant",
+        "Coolant"
+      ],
+      "synonyms": [
+        "coolant"
+      ],
+      "lexical_variants": [
+        "coolant"
+      ],
+      "alias_sources": {
+        "coolant": [
+          "wordnet",
+          "llm"
+        ],
+        "Coolant": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "coolant": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "coolant": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "A coolant is a substance, typically liquid, that is used to reduce or regulate the temperature of a system by transferring heat away from one part to another. It has high thermal capacity, low viscosity, is non‑toxic and chemically inert, and does not promote corrosion. In industrial processing it is often referred to as a heat‑transfer fluid and may include cutting fluids such as water‑soluble or neat cutting fluids.",
+      "ontology_hints": [
+        "resource",
+        "fluid agent",
+        "heat transfer fluid",
+        "cooling agent"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a fluid agent (gas or liquid) that produces cooling; especially one used to cool a system by transferring heat away from one part to another",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "A coolant is a substance, typically liquid, that is used to reduce or regulate the temperature of a system. An ideal coolant has high thermal capacity, low viscosity, and low cost, is non-toxic and chemically inert, and neither causes nor promotes corrosion of the cooling system. Some applications also require the coolant to be an electrical insulator.\nWhile the term coolant is commonly used in automotive and HVAC applications, in industrial processing heat-transfer fluid is one technical term more often used in high-temperature as well as low-temperature manufacturing applications. The term also covers cutting fluids. Industrial cutting fluid has broadly been classified as water-soluble coolant and neat cutting fluid. Water-soluble coolant is oil in water emulsion. It has varying oil content from nil oil (synthetic coolant).\nThis coolant can either keep its phase, staying liquid or gaseous, or undergo a phase transition, with the latent heat adding to the cooling efficiency. The latter, when used to achieve below-ambient temperature, is more commonly known as refrigerant.\nA coolant reservoir captures overflow of coolant in a cooling system.",
+          "reference": "https://en.wikipedia.org/wiki/Coolant"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"coolant\"], \"synonyms\": [\"coolant\"], \"lexical_variants\": [\"coolant\"], \"definition\": \"A coolant is a substance, typically liquid, that is used to reduce or regulate the temperature of a system by transferring heat away from one part to another. It has high thermal capacity, low viscosity, is non‑toxic and chemically inert, and does not promote corrosion. In industrial processing it is often referred to as a heat‑transfer fluid and may include cutting fluids such as water‑soluble or neat cutting fluids.\", \"ontology_hints\": [\"resource\", \"fluid agent\", \"heat transfer fluid\", \"cooling agent\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00024",
+        "text": "refrigerator",
+        "label": "component"
+      },
+      "aliases": [
+        "refrigerator",
+        "icebox",
+        "Refrigerator"
+      ],
+      "synonyms": [
+        "refrigerator",
+        "icebox"
+      ],
+      "lexical_variants": [
+        "refrigerator",
+        "icebox"
+      ],
+      "alias_sources": {
+        "refrigerator": [
+          "wordnet",
+          "llm"
+        ],
+        "icebox": [
+          "wordnet",
+          "llm"
+        ],
+        "Refrigerator": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "refrigerator": [
+          "wordnet",
+          "llm"
+        ],
+        "icebox": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "refrigerator": [
+          "wordnet",
+          "llm"
+        ],
+        "icebox": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "A white goods appliance that stores food at low temperatures by cooling its interior below ambient temperature.",
+      "ontology_hints": [
+        "Resource",
+        "FeatureOfInterest",
+        "Observation",
+        "Component"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "white goods in which food can be stored at low temperatures",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "A refrigerator, commonly shortened to fridge, is a commercial and home appliance consisting of a thermally insulated compartment and a heat pump (mechanical, electronic or chemical) that transfers heat from its inside to its external environment so that its inside is cooled to a temperature below the ambient temperature of the room. Refrigeration is an essential food storage technique around the world. The low temperature reduces the reproduction rate of bacteria, so the refrigerator lowers the rate of spoilage. A refrigerator maintains a temperature a few degrees above the freezing point of water. The optimal temperature range for perishable food storage is 3 to 5 °C (37 to 41 °F). A freezer is a specialized refrigerator, or portion of a refrigerator, that maintains its contents' temperature below the freezing point of water. The refrigerator replaced the icebox, which had been a common household appliance for almost a century and a half. The United States Food and Drug Administration recommends that the refrigerator be kept at or below 4 °C (40 °F) and that the freezer be regulated at −18 °C (0 °F).\nThe first cooling systems for food involved ice. Artificial refrigeration began i",
+          "reference": "https://en.wikipedia.org/wiki/Refrigerator"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"refrigerator\", \"icebox\"], \"synonyms\": [\"refrigerator\", \"icebox\"], \"lexical_variants\": [\"refrigerator\", \"icebox\"], \"definition\": \"A white goods appliance that stores food at low temperatures by cooling its interior below ambient temperature.\", \"ontology_hints\": [\"Resource\", \"FeatureOfInterest\", \"Observation\", \"Component\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00025",
+        "text": "compressor",
+        "label": "component"
+      },
+      "aliases": [
+        "compressor",
+        "Compressor"
+      ],
+      "synonyms": [
+        "compressor"
+      ],
+      "lexical_variants": [
+        "compressor"
+      ],
+      "alias_sources": {
+        "compressor": [
+          "wordnet",
+          "llm"
+        ],
+        "Compressor": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "compressor": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "compressor": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "A mechanical device that compresses gases by reducing their volume, thereby increasing pressure (and temperature if not intercoolled).",
+      "ontology_hints": [
+        "Resource",
+        "MechanicalDevice",
+        "Equipment",
+        "Component"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a mechanical device that compresses gasses",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "A compressor is a mechanical device that increases the pressure of a gas by reducing its volume. An air compressor is a specific type of gas compressor.\nMany compressors can be staged, that is, the gas is compressed several times in steps or stages, to increase discharge pressure. Often, the second stage is physically smaller than the primary stage, to accommodate the already compressed gas without reducing its pressure. Each stage further compresses the gas and increases its pressure and also temperature (if inter cooling between stages is not used).",
+          "reference": "https://en.wikipedia.org/wiki/Compressor"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"compressor\"], \"synonyms\": [\"compressor\"], \"lexical_variants\": [\"compressor\"], \"definition\": \"A mechanical device that compresses gases by reducing their volume, thereby increasing pressure (and temperature if not intercoolled).\", \"ontology_hints\": [\"Resource\", \"MechanicalDevice\", \"Equipment\", \"Component\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00026",
+        "text": "PSM feeder",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "PSM feeder",
+        "PSM feeder component"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "PSM feeder": [
+          "llm"
+        ],
+        "PSM feeder component": [
+          "llm"
+        ]
+      },
+      "definition": "A feeder component in a process safety management system whose hardware installation can trigger alarms.",
+      "ontology_hints": [
+        "Feature",
+        "Sensor",
+        "Manager",
+        "Operator"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"PSM feeder\", \"PSM feeder component\"], \"definition\": \"A feeder component in a process safety management system whose hardware installation can trigger alarms.\", \"ontology_hints\": [\"Feature\", \"Sensor\", \"Manager\", \"Operator\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00027",
+        "text": "axes/spindles feeder",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A component of a manufacturing machine that supplies material to machine axes or spindles, typically used to feed workpieces or tooling during operation.",
+      "ontology_hints": [
+        "belongs to class Machine component",
+        "has spatial extent (Spatial Object)",
+        "related to Observable Property: feed rate or material flow",
+        "can be deactivated by an alarm (triggered by alarm event)"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A component of a manufacturing machine that supplies material to machine axes or spindles, typically used to feed workpieces or tooling during operation.\", \"ontology_hints\": [\"belongs to class Machine component\", \"has spatial extent (Spatial Object)\", \"related to Observable Property: feed rate or material flow\", \"can be deactivated by an alarm (triggered by alarm event)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00028",
+        "text": "cabinet",
+        "label": "component"
+      },
+      "aliases": [
+        "cabinet",
+        "locker",
+        "storage locker",
+        "console",
+        "Cabinet"
+      ],
+      "synonyms": [
+        "cabinet",
+        "locker",
+        "storage locker",
+        "console"
+      ],
+      "lexical_variants": [
+        "cabinet",
+        "locker",
+        "storage locker",
+        "console"
+      ],
+      "alias_sources": {
+        "cabinet": [
+          "wordnet",
+          "llm"
+        ],
+        "locker": [
+          "wordnet"
+        ],
+        "storage locker": [
+          "wordnet"
+        ],
+        "console": [
+          "wordnet",
+          "llm"
+        ],
+        "Cabinet": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "cabinet": [
+          "wordnet",
+          "llm"
+        ],
+        "locker": [
+          "wordnet",
+          "llm"
+        ],
+        "storage locker": [
+          "wordnet",
+          "llm"
+        ],
+        "console": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "cabinet": [
+          "wordnet",
+          "llm"
+        ],
+        "locker": [
+          "wordnet",
+          "llm"
+        ],
+        "storage locker": [
+          "wordnet",
+          "llm"
+        ],
+        "console": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "housing for electronic instruments, as radio or television",
+      "ontology_hints": [
+        "subcomponent of Machine",
+        "component of Machine",
+        "constraint on machine operation",
+        "overheating can trigger alarm"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a piece of furniture resembling a cupboard with doors and shelves and drawers; for storage or display",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "persons appointed by a head of state to head executive departments of government and act as official advisers",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a storage compartment for clothes and valuables; usually it has a lock",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "housing for electronic instruments, as radio or television",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Cabinet or The Cabinet may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/Cabinet"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"cabinet\", \"console\"], \"synonyms\": [\"cabinet\", \"locker\", \"storage locker\", \"console\"], \"lexical_variants\": [\"cabinet\", \"locker\", \"storage locker\", \"console\"], \"definition\": \"housing for electronic instruments, as radio or television\", \"ontology_hints\": [\"subcomponent of Machine\", \"component of Machine\", \"constraint on machine operation\", \"overheating can trigger alarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00029",
+        "text": "thermostat",
+        "label": "component"
+      },
+      "aliases": [
+        "thermostat",
+        "thermoregulator",
+        "Thermostat"
+      ],
+      "synonyms": [
+        "thermostat",
+        "thermoregulator"
+      ],
+      "lexical_variants": [
+        "thermostat",
+        "thermoregulator"
+      ],
+      "alias_sources": {
+        "thermostat": [
+          "wordnet",
+          "llm"
+        ],
+        "thermoregulator": [
+          "wordnet",
+          "llm"
+        ],
+        "Thermostat": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "thermostat": [
+          "wordnet",
+          "llm"
+        ],
+        "thermoregulator": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "thermostat": [
+          "wordnet",
+          "llm"
+        ],
+        "thermoregulator": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "A thermostat is a regulating device component that senses the temperature of a physical system and performs actions to maintain the system’s temperature near a desired setpoint, operating as a closed‑loop controller to reduce the error between measured and target temperatures.",
+      "ontology_hints": [
+        "Regulator",
+        "TemperatureControlDevice",
+        "ClosedLoopController",
+        "ThermostaticallyControlledLoad"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a regulator for automatically regulating temperature by starting or stopping the supply of heat",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "control the temperature with a thermostat",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "A thermostat is a regulating device component which senses the temperature of a physical system and performs actions so that the system's temperature is maintained near a desired  setpoint.\nThermostats are used in any device or system that heats or cools to a setpoint temperature. Examples include building heating, central heating, air conditioners, HVAC systems, water heaters, as well as kitchen equipment including ovens and refrigerators and medical and scientific incubators. In scientific literature, these devices are often broadly classified as thermostatically controlled loads (TCLs). Thermostatically controlled loads comprise roughly 50% of the overall electricity demand in the United States.\nA thermostat operates as a \"closed loop\" control device, as it seeks to reduce the error between the desired and measured temperatures. Sometimes a thermostat combines both the sensing and control action elements of a controlled system, such as in an automotive thermostat.\nThe word thermostat is derived from the Greek words θερμός thermos, \"hot\" and στατός statos, \"standing, stationary\".",
+          "reference": "https://en.wikipedia.org/wiki/Thermostat"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"thermostat\", \"thermoregulator\"], \"synonyms\": [\"thermostat\", \"thermoregulator\"], \"lexical_variants\": [\"thermostat\", \"thermoregulator\"], \"definition\": \"A thermostat is a regulating device component that senses the temperature of a physical system and performs actions to maintain the system’s temperature near a desired setpoint, operating as a closed‑loop controller to reduce the error between measured and target temperatures.\", \"ontology_hints\": [\"Regulator\", \"TemperatureControlDevice\", \"ClosedLoopController\", \"ThermostaticallyControlledLoad\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00030",
+        "text": "fan",
+        "label": "component"
+      },
+      "aliases": [
+        "fan",
+        "sports fan",
+        "rooter",
+        "buff",
+        "devotee",
+        "lover",
+        "Fan"
+      ],
+      "synonyms": [
+        "fan",
+        "sports fan",
+        "rooter",
+        "buff",
+        "devotee",
+        "lover"
+      ],
+      "lexical_variants": [
+        "fan",
+        "sports fan",
+        "rooter",
+        "buff",
+        "devotee",
+        "lover"
+      ],
+      "alias_sources": {
+        "fan": [
+          "wordnet",
+          "llm"
+        ],
+        "sports fan": [
+          "wordnet",
+          "llm"
+        ],
+        "rooter": [
+          "wordnet",
+          "llm"
+        ],
+        "buff": [
+          "wordnet",
+          "llm"
+        ],
+        "devotee": [
+          "wordnet",
+          "llm"
+        ],
+        "lover": [
+          "wordnet",
+          "llm"
+        ],
+        "Fan": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "fan": [
+          "wordnet",
+          "llm"
+        ],
+        "sports fan": [
+          "wordnet",
+          "llm"
+        ],
+        "rooter": [
+          "wordnet",
+          "llm"
+        ],
+        "buff": [
+          "wordnet",
+          "llm"
+        ],
+        "devotee": [
+          "wordnet",
+          "llm"
+        ],
+        "lover": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "fan": [
+          "wordnet",
+          "llm"
+        ],
+        "sports fan": [
+          "wordnet",
+          "llm"
+        ],
+        "rooter": [
+          "wordnet",
+          "llm"
+        ],
+        "buff": [
+          "wordnet",
+          "llm"
+        ],
+        "devotee": [
+          "wordnet",
+          "llm"
+        ],
+        "lover": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "A device for creating a current of air by movement of a surface or surfaces, commonly used for cooling in industrial equipment.",
+      "ontology_hints": [
+        "Machine",
+        "Feature"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a device for creating a current of air by movement of a surface or surfaces",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "an enthusiastic devotee of sports",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "an ardent follower and admirer",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "strike out (a batter), (of a pitcher)",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "make (an emotion) fiercer",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Fan commonly refers to:\n\nFan (machine), a machine for producing airflow, often used for cooling\nHand fan, an implement held and waved by hand to move air for cooling\nFan (person), short for fanatic; an enthusiast or supporter, especially with regard to entertainment\nFan, FAN or fans may also refer to:",
+          "reference": "https://en.wikipedia.org/wiki/Fan"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"fan\", \"sports fan\", \"rooter\", \"buff\", \"devotee\", \"lover\"], \"synonyms\": [\"fan\", \"sports fan\", \"rooter\", \"buff\", \"devotee\", \"lover\"], \"lexical_variants\": [\"fan\", \"sports fan\", \"rooter\", \"buff\", \"devotee\", \"lover\"], \"definition\": \"A device for creating a current of air by movement of a surface or surfaces, commonly used for cooling in industrial equipment.\", \"ontology_hints\": [\"Machine\", \"Feature\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00031",
+        "text": "electrical cabinet",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A cabinet that houses electrical equipment, typically monitored for temperature in industrial settings.",
+      "ontology_hints": [
+        "Component",
+        "Part of a Production Line",
+        "Handled by a Technician",
+        "Subject to Constraints",
+        "Monitored by a Temperature Sensor"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A cabinet that houses electrical equipment, typically monitored for temperature in industrial settings.\", \"ontology_hints\": [\"Component\", \"Part of a Production Line\", \"Handled by a Technician\", \"Subject to Constraints\", \"Monitored by a Temperature Sensor\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00032",
+        "text": "pressure",
+        "label": "resource"
+      },
+      "aliases": [
+        "pressure",
+        "pressure level",
+        "force per unit area",
+        "press",
+        "pressing",
+        "imperativeness",
+        "insistence",
+        "insistency",
+        "pressure sensation",
+        "Pressure"
+      ],
+      "synonyms": [
+        "pressure",
+        "pressure level",
+        "force per unit area",
+        "press",
+        "pressing",
+        "imperativeness",
+        "insistence",
+        "insistency",
+        "pressure sensation"
+      ],
+      "lexical_variants": [
+        "pressure",
+        "pressure level",
+        "force per unit area",
+        "press",
+        "pressing",
+        "imperativeness",
+        "insistence",
+        "insistency",
+        "pressure sensation"
+      ],
+      "alias_sources": {
+        "pressure": [
+          "wordnet",
+          "llm"
+        ],
+        "pressure level": [
+          "wordnet",
+          "llm"
+        ],
+        "force per unit area": [
+          "wordnet",
+          "llm"
+        ],
+        "press": [
+          "wordnet",
+          "llm"
+        ],
+        "pressing": [
+          "wordnet",
+          "llm"
+        ],
+        "imperativeness": [
+          "wordnet"
+        ],
+        "insistence": [
+          "wordnet"
+        ],
+        "insistency": [
+          "wordnet"
+        ],
+        "pressure sensation": [
+          "wordnet"
+        ],
+        "Pressure": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "pressure": [
+          "wordnet",
+          "llm"
+        ],
+        "pressure level": [
+          "wordnet",
+          "llm"
+        ],
+        "force per unit area": [
+          "wordnet",
+          "llm"
+        ],
+        "press": [
+          "wordnet",
+          "llm"
+        ],
+        "pressing": [
+          "wordnet",
+          "llm"
+        ],
+        "imperativeness": [
+          "wordnet"
+        ],
+        "insistence": [
+          "wordnet"
+        ],
+        "insistency": [
+          "wordnet"
+        ],
+        "pressure sensation": [
+          "wordnet"
+        ]
+      },
+      "lexical_variant_sources": {
+        "pressure": [
+          "wordnet",
+          "llm"
+        ],
+        "pressure level": [
+          "wordnet",
+          "llm"
+        ],
+        "force per unit area": [
+          "wordnet",
+          "llm"
+        ],
+        "press": [
+          "wordnet",
+          "llm"
+        ],
+        "pressing": [
+          "wordnet",
+          "llm"
+        ],
+        "imperativeness": [
+          "wordnet"
+        ],
+        "insistence": [
+          "wordnet"
+        ],
+        "insistency": [
+          "wordnet"
+        ],
+        "pressure sensation": [
+          "wordnet"
+        ]
+      },
+      "definition": "Pressure is the force applied per unit area of a surface, typically measured in units such as pascals (Pa), psi, atm, or other manometric units.",
+      "ontology_hints": [
+        "Property of a Resource (e.g., machine, material, or human)",
+        "Observable by sensors producing a Result",
+        "Related to Process and Result in manufacturing",
+        "Feature of a spatial entity in the production environment"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "the force applied to a unit area of surface; measured in pascals (SI unit) or in dynes (cgs unit)",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a force that compels",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "the act of pressing; the exertion of pressure",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "the state of demanding notice or attention",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "the somatic sensation that results from applying force to an area of skin",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Pressure (symbol: p or P) is the force applied perpendicular to the surface of an object per unit area over which that force is distributed. Gauge pressure (also spelled gage pressure) is the pressure relative to the ambient pressure.\nVarious units are used to express pressure. Some of these derive from a unit of force divided by a unit of area; the SI unit of pressure, the pascal (Pa), for example, is one newton per square metre (N/m2); similarly, the pound-force per square inch (psi, symbol lbf/in2) is the traditional unit of pressure in the imperial and US customary systems. Pressure may also be expressed in terms of standard atmospheric pressure; the unit atmosphere (atm) is equal to this pressure, and the torr is defined as 1⁄760 of this. Manometric units such as the centimetre of water, millimetre of mercury, and inch of mercury are used to express pressures in terms of the height of column of a particular fluid in a manometer.",
+          "reference": "https://en.wikipedia.org/wiki/Pressure"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"pressure\", \"pressure level\", \"force per unit area\", \"press\", \"pressing\"], \"synonyms\": [\"pressure\", \"pressure level\", \"force per unit area\", \"press\", \"pressing\"], \"lexical_variants\": [\"pressure\", \"pressure level\", \"force per unit area\", \"press\", \"pressing\"], \"definition\": \"Pressure is the force applied per unit area of a surface, typically measured in units such as pascals (Pa), psi, atm, or other manometric units.\", \"ontology_hints\": [\"Property of a Resource (e.g., machine, material, or human)\", \"Observable by sensors producing a Result\", \"Related to Process and Result in manufacturing\", \"Feature of a spatial entity in the production environment\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00033",
+        "text": "pneumatic installation",
+        "label": "component"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "pneumatic installation"
+      ],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "pneumatic installation": [
+          "llm"
+        ]
+      },
+      "definition": "A spatially‑extended entity within a manufacturing workstation that comprises pneumatic components and is critical for maintaining system pressure.",
+      "ontology_hints": [
+        "SpatialObject",
+        "Feature of Interest",
+        "Workstation component",
+        "subject of Action",
+        "observed at Instant"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [\"pneumatic installation\"], \"definition\": \"A spatially‑extended entity within a manufacturing workstation that comprises pneumatic components and is critical for maintaining system pressure.\", \"ontology_hints\": [\"SpatialObject\", \"Feature of Interest\", \"Workstation component\", \"subject of Action\", \"observed at Instant\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00034",
+        "text": "pressure switch",
+        "label": "component"
+      },
+      "aliases": [
+        "Pressure switch"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "Pressure switch": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A pressure switch is a form of switch that operates an electrical contact when a certain set fluid pressure has been reached on its input. The switch may be designed to make contact either on pressure rise or on pressure fall. Pressure switches are widely used in industry to automatically supervise and control systems that use pressurized fluids.",
+      "ontology_hints": [
+        "Component",
+        "Sensor",
+        "Actuator",
+        "Switch",
+        "Pressure sensor",
+        "Control device"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "A pressure switch is a form of switch that operates an electrical contact when a certain set fluid pressure has been reached on its input.  The switch may be designed to make contact either on pressure rise or on pressure fall. Pressure switches are widely used in industry to automatically supervise and control systems that use pressurized fluids.\nAnother type of pressure switch detects mechanical force; for example, a pressure-sensitive mat is used to automatically open doors on commercial buildings. Such sensors are also used in security alarm applications such as pressure sensitive floors.",
+          "reference": "https://en.wikipedia.org/wiki/Pressure_switch"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Pressure switch\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A pressure switch is a form of switch that operates an electrical contact when a certain set fluid pressure has been reached on its input. The switch may be designed to make contact either on pressure rise or on pressure fall. Pressure switches are widely used in industry to automatically supervise and control systems that use pressurized fluids.\", \"ontology_hints\": [\"Component\", \"Sensor\", \"Actuator\", \"Switch\", \"Pressure sensor\", \"Control device\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00035",
+        "text": "Alarm No.: 1005",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Alarm 1005"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "Alarm 1005": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A unique identifier for a specific alarm instance (Situation S10) occurring within a manufacturing process on a platform, managed by a manager.",
+      "ontology_hints": [
+        "Alarm No.: 1005 is an instance of AlarmIdentifier",
+        "Alarm No.: 1005 references Situation S10",
+        "Alarm No.: 1005 occurs on Platform",
+        "Alarm No.: 1005 is part of Manufacturing Process",
+        "Alarm No.: 1005 is handled by Manager"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 1005\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A unique identifier for a specific alarm instance (Situation S10) occurring within a manufacturing process on a platform, managed by a manager.\", \"ontology_hints\": [\"Alarm No.: 1005 is an instance of AlarmIdentifier\", \"Alarm No.: 1005 references Situation S10\", \"Alarm No.: 1005 occurs on Platform\", \"Alarm No.: 1005 is part of Manufacturing Process\", \"Alarm No.: 1005 is handled by Manager\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00036",
+        "text": "Alarm No.: 1008",
+        "label": "alarm identifier"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Unique identifier for the alarm instance.",
+      "ontology_hints": [
+        "Alarm event",
+        "Alarm identifier"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Unique identifier for the alarm instance.\", \"ontology_hints\": [\"Alarm event\", \"Alarm identifier\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00037",
+        "text": "Alarm No.: 1009",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Alarm 1009",
+        "Alarm #1009",
+        "Alarm No. 1009",
+        "Alarm No: 1009"
+      ],
+      "synonyms": [
+        "Alarm identifier 1009"
+      ],
+      "lexical_variants": [
+        "Alarm No. 1009",
+        "Alarm No: 1009"
+      ],
+      "alias_sources": {
+        "Alarm 1009": [
+          "llm"
+        ],
+        "Alarm #1009": [
+          "llm"
+        ],
+        "Alarm No. 1009": [
+          "llm"
+        ],
+        "Alarm No: 1009": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Alarm identifier 1009": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm No. 1009": [
+          "llm"
+        ],
+        "Alarm No: 1009": [
+          "llm"
+        ]
+      },
+      "definition": "A unique identifier for a specific alarm instance within a manufacturing system, representing a specialized situation (Situation S10) that occurs on a platform during a manufacturing process.",
+      "ontology_hints": [
+        "instance of Situation S10",
+        "occurs on a Platform",
+        "occurs during a Manufacturing Process",
+        "located within a Spatial Object",
+        "handled by a Manager"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 1009\", \"Alarm #1009\", \"Alarm No. 1009\", \"Alarm No: 1009\"], \"synonyms\": [\"Alarm identifier 1009\"], \"lexical_variants\": [\"Alarm No. 1009\", \"Alarm No: 1009\"], \"definition\": \"A unique identifier for a specific alarm instance within a manufacturing system, representing a specialized situation (Situation S10) that occurs on a platform during a manufacturing process.\", \"ontology_hints\": [\"instance of Situation S10\", \"occurs on a Platform\", \"occurs during a Manufacturing Process\", \"located within a Spatial Object\", \"handled by a Manager\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00038",
+        "text": "Alarm No.: 1011",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Alarm No. 1011",
+        "Alarm #1011",
+        "Alarm ID 1011"
+      ],
+      "synonyms": [
+        "alarm number",
+        "alarm code",
+        "alarm identifier"
+      ],
+      "lexical_variants": [
+        "Alarm No. 1011",
+        "Alarm #1011",
+        "Alarm ID 1011"
+      ],
+      "alias_sources": {
+        "Alarm No. 1011": [
+          "llm"
+        ],
+        "Alarm #1011": [
+          "llm"
+        ],
+        "Alarm ID 1011": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "alarm number": [
+          "llm"
+        ],
+        "alarm code": [
+          "llm"
+        ],
+        "alarm identifier": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm No. 1011": [
+          "llm"
+        ],
+        "Alarm #1011": [
+          "llm"
+        ],
+        "Alarm ID 1011": [
+          "llm"
+        ]
+      },
+      "definition": "A unique numeric identifier assigned to a specific alarm event within a manufacturing system, used to reference the alarm in documentation and monitoring.",
+      "ontology_hints": [
+        "Alarm identifier is a property of an Alarm event.",
+        "Alarm No.: 1011 is an individual instance of an Alarm event.",
+        "Alarm No.: 1011 is associated with a specific Situation (S10 or S11) that occurs during a Manufacturing Process on a Platform."
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm No. 1011\", \"Alarm #1011\", \"Alarm ID 1011\"], \"synonyms\": [\"alarm number\", \"alarm code\", \"alarm identifier\"], \"lexical_variants\": [\"Alarm No. 1011\", \"Alarm #1011\", \"Alarm ID 1011\"], \"definition\": \"A unique numeric identifier assigned to a specific alarm event within a manufacturing system, used to reference the alarm in documentation and monitoring.\", \"ontology_hints\": [\"Alarm identifier is a property of an Alarm event.\", \"Alarm No.: 1011 is an individual instance of an Alarm event.\", \"Alarm No.: 1011 is associated with a specific Situation (S10 or S11) that occurs during a Manufacturing Process on a Platform.\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00039",
+        "text": "Alarm No.: 1012",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Alarm 1012",
+        "Alarm #1012",
+        "Alarm No. 1012"
+      ],
+      "synonyms": [
+        "Alarm number 1012",
+        "Alarm ID 1012"
+      ],
+      "lexical_variants": [
+        "Alarm No.: 1012",
+        "Alarm No. 1012",
+        "Alarm No: 1012"
+      ],
+      "alias_sources": {
+        "Alarm 1012": [
+          "llm"
+        ],
+        "Alarm #1012": [
+          "llm"
+        ],
+        "Alarm No. 1012": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Alarm number 1012": [
+          "llm"
+        ],
+        "Alarm ID 1012": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm No.: 1012": [
+          "llm"
+        ],
+        "Alarm No. 1012": [
+          "llm"
+        ],
+        "Alarm No: 1012": [
+          "llm"
+        ]
+      },
+      "definition": "A unique identifier assigned to a specific alarm event occurring within a manufacturing platform or process.",
+      "ontology_hints": [
+        "Alarm event",
+        "Platform alarm",
+        "Manufacturing process alarm",
+        "Situation S10 alarm",
+        "Situation S11 alarm",
+        "Situation S12 alarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 1012\", \"Alarm #1012\", \"Alarm No. 1012\"], \"synonyms\": [\"Alarm number 1012\", \"Alarm ID 1012\"], \"lexical_variants\": [\"Alarm No.: 1012\", \"Alarm No. 1012\", \"Alarm No: 1012\"], \"definition\": \"A unique identifier assigned to a specific alarm event occurring within a manufacturing platform or process.\", \"ontology_hints\": [\"Alarm event\", \"Platform alarm\", \"Manufacturing process alarm\", \"Situation S10 alarm\", \"Situation S11 alarm\", \"Situation S12 alarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00040",
+        "text": "Alarm No.: 1013",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Alarm 1013",
+        "Alarm #1013",
+        "Alarm No. 1013"
+      ],
+      "synonyms": [
+        "Alarm ID 1013",
+        "Alarm number 1013"
+      ],
+      "lexical_variants": [
+        "Alarm 1013",
+        "Alarm No. 1013"
+      ],
+      "alias_sources": {
+        "Alarm 1013": [
+          "llm"
+        ],
+        "Alarm #1013": [
+          "llm"
+        ],
+        "Alarm No. 1013": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Alarm ID 1013": [
+          "llm"
+        ],
+        "Alarm number 1013": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm 1013": [
+          "llm"
+        ],
+        "Alarm No. 1013": [
+          "llm"
+        ]
+      },
+      "definition": "A unique identifier for a specific alarm instance that signals a particular situation or failure state occurring on a platform within a manufacturing process.",
+      "ontology_hints": [
+        "instance of AlarmIdentifier",
+        "associated with Situation S10, S11, or S13",
+        "occurs on a Platform",
+        "occurs during a Manufacturing Process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 1013\", \"Alarm #1013\", \"Alarm No. 1013\"], \"synonyms\": [\"Alarm ID 1013\", \"Alarm number 1013\"], \"lexical_variants\": [\"Alarm 1013\", \"Alarm No. 1013\"], \"definition\": \"A unique identifier for a specific alarm instance that signals a particular situation or failure state occurring on a platform within a manufacturing process.\", \"ontology_hints\": [\"instance of AlarmIdentifier\", \"associated with Situation S10, S11, or S13\", \"occurs on a Platform\", \"occurs during a Manufacturing Process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00041",
+        "text": "Alarm No.: 1017",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Alarm ID 1017",
+        "Alarm number 1017",
+        "Alarm code 1017"
+      ],
+      "synonyms": [
+        "Alarm No. 1017",
+        "Alarm #1017"
+      ],
+      "lexical_variants": [
+        "Alarm No.: 1017",
+        "Alarm No. 1017",
+        "Alarm #1017",
+        "Alarm ID 1017"
+      ],
+      "alias_sources": {
+        "Alarm ID 1017": [
+          "llm"
+        ],
+        "Alarm number 1017": [
+          "llm"
+        ],
+        "Alarm code 1017": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Alarm No. 1017": [
+          "llm"
+        ],
+        "Alarm #1017": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm No.: 1017": [
+          "llm"
+        ],
+        "Alarm No. 1017": [
+          "llm"
+        ],
+        "Alarm #1017": [
+          "llm"
+        ],
+        "Alarm ID 1017": [
+          "llm"
+        ]
+      },
+      "definition": "A unique identifier assigned to a specific alarm event within an industrial maintenance or machine monitoring system, used to reference the alarm in documentation, logs, and troubleshooting procedures.",
+      "ontology_hints": [
+        "AlarmIdentifier",
+        "AlarmInstance",
+        "hasIdentifier",
+        "belongsToAlarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm ID 1017\", \"Alarm number 1017\", \"Alarm code 1017\"], \"synonyms\": [\"Alarm No. 1017\", \"Alarm #1017\"], \"lexical_variants\": [\"Alarm No.: 1017\", \"Alarm No. 1017\", \"Alarm #1017\", \"Alarm ID 1017\"], \"definition\": \"A unique identifier assigned to a specific alarm event within an industrial maintenance or machine monitoring system, used to reference the alarm in documentation, logs, and troubleshooting procedures.\", \"ontology_hints\": [\"AlarmIdentifier\", \"AlarmInstance\", \"hasIdentifier\", \"belongsToAlarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00042",
+        "text": "Alarm No.: 1018",
+        "label": "alarm identifier"
+      },
+      "aliases": [
+        "Alarm 1018",
+        "Alarm #1018",
+        "Alarm ID 1018"
+      ],
+      "synonyms": [
+        "Alarm number 1018",
+        "Alarm code 1018"
+      ],
+      "lexical_variants": [
+        "Alarm No. 1018",
+        "Alarm No: 1018",
+        "Alarm No.: 1018"
+      ],
+      "alias_sources": {
+        "Alarm 1018": [
+          "llm"
+        ],
+        "Alarm #1018": [
+          "llm"
+        ],
+        "Alarm ID 1018": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Alarm number 1018": [
+          "llm"
+        ],
+        "Alarm code 1018": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Alarm No. 1018": [
+          "llm"
+        ],
+        "Alarm No: 1018": [
+          "llm"
+        ],
+        "Alarm No.: 1018": [
+          "llm"
+        ]
+      },
+      "definition": "A unique identifier assigned to a specific alarm event in a manufacturing system, used to reference the alarm in documentation and monitoring.",
+      "ontology_hints": [
+        "Alarm identifier",
+        "Alarm instance",
+        "Alarm event",
+        "Manufacturing process alarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Alarm 1018\", \"Alarm #1018\", \"Alarm ID 1018\"], \"synonyms\": [\"Alarm number 1018\", \"Alarm code 1018\"], \"lexical_variants\": [\"Alarm No. 1018\", \"Alarm No: 1018\", \"Alarm No.: 1018\"], \"definition\": \"A unique identifier assigned to a specific alarm event in a manufacturing system, used to reference the alarm in documentation and monitoring.\", \"ontology_hints\": [\"Alarm identifier\", \"Alarm instance\", \"Alarm event\", \"Manufacturing process alarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00043",
+        "text": "operator",
+        "label": "role"
+      },
+      "aliases": [
+        "operator",
+        "manipulator",
+        "hustler",
+        "wheeler dealer",
+        "Operator"
+      ],
+      "synonyms": [
+        "operator",
+        "manipulator",
+        "hustler",
+        "wheeler dealer"
+      ],
+      "lexical_variants": [
+        "operator",
+        "manipulator",
+        "hustler",
+        "wheeler dealer"
+      ],
+      "alias_sources": {
+        "operator": [
+          "wordnet",
+          "llm"
+        ],
+        "manipulator": [
+          "wordnet"
+        ],
+        "hustler": [
+          "wordnet"
+        ],
+        "wheeler dealer": [
+          "wordnet"
+        ],
+        "Operator": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "operator": [
+          "wordnet",
+          "llm"
+        ],
+        "manipulator": [
+          "wordnet"
+        ],
+        "hustler": [
+          "wordnet"
+        ],
+        "wheeler dealer": [
+          "wordnet"
+        ]
+      },
+      "lexical_variant_sources": {
+        "operator": [
+          "wordnet",
+          "llm"
+        ],
+        "manipulator": [
+          "wordnet"
+        ],
+        "hustler": [
+          "wordnet"
+        ],
+        "wheeler dealer": [
+          "wordnet"
+        ]
+      },
+      "definition": "An agent who operates machinery or performs production tasks, responsible for operating machines and performing interventions.",
+      "ontology_hints": [
+        "Class: Operator (role of a worker who operates machines)",
+        "Subclass of Staff",
+        "Associated with interventions in industrial maintenance",
+        "Role responsible for operating machines and performing interventions"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "(mathematics) a symbol or function representing a mathematical operation",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "an agent that operates some apparatus or machine",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "someone who owns or operates a business",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a shrewd or unscrupulous person who knows how to circumvent difficulties",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a speculator who trades aggressively on stock or commodity markets",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Operator may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/Operator"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"operator\"], \"synonyms\": [\"operator\"], \"lexical_variants\": [\"operator\"], \"definition\": \"An agent who operates machinery or performs production tasks, responsible for operating machines and performing interventions.\", \"ontology_hints\": [\"Class: Operator (role of a worker who operates machines)\", \"Subclass of Staff\", \"Associated with interventions in industrial maintenance\", \"Role responsible for operating machines and performing interventions\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00044",
+        "text": "maintenance person",
+        "label": "role"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A person responsible for performing maintenance interventions on machines within a manufacturing environment.",
+      "ontology_hints": [
+        "role",
+        "Manager",
+        "Human Process",
+        "Machine",
+        "Instant",
+        "Interval"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A person responsible for performing maintenance interventions on machines within a manufacturing environment.\", \"ontology_hints\": [\"role\", \"Manager\", \"Human Process\", \"Machine\", \"Instant\", \"Interval\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00045",
+        "text": "responsible for maintenance",
+        "label": "role"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A role that oversees and ensures maintenance activities are performed on resources.",
+      "ontology_hints": [
+        "has responsibility for maintenance interventions",
+        "associated with Resource",
+        "linked to Constraint",
+        "observes Observable Property"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A role that oversees and ensures maintenance activities are performed on resources.\", \"ontology_hints\": [\"has responsibility for maintenance interventions\", \"associated with Resource\", \"linked to Constraint\", \"observes Observable Property\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00046",
+        "text": "high priority",
+        "label": "attribute"
+      },
+      "aliases": [
+        "high-priority"
+      ],
+      "synonyms": [
+        "urgent",
+        "critical",
+        "top priority"
+      ],
+      "lexical_variants": [
+        "high priority",
+        "high-priority"
+      ],
+      "alias_sources": {
+        "high-priority": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "urgent": [
+          "llm"
+        ],
+        "critical": [
+          "llm"
+        ],
+        "top priority": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "high priority": [
+          "llm"
+        ],
+        "high-priority": [
+          "llm"
+        ]
+      },
+      "definition": "An attribute indicating a high level of urgency or importance, typically used to denote that an alarm, task, or event should be addressed promptly.",
+      "ontology_hints": [
+        "hasPriority",
+        "priorityLevel",
+        "highPriority",
+        "UrgencyLevel",
+        "hasPriorityLevel"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"high-priority\"], \"synonyms\": [\"urgent\", \"critical\", \"top priority\"], \"lexical_variants\": [\"high priority\", \"high-priority\"], \"definition\": \"An attribute indicating a high level of urgency or importance, typically used to denote that an alarm, task, or event should be addressed promptly.\", \"ontology_hints\": [\"hasPriority\", \"priorityLevel\", \"highPriority\", \"UrgencyLevel\", \"hasPriorityLevel\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00047",
+        "text": "low priority",
+        "label": "attribute"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A value indicating a low level of urgency or importance assigned to an entity or event.",
+      "ontology_hints": [
+        "hasPriority",
+        "priority",
+        "Property",
+        "ObservableProperty",
+        "Operator",
+        "LogisticProcess"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A value indicating a low level of urgency or importance assigned to an entity or event.\", \"ontology_hints\": [\"hasPriority\", \"priority\", \"Property\", \"ObservableProperty\", \"Operator\", \"LogisticProcess\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00048",
+        "text": "open",
+        "label": "state"
+      },
+      "aliases": [
+        "open",
+        "clear",
+        "outdoors",
+        "out-of-doors",
+        "open air",
+        "surface",
+        "open up",
+        "Open"
+      ],
+      "synonyms": [
+        "open",
+        "clear",
+        "outdoors",
+        "out-of-doors",
+        "open air",
+        "surface",
+        "open up"
+      ],
+      "lexical_variants": [
+        "open",
+        "clear",
+        "outdoors",
+        "out-of-doors",
+        "open air",
+        "surface",
+        "open up"
+      ],
+      "alias_sources": {
+        "open": [
+          "wordnet",
+          "llm"
+        ],
+        "clear": [
+          "wordnet",
+          "llm"
+        ],
+        "outdoors": [
+          "wordnet"
+        ],
+        "out-of-doors": [
+          "wordnet"
+        ],
+        "open air": [
+          "wordnet"
+        ],
+        "surface": [
+          "wordnet"
+        ],
+        "open up": [
+          "wordnet",
+          "llm"
+        ],
+        "Open": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "open": [
+          "wordnet",
+          "llm"
+        ],
+        "clear": [
+          "wordnet",
+          "llm"
+        ],
+        "outdoors": [
+          "wordnet"
+        ],
+        "out-of-doors": [
+          "wordnet"
+        ],
+        "open air": [
+          "wordnet"
+        ],
+        "surface": [
+          "wordnet"
+        ],
+        "open up": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "open": [
+          "wordnet",
+          "llm"
+        ],
+        "clear": [
+          "wordnet",
+          "llm"
+        ],
+        "outdoors": [
+          "wordnet"
+        ],
+        "out-of-doors": [
+          "wordnet"
+        ],
+        "open air": [
+          "wordnet"
+        ],
+        "surface": [
+          "wordnet"
+        ],
+        "open up": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "A state in which side protections are not closed or sealed, indicating an unobstructed condition that can trigger an alarm.",
+      "ontology_hints": [
+        "Property",
+        "Observation",
+        "Sensor",
+        "Action",
+        "Alarm"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "a clear or unobstructed space or expanse of land or water",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "where the air is unconfined",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "a tournament in which both professionals and amateurs may play",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "information that has become public",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "cause to open or to become open",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Open or OPEN may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/Open"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"open\", \"clear\", \"open up\"], \"synonyms\": [\"open\", \"clear\", \"open up\"], \"lexical_variants\": [\"open\", \"clear\", \"open up\"], \"definition\": \"A state in which side protections are not closed or sealed, indicating an unobstructed condition that can trigger an alarm.\", \"ontology_hints\": [\"Property\", \"Observation\", \"Sensor\", \"Action\", \"Alarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00049",
+        "text": "closed",
+        "label": "state"
+      },
+      "aliases": [
+        "close",
+        "shut",
+        "close up",
+        "fold",
+        "shut down",
+        "close down",
+        "conclude",
+        "Closed"
+      ],
+      "synonyms": [
+        "close",
+        "shut",
+        "close up",
+        "fold",
+        "shut down",
+        "close down",
+        "conclude"
+      ],
+      "lexical_variants": [
+        "close",
+        "shut",
+        "close up",
+        "fold",
+        "shut down",
+        "close down",
+        "conclude"
+      ],
+      "alias_sources": {
+        "close": [
+          "wordnet",
+          "llm"
+        ],
+        "shut": [
+          "wordnet",
+          "llm"
+        ],
+        "close up": [
+          "wordnet",
+          "llm"
+        ],
+        "fold": [
+          "wordnet",
+          "llm"
+        ],
+        "shut down": [
+          "wordnet",
+          "llm"
+        ],
+        "close down": [
+          "wordnet",
+          "llm"
+        ],
+        "conclude": [
+          "wordnet",
+          "llm"
+        ],
+        "Closed": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "close": [
+          "wordnet",
+          "llm"
+        ],
+        "shut": [
+          "wordnet",
+          "llm"
+        ],
+        "close up": [
+          "wordnet",
+          "llm"
+        ],
+        "fold": [
+          "wordnet",
+          "llm"
+        ],
+        "shut down": [
+          "wordnet",
+          "llm"
+        ],
+        "close down": [
+          "wordnet",
+          "llm"
+        ],
+        "conclude": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "close": [
+          "wordnet",
+          "llm"
+        ],
+        "shut": [
+          "wordnet",
+          "llm"
+        ],
+        "close up": [
+          "wordnet",
+          "llm"
+        ],
+        "fold": [
+          "wordnet",
+          "llm"
+        ],
+        "shut down": [
+          "wordnet",
+          "llm"
+        ],
+        "close down": [
+          "wordnet",
+          "llm"
+        ],
+        "conclude": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "A state in which an opening or passage is obstructed, or an operation has ceased, indicating that a process, resource, or constraint is no longer active.",
+      "ontology_hints": [
+        "hasState",
+        "stateOf",
+        "closed state",
+        "process state",
+        "resource state",
+        "constraint",
+        "shutdown state"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "move so that an opening or passage is obstructed; make shut",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "become closed",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "cease to operate or cause to cease operating",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "finish or terminate (meetings, speeches, etc.)",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "come to a close",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Closed may refer to:",
+          "reference": "https://en.wikipedia.org/wiki/Closed"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"close\", \"shut\", \"close up\", \"fold\", \"shut down\", \"close down\", \"conclude\"], \"synonyms\": [\"close\", \"shut\", \"close up\", \"fold\", \"shut down\", \"close down\", \"conclude\"], \"lexical_variants\": [\"close\", \"shut\", \"close up\", \"fold\", \"shut down\", \"close down\", \"conclude\"], \"definition\": \"A state in which an opening or passage is obstructed, or an operation has ceased, indicating that a process, resource, or constraint is no longer active.\", \"ontology_hints\": [\"hasState\", \"stateOf\", \"closed state\", \"process state\", \"resource state\", \"constraint\", \"shutdown state\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00050",
+        "text": "triggered",
+        "label": "state"
+      },
+      "aliases": [
+        "trip",
+        "actuate",
+        "trigger",
+        "activate",
+        "set off",
+        "spark off",
+        "spark",
+        "trigger off",
+        "touch off",
+        "Triggered"
+      ],
+      "synonyms": [
+        "trip",
+        "actuate",
+        "trigger",
+        "activate",
+        "set off",
+        "spark off",
+        "spark",
+        "trigger off",
+        "touch off"
+      ],
+      "lexical_variants": [
+        "trip",
+        "actuate",
+        "trigger",
+        "activate",
+        "set off",
+        "spark off",
+        "spark",
+        "trigger off",
+        "touch off"
+      ],
+      "alias_sources": {
+        "trip": [
+          "wordnet",
+          "llm"
+        ],
+        "actuate": [
+          "wordnet",
+          "llm"
+        ],
+        "trigger": [
+          "wordnet",
+          "llm"
+        ],
+        "activate": [
+          "wordnet",
+          "llm"
+        ],
+        "set off": [
+          "wordnet",
+          "llm"
+        ],
+        "spark off": [
+          "wordnet",
+          "llm"
+        ],
+        "spark": [
+          "wordnet",
+          "llm"
+        ],
+        "trigger off": [
+          "wordnet",
+          "llm"
+        ],
+        "touch off": [
+          "wordnet",
+          "llm"
+        ],
+        "Triggered": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {
+        "trip": [
+          "wordnet",
+          "llm"
+        ],
+        "actuate": [
+          "wordnet",
+          "llm"
+        ],
+        "trigger": [
+          "wordnet",
+          "llm"
+        ],
+        "activate": [
+          "wordnet",
+          "llm"
+        ],
+        "set off": [
+          "wordnet",
+          "llm"
+        ],
+        "spark off": [
+          "wordnet",
+          "llm"
+        ],
+        "spark": [
+          "wordnet",
+          "llm"
+        ],
+        "trigger off": [
+          "wordnet",
+          "llm"
+        ],
+        "touch off": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "trip": [
+          "wordnet",
+          "llm"
+        ],
+        "actuate": [
+          "wordnet",
+          "llm"
+        ],
+        "trigger": [
+          "wordnet",
+          "llm"
+        ],
+        "activate": [
+          "wordnet",
+          "llm"
+        ],
+        "set off": [
+          "wordnet",
+          "llm"
+        ],
+        "spark off": [
+          "wordnet",
+          "llm"
+        ],
+        "spark": [
+          "wordnet",
+          "llm"
+        ],
+        "trigger off": [
+          "wordnet",
+          "llm"
+        ],
+        "touch off": [
+          "wordnet",
+          "llm"
+        ]
+      },
+      "definition": "put in motion or move to act",
+      "ontology_hints": [
+        "represents an activation state of a physical component (e.g., a thermal switch)",
+        "can be applied to spatial entities such as Feature, FeatureOfInterest, or ManufacturingCell",
+        "may also apply to personnel roles like Manager when they initiate an action",
+        "temporal extent can be linked to an Interval"
+      ],
+      "evidence": [
+        {
+          "source": "wordnet",
+          "content": "put in motion or move to act",
+          "reference": null
+        },
+        {
+          "source": "wordnet",
+          "content": "release or pull the trigger on",
+          "reference": null
+        },
+        {
+          "source": "wikipedia",
+          "content": "Triggered may refer to:\n\nTriggered (book), a 2019 non-fiction book by Donald Trump Jr.\nTriggered (film), a 2020 South African action-horror film\n\"Triggered (Freestyle)\", a song by American singer Jhené Aiko",
+          "reference": "https://en.wikipedia.org/wiki/Triggered"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"trip\", \"actuate\", \"trigger\", \"activate\", \"set off\", \"spark off\", \"spark\", \"trigger off\", \"touch off\"], \"synonyms\": [\"trip\", \"actuate\", \"trigger\", \"activate\", \"set off\", \"spark off\", \"spark\", \"trigger off\", \"touch off\"], \"lexical_variants\": [\"trip\", \"actuate\", \"trigger\", \"activate\", \"set off\", \"spark off\", \"spark\", \"trigger off\", \"touch off\"], \"definition\": \"put in motion or move to act\", \"ontology_hints\": [\"represents an activation state of a physical component (e.g., a thermal switch)\", \"can be applied to spatial entities such as Feature, FeatureOfInterest, or ManufacturingCell\", \"may also apply to personnel roles like Manager when they initiate an action\", \"temporal extent can be linked to an Interval\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00051",
+        "text": "insufficient quantity",
+        "label": "state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A state in which the quantity of a resource (such as coolant) is below the required level, potentially triggering an alarm in a manufacturing environment.",
+      "ontology_hints": [
+        "Situation",
+        "ManufacturingFacility",
+        "Technician",
+        "AlarmTrigger"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A state in which the quantity of a resource (such as coolant) is below the required level, potentially triggering an alarm in a manufacturing environment.\", \"ontology_hints\": [\"Situation\", \"ManufacturingFacility\", \"Technician\", \"AlarmTrigger\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00052",
+        "text": "cannot lower the engine temperature",
+        "label": "state"
+      },
+      "aliases": [
+        "engine temperature cannot be lowered",
+        "engine temperature cannot be reduced"
+      ],
+      "synonyms": [
+        "unable to lower engine temperature",
+        "engine temperature cannot be reduced"
+      ],
+      "lexical_variants": [
+        "cannot lower the engine's temperature",
+        "cannot lower engine temperature"
+      ],
+      "alias_sources": {
+        "engine temperature cannot be lowered": [
+          "llm"
+        ],
+        "engine temperature cannot be reduced": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "unable to lower engine temperature": [
+          "llm"
+        ],
+        "engine temperature cannot be reduced": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "cannot lower the engine's temperature": [
+          "llm"
+        ],
+        "cannot lower engine temperature": [
+          "llm"
+        ]
+      },
+      "definition": "A state in which the engine temperature cannot be reduced, indicating a failure of the cooling system.",
+      "ontology_hints": [
+        "has observable property: engine temperature",
+        "feature: engine",
+        "state: cooling failure",
+        "context: production line",
+        "temporal entity: time of observation"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"engine temperature cannot be lowered\", \"engine temperature cannot be reduced\"], \"synonyms\": [\"unable to lower engine temperature\", \"engine temperature cannot be reduced\"], \"lexical_variants\": [\"cannot lower the engine's temperature\", \"cannot lower engine temperature\"], \"definition\": \"A state in which the engine temperature cannot be reduced, indicating a failure of the cooling system.\", \"ontology_hints\": [\"has observable property: engine temperature\", \"feature: engine\", \"state: cooling failure\", \"context: production line\", \"temporal entity: time of observation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00053",
+        "text": "hardware problems",
+        "label": "state"
+      },
+      "aliases": [
+        "hardware issues",
+        "hardware faults",
+        "hardware malfunctions"
+      ],
+      "synonyms": [
+        "mechanical faults",
+        "equipment malfunctions",
+        "machine hardware failures"
+      ],
+      "lexical_variants": [
+        "hardware problem",
+        "hardware issue",
+        "hardware malfunction",
+        "hardware fault"
+      ],
+      "alias_sources": {
+        "hardware issues": [
+          "llm"
+        ],
+        "hardware faults": [
+          "llm"
+        ],
+        "hardware malfunctions": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "mechanical faults": [
+          "llm"
+        ],
+        "equipment malfunctions": [
+          "llm"
+        ],
+        "machine hardware failures": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "hardware problem": [
+          "llm"
+        ],
+        "hardware issue": [
+          "llm"
+        ],
+        "hardware malfunction": [
+          "llm"
+        ],
+        "hardware fault": [
+          "llm"
+        ]
+      },
+      "definition": "A state indicating malfunction or degradation of machine hardware components such as axes and spindles, which can trigger alarms in industrial equipment.",
+      "ontology_hints": [
+        "State of machine hardware components",
+        "Triggers alarm",
+        "Observed by sensors",
+        "Part of manufacturing process",
+        "Related to axes and spindles"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"hardware issues\", \"hardware faults\", \"hardware malfunctions\"], \"synonyms\": [\"mechanical faults\", \"equipment malfunctions\", \"machine hardware failures\"], \"lexical_variants\": [\"hardware problem\", \"hardware issue\", \"hardware malfunction\", \"hardware fault\"], \"definition\": \"A state indicating malfunction or degradation of machine hardware components such as axes and spindles, which can trigger alarms in industrial equipment.\", \"ontology_hints\": [\"State of machine hardware components\", \"Triggers alarm\", \"Observed by sensors\", \"Part of manufacturing process\", \"Related to axes and spindles\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00054",
+        "text": "power supply error code A2831",
+        "label": "code"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An error code indicating a fault in the power supply unit, identified by the code A2831.",
+      "ontology_hints": [
+        "ObservableProperty",
+        "Property",
+        "Process",
+        "TemporalEntity",
+        "Operator"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An error code indicating a fault in the power supply unit, identified by the code A2831.\", \"ontology_hints\": [\"ObservableProperty\", \"Property\", \"Process\", \"TemporalEntity\", \"Operator\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00055",
+        "text": "not set correctly",
+        "label": "state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A state indicating that a sensor or its configuration is not set correctly, potentially causing alarms.",
+      "ontology_hints": [
+        "Observation",
+        "Sensor",
+        "TemporalEntity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A state indicating that a sensor or its configuration is not set correctly, potentially causing alarms.\", \"ontology_hints\": [\"Observation\", \"Sensor\", \"TemporalEntity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00056",
+        "text": "not sufficient",
+        "label": "state"
+      },
+      "aliases": [
+        "not sufficient"
+      ],
+      "synonyms": [
+        "insufficient",
+        "inadequate",
+        "deficient",
+        "below requirement"
+      ],
+      "lexical_variants": [
+        "not enough",
+        "not adequate"
+      ],
+      "alias_sources": {
+        "not sufficient": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "insufficient": [
+          "llm"
+        ],
+        "inadequate": [
+          "llm"
+        ],
+        "deficient": [
+          "llm"
+        ],
+        "below requirement": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "not enough": [
+          "llm"
+        ],
+        "not adequate": [
+          "llm"
+        ]
+      },
+      "definition": "A state in which a measured parameter or resource level falls below the required threshold, indicating a violation of a defined constraint within a manufacturing process.",
+      "ontology_hints": [
+        "ConstraintViolation",
+        "ManufacturingProcessState",
+        "ResourceLevelState",
+        "ObservedByTechnician",
+        "OccursInManufacturingCell",
+        "DetectedAtInstant"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"not sufficient\"], \"synonyms\": [\"insufficient\", \"inadequate\", \"deficient\", \"below requirement\"], \"lexical_variants\": [\"not enough\", \"not adequate\"], \"definition\": \"A state in which a measured parameter or resource level falls below the required threshold, indicating a violation of a defined constraint within a manufacturing process.\", \"ontology_hints\": [\"ConstraintViolation\", \"ManufacturingProcessState\", \"ResourceLevelState\", \"ObservedByTechnician\", \"OccursInManufacturingCell\", \"DetectedAtInstant\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00057",
+        "text": "normal operation",
+        "label": "state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "The state in which a machine operates as intended, without alarms or faults, representing the desired operational condition.",
+      "ontology_hints": [
+        "Observation",
+        "Operator",
+        "Observable Property",
+        "Workstation",
+        "Temporal Entity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"The state in which a machine operates as intended, without alarms or faults, representing the desired operational condition.\", \"ontology_hints\": [\"Observation\", \"Operator\", \"Observable Property\", \"Workstation\", \"Temporal Entity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

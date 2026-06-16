@@ -1,0 +1,2143 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 37,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "CNC BATTERY EXHAUSTED",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "CNC battery exhausted",
+        "CNC battery depleted"
+      ],
+      "synonyms": [
+        "CNC battery depleted"
+      ],
+      "lexical_variants": [
+        "CNC battery low",
+        "CNC battery exhausted alarm"
+      ],
+      "alias_sources": {
+        "CNC battery exhausted": [
+          "llm"
+        ],
+        "CNC battery depleted": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "CNC battery depleted": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "CNC battery low": [
+          "llm"
+        ],
+        "CNC battery exhausted alarm": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that signals the CNC machine’s battery has been depleted, indicating a need for managerial intervention.",
+      "ontology_hints": [
+        "FeatureOfInterest: CNC",
+        "Cause: Battery depletion",
+        "Interval: Alarm occurrence",
+        "HandledBy: Manager",
+        "AlarmType: BatteryExhaustedAlarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"CNC battery exhausted\", \"CNC battery depleted\"], \"synonyms\": [\"CNC battery depleted\"], \"lexical_variants\": [\"CNC battery low\", \"CNC battery exhausted alarm\"], \"definition\": \"An alarm that signals the CNC machine’s battery has been depleted, indicating a need for managerial intervention.\", \"ontology_hints\": [\"FeatureOfInterest: CNC\", \"Cause: Battery depletion\", \"Interval: Alarm occurrence\", \"HandledBy: Manager\", \"AlarmType: BatteryExhaustedAlarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "MACHINE IN TOOLING MODE",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm that signals the machine has entered tooling mode, a state where tooling configuration is selected for operation.",
+      "ontology_hints": [
+        "MachineState",
+        "ToolingMode",
+        "AlarmType",
+        "ManufacturingProcess",
+        "ManufacturingCell",
+        "ManufacturingFacility"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm that signals the machine has entered tooling mode, a state where tooling configuration is selected for operation.\", \"ontology_hints\": [\"MachineState\", \"ToolingMode\", \"AlarmType\", \"ManufacturingProcess\", \"ManufacturingCell\", \"ManufacturingFacility\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00002",
+        "text": "LOW LUBRICATION OIL LEVEL",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that the lubrication oil level has fallen below a predefined threshold, prompting monitoring or shutdown actions.",
+      "ontology_hints": [
+        "Observation event",
+        "Alarm type",
+        "Situation S1 or S2 context",
+        "Located at a Workstation or Production Line",
+        "Triggers maintenance intervention"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that the lubrication oil level has fallen below a predefined threshold, prompting monitoring or shutdown actions.\", \"ontology_hints\": [\"Observation event\", \"Alarm type\", \"Situation S1 or S2 context\", \"Located at a Workstation or Production Line\", \"Triggers maintenance intervention\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00003",
+        "text": "LUBRICATION AT LOSS: PRESSURE NOT REACHED",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "Lubrication loss: pressure not reached",
+        "Lubrication failure: pressure below threshold",
+        "Lubrication pressure alarm"
+      ],
+      "synonyms": [
+        "Lubrication loss alarm",
+        "Pressure not reached alarm",
+        "Lubrication pressure failure"
+      ],
+      "lexical_variants": [
+        "LUBRICATION AT LOSS: PRESSURE NOT REACHED",
+        "Lubrication at loss: pressure not reached",
+        "Lubrication loss: pressure not reached"
+      ],
+      "alias_sources": {
+        "Lubrication loss: pressure not reached": [
+          "llm"
+        ],
+        "Lubrication failure: pressure below threshold": [
+          "llm"
+        ],
+        "Lubrication pressure alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Lubrication loss alarm": [
+          "llm"
+        ],
+        "Pressure not reached alarm": [
+          "llm"
+        ],
+        "Lubrication pressure failure": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "LUBRICATION AT LOSS: PRESSURE NOT REACHED": [
+          "llm"
+        ],
+        "Lubrication at loss: pressure not reached": [
+          "llm"
+        ],
+        "Lubrication loss: pressure not reached": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating that the lubrication system failed to achieve the required pressure, implying a loss of lubrication and potential damage to the machine.",
+      "ontology_hints": [
+        "triggers: LubricationFailureEvent",
+        "causes: PressureBelowThreshold",
+        "requires: LubricationReplenishment",
+        "handled_by: MaintenanceStaff",
+        "references: PressureSensor",
+        "related_to: ManufacturingProcess",
+        "related_to: HumanProcess",
+        "related_to: ProductionLine",
+        "related_to: LogisticProcess"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Lubrication loss: pressure not reached\", \"Lubrication failure: pressure below threshold\", \"Lubrication pressure alarm\"], \"synonyms\": [\"Lubrication loss alarm\", \"Pressure not reached alarm\", \"Lubrication pressure failure\"], \"lexical_variants\": [\"LUBRICATION AT LOSS: PRESSURE NOT REACHED\", \"Lubrication at loss: pressure not reached\", \"Lubrication loss: pressure not reached\"], \"definition\": \"An alarm indicating that the lubrication system failed to achieve the required pressure, implying a loss of lubrication and potential damage to the machine.\", \"ontology_hints\": [\"triggers: LubricationFailureEvent\", \"causes: PressureBelowThreshold\", \"requires: LubricationReplenishment\", \"handled_by: MaintenanceStaff\", \"references: PressureSensor\", \"related_to: ManufacturingProcess\", \"related_to: HumanProcess\", \"related_to: ProductionLine\", \"related_to: LogisticProcess\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00004",
+        "text": "CHIP CONVEYOR OVERLOAD",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "Chip conveyor overload alarm"
+      ],
+      "synonyms": [
+        "Conveyor overload",
+        "Chip conveyor overloading"
+      ],
+      "lexical_variants": [
+        "CHIP CONVEYOR OVERLOAD",
+        "Chip conveyor overload",
+        "Chip conveyor overload alarm"
+      ],
+      "alias_sources": {
+        "Chip conveyor overload alarm": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Conveyor overload": [
+          "llm"
+        ],
+        "Chip conveyor overloading": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "CHIP CONVEYOR OVERLOAD": [
+          "llm"
+        ],
+        "Chip conveyor overload": [
+          "llm"
+        ],
+        "Chip conveyor overload alarm": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm indicating that the chip conveyor has exceeded its load capacity, violating operational constraints and requiring technician intervention.",
+      "ontology_hints": [
+        "TRIGGERS: overload event",
+        "CAUSES: overload",
+        "REQUIRES: Technician intervention",
+        "REFERENCES: Manufacturing Cell",
+        "DETECTED_BY: overload sensor"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Chip conveyor overload alarm\"], \"synonyms\": [\"Conveyor overload\", \"Chip conveyor overloading\"], \"lexical_variants\": [\"CHIP CONVEYOR OVERLOAD\", \"Chip conveyor overload\", \"Chip conveyor overload alarm\"], \"definition\": \"An alarm indicating that the chip conveyor has exceeded its load capacity, violating operational constraints and requiring technician intervention.\", \"ontology_hints\": [\"TRIGGERS: overload event\", \"CAUSES: overload\", \"REQUIRES: Technician intervention\", \"REFERENCES: Manufacturing Cell\", \"DETECTED_BY: overload sensor\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00005",
+        "text": "CHIP CONVEYOR BLOCKED",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that the chip conveyor is blocked, interrupting the manufacturing process and requiring technician intervention.",
+      "ontology_hints": [
+        "Machine",
+        "Process",
+        "Technician"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that the chip conveyor is blocked, interrupting the manufacturing process and requiring technician intervention.\", \"ontology_hints\": [\"Machine\", \"Process\", \"Technician\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00006",
+        "text": "OVERLOAD CONTROL DEVICE FAILURE",
+        "label": "alarm type"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm indicating that the overload control device has failed, thereby violating the system constraint for safe operation.",
+      "ontology_hints": [
+        "Observable Property",
+        "Constraint",
+        "Feature",
+        "Production Line",
+        "Logistic Process"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm indicating that the overload control device has failed, thereby violating the system constraint for safe operation.\", \"ontology_hints\": [\"Observable Property\", \"Constraint\", \"Feature\", \"Production Line\", \"Logistic Process\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00007",
+        "text": "FEEDER: BAR CHANGE PHASE",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "Feeder bar change phase alarm",
+        "Feeder bar change phase alert"
+      ],
+      "synonyms": [
+        "Feeder bar change phase alert",
+        "Feeder bar change phase notification"
+      ],
+      "lexical_variants": [
+        "Feeder: Bar Change Phase",
+        "Feeder Bar Change Phase",
+        "Feeder bar change phase"
+      ],
+      "alias_sources": {
+        "Feeder bar change phase alarm": [
+          "llm"
+        ],
+        "Feeder bar change phase alert": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Feeder bar change phase alert": [
+          "llm"
+        ],
+        "Feeder bar change phase notification": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Feeder: Bar Change Phase": [
+          "llm"
+        ],
+        "Feeder Bar Change Phase": [
+          "llm"
+        ],
+        "Feeder bar change phase": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm that indicates the feeder machine is in the bar change phase, a human‑performed operation that changes the phase of the bar.",
+      "ontology_hints": [
+        "Human Process",
+        "Observable Property",
+        "Feature of Interest",
+        "Machine",
+        "Technician"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Feeder bar change phase alarm\", \"Feeder bar change phase alert\"], \"synonyms\": [\"Feeder bar change phase alert\", \"Feeder bar change phase notification\"], \"lexical_variants\": [\"Feeder: Bar Change Phase\", \"Feeder Bar Change Phase\", \"Feeder bar change phase\"], \"definition\": \"An alarm that indicates the feeder machine is in the bar change phase, a human‑performed operation that changes the phase of the bar.\", \"ontology_hints\": [\"Human Process\", \"Observable Property\", \"Feature of Interest\", \"Machine\", \"Technician\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00008",
+        "text": "Only display of the message",
+        "label": "alarm effect"
+      },
+      "aliases": [
+        "Only display of the message"
+      ],
+      "synonyms": [
+        "display-only alert",
+        "visual-only notification",
+        "message displayed only",
+        "screen-only alarm"
+      ],
+      "lexical_variants": [
+        "display-only message",
+        "message displayed only",
+        "visual display only",
+        "screen-only notification"
+      ],
+      "alias_sources": {
+        "Only display of the message": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "display-only alert": [
+          "llm"
+        ],
+        "visual-only notification": [
+          "llm"
+        ],
+        "message displayed only": [
+          "llm"
+        ],
+        "screen-only alarm": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "display-only message": [
+          "llm"
+        ],
+        "message displayed only": [
+          "llm"
+        ],
+        "visual display only": [
+          "llm"
+        ],
+        "screen-only notification": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm effect in which the system presents a message solely on a visual display, without initiating any additional mechanical or safety actions.",
+      "ontology_hints": [
+        "Platform",
+        "Display",
+        "AlarmEffect",
+        "FeatureOfInterest",
+        "ProductionLine",
+        "SpatialObject"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Only display of the message\"], \"synonyms\": [\"display-only alert\", \"visual-only notification\", \"message displayed only\", \"screen-only alarm\"], \"lexical_variants\": [\"display-only message\", \"message displayed only\", \"visual display only\", \"screen-only notification\"], \"definition\": \"An alarm effect in which the system presents a message solely on a visual display, without initiating any additional mechanical or safety actions.\", \"ontology_hints\": [\"Platform\", \"Display\", \"AlarmEffect\", \"FeatureOfInterest\", \"ProductionLine\", \"SpatialObject\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00009",
+        "text": "Warns the operator that the machining cycle is suspended on hold",
+        "label": "alarm effect"
+      },
+      "aliases": [
+        "Machining cycle hold alert",
+        "Process suspension warning"
+      ],
+      "synonyms": [
+        "alerts",
+        "notifies"
+      ],
+      "lexical_variants": [
+        "Warns operator that machining cycle is suspended",
+        "Warns operator: machining cycle on hold"
+      ],
+      "alias_sources": {
+        "Machining cycle hold alert": [
+          "llm"
+        ],
+        "Process suspension warning": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "alerts": [
+          "llm"
+        ],
+        "notifies": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Warns operator that machining cycle is suspended": [
+          "llm"
+        ],
+        "Warns operator: machining cycle on hold": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm effect that informs the operator that the machining cycle has been suspended, indicating a paused state of the manufacturing process within a manufacturing cell or workstation.",
+      "ontology_hints": [
+        "AlarmEffect",
+        "SuspendedManufacturingProcess",
+        "OperatorNotification",
+        "ManufacturingCellContext",
+        "WorkstationContext"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Machining cycle hold alert\", \"Process suspension warning\"], \"synonyms\": [\"alerts\", \"notifies\"], \"lexical_variants\": [\"Warns operator that machining cycle is suspended\", \"Warns operator: machining cycle on hold\"], \"definition\": \"An alarm effect that informs the operator that the machining cycle has been suspended, indicating a paused state of the manufacturing process within a manufacturing cell or workstation.\", \"ontology_hints\": [\"AlarmEffect\", \"SuspendedManufacturingProcess\", \"OperatorNotification\", \"ManufacturingCellContext\", \"WorkstationContext\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00010",
+        "text": "The axes can be moved as well with the door closed",
+        "label": "effect"
+      },
+      "aliases": [
+        "axes movement with door closed",
+        "door closed axis movement"
+      ],
+      "synonyms": [
+        "axes can be moved while the door remains closed",
+        "axes can be moved even with the door closed",
+        "axes can be moved with the door shut"
+      ],
+      "lexical_variants": [
+        "axes can be moved while the door is closed",
+        "axes can be moved even when the door is closed",
+        "axes can be moved with the door shut"
+      ],
+      "alias_sources": {
+        "axes movement with door closed": [
+          "llm"
+        ],
+        "door closed axis movement": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "axes can be moved while the door remains closed": [
+          "llm"
+        ],
+        "axes can be moved even with the door closed": [
+          "llm"
+        ],
+        "axes can be moved with the door shut": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "axes can be moved while the door is closed": [
+          "llm"
+        ],
+        "axes can be moved even when the door is closed": [
+          "llm"
+        ],
+        "axes can be moved with the door shut": [
+          "llm"
+        ]
+      },
+      "definition": "The axes of the machine can be moved even when the door is closed, indicating that the door does not restrict axis movement.",
+      "ontology_hints": [
+        "Manufacturing Facility",
+        "Manufacturing Cell",
+        "Feature of Interest (axes, door)",
+        "Human Process (operator moving axes)",
+        "Temporal Entity (time of movement)",
+        "Effect"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"axes movement with door closed\", \"door closed axis movement\"], \"synonyms\": [\"axes can be moved while the door remains closed\", \"axes can be moved even with the door closed\", \"axes can be moved with the door shut\"], \"lexical_variants\": [\"axes can be moved while the door is closed\", \"axes can be moved even when the door is closed\", \"axes can be moved with the door shut\"], \"definition\": \"The axes of the machine can be moved even when the door is closed, indicating that the door does not restrict axis movement.\", \"ontology_hints\": [\"Manufacturing Facility\", \"Manufacturing Cell\", \"Feature of Interest (axes, door)\", \"Human Process (operator moving axes)\", \"Temporal Entity (time of movement)\", \"Effect\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00011",
+        "text": "The axes can be moved both with the door closed and with the door open, by the two-hand control.",
+        "label": "effect"
+      },
+      "aliases": [
+        "axis movement",
+        "axis operation",
+        "hand‑operated axis control"
+      ],
+      "synonyms": [
+        "axes can be moved",
+        "axes can be operated",
+        "axes can be moved regardless of door status"
+      ],
+      "lexical_variants": [
+        "two‑hand control",
+        "dual‑hand control",
+        "hand‑operated control"
+      ],
+      "alias_sources": {
+        "axis movement": [
+          "llm"
+        ],
+        "axis operation": [
+          "llm"
+        ],
+        "hand‑operated axis control": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "axes can be moved": [
+          "llm"
+        ],
+        "axes can be operated": [
+          "llm"
+        ],
+        "axes can be moved regardless of door status": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "two‑hand control": [
+          "llm"
+        ],
+        "dual‑hand control": [
+          "llm"
+        ],
+        "hand‑operated control": [
+          "llm"
+        ]
+      },
+      "definition": "The ability to move machine axes using a two‑hand control, irrespective of whether the machine door is open or closed.",
+      "ontology_hints": [
+        "HumanProcess",
+        "Workstation",
+        "Observation",
+        "TemporalEntity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"axis movement\", \"axis operation\", \"hand‑operated axis control\"], \"synonyms\": [\"axes can be moved\", \"axes can be operated\", \"axes can be moved regardless of door status\"], \"lexical_variants\": [\"two‑hand control\", \"dual‑hand control\", \"hand‑operated control\"], \"definition\": \"The ability to move machine axes using a two‑hand control, irrespective of whether the machine door is open or closed.\", \"ontology_hints\": [\"HumanProcess\", \"Workstation\", \"Observation\", \"TemporalEntity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00012",
+        "text": "The buffer battery which powers the CNC memory with the machine off is exhausted.",
+        "label": "alarm cause"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An alarm cause indicating that the buffer battery, which supplies power to the CNC memory while the machine is off, has been depleted.",
+      "ontology_hints": [
+        "Observation event",
+        "Feature of Interest: buffer battery",
+        "Manufacturing Process: CNC operation",
+        "Alarm cause"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An alarm cause indicating that the buffer battery, which supplies power to the CNC memory while the machine is off, has been depleted.\", \"ontology_hints\": [\"Observation event\", \"Feature of Interest: buffer battery\", \"Manufacturing Process: CNC operation\", \"Alarm cause\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00013",
+        "text": "Tooling mode was selected",
+        "label": "alarm cause"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "The configuration step in which the machine’s tooling mode is chosen, indicating the selected tooling configuration for the manufacturing process.",
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Manufacturing Cell",
+        "Production Line",
+        "Feature of Interest"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"The configuration step in which the machine’s tooling mode is chosen, indicating the selected tooling configuration for the manufacturing process.\", \"ontology_hints\": [\"Manufacturing Process\", \"Manufacturing Cell\", \"Production Line\", \"Feature of Interest\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00014",
+        "text": "Indicates that the lubricating oil level is lower than the minimum",
+        "label": "alarm cause"
+      },
+      "aliases": [
+        "Oil level low alarm cause",
+        "Lubricant level below minimum",
+        "Oil level below minimum threshold"
+      ],
+      "synonyms": [
+        "Low lubricating oil level",
+        "Oil level too low",
+        "Lubricating oil level under minimum",
+        "Oil level below minimum"
+      ],
+      "lexical_variants": [
+        "Lubricating oil level is lower than the minimum",
+        "Lubricating oil level is below the minimum",
+        "Lubricating oil level falls below the minimum",
+        "Oil level is lower than the minimum"
+      ],
+      "alias_sources": {
+        "Oil level low alarm cause": [
+          "llm"
+        ],
+        "Lubricant level below minimum": [
+          "llm"
+        ],
+        "Oil level below minimum threshold": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Low lubricating oil level": [
+          "llm"
+        ],
+        "Oil level too low": [
+          "llm"
+        ],
+        "Lubricating oil level under minimum": [
+          "llm"
+        ],
+        "Oil level below minimum": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Lubricating oil level is lower than the minimum": [
+          "llm"
+        ],
+        "Lubricating oil level is below the minimum": [
+          "llm"
+        ],
+        "Lubricating oil level falls below the minimum": [
+          "llm"
+        ],
+        "Oil level is lower than the minimum": [
+          "llm"
+        ]
+      },
+      "definition": "An indication that the lubricating oil level has fallen below the minimum threshold, which triggers an alarm in the machine’s monitoring system.",
+      "ontology_hints": [
+        "Manufacturing Process",
+        "Manufacturing Facility",
+        "Machine State",
+        "Lubrication System",
+        "Oil Level Sensor",
+        "Alarm Trigger",
+        "Alarm Cause",
+        "Situation S1",
+        "Situation S2"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Oil level low alarm cause\", \"Lubricant level below minimum\", \"Oil level below minimum threshold\"], \"synonyms\": [\"Low lubricating oil level\", \"Oil level too low\", \"Lubricating oil level under minimum\", \"Oil level below minimum\"], \"lexical_variants\": [\"Lubricating oil level is lower than the minimum\", \"Lubricating oil level is below the minimum\", \"Lubricating oil level falls below the minimum\", \"Oil level is lower than the minimum\"], \"definition\": \"An indication that the lubricating oil level has fallen below the minimum threshold, which triggers an alarm in the machine’s monitoring system.\", \"ontology_hints\": [\"Manufacturing Process\", \"Manufacturing Facility\", \"Machine State\", \"Lubrication System\", \"Oil Level Sensor\", \"Alarm Trigger\", \"Alarm Cause\", \"Situation S1\", \"Situation S2\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00015",
+        "text": "Indicates that the pressure has not been restored in the installation",
+        "label": "alarm cause"
+      },
+      "aliases": [
+        "pressure not restored alarm cause",
+        "pressure not recovered alarm cause",
+        "pressure not returned alarm cause"
+      ],
+      "synonyms": [
+        "pressure not restored",
+        "pressure not recovered",
+        "pressure not returned"
+      ],
+      "lexical_variants": [
+        "pressure has not been restored",
+        "pressure has not been recovered",
+        "pressure has not been returned"
+      ],
+      "alias_sources": {
+        "pressure not restored alarm cause": [
+          "llm"
+        ],
+        "pressure not recovered alarm cause": [
+          "llm"
+        ],
+        "pressure not returned alarm cause": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "pressure not restored": [
+          "llm"
+        ],
+        "pressure not recovered": [
+          "llm"
+        ],
+        "pressure not returned": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "pressure has not been restored": [
+          "llm"
+        ],
+        "pressure has not been recovered": [
+          "llm"
+        ],
+        "pressure has not been returned": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm cause indicating that the lubrication pressure has failed to return to its expected level in the installation, thereby triggering a pressure‑related alarm.",
+      "ontology_hints": [
+        "has_feature_of_interest: installation",
+        "has_observation: pressure",
+        "is_a: Situation",
+        "triggers: alarm",
+        "requires: maintenance intervention",
+        "handled_by: maintenance engineer"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"pressure not restored alarm cause\", \"pressure not recovered alarm cause\", \"pressure not returned alarm cause\"], \"synonyms\": [\"pressure not restored\", \"pressure not recovered\", \"pressure not returned\"], \"lexical_variants\": [\"pressure has not been restored\", \"pressure has not been recovered\", \"pressure has not been returned\"], \"definition\": \"An alarm cause indicating that the lubrication pressure has failed to return to its expected level in the installation, thereby triggering a pressure‑related alarm.\", \"ontology_hints\": [\"has_feature_of_interest: installation\", \"has_observation: pressure\", \"is_a: Situation\", \"triggers: alarm\", \"requires: maintenance intervention\", \"handled_by: maintenance engineer\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00016",
+        "text": "Excessive machining residue prevents the operation of the chip conveyor.",
+        "label": "alarm cause"
+      },
+      "aliases": [
+        "Excessive machining residue",
+        "High machining residue",
+        "Overabundant machining residue"
+      ],
+      "synonyms": [
+        "Excessive machining residue",
+        "High machining residue",
+        "Overabundant machining residue"
+      ],
+      "lexical_variants": [
+        "Excessive machining residue",
+        "Excessive chip residue",
+        "Excessive machining debris"
+      ],
+      "alias_sources": {
+        "Excessive machining residue": [
+          "llm"
+        ],
+        "High machining residue": [
+          "llm"
+        ],
+        "Overabundant machining residue": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Excessive machining residue": [
+          "llm"
+        ],
+        "High machining residue": [
+          "llm"
+        ],
+        "Overabundant machining residue": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Excessive machining residue": [
+          "llm"
+        ],
+        "Excessive chip residue": [
+          "llm"
+        ],
+        "Excessive machining debris": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm cause in which an abnormally high level of machining residue blocks or prevents the operation of the chip conveyor.",
+      "ontology_hints": [
+        "Observable Property: machining residue level",
+        "Feature of Interest: chip conveyor",
+        "Situation S1",
+        "Situation S2",
+        "Situation S3",
+        "causes",
+        "prevents operation"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Excessive machining residue\", \"High machining residue\", \"Overabundant machining residue\"], \"synonyms\": [\"Excessive machining residue\", \"High machining residue\", \"Overabundant machining residue\"], \"lexical_variants\": [\"Excessive machining residue\", \"Excessive chip residue\", \"Excessive machining debris\"], \"definition\": \"An alarm cause in which an abnormally high level of machining residue blocks or prevents the operation of the chip conveyor.\", \"ontology_hints\": [\"Observable Property: machining residue level\", \"Feature of Interest: chip conveyor\", \"Situation S1\", \"Situation S2\", \"Situation S3\", \"causes\", \"prevents operation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00017",
+        "text": "Despite attempts made in automatic mode to unblock the conveyor or the endless screw is jammed, the problem persists",
+        "label": "alarm cause"
+      },
+      "aliases": [
+        "persistent jam on conveyor or endless screw",
+        "jammed conveyor or endless screw",
+        "unblocking failure on conveyor or endless screw"
+      ],
+      "synonyms": [
+        "persistent jam",
+        "jammed conveyor",
+        "jammed endless screw",
+        "blocked conveyor",
+        "blocked endless screw",
+        "unblocking attempt failed"
+      ],
+      "lexical_variants": [
+        "jammed conveyor",
+        "jammed endless screw",
+        "persistent jam",
+        "unblocking attempt failed",
+        "blocked conveyor",
+        "blocked endless screw"
+      ],
+      "alias_sources": {
+        "persistent jam on conveyor or endless screw": [
+          "llm"
+        ],
+        "jammed conveyor or endless screw": [
+          "llm"
+        ],
+        "unblocking failure on conveyor or endless screw": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "persistent jam": [
+          "llm"
+        ],
+        "jammed conveyor": [
+          "llm"
+        ],
+        "jammed endless screw": [
+          "llm"
+        ],
+        "blocked conveyor": [
+          "llm"
+        ],
+        "blocked endless screw": [
+          "llm"
+        ],
+        "unblocking attempt failed": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "jammed conveyor": [
+          "llm"
+        ],
+        "jammed endless screw": [
+          "llm"
+        ],
+        "persistent jam": [
+          "llm"
+        ],
+        "unblocking attempt failed": [
+          "llm"
+        ],
+        "blocked conveyor": [
+          "llm"
+        ],
+        "blocked endless screw": [
+          "llm"
+        ]
+      },
+      "definition": "A condition where a conveyor or endless screw remains jammed despite automatic unblocking attempts, resulting in a persistent problem.",
+      "ontology_hints": [
+        "FeatureOfInterest: conveyor, endless screw",
+        "ObservableProperty: jammed status",
+        "Situation S1: unblocking attempt",
+        "Situation S2: jammed state",
+        "Situation S3: ongoing problem",
+        "has observable property: jammed status",
+        "situation time: time of persistent jam",
+        "requires: manual intervention",
+        "handled_by: maintenance staff"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"persistent jam on conveyor or endless screw\", \"jammed conveyor or endless screw\", \"unblocking failure on conveyor or endless screw\"], \"synonyms\": [\"persistent jam\", \"jammed conveyor\", \"jammed endless screw\", \"blocked conveyor\", \"blocked endless screw\", \"unblocking attempt failed\"], \"lexical_variants\": [\"jammed conveyor\", \"jammed endless screw\", \"persistent jam\", \"unblocking attempt failed\", \"blocked conveyor\", \"blocked endless screw\"], \"definition\": \"A condition where a conveyor or endless screw remains jammed despite automatic unblocking attempts, resulting in a persistent problem.\", \"ontology_hints\": [\"FeatureOfInterest: conveyor, endless screw\", \"ObservableProperty: jammed status\", \"Situation S1: unblocking attempt\", \"Situation S2: jammed state\", \"Situation S3: ongoing problem\", \"has observable property: jammed status\", \"situation time: time of persistent jam\", \"requires: manual intervention\", \"handled_by: maintenance staff\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00018",
+        "text": "The behavior of the “concause overload control device: chip voyeur” is abnormal, for this reason the logic system considers it to be faulty.",
+        "label": "alarm cause"
+      },
+      "aliases": [
+        "concause overload control device: chip voyeur",
+        "concause overload control device chip voyeur",
+        "overload control device: chip voyeur"
+      ],
+      "synonyms": [
+        "faulty",
+        "defective",
+        "malfunctioning"
+      ],
+      "lexical_variants": [
+        "concause overload control device: chip voyeur",
+        "concause overload control device chip voyeur",
+        "overload control device: chip voyeur",
+        "logic system considers it to be faulty",
+        "logic system deems it faulty"
+      ],
+      "alias_sources": {
+        "concause overload control device: chip voyeur": [
+          "llm"
+        ],
+        "concause overload control device chip voyeur": [
+          "llm"
+        ],
+        "overload control device: chip voyeur": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "faulty": [
+          "llm"
+        ],
+        "defective": [
+          "llm"
+        ],
+        "malfunctioning": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "concause overload control device: chip voyeur": [
+          "llm"
+        ],
+        "concause overload control device chip voyeur": [
+          "llm"
+        ],
+        "overload control device: chip voyeur": [
+          "llm"
+        ],
+        "logic system considers it to be faulty": [
+          "llm"
+        ],
+        "logic system deems it faulty": [
+          "llm"
+        ]
+      },
+      "definition": "An abnormal behavior of the concause overload control device: chip voyeur that triggers the logic system to classify the device as faulty, thereby serving as the cause of the overload control device failure alarm.",
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "ManufacturingFacility",
+        "Technician",
+        "HumanProcess",
+        "ProductionLine",
+        "AlarmCause",
+        "FaultyDevice",
+        "AbnormalBehavior",
+        "LogicSystemDetection"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"concause overload control device: chip voyeur\", \"concause overload control device chip voyeur\", \"overload control device: chip voyeur\"], \"synonyms\": [\"faulty\", \"defective\", \"malfunctioning\"], \"lexical_variants\": [\"concause overload control device: chip voyeur\", \"concause overload control device chip voyeur\", \"overload control device: chip voyeur\", \"logic system considers it to be faulty\", \"logic system deems it faulty\"], \"definition\": \"An abnormal behavior of the concause overload control device: chip voyeur that triggers the logic system to classify the device as faulty, thereby serving as the cause of the overload control device failure alarm.\", \"ontology_hints\": [\"FeatureOfInterest\", \"ManufacturingFacility\", \"Technician\", \"HumanProcess\", \"ProductionLine\", \"AlarmCause\", \"FaultyDevice\", \"AbnormalBehavior\", \"LogicSystemDetection\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00019",
+        "text": "Replace the battery with the machine switched on to avoid losing the memorized data.",
+        "label": "intervention"
+      },
+      "aliases": [
+        "battery replacement while machine on",
+        "battery swap on powered machine"
+      ],
+      "synonyms": [
+        "replace battery while machine powered",
+        "swap battery while machine on",
+        "change battery without shutting down"
+      ],
+      "lexical_variants": [
+        "battery replacement while machine powered",
+        "battery swap on machine",
+        "replace battery while machine on"
+      ],
+      "alias_sources": {
+        "battery replacement while machine on": [
+          "llm"
+        ],
+        "battery swap on powered machine": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "replace battery while machine powered": [
+          "llm"
+        ],
+        "swap battery while machine on": [
+          "llm"
+        ],
+        "change battery without shutting down": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "battery replacement while machine powered": [
+          "llm"
+        ],
+        "battery swap on machine": [
+          "llm"
+        ],
+        "replace battery while machine on": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention in which the battery is replaced while the machine remains powered on, to prevent loss of memorized data.",
+      "ontology_hints": [
+        "replace(battery, machine)",
+        "switch_on(machine)",
+        "preserve_data(memorized_data)",
+        "intervention_type(battery_replacement)",
+        "context(Manufacturing_Facility)",
+        "situation(Situation_S1 or Situation_S2)"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"battery replacement while machine on\", \"battery swap on powered machine\"], \"synonyms\": [\"replace battery while machine powered\", \"swap battery while machine on\", \"change battery without shutting down\"], \"lexical_variants\": [\"battery replacement while machine powered\", \"battery swap on machine\", \"replace battery while machine on\"], \"definition\": \"An intervention in which the battery is replaced while the machine remains powered on, to prevent loss of memorized data.\", \"ontology_hints\": [\"replace(battery, machine)\", \"switch_on(machine)\", \"preserve_data(memorized_data)\", \"intervention_type(battery_replacement)\", \"context(Manufacturing_Facility)\", \"situation(Situation_S1 or Situation_S2)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00020",
+        "text": "Add oil.",
+        "label": "intervention"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An action performed by an operator to add lubricating oil to a machine in response to a low oil level.",
+      "ontology_hints": [
+        "Action",
+        "HumanProcess",
+        "FeatureOfInterest",
+        "Machine"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An action performed by an operator to add lubricating oil to a machine in response to a low oil level.\", \"ontology_hints\": [\"Action\", \"HumanProcess\", \"FeatureOfInterest\", \"Machine\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00021",
+        "text": "Check the operation of the pump or any faults in the pressure switch.",
+        "label": "intervention"
+      },
+      "aliases": [
+        "pump operation check",
+        "pressure switch fault inspection"
+      ],
+      "synonyms": [
+        "inspect pump operation",
+        "verify pump function",
+        "examine pressure switch for faults"
+      ],
+      "lexical_variants": [
+        "check pump operation",
+        "check for faults in pressure switch"
+      ],
+      "alias_sources": {
+        "pump operation check": [
+          "llm"
+        ],
+        "pressure switch fault inspection": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "inspect pump operation": [
+          "llm"
+        ],
+        "verify pump function": [
+          "llm"
+        ],
+        "examine pressure switch for faults": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "check pump operation": [
+          "llm"
+        ],
+        "check for faults in pressure switch": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention performed by a maintenance technician to verify the operational status of a pump and to inspect the pressure switch for any faults, typically as part of troubleshooting a lubrication pressure alarm in a manufacturing process.",
+      "ontology_hints": [
+        "hasFeatureOfInterest: pump",
+        "hasFeatureOfInterest: pressure switch",
+        "performedBy: maintenance technician",
+        "partOf: manufacturing process",
+        "TRIGGERS: lubrication pressure alarm",
+        "HANDLED_BY: maintenance technician",
+        "REFERENCES: lubrication pressure alarm"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"pump operation check\", \"pressure switch fault inspection\"], \"synonyms\": [\"inspect pump operation\", \"verify pump function\", \"examine pressure switch for faults\"], \"lexical_variants\": [\"check pump operation\", \"check for faults in pressure switch\"], \"definition\": \"An intervention performed by a maintenance technician to verify the operational status of a pump and to inspect the pressure switch for any faults, typically as part of troubleshooting a lubrication pressure alarm in a manufacturing process.\", \"ontology_hints\": [\"hasFeatureOfInterest: pump\", \"hasFeatureOfInterest: pressure switch\", \"performedBy: maintenance technician\", \"partOf: manufacturing process\", \"TRIGGERS: lubrication pressure alarm\", \"HANDLED_BY: maintenance technician\", \"REFERENCES: lubrication pressure alarm\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00022",
+        "text": "Remove material from chip evacuation area.",
+        "label": "intervention"
+      },
+      "aliases": [
+        "Chip evacuation area clearance",
+        "Chip removal from evacuation area",
+        "Clear chip evacuation area"
+      ],
+      "synonyms": [
+        "Clear chip evacuation area",
+        "Chip evacuation area clearing",
+        "Remove chips from evacuation area"
+      ],
+      "lexical_variants": [
+        "Remove material from chip evacuation area",
+        "Clear chip evacuation area",
+        "Chip evacuation area clearance",
+        "Remove chips from chip evacuation area"
+      ],
+      "alias_sources": {
+        "Chip evacuation area clearance": [
+          "llm"
+        ],
+        "Chip removal from evacuation area": [
+          "llm"
+        ],
+        "Clear chip evacuation area": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Clear chip evacuation area": [
+          "llm"
+        ],
+        "Chip evacuation area clearing": [
+          "llm"
+        ],
+        "Remove chips from evacuation area": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Remove material from chip evacuation area": [
+          "llm"
+        ],
+        "Clear chip evacuation area": [
+          "llm"
+        ],
+        "Chip evacuation area clearance": [
+          "llm"
+        ],
+        "Remove chips from chip evacuation area": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention performed by maintenance personnel to remove accumulated chips or debris from the chip evacuation area, thereby preventing conveyor overload and maintaining safe machine operation.",
+      "ontology_hints": [
+        "Intervention",
+        "Spatial Object (chip evacuation area)",
+        "Manufacturing Process (chip evacuation process)",
+        "Production Line (location of the evacuation area)",
+        "Observation (sensor detecting overload or material accumulation)",
+        "Temporal Entity (time interval of the removal action)",
+        "Requires (maintenance staff, tools)",
+        "Handled_by (maintenance technician)",
+        "References (machine manual section on chip evacuation)"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Chip evacuation area clearance\", \"Chip removal from evacuation area\", \"Clear chip evacuation area\"], \"synonyms\": [\"Clear chip evacuation area\", \"Chip evacuation area clearing\", \"Remove chips from evacuation area\"], \"lexical_variants\": [\"Remove material from chip evacuation area\", \"Clear chip evacuation area\", \"Chip evacuation area clearance\", \"Remove chips from chip evacuation area\"], \"definition\": \"An intervention performed by maintenance personnel to remove accumulated chips or debris from the chip evacuation area, thereby preventing conveyor overload and maintaining safe machine operation.\", \"ontology_hints\": [\"Intervention\", \"Spatial Object (chip evacuation area)\", \"Manufacturing Process (chip evacuation process)\", \"Production Line (location of the evacuation area)\", \"Observation (sensor detecting overload or material accumulation)\", \"Temporal Entity (time interval of the removal action)\", \"Requires (maintenance staff, tools)\", \"Handled_by (maintenance technician)\", \"References (machine manual section on chip evacuation)\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00023",
+        "text": "Find the cause of the jamming of the conveyor or the auger and eliminate it.",
+        "label": "intervention"
+      },
+      "aliases": [
+        "identify the cause of the blockage",
+        "determine the source of the jam",
+        "locate the obstruction",
+        "eliminate the jam"
+      ],
+      "synonyms": [
+        "identify",
+        "determine",
+        "ascertain",
+        "locate",
+        "eliminate",
+        "remove",
+        "eradicate"
+      ],
+      "lexical_variants": [
+        "cause of jamming",
+        "cause of blockage",
+        "source of obstruction",
+        "eliminate the jam",
+        "remove the blockage"
+      ],
+      "alias_sources": {
+        "identify the cause of the blockage": [
+          "llm"
+        ],
+        "determine the source of the jam": [
+          "llm"
+        ],
+        "locate the obstruction": [
+          "llm"
+        ],
+        "eliminate the jam": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "identify": [
+          "llm"
+        ],
+        "determine": [
+          "llm"
+        ],
+        "ascertain": [
+          "llm"
+        ],
+        "locate": [
+          "llm"
+        ],
+        "eliminate": [
+          "llm"
+        ],
+        "remove": [
+          "llm"
+        ],
+        "eradicate": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "cause of jamming": [
+          "llm"
+        ],
+        "cause of blockage": [
+          "llm"
+        ],
+        "source of obstruction": [
+          "llm"
+        ],
+        "eliminate the jam": [
+          "llm"
+        ],
+        "remove the blockage": [
+          "llm"
+        ]
+      },
+      "definition": "A maintenance intervention that involves locating the underlying reason for a blockage in a conveyor or auger and taking corrective action to remove the obstruction, thereby restoring normal operation.",
+      "ontology_hints": [
+        "intervention",
+        "maintenance action",
+        "problem resolution",
+        "hasFeatureOfInterest",
+        "occursAt",
+        "locatedIn",
+        "subjectToConstraint",
+        "hasCause",
+        "hasSolution",
+        "FeatureOfInterest",
+        "TemporalEntity",
+        "ManufacturingFacility",
+        "ManufacturingCell",
+        "Constraint"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"identify the cause of the blockage\", \"determine the source of the jam\", \"locate the obstruction\", \"eliminate the jam\"], \"synonyms\": [\"identify\", \"determine\", \"ascertain\", \"locate\", \"eliminate\", \"remove\", \"eradicate\"], \"lexical_variants\": [\"cause of jamming\", \"cause of blockage\", \"source of obstruction\", \"eliminate the jam\", \"remove the blockage\"], \"definition\": \"A maintenance intervention that involves locating the underlying reason for a blockage in a conveyor or auger and taking corrective action to remove the obstruction, thereby restoring normal operation.\", \"ontology_hints\": [\"intervention\", \"maintenance action\", \"problem resolution\", \"hasFeatureOfInterest\", \"occursAt\", \"locatedIn\", \"subjectToConstraint\", \"hasCause\", \"hasSolution\", \"FeatureOfInterest\", \"TemporalEntity\", \"ManufacturingFacility\", \"ManufacturingCell\", \"Constraint\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00024",
+        "text": "Make sure that this device works correctly.",
+        "label": "intervention"
+      },
+      "aliases": [
+        "Device verification",
+        "Device check"
+      ],
+      "synonyms": [
+        "Verify device operation",
+        "Check device functionality"
+      ],
+      "lexical_variants": [
+        "Make sure this device works correctly",
+        "Make sure that this device operates correctly"
+      ],
+      "alias_sources": {
+        "Device verification": [
+          "llm"
+        ],
+        "Device check": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Verify device operation": [
+          "llm"
+        ],
+        "Check device functionality": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Make sure this device works correctly": [
+          "llm"
+        ],
+        "Make sure that this device operates correctly": [
+          "llm"
+        ]
+      },
+      "definition": "An action performed by a human operator to confirm that a device is functioning correctly, typically as part of maintenance or safety checks.",
+      "ontology_hints": [
+        "HumanProcess",
+        "ManufacturingProcess",
+        "VerificationActivity",
+        "CalibrationActivity",
+        "FeatureOfInterest",
+        "SpatialObject"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Device verification\", \"Device check\"], \"synonyms\": [\"Verify device operation\", \"Check device functionality\"], \"lexical_variants\": [\"Make sure this device works correctly\", \"Make sure that this device operates correctly\"], \"definition\": \"An action performed by a human operator to confirm that a device is functioning correctly, typically as part of maintenance or safety checks.\", \"ontology_hints\": [\"HumanProcess\", \"ManufacturingProcess\", \"VerificationActivity\", \"CalibrationActivity\", \"FeatureOfInterest\", \"SpatialObject\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00025",
+        "text": "Check input X2.6 page 14 of the electrical diagram.",
+        "label": "intervention"
+      },
+      "aliases": [
+        "Verify input X2.6 page 14 of the electrical diagram",
+        "Inspect input X2.6 on page 14 of the electrical diagram"
+      ],
+      "synonyms": [
+        "Check input X2.6 page 14 of the electrical diagram",
+        "Verify input X2.6 page 14 of the electrical diagram",
+        "Inspect input X2.6 page 14 of the electrical diagram"
+      ],
+      "lexical_variants": [
+        "Check input X2.6 page 14 of the electrical diagram"
+      ],
+      "alias_sources": {
+        "Verify input X2.6 page 14 of the electrical diagram": [
+          "llm"
+        ],
+        "Inspect input X2.6 on page 14 of the electrical diagram": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Check input X2.6 page 14 of the electrical diagram": [
+          "llm"
+        ],
+        "Verify input X2.6 page 14 of the electrical diagram": [
+          "llm"
+        ],
+        "Inspect input X2.6 page 14 of the electrical diagram": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Check input X2.6 page 14 of the electrical diagram": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention performed to confirm the status or connectivity of input X2.6 as indicated on page 14 of the electrical diagram.",
+      "ontology_hints": [
+        "intervention",
+        "hasFeatureOfInterest: input X2.6",
+        "references: page 14 of the electrical diagram",
+        "performedBy: Technician",
+        "locatedIn: SpatialObject (electrical diagram)",
+        "temporalEntity: interval covering the time of the check"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Verify input X2.6 page 14 of the electrical diagram\", \"Inspect input X2.6 on page 14 of the electrical diagram\"], \"synonyms\": [\"Check input X2.6 page 14 of the electrical diagram\", \"Verify input X2.6 page 14 of the electrical diagram\", \"Inspect input X2.6 page 14 of the electrical diagram\"], \"lexical_variants\": [\"Check input X2.6 page 14 of the electrical diagram\"], \"definition\": \"An intervention performed to confirm the status or connectivity of input X2.6 as indicated on page 14 of the electrical diagram.\", \"ontology_hints\": [\"intervention\", \"hasFeatureOfInterest: input X2.6\", \"references: page 14 of the electrical diagram\", \"performedBy: Technician\", \"locatedIn: SpatialObject (electrical diagram)\", \"temporalEntity: interval covering the time of the check\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00026",
+        "text": "Input X2.7 page 14 of the electrical diagram.",
+        "label": "intervention"
+      },
+      "aliases": [
+        "X2.7 input",
+        "Input X2.7",
+        "Electrical diagram page 14 input X2.7"
+      ],
+      "synonyms": [
+        "X2.7 input point",
+        "Input X2.7 point"
+      ],
+      "lexical_variants": [
+        "Input X2.7 (page 14)",
+        "X2.7 input (page 14)",
+        "Electrical diagram page 14 – X2.7 input"
+      ],
+      "alias_sources": {
+        "X2.7 input": [
+          "llm"
+        ],
+        "Input X2.7": [
+          "llm"
+        ],
+        "Electrical diagram page 14 input X2.7": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "X2.7 input point": [
+          "llm"
+        ],
+        "Input X2.7 point": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Input X2.7 (page 14)": [
+          "llm"
+        ],
+        "X2.7 input (page 14)": [
+          "llm"
+        ],
+        "Electrical diagram page 14 – X2.7 input": [
+          "llm"
+        ]
+      },
+      "definition": "A specific input point labeled X2.7 located on page 14 of an electrical diagram, referenced as part of an intervention to address a lubrication pressure issue.",
+      "ontology_hints": [
+        "Intervention involves a Technician performing an action on a Spatial Object (the electrical diagram).",
+        "The Spatial Object contains a Feature of Interest (input X2.7).",
+        "The intervention is bound to a Temporal Entity (the time interval of the action).",
+        "Relevant classes: Feature of Interest, Spatial Object, Temporal Entity, Technician, Intervention."
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"X2.7 input\", \"Input X2.7\", \"Electrical diagram page 14 input X2.7\"], \"synonyms\": [\"X2.7 input point\", \"Input X2.7 point\"], \"lexical_variants\": [\"Input X2.7 (page 14)\", \"X2.7 input (page 14)\", \"Electrical diagram page 14 – X2.7 input\"], \"definition\": \"A specific input point labeled X2.7 located on page 14 of an electrical diagram, referenced as part of an intervention to address a lubrication pressure issue.\", \"ontology_hints\": [\"Intervention involves a Technician performing an action on a Spatial Object (the electrical diagram).\", \"The Spatial Object contains a Feature of Interest (input X2.7).\", \"The intervention is bound to a Temporal Entity (the time interval of the action).\", \"Relevant classes: Feature of Interest, Spatial Object, Temporal Entity, Technician, Intervention.\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00027",
+        "text": "Entry X4.4 page 13 of the electrical diagram.",
+        "label": "intervention"
+      },
+      "aliases": [
+        "Entry X4.4",
+        "X4.4 entry"
+      ],
+      "synonyms": [
+        "Electrical diagram entry X4.4",
+        "Diagram entry X4.4"
+      ],
+      "lexical_variants": [
+        "Entry X4.4 page 13 of the electrical diagram",
+        "Electrical diagram entry X4.4 page 13",
+        "Entry X4.4 on page 13 of the electrical diagram"
+      ],
+      "alias_sources": {
+        "Entry X4.4": [
+          "llm"
+        ],
+        "X4.4 entry": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "Electrical diagram entry X4.4": [
+          "llm"
+        ],
+        "Diagram entry X4.4": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "Entry X4.4 page 13 of the electrical diagram": [
+          "llm"
+        ],
+        "Electrical diagram entry X4.4 page 13": [
+          "llm"
+        ],
+        "Entry X4.4 on page 13 of the electrical diagram": [
+          "llm"
+        ]
+      },
+      "definition": "A reference to a specific entry (X4.4) located on page 13 of an electrical diagram, used as an intervention point for addressing chip conveyor issues in a manufacturing facility.",
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "SpatialObject",
+        "ManufacturingFacility",
+        "ProductionLine",
+        "Technician",
+        "Intervention"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Entry X4.4\", \"X4.4 entry\"], \"synonyms\": [\"Electrical diagram entry X4.4\", \"Diagram entry X4.4\"], \"lexical_variants\": [\"Entry X4.4 page 13 of the electrical diagram\", \"Electrical diagram entry X4.4 page 13\", \"Entry X4.4 on page 13 of the electrical diagram\"], \"definition\": \"A reference to a specific entry (X4.4) located on page 13 of an electrical diagram, used as an intervention point for addressing chip conveyor issues in a manufacturing facility.\", \"ontology_hints\": [\"FeatureOfInterest\", \"SpatialObject\", \"ManufacturingFacility\", \"ProductionLine\", \"Technician\", \"Intervention\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00028",
+        "text": "responsible for maintenance",
+        "label": "responsibility"
+      },
+      "aliases": [
+        "maintenance responsibility",
+        "maintenance duty",
+        "maintenance accountability",
+        "maintenance charge",
+        "maintenance obligation"
+      ],
+      "synonyms": [
+        "in charge of maintenance",
+        "accountable for maintenance",
+        "oversee maintenance",
+        "maintain responsibility"
+      ],
+      "lexical_variants": [
+        "responsible for maintenance",
+        "responsible for maintenance tasks",
+        "responsible for maintenance duties"
+      ],
+      "alias_sources": {
+        "maintenance responsibility": [
+          "llm"
+        ],
+        "maintenance duty": [
+          "llm"
+        ],
+        "maintenance accountability": [
+          "llm"
+        ],
+        "maintenance charge": [
+          "llm"
+        ],
+        "maintenance obligation": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "in charge of maintenance": [
+          "llm"
+        ],
+        "accountable for maintenance": [
+          "llm"
+        ],
+        "oversee maintenance": [
+          "llm"
+        ],
+        "maintain responsibility": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for maintenance": [
+          "llm"
+        ],
+        "responsible for maintenance tasks": [
+          "llm"
+        ],
+        "responsible for maintenance duties": [
+          "llm"
+        ]
+      },
+      "definition": "The role or entity that has the duty or obligation to perform maintenance activities on a machine, system, or platform, ensuring its proper operation and longevity.",
+      "ontology_hints": [
+        "Constraint",
+        "Resource",
+        "Platform",
+        "FeatureOfInterest",
+        "ObservableProperty",
+        "hasMaintenanceResponsibility",
+        "maintenanceRole",
+        "maintenanceDuty"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"maintenance responsibility\", \"maintenance duty\", \"maintenance accountability\", \"maintenance charge\", \"maintenance obligation\"], \"synonyms\": [\"in charge of maintenance\", \"accountable for maintenance\", \"oversee maintenance\", \"maintain responsibility\"], \"lexical_variants\": [\"responsible for maintenance\", \"responsible for maintenance tasks\", \"responsible for maintenance duties\"], \"definition\": \"The role or entity that has the duty or obligation to perform maintenance activities on a machine, system, or platform, ensuring its proper operation and longevity.\", \"ontology_hints\": [\"Constraint\", \"Resource\", \"Platform\", \"FeatureOfInterest\", \"ObservableProperty\", \"hasMaintenanceResponsibility\", \"maintenanceRole\", \"maintenanceDuty\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00029",
+        "text": "responsible for the intervention: toolmaker-adjuster",
+        "label": "responsibility"
+      },
+      "aliases": [
+        "toolmaker-adjuster",
+        "toolmaker/adjuster",
+        "toolmaker‑adjuster"
+      ],
+      "synonyms": [
+        "toolmaker",
+        "adjuster"
+      ],
+      "lexical_variants": [
+        "toolmaker-adjuster",
+        "toolmaker/adjuster",
+        "toolmaker‑adjuster"
+      ],
+      "alias_sources": {
+        "toolmaker-adjuster": [
+          "llm"
+        ],
+        "toolmaker/adjuster": [
+          "llm"
+        ],
+        "toolmaker‑adjuster": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "toolmaker": [
+          "llm"
+        ],
+        "adjuster": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "toolmaker-adjuster": [
+          "llm"
+        ],
+        "toolmaker/adjuster": [
+          "llm"
+        ],
+        "toolmaker‑adjuster": [
+          "llm"
+        ]
+      },
+      "definition": "A role or person responsible for performing tooling and adjustment tasks during machine interventions.",
+      "ontology_hints": [
+        "hasRole",
+        "responsibleFor",
+        "interventionRole"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"toolmaker-adjuster\", \"toolmaker/adjuster\", \"toolmaker‑adjuster\"], \"synonyms\": [\"toolmaker\", \"adjuster\"], \"lexical_variants\": [\"toolmaker-adjuster\", \"toolmaker/adjuster\", \"toolmaker‑adjuster\"], \"definition\": \"A role or person responsible for performing tooling and adjustment tasks during machine interventions.\", \"ontology_hints\": [\"hasRole\", \"responsibleFor\", \"interventionRole\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00030",
+        "text": "responsible for the intervention: operator",
+        "label": "responsibility"
+      },
+      "aliases": [
+        "operator"
+      ],
+      "synonyms": [
+        "operator"
+      ],
+      "lexical_variants": [
+        "operator responsible for intervention",
+        "operator in charge of intervention"
+      ],
+      "alias_sources": {
+        "operator": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "operator": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "operator responsible for intervention": [
+          "llm"
+        ],
+        "operator in charge of intervention": [
+          "llm"
+        ]
+      },
+      "definition": "A staff member who is accountable for performing or overseeing an intervention in an industrial maintenance context.",
+      "ontology_hints": [
+        "Operator",
+        "responsibility",
+        "intervention",
+        "HANDLED_BY",
+        "REQUIRES"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"operator\"], \"synonyms\": [\"operator\"], \"lexical_variants\": [\"operator responsible for intervention\", \"operator in charge of intervention\"], \"definition\": \"A staff member who is accountable for performing or overseeing an intervention in an industrial maintenance context.\", \"ontology_hints\": [\"Operator\", \"responsibility\", \"intervention\", \"HANDLED_BY\", \"REQUIRES\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00031",
+        "text": "responsible for intervention: responsible for maintenance",
+        "label": "responsibility"
+      },
+      "aliases": [
+        "responsible for intervention and maintenance"
+      ],
+      "synonyms": [
+        "liable for intervention and maintenance",
+        "in charge of intervention and maintenance",
+        "accountable for intervention and maintenance"
+      ],
+      "lexical_variants": [
+        "responsible for intervention and maintenance"
+      ],
+      "alias_sources": {
+        "responsible for intervention and maintenance": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "liable for intervention and maintenance": [
+          "llm"
+        ],
+        "in charge of intervention and maintenance": [
+          "llm"
+        ],
+        "accountable for intervention and maintenance": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "responsible for intervention and maintenance": [
+          "llm"
+        ]
+      },
+      "definition": "The duty of an agent (e.g., a production line or maintenance team) to perform both intervention and maintenance activities within a specified temporal and contextual setting.",
+      "ontology_hints": [
+        "hasResponsibility",
+        "isResponsibleFor",
+        "accountsFor",
+        "ProductionLine#responsibleForInterventionAndMaintenance",
+        "MaintenanceTeam#responsibleForInterventionAndMaintenance",
+        "SituationS1#responsibleForInterventionAndMaintenance",
+        "SituationS2#responsibleForInterventionAndMaintenance",
+        "hasFeatureOfInterest",
+        "hasTemporalEntity"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"responsible for intervention and maintenance\"], \"synonyms\": [\"liable for intervention and maintenance\", \"in charge of intervention and maintenance\", \"accountable for intervention and maintenance\"], \"lexical_variants\": [\"responsible for intervention and maintenance\"], \"definition\": \"The duty of an agent (e.g., a production line or maintenance team) to perform both intervention and maintenance activities within a specified temporal and contextual setting.\", \"ontology_hints\": [\"hasResponsibility\", \"isResponsibleFor\", \"accountsFor\", \"ProductionLine#responsibleForInterventionAndMaintenance\", \"MaintenanceTeam#responsibleForInterventionAndMaintenance\", \"SituationS1#responsibleForInterventionAndMaintenance\", \"SituationS2#responsibleForInterventionAndMaintenance\", \"hasFeatureOfInterest\", \"hasTemporalEntity\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00032",
+        "text": "cause:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "cause:",
+        "cause"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "cause:": [
+          "llm"
+        ],
+        "cause": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system.",
+      "ontology_hints": [
+        "Cause",
+        "has cause",
+        "Alarm",
+        "Failure",
+        "Shutdown",
+        "Intervention"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"cause:\", \"cause\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system.\", \"ontology_hints\": [\"Cause\", \"has cause\", \"Alarm\", \"Failure\", \"Shutdown\", \"Intervention\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00033",
+        "text": "intervention:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "intervention"
+      ],
+      "synonyms": [
+        "action",
+        "remedy",
+        "maintenance"
+      ],
+      "lexical_variants": [
+        "intervention",
+        "intervention action"
+      ],
+      "alias_sources": {
+        "intervention": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "action": [
+          "llm"
+        ],
+        "remedy": [
+          "llm"
+        ],
+        "maintenance": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "intervention": [
+          "llm"
+        ],
+        "intervention action": [
+          "llm"
+        ]
+      },
+      "definition": "An intervention is an event or action taken to address a machine alarm or failure, typically involving observation, timing, and contextual considerations.",
+      "ontology_hints": [
+        "Observation",
+        "Interval",
+        "Instant",
+        "Temporal Entity",
+        "Situation"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"intervention\"], \"synonyms\": [\"action\", \"remedy\", \"maintenance\"], \"lexical_variants\": [\"intervention\", \"intervention action\"], \"definition\": \"An intervention is an event or action taken to address a machine alarm or failure, typically involving observation, timing, and contextual considerations.\", \"ontology_hints\": [\"Observation\", \"Interval\", \"Instant\", \"Temporal Entity\", \"Situation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00034",
+        "text": "responsible for",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Indicates that an entity is accountable for producing or managing an outcome, such as a result or observable property, within a system.",
+      "ontology_hints": [
+        "Sensor",
+        "Resource",
+        "Platform",
+        "Observable Property",
+        "Result",
+        "SOSA/SSN framework",
+        "ContextOntology",
+        "responsible_for relation"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Indicates that an entity is accountable for producing or managing an outcome, such as a result or observable property, within a system.\", \"ontology_hints\": [\"Sensor\", \"Resource\", \"Platform\", \"Observable Property\", \"Result\", \"SOSA/SSN framework\", \"ContextOntology\", \"responsible_for relation\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00035",
+        "text": "effect:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "effect"
+      ],
+      "synonyms": [
+        "consequence",
+        "outcome",
+        "result"
+      ],
+      "lexical_variants": [
+        "effects",
+        "effect"
+      ],
+      "alias_sources": {
+        "effect": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "consequence": [
+          "llm"
+        ],
+        "outcome": [
+          "llm"
+        ],
+        "result": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "effects": [
+          "llm"
+        ],
+        "effect": [
+          "llm"
+        ]
+      },
+      "definition": "The observable outcome produced by an action performed in response to a detected situation in a manufacturing system.",
+      "ontology_hints": [
+        "links Action to Result",
+        "used to describe the effect of an alarm intervention",
+        "relates to staff performing action on feature/geometry"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"effect\"], \"synonyms\": [\"consequence\", \"outcome\", \"result\"], \"lexical_variants\": [\"effects\", \"effect\"], \"definition\": \"The observable outcome produced by an action performed in response to a detected situation in a manufacturing system.\", \"ontology_hints\": [\"links Action to Result\", \"used to describe the effect of an alarm intervention\", \"relates to staff performing action on feature/geometry\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00036",
+        "text": "type:",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Specifies the type classification of an alarm.",
+      "ontology_hints": [
+        "AlarmType"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Specifies the type classification of an alarm.\", \"ontology_hints\": [\"AlarmType\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

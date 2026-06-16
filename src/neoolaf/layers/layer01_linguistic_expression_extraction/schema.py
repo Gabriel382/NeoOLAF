@@ -12,3 +12,11 @@ class ExtractedExpressionItem(BaseModel):
 
 class ExtractedExpressionResponse(BaseModel):
     expressions: List[ExtractedExpressionItem]
+# Structured output schemas used when profile-configured Pydantic validation is enabled.
+# They are imported here for discoverability/backward compatibility with layer-local imports.
+from neoolaf.schemas.structured_output import (  # noqa: E402,F401
+    ExtractedItem,
+    ReferenceItem,
+    Layer01AlarmRecord,
+    Layer01AlarmRecordOutput,
+)

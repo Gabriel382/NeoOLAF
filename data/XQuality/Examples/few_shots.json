@@ -1,0 +1,185 @@
+[
+  {
+    "example_id": "alarm_1001",
+    "input": {
+      "alarm_no": "1001",
+      "category": "PLC Alarm",
+      "source_text": "Alarm No.: 1001\ntext: ACTIVE EMERGENCY\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown, opening of the hardware authorization to the axis/spindle feeder and CNC in emergency\ncause: Indicates that the emergency stop button has been pressed\nintervention: Release the button and press the machine start button.\nreference: See page 5 of the electrical diagram, input X8.4\nresponsible_for_intervention: operator / maintenance technician"
+    },
+    "output": {
+      "alarm_no": "1001",
+      "category": "PLC Alarm",
+      "alarm_label": "ACTIVE EMERGENCY",
+      "triples": [
+        {
+          "node_1": "Emergency stop button pressed",
+          "relation": "TRIGGERS",
+          "node_2": "ACTIVE EMERGENCY",
+          "triple_type": "Cause -> Alarm"
+        },
+        {
+          "node_1": "ACTIVE EMERGENCY",
+          "relation": "CAUSES",
+          "node_2": "Immediate and controlled stop",
+          "triple_type": "Alarm -> Effect"
+        },
+        {
+          "node_1": "ACTIVE EMERGENCY",
+          "relation": "CAUSES",
+          "node_2": "Opening of hardware authorization for axes/spindles",
+          "triple_type": "Alarm -> Effect"
+        },
+        {
+          "node_1": "ACTIVE EMERGENCY",
+          "relation": "CAUSES",
+          "node_2": "CNC in emergency state",
+          "triple_type": "Alarm -> Effect"
+        },
+        {
+          "node_1": "ACTIVE EMERGENCY",
+          "relation": "REQUIRES",
+          "node_2": "Release the button",
+          "triple_type": "Alarm -> Intervention"
+        },
+        {
+          "node_1": "ACTIVE EMERGENCY",
+          "relation": "REQUIRES",
+          "node_2": "Press the machine start button",
+          "triple_type": "Alarm -> Intervention"
+        },
+        {
+          "node_1": "ACTIVE EMERGENCY",
+          "relation": "HANDLED_BY",
+          "node_2": "Operator",
+          "triple_type": "Alarm -> Responsible"
+        },
+        {
+          "node_1": "ACTIVE EMERGENCY",
+          "relation": "HANDLED_BY",
+          "node_2": "Maintenance technician",
+          "triple_type": "Alarm -> Responsible"
+        },
+        {
+          "node_1": "ACTIVE EMERGENCY",
+          "relation": "REFERENCES",
+          "node_2": "Page 5 - input X8.4",
+          "triple_type": "Alarm -> Diagram Reference"
+        }
+      ]
+    }
+  },
+  {
+    "example_id": "alarm_1002",
+    "input": {
+      "alarm_no": "1002",
+      "category": "PLC Alarm",
+      "source_text": "Alarm No.: 1002\ntext: MACHINE OUT OF CIRCUIT\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown, opening of hardware authorization to the axis/spindle power supply\ncause: Indicates that the power circuits have not been activated; in this condition the machine cannot operate in any way.\nintervention: Press the machine start button.\nreference: See page 5 of the electrical diagram, input X2.0\nresponsible_for_intervention: operator / maintenance technician"
+    },
+    "output": {
+      "alarm_no": "1002",
+      "category": "PLC Alarm",
+      "alarm_label": "MACHINE OUT OF CIRCUIT",
+      "triples": [
+        {
+          "node_1": "Power circuits not activated",
+          "relation": "TRIGGERS",
+          "node_2": "MACHINE OUT OF CIRCUIT",
+          "triple_type": "Cause -> Alarm"
+        },
+        {
+          "node_1": "MACHINE OUT OF CIRCUIT",
+          "relation": "CAUSES",
+          "node_2": "Immediate and controlled stop",
+          "triple_type": "Alarm -> Effect"
+        },
+        {
+          "node_1": "MACHINE OUT OF CIRCUIT",
+          "relation": "CAUSES",
+          "node_2": "Opening of hardware authorization for axes/spindles",
+          "triple_type": "Alarm -> Effect"
+        },
+        {
+          "node_1": "MACHINE OUT OF CIRCUIT",
+          "relation": "REQUIRES",
+          "node_2": "Press the machine start button",
+          "triple_type": "Alarm -> Intervention"
+        },
+        {
+          "node_1": "MACHINE OUT OF CIRCUIT",
+          "relation": "HANDLED_BY",
+          "node_2": "Operator",
+          "triple_type": "Alarm -> Responsible"
+        },
+        {
+          "node_1": "MACHINE OUT OF CIRCUIT",
+          "relation": "HANDLED_BY",
+          "node_2": "Maintenance technician",
+          "triple_type": "Alarm -> Responsible"
+        },
+        {
+          "node_1": "MACHINE OUT OF CIRCUIT",
+          "relation": "REFERENCES",
+          "node_2": "Page 5 - input X2.0",
+          "triple_type": "Alarm -> Diagram Reference"
+        }
+      ]
+    }
+  },
+  {
+    "example_id": "alarm_1003",
+    "input": {
+      "alarm_no": "1003",
+      "category": "PLC Alarm",
+      "source_text": "Alarm No.: 1003\ntext: SLIDING DOOR OPEN\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown, opening of hardware authorization to the axis/spindle power supply\ncause: At the start of the cycle the sliding door is open.\nintervention: Check that the door is in an acceptable condition.\nreference: See page 19 of the electrical diagram, input X3.3\nresponsible_for_intervention: operator / maintenance technician"
+    },
+    "output": {
+      "alarm_no": "1003",
+      "category": "PLC Alarm",
+      "alarm_label": "SLIDING DOOR OPEN",
+      "triples": [
+        {
+          "node_1": "Sliding door open at cycle start",
+          "relation": "TRIGGERS",
+          "node_2": "SLIDING DOOR OPEN",
+          "triple_type": "Cause -> Alarm"
+        },
+        {
+          "node_1": "SLIDING DOOR OPEN",
+          "relation": "CAUSES",
+          "node_2": "Immediate and controlled stop",
+          "triple_type": "Alarm -> Effect"
+        },
+        {
+          "node_1": "SLIDING DOOR OPEN",
+          "relation": "CAUSES",
+          "node_2": "Opening of hardware authorization for axes/spindles",
+          "triple_type": "Alarm -> Effect"
+        },
+        {
+          "node_1": "SLIDING DOOR OPEN",
+          "relation": "REQUIRES",
+          "node_2": "Check that the door is in an acceptable condition",
+          "triple_type": "Alarm -> Intervention"
+        },
+        {
+          "node_1": "SLIDING DOOR OPEN",
+          "relation": "HANDLED_BY",
+          "node_2": "Operator",
+          "triple_type": "Alarm -> Responsible"
+        },
+        {
+          "node_1": "SLIDING DOOR OPEN",
+          "relation": "HANDLED_BY",
+          "node_2": "Maintenance technician",
+          "triple_type": "Alarm -> Responsible"
+        },
+        {
+          "node_1": "SLIDING DOOR OPEN",
+          "relation": "REFERENCES",
+          "node_2": "Page 19 - input X3.3",
+          "triple_type": "Alarm -> Diagram Reference"
+        }
+      ]
+    }
+  }
+]

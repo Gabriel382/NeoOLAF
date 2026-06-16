@@ -1,0 +1,54 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 2,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00000",
+      "relation_label": "AUXILIARY WATERING ALARM",
+      "source_candidate_id": "cand_r_00000",
+      "source_candidate_label": "AUXILIARY WATERING ALARM",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "M208 function",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0005",
+      "justification": "The chunk states that the AUXILIARY WATERING ALARM is caused by the programming of the M208 function.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 213,
+          "chunk_end_char": 237,
+          "doc_start_char": 25213,
+          "doc_end_char": 25237,
+          "snippet": "nsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00024",
+      "relation_label": "M208 function intervention",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "M208 function",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00000",
+      "target_candidate_label": "M1671 pump",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0005",
+      "justification": "The text states that the M208 function intervention involves checking the M1671 pump.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 428,
+          "chunk_end_char": 454,
+          "doc_start_char": 25428,
+          "doc_end_char": 25454,
+          "snippet": "does not signal the presence of watering liquid, as a result of programming the M208 function intervention: Check the presence of the watering liquid, the hydraulic connections, the wate"
+        }
+      ]
+    }
+  ]
+}

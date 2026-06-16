@@ -1,0 +1,159 @@
+{
+  "layer": "layer10_validation_reasoning",
+  "validation_report": {
+    "is_valid": true,
+    "issues": [
+      {
+        "issue_id": "issue_00000",
+        "issue_type": "domain_mismatch",
+        "severity": "warning",
+        "message": "Triple subject type 'entity' may be incompatible with expected domain 'BroadcastingStation' for relation 'dubbing'.",
+        "related_ids": [
+          "triple_00000"
+        ]
+      },
+      {
+        "issue_id": "issue_00001",
+        "issue_type": "range_mismatch",
+        "severity": "warning",
+        "message": "Triple object type 'entity' may be incompatible with expected range 'TVShow' for relation 'dubbing'.",
+        "related_ids": [
+          "triple_00000"
+        ]
+      }
+    ]
+  },
+  "reasoning_report": {
+    "notes": [
+      "Inferred graph initialized from validated candidate triples.",
+      "Inferred axiom schemata copied from extracted reusable schemata.",
+      "Inferred general axioms copied from candidate general axioms."
+    ],
+    "inferred_triples": [
+      {
+        "triple_id": "triple_00000",
+        "subject_id": "cand_e_00000",
+        "subject_label": "Skai TV",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00001",
+        "predicate_label": "dubbing",
+        "object_id": "cand_e_00009",
+        "object_label": "foreign shows",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The chunk states that Skai TV opted for dubbing all foreign language content into Greek, indicating a dubbing relationship between Skai TV and foreign shows.",
+        "confidence": 0.95
+      }
+    ],
+    "inferred_axiom_schemata": [
+      {
+        "schema_id": "schema_00000",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "broadcast_type",
+        "predicate": "domain",
+        "object_id": "domain_hint::BroadcastService",
+        "object_label": "BroadcastService",
+        "confidence": 0.92
+      },
+      {
+        "schema_id": "schema_00001",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "broadcast_type",
+        "predicate": "range",
+        "object_id": "range_hint::BroadcastType",
+        "object_label": "BroadcastType",
+        "confidence": 0.92
+      },
+      {
+        "schema_id": "schema_00002",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "dubbing",
+        "predicate": "domain",
+        "object_id": "domain_hint::BroadcastingStation",
+        "object_label": "BroadcastingStation",
+        "confidence": 0.92
+      },
+      {
+        "schema_id": "schema_00003",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "dubbing",
+        "predicate": "range",
+        "object_id": "range_hint::TVShow",
+        "object_label": "TVShow",
+        "confidence": 0.92
+      }
+    ],
+    "inferred_general_axioms": [
+      {
+        "axiom_id": "axiom_00000",
+        "axiom_type": "relation_domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "broadcast_type",
+        "predicate": "domain",
+        "object_id": "domain_hint::BroadcastService",
+        "object_label": "BroadcastService",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00001",
+        "axiom_type": "relation_range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "broadcast_type",
+        "predicate": "range",
+        "object_id": "range_hint::BroadcastType",
+        "object_label": "BroadcastType",
+        "literal_value": null,
+        "confidence": 0.92
+      },
+      {
+        "axiom_id": "axiom_00002",
+        "axiom_type": "relation_domain",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "dubbing",
+        "predicate": "domain",
+        "object_id": "domain_hint::BroadcastingStation",
+        "object_label": "BroadcastingStation",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00003",
+        "axiom_type": "range",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "dubbing",
+        "predicate": "range",
+        "object_id": "range_hint::TVShow",
+        "object_label": "TVShow",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00004",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "broadcast_type",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Indicates the type of broadcast service, such as free-to-air, subscription-based, or other broadcast modalities.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00005",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "dubbing",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Relates a media entity (e.g., a broadcaster or production company) to a work that it has produced or modified by replacing or augmenting the original soundtrack with new recordings, typically for translation or localization purposes.",
+        "confidence": 1.0
+      }
+    ]
+  }
+}

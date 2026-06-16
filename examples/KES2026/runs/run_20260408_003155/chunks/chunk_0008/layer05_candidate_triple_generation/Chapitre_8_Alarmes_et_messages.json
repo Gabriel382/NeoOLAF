@@ -1,0 +1,66 @@
+{
+  "layer": "layer05_candidate_triple_generation",
+  "num_candidate_triples": 2,
+  "candidate_triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_r_00009",
+        "label": "tool wear",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00009",
+        "label": "tool wear"
+      },
+      "object": {
+        "id": "cand_s_00000",
+        "label": "system calibrations",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0008",
+      "justification": "The chunk states that the Load Monitor detected tool wear, which triggers the alarm and the recommended intervention is to check the system calibrations.",
+      "confidence": 0.85,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 1998,
+          "chunk_end_char": 2007,
+          "doc_start_char": 41998,
+          "doc_end_char": 42007,
+          "snippet": "e end of the cycle. cause: The Load Monitor tool monitoring system has detected tool wear. intervention: Replace the tool, or in the case of insufficient wear, check the"
+        }
+      ]
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_r_00017",
+        "label": "AUTOMATIC STOP IN PROGRESS",
+        "type": "relation"
+      },
+      "predicate": {
+        "id": "cand_r_00017",
+        "label": "AUTOMATIC STOP IN PROGRESS"
+      },
+      "object": {
+        "id": "cand_s_00001",
+        "label": "R.A.Z. (RESET)",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0008",
+      "justification": "The chunk text for Alarm No. 1083 states that the intervention to stop the shutdown sequence is to press R.A.Z. (RESET), indicating that the alarm requires this reset action.",
+      "confidence": 0.92,
+      "provenance": [
+        {
+          "chunk_id": "chunk_0008",
+          "chunk_start_char": 2621,
+          "chunk_end_char": 2647,
+          "doc_start_char": 42621,
+          "doc_end_char": 42647,
+          "snippet": "ication documentation.\nresponsible for\ntoolmaker-adjuster\nAlarm No.: 1083\ntext: AUTOMATIC STOP IN PROGRESS\ntype: Standard: Optional:\neffect: Alarms or messages with shutdown at the end o"
+        }
+      ]
+    }
+  ]
+}

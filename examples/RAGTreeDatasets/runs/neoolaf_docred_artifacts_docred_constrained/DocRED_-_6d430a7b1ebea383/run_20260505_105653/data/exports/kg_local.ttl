@@ -1,0 +1,83 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that Albemarle County is located in the Commonwealth of Virginia." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00000> ;
+    neo:predicate ns1:cand_r_00000 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The chunk text explicitly states that Albemarle County is a county located in the Piedmont region." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00001> ;
+    neo:predicate ns1:cand_r_00003 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00002> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00002/prov/0> ;
+    neo:justification "The text states that Albemarle County was created in 1744." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00004> ;
+    neo:predicate ns1:cand_r_00005 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/triple/triple_00003> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00003/prov/0> ;
+    neo:justification "The chunk states that Charlottesville is an independent city and enclave entirely surrounded by Albemarle County, indicating that Charlottesville is located within Albemarle County." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00000> ;
+    neo:predicate ns1:cand_r_00007 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "Charlottesville" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00007 <http://neoolaf.org/resource/node/cand_e_00000> .
+
+ns1:cand_r_00000 neo:label "Commonwealth of Virginia" .
+
+ns1:cand_r_00003 neo:label "located in" .
+
+ns1:cand_r_00005 neo:label "was created in" .
+
+ns1:cand_r_00007 neo:label "is an independent city and enclave entirely surrounded by the county" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Albemarle County is a county located in the Piedmont region of the Commonwealth of Virginia . Its county seat is Charlottesville , which is an independent city and enclave" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Albemarle County is a county located in the Piedmont region of the Commonwealth of Virginia . Its county seat is Charlo" .
+
+<http://neoolaf.org/resource/triple/triple_00002/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "e County was 98,970 , more than triple the 1960 census count . Albemarle County was created in 1744 from the western portion of Goochland County , though portions of Albemarl" .
+
+<http://neoolaf.org/resource/triple/triple_00003/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "on of the Commonwealth of Virginia . Its county seat is Charlottesville , which is an independent city and enclave entirely surrounded by the county . Albemarle County is part of the Charlottesville Metropolitan Statistical Area" .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "Piedmont region" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_e_00004> neo:label "date" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_r_00000> neo:label "Commonwealth of Virginia" ;
+    neo:nodeType "relation" .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "Albemarle County" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00000 <http://neoolaf.org/resource/node/cand_r_00000> ;
+    ns1:cand_r_00003 <http://neoolaf.org/resource/node/cand_e_00001> ;
+    ns1:cand_r_00005 <http://neoolaf.org/resource/node/cand_e_00004> .
+

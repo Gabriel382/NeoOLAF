@@ -1,0 +1,105 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 2,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "controlled mode",
+        "label": "state"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A state of a machine or production line in which its operation is governed by predefined constraints or controls, ensuring that the system functions within specified limits.",
+      "ontology_hints": [
+        "state",
+        "constraint",
+        "interval"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A state of a machine or production line in which its operation is governed by predefined constraints or controls, ensuring that the system functions within specified limits.\", \"ontology_hints\": [\"state\", \"constraint\", \"interval\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "alarms and messages with stop at end of cycle",
+        "label": "alarm type"
+      },
+      "aliases": [
+        "cycle-end stop alarm",
+        "end-of-cycle shutdown alarm",
+        "cycle completion stop message"
+      ],
+      "synonyms": [
+        "cycle-end stop alarm",
+        "end-of-cycle shutdown alarm",
+        "cycle completion stop message"
+      ],
+      "lexical_variants": [
+        "stop at cycle end alarm",
+        "end-of-cycle stop alert",
+        "cycle completion stop alert"
+      ],
+      "alias_sources": {
+        "cycle-end stop alarm": [
+          "llm"
+        ],
+        "end-of-cycle shutdown alarm": [
+          "llm"
+        ],
+        "cycle completion stop message": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "cycle-end stop alarm": [
+          "llm"
+        ],
+        "end-of-cycle shutdown alarm": [
+          "llm"
+        ],
+        "cycle completion stop message": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "stop at cycle end alarm": [
+          "llm"
+        ],
+        "end-of-cycle stop alert": [
+          "llm"
+        ],
+        "cycle completion stop alert": [
+          "llm"
+        ]
+      },
+      "definition": "An alarm or message that triggers a machine stop at the conclusion of a manufacturing cycle.",
+      "ontology_hints": [
+        "TRIGGERS: shutdown state",
+        "HANDLED_BY: Manager",
+        "REFERENCES: Manufacturing Cell",
+        "DETECTED_BY: alarm system",
+        "CAUSES: cycle completion",
+        "REQUIRES: shutdown procedure",
+        "Feature of Interest: machine state",
+        "Manufacturing Facility: context"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"cycle-end stop alarm\", \"end-of-cycle shutdown alarm\", \"cycle completion stop message\"], \"synonyms\": [\"cycle-end stop alarm\", \"end-of-cycle shutdown alarm\", \"cycle completion stop message\"], \"lexical_variants\": [\"stop at cycle end alarm\", \"end-of-cycle stop alert\", \"cycle completion stop alert\"], \"definition\": \"An alarm or message that triggers a machine stop at the conclusion of a manufacturing cycle.\", \"ontology_hints\": [\"TRIGGERS: shutdown state\", \"HANDLED_BY: Manager\", \"REFERENCES: Manufacturing Cell\", \"DETECTED_BY: alarm system\", \"CAUSES: cycle completion\", \"REQUIRES: shutdown procedure\", \"Feature of Interest: machine state\", \"Manufacturing Facility: context\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

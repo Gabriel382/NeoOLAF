@@ -1,0 +1,101 @@
+{
+  "layer": "layer10_validation_reasoning",
+  "validation_report": {
+    "is_valid": true,
+    "issues": []
+  },
+  "reasoning_report": {
+    "notes": [
+      "Inferred graph initialized from validated candidate triples.",
+      "Inferred axiom schemata copied from extracted reusable schemata.",
+      "Inferred general axioms copied from candidate general axioms."
+    ],
+    "inferred_triples": [
+      {
+        "triple_id": "triple_00000",
+        "subject_id": "cand_e_00001",
+        "subject_label": "Samsung Galaxy S9",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00011",
+        "predicate_label": "latest smartphones in the Galaxy S series",
+        "object_id": "cand_e_00002",
+        "object_label": "Samsung Galaxy S9 +",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The chunk states that the latest smartphones in the Galaxy S series are the Samsung Galaxy S9 and Samsung Galaxy S9+.",
+        "confidence": 0.9
+      },
+      {
+        "triple_id": "triple_00001",
+        "subject_id": "cand_e_00001",
+        "subject_label": "Samsung Galaxy S9",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00012",
+        "predicate_label": "both released on 16 March 2018",
+        "object_id": "cand_e_00002",
+        "object_label": "Samsung Galaxy S9 +",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The chunk text explicitly states that both the Samsung Galaxy S9 and the Samsung Galaxy S9+ were released on 16 March 2018.",
+        "confidence": 0.95
+      }
+    ],
+    "inferred_axiom_schemata": [
+      {
+        "schema_id": "schema_00000",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "produced by",
+        "predicate": "domain",
+        "object_id": "domain_hint::Product",
+        "object_label": "Product",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00001",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "produced by",
+        "predicate": "range",
+        "object_id": "range_hint::Manufacturer",
+        "object_label": "Manufacturer",
+        "confidence": 0.95
+      }
+    ],
+    "inferred_general_axioms": [
+      {
+        "axiom_id": "axiom_00000",
+        "axiom_type": "relation_domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "produced by",
+        "predicate": "domain",
+        "object_id": "domain_hint::Product",
+        "object_label": "Product",
+        "literal_value": null,
+        "confidence": 0.92
+      },
+      {
+        "axiom_id": "axiom_00001",
+        "axiom_type": "relation_range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "produced by",
+        "predicate": "range",
+        "object_id": "range_hint::Manufacturer",
+        "object_label": "Manufacturer",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00002",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "produced by",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Relates a product or product series to the entity that manufactures or produces it.",
+        "confidence": 1.0
+      }
+    ]
+  }
+}

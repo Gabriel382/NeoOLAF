@@ -1,0 +1,83 @@
+{
+  "layer": "layer10_validation_reasoning",
+  "validation_report": {
+    "is_valid": true,
+    "issues": []
+  },
+  "reasoning_report": {
+    "notes": [
+      "Inferred graph initialized from validated candidate triples.",
+      "Inferred axiom schemata copied from extracted reusable schemata.",
+      "Inferred general axioms copied from candidate general axioms."
+    ],
+    "inferred_triples": [],
+    "inferred_axiom_schemata": [
+      {
+        "schema_id": "schema_00000",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "domain",
+        "object_id": "domain_hint::Event",
+        "object_label": "Event",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00001",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "range",
+        "object_id": "range_hint::SystemComponent",
+        "object_label": "SystemComponent",
+        "confidence": 0.95
+      }
+    ],
+    "inferred_general_axioms": [
+      {
+        "axiom_id": "axiom_00000",
+        "axiom_type": "relation domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "domain",
+        "object_id": "domain_hint::Event",
+        "object_label": "Event",
+        "literal_value": null,
+        "confidence": 0.93
+      },
+      {
+        "axiom_id": "axiom_00001",
+        "axiom_type": "relation range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "range",
+        "object_id": "range_hint::SystemComponent",
+        "object_label": "SystemComponent",
+        "literal_value": null,
+        "confidence": 0.93
+      },
+      {
+        "axiom_id": "axiom_00002",
+        "axiom_type": "description",
+        "subject_id": "concept_00000",
+        "subject_label": "AlarmAndMessage",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Signals or indicators that notify operators of potential issues or events requiring attention within an industrial setting.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00003",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "emittedBy",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Relates an event or signal to the system or device that emits it.",
+        "confidence": 1.0
+      }
+    ]
+  }
+}

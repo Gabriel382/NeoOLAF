@@ -1,0 +1,26 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that Lycoming County is in north-central Pennsylvania." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00001> ;
+    neo:predicate ns1:cand_r_00000 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00000> .
+
+<http://neoolaf.org/resource/node/cand_r_00000> neo:label "Lycoming County" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00000 <http://neoolaf.org/resource/node/cand_e_00001> .
+
+ns1:cand_r_00000 neo:label "Lycoming County" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "The Old Loggers Path ( OLP ) is a loop hiking trail in Lycoming County in north - central Pennsylvania in the United States . Marked with intemational" .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "north-central Pennsylvania" ;
+    neo:nodeType "entity" .
+

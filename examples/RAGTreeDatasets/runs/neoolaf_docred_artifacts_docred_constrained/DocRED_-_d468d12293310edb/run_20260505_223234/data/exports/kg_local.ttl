@@ -1,0 +1,26 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The chunk describes the \"Pictures of You\" CD single as a compact disc release, indicating that it is an instance of the entity type compact disc." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00005> ;
+    neo:predicate ns1:cand_r_00005 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00005> .
+
+<http://neoolaf.org/resource/node/cand_r_00005> neo:label "\"Pictures of You\" CD single" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00005 <http://neoolaf.org/resource/node/cand_e_00005> .
+
+ns1:cand_r_00005 neo:label "\"Pictures of You\" CD single" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Entreat is a live album by British altemative rock band The Cure , recorded at London 's Wembley Arena in July 1989 . It consists entirely of songs performed from the band 's 1989 record Disintegration ; while they were on their intemational Prayer tour . Entreat was distributed exclusively in Franc" .
+
+<http://neoolaf.org/resource/node/cand_e_00005> neo:label "compact disc" ;
+    neo:nodeType "entity" .
+

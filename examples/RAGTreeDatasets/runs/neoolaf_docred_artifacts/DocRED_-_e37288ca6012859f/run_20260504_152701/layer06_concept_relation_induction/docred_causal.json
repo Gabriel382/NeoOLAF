@@ -1,0 +1,281 @@
+{
+  "layer": "layer06_concept_relation_induction",
+  "num_concept_candidates": 6,
+  "num_ontology_relation_candidates": 5,
+  "concept_candidates": [
+    {
+      "concept_id": "concept_00000",
+      "label": "PortCity",
+      "normalized_label": "portcity",
+      "description": "A city that hosts a port, typically situated on a coast or estuary and serving as a major node in maritime trade.",
+      "concept_kind": "location",
+      "parent_hint": "City",
+      "source_candidate_ids": [
+        "cand_e_00001"
+      ],
+      "source_triple_ids": [
+        "triple_00000"
+      ],
+      "confidence": 0.95,
+      "justification": "The candidate represents a reusable, semantically stable class describing a type of city that functions as a port, fitting ontology-oriented modeling better than treating it as a document-specific mention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 63,
+          "chunk_end_char": 70,
+          "doc_start_char": 63,
+          "doc_end_char": 70,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00001",
+      "label": "Date",
+      "normalized_label": "date",
+      "description": "A specific calendar date, representing a point in time.",
+      "concept_kind": "time",
+      "parent_hint": "TIME",
+      "source_candidate_ids": [
+        "cand_e_00003"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "The candidate 'date' is a stable, general concept that can be reused across documents and is a specific type of temporal point, fitting the ontology's TIME class.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its present form on lst of April 2006 in the Athens metropolitan area , and gradually spread its coverage nationwide . Besides"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00002",
+      "label": "GeographicArea",
+      "normalized_label": "geographicarea",
+      "description": "A geographic area is a region or area on Earth that can be identified, located, or described, such as a metropolitan area or administrative territorial entity.",
+      "concept_kind": "geographic entity",
+      "parent_hint": "GeographicLocation",
+      "source_candidate_ids": [
+        "cand_e_00004"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.93,
+      "justification": "The candidate represents a reusable, semantically stable class that aligns with existing geographic ontology classes and is general enough to model many instances like metropolitan areas, regions, and administrative entities.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 219,
+          "chunk_end_char": 243,
+          "doc_start_char": 219,
+          "doc_end_char": 243,
+          "snippet": "the country . It was relaunched in its present form on lst of April 2006 in the Athens metropolitan area , and gradually spread its coverage nationwide . Besides digital terrestrial tr"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00003",
+      "label": "DigitalTerrestrialTransmission",
+      "normalized_label": "digitalterrestrialtransmission",
+      "description": "A technology for transmitting digital signals over terrestrial broadcast channels, commonly used in digital television and radio broadcasting.",
+      "concept_kind": "technology",
+      "parent_hint": "TransmissionTechnology",
+      "source_candidate_ids": [
+        "cand_e_00005"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.85,
+      "justification": "The term refers to a stable, reusable technology that can appear across multiple documents, making it suitable for ontology inclusion rather than a document-specific mention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 301,
+          "chunk_end_char": 333,
+          "doc_start_char": 301,
+          "doc_end_char": 333,
+          "snippet": "hens metropolitan area , and gradually spread its coverage nationwide . Besides digital terrestrial transmission , it is available on the subscription - based encrypted services of Nova and Co"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00004",
+      "label": "NationwideCoverageExpansion",
+      "normalized_label": "nationwidecoverageexpansion",
+      "description": "An event in which a service, network, or information coverage is extended across an entire sovereign state or large geographic area.",
+      "concept_kind": "event",
+      "parent_hint": "Event",
+      "source_candidate_ids": [
+        "cand_s_00000"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.88,
+      "justification": "The candidate represents a reusable event type that captures a common phenomenon of expanding broadcast or service coverage nationwide, making it suitable for ontology modeling rather than a single document mention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its present form on lst of April 2006 in the Athens metropolitan area , and gradually spread its coverage nationwide . Besides"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00005",
+      "label": "Nova",
+      "normalized_label": "nova",
+      "description": "An astronomical event in which a white dwarf in a close binary system accretes matter from its companion, triggering a sudden brightening of a new star that fades over weeks or months. It is a type of cataclysmic variable star.",
+      "concept_kind": "event",
+      "parent_hint": "AstronomicalEvent",
+      "source_candidate_ids": [
+        "cand_s_00001"
+      ],
+      "source_triple_ids": [
+        "triple_00002"
+      ],
+      "confidence": 0.92,
+      "justification": "Nova is a stable, well‑defined astronomical event that recurs across many documents and can be represented as a reusable class in the ontology.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 402,
+          "chunk_end_char": 406,
+          "doc_start_char": 402,
+          "doc_end_char": 406,
+          "snippet": "ransmission , it is available on the subscription - based encrypted services of Nova and Cosmote TV . Skai TV is also a member of Digea , a consortium of private te"
+        }
+      ]
+    }
+  ],
+  "ontology_relation_candidates": [
+    {
+      "relation_id": "ont_rel_00000",
+      "label": "is a",
+      "normalized_label": "is a",
+      "description": "Relates an individual entity to a class or subclass, indicating that the entity is an instance of that class or belongs to that subclass.",
+      "domain_hint": "Entity",
+      "range_hint": "TelevisionNetwork",
+      "source_candidate_ids": [
+        "cand_r_00000"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.85,
+      "justification": "The relation \"is a\" is a widely used, semantically stable subsumptive relation that can be applied across many documents to express class membership or subclass relationships. It is reusable and meaningful beyond isolated mentions, aligning with standard ontology practices for instance-of or subclass-of relations.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its present form on lst of April 2006 in the Athens metropolitan area , and gradually spread its coverage nationwide . Besides"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00001",
+      "label": "locatedIn",
+      "normalized_label": "locatedin",
+      "description": "Relates an entity (person, organization, place, or other entity) to the geographic or administrative location where it is situated, headquartered, or based.",
+      "domain_hint": "Entity",
+      "range_hint": "Location",
+      "source_candidate_ids": [
+        "cand_r_00001"
+      ],
+      "source_triple_ids": [
+        "triple_00000"
+      ],
+      "confidence": 0.92,
+      "justification": "The relation is a common, semantically stable spatial containment that appears across many documents. It aligns with existing Wikidata properties such as P131 (located in the administrative territorial entity) and P276 (location), and is distinct from generic location labels. The candidate’s aliases and synonyms reinforce its reuse and clarity.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 54,
+          "chunk_end_char": 70,
+          "doc_start_char": 54,
+          "doc_end_char": 70,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00002",
+      "label": "partOf",
+      "normalized_label": "partof",
+      "description": "Indicates that an entity is a component, member, or constituent of another entity, such as a sub‑organization within a larger organization or a product within a product line.",
+      "domain_hint": "Entity",
+      "range_hint": "Entity",
+      "source_candidate_ids": [
+        "cand_r_00002"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "The relation is semantically stable, widely reusable across documents, and aligns with existing ontology properties such as Wikidata P361. It captures a meaningful component or membership relationship beyond a single mention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 79,
+          "chunk_end_char": 101,
+          "doc_start_char": 79,
+          "doc_end_char": 101,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its pre"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00003",
+      "label": "availableOn",
+      "normalized_label": "availableon",
+      "description": "Indicates that a media item (e.g., an audiovisual work) can be accessed through a subscription-based service such as Nova or Cosmote TV.",
+      "domain_hint": "AudiovisualWork",
+      "range_hint": "SubscriptionService",
+      "source_candidate_ids": [
+        "cand_r_00005"
+      ],
+      "source_triple_ids": [
+        "triple_00002"
+      ],
+      "confidence": 0.92,
+      "justification": "The relation is semantically stable, reusable across documents, and captures a meaningful link between media content and subscription platforms. It aligns with existing ontology concepts and does not duplicate an existing property.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "Skai TV is a Greek free - to - air television network based in Piraeus . It is part of the Skai Group , one of the largest media groups in the country . It was relaunched in its present form on lst of April 2006 in the Athens metropolitan area , and gradually spread its coverage nationwide . Besides"
+        }
+      ]
+    },
+    {
+      "relation_id": "ont_rel_00004",
+      "label": "memberOf",
+      "normalized_label": "memberof",
+      "description": "Relates an entity to an organization, group, or consortium of which it is a member.",
+      "domain_hint": "Organization",
+      "range_hint": "Consortium",
+      "source_candidate_ids": [
+        "cand_r_00006"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "The relation aligns with the widely used Wikidata property P463 (member of), is semantically stable, and is reusable across documents.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 442,
+          "chunk_end_char": 457,
+          "doc_start_char": 442,
+          "doc_end_char": 457,
+          "snippet": "scription - based encrypted services of Nova and Cosmote TV . Skai TV is also a member of Digea , a consortium of private television networks introducing digital terrestrial t"
+        }
+      ]
+    }
+  ]
+}

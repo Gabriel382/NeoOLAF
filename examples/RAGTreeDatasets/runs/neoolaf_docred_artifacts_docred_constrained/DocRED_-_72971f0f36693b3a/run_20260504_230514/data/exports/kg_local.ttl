@@ -1,0 +1,67 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that William Washington House is located in north Romney." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00000> ;
+    neo:predicate ns1:cand_r_00001 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00001> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 8.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The text states that William Washington built the house starting in 1863." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00001> ;
+    neo:predicate ns1:cand_r_00007 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00007> .
+
+<http://neoolaf.org/resource/triple/triple_00002> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00002/prov/0> ;
+    neo:justification "The text states that Washington Place was built in north Romney, indicating a location relationship." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00000> ;
+    neo:predicate ns1:cand_r_00012 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00012> .
+
+<http://neoolaf.org/resource/node/cand_r_00001> neo:label "William Washington House" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00001 <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/node/cand_r_00007> neo:label "William Washington" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00007 <http://neoolaf.org/resource/node/cand_e_00001> .
+
+<http://neoolaf.org/resource/node/cand_r_00012> neo:label "Washington Place homestead" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00012 <http://neoolaf.org/resource/node/cand_e_00000> .
+
+ns1:cand_r_00001 neo:label "William Washington House" .
+
+ns1:cand_r_00007 neo:label "William Washington" .
+
+ns1:cand_r_00012 neo:label "Washington Place homestead" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Washington Place ( William Washington House ) is one of the first homes built by freed slaves after the Emancipation Procla" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "Washington Place ( William Washington House ) is one of the first homes built by freed slaves after the Emancipation" .
+
+<http://neoolaf.org/resource/triple/triple_00002/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "is subdivisions is the \" Blacks Hill \" neighborhood of Romney , adjacent to the Washington Place homestead . Washington Place was bought and restored by Ralph W. Haines , a local attomey" .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "1863" ;
+    neo:nodeType "entity" .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "north Romney" ;
+    neo:nodeType "entity" .
+

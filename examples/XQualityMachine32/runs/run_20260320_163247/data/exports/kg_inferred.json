@@ -1,0 +1,144 @@
+{
+  "triples": [
+    {
+      "triple_id": "triple_00000",
+      "subject": {
+        "id": "cand_e_00002",
+        "label": "PLC",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00000",
+        "label": "emitted by"
+      },
+      "object": {
+        "id": "cand_e_00000",
+        "label": "message",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that messages are emitted by the PLC.",
+      "confidence": 0.95
+    },
+    {
+      "triple_id": "triple_00001",
+      "subject": {
+        "id": "cand_e_00002",
+        "label": "PLC",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00001",
+        "label": "compromises"
+      },
+      "object": {
+        "id": "cand_s_00000",
+        "label": "reset",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that messages emitted by the PLC can indicate a problem that may compromise the proper functioning of the machine and its machining cycle. These messages can trigger an immediate controlled stop, which is reset by pressing the RESET PRG button.",
+      "confidence": 0.85
+    },
+    {
+      "triple_id": "triple_00002",
+      "subject": {
+        "id": "cand_e_00002",
+        "label": "PLC",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00002",
+        "label": "machine"
+      },
+      "object": {
+        "id": "cand_e_00003",
+        "label": "cycle",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0000",
+      "justification": "The text states that messages from the PLC indicate a problem that can compromise the proper functioning of the machine and the machining cycle.",
+      "confidence": 0.85
+    },
+    {
+      "triple_id": "triple_00003",
+      "subject": {
+        "id": "cand_s_00002",
+        "label": "URGENCE ACTIVE",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00005",
+        "label": "bouton coup-de-poing"
+      },
+      "object": {
+        "id": "cand_e_00006",
+        "label": "Alarm n°1002",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0001",
+      "justification": "The text states that the URGENCE ACTIVE alarm is triggered when the bouton coup-de-poing is pressed.",
+      "confidence": 0.95
+    },
+    {
+      "triple_id": "triple_00004",
+      "subject": {
+        "id": "cand_e_00006",
+        "label": "Alarm n°1002",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00006",
+        "label": "indicates"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "URGENCE ACTIVE",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0001",
+      "justification": "The text states that Alarm n°1002 indicates URGENCE ACTIVE.",
+      "confidence": 0.95
+    },
+    {
+      "triple_id": "triple_00005",
+      "subject": {
+        "id": "cand_s_00001",
+        "label": "alarm",
+        "type": "event"
+      },
+      "predicate": {
+        "id": "cand_r_00007",
+        "label": "Relâcher le bouton et appuyer sur la touche de démarrage"
+      },
+      "object": {
+        "id": "cand_e_00006",
+        "label": "Alarm n°1002",
+        "type": "entity"
+      },
+      "chunk_id": "chunk_0001",
+      "justification": "The text states that the intervention for Alarm n°1002 is to release the button and press the start button.",
+      "confidence": 0.85
+    },
+    {
+      "triple_id": "triple_00006",
+      "subject": {
+        "id": "cand_e_00006",
+        "label": "Alarm n°1002",
+        "type": "entity"
+      },
+      "predicate": {
+        "id": "cand_r_00008",
+        "label": "MACHINE HORS CIRCUIT"
+      },
+      "object": {
+        "id": "cand_s_00002",
+        "label": "URGENCE ACTIVE",
+        "type": "event"
+      },
+      "chunk_id": "chunk_0001",
+      "justification": "The text states that Alarm n°1002 has the type 'MACHINE HORS CIRCUIT' and that 'MACHINE HORS CIRCUIT' is associated with 'URGENCE ACTIVE'.",
+      "confidence": 0.85
+    }
+  ]
+}

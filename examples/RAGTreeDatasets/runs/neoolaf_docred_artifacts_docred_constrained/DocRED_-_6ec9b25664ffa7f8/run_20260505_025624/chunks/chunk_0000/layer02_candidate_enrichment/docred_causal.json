@@ -1,0 +1,685 @@
+{
+  "layer": "layer02_candidate_enrichment",
+  "num_enriched_expressions": 20,
+  "enriched_expressions": [
+    {
+      "base_expression": {
+        "expr_id": "expr_00000",
+        "text": "Portland Golf Club",
+        "label": "entity"
+      },
+      "aliases": [
+        "Portland Golf Club"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "Portland Golf Club"
+      ],
+      "alias_sources": {
+        "Portland Golf Club": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "Portland Golf Club": [
+          "llm"
+        ]
+      },
+      "definition": "The Portland Golf Club is a private golf club located in the unincorporated Raleigh Hills area of eastern Washington County, Oregon, southwest of downtown Portland. Founded in 1914 by nine businessmen, it hosted the 1946 PGA Championship, won by Ben Hogan, and its clubhouse and course were listed on the National Register of Historic Places in 2023.",
+      "ontology_hints": [
+        "sports club",
+        "private golf club",
+        "golf club",
+        "sports team",
+        "concrete object"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "The Portland Golf Club is a private golf club in the northwest United States, in suburban Portland, Oregon. It is located in the unincorporated Raleigh Hills area of eastern Washington County, southwest of downtown Portland and east of Beaverton.\nPGC was established 112 years ago in the winter of 1914, when a group of nine businessmen assembled to form a new club after leaving their respective clubs. The present site was chosen due to its relation to the Spokane, Portland and Seattle Railway's interurban railroad line with frequent passenger service to the site because automobiles and roads were few.\nThe PGA Championship, then a match play competition, was held at the club in 1946, which was won by Ben Hogan. The property was listed on the National Register of Historic Places, as the Portland Golf Club Clubhouse and Golf Course, in 2023.",
+          "reference": "https://en.wikipedia.org/wiki/Portland_Golf_Club"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Portland Golf Club\"], \"synonyms\": [], \"lexical_variants\": [\"Portland Golf Club\"], \"definition\": \"The Portland Golf Club is a private golf club located in the unincorporated Raleigh Hills area of eastern Washington County, Oregon, southwest of downtown Portland. Founded in 1914 by nine businessmen, it hosted the 1946 PGA Championship, won by Ben Hogan, and its clubhouse and course were listed on the National Register of Historic Places in 2023.\", \"ontology_hints\": [\"sports club\", \"private golf club\", \"golf club\", \"sports team\", \"concrete object\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00001",
+        "text": "is a private golf club",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "private golf club"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "private golf club": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A golf club that is privately owned and not open to the public.",
+      "ontology_hints": [
+        "concrete object"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"private golf club\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A golf club that is privately owned and not open to the public.\", \"ontology_hints\": [\"concrete object\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00002",
+        "text": "located in the unincorporated Raleigh Hills area",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Indicates that an entity is situated within the unincorporated area of Raleigh Hills.",
+      "ontology_hints": [
+        "unincorporated area",
+        "Raleigh Hills",
+        "administrative territorial entity",
+        "first-level administrative division"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Indicates that an entity is situated within the unincorporated area of Raleigh Hills.\", \"ontology_hints\": [\"unincorporated area\", \"Raleigh Hills\", \"administrative territorial entity\", \"first-level administrative division\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00003",
+        "text": "established in the winter of 1914",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Indicates that an entity was founded or created during the winter season of the year 1914.",
+      "ontology_hints": [
+        "P571 inception"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Indicates that an entity was founded or created during the winter season of the year 1914.\", \"ontology_hints\": [\"P571 inception\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00004",
+        "text": "group of nine businessmen assembled to form a new club",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [
+        "nine businessmen",
+        "businessmen group",
+        "businessmen club founders"
+      ],
+      "synonyms": [
+        "businessmen",
+        "entrepreneurs",
+        "executives"
+      ],
+      "lexical_variants": [
+        "group of nine businessmen",
+        "nine businessmen assembled",
+        "businessmen assembled"
+      ],
+      "alias_sources": {
+        "nine businessmen": [
+          "llm"
+        ],
+        "businessmen group": [
+          "llm"
+        ],
+        "businessmen club founders": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "businessmen": [
+          "llm"
+        ],
+        "entrepreneurs": [
+          "llm"
+        ],
+        "executives": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "group of nine businessmen": [
+          "llm"
+        ],
+        "nine businessmen assembled": [
+          "llm"
+        ],
+        "businessmen assembled": [
+          "llm"
+        ]
+      },
+      "definition": "A group of nine businessmen who assembled to form a new club.",
+      "ontology_hints": [
+        "group of humans",
+        "group of living things",
+        "organization",
+        "club",
+        "founding"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"nine businessmen\", \"businessmen group\", \"businessmen club founders\"], \"synonyms\": [\"businessmen\", \"entrepreneurs\", \"executives\"], \"lexical_variants\": [\"group of nine businessmen\", \"nine businessmen assembled\", \"businessmen assembled\"], \"definition\": \"A group of nine businessmen who assembled to form a new club.\", \"ontology_hints\": [\"group of humans\", \"group of living things\", \"organization\", \"club\", \"founding\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00005",
+        "text": "relation to the Spokane, Portland and Seattle Railway's interurban railroad line",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "relation to the Spokane, Portland and Seattle Railway's interurban railroad line",
+      "ontology_hints": [],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"relation to the Spokane, Portland and Seattle Railway's interurban railroad line\", \"ontology_hints\": []}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00006",
+        "text": "frequent passenger service to the site",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A regular train or bus service that transports passengers to a specific location.",
+      "ontology_hints": [
+        "public transport service",
+        "railway service",
+        "bus service"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A regular train or bus service that transports passengers to a specific location.\", \"ontology_hints\": [\"public transport service\", \"railway service\", \"bus service\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00007",
+        "text": "PGA Championship",
+        "label": "event"
+      },
+      "aliases": [
+        "PGA Championship",
+        "US PGA Championship",
+        "USPGA"
+      ],
+      "synonyms": [
+        "PGA Championship",
+        "US PGA Championship",
+        "USPGA"
+      ],
+      "lexical_variants": [
+        "PGA Championship"
+      ],
+      "alias_sources": {
+        "PGA Championship": [
+          "wikipedia",
+          "llm"
+        ],
+        "US PGA Championship": [
+          "llm"
+        ],
+        "USPGA": [
+          "llm"
+        ]
+      },
+      "synonym_sources": {
+        "PGA Championship": [
+          "llm"
+        ],
+        "US PGA Championship": [
+          "llm"
+        ],
+        "USPGA": [
+          "llm"
+        ]
+      },
+      "lexical_variant_sources": {
+        "PGA Championship": [
+          "llm"
+        ]
+      },
+      "definition": "An annual professional golf tournament organized by the Professional Golfers' Association of America, one of the four men's major championships.",
+      "ontology_hints": [
+        "event",
+        "golf tournament",
+        "major championship",
+        "professional golf competition"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "The PGA Championship (often referred to as the US PGA Championship or USPGA outside the United States) is an annual golf tournament conducted by the Professional Golfers' Association of America. The PGA is one of the four men's major golf championships (the others being The Open, the Masters, and the U.S. Open) and is the only one of the four that is exclusively for professional players.\nIt was formerly played in mid-August on the third weekend before Labor Day weekend, serving as the fourth and final men's major of the golf season. Beginning in 2019, the tournament is played in May on the weekend before Memorial Day, as the season's second major following the Masters in April. It is an official money event on the PGA Tour, European Tour, and Japan Golf Tour, with a purse of $11 million for the 100th edition in 2018.\nIn line with the other majors, winning the PGA gains privileges that improve career security. PGA champions are automatically invited to play in the other three majors and The Players Championship for the next five years, and are eligible for the PGA Championship for life. They also earn a five-year exemption on the PGA Tour and a seven-year membership on the DP World ",
+          "reference": "https://en.wikipedia.org/wiki/PGA_Championship"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"PGA Championship\", \"US PGA Championship\", \"USPGA\"], \"synonyms\": [\"PGA Championship\", \"US PGA Championship\", \"USPGA\"], \"lexical_variants\": [\"PGA Championship\"], \"definition\": \"An annual professional golf tournament organized by the Professional Golfers' Association of America, one of the four men's major championships.\", \"ontology_hints\": [\"event\", \"golf tournament\", \"major championship\", \"professional golf competition\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00008",
+        "text": "held at the club in 1946",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "An event that took place at a club in the year 1946.",
+      "ontology_hints": [
+        "physical location",
+        "recurring event",
+        "event"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"An event that took place at a club in the year 1946.\", \"ontology_hints\": [\"physical location\", \"recurring event\", \"event\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00009",
+        "text": "Ben Hogan",
+        "label": "entity"
+      },
+      "aliases": [
+        "Ben Hogan"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "Ben Hogan",
+        "William Ben Hogan"
+      ],
+      "alias_sources": {
+        "Ben Hogan": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "Ben Hogan": [
+          "llm"
+        ],
+        "William Ben Hogan": [
+          "llm"
+        ]
+      },
+      "definition": "American professional golfer who won nine major championships and is considered one of the greatest players in the history of the game.",
+      "ontology_hints": [
+        "human"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "William Ben Hogan (August 13, 1912 – July 25, 1997) was an American professional golfer who is considered to be one of the greatest players in the history of the game. He profoundly influenced golf swing theory, and was noted for his ballstriking skill and assiduous practice. Hogan won nine major championships and is one of six men to complete the modern career grand slam.  \nHogan was introduced to golf through caddying at age 11 and turned professional aged 17. He struggled at the start of his career and did not win a professional tournament until he was 26. After serving in the U.S. Army Air Forces from 1943 to 1945, Hogan claimed his first major championship at the 1946 PGA Championship, which was one of his 13 tournament victories that year. He won the 1948 U.S. Open with a record score of 8-under 276.\nIn 1949, Hogan sustained near-fatal injuries in a head-on collision with a bus while driving home from a tournament. He  recovered and returned to golf, winning the 1950 U.S. Open in what became known as the \"miracle at Merion\". Hogan achieved the Triple Crown in 1953, with victories at the Masters Tournament, the U.S. Open and the Open Championship. In total, he won 64 professio",
+          "reference": "https://en.wikipedia.org/wiki/Ben_Hogan"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Ben Hogan\"], \"synonyms\": [], \"lexical_variants\": [\"Ben Hogan\", \"William Ben Hogan\"], \"definition\": \"American professional golfer who won nine major championships and is considered one of the greatest players in the history of the game.\", \"ontology_hints\": [\"human\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00010",
+        "text": "overcame an early deficit in the 36-hole final match on August 25",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A description of a situation in which a player or team overcame an early disadvantage in a 36‑hole final match that took place on August 25.",
+      "ontology_hints": [
+        "sports competition",
+        "golf match",
+        "deficit",
+        "final match",
+        "date"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A description of a situation in which a player or team overcame an early disadvantage in a 36‑hole final match that took place on August 25.\", \"ontology_hints\": [\"sports competition\", \"golf match\", \"deficit\", \"final match\", \"date\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00011",
+        "text": "first of his nine major titles",
+        "label": "state/attribute"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "the first title in a set of nine major works",
+      "ontology_hints": [
+        "series of creative works",
+        "ordered set of creative works"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"the first title in a set of nine major works\", \"ontology_hints\": [\"series of creative works\", \"ordered set of creative works\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00012",
+        "text": "Portland Open",
+        "label": "event"
+      },
+      "aliases": [
+        "Portland Open Invitational"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "Portland Open Invitational"
+      ],
+      "alias_sources": {
+        "Portland Open Invitational": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {
+        "Portland Open Invitational": [
+          "llm"
+        ]
+      },
+      "definition": "A professional golf tournament on the PGA Tour held in Portland, Oregon, USA, from 1944 to 1948 and again from 1959 to 1966.",
+      "ontology_hints": [
+        "sports league event",
+        "golf tournament",
+        "PGA Tour event"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "The Portland Open Invitational was a professional golf tournament in the northwest United States on the PGA Tour, played in Portland, Oregon.  Established by Robert A. Hudson with a $10,000 purse in 1944, it was played from 1944 to 1948 and again from 1959 to 1966. The event was hosted eight times at the Portland Golf Club, and four times at the Columbia Edgewater Country Club. First played as the Portland Open, the revived 1959 event played as the Portland Centennial Open Invitational, in honor of Oregon's centennial of statehood.\nSam Snead won the inaugural event in 1944, and Ben Hogan won in 1945 by fourteen strokes, and also won the 1946 PGA Championship, then a match play event, held at the Portland Golf Club. The club also hosted the Ryder Cup in 1947; the U.S. team was captained by Hogan and won 11–1. Hogan was a runner-up in 1948, a stroke back in an 18-hole playoff.\nThe tournament was dominated by three-time winners Billy Casper (1959–61) and Jack Nicklaus (1962, 1964–65). Nicklaus' $3,500 win during his rookie season in 1962 concluded three weeks of victories; he took the massive winner's share of $50,000 in the exhibition World Series of Golf in Ohio, and then won his se",
+          "reference": "https://en.wikipedia.org/wiki/Portland_Open_Invitational"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Portland Open Invitational\"], \"synonyms\": [], \"lexical_variants\": [\"Portland Open Invitational\"], \"definition\": \"A professional golf tournament on the PGA Tour held in Portland, Oregon, USA, from 1944 to 1948 and again from 1959 to 1966.\", \"ontology_hints\": [\"sports league event\", \"golf tournament\", \"PGA Tour event\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00013",
+        "text": "PGC hosted the Ryder Cup matches of 1947",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "PGC hosted the Ryder Cup matches of 1947, indicating that PGC served as the venue for the 1947 Ryder Cup golf competition.",
+      "ontology_hints": [],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"PGC hosted the Ryder Cup matches of 1947, indicating that PGC served as the venue for the 1947 Ryder Cup golf competition.\", \"ontology_hints\": []}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00014",
+        "text": "first renewal in a decade due to World War II",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "The first instance of renewal occurring after a ten‑year interval, prompted by the events of World War II.",
+      "ontology_hints": [
+        "historical country",
+        "first-level administrative division",
+        "educational institution",
+        "historical event"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"The first instance of renewal occurring after a ten‑year interval, prompted by the events of World War II.\", \"ontology_hints\": [\"historical country\", \"first-level administrative division\", \"educational institution\", \"historical event\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00015",
+        "text": "U.S. team defeated Great Britain 11 to 1 in wet conditions in early November",
+        "label": "relation-bearing expression"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A statement indicating that the U.S. team defeated Great Britain with a score of 11 to 1 during wet conditions in early November, referring to a sports competition outcome.",
+      "ontology_hints": [
+        "sports competition",
+        "Ryder Cup",
+        "golf tournament",
+        "team sports",
+        "match result"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A statement indicating that the U.S. team defeated Great Britain with a score of 11 to 1 during wet conditions in early November, referring to a sports competition outcome.\", \"ontology_hints\": [\"sports competition\", \"Ryder Cup\", \"golf tournament\", \"team sports\", \"match result\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00016",
+        "text": "Great Britain",
+        "label": "entity"
+      },
+      "aliases": [
+        "Great Britain"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "Great Britain": [
+          "wikipedia",
+          "llm"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "Great Britain is an island in the North Atlantic Ocean off the north‑west coast of continental Europe, comprising the countries England, Scotland, and Wales.",
+      "ontology_hints": [
+        "island",
+        "political territory",
+        "concrete object"
+      ],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "Great Britain is an island in the North Atlantic Ocean off the north-west coast of continental Europe, consisting of the countries England, Scotland and Wales. With an area of 209,331 km2 (80,823 sq mi), it is the largest of the British Isles, the largest European island, and the ninth-largest island in the world. It is dominated by a maritime climate with narrow temperature differences between seasons. The island of Ireland, with an area 40 per cent that of Great Britain, is to the west. These islands, along with over 1,000 smaller surrounding islands and named substantial rocks, comprise the British Isles archipelago.\nConnected to mainland Europe until 9,000 years ago by a land bridge now known as Doggerland, Great Britain has been inhabited by modern humans for around 30,000 years. In 2011, it had a population of about 61 million, making it the world's third-most-populous island after Honshu in Japan and Java in Indonesia, and the most populated island outside of Asia.\nThe term \"Great Britain\" can also refer to the political territory of England, Scotland and Wales, which includes their offshore islands. This territory, together with Northern Ireland, constitutes the United King",
+          "reference": "https://en.wikipedia.org/wiki/Great_Britain"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [\"Great Britain\"], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"Great Britain is an island in the North Atlantic Ocean off the north‑west coast of continental Europe, comprising the countries England, Scotland, and Wales.\", \"ontology_hints\": [\"island\", \"political territory\", \"concrete object\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00017",
+        "text": "wet conditions",
+        "label": "state/attribute"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "A state in which something is wet.",
+      "ontology_hints": [
+        "state/attribute"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"A state in which something is wet.\", \"ontology_hints\": [\"state/attribute\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00018",
+        "text": "early November",
+        "label": "date/time attribute"
+      },
+      "aliases": [
+        "The Early November"
+      ],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {
+        "The Early November": [
+          "wikipedia"
+        ]
+      },
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "",
+      "ontology_hints": [],
+      "evidence": [
+        {
+          "source": "wikipedia",
+          "content": "The Early November is an American rock band from New Jersey. The group formed in 2001 and signed with Drive-Thru Records in 2002. As of 2024, they have released two EPs — For All of This (2002) and The Acoustic EP (2002) — and seven full-length albums: The Room's Too Cold (2003), The Mother, the Mechanic, and the Path (2006), In Currents (2012), Imbue (2015), Lilac (2019) and The Early November (2024).",
+          "reference": "https://en.wikipedia.org/wiki/The_Early_November"
+        },
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"\", \"ontology_hints\": []}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    },
+    {
+      "base_expression": {
+        "expr_id": "expr_00019",
+        "text": "winter of 1914",
+        "label": "date/time attribute"
+      },
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "alias_sources": {},
+      "synonym_sources": {},
+      "lexical_variant_sources": {},
+      "definition": "The winter season that occurred during the year 1914.",
+      "ontology_hints": [
+        "time period",
+        "season",
+        "date/time attribute"
+      ],
+      "evidence": [
+        {
+          "source": "llm",
+          "content": "{\"aliases\": [], \"synonyms\": [], \"lexical_variants\": [], \"definition\": \"The winter season that occurred during the year 1914.\", \"ontology_hints\": [\"time period\", \"season\", \"date/time attribute\"]}",
+          "reference": "openai/gpt-oss-20b"
+        }
+      ]
+    }
+  ]
+}

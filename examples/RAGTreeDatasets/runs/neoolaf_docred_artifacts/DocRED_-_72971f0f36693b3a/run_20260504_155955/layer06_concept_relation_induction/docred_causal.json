@@ -1,0 +1,83 @@
+{
+  "layer": "layer06_concept_relation_induction",
+  "num_concept_candidates": 2,
+  "num_ontology_relation_candidates": 1,
+  "concept_candidates": [
+    {
+      "concept_id": "concept_00000",
+      "label": "Town",
+      "normalized_label": "town",
+      "description": "A human settlement larger than a village but smaller than a city, typically governed by municipal authorities and serving as a local hub for commerce, education, and culture.",
+      "concept_kind": "location",
+      "parent_hint": "GeographicLocation",
+      "source_candidate_ids": [
+        "cand_e_00001"
+      ],
+      "source_triple_ids": [
+        "triple_00000"
+      ],
+      "confidence": 0.93,
+      "justification": "The candidate represents a reusable, semantically stable geographic concept that is general enough to be used across multiple documents. It aligns with the grounding summary and does not duplicate existing ontology classes.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 254,
+          "chunk_end_char": 266,
+          "doc_start_char": 254,
+          "doc_end_char": 266,
+          "snippet": ", United States . Washington Place was built by William and Annie Washington in north Romney between 1863 and 1874 on land given to Annie by her former owner , Susan Blue P"
+        }
+      ]
+    },
+    {
+      "concept_id": "concept_00001",
+      "label": "Neighborhood",
+      "normalized_label": "neighborhood",
+      "description": "A geographically localized community within a larger town, city, suburb or rural area, often comprising a single street and its buildings.",
+      "concept_kind": "place",
+      "parent_hint": "GeographicArea",
+      "source_candidate_ids": [
+        "cand_e_00004"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.95,
+      "justification": "Neighborhood is a stable, general concept that can be reused across documents to model localized communities, fitting ontology-oriented modeling better than treating it as a document-specific mention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 608,
+          "chunk_end_char": 619,
+          "doc_start_char": 608,
+          "doc_end_char": 619,
+          "snippet": "land developer in the state of West Virginia . One of his subdivisions is the \" Blacks Hill \" neighborhood of Romney , adjacent to the Washington Place homestead . Washing"
+        }
+      ]
+    }
+  ],
+  "ontology_relation_candidates": [
+    {
+      "relation_id": "ont_rel_00000",
+      "label": "builtBy",
+      "normalized_label": "builtby",
+      "description": "Relates an object or structure to the person or organization that constructed, assembled, or otherwise brought it into existence.",
+      "domain_hint": "Structure",
+      "range_hint": "Person",
+      "source_candidate_ids": [
+        "cand_r_00013"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "The relation \"built by\" is a stable, reusable semantic link that appears across many documents and is not a duplicate of existing ontology properties. It aligns with the Wikidata property P1071 and is widely applicable to constructions and artifacts.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 72,
+          "chunk_end_char": 80,
+          "doc_start_char": 72,
+          "doc_end_char": 80,
+          "snippet": "Washington Place ( William Washington House ) is one of the first homes built by freed slaves after the Emancipation Proclamation of 1863 in Hampshire County ,"
+        }
+      ]
+    }
+  ]
+}

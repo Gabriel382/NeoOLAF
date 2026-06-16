@@ -36,6 +36,9 @@ class GeneralAxiomExtractionLayer(BaseLayer):
         temperature: float = 0.0,
         save_intermediate: bool = True,
         verbose: bool = False,
+        max_concurrency: int = 1,
+        retry_failed_calls: int = 3,
+        retry_sleep_seconds: float = 2.0,
     ) -> None:
         """
         Initialize Layer 9.
@@ -59,7 +62,50 @@ class GeneralAxiomExtractionLayer(BaseLayer):
         self.max_schema_inputs = max_schema_inputs
         self.max_description_inputs = max_description_inputs
         self.temperature = temperature
+        self.max_concurrency = max(1, int(max_concurrency or 1))
+        self.retry_failed_calls = max(0, int(retry_failed_calls or 0))
+        self.retry_sleep_seconds = float(retry_sleep_seconds or 0.0)
 
+    def _call_model_with_retries(
+        self,
+        state,
+        messages,
+        max_attempts: int = 5,
+        retry_wait_seconds: float = 3.0,
+    ):
+        import time
+
+        last_error = None
+
+        for attempt in range(1, max_attempts + 1):
+            try:
+                raw = self.ollama_backend.chat(
+                    model=state.llm_model,
+                    messages=messages,
+                    temperature=self.temperature,
+                )
+
+                if raw is None or not isinstance(raw, str) or not raw.strip():
+                    raise RuntimeError(
+                        f"{self.name}: backend returned empty response on attempt {attempt}/{max_attempts}"
+                    )
+
+                parsed = self.ollama_backend.extract_json(raw)
+                return parsed
+
+            except Exception as exc:
+                last_error = exc
+
+                if self.verbose:
+                    print(f"[NeoOLAF] {self.name} retry {attempt}/{max_attempts} failed: {exc}")
+
+                if attempt < max_attempts:
+                    time.sleep(retry_wait_seconds)
+
+        raise RuntimeError(
+            f"{self.name}: failed after {max_attempts} attempts. Last error: {last_error}"
+        )
+        
     def _normalize_llm_json_dict(self, parsed: Any) -> dict | None:
         """
         Normalize LLM JSON outputs so downstream code always receives a dict.
@@ -91,10 +137,134 @@ class GeneralAxiomExtractionLayer(BaseLayer):
         # Any other type is considered invalid for this layer
         return None
 
+    def _get_layer_strategy(self, state: PipelineState) -> str:
+        """Return the profile strategy configured for Layer 9."""
+        profile_config = getattr(state, "profile_config", None) or {}
+        if not isinstance(profile_config, dict):
+            return ""
+        layer_cfg = (
+            profile_config.get("layers", {})
+            .get("layer09_general_axiom_extraction", {})
+        )
+        if not isinstance(layer_cfg, dict):
+            return ""
+        return str(layer_cfg.get("strategy", ""))
+
+    def _deduplicate_axioms(self, axioms: List[GeneralAxiomCandidate]) -> List[GeneralAxiomCandidate]:
+        """Deduplicate candidate axioms while preserving deterministic order."""
+        dedup = {}
+        for axiom in axioms:
+            key = (
+                axiom.axiom_type,
+                axiom.subject_id,
+                axiom.predicate,
+                axiom.object_id,
+                axiom.object_label,
+                axiom.literal_value,
+            )
+            if key not in dedup:
+                dedup[key] = axiom
+        return list(dedup.values())
+
+    def _run_ontology_aware_schema_to_general_axioms(self, state: PipelineState) -> PipelineState:
+        """Promote Layer 8 axiom schemata into general axiom candidates deterministically.
+
+        This strategy is intended for ontology-aware ablation runs where Layer 8
+        already produced validated schema candidates. It avoids one LLM call per
+        schema, keeps the full provenance chain, and still emits description
+        axioms for concepts and ontology relations.
+        """
+        axioms: List[GeneralAxiomCandidate] = []
+        axiom_counter = 0
+
+        schema_candidates = list(getattr(state, "axiom_schema_candidates", []) or [])
+        if self.max_schema_inputs is not None:
+            schema_candidates = schema_candidates[: self.max_schema_inputs]
+
+        for schema in schema_candidates:
+            axioms.append(
+                GeneralAxiomCandidate(
+                    axiom_id=f"axiom_{axiom_counter:05d}",
+                    axiom_type=schema.schema_type,
+                    subject_id=schema.subject_id,
+                    subject_label=schema.subject_label,
+                    predicate=schema.predicate,
+                    object_id=schema.object_id,
+                    object_label=schema.object_label,
+                    literal_value=None,
+                    justification=(
+                        "Deterministic ontology-aware general axiom generation: "
+                        "Layer 8 schema candidate is promoted directly as a general axiom. "
+                        f"Source justification: {schema.justification}"
+                    ),
+                    confidence=schema.confidence if schema.confidence is not None else 1.0,
+                    source_schema_ids=[schema.schema_id],
+                    source_concept_ids=list(schema.source_concept_ids),
+                    source_relation_ids=list(schema.source_relation_ids),
+                    evidence=list(schema.evidence),
+                )
+            )
+            axiom_counter += 1
+
+        concept_candidates = list(getattr(state, "concept_candidates", []) or [])
+        relation_candidates = list(getattr(state, "ontology_relation_candidates", []) or [])
+        description_inputs = ([('concept', c) for c in concept_candidates] + [('relation', r) for r in relation_candidates])
+
+        if self.max_description_inputs is not None:
+            description_inputs = description_inputs[: self.max_description_inputs]
+
+        for item_type, item in description_inputs:
+            literal_value = getattr(item, "description", None)
+            if literal_value is None or not str(literal_value).strip():
+                if item_type == "concept":
+                    literal_value = f"Ontology concept candidate representing {item.label}."
+                else:
+                    literal_value = f"Ontology relation candidate representing {item.label}."
+
+            subject_id = item.concept_id if item_type == "concept" else item.relation_id
+            source_concept_ids = [item.concept_id] if item_type == "concept" else []
+            source_relation_ids = [item.relation_id] if item_type == "relation" else []
+
+            axioms.append(
+                GeneralAxiomCandidate(
+                    axiom_id=f"axiom_{axiom_counter:05d}",
+                    axiom_type="description",
+                    subject_id=subject_id,
+                    subject_label=item.label,
+                    predicate="rdfs:description",
+                    object_id=None,
+                    object_label=None,
+                    literal_value=str(literal_value).strip(),
+                    justification=(
+                        "Deterministic ontology-aware general axiom generation: "
+                        "all promoted concepts and ontology relations receive rdfs:description."
+                    ),
+                    confidence=1.0,
+                    source_schema_ids=[],
+                    source_concept_ids=source_concept_ids,
+                    source_relation_ids=source_relation_ids,
+                    evidence=list(getattr(item, "evidence", []) or []),
+                )
+            )
+            axiom_counter += 1
+
+        state.general_axiom_candidates = self._deduplicate_axioms(axioms)
+        state.log(
+            f"[layer09_general_axiom_extraction] deterministically generated "
+            f"{len(state.general_axiom_candidates)} general axioms"
+        )
+        return state
+
     def _run(self, state: PipelineState) -> PipelineState:
         """
         Run general axiom extraction from Layer 8 schemata and Layer 6 candidates.
         """
+        strategy = self._get_layer_strategy(state)
+        if strategy == "ontology_aware_schema_to_general_axioms":
+            if self.verbose:
+                print(f"[NeoOLAF][Layer 9] strategy={strategy}; no LLM calls.")
+            return self._run_ontology_aware_schema_to_general_axioms(state)
+
         axioms: List[GeneralAxiomCandidate] = []
         axiom_counter = 0
 
@@ -130,12 +300,12 @@ class GeneralAxiomExtractionLayer(BaseLayer):
                 {"role": "user", "content": build_axiom_user_prompt(payload)},
             ]
 
-            raw = self.ollama_backend.chat(
-                model=state.llm_model,
+            parsed = self._call_model_with_retries(
+                state=state,
                 messages=messages,
-                temperature=self.temperature,
+                max_attempts=max(1, self.retry_failed_calls + 1),
+                retry_wait_seconds=self.retry_sleep_seconds,
             )
-            parsed = self.ollama_backend.extract_json(raw)
 
             # Normalize parsed output so this layer always works with a dictionary.
             parsed = self._normalize_llm_json_dict(parsed)

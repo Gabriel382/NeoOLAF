@@ -1,0 +1,42 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The chunk states that the latest smartphones in the Galaxy S series are the Samsung Galaxy S9 and Samsung Galaxy S9+." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00002> ;
+    neo:predicate ns1:cand_r_00011 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00001> .
+
+<http://neoolaf.org/resource/triple/triple_00001> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00001/prov/0> ;
+    neo:justification "The chunk text explicitly states that both the Samsung Galaxy S9 and the Samsung Galaxy S9+ were released on 16 March 2018." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00002> ;
+    neo:predicate ns1:cand_r_00012 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00001> .
+
+ns1:cand_r_00011 neo:label "latest smartphones in the Galaxy S series" .
+
+ns1:cand_r_00012 neo:label "both released on 16 March 2018" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "of the Galaxy Tab S in June 2014 and released the next month . As of 2018 , the latest smartphones in the Galaxy S series are the Samsung Galaxy S9 and Samsung Galaxy S9 + , both released on 16 March 2" .
+
+<http://neoolaf.org/resource/triple/triple_00001/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "ones in the Galaxy S series are the Samsung Galaxy S9 and Samsung Galaxy S9 + , both released on 16 March 2018 , and the latest tablet is the Samsung Galaxy Tab S4 released on August 1 , 201" .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "Samsung Galaxy S9" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00011 <http://neoolaf.org/resource/node/cand_e_00002> ;
+    ns1:cand_r_00012 <http://neoolaf.org/resource/node/cand_e_00002> .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "Samsung Galaxy S9 +" ;
+    neo:nodeType "entity" .
+

@@ -1,0 +1,694 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 43,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "AUXILIARY WATERING ALARM",
+      "label": "alarm type",
+      "justification": "Identifies a specific alarm event in the maintenance manual.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 213,
+          "chunk_end_char": 237,
+          "doc_start_char": 25213,
+          "doc_end_char": 25237,
+          "snippet": "nsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "PART NOT EJECTED",
+      "label": "alarm type",
+      "justification": "Describes a failure event where a part fails to eject.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 802,
+          "chunk_end_char": 818,
+          "doc_start_char": 25802,
+          "doc_end_char": 25818,
+          "snippet": "ble for the intervention: responsible for maintenance\n\nAlarm number: 1048\ntext: PART NOT EJECTED\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "PART MISSING",
+      "label": "alarm type",
+      "justification": "Indicates a missing part during operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 1290,
+          "chunk_end_char": 1302,
+          "doc_start_char": 26290,
+          "doc_end_char": 26302,
+          "snippet": "user page\nresponsible for\noperator/maintenance officer\nAlarm number: 1049\ntext: PART MISSING\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "ANOMALY IN UNLOADING THE PART",
+      "label": "alarm type",
+      "justification": "Captures an abnormal unloading event.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 1740,
+          "chunk_end_char": 1769,
+          "doc_start_char": 26740,
+          "doc_end_char": 26769,
+          "snippet": "m (0 = part present,\n1 = part ejected)\nresponsible for\nAlarm number: 1051\ntext: ANOMALY IN UNLOADING THE PART\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "UNLOADER OF THE WORKPIECE FORWARD",
+      "label": "alarm type",
+      "justification": "Specifies an alarm triggered by a forward unloader position.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 3581,
+          "chunk_end_char": 3614,
+          "doc_start_char": 28581,
+          "doc_end_char": 28614,
+          "snippet": "r. intervention manager: operator/maintenance manager\n\nAlarm number: 1052\ntext: UNLOADER OF THE WORKPIECE FORWARD\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "Z2-Y2 AXES IN COLLISION ZONE",
+      "label": "alarm type",
+      "justification": "Denotes a collision alarm between axes.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 3905,
+          "chunk_end_char": 3933,
+          "doc_start_char": 28905,
+          "doc_end_char": 28933,
+          "snippet": "tion M521\nresponsible for\noperator/maintenance officer\nAlarm number: 1055\ntext: Z2-Y2 AXES IN COLLISION ZONE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "FEEDER FAULT",
+      "label": "alarm type",
+      "justification": "Represents a fault in the bar feeder.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 4258,
+          "chunk_end_char": 4270,
+          "doc_start_char": 29258,
+          "doc_end_char": 29270,
+          "snippet": "ion:\nthe alarm.\nresponsible for\noperator/tool adjuster\nAlarm number: 1060\ntext: FEEDER FAULT\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "WORKPIECE UNLOADER FORWARD",
+      "label": "alarm type",
+      "justification": "Another form of forward unloader alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 4617,
+          "chunk_end_char": 4643,
+          "doc_start_char": 29617,
+          "doc_end_char": 29643,
+          "snippet": "the anomaly.\nresponsible for\noperator/maintenance officer\n\nAlarm n°: 1052 text: WORKPIECE UNLOADER FORWARD type: Standard: Optional: effect: Alarm with immediate and controlled stop caus"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "immediate and controlled shutdown",
+      "label": "operational state",
+      "justification": "Describes the machine state when an alarm occurs.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 283,
+          "chunk_end_char": 316,
+          "doc_start_char": 25283,
+          "doc_end_char": 25316,
+          "snippet": "046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The flow control device does not signal the presence of watering liquid,"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "immediate and controlled stop",
+      "label": "operational state",
+      "justification": "Describes the machine state for certain alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 2309,
+          "chunk_end_char": 2338,
+          "doc_start_char": 27309,
+          "doc_end_char": 27338,
+          "snippet": "rm n°: 1048 text: PART NOT EJECTED type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The part was not ejected by the counter spindle after opening the grippe"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "Alarm with immediate and controlled shutdown",
+      "label": "alarm effect",
+      "justification": "Explicitly states the effect of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 272,
+          "chunk_end_char": 316,
+          "doc_start_char": 25272,
+          "doc_end_char": 25316,
+          "snippet": "larm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and controlled shutdown cause: The flow control device does not signal the presence of watering liquid,"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00011",
+      "text": "Alarm with immediate and controlled stop",
+      "label": "alarm effect",
+      "justification": "Explicitly states the effect of the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 2298,
+          "chunk_end_char": 2338,
+          "doc_start_char": 27298,
+          "doc_end_char": 27338,
+          "snippet": "le for\n\nAlarm n°: 1048 text: PART NOT EJECTED type: Standard: Optional: effect: Alarm with immediate and controlled stop cause: The part was not ejected by the counter spindle after opening the grippe"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00012",
+      "text": "does not signal the presence of watering liquid",
+      "label": "relation-bearing expression",
+      "justification": "Links the flow control device to the lack of watering liquid signal.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 348,
+          "chunk_end_char": 395,
+          "doc_start_char": 25348,
+          "doc_end_char": 25395,
+          "snippet": "ct: Alarm with immediate and controlled shutdown cause: The flow control device does not signal the presence of watering liquid, as a result of programming the M208 function intervention: Check the presence"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00013",
+      "text": "as a result of programming the M208 function",
+      "label": "relation-bearing expression",
+      "justification": "Shows causality between programming and the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 397,
+          "chunk_end_char": 441,
+          "doc_start_char": 25397,
+          "doc_end_char": 25441,
+          "snippet": "cause: The flow control device does not signal the presence of watering liquid, as a result of programming the M208 function intervention: Check the presence of the watering liquid, the hydraulic connecti"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00014",
+      "text": "responsible for the intervention",
+      "label": "relation-bearing expression",
+      "justification": "Indicates responsibility for the corrective action.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 128,
+          "chunk_end_char": 160,
+          "doc_start_char": 25128,
+          "doc_end_char": 25160,
+          "snippet": "e 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM ty"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00015",
+      "text": "emitted",
+      "label": "relation-bearing expression",
+      "justification": "Shows that an alarm is emitted by a component.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 1436,
+          "chunk_end_char": 1443,
+          "doc_start_char": 26436,
+          "doc_end_char": 26443,
+          "snippet": "e and controlled shutdown\nIn machines equipped with a controlled ejector, it is emitted\ncause: when with the pliers closed and the part present, the microdetector\nejec"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00016",
+      "text": "detected",
+      "label": "relation-bearing expression",
+      "justification": "Shows that a condition is detected by a sensor.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 18,
+          "chunk_end_char": 26,
+          "doc_start_char": 25018,
+          "doc_end_char": 25026,
+          "snippet": "if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00017",
+      "text": "causes",
+      "label": "relation-bearing expression",
+      "justification": "General causality phrase used in the text.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00018",
+      "text": "check",
+      "label": "relation-bearing expression",
+      "justification": "Common action verb indicating inspection.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 28,
+          "chunk_end_char": 33,
+          "doc_start_char": 25028,
+          "doc_end_char": 25033,
+          "snippet": "if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passa"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00019",
+      "text": "deactivate the control from the “MACHINE MANAGEMENT” user page",
+      "label": "relation-bearing expression",
+      "justification": "Describes an action to stop the alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00020",
+      "text": "move the part unloader back using function M521",
+      "label": "relation-bearing expression",
+      "justification": "Specifies a corrective movement action.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 3787,
+          "chunk_end_char": 3834,
+          "doc_start_char": 28787,
+          "doc_end_char": 28834,
+          "snippet": "tart the cycle with the part unloader in\ncause:\nforward position.\nintervention: Move the part unloader back using function M521\nresponsible for\noperator/maintenance officer\nAlarm number: 1055\ntext: Z2-Y2 AXE"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00021",
+      "text": "reverse the part unloader using function M521",
+      "label": "relation-bearing expression",
+      "justification": "Specifies a corrective reversal action.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 4832,
+          "chunk_end_char": 4877,
+          "doc_start_char": 29832,
+          "doc_end_char": 29877,
+          "snippet": "rt the cycle with the workpiece unloader in the forward position. intervention: Reverse the part unloader using function M521 responsible for intervention: operator/maintenance person\n\nAlarm n°: 1055 text:"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00022",
+      "text": "Manually move the axes away from the collision zone and delete the alarm",
+      "label": "relation-bearing expression",
+      "justification": "Describes a manual intervention to resolve collision.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00023",
+      "text": "Check the connections, consult the bar feeder documentation",
+      "label": "relation-bearing expression",
+      "justification": "Combines inspection and reference to documentation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 4448,
+          "chunk_end_char": 4507,
+          "doc_start_char": 29448,
+          "doc_end_char": 29507,
+          "snippet": "off circuit and does not transmit the “ready” signal to\ncause:\nthe CNC machine.\nCheck the connections, consult the bar feeder documentation\nintervention:\nfor details of the anomaly.\nresponsible for\noperator/maintenance"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00024",
+      "text": "input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant)",
+      "label": "attribute",
+      "justification": "Provides a specific input reference used in troubleshooting.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 34,
+          "chunk_end_char": 127,
+          "doc_start_char": 25034,
+          "doc_end_char": 25127,
+          "snippet": "if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00025",
+      "text": "input X4.1 page 16 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant)",
+      "label": "attribute",
+      "justification": "Another specific input reference for coolant detection.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 620,
+          "chunk_end_char": 713,
+          "doc_start_char": 25620,
+          "doc_end_char": 25713,
+          "snippet": "iquid passage solenoid valves, the M1671 pump; if no problem is detected, check input X4.1 page 16 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm number: 10"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00026",
+      "text": "input X5.0 page 71 of the electrical diagram (0 = part present, 1 = part ejected)",
+      "label": "attribute",
+      "justification": "Input reference for part presence detection.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00027",
+      "text": "M208 function",
+      "label": "component",
+      "justification": "Identifies a specific function used in the alarm context.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 428,
+          "chunk_end_char": 441,
+          "doc_start_char": 25428,
+          "doc_end_char": 25441,
+          "snippet": "does not signal the presence of watering liquid, as a result of programming the M208 function intervention: Check the presence of the watering liquid, the hydraulic connecti"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00028",
+      "text": "M1671 pump",
+      "label": "component",
+      "justification": "Identifies a pump component involved in watering.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 575,
+          "chunk_end_char": 585,
+          "doc_start_char": 25575,
+          "doc_end_char": 25585,
+          "snippet": "id, the hydraulic connections, the watering liquid passage solenoid valves, the M1671 pump; if no problem is detected, check input X4.1 page 16 of the electrical diagram"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00029",
+      "text": "M521 function",
+      "label": "component",
+      "justification": "Identifies a function used to move the unloader.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00030",
+      "text": "operator/maintenance officer",
+      "label": "role",
+      "justification": "Specifies the personnel responsible for intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 1236,
+          "chunk_end_char": 1264,
+          "doc_start_char": 26236,
+          "doc_end_char": 26264,
+          "snippet": "tivate the control from\nfrom the “MACHINE MANAGEMENT” user page\nresponsible for\noperator/maintenance officer\nAlarm number: 1049\ntext: PART MISSING\ntype: Standard: Optional:\neffect: Alarm w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00031",
+      "text": "operator/tool adjuster",
+      "label": "role",
+      "justification": "Specifies the personnel responsible for collision resolution.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 4210,
+          "chunk_end_char": 4232,
+          "doc_start_char": 29210,
+          "doc_end_char": 29232,
+          "snippet": "way from the collision zone and delete\nintervention:\nthe alarm.\nresponsible for\noperator/tool adjuster\nAlarm number: 1060\ntext: FEEDER FAULT\ntype: Standard: Optional:\neffect: Alarm w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00032",
+      "text": "operator/maintenance manager",
+      "label": "role",
+      "justification": "Specifies the managerial role for intervention.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 3526,
+          "chunk_end_char": 3554,
+          "doc_start_char": 28526,
+          "doc_end_char": 28554,
+          "snippet": "ot receiving the signals from the position microdetector. intervention manager: operator/maintenance manager\n\nAlarm number: 1052\ntext: UNLOADER OF THE WORKPIECE FORWARD\ntype: Standard: Opt"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00033",
+      "text": "operator/maintenance person",
+      "label": "role",
+      "justification": "Specifies the personnel responsible for unloader reversal.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 4908,
+          "chunk_end_char": 4935,
+          "doc_start_char": 29908,
+          "doc_end_char": 29935,
+          "snippet": "on: Reverse the part unloader using function M521 responsible for intervention: operator/maintenance person\n\nAlarm n°: 1055 text: Z2-Y2 AXES IN COLLISION ZONE type: Standar"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00034",
+      "text": "MACHINE MANAGEMENT user page",
+      "label": "interface",
+      "justification": "Identifies the user interface used to deactivate control.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": " if no problem is detected, check input X4.2 page 11 of the electrical diagram (0 = absence of coolant, 1 = passage of coolant) responsible for the intervention: responsible for maintenance\n\nAlarm no.: 1046 text: AUXILIARY WATERING ALARM type: Standard: Optional: effect: Alarm with immediate and con"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00035",
+      "text": "bar feeder",
+      "label": "component",
+      "justification": "Component that can fault and trigger an alarm.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 4354,
+          "chunk_end_char": 4364,
+          "doc_start_char": 29354,
+          "doc_end_char": 29364,
+          "snippet": "e: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown\nThe bar feeder is off circuit and does not transmit the “ready” signal to\ncause:\nthe CNC machi"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00036",
+      "text": "CNC machine",
+      "label": "component",
+      "justification": "Machine that receives signals from detectors.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 4435,
+          "chunk_end_char": 4446,
+          "doc_start_char": 29435,
+          "doc_end_char": 29446,
+          "snippet": "ar feeder is off circuit and does not transmit the “ready” signal to\ncause:\nthe CNC machine.\nCheck the connections, consult the bar feeder documentation\nintervention:\nfor"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00037",
+      "text": "microdetector",
+      "label": "component",
+      "justification": "Sensor that detects part presence or ejection.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 1505,
+          "chunk_end_char": 1518,
+          "doc_start_char": 26505,
+          "doc_end_char": 26518,
+          "snippet": "tor, it is emitted\ncause: when with the pliers closed and the part present, the microdetector\nejected part is detected.\nCheck the tightening elements: if there is a control"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00038",
+      "text": "unloader",
+      "label": "component",
+      "justification": "Component involved in part unloading.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 1992,
+          "chunk_end_char": 2000,
+          "doc_start_char": 26992,
+          "doc_end_char": 27000,
+          "snippet": ":\nordered or that it is not reached within the established time.\nCheck that the unloader is not mechanically retained; if the\npart unloader arrives at the commanded pos"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00039",
+      "text": "part unloader",
+      "label": "component",
+      "justification": "Specific unloader handling the part.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 2038,
+          "chunk_end_char": 2051,
+          "doc_start_char": 27038,
+          "doc_end_char": 27051,
+          "snippet": "established time.\nCheck that the unloader is not mechanically retained; if the\npart unloader arrives at the commanded position but\nintervention:\nthe alarm persists, this me"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00040",
+      "text": "axes",
+      "label": "component",
+      "justification": "Mechanical axes that can collide.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 3911,
+          "chunk_end_char": 3915,
+          "doc_start_char": 28911,
+          "doc_end_char": 28915,
+          "snippet": "521\nresponsible for\noperator/maintenance officer\nAlarm number: 1055\ntext: Z2-Y2 AXES IN COLLISION ZONE\ntype: Standard: Optional:\neffect: Alarm with immediate and co"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00041",
+      "text": "collision zone",
+      "label": "area",
+      "justification": "Physical area where axes may collide.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 3919,
+          "chunk_end_char": 3933,
+          "doc_start_char": 28919,
+          "doc_end_char": 28933,
+          "snippet": "onsible for\noperator/maintenance officer\nAlarm number: 1055\ntext: Z2-Y2 AXES IN COLLISION ZONE\ntype: Standard: Optional:\neffect: Alarm with immediate and controlled shutdown"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00042",
+      "text": "bar feeder documentation",
+      "label": "document",
+      "justification": "Reference material for troubleshooting the feeder.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0005",
+          "chunk_start_char": 4483,
+          "chunk_end_char": 4507,
+          "doc_start_char": 29483,
+          "doc_end_char": 29507,
+          "snippet": "he “ready” signal to\ncause:\nthe CNC machine.\nCheck the connections, consult the bar feeder documentation\nintervention:\nfor details of the anomaly.\nresponsible for\noperator/maintenance"
+        }
+      ]
+    }
+  ]
+}

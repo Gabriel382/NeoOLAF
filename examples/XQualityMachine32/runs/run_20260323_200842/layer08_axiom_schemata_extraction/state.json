@@ -1,0 +1,174 @@
+{
+  "layer": "layer08_axiom_schemata_extraction",
+  "num_axiom_schema_candidates": 6,
+  "axiom_schema_candidates": [
+    {
+      "schema_id": "schema_00000",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "emittedBy",
+      "predicate": "domain",
+      "object_id": "domain_hint::SignalEvent",
+      "object_label": "SignalEvent",
+      "justification": "The relation emittedBy connects SignalEvents to their Device sources as indicated by the example triple.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00001"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 335,
+          "chunk_end_char": 345,
+          "doc_start_char": 335,
+          "doc_end_char": 345,
+          "snippet": "s and messages from the PLC interface, described below. The messages and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper f"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00001",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00000",
+      "subject_label": "emittedBy",
+      "predicate": "range",
+      "object_id": "range_hint::Device",
+      "object_label": "Device",
+      "justification": "The relation emittedBy connects SignalEvents to their Device sources as indicated by the example triple.",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00000"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00001"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 335,
+          "chunk_end_char": 345,
+          "doc_start_char": 335,
+          "doc_end_char": 345,
+          "snippet": "s and messages from the PLC interface, described below. The messages and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper f"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00002",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00001",
+      "subject_label": "negativelyImpacts",
+      "predicate": "domain",
+      "object_id": "domain_hint::ObservableProperty",
+      "object_label": "ObservableProperty",
+      "justification": "The relation negativelyImpacts connects observable properties (like RESET PRG key) to their negative effects on machine functionality, implying a MachineState.",
+      "confidence": 0.75,
+      "source_relation_ids": [
+        "ont_rel_00001"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00002"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 402,
+          "chunk_end_char": 435,
+          "doc_start_char": 402,
+          "doc_end_char": 435,
+          "snippet": "s and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper functioning of the machine and the machining cycle. Depending on the effect they produce, t"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00003",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00001",
+      "subject_label": "negativelyImpacts",
+      "predicate": "range",
+      "object_id": "range_hint::MachineState",
+      "object_label": "MachineState",
+      "justification": "The relation negativelyImpacts connects observable properties (like RESET PRG key) to their negative effects on machine functionality, implying a MachineState.",
+      "confidence": 0.75,
+      "source_relation_ids": [
+        "ont_rel_00001"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00002"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 402,
+          "chunk_end_char": 435,
+          "doc_start_char": 402,
+          "doc_end_char": 435,
+          "snippet": "s and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper functioning of the machine and the machining cycle. Depending on the effect they produce, t"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00004",
+      "schema_type": "relation_domain",
+      "subject_id": "ont_rel_00002",
+      "subject_label": "indicates",
+      "predicate": "domain",
+      "object_id": "domain_hint::Situation",
+      "object_label": "Situation",
+      "justification": "The relation 'indicates' connects situations (like EMERGENCY ACTIVE) to observable entities (like Alarm 1001).",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00002"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00007"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 302,
+          "chunk_end_char": 348,
+          "doc_start_char": 1602,
+          "doc_end_char": 1648,
+          "snippet": "e hardware authorization to the axis/spindle feeder and CNC in emergency cause: Signals that the punch button has been pressed intervention: Release the button and press the machine start button. See page 5"
+        }
+      ]
+    },
+    {
+      "schema_id": "schema_00005",
+      "schema_type": "relation_range",
+      "subject_id": "ont_rel_00002",
+      "subject_label": "indicates",
+      "predicate": "range",
+      "object_id": "range_hint::ObservableEntity",
+      "object_label": "ObservableEntity",
+      "justification": "The relation 'indicates' connects situations (like EMERGENCY ACTIVE) to observable entities (like Alarm 1001).",
+      "confidence": 0.95,
+      "source_relation_ids": [
+        "ont_rel_00002"
+      ],
+      "source_concept_ids": [],
+      "source_triple_ids": [
+        "triple_00007"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 302,
+          "chunk_end_char": 348,
+          "doc_start_char": 1602,
+          "doc_end_char": 1648,
+          "snippet": "e hardware authorization to the axis/spindle feeder and CNC in emergency cause: Signals that the punch button has been pressed intervention: Release the button and press the machine start button. See page 5"
+        }
+      ]
+    }
+  ]
+}

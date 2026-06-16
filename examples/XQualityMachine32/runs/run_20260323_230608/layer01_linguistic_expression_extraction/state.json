@@ -1,0 +1,182 @@
+{
+  "layer": "layer01_linguistic_expression_extraction",
+  "num_expressions": 11,
+  "expressions": [
+    {
+      "expr_id": "expr_00000",
+      "text": "alarms and messages",
+      "label": "entity type",
+      "justification": "Refers to a category of signals indicating machine state.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 40,
+          "chunk_end_char": 59,
+          "doc_start_char": 40,
+          "doc_end_char": 59,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-en Page 8-4 8 Alarms and messages 8.1 Introduction Alarms and messages are divided into two main categories: 1 al"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00001",
+      "text": "CNC",
+      "label": "component",
+      "justification": "Abbreviation for Computerized Numerical Control, a type of machine controller.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 166,
+          "chunk_end_char": 169,
+          "doc_start_char": 166,
+          "doc_end_char": 169,
+          "snippet": "d messages are divided into two main categories: 1 alarms and messages from the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........ 2"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00002",
+      "text": "PLC interface",
+      "label": "component",
+      "justification": "Refers to the interface of a Programmable Logic Controller.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 279,
+          "chunk_end_char": 292,
+          "doc_start_char": 279,
+          "doc_end_char": 292,
+          "snippet": "intenance manual of the Fanuc series CNC........ 2 alarms and messages from the PLC interface, described below. The messages and alarms emitted by the PLC indicate the detec"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00003",
+      "text": "emitted by",
+      "label": "relation-bearing expression",
+      "justification": "Indicates the source of alarms and messages.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 335,
+          "chunk_end_char": 345,
+          "doc_start_char": 335,
+          "doc_end_char": 345,
+          "snippet": "s and messages from the PLC interface, described below. The messages and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper f"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00004",
+      "text": "compromise the proper functioning",
+      "label": "failure symptom",
+      "justification": "Describes a negative impact on machine operation.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 402,
+          "chunk_end_char": 435,
+          "doc_start_char": 402,
+          "doc_end_char": 435,
+          "snippet": "s and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper functioning of the machine and the machining cycle. Depending on the effect they produce, t"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00005",
+      "text": "alarms with immediate and controlled stop",
+      "label": "event type",
+      "justification": "A specific category of alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 542,
+          "chunk_end_char": 583,
+          "doc_start_char": 542,
+          "doc_end_char": 583,
+          "snippet": "hining cycle. Depending on the effect they produce, they are classified into: • alarms with immediate and controlled stop: the machine is stopped and the axes and spindles blocked at maximum torque in"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00006",
+      "text": "stop at the end of the cycle",
+      "label": "event type",
+      "justification": "Another category of alarms.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 707,
+          "chunk_end_char": 735,
+          "doc_start_char": 707,
+          "doc_end_char": 735,
+          "snippet": "indles blocked at maximum torque in controlled mode; • alarms and messages with stop at the end of the cycle: the machine is stopped when function M01 is launched; • read-only messages: th"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00007",
+      "text": "read-only messages",
+      "label": "entity type",
+      "justification": "A category of messages without operational impact.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 793,
+          "chunk_end_char": 811,
+          "doc_start_char": 793,
+          "doc_end_char": 811,
+          "snippet": "t the end of the cycle: the machine is stopped when function M01 is launched; • read-only messages: these are used to draw the operator's attention to a particular circumstance w"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00008",
+      "text": "MESSAGE key",
+      "label": "component",
+      "justification": "Refers to a physical button on the interface.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-en Page 8-4 8 Alarms and messages 8.1 Introduction Alarms and messages are divided into two main categories: 1 alarms and messages from the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........ 2 alarms and messages from the PLC interface, descri"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00009",
+      "text": "RESET PRG key",
+      "label": "component",
+      "justification": "Refers to another physical button on the interface.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-en Page 8-4 8 Alarms and messages 8.1 Introduction Alarms and messages are divided into two main categories: 1 alarms and messages from the CNC, for which we refer to the maintenance manual of the Fanuc series CNC........ 2 alarms and messages from the PLC interface, descri"
+        }
+      ]
+    },
+    {
+      "expr_id": "expr_00010",
+      "text": "causes do not persist",
+      "label": "condition",
+      "justification": "Describes a prerequisite for restarting the program.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 1193,
+          "chunk_end_char": 1214,
+          "doc_start_char": 1193,
+          "doc_end_char": 1214,
+          "snippet": "ogram is rewound and you can restart the program from the beginning only if the causes do not persist. SPRINT32linear-FA-MP-v0.1-fr Page 8-5 8.2 List of alarms and description SPRIN"
+        }
+      ]
+    }
+  ]
+}

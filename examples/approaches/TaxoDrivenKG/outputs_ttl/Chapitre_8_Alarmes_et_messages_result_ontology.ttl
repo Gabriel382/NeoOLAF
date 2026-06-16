@@ -1,0 +1,4116 @@
+@prefix : <http://semanticweb.org/STEaMINg/ContextOntology-COInd4#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix voc: <http://taxodrivenkg-xquality.org/vocab/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://semanticweb.org/STEaMINg/ContextOntology-COInd4> a owl:Ontology ;
+    rdfs:label "COInd Context Ontology for Industrial Situations"@en ;
+    rdfs:comment "Ontology describing contextual situations in industrial environments, integrating sensor observations (SOSA/SSN), spatial context (GeoSPARQL), and temporal relations (OWL-Time)."@en .
+
+:HumanProcess a owl:Class ;
+    rdfs:label "Human Process"@en ;
+    rdfs:comment "A human process is a process primarily performed by human operators within the manufacturing environment."@en ;
+    rdfs:subClassOf :Process .
+
+:LogisticProcess a owl:Class ;
+    rdfs:label "Logistic Process"@en ;
+    rdfs:comment "A logistic process is a process related to the movement, storage, or management of materials or products."@en ;
+    rdfs:subClassOf :Process .
+
+:M1 a :Machine,
+        :ManufacturingFacility,
+        :Resource,
+        geo:Feature,
+        geo:SpatialObject,
+        owl:NamedIndividual,
+        owl:Thing,
+        sosa:Platform ;
+    rdfs:label "Machine M1"@en ;
+    :hasObservableProperty sosa:C_temp,
+        sosa:G_current,
+        sosa:OilTemp,
+        sosa:T_temp ;
+    :isPartOf :PL1 ;
+    rdfs:comment "Machine individual representing machine M1 of the production line."@en ;
+    sosa:hosts sosa:S_C_temp,
+        sosa:S_G_current,
+        sosa:S_OilTemp,
+        sosa:S_T_temp .
+
+:M2 a :Machine,
+        :ManufacturingFacility,
+        :Resource,
+        geo:Feature,
+        geo:SpatialObject,
+        owl:NamedIndividual,
+        owl:Thing,
+        sosa:Platform ;
+    rdfs:label "Machine M2"@en ;
+    :hasObservableProperty sosa:GB_temp,
+        sosa:G_speed ;
+    :isPartOf :PL1 ;
+    rdfs:comment "Machine individual representing machine M2 of the production line."@en ;
+    sosa:hosts sosa:S_GB_temp,
+        sosa:S_G_speed .
+
+:M3 a :Machine,
+        :ManufacturingFacility,
+        :Resource,
+        geo:Feature,
+        geo:SpatialObject,
+        owl:NamedIndividual,
+        owl:Thing,
+        sosa:Platform ;
+    rdfs:label "Machine M3"@en ;
+    :concernBy :S6-1603201294219,
+        :S6-1603201294270,
+        :S6-1603201299570,
+        :S6-1603201299623,
+        :S6-1603201299674,
+        :S6-1603201299733,
+        :S6-1603201309250 ;
+    :hasObservableProperty sosa:C_Wtemp,
+        sosa:Conv_temp,
+        sosa:G_temp,
+        sosa:TG_temp ;
+    :isPartOf :PL1 ;
+    rdfs:comment "Machine individual representing machine M3 of the production line."@en ;
+    sosa:hosts sosa:S_C_Wtemp,
+        sosa:S_Conv_temp,
+        sosa:S_G_temp,
+        sosa:S_TG_temp .
+
+:M4 a :Machine,
+        :ManufacturingFacility,
+        :Resource,
+        geo:Feature,
+        geo:SpatialObject,
+        owl:NamedIndividual,
+        owl:Thing,
+        sosa:Platform ;
+    rdfs:label "Machine M4"@en ;
+    :hasObservableProperty sosa:R_Pangle,
+        sosa:R_speed ;
+    :isPartOf :PL1 ;
+    rdfs:comment "Machine individual representing machine M4 of the production line."@en ;
+    sosa:hosts sosa:S_R_Pangle,
+        sosa:S_R_speed .
+
+:Manager a owl:Class ;
+    rdfs:label "Manager"@en ;
+    rdfs:comment "A manager is a person responsible for supervising manufacturing operations and responding to detected situations."@en ;
+    rdfs:subClassOf :Staff .
+
+:ManufacturingProcess a owl:Class ;
+    rdfs:label "Manufacturing Process"@en ;
+    rdfs:comment "A manufacturing process is an industrial process carried out within a manufacturing facility to produce or transform products."@en ;
+    rdfs:subClassOf :Process .
+
+:Operator a owl:Class ;
+    rdfs:label "Operator"@en ;
+    rdfs:comment "An operator is a worker responsible for operating machines or performing production tasks."@en ;
+    rdfs:subClassOf :Staff .
+
+:Part a owl:Class ;
+    rdfs:label "Part"@en ;
+    rdfs:comment "A part is a component or piece used in the assembly or production of a product."@en ;
+    rdfs:subClassOf :Product .
+
+:Situation-S3 a owl:Class ;
+    rdfs:label "Situation S3"@en ;
+    rdfs:comment "Situation S3 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+:Situation-S4 a owl:Class ;
+    rdfs:label "Situation S4"@en ;
+    rdfs:comment "Situation S4 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+:Situation-S5 a owl:Class ;
+    rdfs:label "Situation S5"@en ;
+    rdfs:comment "Situation S5 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+:Technician a owl:Class ;
+    rdfs:label "Technician"@en ;
+    rdfs:comment "A technician is a technical specialist responsible for maintaining or repairing equipment."@en ;
+    rdfs:subClassOf :Staff .
+
+:concernBy a owl:ObjectProperty ;
+    rdfs:label "concerned by"@en ;
+    rdfs:comment "Relates a situation or event to an entity, such as a machine, process, or product, that it concerns."@en ;
+    rdfs:domain :Resource ;
+    rdfs:range :Situation .
+
+:definedOn a owl:ObjectProperty ;
+    rdfs:label "defined on"@en ;
+    rdfs:comment "Relates a situation or property to the entity or context element on which it is defined."@en ;
+    rdfs:domain :Constraint ;
+    rdfs:range sosa:ObservableProperty ;
+    owl:inverseOf :definedOn_1 .
+
+:hasDescription a owl:DatatypeProperty ;
+    rdfs:comment "Links a constraint to its description."@en ;
+    rdfs:domain :Constraint ;
+    rdfs:range xsd:string .
+
+:hasDuration a owl:ObjectProperty ;
+    rdfs:label "has duration"@en ;
+    rdfs:comment "Relates an event, process, or situation to the temporal interval during which it occurs."@en ;
+    rdfs:domain :Process ;
+    rdfs:range time:TemporalEntity .
+
+:hasTime a owl:ObjectProperty ;
+    rdfs:label "has time"@en ;
+    rdfs:comment "Relates an observation to the temporal entity that represents when it occurred."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range time:TemporalEntity .
+
+:isInSituation a owl:ObjectProperty ;
+    rdfs:label "is in situation"@en ;
+    rdfs:comment "Relates an observation to the situation with which it is associated."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range :Situation .
+
+:isInlocation a owl:ObjectProperty ;
+    rdfs:label "is in location"@en ;
+    rdfs:comment "Relates a resource to the spatial object in which it is located."@en ;
+    rdfs:domain :Resource ;
+    rdfs:range geo:SpatialObject .
+
+:isPartOf a owl:ObjectProperty ;
+    rdfs:label "is part of"@en ;
+    rdfs:comment "Relates an entity to a larger entity of which it is a component."@en ;
+    rdfs:domain :ManufacturingFacility ;
+    rdfs:range :ManufacturingFacility .
+
+:locatedIn a owl:ObjectProperty ;
+    rdfs:label "located in"@en ;
+    rdfs:comment "Relates a sensor to the spatial object in which it is located."@en ;
+    rdfs:domain sosa:Sensor ;
+    rdfs:range geo:SpatialObject .
+
+:operates a owl:ObjectProperty ;
+    rdfs:label "operates"@en ;
+    rdfs:comment "Relates a staff member or operator to the machine or workstation that they operate."@en ;
+    rdfs:domain :Staff ;
+    rdfs:range :ManufacturingFacility .
+
+:performsPorcess a owl:ObjectProperty ;
+    rdfs:label "performs process"@en ;
+    rdfs:comment "Relates a resource to a process that it performs or supports."@en ;
+    rdfs:domain :Resource ;
+    rdfs:range :Process .
+
+:requiresAction a owl:ObjectProperty ;
+    rdfs:label "requires action"@en ;
+    rdfs:comment "Relates a situation to an action that should be performed in response to it."@en ;
+    rdfs:domain :Situation ;
+    rdfs:range :Action .
+
+:situationTime a owl:ObjectProperty ;
+    rdfs:label "situation time"@en ;
+    rdfs:comment "Relates a situation to the temporal entity that represents when it occurs."@en ;
+    rdfs:domain :Situation ;
+    rdfs:range time:Interval .
+
+voc:Alarm a owl:Class ;
+    rdfs:label "Alarm" .
+
+voc:Cause a owl:Class ;
+    rdfs:label "Cause" .
+
+voc:Machine a owl:Class ;
+    rdfs:label "Machine" .
+
+voc:Manager a owl:Class ;
+    rdfs:label "Manager" .
+
+voc:Operator a owl:Class ;
+    rdfs:label "Operator" .
+
+voc:Part a owl:Class ;
+    rdfs:label "Part" .
+
+voc:Product a owl:Class ;
+    rdfs:label "Product" .
+
+voc:Situation a owl:Class ;
+    rdfs:label "Situation" .
+
+voc:alarm a owl:Class ;
+    rdfs:label "alarm" .
+
+voc:component a owl:Class ;
+    rdfs:label "component" .
+
+voc:hasCause a owl:ObjectProperty ;
+    rdfs:label "hasCause" .
+
+voc:hasIntervention a owl:ObjectProperty ;
+    rdfs:label "hasIntervention" .
+
+voc:hasMachine a owl:ObjectProperty ;
+    rdfs:label "hasMachine" .
+
+voc:hasResponsible a owl:ObjectProperty ;
+    rdfs:label "hasResponsible" .
+
+voc:machine a owl:Class ;
+    rdfs:label "machine" .
+
+voc:operator a owl:Class ;
+    rdfs:label "operator" .
+
+voc:part a owl:Class ;
+    rdfs:label "part" .
+
+voc:responsibleFor a owl:ObjectProperty ;
+    rdfs:label "responsibleFor" .
+
+geo:asGML a owl:DatatypeProperty ;
+    rdfs:comment "Links a geometry to its GML serialization."@en ;
+    rdfs:domain geo:Geometry ;
+    rdfs:range geo:gmlLiteral .
+
+geo:asWKT a owl:DatatypeProperty ;
+    rdfs:comment "Links a geometry to its WKT serialization."@en ;
+    rdfs:domain geo:Geometry ;
+    rdfs:range geo:wktLiteral .
+
+geo:hasGeometry a owl:ObjectProperty ;
+    rdfs:label "has geometry"@en ;
+    rdfs:comment "Relates a feature to the geometry that represents its spatial extent."@en ;
+    rdfs:domain geo:Feature ;
+    rdfs:range geo:Geometry .
+
+geo:rcc8dc a owl:ObjectProperty ;
+    rdfs:label "disconnected"@en ;
+    rdfs:comment "Relates two spatial regions that are disconnected and share no common point."@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8ec a owl:ObjectProperty ;
+    rdfs:label "externally connected"@en ;
+    rdfs:comment "Relates two spatial regions that touch along their boundary but whose interiors do not overlap."@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8eq a owl:ObjectProperty ;
+    rdfs:label "equals"@en ;
+    rdfs:comment "Relates two spatial regions that have exactly the same spatial extent."@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8ntpp a owl:ObjectProperty ;
+    rdfs:label "non-tangential proper part"@en ;
+    rdfs:comment "Relates a spatial region that is completely inside another region without touching its boundary."@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8ntppi a owl:ObjectProperty ;
+    rdfs:label "non-tangential proper part inverse"@en ;
+    rdfs:comment "Relates a spatial region that completely contains another region whose boundary it does not touch."@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8po a owl:ObjectProperty ;
+    rdfs:label "partially overlapping"@en ;
+    rdfs:comment "Relates two spatial regions whose interiors overlap, while neither region contains the other."@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8tpp a owl:ObjectProperty ;
+    rdfs:label "tangential proper part"@en ;
+    rdfs:comment "Relates a spatial region that is inside another region and touches its boundary."@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+geo:rcc8tppi a owl:ObjectProperty ;
+    rdfs:label "tangential proper part inverse"@en ;
+    rdfs:comment "Relates a spatial region that contains another region and touches its boundary."@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+time:after a owl:ObjectProperty ;
+    rdfs:label "after"@en ;
+    rdfs:comment "Relates a temporal entity that occurs after another temporal entity."@en ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:TemporalEntity .
+
+time:before a owl:ObjectProperty ;
+    rdfs:label "before"@en ;
+    rdfs:comment "Relates a temporal entity that occurs before another temporal entity."@en ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:TemporalEntity .
+
+time:hasBeginning a owl:ObjectProperty ;
+    rdfs:label "has beginning"@en ;
+    rdfs:comment "Relates a temporal interval to the instant that marks its beginning."@en ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:Instant .
+
+time:hasEnd a owl:ObjectProperty ;
+    rdfs:label "has end"@en ;
+    rdfs:comment "Relates a temporal interval to the instant that marks its end."@en ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:Instant .
+
+time:inXSDDateTimeStamp a owl:DatatypeProperty ;
+    rdfs:comment "Position of an instant in which the time-zone field is mandatory."@en ;
+    rdfs:domain time:Instant ;
+    rdfs:range <https://www.w3.org/TR/xmlschema11-2/#dateTimeStamp> .
+
+time:inside a owl:ObjectProperty ;
+    rdfs:label "inside"@en ;
+    rdfs:comment "Relates a temporal instant or interval that occurs within another interval."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Instant .
+
+time:intervalAfter a owl:ObjectProperty ;
+    rdfs:label "interval after"@en ;
+    rdfs:comment "Relates a time interval that occurs completely after another interval."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalBefore a owl:ObjectProperty ;
+    rdfs:label "interval before"@en ;
+    rdfs:comment "Relates a time interval that occurs completely before another interval."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalContains a owl:ObjectProperty ;
+    rdfs:label "interval contains"@en ;
+    rdfs:comment "Relates a time interval that fully contains another interval."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalDisjoint a owl:ObjectProperty ;
+    rdfs:label "interval disjoint"@en ;
+    rdfs:comment "Relates two temporal intervals that do not overlap in time."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalDuring a owl:ObjectProperty ;
+    rdfs:label "interval during"@en ;
+    rdfs:comment "Relates an interval that starts after another interval begins and ends before it ends."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalEquals a owl:ObjectProperty ;
+    rdfs:label "interval equals"@en ;
+    rdfs:comment "Relates two time intervals that have exactly the same temporal extent."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalFinishedBy a owl:ObjectProperty ;
+    rdfs:label "interval finished by"@en ;
+    rdfs:comment "Relates an interval that ends at the same time as another interval but starts earlier."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalFinishes a owl:ObjectProperty ;
+    rdfs:label "interval finishes"@en ;
+    rdfs:comment "Relates an interval that ends at the same time as another interval but starts later."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalIn a owl:ObjectProperty ;
+    rdfs:label "interval in"@en ;
+    rdfs:comment "Relates an interval that is contained within another interval, without requiring both boundaries to coincide."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalMeets a owl:ObjectProperty ;
+    rdfs:label "interval meets"@en ;
+    rdfs:comment "Relates an interval that ends exactly when another interval begins."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalMetBy a owl:ObjectProperty ;
+    rdfs:label "interval met by"@en ;
+    rdfs:comment "Relates an interval that begins exactly when another interval ends."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalOverlaps a owl:ObjectProperty ;
+    rdfs:label "interval overlaps"@en ;
+    rdfs:comment "Relates an interval that overlaps another interval without either interval containing the other."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalStartedBy a owl:ObjectProperty ;
+    rdfs:label "interval started by"@en ;
+    rdfs:comment "Relates an interval that starts at the same time as another interval but ends later."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+time:intervalStarts a owl:ObjectProperty ;
+    rdfs:label "interval starts"@en ;
+    rdfs:comment "Relates an interval that starts at the same time as another interval but ends sooner."@en ;
+    rdfs:domain time:Interval ;
+    rdfs:range time:Interval .
+
+sosa:hasFeatureOfInterest a owl:ObjectProperty ;
+    rdfs:label "has feature of interest"@en ;
+    rdfs:comment "Relates an observation to the entity whose property is being observed."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:FeatureOfInterest .
+
+sosa:hasResult a owl:ObjectProperty ;
+    rdfs:label "has result"@en ;
+    rdfs:comment "Relates an observation to the result that it produced."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:Result .
+
+sosa:hasSimpleResult a owl:DatatypeProperty ;
+    rdfs:comment "Links an obervation to its result, which contains a value representing the value associated with the observed Property."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range xsd:integer .
+
+ssn:hasProperty a owl:ObjectProperty ;
+    rdfs:label "has property"@en ;
+    rdfs:comment "Relates an entity to one of its properties."@en ;
+    rdfs:domain sosa:FeatureOfInterest ;
+    rdfs:range ssn:Property .
+
+:Action a owl:Class ;
+    rdfs:label "Action"@en ;
+    rdfs:comment "An action is an operation or intervention performed in response to a detected situation in the manufacturing system."@en ;
+    rdfs:subClassOf owl:Thing .
+
+:C_1 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C1"@en ;
+    :definedOn sosa:OilTemp ;
+    :hasDescription "OilTemp > 40°C" ;
+    rdfs:comment "Constraint individual defining the condition \"OilTemp > 40°C\"."@en .
+
+:C_10 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C10"@en ;
+    :definedOn sosa:G_speed ;
+    :hasDescription "Generator speed < 500rpm" ;
+    rdfs:comment "Constraint individual defining the condition \"Generator speed < 500rpm\"."@en .
+
+:C_11 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C11"@en ;
+    :definedOn sosa:E_temp ;
+    :hasDescription "Environment temp. < 25°C" ;
+    rdfs:comment "Constraint individual defining the condition \"Environment temp. < 25°C\"."@en .
+
+:C_12 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C12"@en ;
+    :definedOn sosa:PowerOutput ;
+    :hasDescription "Power output > 2000kW" ;
+    rdfs:comment "Constraint individual defining the condition \"Power output > 2000kW\"."@en .
+
+:C_13 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C13"@en ;
+    :definedOn sosa:PowerOutput ;
+    :hasDescription "Power output < 500kW" ;
+    rdfs:comment "Constraint individual defining the condition \"Power output < 500kW\"."@en .
+
+:C_14 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C14"@en ;
+    :definedOn sosa:PowerOutput ;
+    :hasDescription "Power output < 200kW" ;
+    rdfs:comment "Constraint individual defining the condition \"Power output < 200kW\"."@en .
+
+:C_15 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C15"@en ;
+    :definedOn sosa:C_Wtemp ;
+    :hasDescription "Conv. water temp. > 60°C" ;
+    rdfs:comment "Constraint individual defining the condition \"Conv. water temp. > 60°C\"."@en .
+
+:C_16 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C16"@en ;
+    :definedOn sosa:C_Wtemp ;
+    :hasDescription "Conv. water temp. > 80°C" ;
+    rdfs:comment "Constraint individual defining the condition \"Conv. water temp. > 80°C\"."@en .
+
+:C_17 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C17"@en ;
+    :definedOn sosa:TG_temp ;
+    :hasDescription "Trans. grid temp. < 35°C" ;
+    rdfs:comment "Constraint individual defining the condition \"Trans. grid temp. < 35°C\"."@en .
+
+:C_18 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C18"@en ;
+    :definedOn sosa:G_temp ;
+    :hasDescription "Generator temp. > 45°C" ;
+    rdfs:comment "Constraint individual defining the condition \"Generator temp. > 45°C\"."@en .
+
+:C_19 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C19"@en ;
+    :definedOn sosa:Conv_temp ;
+    :hasDescription "Converter temp. > 60°C" ;
+    rdfs:comment "Constraint individual defining the condition \"Converter temp. > 60°C\"."@en .
+
+:C_2 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C2"@en ;
+    :definedOn sosa:OilTemp ;
+    :hasDescription "OilTemp > 60°C" ;
+    rdfs:comment "Constraint individual defining the condition \"OilTemp > 60°C\"."@en .
+
+:C_20 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C20"@en ;
+    :definedOn sosa:Conv_temp ;
+    :hasDescription "Converter temp. > 80°C" ;
+    rdfs:comment "Constraint individual defining the condition \"Converter temp. > 80°C\"."@en .
+
+:C_21 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C21"@en ;
+    :definedOn sosa:R_speed ;
+    :hasDescription "Rotor speed < 200rpm" ;
+    rdfs:comment "Constraint individual defining the condition \"Rotor speed < 200rpm\"."@en .
+
+:C_22 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C22"@en ;
+    :definedOn sosa:R_speed ;
+    :hasDescription "Rotor speed < 100rpm" ;
+    rdfs:comment "Constraint individual defining the condition \"Rotor speed < 100rpm\"."@en .
+
+:C_23 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C23"@en ;
+    :definedOn sosa:R_Pangle ;
+    :hasDescription "Rotor Pitch angle < 5°" ;
+    rdfs:comment "Constraint individual defining the condition \"Rotor Pitch angle < 5°\"."@en .
+
+:C_3 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C3"@en ;
+    :definedOn sosa:T_temp ;
+    :hasDescription "Transformer temp. > 45°C" ;
+    rdfs:comment "Constraint individual defining the condition \"Transformer temp. > 45°C\"."@en .
+
+:C_4 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C4"@en ;
+    :definedOn sosa:C_temp ;
+    :hasDescription "Controller temp. > 40°C" ;
+    rdfs:comment "Constraint individual defining the condition \"Controller temp. > 40°C\"."@en .
+
+:C_5 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C5"@en ;
+    :definedOn sosa:G_current ;
+    :hasDescription "Generator curr. < 800A" ;
+    rdfs:comment "Constraint individual defining the condition \"Generator curr. < 800A\"."@en .
+
+:C_6 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C6"@en ;
+    :definedOn sosa:P_temp ;
+    :hasDescription "Platform temp. < 35°C" ;
+    rdfs:comment "Constraint individual defining the condition \"Platform temp. < 35°C\"."@en .
+
+:C_7 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C7"@en ;
+    :definedOn sosa:P_temp ;
+    :hasDescription "Platform temp. > 40°C" ;
+    rdfs:comment "Constraint individual defining the condition \"Platform temp. > 40°C\"."@en .
+
+:C_8 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C8"@en ;
+    :definedOn sosa:GB_temp ;
+    :hasDescription "Gearbox temp. > 40°C" ;
+    rdfs:comment "Constraint individual defining the condition \"Gearbox temp. > 40°C\"."@en .
+
+:C_9 a :Constraint,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Constraint C9"@en ;
+    :definedOn sosa:GB_temp ;
+    :hasDescription "Gearbox temp. > 60°C" ;
+    rdfs:comment "Constraint individual defining the condition \"Gearbox temp. > 60°C\"."@en .
+
+:Cell a owl:Class ;
+    rdfs:label "Manufacturing Cell"@en ;
+    rdfs:comment "A manufacturing cell is a group of workstations organized to perform a particular manufacturing task."@en ;
+    rdfs:subClassOf :ManufacturingFacility .
+
+:Minor_Obstruction_in_the_Cooling_System a :Cause,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Minor obstruction in the cooling system"@en ;
+    rdfs:comment "Cause individual representing a limited obstruction in the cooling system that may affect temperature regulation."@en .
+
+:Product a owl:Class ;
+    rdfs:label "Product"@en ;
+    rdfs:comment "A product is an item produced or processed during manufacturing operations."@en ;
+    rdfs:subClassOf :Resource,
+        sosa:Platform .
+
+:Situation-S1 a owl:Class ;
+    rdfs:label "Situation S1"@en ;
+    rdfs:comment "Situation S1 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+:Situation-S10 a owl:Class ;
+    rdfs:label "Situation S10"@en ;
+    rdfs:comment "Situation S10 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+:Situation-S11 a owl:Class ;
+    rdfs:label "Situation S11"@en ;
+    rdfs:comment "Situation S11 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+:Situation-S12 a owl:Class ;
+    rdfs:label "Situation S12"@en ;
+    rdfs:comment "Situation S12 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+:Situation-S13 a owl:Class ;
+    rdfs:label "Situation S13"@en ;
+    rdfs:comment "Situation S13 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+:Situation-S14 a owl:Class ;
+    rdfs:label "Situation S14"@en ;
+    rdfs:comment "Situation S14 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+:Situation-S2 a owl:Class ;
+    rdfs:label "Situation S2"@en ;
+    rdfs:comment "Situation S2 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+:Situation-S7 a owl:Class ;
+    rdfs:label "Situation S7"@en ;
+    rdfs:comment "Situation S7 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+:Situation-S8 a owl:Class ;
+    rdfs:label "Situation S8"@en ;
+    rdfs:comment "Situation S8 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+:Situation-S9 a owl:Class ;
+    rdfs:label "Situation S9"@en ;
+    rdfs:comment "Situation S9 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+:WorkStation a owl:Class ;
+    rdfs:label "Workstation"@en ;
+    rdfs:comment "A workstation is a physical area in the manufacturing environment where one or more machines or resources are organized to perform a specific task."@en ;
+    rdfs:subClassOf :ManufacturingFacility .
+
+:associatedConstraint a owl:ObjectProperty ;
+    rdfs:label "associated constraint"@en ;
+    rdfs:comment "Relates a process, resource, or situation to a constraint that defines acceptable operational conditions."@en ;
+    rdfs:domain :Situation ;
+    rdfs:range :Constraint .
+
+:hasObservableProperty a owl:ObjectProperty ;
+    rdfs:label "has observable property"@en ;
+    rdfs:comment "Relates an entity in the manufacturing system to a property that can be observed by sensors."@en ;
+    rdfs:domain :Resource ;
+    rdfs:range sosa:ObservableProperty .
+
+:hasObservation a owl:ObjectProperty ;
+    rdfs:label "has observation"@en ;
+    rdfs:comment "Relates a situation to an observation associated with it."@en ;
+    rdfs:domain :Situation ;
+    rdfs:range sosa:Observation .
+
+geo:gmlLiteral a rdfs:Datatype .
+
+geo:wktLiteral a rdfs:Datatype .
+
+time:t-obs-S_C_Wtemp-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of cooling water temperature observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which cooling water temperature observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_C_Wtemp-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of cooling water temperature observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which cooling water temperature observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_C_Wtemp-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of cooling water temperature observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which cooling water temperature observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_C_Wtemp-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of cooling water temperature observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which cooling water temperature observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_C_Wtemp-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of cooling water temperature observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which cooling water temperature observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:29Z" .
+
+time:t-obs-S_C_Wtemp-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of cooling water temperature observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which cooling water temperature observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_C_Wtemp-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of cooling water temperature observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which cooling water temperature observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_C_Wtemp-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of cooling water temperature observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which cooling water temperature observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_C_Wtemp-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of cooling water temperature observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which cooling water temperature observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_C_Wtemp-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of cooling water temperature observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which cooling water temperature observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_C_Wtemp-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of cooling water temperature observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which cooling water temperature observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_C_temp-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of controller temperature observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which controller temperature observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_C_temp-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of controller temperature observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which controller temperature observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_C_temp-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of controller temperature observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which controller temperature observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_C_temp-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of controller temperature observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which controller temperature observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_C_temp-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of controller temperature observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which controller temperature observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_C_temp-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of controller temperature observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which controller temperature observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_C_temp-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of controller temperature observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which controller temperature observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_C_temp-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of controller temperature observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which controller temperature observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_C_temp-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of controller temperature observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which controller temperature observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_C_temp-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of controller temperature observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which controller temperature observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_C_temp-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of controller temperature observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which controller temperature observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_Conv_temp-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of converter temperature observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which converter temperature observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_Conv_temp-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of converter temperature observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which converter temperature observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_Conv_temp-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of converter temperature observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which converter temperature observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_Conv_temp-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of converter temperature observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which converter temperature observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_Conv_temp-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of converter temperature observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which converter temperature observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_Conv_temp-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of converter temperature observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which converter temperature observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_Conv_temp-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of converter temperature observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which converter temperature observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_Conv_temp-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of converter temperature observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which converter temperature observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_Conv_temp-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of converter temperature observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which converter temperature observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_Conv_temp-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of converter temperature observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which converter temperature observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_Conv_temp-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of converter temperature observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which converter temperature observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_E_temp-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of environment temperature observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which environment temperature observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_E_temp-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of environment temperature observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which environment temperature observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_E_temp-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of environment temperature observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which environment temperature observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:28Z" .
+
+time:t-obs-S_E_temp-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of environment temperature observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which environment temperature observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_E_temp-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of environment temperature observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which environment temperature observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_E_temp-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of environment temperature observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which environment temperature observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_E_temp-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of environment temperature observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which environment temperature observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_E_temp-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of environment temperature observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which environment temperature observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_E_temp-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of environment temperature observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which environment temperature observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_E_temp-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of environment temperature observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which environment temperature observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_E_temp-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of environment temperature observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which environment temperature observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_GB_temp-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of gearbox temperature observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which gearbox temperature observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_GB_temp-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of gearbox temperature observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which gearbox temperature observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_GB_temp-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of gearbox temperature observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which gearbox temperature observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_GB_temp-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of gearbox temperature observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which gearbox temperature observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_GB_temp-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of gearbox temperature observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which gearbox temperature observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_GB_temp-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of gearbox temperature observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which gearbox temperature observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_GB_temp-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of gearbox temperature observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which gearbox temperature observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_GB_temp-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of gearbox temperature observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which gearbox temperature observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_GB_temp-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of gearbox temperature observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which gearbox temperature observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_GB_temp-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of gearbox temperature observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which gearbox temperature observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_GB_temp-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of gearbox temperature observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which gearbox temperature observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_G_current-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator current observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator current observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_G_current-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator current observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator current observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_G_current-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator current observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator current observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_G_current-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator current observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator current observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_G_current-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator current observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator current observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_G_current-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator current observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator current observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_G_current-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator current observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator current observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_G_current-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator current observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator current observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_G_current-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator current observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator current observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_G_current-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator current observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator current observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_G_current-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator current observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator current observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_G_speed-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator speed observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator speed observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_G_speed-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator speed observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator speed observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_G_speed-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator speed observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator speed observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_G_speed-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator speed observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator speed observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_G_speed-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator speed observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator speed observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_G_speed-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator speed observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator speed observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_G_speed-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator speed observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator speed observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_G_speed-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator speed observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator speed observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_G_speed-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator speed observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator speed observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_G_speed-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator speed observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator speed observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_G_speed-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator speed observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator speed observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_G_temp-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator temperature observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator temperature observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_G_temp-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator temperature observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator temperature observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_G_temp-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator temperature observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator temperature observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_G_temp-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator temperature observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator temperature observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_G_temp-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator temperature observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator temperature observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_G_temp-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator temperature observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator temperature observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_G_temp-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of generator temperature observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator temperature observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_G_temp-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator temperature observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator temperature observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_G_temp-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator temperature observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator temperature observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_G_temp-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator temperature observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator temperature observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_G_temp-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of generator temperature observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which generator temperature observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_OilTemp-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of oil temperature observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which oil temperature observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_OilTemp-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of oil temperature observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which oil temperature observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_OilTemp-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of oil temperature observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which oil temperature observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_OilTemp-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of oil temperature observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which oil temperature observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_OilTemp-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of oil temperature observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which oil temperature observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_OilTemp-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of oil temperature observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which oil temperature observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_OilTemp-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of oil temperature observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which oil temperature observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_OilTemp-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of oil temperature observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which oil temperature observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_OilTemp-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of oil temperature observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which oil temperature observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_OilTemp-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of oil temperature observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which oil temperature observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_OilTemp-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of oil temperature observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which oil temperature observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_P_temp-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of platform temperature observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which platform temperature observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_P_temp-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of platform temperature observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which platform temperature observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_P_temp-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of platform temperature observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which platform temperature observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_P_temp-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of platform temperature observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which platform temperature observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_P_temp-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of platform temperature observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which platform temperature observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_P_temp-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of platform temperature observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which platform temperature observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_P_temp-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of platform temperature observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which platform temperature observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_P_temp-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of platform temperature observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which platform temperature observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_P_temp-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of platform temperature observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which platform temperature observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_P_temp-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of platform temperature observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which platform temperature observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_P_temp-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of platform temperature observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which platform temperature observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_PowerOutput-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of power output observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which power output observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_PowerOutput-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of power output observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which power output observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_PowerOutput-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of power output observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which power output observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_PowerOutput-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of power output observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which power output observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_PowerOutput-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of power output observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which power output observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_PowerOutput-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of power output observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which power output observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_PowerOutput-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of power output observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which power output observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_PowerOutput-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of power output observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which power output observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_PowerOutput-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of power output observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which power output observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_PowerOutput-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of power output observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which power output observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_PowerOutput-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of power output observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which power output observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_R_Pangle-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of rotor pitch angle observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor pitch angle observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_R_Pangle-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of rotor pitch angle observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor pitch angle observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_R_Pangle-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of rotor pitch angle observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor pitch angle observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_R_Pangle-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of rotor pitch angle observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor pitch angle observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_R_Pangle-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of rotor pitch angle observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor pitch angle observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_R_Pangle-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of rotor pitch angle observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor pitch angle observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:36Z" .
+
+time:t-obs-S_R_Pangle-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of rotor pitch angle observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor pitch angle observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_R_Pangle-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of rotor pitch angle observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor pitch angle observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_R_Pangle-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of rotor pitch angle observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor pitch angle observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_R_Pangle-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of rotor pitch angle observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor pitch angle observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_R_Pangle-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of rotor pitch angle observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor pitch angle observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_R_speed-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of rotor speed observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor speed observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_R_speed-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of rotor speed observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor speed observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_R_speed-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of rotor speed observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor speed observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_R_speed-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of rotor speed observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor speed observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_R_speed-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of rotor speed observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor speed observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_R_speed-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of rotor speed observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor speed observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_R_speed-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of rotor speed observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor speed observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_R_speed-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of rotor speed observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor speed observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:53Z" .
+
+time:t-obs-S_R_speed-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of rotor speed observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor speed observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_R_speed-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of rotor speed observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor speed observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_R_speed-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of rotor speed observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which rotor speed observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_TG_temp-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of transmission grid temperature observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transmission grid temperature observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_TG_temp-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of transmission grid temperature observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transmission grid temperature observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_TG_temp-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of transmission grid temperature observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transmission grid temperature observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_TG_temp-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of transmission grid temperature observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transmission grid temperature observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_TG_temp-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of transmission grid temperature observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transmission grid temperature observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_TG_temp-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of transmission grid temperature observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transmission grid temperature observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_TG_temp-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of transmission grid temperature observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transmission grid temperature observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_TG_temp-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of transmission grid temperature observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transmission grid temperature observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_TG_temp-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of transmission grid temperature observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transmission grid temperature observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_TG_temp-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of transmission grid temperature observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transmission grid temperature observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_TG_temp-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of transmission grid temperature observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transmission grid temperature observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+time:t-obs-S_T_temp-0 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of transformer temperature observation 0"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transformer temperature observation 0 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:04Z" .
+
+time:t-obs-S_T_temp-1 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of transformer temperature observation 1"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transformer temperature observation 1 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:12Z" .
+
+time:t-obs-S_T_temp-10 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of transformer temperature observation 10"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transformer temperature observation 10 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:29Z" .
+
+time:t-obs-S_T_temp-2 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of transformer temperature observation 2"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transformer temperature observation 2 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:20Z" .
+
+time:t-obs-S_T_temp-3 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of transformer temperature observation 3"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transformer temperature observation 3 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:28Z" .
+
+time:t-obs-S_T_temp-4 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of transformer temperature observation 4"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transformer temperature observation 4 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:37Z" .
+
+time:t-obs-S_T_temp-5 a owl:NamedIndividual,
+        owl:Thing,
+        time:Instant,
+        time:TemporalEntity ;
+    rdfs:label "Timestamp of transformer temperature observation 5"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transformer temperature observation 5 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:45Z" .
+
+time:t-obs-S_T_temp-6 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of transformer temperature observation 6"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transformer temperature observation 6 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:41:54Z" .
+
+time:t-obs-S_T_temp-7 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of transformer temperature observation 7"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transformer temperature observation 7 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:02Z" .
+
+time:t-obs-S_T_temp-8 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of transformer temperature observation 8"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transformer temperature observation 8 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:11Z" .
+
+time:t-obs-S_T_temp-9 a owl:NamedIndividual,
+        time:Instant ;
+    rdfs:label "Timestamp of transformer temperature observation 9"@en ;
+    rdfs:comment "Temporal instant corresponding to the time at which transformer temperature observation 9 was made."@en ;
+    time:inXSDDateTimeStamp "2020-10-20T03:42:20Z" .
+
+sosa:Result a owl:Class ;
+    rdfs:label "Result"@en ;
+    rdfs:comment "A result is the outcome or value produced by an observation."@en ;
+    rdfs:subClassOf owl:Thing .
+
+sosa:S_C_Wtemp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Cooling water temperature sensor"@en ;
+    rdfs:comment "Sensor individual used to observe cooling water temperature in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_C_Wtemp-Obs-0,
+        sosa:S_C_Wtemp-Obs-1,
+        sosa:S_C_Wtemp-Obs-10,
+        sosa:S_C_Wtemp-Obs-2,
+        sosa:S_C_Wtemp-Obs-3,
+        sosa:S_C_Wtemp-Obs-4,
+        sosa:S_C_Wtemp-Obs-5,
+        sosa:S_C_Wtemp-Obs-6,
+        sosa:S_C_Wtemp-Obs-7,
+        sosa:S_C_Wtemp-Obs-8,
+        sosa:S_C_Wtemp-Obs-9 .
+
+sosa:S_C_Wtemp-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Cooling water temperature observation 0"@en ;
+    :hasTime time:t-obs-S_C_Wtemp-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the cooling water temperature sensor."@en ;
+    sosa:hasSimpleResult 70 ;
+    sosa:observedProperty sosa:C_Wtemp .
+
+sosa:S_C_Wtemp-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Cooling water temperature observation 1"@en ;
+    :hasTime time:t-obs-S_C_Wtemp-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the cooling water temperature sensor."@en ;
+    sosa:hasSimpleResult 50 ;
+    sosa:observedProperty sosa:C_Wtemp .
+
+sosa:S_C_Wtemp-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Cooling water temperature observation 10"@en ;
+    :hasTime time:t-obs-S_C_Wtemp-10 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the cooling water temperature sensor."@en ;
+    sosa:hasSimpleResult 51 ;
+    sosa:observedProperty sosa:C_Wtemp .
+
+sosa:S_C_Wtemp-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Cooling water temperature observation 2"@en ;
+    :hasTime time:t-obs-S_C_Wtemp-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the cooling water temperature sensor."@en ;
+    sosa:hasSimpleResult 78 ;
+    sosa:observedProperty sosa:C_Wtemp .
+
+sosa:S_C_Wtemp-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Cooling water temperature observation 3"@en ;
+    :hasTime time:t-obs-S_C_Wtemp-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the cooling water temperature sensor."@en ;
+    sosa:hasSimpleResult 64 ;
+    sosa:observedProperty sosa:C_Wtemp .
+
+sosa:S_C_Wtemp-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Cooling water temperature observation 4"@en ;
+    :hasTime time:t-obs-S_C_Wtemp-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the cooling water temperature sensor."@en ;
+    sosa:hasSimpleResult 65 ;
+    sosa:observedProperty sosa:C_Wtemp .
+
+sosa:S_C_Wtemp-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Cooling water temperature observation 5"@en ;
+    :hasTime time:t-obs-S_C_Wtemp-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the cooling water temperature sensor."@en ;
+    sosa:hasSimpleResult 51 ;
+    sosa:observedProperty sosa:C_Wtemp .
+
+sosa:S_C_Wtemp-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Cooling water temperature observation 6"@en ;
+    :hasTime time:t-obs-S_C_Wtemp-6 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the cooling water temperature sensor."@en ;
+    sosa:hasSimpleResult 73 ;
+    sosa:observedProperty sosa:C_Wtemp .
+
+sosa:S_C_Wtemp-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Cooling water temperature observation 7"@en ;
+    :hasTime time:t-obs-S_C_Wtemp-7 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the cooling water temperature sensor."@en ;
+    sosa:hasSimpleResult 52 ;
+    sosa:observedProperty sosa:C_Wtemp .
+
+sosa:S_C_Wtemp-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Cooling water temperature observation 8"@en ;
+    :hasTime time:t-obs-S_C_Wtemp-8 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the cooling water temperature sensor."@en ;
+    sosa:hasSimpleResult 67 ;
+    sosa:observedProperty sosa:C_Wtemp .
+
+sosa:S_C_Wtemp-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Cooling water temperature observation 9"@en ;
+    :hasTime time:t-obs-S_C_Wtemp-9 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the cooling water temperature sensor."@en ;
+    sosa:hasSimpleResult 66 ;
+    sosa:observedProperty sosa:C_Wtemp .
+
+sosa:S_C_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Controller temperature sensor"@en ;
+    rdfs:comment "Sensor individual used to observe controller temperature in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_C_temp-Obs-0,
+        sosa:S_C_temp-Obs-1,
+        sosa:S_C_temp-Obs-10,
+        sosa:S_C_temp-Obs-2,
+        sosa:S_C_temp-Obs-3,
+        sosa:S_C_temp-Obs-4,
+        sosa:S_C_temp-Obs-5,
+        sosa:S_C_temp-Obs-6,
+        sosa:S_C_temp-Obs-7,
+        sosa:S_C_temp-Obs-8,
+        sosa:S_C_temp-Obs-9 .
+
+sosa:S_C_temp-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Controller temperature observation 0"@en ;
+    :hasTime time:t-obs-S_C_temp-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the controller temperature sensor."@en ;
+    sosa:hasSimpleResult 50 ;
+    sosa:observedProperty sosa:C_temp .
+
+sosa:S_C_temp-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Controller temperature observation 1"@en ;
+    :hasTime time:t-obs-S_C_temp-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the controller temperature sensor."@en ;
+    sosa:hasSimpleResult 50 ;
+    sosa:observedProperty sosa:C_temp .
+
+sosa:S_C_temp-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Controller temperature observation 10"@en ;
+    :hasTime time:t-obs-S_C_temp-10 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the controller temperature sensor."@en ;
+    sosa:hasSimpleResult 40 ;
+    sosa:observedProperty sosa:C_temp .
+
+sosa:S_C_temp-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Controller temperature observation 2"@en ;
+    :hasTime time:t-obs-S_C_temp-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the controller temperature sensor."@en ;
+    sosa:hasSimpleResult 38 ;
+    sosa:observedProperty sosa:C_temp .
+
+sosa:S_C_temp-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Controller temperature observation 3"@en ;
+    :hasTime time:t-obs-S_C_temp-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the controller temperature sensor."@en ;
+    sosa:hasSimpleResult 46 ;
+    sosa:observedProperty sosa:C_temp .
+
+sosa:S_C_temp-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Controller temperature observation 4"@en ;
+    :hasTime time:t-obs-S_C_temp-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the controller temperature sensor."@en ;
+    sosa:hasSimpleResult 43 ;
+    sosa:observedProperty sosa:C_temp .
+
+sosa:S_C_temp-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Controller temperature observation 5"@en ;
+    :hasTime time:t-obs-S_C_temp-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the controller temperature sensor."@en ;
+    sosa:hasSimpleResult 49 ;
+    sosa:observedProperty sosa:C_temp .
+
+sosa:S_C_temp-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Controller temperature observation 6"@en ;
+    :hasTime time:t-obs-S_C_temp-6 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the controller temperature sensor."@en ;
+    sosa:hasSimpleResult 32 ;
+    sosa:observedProperty sosa:C_temp .
+
+sosa:S_C_temp-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Controller temperature observation 7"@en ;
+    :hasTime time:t-obs-S_C_temp-7 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the controller temperature sensor."@en ;
+    sosa:hasSimpleResult 49 ;
+    sosa:observedProperty sosa:C_temp .
+
+sosa:S_C_temp-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Controller temperature observation 8"@en ;
+    :hasTime time:t-obs-S_C_temp-8 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the controller temperature sensor."@en ;
+    sosa:hasSimpleResult 42 ;
+    sosa:observedProperty sosa:C_temp .
+
+sosa:S_C_temp-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Controller temperature observation 9"@en ;
+    :hasTime time:t-obs-S_C_temp-9 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the controller temperature sensor."@en ;
+    sosa:hasSimpleResult 40 ;
+    sosa:observedProperty sosa:C_temp .
+
+sosa:S_Conv_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Converter temperature sensor"@en ;
+    rdfs:comment "Sensor individual used to observe converter temperature in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_Conv_temp-Obs-0,
+        sosa:S_Conv_temp-Obs-1,
+        sosa:S_Conv_temp-Obs-10,
+        sosa:S_Conv_temp-Obs-2,
+        sosa:S_Conv_temp-Obs-3,
+        sosa:S_Conv_temp-Obs-4,
+        sosa:S_Conv_temp-Obs-5,
+        sosa:S_Conv_temp-Obs-6,
+        sosa:S_Conv_temp-Obs-7,
+        sosa:S_Conv_temp-Obs-8,
+        sosa:S_Conv_temp-Obs-9 .
+
+sosa:S_Conv_temp-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Converter temperature observation 0"@en ;
+    :hasTime time:t-obs-S_Conv_temp-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the converter temperature sensor."@en ;
+    sosa:hasSimpleResult 69 ;
+    sosa:observedProperty sosa:Conv_temp .
+
+sosa:S_Conv_temp-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Converter temperature observation 1"@en ;
+    :hasTime time:t-obs-S_Conv_temp-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the converter temperature sensor."@en ;
+    sosa:hasSimpleResult 77 ;
+    sosa:observedProperty sosa:Conv_temp .
+
+sosa:S_Conv_temp-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Converter temperature observation 10"@en ;
+    :hasTime time:t-obs-S_Conv_temp-10 ;
+    rdfs:comment "Observation individual representing measurement event 10 produced by the converter temperature sensor."@en ;
+    sosa:hasSimpleResult 58 ;
+    sosa:observedProperty sosa:Conv_temp .
+
+sosa:S_Conv_temp-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Converter temperature observation 2"@en ;
+    :hasTime time:t-obs-S_Conv_temp-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the converter temperature sensor."@en ;
+    sosa:hasSimpleResult 66 ;
+    sosa:observedProperty sosa:Conv_temp .
+
+sosa:S_Conv_temp-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Converter temperature observation 3"@en ;
+    :hasTime time:t-obs-S_Conv_temp-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the converter temperature sensor."@en ;
+    sosa:hasSimpleResult 51 ;
+    sosa:observedProperty sosa:Conv_temp .
+
+sosa:S_Conv_temp-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Converter temperature observation 4"@en ;
+    :hasTime time:t-obs-S_Conv_temp-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the converter temperature sensor."@en ;
+    sosa:hasSimpleResult 85 ;
+    sosa:observedProperty sosa:Conv_temp .
+
+sosa:S_Conv_temp-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Converter temperature observation 5"@en ;
+    :hasTime time:t-obs-S_Conv_temp-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the converter temperature sensor."@en ;
+    sosa:hasSimpleResult 53 ;
+    sosa:observedProperty sosa:Conv_temp .
+
+sosa:S_Conv_temp-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Converter temperature observation 6"@en ;
+    :hasTime time:t-obs-S_Conv_temp-6 ;
+    rdfs:comment "Observation individual representing measurement event 6 produced by the converter temperature sensor."@en ;
+    sosa:hasSimpleResult 68 ;
+    sosa:observedProperty sosa:Conv_temp .
+
+sosa:S_Conv_temp-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Converter temperature observation 7"@en ;
+    :hasTime time:t-obs-S_Conv_temp-7 ;
+    rdfs:comment "Observation individual representing measurement event 7 produced by the converter temperature sensor."@en ;
+    sosa:hasSimpleResult 70 ;
+    sosa:observedProperty sosa:Conv_temp .
+
+sosa:S_Conv_temp-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Converter temperature observation 8"@en ;
+    :hasTime time:t-obs-S_Conv_temp-8 ;
+    rdfs:comment "Observation individual representing measurement event 8 produced by the converter temperature sensor."@en ;
+    sosa:hasSimpleResult 52 ;
+    sosa:observedProperty sosa:Conv_temp .
+
+sosa:S_Conv_temp-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Converter temperature observation 9"@en ;
+    :hasTime time:t-obs-S_Conv_temp-9 ;
+    rdfs:comment "Observation individual representing measurement event 9 produced by the converter temperature sensor."@en ;
+    sosa:hasSimpleResult 70 ;
+    sosa:observedProperty sosa:Conv_temp .
+
+sosa:S_E_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Environment temperature sensor"@en ;
+    rdfs:comment "Sensor individual used to observe environment temperature in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_E_temp-Obs-0,
+        sosa:S_E_temp-Obs-1,
+        sosa:S_E_temp-Obs-10,
+        sosa:S_E_temp-Obs-2,
+        sosa:S_E_temp-Obs-3,
+        sosa:S_E_temp-Obs-4,
+        sosa:S_E_temp-Obs-5,
+        sosa:S_E_temp-Obs-6,
+        sosa:S_E_temp-Obs-7,
+        sosa:S_E_temp-Obs-8,
+        sosa:S_E_temp-Obs-9 .
+
+sosa:S_E_temp-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Environment temperature observation 0"@en ;
+    :hasTime time:t-obs-S_E_temp-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the environment temperature sensor."@en ;
+    sosa:hasSimpleResult 21 ;
+    sosa:observedProperty sosa:E_temp .
+
+sosa:S_E_temp-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Environment temperature observation 1"@en ;
+    :hasTime time:t-obs-S_E_temp-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the environment temperature sensor."@en ;
+    sosa:hasSimpleResult 15 ;
+    sosa:observedProperty sosa:E_temp .
+
+sosa:S_E_temp-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Environment temperature observation 10"@en ;
+    :hasTime time:t-obs-S_E_temp-10 ;
+    rdfs:comment "Observation individual representing measurement event 10 produced by the environment temperature sensor."@en ;
+    sosa:hasSimpleResult 17 ;
+    sosa:observedProperty sosa:E_temp .
+
+sosa:S_E_temp-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Environment temperature observation 2"@en ;
+    :hasTime time:t-obs-S_E_temp-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the environment temperature sensor."@en ;
+    sosa:hasSimpleResult 22 ;
+    sosa:observedProperty sosa:E_temp .
+
+sosa:S_E_temp-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Environment temperature observation 3"@en ;
+    :hasTime time:t-obs-S_E_temp-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the environment temperature sensor."@en ;
+    sosa:hasSimpleResult 18 ;
+    sosa:observedProperty sosa:E_temp .
+
+sosa:S_E_temp-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Environment temperature observation 4"@en ;
+    :hasTime time:t-obs-S_E_temp-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the environment temperature sensor."@en ;
+    sosa:hasSimpleResult 26 ;
+    sosa:observedProperty sosa:E_temp .
+
+sosa:S_E_temp-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Environment temperature observation 5"@en ;
+    :hasTime time:t-obs-S_E_temp-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the environment temperature sensor."@en ;
+    sosa:hasSimpleResult 30 ;
+    sosa:observedProperty sosa:E_temp .
+
+sosa:S_E_temp-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Environment temperature observation 6"@en ;
+    :hasTime time:t-obs-S_E_temp-6 ;
+    rdfs:comment "Observation individual representing measurement event 6 produced by the environment temperature sensor."@en ;
+    sosa:hasSimpleResult 19 ;
+    sosa:observedProperty sosa:E_temp .
+
+sosa:S_E_temp-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Environment temperature observation 7"@en ;
+    :hasTime time:t-obs-S_E_temp-7 ;
+    rdfs:comment "Observation individual representing measurement event 7 produced by the environment temperature sensor."@en ;
+    sosa:hasSimpleResult 19 ;
+    sosa:observedProperty sosa:E_temp .
+
+sosa:S_E_temp-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Environment temperature observation 8"@en ;
+    :hasTime time:t-obs-S_E_temp-8 ;
+    rdfs:comment "Observation individual representing measurement event 8 produced by the environment temperature sensor."@en ;
+    sosa:hasSimpleResult 29 ;
+    sosa:observedProperty sosa:E_temp .
+
+sosa:S_E_temp-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Environment temperature observation 9"@en ;
+    :hasTime time:t-obs-S_E_temp-9 ;
+    rdfs:comment "Observation individual representing measurement event 9 produced by the environment temperature sensor."@en ;
+    sosa:hasSimpleResult 25 ;
+    sosa:observedProperty sosa:E_temp .
+
+sosa:S_GB_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Gearbox temperature sensor"@en ;
+    rdfs:comment "Sensor individual used to observe gearbox temperature in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_GB_temp-Obs-0,
+        sosa:S_GB_temp-Obs-1,
+        sosa:S_GB_temp-Obs-10,
+        sosa:S_GB_temp-Obs-2,
+        sosa:S_GB_temp-Obs-3,
+        sosa:S_GB_temp-Obs-4,
+        sosa:S_GB_temp-Obs-5,
+        sosa:S_GB_temp-Obs-6,
+        sosa:S_GB_temp-Obs-7,
+        sosa:S_GB_temp-Obs-8,
+        sosa:S_GB_temp-Obs-9 .
+
+sosa:S_GB_temp-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Gearbox temperature observation 0"@en ;
+    :hasTime time:t-obs-S_GB_temp-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the gearbox temperature sensor."@en ;
+    sosa:hasSimpleResult 36 ;
+    sosa:observedProperty sosa:GB_temp .
+
+sosa:S_GB_temp-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Gearbox temperature observation 1"@en ;
+    :hasTime time:t-obs-S_GB_temp-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the gearbox temperature sensor."@en ;
+    sosa:hasSimpleResult 30 ;
+    sosa:observedProperty sosa:GB_temp .
+
+sosa:S_GB_temp-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Gearbox temperature observation 10"@en ;
+    :hasTime time:t-obs-S_GB_temp-10 ;
+    rdfs:comment "Observation individual representing measurement event 10 produced by the gearbox temperature sensor."@en ;
+    sosa:hasSimpleResult 57 ;
+    sosa:observedProperty sosa:GB_temp .
+
+sosa:S_GB_temp-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Gearbox temperature observation 2"@en ;
+    :hasTime time:t-obs-S_GB_temp-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the gearbox temperature sensor."@en ;
+    sosa:hasSimpleResult 41 ;
+    sosa:observedProperty sosa:GB_temp .
+
+sosa:S_GB_temp-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Gearbox temperature observation 3"@en ;
+    :hasTime time:t-obs-S_GB_temp-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the gearbox temperature sensor."@en ;
+    sosa:hasSimpleResult 45 ;
+    sosa:observedProperty sosa:GB_temp .
+
+sosa:S_GB_temp-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Gearbox temperature observation 4"@en ;
+    :hasTime time:t-obs-S_GB_temp-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the gearbox temperature sensor."@en ;
+    sosa:hasSimpleResult 48 ;
+    sosa:observedProperty sosa:GB_temp .
+
+sosa:S_GB_temp-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Gearbox temperature observation 5"@en ;
+    :hasTime time:t-obs-S_GB_temp-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the gearbox temperature sensor."@en ;
+    sosa:hasSimpleResult 38 ;
+    sosa:observedProperty sosa:GB_temp .
+
+sosa:S_GB_temp-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Gearbox temperature observation 6"@en ;
+    :hasTime time:t-obs-S_GB_temp-6 ;
+    rdfs:comment "Observation individual representing measurement event 6 produced by the gearbox temperature sensor."@en ;
+    sosa:hasSimpleResult 51 ;
+    sosa:observedProperty sosa:GB_temp .
+
+sosa:S_GB_temp-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Gearbox temperature observation 7"@en ;
+    :hasTime time:t-obs-S_GB_temp-7 ;
+    rdfs:comment "Observation individual representing measurement event 7 produced by the gearbox temperature sensor."@en ;
+    sosa:hasSimpleResult 43 ;
+    sosa:observedProperty sosa:GB_temp .
+
+sosa:S_GB_temp-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Gearbox temperature observation 8"@en ;
+    :hasTime time:t-obs-S_GB_temp-8 ;
+    rdfs:comment "Observation individual representing measurement event 8 produced by the gearbox temperature sensor."@en ;
+    sosa:hasSimpleResult 30 ;
+    sosa:observedProperty sosa:GB_temp .
+
+sosa:S_GB_temp-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Gearbox temperature observation 9"@en ;
+    :hasTime time:t-obs-S_GB_temp-9 ;
+    rdfs:comment "Observation individual representing measurement event 9 produced by the gearbox temperature sensor."@en ;
+    sosa:hasSimpleResult 53 ;
+    sosa:observedProperty sosa:GB_temp .
+
+sosa:S_G_current a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Generator current sensor"@en ;
+    rdfs:comment "Sensor individual used to observe generator current in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_G_current-Obs-0,
+        sosa:S_G_current-Obs-1,
+        sosa:S_G_current-Obs-10,
+        sosa:S_G_current-Obs-2,
+        sosa:S_G_current-Obs-3,
+        sosa:S_G_current-Obs-4,
+        sosa:S_G_current-Obs-5,
+        sosa:S_G_current-Obs-6,
+        sosa:S_G_current-Obs-7,
+        sosa:S_G_current-Obs-8,
+        sosa:S_G_current-Obs-9 .
+
+sosa:S_G_current-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator current observation 0"@en ;
+    :hasTime time:t-obs-S_G_current-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the generator current sensor."@en ;
+    sosa:hasSimpleResult 949 ;
+    sosa:observedProperty sosa:G_current .
+
+sosa:S_G_current-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator current observation 1"@en ;
+    :hasTime time:t-obs-S_G_current-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the generator current sensor."@en ;
+    sosa:hasSimpleResult 787 ;
+    sosa:observedProperty sosa:G_current .
+
+sosa:S_G_current-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Generator current observation 10"@en ;
+    :hasTime time:t-obs-S_G_current-10 ;
+    rdfs:comment "Observation individual representing measurement event 10 produced by the generator current sensor."@en ;
+    sosa:hasSimpleResult 787 ;
+    sosa:observedProperty sosa:G_current .
+
+sosa:S_G_current-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator current observation 2"@en ;
+    :hasTime time:t-obs-S_G_current-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the generator current sensor."@en ;
+    sosa:hasSimpleResult 751 ;
+    sosa:observedProperty sosa:G_current .
+
+sosa:S_G_current-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator current observation 3"@en ;
+    :hasTime time:t-obs-S_G_current-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the generator current sensor."@en ;
+    sosa:hasSimpleResult 852 ;
+    sosa:observedProperty sosa:G_current .
+
+sosa:S_G_current-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator current observation 4"@en ;
+    :hasTime time:t-obs-S_G_current-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the generator current sensor."@en ;
+    sosa:hasSimpleResult 812 ;
+    sosa:observedProperty sosa:G_current .
+
+sosa:S_G_current-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator current observation 5"@en ;
+    :hasTime time:t-obs-S_G_current-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the generator current sensor."@en ;
+    sosa:hasSimpleResult 866 ;
+    sosa:observedProperty sosa:G_current .
+
+sosa:S_G_current-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Generator current observation 6"@en ;
+    :hasTime time:t-obs-S_G_current-6 ;
+    rdfs:comment "Observation individual representing measurement event 6 produced by the generator current sensor."@en ;
+    sosa:hasSimpleResult 823 ;
+    sosa:observedProperty sosa:G_current .
+
+sosa:S_G_current-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Generator current observation 7"@en ;
+    :hasTime time:t-obs-S_G_current-7 ;
+    rdfs:comment "Observation individual representing measurement event 7 produced by the generator current sensor."@en ;
+    sosa:hasSimpleResult 989 ;
+    sosa:observedProperty sosa:G_current .
+
+sosa:S_G_current-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Generator current observation 8"@en ;
+    :hasTime time:t-obs-S_G_current-8 ;
+    rdfs:comment "Observation individual representing measurement event 8 produced by the generator current sensor."@en ;
+    sosa:hasSimpleResult 940 ;
+    sosa:observedProperty sosa:G_current .
+
+sosa:S_G_current-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Generator current observation 9"@en ;
+    :hasTime time:t-obs-S_G_current-9 ;
+    rdfs:comment "Observation individual representing measurement event 9 produced by the generator current sensor."@en ;
+    sosa:hasSimpleResult 872 ;
+    sosa:observedProperty sosa:G_current .
+
+sosa:S_G_speed a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Generator speed sensor"@en ;
+    rdfs:comment "Sensor individual used to observe generator speed in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_G_speed-Obs-0,
+        sosa:S_G_speed-Obs-1,
+        sosa:S_G_speed-Obs-10,
+        sosa:S_G_speed-Obs-2,
+        sosa:S_G_speed-Obs-3,
+        sosa:S_G_speed-Obs-4,
+        sosa:S_G_speed-Obs-5,
+        sosa:S_G_speed-Obs-6,
+        sosa:S_G_speed-Obs-7,
+        sosa:S_G_speed-Obs-8,
+        sosa:S_G_speed-Obs-9 .
+
+sosa:S_G_speed-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator speed observation 0"@en ;
+    :hasTime time:t-obs-S_G_speed-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the generator speed sensor."@en ;
+    sosa:hasSimpleResult 403 ;
+    sosa:observedProperty sosa:G_speed .
+
+sosa:S_G_speed-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator speed observation 1"@en ;
+    :hasTime time:t-obs-S_G_speed-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the generator speed sensor."@en ;
+    sosa:hasSimpleResult 599 ;
+    sosa:observedProperty sosa:G_speed .
+
+sosa:S_G_speed-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Generator speed observation 10"@en ;
+    :hasTime time:t-obs-S_G_speed-10 ;
+    rdfs:comment "Observation individual representing measurement event 10 produced by the generator speed sensor."@en ;
+    sosa:hasSimpleResult 523 ;
+    sosa:observedProperty sosa:G_speed .
+
+sosa:S_G_speed-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator speed observation 2"@en ;
+    :hasTime time:t-obs-S_G_speed-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the generator speed sensor."@en ;
+    sosa:hasSimpleResult 506 ;
+    sosa:observedProperty sosa:G_speed .
+
+sosa:S_G_speed-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator speed observation 3"@en ;
+    :hasTime time:t-obs-S_G_speed-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the generator speed sensor."@en ;
+    sosa:hasSimpleResult 439 ;
+    sosa:observedProperty sosa:G_speed .
+
+sosa:S_G_speed-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator speed observation 4"@en ;
+    :hasTime time:t-obs-S_G_speed-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the generator speed sensor."@en ;
+    sosa:hasSimpleResult 471 ;
+    sosa:observedProperty sosa:G_speed .
+
+sosa:S_G_speed-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator speed observation 5"@en ;
+    :hasTime time:t-obs-S_G_speed-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the generator speed sensor."@en ;
+    sosa:hasSimpleResult 535 ;
+    sosa:observedProperty sosa:G_speed .
+
+sosa:S_G_speed-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Generator speed observation 6"@en ;
+    :hasTime time:t-obs-S_G_speed-6 ;
+    rdfs:comment "Observation individual representing measurement event 6 produced by the generator speed sensor."@en ;
+    sosa:hasSimpleResult 478 ;
+    sosa:observedProperty sosa:G_speed .
+
+sosa:S_G_speed-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Generator speed observation 7"@en ;
+    :hasTime time:t-obs-S_G_speed-7 ;
+    rdfs:comment "Observation individual representing measurement event 7 produced by the generator speed sensor."@en ;
+    sosa:hasSimpleResult 501 ;
+    sosa:observedProperty sosa:G_speed .
+
+sosa:S_G_speed-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Generator speed observation 8"@en ;
+    :hasTime time:t-obs-S_G_speed-8 ;
+    rdfs:comment "Observation individual representing measurement event 8 produced by the generator speed sensor."@en ;
+    sosa:hasSimpleResult 472 ;
+    sosa:observedProperty sosa:G_speed .
+
+sosa:S_G_speed-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Generator speed observation 9"@en ;
+    :hasTime time:t-obs-S_G_speed-9 ;
+    rdfs:comment "Observation individual representing measurement event 9 produced by the generator speed sensor."@en ;
+    sosa:hasSimpleResult 579 ;
+    sosa:observedProperty sosa:G_speed .
+
+sosa:S_G_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Generator temperature sensor"@en ;
+    rdfs:comment "Sensor individual used to observe generator temperature in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_G_temp-Obs-0,
+        sosa:S_G_temp-Obs-1,
+        sosa:S_G_temp-Obs-10,
+        sosa:S_G_temp-Obs-2,
+        sosa:S_G_temp-Obs-3,
+        sosa:S_G_temp-Obs-4,
+        sosa:S_G_temp-Obs-5,
+        sosa:S_G_temp-Obs-6,
+        sosa:S_G_temp-Obs-7,
+        sosa:S_G_temp-Obs-8,
+        sosa:S_G_temp-Obs-9 .
+
+sosa:S_G_temp-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator temperature observation 0"@en ;
+    :hasTime time:t-obs-S_G_temp-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the generator temperature sensor."@en ;
+    sosa:hasSimpleResult 47 ;
+    sosa:observedProperty sosa:G_temp .
+
+sosa:S_G_temp-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator temperature observation 1"@en ;
+    :hasTime time:t-obs-S_G_temp-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the generator temperature sensor."@en ;
+    sosa:hasSimpleResult 48 ;
+    sosa:observedProperty sosa:G_temp .
+
+sosa:S_G_temp-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Generator temperature observation 10"@en ;
+    :hasTime time:t-obs-S_G_temp-10 ;
+    rdfs:comment "Observation individual representing measurement event 10 produced by the generator temperature sensor."@en ;
+    sosa:hasSimpleResult 40 ;
+    sosa:observedProperty sosa:G_temp .
+
+sosa:S_G_temp-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator temperature observation 2"@en ;
+    :hasTime time:t-obs-S_G_temp-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the generator temperature sensor."@en ;
+    sosa:hasSimpleResult 40 ;
+    sosa:observedProperty sosa:G_temp .
+
+sosa:S_G_temp-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator temperature observation 3"@en ;
+    :hasTime time:t-obs-S_G_temp-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the generator temperature sensor."@en ;
+    sosa:hasSimpleResult 50 ;
+    sosa:observedProperty sosa:G_temp .
+
+sosa:S_G_temp-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator temperature observation 4"@en ;
+    :hasTime time:t-obs-S_G_temp-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the generator temperature sensor."@en ;
+    sosa:hasSimpleResult 40 ;
+    sosa:observedProperty sosa:G_temp .
+
+sosa:S_G_temp-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Generator temperature observation 5"@en ;
+    :hasTime time:t-obs-S_G_temp-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the generator temperature sensor."@en ;
+    sosa:hasSimpleResult 49 ;
+    sosa:observedProperty sosa:G_temp .
+
+sosa:S_G_temp-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Generator temperature observation 6"@en ;
+    :hasTime time:t-obs-S_G_temp-6 ;
+    rdfs:comment "Observation individual representing measurement event 6 produced by the generator temperature sensor."@en ;
+    sosa:hasSimpleResult 45 ;
+    sosa:observedProperty sosa:G_temp .
+
+sosa:S_G_temp-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Generator temperature observation 7"@en ;
+    :hasTime time:t-obs-S_G_temp-7 ;
+    rdfs:comment "Observation individual representing measurement event 7 produced by the generator temperature sensor."@en ;
+    sosa:hasSimpleResult 43 ;
+    sosa:observedProperty sosa:G_temp .
+
+sosa:S_G_temp-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Generator temperature observation 8"@en ;
+    :hasTime time:t-obs-S_G_temp-8 ;
+    rdfs:comment "Observation individual representing measurement event 8 produced by the generator temperature sensor."@en ;
+    sosa:hasSimpleResult 40 ;
+    sosa:observedProperty sosa:G_temp .
+
+sosa:S_G_temp-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Generator temperature observation 9"@en ;
+    :hasTime time:t-obs-S_G_temp-9 ;
+    rdfs:comment "Observation individual representing measurement event 9 produced by the generator temperature sensor."@en ;
+    sosa:hasSimpleResult 44 ;
+    sosa:observedProperty sosa:G_temp .
+
+sosa:S_OilTemp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Oil temperature sensor"@en ;
+    rdfs:comment "Sensor individual used to observe oil temperature in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_OilTemp-Obs-0,
+        sosa:S_OilTemp-Obs-1,
+        sosa:S_OilTemp-Obs-10,
+        sosa:S_OilTemp-Obs-2,
+        sosa:S_OilTemp-Obs-3,
+        sosa:S_OilTemp-Obs-4,
+        sosa:S_OilTemp-Obs-5,
+        sosa:S_OilTemp-Obs-6,
+        sosa:S_OilTemp-Obs-7,
+        sosa:S_OilTemp-Obs-8,
+        sosa:S_OilTemp-Obs-9 .
+
+sosa:S_OilTemp-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Oil temperature observation 0"@en ;
+    :hasTime time:t-obs-S_OilTemp-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the oil temperature sensor."@en ;
+    sosa:hasSimpleResult 66 ;
+    sosa:observedProperty sosa:OilTemp .
+
+sosa:S_OilTemp-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Oil temperature observation 1"@en ;
+    :hasTime time:t-obs-S_OilTemp-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the oil temperature sensor."@en ;
+    sosa:hasSimpleResult 31 ;
+    sosa:observedProperty sosa:OilTemp .
+
+sosa:S_OilTemp-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Oil temperature observation 10"@en ;
+    :hasTime time:t-obs-S_OilTemp-10 ;
+    rdfs:comment "Observation individual representing measurement event 10 produced by the oil temperature sensor."@en ;
+    sosa:hasSimpleResult 35 ;
+    sosa:observedProperty sosa:OilTemp .
+
+sosa:S_OilTemp-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Oil temperature observation 2"@en ;
+    :hasTime time:t-obs-S_OilTemp-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the oil temperature sensor."@en ;
+    sosa:hasSimpleResult 35 ;
+    sosa:observedProperty sosa:OilTemp .
+
+sosa:S_OilTemp-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Oil temperature observation 3"@en ;
+    :hasTime time:t-obs-S_OilTemp-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the oil temperature sensor."@en ;
+    sosa:hasSimpleResult 36 ;
+    sosa:observedProperty sosa:OilTemp .
+
+sosa:S_OilTemp-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Oil temperature observation 4"@en ;
+    :hasTime time:t-obs-S_OilTemp-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the oil temperature sensor."@en ;
+    sosa:hasSimpleResult 42 ;
+    sosa:observedProperty sosa:OilTemp .
+
+sosa:S_OilTemp-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Oil temperature observation 5"@en ;
+    :hasTime time:t-obs-S_OilTemp-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the oil temperature sensor."@en ;
+    sosa:hasSimpleResult 53 ;
+    sosa:observedProperty sosa:OilTemp .
+
+sosa:S_OilTemp-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Oil temperature observation 6"@en ;
+    :hasTime time:t-obs-S_OilTemp-6 ;
+    rdfs:comment "Observation individual representing measurement event 6 produced by the oil temperature sensor."@en ;
+    sosa:hasSimpleResult 67 ;
+    sosa:observedProperty sosa:OilTemp .
+
+sosa:S_OilTemp-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Oil temperature observation 7"@en ;
+    :hasTime time:t-obs-S_OilTemp-7 ;
+    rdfs:comment "Observation individual representing measurement event 7 produced by the oil temperature sensor."@en ;
+    sosa:hasSimpleResult 61 ;
+    sosa:observedProperty sosa:OilTemp .
+
+sosa:S_OilTemp-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Oil temperature observation 8"@en ;
+    :hasTime time:t-obs-S_OilTemp-8 ;
+    rdfs:comment "Observation individual representing measurement event 8 produced by the oil temperature sensor."@en ;
+    sosa:hasSimpleResult 60 ;
+    sosa:observedProperty sosa:OilTemp .
+
+sosa:S_OilTemp-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Oil temperature observation 9"@en ;
+    :hasTime time:t-obs-S_OilTemp-9 ;
+    rdfs:comment "Observation individual representing measurement event 9 produced by the oil temperature sensor."@en ;
+    sosa:hasSimpleResult 57 ;
+    sosa:observedProperty sosa:OilTemp .
+
+sosa:S_P_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Platform temperature sensor"@en ;
+    rdfs:comment "Sensor individual used to observe platform temperature in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_P_temp-Obs-0,
+        sosa:S_P_temp-Obs-1,
+        sosa:S_P_temp-Obs-10,
+        sosa:S_P_temp-Obs-2,
+        sosa:S_P_temp-Obs-3,
+        sosa:S_P_temp-Obs-4,
+        sosa:S_P_temp-Obs-5,
+        sosa:S_P_temp-Obs-6,
+        sosa:S_P_temp-Obs-7,
+        sosa:S_P_temp-Obs-8,
+        sosa:S_P_temp-Obs-9 .
+
+sosa:S_P_temp-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Platform temperature observation 0"@en ;
+    :hasTime time:t-obs-S_P_temp-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the platform temperature sensor."@en ;
+    sosa:hasSimpleResult 43 ;
+    sosa:observedProperty sosa:P_temp .
+
+sosa:S_P_temp-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Platform temperature observation 1"@en ;
+    :hasTime time:t-obs-S_P_temp-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the platform temperature sensor."@en ;
+    sosa:hasSimpleResult 42 ;
+    sosa:observedProperty sosa:P_temp .
+
+sosa:S_P_temp-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Platform temperature observation 10"@en ;
+    :hasTime time:t-obs-S_P_temp-10 ;
+    rdfs:comment "Observation individual representing measurement event 10 produced by the platform temperature sensor."@en ;
+    sosa:hasSimpleResult 44 ;
+    sosa:observedProperty sosa:P_temp .
+
+sosa:S_P_temp-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Platform temperature observation 2"@en ;
+    :hasTime time:t-obs-S_P_temp-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the platform temperature sensor."@en ;
+    sosa:hasSimpleResult 48 ;
+    sosa:observedProperty sosa:P_temp .
+
+sosa:S_P_temp-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Platform temperature observation 3"@en ;
+    :hasTime time:t-obs-S_P_temp-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the platform temperature sensor."@en ;
+    sosa:hasSimpleResult 36 ;
+    sosa:observedProperty sosa:P_temp .
+
+sosa:S_P_temp-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Platform temperature observation 4"@en ;
+    :hasTime time:t-obs-S_P_temp-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the platform temperature sensor."@en ;
+    sosa:hasSimpleResult 44 ;
+    sosa:observedProperty sosa:P_temp .
+
+sosa:S_P_temp-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Platform temperature observation 5"@en ;
+    :hasTime time:t-obs-S_P_temp-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the platform temperature sensor."@en ;
+    sosa:hasSimpleResult 26 ;
+    sosa:observedProperty sosa:P_temp .
+
+sosa:S_P_temp-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Platform temperature observation 6"@en ;
+    :hasTime time:t-obs-S_P_temp-6 ;
+    rdfs:comment "Observation individual representing measurement event 6 produced by the platform temperature sensor."@en ;
+    sosa:hasSimpleResult 48 ;
+    sosa:observedProperty sosa:P_temp .
+
+sosa:S_P_temp-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Platform temperature observation 7"@en ;
+    :hasTime time:t-obs-S_P_temp-7 ;
+    rdfs:comment "Observation individual representing measurement event 7 produced by the platform temperature sensor."@en ;
+    sosa:hasSimpleResult 38 ;
+    sosa:observedProperty sosa:P_temp .
+
+sosa:S_P_temp-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Platform temperature observation 8"@en ;
+    :hasTime time:t-obs-S_P_temp-8 ;
+    rdfs:comment "Observation individual representing measurement event 8 produced by the platform temperature sensor."@en ;
+    sosa:hasSimpleResult 27 ;
+    sosa:observedProperty sosa:P_temp .
+
+sosa:S_P_temp-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Platform temperature observation 9"@en ;
+    :hasTime time:t-obs-S_P_temp-9 ;
+    rdfs:comment "Observation individual representing measurement event 9 produced by the platform temperature sensor."@en ;
+    sosa:hasSimpleResult 33 ;
+    sosa:observedProperty sosa:P_temp .
+
+sosa:S_PowerOutput a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Power output sensor"@en ;
+    rdfs:comment "Sensor individual used to observe power output in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_PowerOutput-Obs-0,
+        sosa:S_PowerOutput-Obs-1,
+        sosa:S_PowerOutput-Obs-10,
+        sosa:S_PowerOutput-Obs-2,
+        sosa:S_PowerOutput-Obs-3,
+        sosa:S_PowerOutput-Obs-4,
+        sosa:S_PowerOutput-Obs-5,
+        sosa:S_PowerOutput-Obs-6,
+        sosa:S_PowerOutput-Obs-7,
+        sosa:S_PowerOutput-Obs-8,
+        sosa:S_PowerOutput-Obs-9 .
+
+sosa:S_PowerOutput-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Power output observation 0"@en ;
+    :hasTime time:t-obs-S_PowerOutput-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the power output sensor."@en ;
+    sosa:hasSimpleResult 1498 ;
+    sosa:observedProperty sosa:PowerOutput .
+
+sosa:S_PowerOutput-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Power output observation 1"@en ;
+    :hasTime time:t-obs-S_PowerOutput-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the power output sensor."@en ;
+    sosa:hasSimpleResult 1097 ;
+    sosa:observedProperty sosa:PowerOutput .
+
+sosa:S_PowerOutput-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Power output observation 10"@en ;
+    :hasTime time:t-obs-S_PowerOutput-10 ;
+    rdfs:comment "Observation individual representing measurement event 10 produced by the power output sensor."@en ;
+    sosa:hasSimpleResult 1100 ;
+    sosa:observedProperty sosa:PowerOutput .
+
+sosa:S_PowerOutput-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Power output observation 2"@en ;
+    :hasTime time:t-obs-S_PowerOutput-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the power output sensor."@en ;
+    sosa:hasSimpleResult 1990 ;
+    sosa:observedProperty sosa:PowerOutput .
+
+sosa:S_PowerOutput-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Power output observation 3"@en ;
+    :hasTime time:t-obs-S_PowerOutput-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the power output sensor."@en ;
+    sosa:hasSimpleResult 1630 ;
+    sosa:observedProperty sosa:PowerOutput .
+
+sosa:S_PowerOutput-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Power output observation 4"@en ;
+    :hasTime time:t-obs-S_PowerOutput-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the power output sensor."@en ;
+    sosa:hasSimpleResult 1507 ;
+    sosa:observedProperty sosa:PowerOutput .
+
+sosa:S_PowerOutput-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Power output observation 5"@en ;
+    :hasTime time:t-obs-S_PowerOutput-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the power output sensor."@en ;
+    sosa:hasSimpleResult 895 ;
+    sosa:observedProperty sosa:PowerOutput .
+
+sosa:S_PowerOutput-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Power output observation 6"@en ;
+    :hasTime time:t-obs-S_PowerOutput-6 ;
+    rdfs:comment "Observation individual representing measurement event 6 produced by the power output sensor."@en ;
+    sosa:hasSimpleResult 944 ;
+    sosa:observedProperty sosa:PowerOutput .
+
+sosa:S_PowerOutput-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Power output observation 7"@en ;
+    :hasTime time:t-obs-S_PowerOutput-7 ;
+    rdfs:comment "Observation individual representing measurement event 7 produced by the power output sensor."@en ;
+    sosa:hasSimpleResult 946 ;
+    sosa:observedProperty sosa:PowerOutput .
+
+sosa:S_PowerOutput-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Power output observation 8"@en ;
+    :hasTime time:t-obs-S_PowerOutput-8 ;
+    rdfs:comment "Observation individual representing measurement event 8 produced by the power output sensor."@en ;
+    sosa:hasSimpleResult 482 ;
+    sosa:observedProperty sosa:PowerOutput .
+
+sosa:S_PowerOutput-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Power output observation 9"@en ;
+    :hasTime time:t-obs-S_PowerOutput-9 ;
+    rdfs:comment "Observation individual representing measurement event 9 produced by the power output sensor."@en ;
+    sosa:hasSimpleResult 1170 ;
+    sosa:observedProperty sosa:PowerOutput .
+
+sosa:S_R_Pangle a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Rotor pitch angle sensor"@en ;
+    rdfs:comment "Sensor individual used to observe rotor pitch angle in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_R_Pangle-Obs-0,
+        sosa:S_R_Pangle-Obs-1,
+        sosa:S_R_Pangle-Obs-10,
+        sosa:S_R_Pangle-Obs-2,
+        sosa:S_R_Pangle-Obs-3,
+        sosa:S_R_Pangle-Obs-4,
+        sosa:S_R_Pangle-Obs-5,
+        sosa:S_R_Pangle-Obs-6,
+        sosa:S_R_Pangle-Obs-7,
+        sosa:S_R_Pangle-Obs-8,
+        sosa:S_R_Pangle-Obs-9 .
+
+sosa:S_R_Pangle-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Rotor pitch angle observation 0"@en ;
+    :hasTime time:t-obs-S_R_Pangle-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the rotor pitch angle sensor."@en ;
+    sosa:hasSimpleResult 8 ;
+    sosa:observedProperty sosa:R_Pangle .
+
+sosa:S_R_Pangle-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Rotor pitch angle observation 1"@en ;
+    :hasTime time:t-obs-S_R_Pangle-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the rotor pitch angle sensor."@en ;
+    sosa:hasSimpleResult 10 ;
+    sosa:observedProperty sosa:R_Pangle .
+
+sosa:S_R_Pangle-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Rotor pitch angle observation 10"@en ;
+    :hasTime time:t-obs-S_R_Pangle-10 ;
+    rdfs:comment "Observation individual representing measurement event 10 produced by the rotor pitch angle sensor."@en ;
+    sosa:hasSimpleResult 7 ;
+    sosa:observedProperty sosa:R_Pangle .
+
+sosa:S_R_Pangle-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Rotor pitch angle observation 2"@en ;
+    :hasTime time:t-obs-S_R_Pangle-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the rotor pitch angle sensor."@en ;
+    sosa:hasSimpleResult 5 ;
+    sosa:observedProperty sosa:R_Pangle .
+
+sosa:S_R_Pangle-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Rotor pitch angle observation 3"@en ;
+    :hasTime time:t-obs-S_R_Pangle-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the rotor pitch angle sensor."@en ;
+    sosa:hasSimpleResult 7 ;
+    sosa:observedProperty sosa:R_Pangle .
+
+sosa:S_R_Pangle-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Rotor pitch angle observation 4"@en ;
+    :hasTime time:t-obs-S_R_Pangle-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the rotor pitch angle sensor."@en ;
+    sosa:hasSimpleResult 9 ;
+    sosa:observedProperty sosa:R_Pangle .
+
+sosa:S_R_Pangle-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Rotor pitch angle observation 5"@en ;
+    :hasTime time:t-obs-S_R_Pangle-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the rotor pitch angle sensor."@en ;
+    sosa:hasSimpleResult 8 ;
+    sosa:observedProperty sosa:R_Pangle .
+
+sosa:S_R_Pangle-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Rotor pitch angle observation 6"@en ;
+    :hasTime time:t-obs-S_R_Pangle-6 ;
+    rdfs:comment "Observation individual representing measurement event 6 produced by the rotor pitch angle sensor."@en ;
+    sosa:hasSimpleResult 10 ;
+    sosa:observedProperty sosa:R_Pangle .
+
+sosa:S_R_Pangle-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Rotor pitch angle observation 7"@en ;
+    :hasTime time:t-obs-S_R_Pangle-7 ;
+    rdfs:comment "Observation individual representing measurement event 7 produced by the rotor pitch angle sensor."@en ;
+    sosa:hasSimpleResult 8 ;
+    sosa:observedProperty sosa:R_Pangle .
+
+sosa:S_R_Pangle-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Rotor pitch angle observation 8"@en ;
+    :hasTime time:t-obs-S_R_Pangle-8 ;
+    rdfs:comment "Observation individual representing measurement event 8 produced by the rotor pitch angle sensor."@en ;
+    sosa:hasSimpleResult 4 ;
+    sosa:observedProperty sosa:R_Pangle .
+
+sosa:S_R_Pangle-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Rotor pitch angle observation 9"@en ;
+    :hasTime time:t-obs-S_R_Pangle-9 ;
+    rdfs:comment "Observation individual representing measurement event 9 produced by the rotor pitch angle sensor."@en ;
+    sosa:hasSimpleResult 7 ;
+    sosa:observedProperty sosa:R_Pangle .
+
+sosa:S_R_speed a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Rotor speed sensor"@en ;
+    rdfs:comment "Sensor individual used to observe rotor speed in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_R_speed-Obs-0,
+        sosa:S_R_speed-Obs-1,
+        sosa:S_R_speed-Obs-10,
+        sosa:S_R_speed-Obs-2,
+        sosa:S_R_speed-Obs-3,
+        sosa:S_R_speed-Obs-4,
+        sosa:S_R_speed-Obs-5,
+        sosa:S_R_speed-Obs-6,
+        sosa:S_R_speed-Obs-7,
+        sosa:S_R_speed-Obs-8,
+        sosa:S_R_speed-Obs-9 .
+
+sosa:S_R_speed-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Rotor speed observation 0"@en ;
+    :hasTime time:t-obs-S_R_speed-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the rotor speed sensor."@en ;
+    sosa:hasSimpleResult 72 ;
+    sosa:observedProperty sosa:R_speed .
+
+sosa:S_R_speed-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Rotor speed observation 1"@en ;
+    :hasTime time:t-obs-S_R_speed-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the rotor speed sensor."@en ;
+    sosa:hasSimpleResult 252 ;
+    sosa:observedProperty sosa:R_speed .
+
+sosa:S_R_speed-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Rotor speed observation 10"@en ;
+    :hasTime time:t-obs-S_R_speed-10 ;
+    rdfs:comment "Observation individual representing measurement event 10 produced by the rotor speed sensor."@en ;
+    sosa:hasSimpleResult 52 ;
+    sosa:observedProperty sosa:R_speed .
+
+sosa:S_R_speed-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Rotor speed observation 2"@en ;
+    :hasTime time:t-obs-S_R_speed-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the rotor speed sensor."@en ;
+    sosa:hasSimpleResult 150 ;
+    sosa:observedProperty sosa:R_speed .
+
+sosa:S_R_speed-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Rotor speed observation 3"@en ;
+    :hasTime time:t-obs-S_R_speed-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the rotor speed sensor."@en ;
+    sosa:hasSimpleResult 265 ;
+    sosa:observedProperty sosa:R_speed .
+
+sosa:S_R_speed-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Rotor speed observation 4"@en ;
+    :hasTime time:t-obs-S_R_speed-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the rotor speed sensor."@en ;
+    sosa:hasSimpleResult 180 ;
+    sosa:observedProperty sosa:R_speed .
+
+sosa:S_R_speed-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Rotor speed observation 5"@en ;
+    :hasTime time:t-obs-S_R_speed-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the rotor speed sensor."@en ;
+    sosa:hasSimpleResult 156 ;
+    sosa:observedProperty sosa:R_speed .
+
+sosa:S_R_speed-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Rotor speed observation 6"@en ;
+    :hasTime time:t-obs-S_R_speed-6 ;
+    rdfs:comment "Observation individual representing measurement event 6 produced by the rotor speed sensor."@en ;
+    sosa:hasSimpleResult 126 ;
+    sosa:observedProperty sosa:R_speed .
+
+sosa:S_R_speed-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Rotor speed observation 7"@en ;
+    :hasTime time:t-obs-S_R_speed-7 ;
+    rdfs:comment "Observation individual representing measurement event 7 produced by the rotor speed sensor."@en ;
+    sosa:hasSimpleResult 229 ;
+    sosa:observedProperty sosa:R_speed .
+
+sosa:S_R_speed-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Rotor speed observation 8"@en ;
+    :hasTime time:t-obs-S_R_speed-8 ;
+    rdfs:comment "Observation individual representing measurement event 8 produced by the rotor speed sensor."@en ;
+    sosa:hasSimpleResult 191 ;
+    sosa:observedProperty sosa:R_speed .
+
+sosa:S_R_speed-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Rotor speed observation 9"@en ;
+    :hasTime time:t-obs-S_R_speed-9 ;
+    rdfs:comment "Observation individual representing measurement event 9 produced by the rotor speed sensor."@en ;
+    sosa:hasSimpleResult 173 ;
+    sosa:observedProperty sosa:R_speed .
+
+sosa:S_TG_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Transmission grid temperature sensor"@en ;
+    rdfs:comment "Sensor individual used to observe transmission grid temperature in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_TG_temp-Obs-0,
+        sosa:S_TG_temp-Obs-1,
+        sosa:S_TG_temp-Obs-10,
+        sosa:S_TG_temp-Obs-2,
+        sosa:S_TG_temp-Obs-3,
+        sosa:S_TG_temp-Obs-4,
+        sosa:S_TG_temp-Obs-5,
+        sosa:S_TG_temp-Obs-6,
+        sosa:S_TG_temp-Obs-7,
+        sosa:S_TG_temp-Obs-8,
+        sosa:S_TG_temp-Obs-9 .
+
+sosa:S_TG_temp-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Transmission grid temperature observation 0"@en ;
+    :hasTime time:t-obs-S_TG_temp-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the transmission grid temperature sensor."@en ;
+    sosa:hasSimpleResult 36 ;
+    sosa:observedProperty sosa:TG_temp .
+
+sosa:S_TG_temp-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Transmission grid temperature observation 1"@en ;
+    :hasTime time:t-obs-S_TG_temp-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the transmission grid temperature sensor."@en ;
+    sosa:hasSimpleResult 40 ;
+    sosa:observedProperty sosa:TG_temp .
+
+sosa:S_TG_temp-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Transmission grid temperature observation 10"@en ;
+    :hasTime time:t-obs-S_TG_temp-10 ;
+    rdfs:comment "Observation individual representing measurement event 10 produced by the transmission grid temperature sensor."@en ;
+    sosa:hasSimpleResult 31 ;
+    sosa:observedProperty sosa:TG_temp .
+
+sosa:S_TG_temp-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Transmission grid temperature observation 2"@en ;
+    :hasTime time:t-obs-S_TG_temp-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the transmission grid temperature sensor."@en ;
+    sosa:hasSimpleResult 38 ;
+    sosa:observedProperty sosa:TG_temp .
+
+sosa:S_TG_temp-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Transmission grid temperature observation 3"@en ;
+    :hasTime time:t-obs-S_TG_temp-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the transmission grid temperature sensor."@en ;
+    sosa:hasSimpleResult 34 ;
+    sosa:observedProperty sosa:TG_temp .
+
+sosa:S_TG_temp-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Transmission grid temperature observation 4"@en ;
+    :hasTime time:t-obs-S_TG_temp-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the transmission grid temperature sensor."@en ;
+    sosa:hasSimpleResult 34 ;
+    sosa:observedProperty sosa:TG_temp .
+
+sosa:S_TG_temp-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Transmission grid temperature observation 5"@en ;
+    :hasTime time:t-obs-S_TG_temp-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the transmission grid temperature sensor."@en ;
+    sosa:hasSimpleResult 39 ;
+    sosa:observedProperty sosa:TG_temp .
+
+sosa:S_TG_temp-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Transmission grid temperature observation 6"@en ;
+    :hasTime time:t-obs-S_TG_temp-6 ;
+    rdfs:comment "Observation individual representing measurement event 6 produced by the transmission grid temperature sensor."@en ;
+    sosa:hasSimpleResult 35 ;
+    sosa:observedProperty sosa:TG_temp .
+
+sosa:S_TG_temp-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Transmission grid temperature observation 7"@en ;
+    :hasTime time:t-obs-S_TG_temp-7 ;
+    rdfs:comment "Observation individual representing measurement event 7 produced by the transmission grid temperature sensor."@en ;
+    sosa:hasSimpleResult 31 ;
+    sosa:observedProperty sosa:TG_temp .
+
+sosa:S_TG_temp-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Transmission grid temperature observation 8"@en ;
+    :hasTime time:t-obs-S_TG_temp-8 ;
+    rdfs:comment "Observation individual representing measurement event 8 produced by the transmission grid temperature sensor."@en ;
+    sosa:hasSimpleResult 30 ;
+    sosa:observedProperty sosa:TG_temp .
+
+sosa:S_TG_temp-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Transmission grid temperature observation 9"@en ;
+    :hasTime time:t-obs-S_TG_temp-9 ;
+    rdfs:comment "Observation individual representing measurement event 9 produced by the transmission grid temperature sensor."@en ;
+    sosa:hasSimpleResult 33 ;
+    sosa:observedProperty sosa:TG_temp .
+
+sosa:S_T_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Sensor ;
+    rdfs:label "Transformer temperature sensor"@en ;
+    rdfs:comment "Sensor individual used to observe transformer temperature in the manufacturing system."@en ;
+    sosa:madeObservation sosa:S_T_temp-Obs-0,
+        sosa:S_T_temp-Obs-1,
+        sosa:S_T_temp-Obs-10,
+        sosa:S_T_temp-Obs-2,
+        sosa:S_T_temp-Obs-3,
+        sosa:S_T_temp-Obs-4,
+        sosa:S_T_temp-Obs-5,
+        sosa:S_T_temp-Obs-6,
+        sosa:S_T_temp-Obs-7,
+        sosa:S_T_temp-Obs-8,
+        sosa:S_T_temp-Obs-9 .
+
+sosa:S_T_temp-Obs-0 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Transformer temperature observation 0"@en ;
+    :hasTime time:t-obs-S_T_temp-0 ;
+    rdfs:comment "Observation individual representing measurement event 0 produced by the transformer temperature sensor."@en ;
+    sosa:hasSimpleResult 37 ;
+    sosa:observedProperty sosa:T_temp .
+
+sosa:S_T_temp-Obs-1 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Transformer temperature observation 1"@en ;
+    :hasTime time:t-obs-S_T_temp-1 ;
+    rdfs:comment "Observation individual representing measurement event 1 produced by the transformer temperature sensor."@en ;
+    sosa:hasSimpleResult 38 ;
+    sosa:observedProperty sosa:T_temp .
+
+sosa:S_T_temp-Obs-10 a owl:NamedIndividual ;
+    rdfs:label "Transformer temperature observation 10"@en ;
+    :hasTime time:t-obs-S_T_temp-10 ;
+    rdfs:comment "Observation individual representing measurement event 10 produced by the transformer temperature sensor."@en ;
+    sosa:hasSimpleResult 53 ;
+    sosa:observedProperty sosa:T_temp .
+
+sosa:S_T_temp-Obs-2 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Transformer temperature observation 2"@en ;
+    :hasTime time:t-obs-S_T_temp-2 ;
+    rdfs:comment "Observation individual representing measurement event 2 produced by the transformer temperature sensor."@en ;
+    sosa:hasSimpleResult 55 ;
+    sosa:observedProperty sosa:T_temp .
+
+sosa:S_T_temp-Obs-3 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Transformer temperature observation 3"@en ;
+    :hasTime time:t-obs-S_T_temp-3 ;
+    rdfs:comment "Observation individual representing measurement event 3 produced by the transformer temperature sensor."@en ;
+    sosa:hasSimpleResult 42 ;
+    sosa:observedProperty sosa:T_temp .
+
+sosa:S_T_temp-Obs-4 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Transformer temperature observation 4"@en ;
+    :hasTime time:t-obs-S_T_temp-4 ;
+    rdfs:comment "Observation individual representing measurement event 4 produced by the transformer temperature sensor."@en ;
+    sosa:hasSimpleResult 50 ;
+    sosa:observedProperty sosa:T_temp .
+
+sosa:S_T_temp-Obs-5 a owl:NamedIndividual,
+        owl:Thing,
+        sosa:Observation ;
+    rdfs:label "Transformer temperature observation 5"@en ;
+    :hasTime time:t-obs-S_T_temp-5 ;
+    rdfs:comment "Observation individual representing measurement event 5 produced by the transformer temperature sensor."@en ;
+    sosa:hasSimpleResult 43 ;
+    sosa:observedProperty sosa:T_temp .
+
+sosa:S_T_temp-Obs-6 a owl:NamedIndividual ;
+    rdfs:label "Transformer temperature observation 6"@en ;
+    :hasTime time:t-obs-S_T_temp-6 ;
+    rdfs:comment "Observation individual representing measurement event 6 produced by the transformer temperature sensor."@en ;
+    sosa:hasSimpleResult 41 ;
+    sosa:observedProperty sosa:T_temp .
+
+sosa:S_T_temp-Obs-7 a owl:NamedIndividual ;
+    rdfs:label "Transformer temperature observation 7"@en ;
+    :hasTime time:t-obs-S_T_temp-7 ;
+    rdfs:comment "Observation individual representing measurement event 7 produced by the transformer temperature sensor."@en ;
+    sosa:hasSimpleResult 46 ;
+    sosa:observedProperty sosa:T_temp .
+
+sosa:S_T_temp-Obs-8 a owl:NamedIndividual ;
+    rdfs:label "Transformer temperature observation 8"@en ;
+    :hasTime time:t-obs-S_T_temp-8 ;
+    rdfs:comment "Observation individual representing measurement event 8 produced by the transformer temperature sensor."@en ;
+    sosa:hasSimpleResult 45 ;
+    sosa:observedProperty sosa:T_temp .
+
+sosa:S_T_temp-Obs-9 a owl:NamedIndividual ;
+    rdfs:label "Transformer temperature observation 9"@en ;
+    :hasTime time:t-obs-S_T_temp-9 ;
+    rdfs:comment "Observation individual representing measurement event 9 produced by the transformer temperature sensor."@en ;
+    sosa:hasSimpleResult 54 ;
+    sosa:observedProperty sosa:T_temp .
+
+sosa:hosts a owl:ObjectProperty ;
+    rdfs:label "hosts"@en ;
+    rdfs:comment "Relates a platform to a sensor, actuator, sampler, or platform that it hosts."@en ;
+    rdfs:domain sosa:Platform ;
+    rdfs:range sosa:Sensor .
+
+sosa:madeObservation a owl:ObjectProperty ;
+    rdfs:label "made observation"@en ;
+    rdfs:comment "Relates a sensor to an observation that it made."@en ;
+    rdfs:domain sosa:Sensor ;
+    rdfs:range sosa:Observation .
+
+<https://www.w3.org/TR/xmlschema11-2/#dateTimeStamp> a rdfs:Datatype .
+
+:Line a owl:Class ;
+    rdfs:label "Production Line"@en ;
+    rdfs:comment "A production line is a group of manufacturing cells arranged to carry out a sequence of production tasks."@en ;
+    rdfs:subClassOf :ManufacturingFacility .
+
+:OilLeak a :Cause,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Oil leak"@en ;
+    rdfs:comment "Cause individual representing an oil leakage affecting the operation of the manufacturing system."@en .
+
+:S6-1603201294219 a :Situation,
+        :Situation-S6,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Situation S6 at timestamp 1603201294219"@en ;
+    :hasCause :PollutedFilters ;
+    rdfs:comment "Situation individual classified as Situation-S6, inferred from observations and associated with a detected manufacturing condition."@en .
+
+:S6-1603201294270 a :Situation,
+        :Situation-S6,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Situation S6 at timestamp 1603201294270"@en ;
+    :hasCause :PollutedFilters ;
+    rdfs:comment "Situation individual classified as Situation-S6, inferred from observations and associated with a detected manufacturing condition."@en .
+
+:S6-1603201299570 a :Situation,
+        :Situation-S6,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Situation S6 at timestamp 1603201299570"@en ;
+    :hasCause :PollutedFilters ;
+    rdfs:comment "Situation individual classified as Situation-S6, inferred from observations and associated with a detected manufacturing condition."@en .
+
+:S6-1603201299623 a :Situation,
+        :Situation-S6,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Situation S6 at timestamp 1603201299623"@en ;
+    :hasCause :PollutedFilters ;
+    rdfs:comment "Situation individual classified as Situation-S6, inferred from observations and associated with a detected manufacturing condition."@en .
+
+:S6-1603201299674 a :Situation,
+        :Situation-S6,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Situation S6 at timestamp 1603201299674"@en ;
+    :hasCause :PollutedFilters ;
+    rdfs:comment "Situation individual classified as Situation-S6, inferred from observations and associated with a detected manufacturing condition."@en .
+
+:S6-1603201299733 a :Situation,
+        :Situation-S6,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Situation S6 at timestamp 1603201299733"@en ;
+    :hasCause :PollutedFilters ;
+    rdfs:comment "Situation individual classified as Situation-S6, inferred from observations and associated with a detected manufacturing condition."@en .
+
+:S6-1603201309250 a :Situation,
+        :Situation-S6,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Situation S6 at timestamp 1603201309250"@en ;
+    :hasCause :PollutedFilters ;
+    rdfs:comment "Situation individual classified as Situation-S6, inferred from observations and associated with a detected manufacturing condition."@en .
+
+:Severe_Obstruction_in_the_Cooling_System a :Cause,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Severe obstruction in the cooling system"@en ;
+    rdfs:comment "Cause individual representing a major obstruction in the cooling system that significantly affects temperature regulation."@en .
+
+:cons a swrl:Variable .
+
+:definedOn_1 a owl:ObjectProperty ;
+    rdfs:label "is defined for"@en ;
+    rdfs:comment "Relates an entity or context element to the situation or property for which it is defined."@en .
+
+:sensor a swrl:Variable .
+
+sosa:FeatureOfInterest a owl:Class ;
+    rdfs:label "Feature of Interest"@en ;
+    rdfs:comment "A feature of interest is the entity whose property is being observed."@en ;
+    rdfs:subClassOf owl:Thing .
+
+sosa:observedProperty a owl:ObjectProperty ;
+    rdfs:label "observed property"@en ;
+    rdfs:comment "Relates an observation to the property that it observes."@en ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:ObservableProperty .
+
+:res a swrl:Variable .
+
+geo:Geometry a owl:Class ;
+    rdfs:label "Geometry"@en ;
+    rdfs:comment "A geometry is the geometric representation of a spatial feature."@en ;
+    rdfs:subClassOf geo:SpatialObject .
+
+:DeteriotatedGears a :Cause,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Deteriorated gears"@en ;
+    rdfs:comment "Cause individual representing gear degradation that may affect the mechanical performance of the machine."@en .
+
+:PL1 a :Line,
+        :ManufacturingFacility,
+        :Resource,
+        geo:Feature,
+        geo:SpatialObject,
+        owl:NamedIndividual,
+        owl:Thing,
+        sosa:Platform ;
+    rdfs:label "Production line PL1"@en ;
+    :concernBy :S6-1603201294219,
+        :S6-1603201294270,
+        :S6-1603201299570,
+        :S6-1603201299623,
+        :S6-1603201299674,
+        :S6-1603201299733,
+        :S6-1603201309250 ;
+    :hasObservableProperty sosa:E_temp,
+        sosa:P_temp,
+        sosa:PowerOutput ;
+    rdfs:comment "Production line individual representing the line that contains the machines and hosts line-level sensors and observations."@en ;
+    sosa:hosts sosa:S_E_temp,
+        sosa:S_P_temp,
+        sosa:S_PowerOutput .
+
+:Staff a owl:Class ;
+    rdfs:label "Staff"@en ;
+    rdfs:comment "Staff is a human agent involved in the operation or supervision of manufacturing processes."@en ;
+    rdfs:subClassOf :Resource,
+        sosa:Platform .
+
+:obs a swrl:Variable .
+
+:op a swrl:Variable .
+
+:Machine a owl:Class ;
+    rdfs:label "Machine"@en ;
+    rdfs:comment "A machine is a device used to perform a manufacturing task, either autonomously or with human intervention."@en ;
+    rdfs:subClassOf :ManufacturingFacility .
+
+:Process a owl:Class ;
+    rdfs:label "Process"@en ;
+    rdfs:comment "A process is an activity that transforms inputs into outputs."@en ;
+    rdfs:subClassOf owl:Thing .
+
+:Cause a owl:Class ;
+    rdfs:label "Cause"@en ;
+    rdfs:comment "A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system."@en ;
+    rdfs:subClassOf owl:Thing .
+
+:Situation-S6 a owl:Class ;
+    rdfs:label "Situation S6"@en ;
+    rdfs:comment "Situation S6 is a specialized situation class representing a specific contextual state in the manufacturing system."@en ;
+    rdfs:subClassOf :Situation .
+
+geo:Feature a owl:Class ;
+    rdfs:label "Feature"@en ;
+    rdfs:comment "A feature is a spatial entity representing a physical object or location in the manufacturing environment."@en ;
+    rdfs:subClassOf geo:SpatialObject .
+
+:PollutedFilters a :Cause,
+        owl:NamedIndividual,
+        owl:Thing ;
+    rdfs:label "Polluted filters"@en ;
+    rdfs:comment "Cause individual representing filter contamination that may degrade cooling or processing performance."@en .
+
+sosa:Platform a owl:Class ;
+    rdfs:label "Platform"@en ;
+    rdfs:comment "A platform is an entity that hosts sensors, actuators, samplers, or other platforms."@en ;
+    rdfs:subClassOf geo:Feature .
+
+:hasCause a owl:ObjectProperty ;
+    rdfs:label "has cause"@en ;
+    rdfs:comment "Relates a situation to the cause responsible for triggering or explaining it."@en ;
+    rdfs:domain :Situation ;
+    rdfs:range :Cause .
+
+:ManufacturingFacility a owl:Class ;
+    rdfs:label "Manufacturing Facility"@en ;
+    rdfs:comment "A manufacturing facility is a physical environment where manufacturing processes take place."@en ;
+    rdfs:subClassOf :Resource,
+        sosa:Platform .
+
+:Resource a owl:Class ;
+    rdfs:label "Resource"@en ;
+    rdfs:comment "A resource is an entity used during manufacturing processes, such as a machine, material, or human resource."@en ;
+    rdfs:subClassOf geo:Feature ;
+    owl:equivalentClass sosa:Platform .
+
+sosa:C_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Controller temperature"@en ;
+    :definedOn_1 :C_4 ;
+    rdfs:comment "Observable property individual representing controller temperature in the manufacturing system."@en .
+
+sosa:E_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Environment temperature"@en ;
+    :definedOn_1 :C_11 ;
+    rdfs:comment "Observable property individual representing environment temperature in the manufacturing system."@en .
+
+sosa:G_current a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Generator current"@en ;
+    :definedOn_1 :C_5 ;
+    rdfs:comment "Observable property individual representing generator current in the manufacturing system."@en .
+
+sosa:G_speed a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Generator speed"@en ;
+    :definedOn_1 :C_10 ;
+    rdfs:comment "Observable property individual representing generator speed in the manufacturing system."@en .
+
+sosa:G_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Generator temperature"@en ;
+    :definedOn_1 :C_18 ;
+    rdfs:comment "Observable property individual representing generator temperature in the manufacturing system."@en .
+
+sosa:R_Pangle a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Rotor pitch angle"@en ;
+    :definedOn_1 :C_23 ;
+    rdfs:comment "Observable property individual representing rotor pitch angle in the manufacturing system."@en .
+
+sosa:TG_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Transmission grid temperature"@en ;
+    :definedOn_1 :C_17 ;
+    rdfs:comment "Observable property individual representing transmission grid temperature in the manufacturing system."@en .
+
+sosa:T_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Transformer temperature"@en ;
+    :definedOn_1 :C_3 ;
+    rdfs:comment "Observable property individual representing transformer temperature in the manufacturing system."@en .
+
+sosa:C_Wtemp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Cooling water temperature"@en ;
+    :definedOn_1 :C_15,
+        :C_16 ;
+    rdfs:comment "Observable property individual representing cooling water temperature in the manufacturing system."@en .
+
+sosa:Conv_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Converter temperature"@en ;
+    :definedOn_1 :C_19,
+        :C_20 ;
+    rdfs:comment "Observable property individual representing converter temperature in the manufacturing system."@en .
+
+sosa:GB_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Gearbox temperature"@en ;
+    :definedOn_1 :C_8,
+        :C_9 ;
+    rdfs:comment "Observable property individual representing gearbox temperature in the manufacturing system."@en .
+
+sosa:OilTemp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Oil temperature"@en ;
+    :definedOn_1 :C_1,
+        :C_2 ;
+    rdfs:comment "Observable property individual representing oil temperature in the manufacturing system."@en .
+
+sosa:P_temp a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Platform temperature"@en ;
+    :definedOn_1 :C_6,
+        :C_7 ;
+    rdfs:comment "Observable property individual representing platform temperature in the manufacturing system."@en .
+
+sosa:R_speed a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Rotor speed"@en ;
+    :definedOn_1 :C_21,
+        :C_22 ;
+    rdfs:comment "Observable property individual representing rotor speed in the manufacturing system."@en .
+
+sosa:PowerOutput a owl:NamedIndividual,
+        owl:Thing,
+        sosa:ObservableProperty,
+        ssn:Property ;
+    rdfs:label "Power output"@en ;
+    :definedOn_1 :C_12,
+        :C_13,
+        :C_14 ;
+    rdfs:comment "Observable property individual representing power output in the manufacturing system."@en .
+
+ssn:Property a owl:Class ;
+    rdfs:label "Property"@en ;
+    rdfs:comment "A property is a characteristic of an entity that can be observed or measured."@en ;
+    rdfs:subClassOf owl:Thing .
+
+sosa:ObservableProperty a owl:Class ;
+    rdfs:label "Observable Property"@en ;
+    rdfs:comment "An observable property is a property of a feature of interest that can be observed by a sensor."@en ;
+    rdfs:subClassOf ssn:Property .
+
+sosa:Sensor a owl:Class ;
+    rdfs:label "Sensor"@en ;
+    rdfs:comment "A sensor is a device, agent, or software component that performs observations."@en ;
+    rdfs:subClassOf owl:Thing .
+
+:sit a swrl:Variable .
+
+geo:SpatialObject a owl:Class ;
+    rdfs:label "Spatial Object"@en ;
+    rdfs:comment "A spatial object is an entity with a spatial extent in the manufacturing environment."@en ;
+    rdfs:subClassOf owl:Thing .
+
+:Constraint a owl:Class ;
+    rdfs:label "Constraint"@en ;
+    rdfs:comment "A constraint is a condition or rule that restricts or defines acceptable states of a process, resource, or situation."@en ;
+    rdfs:subClassOf owl:Thing .
+
+:Situation a owl:Class ;
+    rdfs:label "Situation"@en ;
+    rdfs:comment "A situation is a contextual state describing conditions in a manufacturing environment based on observations, processes, and contextual factors."@en ;
+    rdfs:subClassOf owl:Thing .
+
+time:Interval a owl:Class ;
+    rdfs:label "Interval"@en ;
+    rdfs:comment "An interval is a temporal extent with a beginning and an end."@en ;
+    rdfs:subClassOf time:TemporalEntity .
+
+sosa:Observation a owl:Class ;
+    rdfs:label "Observation"@en ;
+    rdfs:comment "An observation is an event in which a sensor measures or estimates the value of an observable property of a feature of interest."@en ;
+    rdfs:subClassOf owl:Thing .
+
+time:TemporalEntity a owl:Class ;
+    rdfs:label "Temporal Entity"@en ;
+    rdfs:comment "A temporal entity is a temporal interval or instant used to represent the time of an observation or situation."@en ;
+    rdfs:subClassOf owl:Thing .
+
+time:Instant a owl:Class ;
+    rdfs:label "Instant"@en ;
+    rdfs:comment "An instant is a specific point in time."@en ;
+    rdfs:subClassOf time:TemporalEntity .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:classPredicate :Situation-S10 ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:argument2 :Severe_Obstruction_in_the_Cooling_System ;
+                    swrl:propertyPredicate :hasCause ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:classPredicate :Situation-S2 ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:argument2 :OilLeak ;
+                    swrl:propertyPredicate :hasCause ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:classPredicate :Situation-S8 ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:argument2 :Minor_Obstruction_in_the_Cooling_System ;
+                    swrl:propertyPredicate :hasCause ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:classPredicate :Situation-S13 ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:argument2 :DeteriotatedGears ;
+                    swrl:propertyPredicate :hasCause ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:classPredicate :Situation-S6 ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:argument2 :PollutedFilters ;
+                    swrl:propertyPredicate :hasCause ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:classPredicate :Situation-S14 ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:argument2 :DeteriotatedGears ;
+                    swrl:propertyPredicate :hasCause ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:classPredicate :Situation-S1 ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:argument2 :OilLeak ;
+                    swrl:propertyPredicate :hasCause ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:classPredicate :Situation-S12 ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:argument2 :DeteriotatedGears ;
+                    swrl:propertyPredicate :hasCause ] ;
+            rdf:rest () ] .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :Cell :Line :Machine :WorkStation ) .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :obs ;
+                    swrl:argument2 :op ;
+                    swrl:propertyPredicate sosa:observedProperty ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:ClassAtom ;
+                            swrl:argument1 :res ;
+                            swrl:classPredicate :Resource ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :sensor ;
+                                    swrl:argument2 :obs ;
+                                    swrl:propertyPredicate sosa:madeObservation ] ;
+                            rdf:rest [ a swrl:AtomList ;
+                                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                                            swrl:argument1 :res ;
+                                            swrl:argument2 :sensor ;
+                                            swrl:propertyPredicate sosa:hosts ] ;
+                                    rdf:rest () ] ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :res ;
+                    swrl:argument2 :op ;
+                    swrl:propertyPredicate :hasObservableProperty ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:classPredicate :Situation-S7 ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:argument2 :PollutedFilters ;
+                    swrl:propertyPredicate :hasCause ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:classPredicate :Situation-S9 ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:argument2 :Severe_Obstruction_in_the_Cooling_System ;
+                    swrl:propertyPredicate :hasCause ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :obs ;
+                    swrl:argument2 :op ;
+                    swrl:propertyPredicate sosa:observedProperty ] ;
+            rdf:rest [ a swrl:AtomList ;
+                    rdf:first [ a swrl:IndividualPropertyAtom ;
+                            swrl:argument1 :op ;
+                            swrl:argument2 :cons ;
+                            swrl:propertyPredicate :definedOn_1 ] ;
+                    rdf:rest [ a swrl:AtomList ;
+                            rdf:first [ a swrl:IndividualPropertyAtom ;
+                                    swrl:argument1 :sit ;
+                                    swrl:argument2 :obs ;
+                                    swrl:propertyPredicate :hasObservation ] ;
+                            rdf:rest () ] ] ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:argument2 :cons ;
+                    swrl:propertyPredicate :associatedConstraint ] ;
+            rdf:rest () ] .
+
+[] a swrl:Imp ;
+    swrl:body [ a swrl:AtomList ;
+            rdf:first [ a swrl:ClassAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:classPredicate :Situation-S11 ] ;
+            rdf:rest () ] ;
+    swrl:head [ a swrl:AtomList ;
+            rdf:first [ a swrl:IndividualPropertyAtom ;
+                    swrl:argument1 :sit ;
+                    swrl:argument2 :DeteriotatedGears ;
+                    swrl:propertyPredicate :hasCause ] ;
+            rdf:rest () ] .
+

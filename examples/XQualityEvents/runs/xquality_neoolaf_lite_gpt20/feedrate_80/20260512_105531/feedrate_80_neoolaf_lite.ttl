@@ -1,0 +1,424 @@
+@prefix neol: <http://neoolaf.org/resource/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+neol:feedrate80 rdf:type rdfs:Class ;
+    rdfs:label "FEEDRATE_80" ;
+    rdfs:comment "Feedrate reduced to 80%." .
+
+neol:part6170 rdf:type rdfs:Class ;
+    rdfs:label "PART_61_70" ;
+    rdfs:comment "Part numbers 61 to 70." .
+
+neol:op120EBAUCHEEXTER rdf:type rdfs:Class ;
+    rdfs:label "OP_120_EBAUCHE_EXTER" ;
+    rdfs:comment "Operation 120: EBAUCHE EXTER." .
+
+neol:spindlePOWERDECREASESFEEDRATE rdf:type rdfs:Class ;
+    rdfs:label "SPINDLE_POWER_DECREASES_FEEDRATE" ;
+    rdfs:comment "Spindle power decreases when feedrate decreases." .
+
+neol:cuttingFORCEDECREASESFEEDRATE rdf:type rdfs:Class ;
+    rdfs:label "CUTTING_FORCE_DECREASES_FEEDRATE" ;
+    rdfs:comment "Cutting force decreases when feedrate decreases." .
+
+neol:vib1RMSSTABLEFEEDRATE rdf:type rdfs:Class ;
+    rdfs:label "VIB1_RMS_STABLE_FEEDRATE" ;
+    rdfs:comment "Vib1 RMS remains stable during feedrate reduction." .
+
+neol:vib1RMSINCREASESSECONDPARTFEEDRATE rdf:type rdfs:Class ;
+    rdfs:label "VIB1_RMS_INCREASES_SECOND_PART_FEEDRATE" ;
+    rdfs:comment "Vib1 RMS increases in second part of signal during feedrate reduction." .
+
+neol:audioRMSINCREASESFEEDRATE rdf:type rdfs:Class ;
+    rdfs:label "AUDIO_RMS_INCREASES_FEEDRATE" ;
+    rdfs:comment "Audio RMS increases during feedrate reduction." .
+
+neol:audioRMSDECREASESFEEDRATE rdf:type rdfs:Class ;
+    rdfs:label "AUDIO_RMS_DECREASES_FEEDRATE" ;
+    rdfs:comment "Audio RMS decreases during feedrate reduction." .
+
+neol:cuttingTIMEINCREASESFEEDRATE rdf:type rdfs:Class ;
+    rdfs:label "CUTTING_TIME_INCREASES_FEEDRATE" ;
+    rdfs:comment "Cutting time increases during feedrate reduction." .
+
+neol:temporalSHIFTSSOMETIMES rdf:type rdfs:Class ;
+    rdfs:label "TEMPORAL_SHIFTS_SOMETIMES" ;
+    rdfs:comment "Temporal shifts sometimes occur during feedrate reduction." .
+
+neol:ai1 rdf:type rdfs:Class ;
+    rdfs:label "AI1" ;
+    rdfs:comment "Main spindle power sensor AI1." .
+
+neol:vib1 rdf:type rdfs:Class ;
+    rdfs:label "Vib1" ;
+    rdfs:comment "Vib1 sensor on roughing turning tool T104." .
+
+neol:vib2 rdf:type rdfs:Class ;
+    rdfs:label "Vib2" ;
+    rdfs:comment "Vib2 sensor for main cutting force on tool T104." .
+
+neol:vib11 rdf:type rdfs:Class ;
+    rdfs:label "Vib11" ;
+    rdfs:comment "Vib11 audio micro sensor." .
+
+neol:hasPARTRANGE rdf:type rdf:Property ;
+    rdfs:label "HAS_PART_RANGE" ;
+    rdfs:comment "Feedrate reduction applies to part range 61-70." .
+
+neol:occursDURING rdf:type rdf:Property ;
+    rdfs:label "OCCURS_DURING" ;
+    rdfs:comment "Feedrate reduction occurs during operation 120." .
+
+neol:causes rdf:type rdf:Property ;
+    rdfs:label "CAUSES" ;
+    rdfs:comment "Feedrate reduction causes spindle power decrease." .
+
+neol:causes rdf:type rdf:Property ;
+    rdfs:label "CAUSES" ;
+    rdfs:comment "Feedrate reduction causes cutting force decrease." .
+
+neol:remainsSTABLE rdf:type rdf:Property ;
+    rdfs:label "REMAINS_STABLE" ;
+    rdfs:comment "Vib1 RMS remains stable during feedrate reduction." .
+
+neol:causes rdf:type rdf:Property ;
+    rdfs:label "CAUSES" ;
+    rdfs:comment "Feedrate reduction causes Vib1 RMS increase in second part." .
+
+neol:causes rdf:type rdf:Property ;
+    rdfs:label "CAUSES" ;
+    rdfs:comment "Feedrate reduction causes audio RMS increase." .
+
+neol:causes rdf:type rdf:Property ;
+    rdfs:label "CAUSES" ;
+    rdfs:comment "Feedrate reduction causes audio RMS decrease." .
+
+neol:causes rdf:type rdf:Property ;
+    rdfs:label "CAUSES" ;
+    rdfs:comment "Feedrate reduction causes cutting time increase." .
+
+neol:causes rdf:type rdf:Property ;
+    rdfs:label "CAUSES" ;
+    rdfs:comment "Feedrate reduction sometimes causes temporal shifts." .
+
+neol:observedIN rdf:type rdf:Property ;
+    rdfs:label "OBSERVED_IN" ;
+    rdfs:comment "Spindle power decrease observed in sensor AI1." .
+
+neol:observedIN rdf:type rdf:Property ;
+    rdfs:label "OBSERVED_IN" ;
+    rdfs:comment "Cutting force decrease observed in sensor Vib2." .
+
+neol:observedIN rdf:type rdf:Property ;
+    rdfs:label "OBSERVED_IN" ;
+    rdfs:comment "Vib1 RMS stable observed in sensor Vib1." .
+
+neol:observedIN rdf:type rdf:Property ;
+    rdfs:label "OBSERVED_IN" ;
+    rdfs:comment "Vib1 RMS increase observed in sensor Vib1." .
+
+neol:observedIN rdf:type rdf:Property ;
+    rdfs:label "OBSERVED_IN" ;
+    rdfs:comment "Audio RMS increase observed in sensor Vib11." .
+
+neol:observedIN rdf:type rdf:Property ;
+    rdfs:label "OBSERVED_IN" ;
+    rdfs:comment "Audio RMS decrease observed in sensor Vib11." .
+
+neol:measuredBY rdf:type rdf:Property ;
+    rdfs:label "MEASURED_BY" ;
+    rdfs:comment "Sensor AI1 measured during operation 120." .
+
+neol:measuredBY rdf:type rdf:Property ;
+    rdfs:label "MEASURED_BY" ;
+    rdfs:comment "Sensor Vib1 measured during operation 120." .
+
+neol:measuredBY rdf:type rdf:Property ;
+    rdfs:label "MEASURED_BY" ;
+    rdfs:comment "Sensor Vib2 measured during operation 120." .
+
+neol:measuredBY rdf:type rdf:Property ;
+    rdfs:label "MEASURED_BY" ;
+    rdfs:comment "Sensor Vib11 measured during operation 120." .
+
+neol:feedrate80 neol:hasPARTRANGE neol:part6170 .
+neol:feedrate_80_statement_0001 rdf:type neol:CandidateTriple ;
+    neol:subject neol:feedrate80 ;
+    neol:predicate neol:hasPARTRANGE ;
+    neol:object neol:part6170 ;
+    rdfs:comment "Part #61 to Part #70 : Feedrate reduced to 80%" ;
+    neol:page "3" ;
+    neol:confidence "0.95" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "unknown" ;
+    neol:feature "unknown" ;
+    neol:direction "unknown" ;
+    neol:operation "unknown" .
+
+neol:feedrate80 neol:occursDURING neol:op120EBAUCHEEXTER .
+neol:feedrate_80_statement_0002 rdf:type neol:CandidateTriple ;
+    neol:subject neol:feedrate80 ;
+    neol:predicate neol:occursDURING ;
+    neol:object neol:op120EBAUCHEEXTER ;
+    rdfs:comment "Operation 120: EBAUCHE EXTER" ;
+    neol:page "4" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "unknown" ;
+    neol:feature "unknown" ;
+    neol:direction "unknown" ;
+    neol:operation "OP120" .
+
+neol:feedrate80 neol:causes neol:spindlePOWERDECREASESFEEDRATE .
+neol:feedrate_80_statement_0003 rdf:type neol:CandidateTriple ;
+    neol:subject neol:feedrate80 ;
+    neol:predicate neol:causes ;
+    neol:object neol:spindlePOWERDECREASESFEEDRATE ;
+    rdfs:comment "Spindle power decreases when feedrate decreases => OK" ;
+    neol:page "6" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "AI1" ;
+    neol:feature "power" ;
+    neol:direction "decrease" ;
+    neol:operation "OP120" .
+
+neol:feedrate80 neol:causes neol:cuttingFORCEDECREASESFEEDRATE .
+neol:feedrate_80_statement_0004 rdf:type neol:CandidateTriple ;
+    neol:subject neol:feedrate80 ;
+    neol:predicate neol:causes ;
+    neol:object neol:cuttingFORCEDECREASESFEEDRATE ;
+    rdfs:comment "Cutting Force decreases when feedrate decreases => OK" ;
+    neol:page "7" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "Vib2" ;
+    neol:feature "force" ;
+    neol:direction "decrease" ;
+    neol:operation "OP120" .
+
+neol:vib1RMSSTABLEFEEDRATE neol:remainsSTABLE neol:feedrate80 .
+neol:feedrate_80_statement_0005 rdf:type neol:CandidateTriple ;
+    neol:subject neol:vib1RMSSTABLEFEEDRATE ;
+    neol:predicate neol:remainsSTABLE ;
+    neol:object neol:feedrate80 ;
+    rdfs:comment "RMS remains the same when feedrate decreases" ;
+    neol:page "8" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "Vib1" ;
+    neol:feature "rms" ;
+    neol:direction "stable" ;
+    neol:operation "unknown" .
+
+neol:feedrate80 neol:causes neol:vib1RMSINCREASESSECONDPARTFEEDRATE .
+neol:feedrate_80_statement_0006 rdf:type neol:CandidateTriple ;
+    neol:subject neol:feedrate80 ;
+    neol:predicate neol:causes ;
+    neol:object neol:vib1RMSINCREASESSECONDPARTFEEDRATE ;
+    rdfs:comment "RMS increases (in the 2nd part of the signal) when feedrate decreases" ;
+    neol:page "14" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "Vib1" ;
+    neol:feature "rms" ;
+    neol:direction "increase" ;
+    neol:operation "unknown" .
+
+neol:feedrate80 neol:causes neol:audioRMSINCREASESFEEDRATE .
+neol:feedrate_80_statement_0007 rdf:type neol:CandidateTriple ;
+    neol:subject neol:feedrate80 ;
+    neol:predicate neol:causes ;
+    neol:object neol:audioRMSINCREASESFEEDRATE ;
+    rdfs:comment "RMS audio increases when feedrate decreases => OK" ;
+    neol:page "15" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "Vib11" ;
+    neol:feature "audio" ;
+    neol:direction "increase" ;
+    neol:operation "unknown" .
+
+neol:feedrate80 neol:causes neol:audioRMSDECREASESFEEDRATE .
+neol:feedrate_80_statement_0008 rdf:type neol:CandidateTriple ;
+    neol:subject neol:feedrate80 ;
+    neol:predicate neol:causes ;
+    neol:object neol:audioRMSDECREASESFEEDRATE ;
+    rdfs:comment "Audio RMS, decreases when feedrate decreases" ;
+    neol:page "22" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "Vib11" ;
+    neol:feature "audio" ;
+    neol:direction "decrease" ;
+    neol:operation "unknown" .
+
+neol:feedrate80 neol:causes neol:cuttingTIMEINCREASESFEEDRATE .
+neol:feedrate_80_statement_0009 rdf:type neol:CandidateTriple ;
+    neol:subject neol:feedrate80 ;
+    neol:predicate neol:causes ;
+    neol:object neol:cuttingTIMEINCREASESFEEDRATE ;
+    rdfs:comment "Cutting time increases when feedrate decreases => OK" ;
+    neol:page "31" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "unknown" ;
+    neol:feature "time" ;
+    neol:direction "increase" ;
+    neol:operation "unknown" .
+
+neol:feedrate80 neol:causes neol:temporalSHIFTSSOMETIMES .
+neol:feedrate_80_statement_0010 rdf:type neol:CandidateTriple ;
+    neol:subject neol:feedrate80 ;
+    neol:predicate neol:causes ;
+    neol:object neol:temporalSHIFTSSOMETIMES ;
+    rdfs:comment "Rem : Temporal shifts sometimes !" ;
+    neol:page "6" ;
+    neol:confidence "0.8" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "unknown" ;
+    neol:feature "time shift" ;
+    neol:direction "uncertain" ;
+    neol:operation "unknown" .
+
+neol:spindlePOWERDECREASESFEEDRATE neol:observedIN neol:ai1 .
+neol:feedrate_80_statement_0011 rdf:type neol:CandidateTriple ;
+    neol:subject neol:spindlePOWERDECREASESFEEDRATE ;
+    neol:predicate neol:observedIN ;
+    neol:object neol:ai1 ;
+    rdfs:comment "Spindle power decreases when feedrate decreases => OK" ;
+    neol:page "6" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "AI1" ;
+    neol:feature "power" ;
+    neol:direction "decrease" ;
+    neol:operation "OP120" .
+
+neol:cuttingFORCEDECREASESFEEDRATE neol:observedIN neol:vib2 .
+neol:feedrate_80_statement_0012 rdf:type neol:CandidateTriple ;
+    neol:subject neol:cuttingFORCEDECREASESFEEDRATE ;
+    neol:predicate neol:observedIN ;
+    neol:object neol:vib2 ;
+    rdfs:comment "Cutting Force decreases when feedrate decreases => OK" ;
+    neol:page "7" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "Vib2" ;
+    neol:feature "force" ;
+    neol:direction "decrease" ;
+    neol:operation "OP120" .
+
+neol:vib1RMSSTABLEFEEDRATE neol:observedIN neol:vib1 .
+neol:feedrate_80_statement_0013 rdf:type neol:CandidateTriple ;
+    neol:subject neol:vib1RMSSTABLEFEEDRATE ;
+    neol:predicate neol:observedIN ;
+    neol:object neol:vib1 ;
+    rdfs:comment "RMS remains the same when feedrate decreases" ;
+    neol:page "8" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "Vib1" ;
+    neol:feature "rms" ;
+    neol:direction "stable" ;
+    neol:operation "OP120" .
+
+neol:vib1RMSINCREASESSECONDPARTFEEDRATE neol:observedIN neol:vib1 .
+neol:feedrate_80_statement_0014 rdf:type neol:CandidateTriple ;
+    neol:subject neol:vib1RMSINCREASESSECONDPARTFEEDRATE ;
+    neol:predicate neol:observedIN ;
+    neol:object neol:vib1 ;
+    rdfs:comment "RMS increases (in the 2nd part of the signal) when feedrate decreases" ;
+    neol:page "14" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "Vib1" ;
+    neol:feature "rms" ;
+    neol:direction "increase" ;
+    neol:operation "OP120" .
+
+neol:audioRMSINCREASESFEEDRATE neol:observedIN neol:vib11 .
+neol:feedrate_80_statement_0015 rdf:type neol:CandidateTriple ;
+    neol:subject neol:audioRMSINCREASESFEEDRATE ;
+    neol:predicate neol:observedIN ;
+    neol:object neol:vib11 ;
+    rdfs:comment "RMS audio increases when feedrate decreases => OK" ;
+    neol:page "15" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "Vib11" ;
+    neol:feature "audio" ;
+    neol:direction "increase" ;
+    neol:operation "OP120" .
+
+neol:audioRMSDECREASESFEEDRATE neol:observedIN neol:vib11 .
+neol:feedrate_80_statement_0016 rdf:type neol:CandidateTriple ;
+    neol:subject neol:audioRMSDECREASESFEEDRATE ;
+    neol:predicate neol:observedIN ;
+    neol:object neol:vib11 ;
+    rdfs:comment "Audio RMS, decreases when feedrate decreases" ;
+    neol:page "22" ;
+    neol:confidence "0.9" ;
+    neol:condition "feedrate_80" ;
+    neol:sensor "Vib11" ;
+    neol:feature "audio" ;
+    neol:direction "decrease" ;
+    neol:operation "OP120" .
+
+neol:ai1 neol:measuredBY neol:op120EBAUCHEEXTER .
+neol:feedrate_80_statement_0017 rdf:type neol:CandidateTriple ;
+    neol:subject neol:ai1 ;
+    neol:predicate neol:measuredBY ;
+    neol:object neol:op120EBAUCHEEXTER ;
+    rdfs:comment "AI1 (main spindle) in operation 120" ;
+    neol:page "5" ;
+    neol:confidence "0.8" ;
+    neol:condition "unknown" ;
+    neol:sensor "AI1" ;
+    neol:feature "power" ;
+    neol:direction "unknown" ;
+    neol:operation "OP120" .
+
+neol:vib1 neol:measuredBY neol:op120EBAUCHEEXTER .
+neol:feedrate_80_statement_0018 rdf:type neol:CandidateTriple ;
+    neol:subject neol:vib1 ;
+    neol:predicate neol:measuredBY ;
+    neol:object neol:op120EBAUCHEEXTER ;
+    rdfs:comment "Vib1 (// feedrate on the roughing turning tool T104) in operation 120" ;
+    neol:page "5" ;
+    neol:confidence "0.8" ;
+    neol:condition "unknown" ;
+    neol:sensor "Vib1" ;
+    neol:feature "rms" ;
+    neol:direction "unknown" ;
+    neol:operation "OP120" .
+
+neol:vib2 neol:measuredBY neol:op120EBAUCHEEXTER .
+neol:feedrate_80_statement_0019 rdf:type neol:CandidateTriple ;
+    neol:subject neol:vib2 ;
+    neol:predicate neol:measuredBY ;
+    neol:object neol:op120EBAUCHEEXTER ;
+    rdfs:comment "Vib2 (// main cutting force on the roughing turning tool T104) in operation 120" ;
+    neol:page "5" ;
+    neol:confidence "0.8" ;
+    neol:condition "unknown" ;
+    neol:sensor "Vib2" ;
+    neol:feature "force" ;
+    neol:direction "unknown" ;
+    neol:operation "OP120" .
+
+neol:vib11 neol:measuredBY neol:op120EBAUCHEEXTER .
+neol:feedrate_80_statement_0020 rdf:type neol:CandidateTriple ;
+    neol:subject neol:vib11 ;
+    neol:predicate neol:measuredBY ;
+    neol:object neol:op120EBAUCHEEXTER ;
+    rdfs:comment "Vib11 (audio micro) in operation 120" ;
+    neol:page "5" ;
+    neol:confidence "0.8" ;
+    neol:condition "unknown" ;
+    neol:sensor "Vib11" ;
+    neol:feature "audio" ;
+    neol:direction "unknown" ;
+    neol:operation "OP120" .

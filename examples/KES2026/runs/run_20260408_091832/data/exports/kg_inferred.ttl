@@ -1,0 +1,89 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+
+<http://neoolaf.org/resource/node/cand_e_00004> neo:label "clamp" ;
+    ns1:cand_r_00030 <http://neoolaf.org/resource/node/cand_s_00009> .
+
+<http://neoolaf.org/resource/node/cand_r_00038> neo:label "THERMOMAGNET SWITCHES. END OF CYCLE STOP" ;
+    ns1:cand_r_00038 <http://neoolaf.org/resource/node/cand_s_00003> .
+
+<http://neoolaf.org/resource/node/cand_s_00001> neo:label "ActiveEmergencyEvent" ;
+    ns1:cand_r_00001 <http://neoolaf.org/resource/node/cand_s_00002> ;
+    ns1:cand_r_00012 <http://neoolaf.org/resource/node/cand_s_00000> ;
+    ns1:cand_r_00043 <http://neoolaf.org/resource/node/cand_s_00000> .
+
+<http://neoolaf.org/resource/node/cand_s_00008> neo:label "OPEN FORCEPS" ;
+    ns1:cand_r_00029 <http://neoolaf.org/resource/node/cand_r_00029> .
+
+ns1:cand_r_00001 neo:label "alarms and messages of the CNC" .
+
+ns1:cand_r_00012 neo:label "recognized with the key 'RESET PRG'" .
+
+ns1:cand_r_00014 neo:label "immediate and controlled shutdown" .
+
+ns1:cand_r_00017 neo:label "waiting for excessive feed" .
+
+ns1:cand_r_00020 neo:label "operator/maintenance officer" .
+
+ns1:cand_r_00026 neo:label "has detected" .
+
+ns1:cand_r_00027 neo:label "has_had_problem" .
+
+ns1:cand_r_00029 neo:label "Exit automatic mode and close the clamp" .
+
+ns1:cand_r_00030 neo:label "CLAMP OPENING FAILURE",
+        "causes" .
+
+ns1:cand_r_00031 neo:label "check the core of the probe" .
+
+ns1:cand_r_00033 neo:label "check the anomaly in the CDS operation panel" .
+
+ns1:cand_r_00034 neo:label "check the anomaly on the CDS operator panel and consult the documentation" .
+
+ns1:cand_r_00035 neo:label "check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the tower." .
+
+ns1:cand_r_00036 neo:label "check the anomaly on the CDS operator panel and consult the documentation. If there is no sign, check the connections with the lathe." .
+
+ns1:cand_r_00038 neo:label "THERMOMAGNET SWITCHES. END OF CYCLE STOP" .
+
+ns1:cand_r_00042 neo:label "intervention: Check the anomaly in the CDS operation panel and consult the documentation. If there is no sign, check the connections with the lathe." .
+
+ns1:cand_r_00043 neo:label "causes" .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "device" ;
+    ns1:cand_r_00017 <http://neoolaf.org/resource/node/cand_s_00002> ;
+    ns1:cand_r_00026 <http://neoolaf.org/resource/node/cand_s_00003> ;
+    ns1:cand_r_00027 <http://neoolaf.org/resource/node/cand_s_00003> ;
+    ns1:cand_r_00030 <http://neoolaf.org/resource/node/cand_s_00002> .
+
+<http://neoolaf.org/resource/node/cand_e_00001> neo:label "Machine" .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "Part" .
+
+<http://neoolaf.org/resource/node/cand_r_00020> neo:label "operator/maintenance officer" .
+
+<http://neoolaf.org/resource/node/cand_r_00029> neo:label "Exit automatic mode and close the clamp" .
+
+<http://neoolaf.org/resource/node/cand_s_00005> neo:label "consult" .
+
+<http://neoolaf.org/resource/node/cand_s_00009> neo:label "Check mechanical resistance" .
+
+<http://neoolaf.org/resource/node/cand_s_00004> neo:label "check" ;
+    ns1:cand_r_00031 <http://neoolaf.org/resource/node/cand_e_00002> ;
+    ns1:cand_r_00033 <http://neoolaf.org/resource/node/cand_e_00000> ;
+    ns1:cand_r_00035 <http://neoolaf.org/resource/node/cand_s_00005> .
+
+<http://neoolaf.org/resource/node/cand_s_00000> neo:label "process step",
+        "program rewind" .
+
+<http://neoolaf.org/resource/node/cand_s_00002> neo:label "Open side guard alarm",
+        "alarm" ;
+    ns1:cand_r_00014 <http://neoolaf.org/resource/node/cand_e_00001> ;
+    ns1:cand_r_00020 <http://neoolaf.org/resource/node/cand_r_00020> ;
+    ns1:cand_r_00034 <http://neoolaf.org/resource/node/cand_s_00004> ;
+    ns1:cand_r_00036 <http://neoolaf.org/resource/node/cand_s_00000> ;
+    ns1:cand_r_00042 <http://neoolaf.org/resource/node/cand_s_00004> .
+
+<http://neoolaf.org/resource/node/cand_s_00003> neo:label "Check and reset circuit breakers and/or thermomagnetic switches",
+        "failure" .
+

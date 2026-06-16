@@ -2,7 +2,7 @@ from __future__ import annotations
 
 # Dataclass utilities
 from dataclasses import dataclass, field
-from typing import List, Optional
+from typing import Any, List, Optional
 
 # Local imports
 from neoolaf.domain.linguistic_expression import Evidence
@@ -47,3 +47,8 @@ class CandidateTriple:
 
     # Provenance evidence from the original text
     provenance: List[Evidence] = field(default_factory=list)
+
+    # Optional metadata used by downstream ontology/serialization layers.
+    # This keeps Layer 5 extensible without changing the core triple shape.
+    metadata: dict[str, Any] = field(default_factory=dict)
+

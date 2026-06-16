@@ -1,0 +1,57 @@
+{
+  "layer": "layer06_concept_relation_induction",
+  "num_concept_candidates": 1,
+  "num_ontology_relation_candidates": 1,
+  "concept_candidates": [
+    {
+      "concept_id": "concept_00000",
+      "label": "AlarmAndMessage",
+      "normalized_label": "alarmandmessage",
+      "description": "Signals or indicators that notify operators of potential issues or events requiring attention within an industrial setting.",
+      "concept_kind": "HumanProcess",
+      "parent_hint": "HumanProcess",
+      "source_candidate_ids": [
+        "cand_e_00000"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.85,
+      "justification": "This candidate represents a recurring type of human process in industrial settings and aligns with the 'observed-by' ontology hint.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 40,
+          "chunk_end_char": 59,
+          "doc_start_char": 40,
+          "doc_end_char": 59,
+          "snippet": "SPRINT32linear-FA-MP-v0.1-en Page 8-4 8 Alarms and messages 8.1 Introduction Alarms and messages are divided into two main categories: 1 al"
+        }
+      ]
+    }
+  ],
+  "ontology_relation_candidates": [
+    {
+      "relation_id": "ont_rel_00000",
+      "label": "emittedBy",
+      "normalized_label": "emittedby",
+      "description": "Relates an event or signal to the system or device that emits it.",
+      "domain_hint": "Event",
+      "range_hint": "SystemComponent",
+      "source_candidate_ids": [
+        "cand_r_00000"
+      ],
+      "source_triple_ids": [],
+      "confidence": 0.92,
+      "justification": "This is a reusable semantic relation, similar in meaning to 'concerned by' but focusing on the origin of an emission.",
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": 335,
+          "chunk_end_char": 345,
+          "doc_start_char": 335,
+          "doc_end_char": 345,
+          "snippet": "s and messages from the PLC interface, described below. The messages and alarms emitted by the PLC indicate the detection of a problem which could compromise the proper f"
+        }
+      ]
+    }
+  ]
+}

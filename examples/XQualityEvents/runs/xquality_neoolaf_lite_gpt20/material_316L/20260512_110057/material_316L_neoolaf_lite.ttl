@@ -1,0 +1,192 @@
+@prefix neol: <http://neoolaf.org/resource/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+neol:316lGradeInsteadOf303StainlessSteel rdf:type rdfs:Class ;
+    rdfs:label "316L grade instead of 303 stainless steel" ;
+    rdfs:comment "Abnormal material grade used in machining" .
+
+neol:spindlePowerAI1 rdf:type rdfs:Class ;
+    rdfs:label "Spindle Power (AI1)" ;
+    rdfs:comment "Measurement of spindle power captured by sensor AI1" .
+
+neol:cuttingForceFz rdf:type rdfs:Class ;
+    rdfs:label "Cutting Force (Fz)" ;
+    rdfs:comment "Force applied in the cutting direction" .
+
+neol:vibrationRMSVib1 rdf:type rdfs:Class ;
+    rdfs:label "Vibration RMS (Vib1)" ;
+    rdfs:comment "Root‑mean‑square vibration measured by sensor Vib1" .
+
+neol:audioRMSVib11 rdf:type rdfs:Class ;
+    rdfs:label "Audio RMS (Vib11)" ;
+    rdfs:comment "Root‑mean‑square audio level measured by sensor Vib11" .
+
+neol:increases rdf:type rdf:Property ;
+    rdfs:label "INCREASES" ;
+    rdfs:comment "Indicates spindle power rises when 316L grade is used" .
+
+neol:increases rdf:type rdf:Property ;
+    rdfs:label "INCREASES" ;
+    rdfs:comment "Indicates cutting force rises when 316L grade is used" .
+
+neol:increases rdf:type rdf:Property ;
+    rdfs:label "INCREASES" ;
+    rdfs:comment "Indicates vibration RMS rises when 316L grade is used" .
+
+neol:increases rdf:type rdf:Property ;
+    rdfs:label "INCREASES" ;
+    rdfs:comment "Indicates audio RMS rises when 316L grade is used" .
+
+neol:decreases rdf:type rdf:Property ;
+    rdfs:label "DECREASES" ;
+    rdfs:comment "Indicates vibration RMS falls when 316L grade is used" .
+
+neol:decreases rdf:type rdf:Property ;
+    rdfs:label "DECREASES" ;
+    rdfs:comment "Indicates audio RMS falls when 316L grade is used" .
+
+neol:remainsSTABLE rdf:type rdf:Property ;
+    rdfs:label "REMAINS_STABLE" ;
+    rdfs:comment "Indicates spindle power stays unchanged when 316L grade is used" .
+
+neol:316lGradeInsteadOf303StainlessSteel neol:increases neol:spindlePowerAI1 .
+neol:material_316L_statement_0001 rdf:type neol:CandidateTriple ;
+    neol:subject neol:316lGradeInsteadOf303StainlessSteel ;
+    neol:predicate neol:increases ;
+    neol:object neol:spindlePowerAI1 ;
+    rdfs:comment "Spindle power increases when 316L grade => OK" ;
+    neol:page "6" ;
+    neol:confidence "0.9" ;
+    neol:condition "material_316L" ;
+    neol:sensor "AI1" ;
+    neol:feature "power" ;
+    neol:direction "increase" ;
+    neol:operation "unknown" .
+
+neol:316lGradeInsteadOf303StainlessSteel neol:increases neol:cuttingForceFz .
+neol:material_316L_statement_0002 rdf:type neol:CandidateTriple ;
+    neol:subject neol:316lGradeInsteadOf303StainlessSteel ;
+    neol:predicate neol:increases ;
+    neol:object neol:cuttingForceFz ;
+    rdfs:comment "Cutting Force increases when 316L grade => OK" ;
+    neol:page "7" ;
+    neol:confidence "0.9" ;
+    neol:condition "material_316L" ;
+    neol:sensor "unknown" ;
+    neol:feature "force" ;
+    neol:direction "increase" ;
+    neol:operation "unknown" .
+
+neol:316lGradeInsteadOf303StainlessSteel neol:decreases neol:vibrationRMSVib1 .
+neol:material_316L_statement_0003 rdf:type neol:CandidateTriple ;
+    neol:subject neol:316lGradeInsteadOf303StainlessSteel ;
+    neol:predicate neol:decreases ;
+    neol:object neol:vibrationRMSVib1 ;
+    rdfs:comment "RMS decreases when 316L grade" ;
+    neol:page "8" ;
+    neol:confidence "0.9" ;
+    neol:condition "material_316L" ;
+    neol:sensor "Vib1" ;
+    neol:feature "rms" ;
+    neol:direction "decrease" ;
+    neol:operation "unknown" .
+
+neol:316lGradeInsteadOf303StainlessSteel neol:increases neol:vibrationRMSVib1 .
+neol:material_316L_statement_0004 rdf:type neol:CandidateTriple ;
+    neol:subject neol:316lGradeInsteadOf303StainlessSteel ;
+    neol:predicate neol:increases ;
+    neol:object neol:vibrationRMSVib1 ;
+    rdfs:comment "RMS increases when 316L grade" ;
+    neol:page "14" ;
+    neol:confidence "0.8" ;
+    neol:condition "material_316L" ;
+    neol:sensor "Vib1" ;
+    neol:feature "rms" ;
+    neol:direction "increase" ;
+    neol:operation "unknown" .
+
+neol:316lGradeInsteadOf303StainlessSteel neol:decreases neol:audioRMSVib11 .
+neol:material_316L_statement_0005 rdf:type neol:CandidateTriple ;
+    neol:subject neol:316lGradeInsteadOf303StainlessSteel ;
+    neol:predicate neol:decreases ;
+    neol:object neol:audioRMSVib11 ;
+    rdfs:comment "RMS decreases when 316L grade" ;
+    neol:page "9" ;
+    neol:confidence "0.9" ;
+    neol:condition "material_316L" ;
+    neol:sensor "Vib11" ;
+    neol:feature "audio" ;
+    neol:direction "decrease" ;
+    neol:operation "unknown" .
+
+neol:316lGradeInsteadOf303StainlessSteel neol:increases neol:audioRMSVib11 .
+neol:material_316L_statement_0006 rdf:type neol:CandidateTriple ;
+    neol:subject neol:316lGradeInsteadOf303StainlessSteel ;
+    neol:predicate neol:increases ;
+    neol:object neol:audioRMSVib11 ;
+    rdfs:comment "Audio RMS increases when 316L grade" ;
+    neol:page "31" ;
+    neol:confidence "0.8" ;
+    neol:condition "material_316L" ;
+    neol:sensor "Vib11" ;
+    neol:feature "audio" ;
+    neol:direction "increase" ;
+    neol:operation "unknown" .
+
+neol:316lGradeInsteadOf303StainlessSteel neol:decreases neol:audioRMSVib11 .
+neol:material_316L_statement_0007 rdf:type neol:CandidateTriple ;
+    neol:subject neol:316lGradeInsteadOf303StainlessSteel ;
+    neol:predicate neol:decreases ;
+    neol:object neol:audioRMSVib11 ;
+    rdfs:comment "Audio RMS decreases a little when 316L grade" ;
+    neol:page "28" ;
+    neol:confidence "0.8" ;
+    neol:condition "material_316L" ;
+    neol:sensor "Vib11" ;
+    neol:feature "audio" ;
+    neol:direction "decrease" ;
+    neol:operation "unknown" .
+
+neol:316lGradeInsteadOf303StainlessSteel neol:increases neol:audioRMSVib11 .
+neol:material_316L_statement_0008 rdf:type neol:CandidateTriple ;
+    neol:subject neol:316lGradeInsteadOf303StainlessSteel ;
+    neol:predicate neol:increases ;
+    neol:object neol:audioRMSVib11 ;
+    rdfs:comment "Audio RMS seems to increase when 316L grade" ;
+    neol:page "38" ;
+    neol:confidence "0.8" ;
+    neol:condition "material_316L" ;
+    neol:sensor "Vib11" ;
+    neol:feature "audio" ;
+    neol:direction "increase" ;
+    neol:operation "unknown" .
+
+neol:316lGradeInsteadOf303StainlessSteel neol:remainsSTABLE neol:spindlePowerAI1 .
+neol:material_316L_statement_0009 rdf:type neol:CandidateTriple ;
+    neol:subject neol:316lGradeInsteadOf303StainlessSteel ;
+    neol:predicate neol:remainsSTABLE ;
+    neol:object neol:spindlePowerAI1 ;
+    rdfs:comment "Spindle power remains the same with 316L grade ?" ;
+    neol:page "40" ;
+    neol:confidence "0.7" ;
+    neol:condition "material_316L" ;
+    neol:sensor "AI1" ;
+    neol:feature "power" ;
+    neol:direction "stable" ;
+    neol:operation "unknown" .
+
+neol:316lGradeInsteadOf303StainlessSteel neol:increases neol:spindlePowerAI1 .
+neol:material_316L_statement_0010 rdf:type neol:CandidateTriple ;
+    neol:subject neol:316lGradeInsteadOf303StainlessSteel ;
+    neol:predicate neol:increases ;
+    neol:object neol:spindlePowerAI1 ;
+    rdfs:comment "Spindle power increases a little when 316L grade" ;
+    neol:page "17" ;
+    neol:confidence "0.9" ;
+    neol:condition "material_316L" ;
+    neol:sensor "AI1" ;
+    neol:feature "power" ;
+    neol:direction "increase" ;
+    neol:operation "unknown" .

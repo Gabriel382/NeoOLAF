@@ -1,0 +1,26 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.5e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that Morphy was born in New Orleans." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00002> ;
+    neo:predicate ns1:cand_r_00008 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00000> .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "entity" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00008 <http://neoolaf.org/resource/node/cand_e_00002> .
+
+ns1:cand_r_00008 neo:label "P19: place of birth" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "d described him as \" perhaps the most accurate player who ever lived \" . Morphy was born in New Orleans to a wealthy and distinguished family . He leamed to play chess by" .
+
+<http://neoolaf.org/resource/node/cand_e_00002> neo:label "location" ;
+    neo:nodeType "entity" .
+

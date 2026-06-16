@@ -1,0 +1,257 @@
+{
+  "layer": "layer10_validation_reasoning",
+  "validation_report": {
+    "is_valid": true,
+    "issues": [
+      {
+        "issue_id": "issue_00000",
+        "issue_type": "range_mismatch",
+        "severity": "warning",
+        "message": "Triple object type 'entity' may be incompatible with expected range 'Location' for relation 'P276 : location'.",
+        "related_ids": [
+          "triple_00001"
+        ]
+      }
+    ]
+  },
+  "reasoning_report": {
+    "notes": [
+      "Inferred graph initialized from validated candidate triples.",
+      "Inferred axiom schemata copied from extracted reusable schemata.",
+      "Inferred general axioms copied from candidate general axioms.",
+      "Relation hierarchy links are available for downstream relation reasoning."
+    ],
+    "inferred_triples": [
+      {
+        "triple_id": "triple_00000",
+        "subject_id": "cand_e_00000",
+        "subject_label": "Portland Golf Club",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00004",
+        "predicate_label": "P131 : located in the administrative territorial entity",
+        "object_id": "cand_e_00002",
+        "object_label": "Oregon",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The chunk states that the Portland Golf Club is located in suburban Portland, Oregon, indicating a location relationship.",
+        "confidence": 0.95
+      },
+      {
+        "triple_id": "triple_00001",
+        "subject_id": "cand_e_00000",
+        "subject_label": "Portland Golf Club",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00005",
+        "predicate_label": "P276 : location",
+        "object_id": "cand_e_00002",
+        "object_label": "Oregon",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The chunk states that the Portland Golf Club is located in Portland, Oregon, establishing a P276 : location relation between the club and the state.",
+        "confidence": 0.95
+      },
+      {
+        "triple_id": "triple_00002",
+        "subject_id": "cand_s_00000",
+        "subject_label": "PGA Championship",
+        "subject_type": "event",
+        "predicate_id": "cand_r_00007",
+        "predicate_label": "held at the club in 1946",
+        "object_id": "cand_e_00000",
+        "object_label": "Portland Golf Club",
+        "object_type": "entity",
+        "chunk_id": "chunk_0000",
+        "justification": "The chunk states that the PGA Championship was held at the Portland Golf Club in 1946, linking the event to the location.",
+        "confidence": 0.95
+      },
+      {
+        "triple_id": "triple_00003",
+        "subject_id": "cand_e_00004",
+        "subject_label": "Ben Hogan",
+        "subject_type": "entity",
+        "predicate_id": "cand_r_00008",
+        "predicate_label": "won the 36-hole final match on August 25",
+        "object_id": "cand_s_00000",
+        "object_label": "PGA Championship",
+        "object_type": "event",
+        "chunk_id": "chunk_0000",
+        "justification": "The chunk states that Ben Hogan won the 36‑hole final match on August 25, which was part of the PGA Championship.",
+        "confidence": 0.95
+      }
+    ],
+    "inferred_axiom_schemata": [
+      {
+        "schema_id": "schema_00000",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "P131 : located in the administrative territorial entity",
+        "predicate": "domain",
+        "object_id": "domain_hint::Entity",
+        "object_label": "Entity",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00001",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "P131 : located in the administrative territorial entity",
+        "predicate": "range",
+        "object_id": "range_hint::Administrative territorial entity",
+        "object_label": "Administrative territorial entity",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00002",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "P276 : location",
+        "predicate": "domain",
+        "object_id": "domain_hint::Entity",
+        "object_label": "Entity",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00003",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "P276 : location",
+        "predicate": "range",
+        "object_id": "range_hint::Location",
+        "object_label": "Location",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00004",
+        "schema_type": "relation_domain",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "P571: inception",
+        "predicate": "domain",
+        "object_id": "domain_hint::institution",
+        "object_label": "institution",
+        "confidence": 0.95
+      },
+      {
+        "schema_id": "schema_00005",
+        "schema_type": "relation_range",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "P571: inception",
+        "predicate": "range",
+        "object_id": "range_hint::date",
+        "object_label": "date",
+        "confidence": 0.95
+      }
+    ],
+    "inferred_general_axioms": [
+      {
+        "axiom_id": "axiom_00000",
+        "axiom_type": "relation_domain",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "P131 : located in the administrative territorial entity",
+        "predicate": "domain",
+        "object_id": "domain_hint::Entity",
+        "object_label": "Entity",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00001",
+        "axiom_type": "relation_range",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "P131 : located in the administrative territorial entity",
+        "predicate": "range",
+        "object_id": "range_hint::Administrative territorial entity",
+        "object_label": "Administrative territorial entity",
+        "literal_value": null,
+        "confidence": 0.92
+      },
+      {
+        "axiom_id": "axiom_00002",
+        "axiom_type": "domain",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "P276 : location",
+        "predicate": "P276 : location",
+        "object_id": "domain_hint::Entity",
+        "object_label": "Entity",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00003",
+        "axiom_type": "relation_range",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "P276 : location",
+        "predicate": "range",
+        "object_id": "range_hint::Location",
+        "object_label": "Location",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00004",
+        "axiom_type": "domain",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "P571: inception",
+        "predicate": "domain",
+        "object_id": "domain_hint::institution",
+        "object_label": "institution",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00005",
+        "axiom_type": "range",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "P571: inception",
+        "predicate": "range",
+        "object_id": "range_hint::date",
+        "object_label": "date",
+        "literal_value": null,
+        "confidence": 0.95
+      },
+      {
+        "axiom_id": "axiom_00006",
+        "axiom_type": "description",
+        "subject_id": "concept_00000",
+        "subject_label": "GolfTournament",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "A professional golf tournament, a type of sports competition typically held on a golf course featuring 9 or 18 holes.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00007",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00000",
+        "subject_label": "P131 : located in the administrative territorial entity",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Indicates that an entity is situated within an administrative territorial entity.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00008",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00001",
+        "subject_label": "P276 : location",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "A property that indicates the physical or geographic location of an entity.",
+        "confidence": 1.0
+      },
+      {
+        "axiom_id": "axiom_00009",
+        "axiom_type": "description",
+        "subject_id": "ont_rel_00002",
+        "subject_label": "P571: inception",
+        "predicate": "rdfs:description",
+        "object_id": null,
+        "object_label": null,
+        "literal_value": "Relates an entity to the date of its inception or founding.",
+        "confidence": 1.0
+      }
+    ]
+  }
+}

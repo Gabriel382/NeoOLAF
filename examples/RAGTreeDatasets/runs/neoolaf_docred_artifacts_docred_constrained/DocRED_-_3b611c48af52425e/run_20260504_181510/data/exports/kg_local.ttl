@@ -1,0 +1,26 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The chunk states that the track was serviced to urban contemporary radio in the United States, indicating a location relationship between the radio type and the country." ;
+    neo:object <http://neoolaf.org/resource/node/cand_r_00004> ;
+    neo:predicate ns1:cand_r_00004 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_e_00005> .
+
+<http://neoolaf.org/resource/node/cand_e_00005> neo:label "urban contemporary radio" ;
+    neo:nodeType "entity" ;
+    ns1:cand_r_00004 <http://neoolaf.org/resource/node/cand_r_00004> .
+
+ns1:cand_r_00004 neo:label "United States" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "arch 11 , 2014 , \" Lookin Ass \" was serviced to urban contemporary radio in the United States as Young Money : Rise of an Empires third official single . It was sent to US r" .
+
+<http://neoolaf.org/resource/node/cand_r_00004> neo:label "United States" ;
+    neo:nodeType "relation" .
+

@@ -1,0 +1,246 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 10,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00007",
+      "relation_label": "user page",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "CDS device",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00003",
+      "target_candidate_label": "programmer",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0012",
+      "justification": "The text states that the CDS device is configured in the user page and the programmer is responsible for the intervention, indicating a link between the CDS device and the programmer via the user page.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 3358,
+          "chunk_end_char": 3367,
+          "doc_start_char": 63358,
+          "doc_end_char": 63367,
+          "snippet": ", axis and bro-effect stop:\nches.\ncause: Function G304 was not activated in the user page,\nintervention: Activate the CDS device in the user page.\nresponsible for\nprogra"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00013",
+      "relation_label": "Function G304 was not activated in the user page.",
+      "source_candidate_id": "cand_r_00013",
+      "source_candidate_label": "Function G304 was not activated in the user page.",
+      "source_candidate_type": "relation",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "CDS configuration error",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk text states that the CDS configuration error (event) is caused by the function G304 not being activated in the user page, which is the content of the relation candidate.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. respon"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00014",
+      "relation_label": "The high pressure unit has not been configured correctly.",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "CDS configuration error",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00000",
+      "target_candidate_label": "CDS device",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk indicates that the cause of the CDS configuration error is that the high pressure unit (the CDS device) has not been configured correctly.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "ional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. respon"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00003",
+      "relation_candidate_id": "cand_r_00017",
+      "relation_label": "Check the correct operation of the polishing reference microdetector",
+      "source_candidate_id": "cand_s_00000",
+      "source_candidate_label": "poligonage",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_r_00017",
+      "target_candidate_label": "Check the correct operation of the polishing reference microdetector",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk text describes that during the poligonage process the alarm is triggered because the polishing reference microdetector was not found, and the intervention explicitly states to \"Check the correct operation of the polishing reference microdetector\". This indicates that the poligonage event requires or triggers that intervention.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 2340,
+          "chunk_end_char": 2408,
+          "doc_start_char": 62340,
+          "doc_end_char": 62408,
+          "snippet": "uccessfully for the reference microdetector for which it stopped. intervention: Check the correct operation of the polishing reference microdetector. PLC X5.4 input page 28 of the electrical diagram. responsible for the interven"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00004",
+      "relation_candidate_id": "cand_r_00018",
+      "relation_label": "Check the machining, and review the program",
+      "source_candidate_id": "cand_e_00003",
+      "source_candidate_label": "programmer",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00002",
+      "target_candidate_label": "program",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk text states that the intervention \"Check the machining, and review the program\" is performed by the programmer and targets the program.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 249,
+          "chunk_end_char": 292,
+          "doc_start_char": 60249,
+          "doc_end_char": 60292,
+          "snippet": "esent any tracking error, so it cannot be in abutment on the part intervention: Check the machining, and review the program. responsible for the intervention: programmer\n\nmessage n°: 3012 text: FEED WRON"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00005",
+      "relation_candidate_id": "cand_r_00019",
+      "relation_label": "Check the program and modify the instruction",
+      "source_candidate_id": "cand_e_00003",
+      "source_candidate_label": "programmer",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00002",
+      "target_candidate_label": "program",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk explicitly states that the intervention \"Check the program and modify the instruction\" is performed by the programmer, implying a directed action from the programmer to the program.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 629,
+          "chunk_end_char": 673,
+          "doc_start_char": 60629,
+          "doc_end_char": 60673,
+          "snippet": "indicates the feed, or it was indicated with an incorrect value. intervention: Check the program and modify the instruction. responsible for the intervention: programmer\n\nmessage no: 3013 - 3015\ntext: AX"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00006",
+      "relation_candidate_id": "cand_r_00020",
+      "relation_label": "Delete this function from the program.",
+      "source_candidate_id": "cand_e_00003",
+      "source_candidate_label": "programmer",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00002",
+      "target_candidate_label": "program",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk states that the intervention is to delete the function from the program, performed by the programmer.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 3107,
+          "chunk_end_char": 3145,
+          "doc_start_char": 63107,
+          "doc_end_char": 63145,
+          "snippet": "p:\nches.\ncause: Programming of function G10 L50 is not permitted.\nintervention: Delete this function from the program.\nresponsible for\nprogrammer\nmessage no: 3029\ntext: CDS OPTION NOT ACTIVATED\ntype"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00007",
+      "relation_candidate_id": "cand_r_00022",
+      "relation_label": "Activate the CDS device in the user page.",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "CDS device",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_e_00002",
+      "target_candidate_label": "program",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk text (message 3029) states that the CDS device must be activated in the user page, which is part of the program. The relation candidate is the instruction to activate the CDS device in that page, linking the CDS device to the program.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 3383,
+          "chunk_end_char": 3424,
+          "doc_start_char": 63383,
+          "doc_end_char": 63424,
+          "snippet": "p:\nches.\ncause: Function G304 was not activated in the user page,\nintervention: Activate the CDS device in the user page.\nresponsible for\nprogrammer\n\nmessage n°: 3021 text: CORRECTOR T NOT ACTIVATED ty"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00008",
+      "relation_candidate_id": "cand_r_00025",
+      "relation_label": "responsible for",
+      "source_candidate_id": "cand_e_00003",
+      "source_candidate_label": "programmer",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00000",
+      "target_candidate_label": "poligonage",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk contains the phrase \"responsible for the intervention: programmer\" immediately following the description of the poligonage event, indicating that the programmer is responsible for that intervention.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 294,
+          "chunk_end_char": 327,
+          "doc_start_char": 60294,
+          "doc_end_char": 60327,
+          "snippet": "abutment on the part intervention: Check the machining, and review the program. responsible for the intervention: programmer\n\nmessage n°: 3012 text: FEED WRONG OR ABSENT type: Standard: Optiona"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00010",
+      "relation_candidate_id": "cand_r_00027",
+      "relation_label": "handled by",
+      "source_candidate_id": "cand_s_00000",
+      "source_candidate_label": "poligonage",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_e_00003",
+      "target_candidate_label": "programmer",
+      "target_candidate_type": "entity",
+      "chunk_id": "chunk_0012",
+      "justification": "The chunk contains the phrase \"responsible for the intervention: programmer\" following the intervention description for poligonage, indicating that the programmer handles the poligonage event.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0012",
+          "chunk_start_char": 294,
+          "chunk_end_char": 338,
+          "doc_start_char": 60294,
+          "doc_end_char": 60338,
+          "snippet": "abutment on the part intervention: Check the machining, and review the program. responsible for the intervention: programmer\n\nmessage n°: 3012 text: FEED WRONG OR ABSENT type: Standard: Optional: effect:"
+        }
+      ]
+    }
+  ]
+}

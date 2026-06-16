@@ -1,0 +1,18 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://neoolaf.org/resource/concept/concept_00000> rdfs:comment "A computer-controlled machine tool for automated manufacturing." .
+
+<http://neoolaf.org/resource/concept/concept_00001> rdfs:comment "A state indicating a serious and immediate threat requiring urgent action." .
+
+<http://neoolaf.org/resource/relation/ont_rel_00000> rdfs:comment "Relates an entity or event to the source that produces or generates it." ;
+    rdfs:domain "SignalEvent" ;
+    rdfs:range "Device" .
+
+<http://neoolaf.org/resource/relation/ont_rel_00001> rdfs:comment "Relates a factor or condition to its negative effect on the functionality of a machine or system." ;
+    rdfs:domain "ObservableProperty" ;
+    rdfs:range "MachineState" .
+
+<http://neoolaf.org/resource/relation/ont_rel_00002> rdfs:comment "Relates a situation or event to an observable signal or property." ;
+    rdfs:domain "Situation" ;
+    rdfs:range "ObservableEntity" .
+

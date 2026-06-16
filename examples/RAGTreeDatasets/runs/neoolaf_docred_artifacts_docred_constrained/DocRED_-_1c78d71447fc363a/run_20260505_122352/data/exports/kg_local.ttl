@@ -1,0 +1,26 @@
+@prefix neo: <http://neoolaf.org/resource/> .
+@prefix ns1: <http://neoolaf.org/resource/relation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://neoolaf.org/resource/triple/triple_00000> a neo:CandidateTriple ;
+    neo:chunkId "chunk_0000" ;
+    neo:confidence 9.2e-01 ;
+    neo:hasProvenance <http://neoolaf.org/resource/triple/triple_00000/prov/0> ;
+    neo:justification "The text states that the Yorkshire Post is published in Leeds in northern England, indicating it is located in the administrative territorial entity \"Northern England\"." ;
+    neo:object <http://neoolaf.org/resource/node/cand_e_00000> ;
+    neo:predicate ns1:cand_r_00000 ;
+    neo:subject <http://neoolaf.org/resource/node/cand_r_00000> .
+
+<http://neoolaf.org/resource/node/cand_r_00000> neo:label "Yorkshire Post" ;
+    neo:nodeType "relation" ;
+    ns1:cand_r_00000 <http://neoolaf.org/resource/node/cand_e_00000> .
+
+ns1:cand_r_00000 neo:label "Yorkshire Post" .
+
+<http://neoolaf.org/resource/triple/triple_00000/prov/0> a neo:Provenance ;
+    neo:chunkId "chunk_0000" ;
+    neo:snippet "The Yorkshire Post is a daily broadsheet newspaper , published in Leeds in northern England . It c" .
+
+<http://neoolaf.org/resource/node/cand_e_00000> neo:label "Northern England" ;
+    neo:nodeType "entity" .
+

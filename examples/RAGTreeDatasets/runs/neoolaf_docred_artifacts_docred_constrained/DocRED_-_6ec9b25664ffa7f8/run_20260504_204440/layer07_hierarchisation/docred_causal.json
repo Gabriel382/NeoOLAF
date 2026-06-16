@@ -1,0 +1,46 @@
+{
+  "layer": "layer07_hierarchisation",
+  "num_concept_hierarchy_links": 0,
+  "num_relation_hierarchy_links": 2,
+  "concept_hierarchy_links": [],
+  "relation_hierarchy_links": [
+    {
+      "link_id": "relation_h_00000",
+      "child_relation_id": "ont_rel_00000",
+      "child_label": "P131 : located in the administrative territorial entity",
+      "parent_relation_id": "ont_rel_00001",
+      "parent_label": "P276 : location",
+      "justification": "P131 : located in the administrative territorial entity is a more specific spatial relation than P276 : location, making it a subrelation.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "The Portland Golf Club is a private golf club in the northwest United States , in suburban Portland , Oregon . It is located in the unincorporated Raleigh Hills area of eastern Washington County , southwest of downtown Portland and east of Beaverton . PGC was established in the winter of 1914 , when"
+        }
+      ]
+    },
+    {
+      "link_id": "relation_h_00001",
+      "child_relation_id": "ont_rel_00001",
+      "child_label": "P276 : location",
+      "parent_relation_id": "ont_rel_00000",
+      "parent_label": "P131 : located in the administrative territorial entity",
+      "justification": "P276 (location) is a more specific property than P131 (located in the administrative territorial entity), as it can refer to any physical or geographic location, while P131 is restricted to administrative territorial entities. Therefore, P276 is a subrelation of P131.",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0000",
+          "chunk_start_char": -1,
+          "chunk_end_char": -1,
+          "doc_start_char": -1,
+          "doc_end_char": -1,
+          "snippet": "The Portland Golf Club is a private golf club in the northwest United States , in suburban Portland , Oregon . It is located in the unincorporated Raleigh Hills area of eastern Washington County , southwest of downtown Portland and east of Beaverton . PGC was established in the winter of 1914 , when"
+        }
+      ]
+    }
+  ]
+}

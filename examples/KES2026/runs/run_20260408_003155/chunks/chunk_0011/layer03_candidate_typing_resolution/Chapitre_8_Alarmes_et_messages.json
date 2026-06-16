@@ -1,0 +1,1764 @@
+{
+  "layer": "layer03_candidate_typing_resolution",
+  "entity_candidates": [
+    {
+      "candidate_id": "cand_e_00000",
+      "canonical_label": "Programmer",
+      "normalized_label": "programmer",
+      "candidate_type": "entity",
+      "confidence": 0.99,
+      "ontology_hints": [
+        "Programmer is a type of Staff member and Human Resource used in manufacturing processes.",
+        "Programmer participates in Processes such as software development.",
+        "Programmer is responsible for program-related interventions and is a role that can be mapped to the Responsible Role class."
+      ],
+      "definition": "a person who designs and writes and tests computer programs",
+      "aliases": [
+        "programmer",
+        "computer programmer",
+        "coder",
+        "software engineer",
+        "Programmer"
+      ],
+      "synonyms": [
+        "programmer",
+        "computer programmer",
+        "coder",
+        "software engineer"
+      ],
+      "lexical_variants": [
+        "programmer",
+        "computer programmer",
+        "coder",
+        "software engineer"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00041",
+          "text": "programmer",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1928,
+              "chunk_end_char": 1938,
+              "doc_start_char": 56928,
+              "doc_end_char": 56938,
+              "snippet": "consents.\nintervention: Modify the programmed reduction value.\nresponsible for\nprogrammer\nmessage no: 3004\ntext: CAUTION VERTICAL AXIS\ntype: Standard: Optional:\nAlarm wi"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "relation_candidates": [
+    {
+      "candidate_id": "cand_r_00000",
+      "canonical_label": "MAINTENANCE NOTICE",
+      "normalized_label": "maintenance notice",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmType",
+        "MaintenanceEvent",
+        "Machine",
+        "Manager",
+        "FeatureOfInterest"
+      ],
+      "definition": "An alarm type that signals a maintenance-related event on a machine, typically reported by a manager and associated with a specific instant or interval.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00000",
+          "text": "MAINTENANCE NOTICE",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 41,
+              "chunk_end_char": 59,
+              "doc_start_char": 55041,
+              "doc_end_char": 55059,
+              "snippet": ".\nresponsible for\nmessage no: 2065\ntext: MAINTENANCE NOTICE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns that some m"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00001",
+      "canonical_label": "CONFIGURED PRODUCTION REACHED",
+      "normalized_label": "configured production reached",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: Production Quantity Threshold",
+        "CAUSED_BY: Completion of Configured Production Target",
+        "HANDLED_BY: Production Supervisor",
+        "REFERENCES: Production Plan",
+        "DETECTED_BY: Production Line Sensors",
+        "RELATES_TO: Production Line",
+        "RELATES_TO: Product",
+        "RELATES_TO: Manufacturing Process",
+        "RELATES_TO: Situation S1"
+      ],
+      "definition": "An alarm that signals the completion of a predefined production quantity or target within a manufacturing process, indicating that the configured production goal has been achieved.",
+      "aliases": [
+        "Configured Production Reached Alarm"
+      ],
+      "synonyms": [
+        "Production Target Reached",
+        "Configured Output Reached",
+        "Target Production Completed"
+      ],
+      "lexical_variants": [
+        "CONFIGURED PRODUCTION REACHED"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00001",
+          "text": "CONFIGURED PRODUCTION REACHED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 334,
+              "chunk_end_char": 363,
+              "doc_start_char": 55334,
+              "doc_end_char": 55363,
+              "snippet": "sted\nintervention:\nrequest an interview\nresponsible for\n\nmessage n°: 2061 text: CONFIGURED PRODUCTION REACHED type: Standard: Optional: effect: Only display of the message cause: The quanti"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00002",
+      "canonical_label": "AUTOMATIC STOP: MACHINE IN ALARM",
+      "normalized_label": "automatic stop machine in alarm",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine",
+        "Manufacturing Facility",
+        "Feature of Interest",
+        "Production Line"
+      ],
+      "definition": "An alarm indicating that a machine has automatically stopped because it has entered an alarm state.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00002",
+          "text": "AUTOMATIC STOP: MACHINE IN ALARM",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 871,
+              "chunk_end_char": 903,
+              "doc_start_char": 55871,
+              "doc_end_char": 55903,
+              "snippet": ". responsible for the intervention: toolmaker-adjuster\n\nmessage no.: 2062 text: AUTOMATIC STOP: MACHINE IN ALARM type: Standard: Optional: effect: Only display of the message cause: The AUTOMA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00003",
+      "canonical_label": "WRONG TORQUE REDUCTION",
+      "normalized_label": "wrong torque reduction",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: Wrong torque reduction",
+        "CAUSES: Torque limit violation",
+        "REQUIRES: Adjust torque settings",
+        "HANDLED_BY: Maintenance technician",
+        "REFERENCES: Workstation torque control module"
+      ],
+      "definition": "An alarm indicating that the torque applied during a reduction process is outside the specified limits, potentially leading to product defects or machine damage.",
+      "aliases": [
+        "Torque error",
+        "Torque anomaly",
+        "Torque out of range"
+      ],
+      "synonyms": [
+        "Incorrect torque reduction",
+        "Torque limit violation",
+        "Torque reduction error"
+      ],
+      "lexical_variants": [
+        "Wrong torque reduction",
+        "Torque reduction out of bounds",
+        "Torque reduction deviation"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00003",
+          "text": "WRONG TORQUE REDUCTION",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1655,
+              "chunk_end_char": 1677,
+              "doc_start_char": 56655,
+              "doc_end_char": 56677,
+              "snippet": "e intervention: responsible for the maintenance\n\nmessage no: 3001 to 3003\ntext: WRONG TORQUE REDUCTION\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00004",
+      "canonical_label": "AXIS NOT PRESENT",
+      "normalized_label": "axis not present",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "related to ManufacturingProcess",
+        "involves FeatureOfInterest: axis",
+        "produces Result: missing axis",
+        "may occur during LogisticProcess or HumanProcess"
+      ],
+      "definition": "Alarm indicating that a required axis is missing from the machine’s path, causing a reduction in torque.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00005",
+          "text": "AXIS NOT PRESENT",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 2247,
+              "chunk_end_char": 2263,
+              "doc_start_char": 57247,
+              "doc_end_char": 57263,
+              "snippet": "ervention: Modify the program\nresponsible for\nprogrammer\nmessage no: 3005\ntext: AXIS NOT PRESENT\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00005",
+      "canonical_label": "AXIS NOT IN POSITION",
+      "normalized_label": "axis not in position",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AXIS NOT IN POSITION is an alarm type within a Manufacturing Process.",
+        "It represents a Situation where a FeatureOfInterest (the axis) is not in its expected Position.",
+        "The alarm triggers an Action (e.g., shutdown, reset, or manual intervention).",
+        "It is associated with a specific Observation of the axis position.",
+        "The event occurs in the context of a Manufacturing Process and may be handled by Maintenance or Operations staff."
+      ],
+      "definition": "An alarm indicating that a machine axis has failed to reach its programmed position, signaling a positional error in the axis.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00006",
+          "text": "AXIS NOT IN POSITION",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 3491,
+              "chunk_end_char": 3511,
+              "doc_start_char": 58491,
+              "doc_end_char": 58511,
+              "snippet": "ram responsible for the intervention: programmer\n\nmessage no: 3006 - 3008\ntext: AXIS NOT IN POSITION\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00006",
+      "canonical_label": "AXIS NOT IN STOP",
+      "normalized_label": "axis not in stop",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest: axis",
+        "Situation: S1, S2, S3, or S4 (contextual state of the axis)",
+        "Property: is in situation (relates the alarm observation to the relevant Situation class)",
+        "Property: is defined for (relates the alarm type to the FeatureOfInterest and Situation)"
+      ],
+      "definition": "An alarm that signals the machine axis is not in the stop state, indicating a failure of the axis to halt as expected.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00007",
+          "text": "AXIS NOT IN STOP",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 3849,
+              "chunk_end_char": 3865,
+              "doc_start_char": 58849,
+              "doc_end_char": 58865,
+              "snippet": "d remove the obstacle.\nresponsible for\nprogrammer\nmessage no: 3009 - 3011\ntext: AXIS NOT IN STOP\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00007",
+      "canonical_label": "WRONG OR MISSING FEED",
+      "normalized_label": "wrong or missing feed",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest: Product or component being produced",
+        "Production Line: Group of manufacturing cells",
+        "Manufacturing Cell: Workstation cluster",
+        "Machine: Device performing manufacturing task",
+        "Constraint: Condition or rule restricting acceptable states",
+        "TRIGGERS: Constraint Violation",
+        "CAUSES: Missing or incorrect feed parameter",
+        "HANDLED_BY: Maintenance staff or operator",
+        "REFERENCES: Production Line, Manufacturing Cell, Machine"
+      ],
+      "definition": "Alarm indicating that the machine has not received the required feed or the feed parameter is incorrect, triggering a constraint violation in the manufacturing process.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00008",
+          "text": "WRONG OR MISSING FEED",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 4216,
+              "chunk_end_char": 4237,
+              "doc_start_char": 59216,
+              "doc_end_char": 59237,
+              "snippet": "ning, and review the program.\nresponsible for\nprogrammer\nmessage no: 3012\ntext: WRONG OR MISSING FEED\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00008",
+      "canonical_label": "Only display of the message",
+      "normalized_label": "only display of the message",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Platform",
+        "Spatial Object",
+        "Feature of Interest",
+        "Alarm",
+        "has feature of interest: message display",
+        "is part of: platform",
+        "references: alarm",
+        "detected by: display",
+        "triggers: alarm"
+      ],
+      "definition": "An effect in which an alarm causes only a message to be shown on a display, without initiating any additional actions or interventions.",
+      "aliases": [
+        "message display",
+        "display message"
+      ],
+      "synonyms": [
+        "display-only",
+        "visual notification only"
+      ],
+      "lexical_variants": [
+        "message display only",
+        "only message display"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00010",
+          "text": "Only display of the message",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 94,
+              "chunk_end_char": 121,
+              "doc_start_char": 55094,
+              "doc_end_char": 55121,
+              "snippet": "for\nmessage no: 2065\ntext: MAINTENANCE NOTICE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns that some maintenance settings are about to be\ncause:\nto exhaust oneself"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00009",
+      "canonical_label": "has cause",
+      "normalized_label": "has cause",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Cause",
+        "has cause",
+        "related to Machine",
+        "related to Sensor",
+        "related to Feature",
+        "related to Manager"
+      ],
+      "definition": "A cause is a factor or event responsible for the occurrence of a situation in the manufacturing system.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00011",
+          "text": "cause:",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 175,
+              "chunk_end_char": 181,
+              "doc_start_char": 55175,
+              "doc_end_char": 55181,
+              "snippet": "nly display of the message\nWarns that some maintenance settings are about to be\ncause:\nto exhaust oneself\nCheck on the “MAINTENANCE” page which of the items listed\nin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00010",
+      "canonical_label": "intervention:",
+      "normalized_label": "intervention",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Intervention can be modeled as an event occurring within a Situation over an Interval.",
+        "Intervention may be triggered by a Failure event and handled by a MaintenanceStaff entity.",
+        "Intervention is related to the property 'REQUIRES' in the ontology."
+      ],
+      "definition": "An action taken to address a machine fault or failure, typically introduced by a failure event and carried out by responsible personnel.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00012",
+          "text": "intervention:",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 259,
+              "chunk_end_char": 272,
+              "doc_start_char": 55259,
+              "doc_end_char": 55272,
+              "snippet": "e:\nto exhaust oneself\nCheck on the “MAINTENANCE” page which of the items listed\nintervention:\nrequest an interview\nresponsible for\n\nmessage n°: 2061 text: CONFIGURED PRODUCT"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00011",
+      "canonical_label": "responsible for",
+      "normalized_label": "responsible for",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Sensor is responsible for producing a Result",
+        "Platform is responsible for hosting Sensors",
+        "Resource (e.g., machine or human) is responsible for executing a manufacturing process or maintaining a Platform",
+        "applies to Resource",
+        "targets Feature of Interest",
+        "governed by Constraint",
+        "observes Observable Property",
+        "instantiated at Instant"
+      ],
+      "definition": "Indicates that a particular entity (e.g., a role, person, or resource) is accountable for performing or overseeing a specific action, alarm, or process.",
+      "aliases": [
+        "responsible for maintenance"
+      ],
+      "synonyms": [],
+      "lexical_variants": [
+        "responsible for maintenance"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00013",
+          "text": "responsible for",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 2,
+              "chunk_end_char": 17,
+              "doc_start_char": 55002,
+              "doc_end_char": 55017,
+              "snippet": ".\nresponsible for\nmessage no: 2065\ntext: MAINTENANCE NOTICE\ntype: Standard: Optional:\neffect: Onl"
+            }
+          ]
+        },
+        {
+          "expr_id": "expr_00042",
+          "text": "responsible for the maintenance",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1591,
+              "chunk_end_char": 1622,
+              "doc_start_char": 56591,
+              "doc_end_char": 56622,
+              "snippet": "hich of the listed items requires maintenance responsible for the intervention: responsible for the maintenance\n\nmessage no: 3001 to 3003\ntext: WRONG TORQUE REDUCTION\ntype: Standard: Optional"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00012",
+      "canonical_label": "program interruption",
+      "normalized_label": "program interruption",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Observation event measuring the Property 'operational state' of a Feature of Interest (e.g., a Production Line) during a Temporal Entity.",
+        "State concept within the SOSA/SSN framework.",
+        "Related to the Property 'operational status' of a Feature of Interest."
+      ],
+      "definition": "A state in which a control or software program is interrupted, causing a halt or pause in its execution.",
+      "aliases": [
+        "program interruption"
+      ],
+      "synonyms": [
+        "program halt",
+        "program pause",
+        "execution interruption"
+      ],
+      "lexical_variants": [
+        "program interruption state"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00014",
+          "text": "program interruption",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1715,
+              "chunk_end_char": 1735,
+              "doc_start_char": 56715,
+              "doc_end_char": 56735,
+              "snippet": "3001 to 3003\ntext: WRONG TORQUE REDUCTION\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nThe torque reduction requested at the indicate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00013",
+      "canonical_label": "stopping of axes and spindles",
+      "normalized_label": "stopping of axes and spindles",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "belongs to Manufacturing Process",
+        "occurs in Manufacturing Facility",
+        "occurs in Manufacturing Cell",
+        "is a specialized Situation (S1 or S2)",
+        "TRIGGERS: machine fault or safety interlock",
+        "REQUIRES: shutdown procedure",
+        "HANDLED_BY: maintenance staff"
+      ],
+      "definition": "A state in which the machine’s axes and spindles cease operation, typically indicating a shutdown or fault condition within a manufacturing process.",
+      "aliases": [
+        "axes and spindle stop",
+        "axis and spindle shutdown",
+        "stop of axes and spindles"
+      ],
+      "synonyms": [
+        "axis and spindle stoppage",
+        "spindle and axis halt",
+        "axes and spindle halt"
+      ],
+      "lexical_variants": [
+        "stopping of axes and spindles",
+        "axes and spindle stopping",
+        "stopping of axes and spindles state"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00015",
+          "text": "stopping of axes and spindles",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 2628,
+              "chunk_end_char": 2657,
+              "doc_start_char": 57628,
+              "doc_end_char": 57657,
+              "snippet": "UE REDUCTION type: Standard: Optional: effect: Alarm with program interruption, stopping of axes and spindles. cause: The torque reduction requested at the indicated axis is outside the agr"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00014",
+      "canonical_label": "machine shutdown phase",
+      "normalized_label": "machine shutdown phase",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine",
+        "Manufacturing Process",
+        "Instant",
+        "Human Process",
+        "Manufacturing Facility",
+        "is in situation",
+        "interval starts",
+        "interval started by"
+      ],
+      "definition": "A temporal state during which a machine is being powered down or turned off as part of a scheduled or unscheduled shutdown procedure within a manufacturing facility.",
+      "aliases": [
+        "shutdown phase",
+        "shutdown state",
+        "machine shutdown"
+      ],
+      "synonyms": [
+        "shutdown state",
+        "shutdown period",
+        "power‑down phase"
+      ],
+      "lexical_variants": [
+        "machine shutdown phase",
+        "machine shutdown",
+        "shutdown phase",
+        "shutdown state"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00016",
+          "text": "machine shutdown phase",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1133,
+              "chunk_end_char": 1155,
+              "doc_start_char": 56133,
+              "doc_end_char": 56155,
+              "snippet": ", the configured time has been reached, or an alarm has occurred, therefore the machine shutdown phase has started. intervention: Wait for the main switch to trip, then turn it on an"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00015",
+      "canonical_label": "configured time has been reached",
+      "normalized_label": "configured time has been reached",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Constraint",
+        "has end",
+        "concerned by: process or machine",
+        "has observable property: time constraint"
+      ],
+      "definition": "A state indicating that a pre‑configured time constraint has been satisfied, i.e., the scheduled or deadline time for a process or machine operation has been reached.",
+      "aliases": [
+        "time threshold reached",
+        "time limit reached",
+        "deadline met"
+      ],
+      "synonyms": [
+        "time limit reached",
+        "scheduled time achieved",
+        "deadline met",
+        "time constraint satisfied"
+      ],
+      "lexical_variants": [
+        "configured time reached",
+        "configured time has been met",
+        "configured time threshold reached",
+        "configured time has been satisfied"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00017",
+          "text": "configured time has been reached",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1059,
+              "chunk_end_char": 1091,
+              "doc_start_char": 56059,
+              "doc_end_char": 56091,
+              "snippet": "TOMATIC STOP function has been activated using the corresponding user page, the configured time has been reached, or an alarm has occurred, therefore the machine shutdown phase has started. in"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00016",
+      "canonical_label": "alarm has occurred",
+      "normalized_label": "alarm has occurred",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "hasState",
+        "hasOccurred",
+        "FeatureOfInterest",
+        "Resource",
+        "Manufacturing Process",
+        "Human Process"
+      ],
+      "definition": "A state indicating that an alarm has been triggered on a manufacturing resource, marking an abnormal condition that requires attention.",
+      "aliases": [
+        "alarm event",
+        "alarm occurrence",
+        "alarm instance"
+      ],
+      "synonyms": [
+        "alarm triggered",
+        "alarm activated",
+        "alarm fired"
+      ],
+      "lexical_variants": [
+        "alarm has been triggered",
+        "alarm has been activated",
+        "alarm has been fired"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00018",
+          "text": "alarm has occurred",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1099,
+              "chunk_end_char": 1117,
+              "doc_start_char": 56099,
+              "doc_end_char": 56117,
+              "snippet": "using the corresponding user page, the configured time has been reached, or an alarm has occurred, therefore the machine shutdown phase has started. intervention: Wait for the m"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00017",
+      "canonical_label": "the machine shutdown phase has started",
+      "normalized_label": "the machine shutdown phase has started",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Machine",
+        "Manufacturing Process",
+        "Instant",
+        "State"
+      ],
+      "definition": "The point in time when the machine enters the shutdown phase, marking the start of a shutdown process and a transition to a shutdown state.",
+      "aliases": [
+        "machine shutdown phase start",
+        "shutdown phase initiation"
+      ],
+      "synonyms": [
+        "shutdown phase has begun",
+        "shutdown has commenced",
+        "shutdown phase started"
+      ],
+      "lexical_variants": [
+        "shutdown phase started",
+        "shutdown phase has begun",
+        "machine shutdown phase has begun"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00019",
+          "text": "the machine shutdown phase has started",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1129,
+              "chunk_end_char": 1167,
+              "doc_start_char": 56129,
+              "doc_end_char": 56167,
+              "snippet": "page, the configured time has been reached, or an alarm has occurred, therefore the machine shutdown phase has started. intervention: Wait for the main switch to trip, then turn it on and turn on th"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00018",
+      "canonical_label": "the quantity of pieces established in the “PRODUCTION DATA” page has been reached",
+      "normalized_label": "the quantity of pieces established in the production data page has been reached",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Production Line",
+        "Observable Property",
+        "Manufacturing Process",
+        "Feature of Interest"
+      ],
+      "definition": "State indicating that the production quantity target recorded on the PRODUCTION DATA page has been achieved.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00020",
+          "text": "the quantity of pieces established in the “PRODUCTION DATA” page has been reached",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 433,
+              "chunk_end_char": 514,
+              "doc_start_char": 55433,
+              "doc_end_char": 55514,
+              "snippet": "ON REACHED type: Standard: Optional: effect: Only display of the message cause: The quantity of pieces established in the “PRODUCTION DATA” page has been reached; if the condition persists, the programs will be stopped at the same time as fu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00019",
+      "canonical_label": "the programs will be stopped at the same time as function M01",
+      "normalized_label": "the programs will be stopped at the same time as function m01",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Temporal Entity",
+        "Production Line",
+        "Workstation",
+        "Situation S1",
+        "Situation S10",
+        "is in situation"
+      ],
+      "definition": "A state in which the machine programs are stopped at the same time as the execution of function M01.",
+      "aliases": [
+        "program stop",
+        "program halt",
+        "program cessation"
+      ],
+      "synonyms": [
+        "simultaneous program halt",
+        "concurrent program stop"
+      ],
+      "lexical_variants": [
+        "stop",
+        "halt",
+        "cease"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00021",
+          "text": "the programs will be stopped at the same time as function M01",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 543,
+              "chunk_end_char": 604,
+              "doc_start_char": 55543,
+              "doc_end_char": 55604,
+              "snippet": "shed in the “PRODUCTION DATA” page has been reached; if the condition persists, the programs will be stopped at the same time as function M01 and the stopping phase will be started (see alarm no. 1083). intervention: It i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00020",
+      "canonical_label": "the stopping phase will be started",
+      "normalized_label": "the stopping phase will be started",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TemporalEntity",
+        "Instant",
+        "ManufacturingCell",
+        "ManufacturingFacility",
+        "hasState",
+        "occursIn",
+        "partOf"
+      ],
+      "definition": "A future event marking the beginning of the stopping phase in a manufacturing process.",
+      "aliases": [
+        "stopping phase initiation",
+        "phase of stopping commencement"
+      ],
+      "synonyms": [
+        "initiation of stopping phase",
+        "start of stopping phase"
+      ],
+      "lexical_variants": [
+        "the stopping phase will commence",
+        "the stopping phase will begin"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00022",
+          "text": "the stopping phase will be started",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 609,
+              "chunk_end_char": 643,
+              "doc_start_char": 55609,
+              "doc_end_char": 55643,
+              "snippet": "ion persists, the programs will be stopped at the same time as function M01 and the stopping phase will be started (see alarm no. 1083). intervention: It is possible to interrupt the shutdown ph"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00021",
+      "canonical_label": "the torque reduction requested at the indicated axis is beyond the limits",
+      "normalized_label": "the torque reduction requested at the indicated axis is beyond the limits",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "associated constraint: torque reduction limit",
+        "triggers: torque reduction request",
+        "causes: constraint violation",
+        "requires: intervention to adjust torque",
+        "handled_by: operator or maintenance staff",
+        "references: machine manual section on torque limits",
+        "occurs_in: manufacturing cell or production line",
+        "temporal_entity: time of alarm occurrence"
+      ],
+      "definition": "A failure symptom indicating that the requested reduction in torque on a specified axis exceeds the permissible limits defined by the system constraints, potentially violating operational safety or performance requirements.",
+      "aliases": [
+        "torque reduction limit violation",
+        "torque reduction out of bounds",
+        "torque reduction exceeding limits"
+      ],
+      "synonyms": [
+        "excessive torque reduction",
+        "torque reduction beyond permissible limits",
+        "torque reduction violation"
+      ],
+      "lexical_variants": [
+        "requested torque reduction exceeds limits",
+        "torque reduction request is beyond limits",
+        "torque reduction beyond limits"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00023",
+          "text": "the torque reduction requested at the indicated axis is beyond the limits",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1769,
+              "chunk_end_char": 1842,
+              "doc_start_char": 56769,
+              "doc_end_char": 56842,
+              "snippet": "ard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nThe torque reduction requested at the indicated axis is beyond the limits:\nyour consents.\nintervention: Modify the programmed reduction value.\nresponsibl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00022",
+      "canonical_label": "the torque reduction requested at the indicated axis is outside the agreed limits",
+      "normalized_label": "the torque reduction requested at the indicated axis is outside the agreed limits",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Constraint violation: torque reduction outside agreed limits",
+        "Occurs in Manufacturing Cell",
+        "Related to Production Line",
+        "Situation S1: torque reduction outside limits",
+        "Detected by torque sensor",
+        "Requires maintenance intervention"
+      ],
+      "definition": "A failure symptom indicating that the torque reduction on a specified axis has fallen outside the pre‑defined acceptable limits.",
+      "aliases": [
+        "torque reduction outside limits",
+        "torque reduction beyond limits"
+      ],
+      "synonyms": [
+        "torque drop beyond specified limits",
+        "torque decrease exceeding defined limits",
+        "torque reduction outside agreed limits"
+      ],
+      "lexical_variants": [
+        "torque reduction outside agreed limits",
+        "torque reduction beyond agreed limits",
+        "torque reduction outside specified limits",
+        "torque reduction exceeding limits"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00024",
+          "text": "the torque reduction requested at the indicated axis is outside the agreed limits",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 2666,
+              "chunk_end_char": 2747,
+              "doc_start_char": 57666,
+              "doc_end_char": 57747,
+              "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: The torque reduction requested at the indicated axis is outside the agreed limits. intervention: Modify the programmed reduction value. responsible for the inter"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00023",
+      "canonical_label": "It is requested to reduce the torque to a vertical axis, this is not allowed",
+      "normalized_label": "it is requested to reduce the torque to a vertical axis this is not allowed",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Production Line",
+        "Technician",
+        "Situation S1",
+        "Situation S2",
+        "Temporal Entity",
+        "requires action",
+        "TRIGGERS",
+        "HANDLED_BY",
+        "REFERENCES",
+        "DETECTED_BY",
+        "Safety rule violation",
+        "Mechanical adjustment",
+        "Torque",
+        "Vertical axis",
+        "Failure symptom",
+        "Alarm",
+        "Alarm type",
+        "Alarm reference",
+        "Alarm detection",
+        "Alarm handling",
+        "Alarm shutdown",
+        "Alarm maintenance",
+        "Alarm intervention",
+        "Alarm cause",
+        "Alarm trigger",
+        "Alarm requirement"
+      ],
+      "definition": "A failure symptom indicating that a request to reduce torque on a vertical axis is prohibited by system safety or operational rules.",
+      "aliases": [
+        "Vertical axis torque reduction request not allowed"
+      ],
+      "synonyms": [
+        "Disallowed torque reduction request",
+        "Prohibited torque decrease",
+        "Forbidden torque reduction"
+      ],
+      "lexical_variants": [
+        "Torque reduction to vertical axis is not permitted",
+        "Reducing torque on vertical axis is disallowed"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00025",
+          "text": "It is requested to reduce the torque to a vertical axis, this is not allowed",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 2998,
+              "chunk_end_char": 3074,
+              "doc_start_char": 57998,
+              "doc_end_char": 58074,
+              "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: It is requested to reduce the torque to a vertical axis, this is not allowed. intervention: Modify the program responsible for the intervention: programmer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00024",
+      "canonical_label": "It is requested to reduce the torque to an axis which is not present in the Path",
+      "normalized_label": "it is requested to reduce the torque to an axis which is not present in the path",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FailureSymptom",
+        "ManufacturingProcess",
+        "HumanProcess",
+        "TemporalEntity",
+        "ProductionLine",
+        "TorqueReductionRequest",
+        "AxisNotInPath"
+      ],
+      "definition": "A failure symptom indicating that a torque reduction has been requested for an axis that does not exist in the current process path.",
+      "aliases": [
+        "torque reduction to missing axis",
+        "torque decrease on absent axis"
+      ],
+      "synonyms": [
+        "torque reduction request for a non‑existent axis",
+        "requested torque decrease on an axis not in the path",
+        "torque lowering for an absent axis"
+      ],
+      "lexical_variants": [
+        "torque reduction",
+        "axis absent",
+        "path not present",
+        "requested to lower torque",
+        "non‑present axis"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00026",
+          "text": "It is requested to reduce the torque to an axis which is not present in the Path",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 3300,
+              "chunk_end_char": 3380,
+              "doc_start_char": 58300,
+              "doc_end_char": 58380,
+              "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: It is requested to reduce the torque to an axis which is not present in the Path. intervention: Modify the program responsible for the intervention: programmer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00025",
+      "canonical_label": "The axis subject to torque reduction, HAS NOT reached the position causing",
+      "normalized_label": "the axis subject to torque reduction has not reached the position causing",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: failure symptom",
+        "CAUSED_BY: torque reduction",
+        "REQUIRES: monitoring of axis position",
+        "HANDLED_BY: maintenance staff",
+        "REFERENCES: position sensor",
+        "has_observable_property: torque reduction",
+        "has_observation: position not reached"
+      ],
+      "definition": "A failure symptom indicating that an axis experiencing reduced torque has not yet reached the critical position that would trigger a failure.",
+      "aliases": [
+        "torque-reduced axis has not reached the critical position",
+        "axis experiencing torque reduction has not attained the failure position"
+      ],
+      "synonyms": [
+        "axis under torque reduction hasn't reached the position",
+        "torque-reduced axis hasn't reached the position",
+        "axis with reduced torque hasn't reached the critical point"
+      ],
+      "lexical_variants": [
+        "axis subject to torque reduction has not reached the position causing",
+        "axis experiencing torque reduction has not yet reached the critical position",
+        "torque-reduced axis has not yet attained the failure position"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00027",
+          "text": "The axis subject to torque reduction, HAS NOT reached the position causing",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 3603,
+              "chunk_end_char": 3677,
+              "doc_start_char": 58603,
+              "doc_end_char": 58677,
+              "snippet": "ard: Optional:\nAlarm with program interruption, axis and bro-effect stop:\nches.\nThe axis subject to torque reduction, HAS NOT reached the position causing:\ngrammed because of an obstacle he found on his route.\nintervention: Check the"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00026",
+      "canonical_label": "The axis subject to torque reduction, HAS NOT reached the programmed position because of an obstacle it found in its path",
+      "normalized_label": "the axis subject to torque reduction has not reached the programmed position because of an obstacle it found in its path",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest: Axis",
+        "Constraint: Obstacle",
+        "Process: Manufacturing Process",
+        "Context: Production Line",
+        "Failure Symptom"
+      ],
+      "definition": "A mechanical failure in which an axis fails to reach its programmed position because it encounters an obstacle, resulting in reduced torque and impaired operation.",
+      "aliases": [
+        "axis obstruction",
+        "axis blockage",
+        "axis jammed"
+      ],
+      "synonyms": [
+        "axis impeded",
+        "axis stalled",
+        "axis not reaching target due to obstruction"
+      ],
+      "lexical_variants": [
+        "axis not reaching programmed position because of an obstacle",
+        "axis blocked by obstacle",
+        "axis unable to reach target due to obstruction"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00028",
+          "text": "The axis subject to torque reduction, HAS NOT reached the programmed position because of an obstacle it found in its path",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 4706,
+              "chunk_end_char": 4827,
+              "doc_start_char": 59706,
+              "doc_end_char": 59827,
+              "snippet": "effect: Alarm with program interruption, stopping of axes and spindles. cause: The axis subject to torque reduction, HAS NOT reached the programmed position because of an obstacle it found in its path. intervention: Check the machining and remove the obstacle. responsible for the"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00027",
+      "canonical_label": "The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in contact with the part",
+      "normalized_label": "the axis subject to torque reduction once it has reached the position does not present any tracking error so it cannot be in contact with the part",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "FeatureOfInterest",
+        "ObservableProperty",
+        "ManufacturingProcess",
+        "ProductionLine",
+        "FailureSymptom"
+      ],
+      "definition": "A failure symptom where an axis that has undergone torque reduction reaches its target position without exhibiting any tracking error, indicating it is not in contact with the part.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00029",
+          "text": "The axis subject to torque reduction, once it has reached the position, DOES NOT present any tracking error, so it cannot be in contact with the part",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ".\nresponsible for\nmessage no: 2065\ntext: MAINTENANCE NOTICE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns that some maintenance settings are about to be\ncause:\nto exhaust oneself\nCheck on the “MAINTENANCE” page which of the items listed\nintervention:\nrequest an interview\nrespon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00028",
+      "canonical_label": "G84, G88, G188 have been programmed without parameter F which indicates the feed, or it was indicated with an incorrect value",
+      "normalized_label": "g84 g88 g188 have been programmed without parameter f which indicates the feed or it was indicated with an incorrect value",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "TRIGGERS: feed control failure",
+        "CAUSES: missing or incorrect feed parameter F",
+        "REQUIRES: correct feed parameter F",
+        "HANDLED_BY: operator or maintenance staff",
+        "REFERENCES: processes G84, G88, G188",
+        "DETECTED_BY: feed parameter sensor or software validation",
+        "FEATURE_OF_INTEREST: feed parameter F",
+        "OBSERVABLE_PROPERTY: feed parameter value"
+      ],
+      "definition": "A failure symptom indicating that the manufacturing processes G84, G88, and G188 were programmed without the required feed parameter F or with an incorrect value, potentially leading to feed control issues in the manufacturing workflow.",
+      "aliases": [
+        "feed parameter omission",
+        "feed parameter error",
+        "missing feed parameter",
+        "incorrect feed value"
+      ],
+      "synonyms": [
+        "missing feed parameter",
+        "incorrect feed value",
+        "parameter F omitted",
+        "feed parameter error"
+      ],
+      "lexical_variants": [
+        "G84, G88, G188 programmed without feed parameter F",
+        "G84, G88, G188 missing feed parameter F",
+        "G84, G88, G188 with incorrect feed parameter F",
+        "G84, G88, G188 programmed without parameter F",
+        "G84, G88, G188 programmed with an incorrect feed value"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00030",
+          "text": "G84, G88, G188 have been programmed without parameter F which indicates the feed, or it was indicated with an incorrect value",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": -1,
+              "chunk_end_char": -1,
+              "doc_start_char": -1,
+              "doc_end_char": -1,
+              "snippet": ".\nresponsible for\nmessage no: 2065\ntext: MAINTENANCE NOTICE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns that some maintenance settings are about to be\ncause:\nto exhaust oneself\nCheck on the “MAINTENANCE” page which of the items listed\nintervention:\nrequest an interview\nrespon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00029",
+      "canonical_label": "Modify the programmed reduction value",
+      "normalized_label": "modify the programmed reduction value",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention action",
+        "adjustment of controllable parameter",
+        "torque reduction",
+        "manufacturing facility",
+        "production line",
+        "manufacturing cell"
+      ],
+      "definition": "An intervention action that involves changing the programmed reduction value (or setting) in a manufacturing system, typically to adjust torque reduction.",
+      "aliases": [
+        "Adjust the programmed reduction value",
+        "Change the programmed reduction value",
+        "Modify the programmed reduction setting"
+      ],
+      "synonyms": [
+        "Alter the programmed reduction value",
+        "Modify the programmed reduction setting",
+        "Adjust the programmed reduction setting"
+      ],
+      "lexical_variants": [
+        "programmed reduction value",
+        "programmed reduction setting",
+        "reduction value",
+        "reduction setting"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00031",
+          "text": "Modify the programmed reduction value",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1873,
+              "chunk_end_char": 1910,
+              "doc_start_char": 56873,
+              "doc_end_char": 56910,
+              "snippet": "uested at the indicated axis is beyond the limits:\nyour consents.\nintervention: Modify the programmed reduction value.\nresponsible for\nprogrammer\nmessage no: 3004\ntext: CAUTION VERTICAL AXIS\ntype:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00030",
+      "canonical_label": "Check the machining and remove the obstacle",
+      "normalized_label": "check the machining and remove the obstacle",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention action",
+        "Manufacturing Process",
+        "Machine",
+        "Feature of Interest",
+        "Manufacturing Facility"
+      ],
+      "definition": "An intervention action that involves inspecting a machining operation and clearing an obstacle within a manufacturing facility.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00033",
+          "text": "Check the machining and remove the obstacle",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 3747,
+              "chunk_end_char": 3790,
+              "doc_start_char": 58747,
+              "doc_end_char": 58790,
+              "snippet": "on causing:\ngrammed because of an obstacle he found on his route.\nintervention: Check the machining and remove the obstacle.\nresponsible for\nprogrammer\nmessage no: 3009 - 3011\ntext: AXIS NOT IN STOP\ntype"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00031",
+      "canonical_label": "Check the machining, and review the program",
+      "normalized_label": "check the machining and review the program",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "ManufacturingProcess",
+        "Machine",
+        "HumanProcess",
+        "ManufacturingFacility"
+      ],
+      "definition": "An intervention action where an operator checks the machining process and reviews the associated machine program.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00034",
+          "text": "Check the machining, and review the program",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 4121,
+              "chunk_end_char": 4164,
+              "doc_start_char": 59121,
+              "doc_end_char": 59164,
+              "snippet": "sent any tracking error, so it cannot\nbe in contact with the part\nintervention: Check the machining, and review the program.\nresponsible for\nprogrammer\nmessage no: 3012\ntext: WRONG OR MISSING FEED\ntype:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00032",
+      "canonical_label": "Check the program and modify the instruction",
+      "normalized_label": "check the program and modify the instruction",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention action",
+        "program modification",
+        "instruction adjustment",
+        "constraint compliance",
+        "maintenance activity",
+        "Feature of Interest: program",
+        "Temporal Entity: time of intervention",
+        "Production Line: context"
+      ],
+      "definition": "An intervention action performed by a maintenance or operator that involves inspecting a program and altering its instruction to correct errors or satisfy constraints within a production line.",
+      "aliases": [
+        "Program review and instruction update",
+        "Inspect program and adjust instruction"
+      ],
+      "synonyms": [
+        "Examine the program and modify the instruction",
+        "Review the program and change the instruction"
+      ],
+      "lexical_variants": [
+        "Check program and modify instruction",
+        "Check the program and modify the instruction"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00035",
+          "text": "Check the program and modify the instruction",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 4476,
+              "chunk_end_char": 4520,
+              "doc_start_char": 59476,
+              "doc_end_char": 59520,
+              "snippet": "ates:\nthan the feed, or it was indicated with an incorrect value.\nintervention: Check the program and modify the instruction.\nresponsible for\nprogrammer\n\nmessage n°: 3006 - 3008 text: AXIS NOT IN POSITION"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00033",
+      "canonical_label": "Wait for the main switch to trip, then turn it on and turn on the machine",
+      "normalized_label": "wait for the main switch to trip then turn it on and turn on the machine",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention action",
+        "reset machine",
+        "main switch",
+        "technician",
+        "manufacturing cell",
+        "manufacturing facility"
+      ],
+      "definition": "An intervention action performed by a technician in which the technician waits for the main switch to trip (indicating a fault or reset), then manually re‑engages the switch and powers on the machine to resume operation.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [
+        "wait for the main switch to trip, then turn it on and start the machine",
+        "wait for the main switch to trip, then power on the machine"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00036",
+          "text": "Wait for the main switch to trip, then turn it on and turn on the machine",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1183,
+              "chunk_end_char": 1256,
+              "doc_start_char": 56183,
+              "doc_end_char": 56256,
+              "snippet": "m has occurred, therefore the machine shutdown phase has started. intervention: Wait for the main switch to trip, then turn it on and turn on the machine. responsible for the intervention:\n\nmessage n°: 2065 text: MAINTENANCE NOTICE t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00034",
+      "canonical_label": "request an interview",
+      "normalized_label": "request an interview",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Feature of Interest",
+        "Production Line",
+        "Interval",
+        "Constraint",
+        "Instant",
+        "requires action"
+      ],
+      "definition": "Action to request an interview.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00037",
+          "text": "request an interview",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 273,
+              "chunk_end_char": 293,
+              "doc_start_char": 55273,
+              "doc_end_char": 55293,
+              "snippet": "oneself\nCheck on the “MAINTENANCE” page which of the items listed\nintervention:\nrequest an interview\nresponsible for\n\nmessage n°: 2061 text: CONFIGURED PRODUCTION REACHED type: Sta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00035",
+      "canonical_label": "Check in the “MAINTENANCE” page which of the listed items requires maintenance",
+      "normalized_label": "check in the maintenance page which of the listed items requires maintenance",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "requires maintenance",
+        "intervention action",
+        "maintenance check",
+        "maintenance page",
+        "listed items",
+        "Feature of Interest",
+        "Manufacturing Facility",
+        "Manager"
+      ],
+      "definition": "An intervention action that involves reviewing the items listed on the maintenance page to determine which ones require maintenance.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00038",
+          "text": "Check in the “MAINTENANCE” page which of the listed items requires maintenance",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1478,
+              "chunk_end_char": 1556,
+              "doc_start_char": 56478,
+              "doc_end_char": 56556,
+              "snippet": "ause: Warns that some maintenance parameters are about to run out intervention: Check in the “MAINTENANCE” page which of the listed items requires maintenance responsible for the intervention: responsible for the maintenance\n\nmessage no:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00036",
+      "canonical_label": "Check on the “MAINTENANCE” page which of the items listed",
+      "normalized_label": "check on the maintenance page which of the items listed",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "intervention action",
+        "maintenance review",
+        "inspection action",
+        "verification action",
+        "maintenance documentation"
+      ],
+      "definition": "An action to examine the maintenance page to determine which items are listed.",
+      "aliases": [
+        "Review maintenance page",
+        "Inspect maintenance page",
+        "Verify maintenance items"
+      ],
+      "synonyms": [
+        "review",
+        "inspect",
+        "verify"
+      ],
+      "lexical_variants": [
+        "Check the maintenance page for listed items",
+        "Check the maintenance page to see which items are listed",
+        "Check the maintenance page to identify listed items"
+      ],
+      "mentions": [
+        {
+          "expr_id": "expr_00039",
+          "text": "Check on the “MAINTENANCE” page which of the items listed",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 201,
+              "chunk_end_char": 258,
+              "doc_start_char": 55201,
+              "doc_end_char": 55258,
+              "snippet": "Warns that some maintenance settings are about to be\ncause:\nto exhaust oneself\nCheck on the “MAINTENANCE” page which of the items listed\nintervention:\nrequest an interview\nresponsible for\n\nmessage n°: 2061 text: CONF"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_r_00037",
+      "canonical_label": "toolmaker-adjuster",
+      "normalized_label": "toolmaker-adjuster",
+      "candidate_type": "relation",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Manager",
+        "responsible for",
+        "supervises"
+      ],
+      "definition": "A person responsible for supervising manufacturing operations and responding to detected situations.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00040",
+          "text": "toolmaker-adjuster",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 827,
+              "chunk_end_char": 845,
+              "doc_start_char": 55827,
+              "doc_end_char": 55845,
+              "snippet": "of set pieces from the appropriate user page. responsible for the intervention: toolmaker-adjuster\n\nmessage no.: 2062 text: AUTOMATIC STOP: MACHINE IN ALARM type: Standard: Optio"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attribute_candidates": [
+    {
+      "candidate_id": "cand_v_00000",
+      "canonical_label": "Standard Optional",
+      "normalized_label": "standard optional",
+      "candidate_type": "attribute",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "attribute",
+        "Standard",
+        "Optional",
+        "alarm type classification"
+      ],
+      "definition": "An attribute indicating that a feature or requirement is optional within a standard.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00009",
+          "text": "Standard: Optional:",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 66,
+              "chunk_end_char": 85,
+              "doc_start_char": 55066,
+              "doc_end_char": 55085,
+              "snippet": ".\nresponsible for\nmessage no: 2065\ntext: MAINTENANCE NOTICE\ntype: Standard: Optional:\neffect: Only display of the message\nWarns that some maintenance settings are ab"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event_candidates": [
+    {
+      "candidate_id": "cand_s_00000",
+      "canonical_label": "Vertical Axis Caution Alarm",
+      "normalized_label": "vertical axis caution alarm",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "AlarmType",
+        "MachineState",
+        "VerticalAxis",
+        "TorqueControl",
+        "SafetyCaution"
+      ],
+      "definition": "An alarm indicating that torque reduction on the vertical axis is not permitted, warning operators to avoid reducing torque below a safe threshold.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00004",
+          "text": "CAUTION VERTICAL AXIS",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1962,
+              "chunk_end_char": 1983,
+              "doc_start_char": 56962,
+              "doc_end_char": 56983,
+              "snippet": "e programmed reduction value.\nresponsible for\nprogrammer\nmessage no: 3004\ntext: CAUTION VERTICAL AXIS\ntype: Standard: Optional:\nAlarm with program interruption, axis and bro-effect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_s_00001",
+      "canonical_label": "Modify the program",
+      "normalized_label": "modify the program",
+      "candidate_type": "event",
+      "confidence": 0.95,
+      "ontology_hints": [
+        "Process",
+        "HumanProcess",
+        "ManufacturingProcess",
+        "LogisticProcess",
+        "Interval"
+      ],
+      "definition": "An intervention action that modifies a program, i.e., changes or adjusts the program to alter its behavior or configuration.",
+      "aliases": [],
+      "synonyms": [],
+      "lexical_variants": [],
+      "mentions": [
+        {
+          "expr_id": "expr_00032",
+          "text": "Modify the program",
+          "evidence": [
+            {
+              "chunk_id": "chunk_0011",
+              "chunk_start_char": 1873,
+              "chunk_end_char": 1891,
+              "doc_start_char": 56873,
+              "doc_end_char": 56891,
+              "snippet": "uested at the indicated axis is beyond the limits:\nyour consents.\nintervention: Modify the programmed reduction value.\nresponsible for\nprogrammer\nmessage no: 3004\ntext: CAUTION V"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

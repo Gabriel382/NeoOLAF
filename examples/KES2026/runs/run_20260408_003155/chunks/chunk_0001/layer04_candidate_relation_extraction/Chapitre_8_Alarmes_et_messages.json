@@ -1,0 +1,150 @@
+{
+  "layer": "layer04_candidate_relation_extraction",
+  "num_candidate_relation_assertions": 6,
+  "candidate_relation_assertions": [
+    {
+      "assertion_id": "rel_assert_00000",
+      "relation_candidate_id": "cand_r_00009",
+      "relation_label": "Insufficient quantity of coolant in the water circuit",
+      "source_candidate_id": "cand_s_00000",
+      "source_candidate_label": "failure symptom",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "Alarm",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0001",
+      "justification": "The chunk text explicitly states that the alarm (Alarm No. 1011) is caused by an insufficient quantity of coolant in the water circuit, linking the failure symptom to the alarm event.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 1674,
+          "chunk_end_char": 1727,
+          "doc_start_char": 6674,
+          "doc_end_char": 6727,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle.\nInsufficient quantity of coolant in the water circuit:\nwise of the linear motor.\nCheck the liquid level in the watering circuit.\ninte"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00001",
+      "relation_candidate_id": "cand_r_00011",
+      "relation_label": "The refrigerator cannot lower the engine temperature",
+      "source_candidate_id": "cand_s_00000",
+      "source_candidate_label": "failure symptom",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "Alarm",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0001",
+      "justification": "The chunk states that the refrigerator cannot lower the engine temperature, which is listed as the cause of Alarm No. 1012 (a generic alarm event). This indicates a causal relation from the failure symptom to the alarm.",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 2076,
+          "chunk_end_char": 2128,
+          "doc_start_char": 7076,
+          "doc_end_char": 7128,
+          "snippet": "type: Standard: Optional:\neffect: Alarm with shutdown at the end of the cycle.\nThe refrigerator cannot lower the engine temperature\ncause:\nlinear.\nCheck the correct operation of the refrigerator compressor.\ninte"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00002",
+      "relation_candidate_id": "cand_r_00013",
+      "relation_label": "Hardware problems with axes and spindles",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "Alarm",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00000",
+      "target_candidate_label": "failure symptom",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0001",
+      "justification": "The chunk text for alarm 1013 states that its cause is \"Hardware problems with axes and spindles\", which is a failure symptom. Thus the alarm event (cand_s_00001) is linked to the failure symptom (cand_s_00000) via the cause relation.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 3870,
+          "chunk_end_char": 3910,
+          "doc_start_char": 8870,
+          "doc_end_char": 8910,
+          "snippet": "f authorizationeffect:\nhardware installation of the axes/spindles feeder\ncause: Hardware problems with axes and spindles.\nNote the power supply error code marked A2831 and consult\nintervention: the Fa"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00003",
+      "relation_candidate_id": "cand_r_00018",
+      "relation_label": "cause",
+      "source_candidate_id": "cand_s_00004",
+      "source_candidate_label": "SIDE PROTECTIONS OPEN",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_s_00001",
+      "target_candidate_label": "Alarm",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0001",
+      "justification": "The chunk explicitly states that the alarm is caused by the side protections being open, linking the failure symptom 'SIDE PROTECTIONS OPEN' to the alarm event.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 52,
+          "chunk_end_char": 58,
+          "doc_start_char": 5052,
+          "doc_end_char": 5058,
+          "snippet": "l: effect: Alarm with immediate and controlled stop cause: At the start of the cycle the sliding door is not in a safe condition. interven"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00004",
+      "relation_candidate_id": "cand_r_00022",
+      "relation_label": "references",
+      "source_candidate_id": "cand_e_00000",
+      "source_candidate_label": "alarm identifier",
+      "source_candidate_type": "entity",
+      "target_candidate_id": "cand_s_00004",
+      "target_candidate_label": "SIDE PROTECTIONS OPEN",
+      "target_candidate_type": "event",
+      "chunk_id": "chunk_0001",
+      "justification": "The chunk text lists \"Alarm n°: 1005 text: SIDE PROTECTIONS OPEN\", indicating that the alarm identifier 1005 references the alarm event \"SIDE PROTECTIONS OPEN\".",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 216,
+          "chunk_end_char": 224,
+          "doc_start_char": 5216,
+          "doc_end_char": 5224,
+          "snippet": "ention: Release the door release button before ordering the start of the cycle. See page 19 of the electrical diagram, entry X3.2 responsible for the intervention: oper"
+        }
+      ]
+    },
+    {
+      "assertion_id": "rel_assert_00005",
+      "relation_candidate_id": "cand_r_00030",
+      "relation_label": "PSM FEEDER FAILURE",
+      "source_candidate_id": "cand_s_00001",
+      "source_candidate_label": "Alarm",
+      "source_candidate_type": "event",
+      "target_candidate_id": "cand_r_00030",
+      "target_candidate_label": "PSM FEEDER FAILURE",
+      "target_candidate_type": "relation",
+      "chunk_id": "chunk_0001",
+      "justification": "The chunk text identifies 'PSM FEEDER FAILURE' as an alarm (Alarm n°: 1013), indicating it is an instance of the generic 'Alarm' event concept.",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "chunk_id": "chunk_0001",
+          "chunk_start_char": 4878,
+          "chunk_end_char": 4896,
+          "doc_start_char": 9878,
+          "doc_end_char": 9896,
+          "snippet": "l diagram, input X3.5\n(0 = ALARM, 1 = OK)\nresponsible for\n\nalarm n°: 1013 text: PSM FEEDER FAILURE type: Standard: Optional: effect: Alarm with immediate and controlled shutdown,"
+        }
+      ]
+    }
+  ]
+}
