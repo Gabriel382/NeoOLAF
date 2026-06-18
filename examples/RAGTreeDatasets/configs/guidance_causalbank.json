@@ -1,0 +1,19 @@
+{
+  "domain_focus": "CausalBank-style document/sentence-level causal relation extraction. Use the normalized dataset text, entities/events if present, and the WordNet/Synset ontology as constraints. The task is constrained causal relation prediction, not open information extraction.",
+  "abstraction_level": "causal expression/event level. Preserve the dataset's canonical head and tail IDs when available. Do not invent new nodes unless the runner requires a candidate expression extracted from the document.",
+  "priority_relations": ["CAUSES", "causal", "cause-effect"],
+  "population_policy": "Predict only relations supported by explicit or strongly implied causal wording. Respect direction: cause -> effect. Avoid temporal, topical, or co-occurrence relations that do not express causality.",
+  "event_modeling_preference": "Model cause and effect as event/expression candidates. Entities are useful only when they anchor a causal expression.",
+  "ontology_depth": "balanced",
+  "promotion_min_confidence": 0.65,
+  "hierarchy_min_confidence": 0.65,
+  "concept_promotion_bias": 0.35,
+  "relation_examples": [
+    {"text": "Heavy rainfall caused flooding in the city.", "source_label": "Heavy rainfall", "relation_label": "CAUSES", "target_label": "flooding in the city", "explanation": "The verb 'caused' explicitly supports cause -> effect."},
+    {"text": "The strike led to delays in production.", "source_label": "strike", "relation_label": "CAUSES", "target_label": "delays in production", "explanation": "The phrase 'led to' supports a causal relation."}
+  ],
+  "negative_examples": [
+    {"text": "The storm occurred before the meeting.", "explanation": "Temporal order alone is not causality."},
+    {"text": "The company mentioned inflation and revenue in the same paragraph.", "explanation": "Co-occurrence alone is not enough for a causal relation."}
+  ]
+}

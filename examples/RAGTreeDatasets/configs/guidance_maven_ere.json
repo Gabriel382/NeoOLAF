@@ -1,0 +1,18 @@
+{
+  "domain_focus": "MAVEN-ERE-style event relation extraction. Use normalized documents, event mentions, sentence IDs and the EventKG ontology as constraints. The task is constrained event-event relation prediction.",
+  "abstraction_level": "event cluster/event mention level. Preserve dataset event IDs and evidence sentence IDs.",
+  "priority_relations": ["BEFORE", "AFTER", "CAUSES", "PRECONDITION", "SUBEVENT", "COREFERENCE", "TEMPORAL"],
+  "population_policy": "Predict only relations supported by explicit discourse markers, temporal markers, causal markers, event structure or strong document-level evidence. Respect relation direction exactly.",
+  "event_modeling_preference": "Events are primary nodes. Entities are participants and should not replace event nodes in final event relations.",
+  "ontology_depth": "balanced",
+  "promotion_min_confidence": 0.65,
+  "hierarchy_min_confidence": 0.65,
+  "concept_promotion_bias": 0.35,
+  "relation_examples": [
+    {"text": "The company announced the plan before it launched the service.", "source_label": "announced", "relation_label": "BEFORE", "target_label": "launched", "explanation": "The word 'before' explicitly supports temporal direction."},
+    {"text": "The earthquake damaged roads, preventing aid delivery.", "source_label": "earthquake damaged roads", "relation_label": "CAUSES", "target_label": "preventing aid delivery", "explanation": "The damage event causes the prevention event."}
+  ],
+  "negative_examples": [
+    {"text": "Two event mentions share the same participant.", "explanation": "Shared participants alone do not imply a temporal, causal, subevent or coreference relation."}
+  ]
+}

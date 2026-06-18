@@ -1,0 +1,18 @@
+{
+  "domain_focus": "FinCausal-style financial causal relation extraction. Use the full financial text, normalized sentences and the FIBO ontology as constraints. The task is constrained extraction of financial cause-effect relations.",
+  "abstraction_level": "financial event/expression level. Prefer cause and effect spans that preserve economic meaning.",
+  "priority_relations": ["CAUSES", "causes", "causal"],
+  "population_policy": "Predict only explicit or strongly supported financial cause-effect relations. Respect direction: cause -> effect. Avoid generic correlations, background context or mere temporal succession.",
+  "event_modeling_preference": "Promote financial indicators, corporate events, market changes and operational outcomes when they participate in causal relations.",
+  "ontology_depth": "balanced",
+  "promotion_min_confidence": 0.65,
+  "hierarchy_min_confidence": 0.65,
+  "concept_promotion_bias": 0.35,
+  "relation_examples": [
+    {"text": "Revenue increased because demand for the product rose.", "source_label": "demand for the product rose", "relation_label": "CAUSES", "target_label": "Revenue increased", "explanation": "The marker 'because' gives a clear financial causal direction."},
+    {"text": "Higher raw material costs reduced profit margins.", "source_label": "Higher raw material costs", "relation_label": "CAUSES", "target_label": "reduced profit margins", "explanation": "The verb 'reduced' expresses a causal financial impact."}
+  ],
+  "negative_examples": [
+    {"text": "The report discusses inflation and earnings.", "explanation": "Financial topical relatedness does not imply causality."}
+  ]
+}

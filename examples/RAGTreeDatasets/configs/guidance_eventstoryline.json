@@ -1,0 +1,18 @@
+{
+  "domain_focus": "EventStoryLine-style event relation extraction. Use the normalized document, sentence IDs, event mentions and OWL-Time ontology as constraints. The task is constrained event-event relation prediction.",
+  "abstraction_level": "event mention or event cluster level. Preserve sentence IDs and event IDs. Relations connect events, not generic entities.",
+  "priority_relations": ["BEFORE", "AFTER", "OVERLAP", "CAUSES", "RELATED"],
+  "population_policy": "Predict only event-event relations supported by textual evidence. Respect direction exactly. Prefer high precision. Do not infer temporal order from narrative order alone unless the text supports it.",
+  "event_modeling_preference": "Events are first-class nodes. Entities can be participants, locations or temporal anchors, but final benchmark relations should follow the dataset relation schema.",
+  "ontology_depth": "balanced",
+  "promotion_min_confidence": 0.65,
+  "hierarchy_min_confidence": 0.65,
+  "concept_promotion_bias": 0.35,
+  "relation_examples": [
+    {"text": "After the explosion, authorities evacuated the area.", "source_label": "explosion", "relation_label": "BEFORE", "target_label": "evacuated", "explanation": "The marker 'After' supports explosion before evacuation."},
+    {"text": "The negotiations collapsed, causing protests.", "source_label": "negotiations collapsed", "relation_label": "CAUSES", "target_label": "protests", "explanation": "The marker 'causing' supports a causal event relation."}
+  ],
+  "negative_examples": [
+    {"text": "Two events are mentioned in the same sentence.", "explanation": "Same-sentence mention does not by itself imply temporal or causal relation."}
+  ]
+}
