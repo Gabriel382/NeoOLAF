@@ -56,3 +56,29 @@ python ../../experiments/methods/run_neoolaf.py \
 
 The output JSONL order remains stable and follows the selected dataset order.
 
+
+## Progress bars and error diagnostics
+
+The runner now shows a tqdm document progress bar by default. Disable it with:
+
+```bash
+--no-tqdm
+```
+
+Each run writes a compact summary and an error JSONL file. You can set explicit paths with:
+
+```bash
+--summary-output-path ./runs/neoolaf_docred_run_summary.json \
+--error-log-jsonl-path ./runs/neoolaf_docred_errors.jsonl
+```
+
+For each failed document, the runner also writes the following files in the document artifact folder:
+
+```text
+neoolaf_document_error_report.json
+neoolaf_document_error_traceback.txt
+```
+
+The terminal now prints the error type, shortened message, artifact folder, number of predicted relations per successful document, and a final distribution of error types.
+
+For smoke tests with `--max-docs`, evaluate against a matching gold subset. Otherwise the evaluator will compare a 5-document prediction file against the full split and report thousands of `missing_predictions`.

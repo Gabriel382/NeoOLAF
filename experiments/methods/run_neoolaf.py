@@ -27,6 +27,8 @@ import os
 import re
 import sys
 import time
+import traceback
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, is_dataclass
 from pathlib import Path
@@ -81,6 +83,115 @@ from neoolaf.layers.layer10_validation_reasoning.component import ValidationReas
 from neoolaf.layers.layer11_inference_completion.component import InferenceCompletionLayer
 from neoolaf.layers.layer12_serialization.component import SerializationLayer
 from neoolaf.ontology.loader import SeedOntologyLoader
+
+
+# ---------------------------------------------------------------------------
+# Progress/error helpers
+# ---------------------------------------------------------------------------
+
+class _NullProgress:
+    """Tiny tqdm-compatible fallback used when tqdm is unavailable."""
+
+    def __init__(self, total: int = 0, desc: str = "") -> None:
+        self.total = total
+        self.desc = desc
+
+    def update(self, n: int = 1) -> None:
+        return None
+
+    def close(self) -> None:
+        return None
+
+
+def make_progress(total: int, desc: str, *, disable: bool = False) -> Any:
+    """Return a tqdm progress bar when available, otherwise a silent fallback."""
+    if disable:
+        return _NullProgress(total=total, desc=desc)
+    try:
+        from tqdm.auto import tqdm  # type: ignore
+
+        return tqdm(total=total, desc=desc, unit="doc")
+    except Exception:
+        return _NullProgress(total=total, desc=desc)
+
+
+def progress_write(message: str, *, disable_tqdm: bool = False) -> None:
+    """Write messages without breaking tqdm output when tqdm is installed."""
+    if not disable_tqdm:
+        try:
+            from tqdm.auto import tqdm  # type: ignore
+
+            tqdm.write(message)
+            return
+        except Exception:
+            pass
+    print(message)
+
+
+def shorten_text(value: Any, limit: int = 280) -> str:
+    """Compact long error messages for terminal logs."""
+    text = str(value or "").replace("\n", " ").strip()
+    if len(text) > limit:
+        return text[: limit - 3] + "..."
+    return text
+
+
+def collect_artifact_error_files(artifact_dir: Optional[str], *, limit: int = 8) -> List[Dict[str, Any]]:
+    """Collect compact previews of error-like files created by layer artifacts."""
+    if not artifact_dir:
+        return []
+    root = Path(artifact_dir)
+    if not root.exists():
+        return []
+
+    candidates: List[Path] = []
+    for pattern in ["**/*error*.txt", "**/*error*.json", "**/raw_response*.txt", "**/prompt*.txt"]:
+        candidates.extend(root.glob(pattern))
+
+    # Keep newest and avoid duplicates.
+    unique = sorted(set(candidates), key=lambda p: p.stat().st_mtime if p.exists() else 0, reverse=True)
+    previews: List[Dict[str, Any]] = []
+    for path in unique[:limit]:
+        preview = ""
+        try:
+            if path.is_file():
+                preview = path.read_text(encoding="utf-8", errors="replace")[:1200]
+        except Exception as exc:
+            preview = f"<could not read preview: {exc}>"
+        previews.append(
+            {
+                "path": str(path),
+                "size_bytes": path.stat().st_size if path.exists() else None,
+                "preview": preview,
+            }
+        )
+    return previews
+
+
+def write_document_error_report(
+    artifact_dir: Optional[str],
+    *,
+    doc_id: str,
+    error: Exception,
+    traceback_text: str,
+) -> None:
+    """Persist a detailed per-document error report in the document artifact folder."""
+    if not artifact_dir:
+        return
+    root = Path(artifact_dir)
+    root.mkdir(parents=True, exist_ok=True)
+    report = {
+        "document_id": doc_id,
+        "error_type": type(error).__name__,
+        "error_message": str(error),
+        "traceback": traceback_text,
+        "artifact_error_files": collect_artifact_error_files(artifact_dir),
+    }
+    (root / "neoolaf_document_error_report.json").write_text(
+        json.dumps(report, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    (root / "neoolaf_document_error_traceback.txt").write_text(traceback_text, encoding="utf-8")
 
 
 # ---------------------------------------------------------------------------
@@ -625,9 +736,12 @@ def make_error_result(
     method: str,
     error: Exception | str,
     artifact_dir: Optional[str] = None,
+    traceback_text: str = "",
 ) -> Dict[str, Any]:
     """Return a canonical error row instead of crashing the full dataset run."""
     doc_id = document_id_from_record(record, index)
+    error_type = type(error).__name__ if isinstance(error, Exception) else "Error"
+    error_message = str(error)
     return {
         "document_id": doc_id,
         "title": title_from_record(record, doc_id),
@@ -637,7 +751,12 @@ def make_error_result(
         "prediction": {"entities": [], "relations": []},
         "raw_counts": {"canonical_entities": 0, "canonical_relations": 0},
         "artifact_dir": artifact_dir,
-        "error": str(error),
+        "runtime_seconds": None,
+        "error": error_message,
+        "error_type": error_type,
+        "error_message": error_message,
+        "error_traceback": traceback_text,
+        "artifact_error_files": collect_artifact_error_files(artifact_dir),
     }
 
 
@@ -698,12 +817,20 @@ def run_one_document(
         }
         return index, result
     except Exception as exc:
+        traceback_text = traceback.format_exc()
+        write_document_error_report(
+            artifact_dir,
+            doc_id=doc_id,
+            error=exc,
+            traceback_text=traceback_text,
+        )
         return index, make_error_result(
             record,
             index,
             method="neoolaf",
             error=exc,
             artifact_dir=artifact_dir,
+            traceback_text=traceback_text,
         )
 
 
@@ -757,6 +884,13 @@ def parse_args() -> argparse.Namespace:
         help="Number of documents to process in parallel. Default preserves old sequential behavior.",
     )
 
+    # Diagnostics/progress.
+    parser.add_argument("--no-tqdm", action="store_true", help="Disable tqdm progress bars.")
+    parser.add_argument("--show-error-traceback", action="store_true", help="Print full traceback for document errors.")
+    parser.add_argument("--error-log-jsonl-path", default=None, help="Optional JSONL file for document-level errors.")
+    parser.add_argument("--summary-output-path", default=None, help="Optional JSON summary of the benchmark run.")
+    parser.add_argument("--fail-fast", action="store_true", help="Stop after the first document-level error.")
+
     # Runtime controls.
     parser.add_argument("--max-docs", type=int, default=None, help="Optional cap for quick tests.")
     parser.add_argument("--temperature", type=float, default=0.0)
@@ -779,6 +913,66 @@ def write_jsonl(path: str | Path, rows: List[Dict[str, Any]]) -> None:
         for row in rows:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
     os.replace(tmp_path, path)
+
+
+def default_error_log_path(output_jsonl_path: str | Path) -> Path:
+    """Default error JSONL path derived from the prediction output path."""
+    path = Path(output_jsonl_path)
+    return path.with_name(path.stem + ".errors.jsonl")
+
+
+def default_summary_path(output_jsonl_path: str | Path) -> Path:
+    """Default run summary JSON path derived from the prediction output path."""
+    path = Path(output_jsonl_path)
+    return path.with_name(path.stem + ".run_summary.json")
+
+
+def relation_count_from_result(result: Dict[str, Any]) -> int:
+    """Return number of canonical predicted relations for one result row."""
+    return len(((result.get("prediction") or {}).get("relations") or []))
+
+
+def build_run_summary(
+    *,
+    args: argparse.Namespace,
+    final_rows: List[Dict[str, Any]],
+    elapsed: float,
+) -> Dict[str, Any]:
+    """Build a compact dataset-level run summary with error diagnostics."""
+    parsed_ok = sum(1 for row in final_rows if row.get("parsed_ok"))
+    error_rows = [row for row in final_rows if not row.get("parsed_ok")]
+    zero_relation_docs = [
+        row.get("document_id")
+        for row in final_rows
+        if row.get("parsed_ok") and relation_count_from_result(row) == 0
+    ]
+    return {
+        "dataset_jsonl_path": args.dataset_jsonl_path,
+        "ontology_path": args.ontology_path,
+        "output_jsonl_path": args.output_jsonl_path,
+        "model_name": args.model_name,
+        "type_filter": args.type_filter,
+        "documents": len(final_rows),
+        "parsed_ok": parsed_ok,
+        "failed": len(error_rows),
+        "relations": sum(relation_count_from_result(row) for row in final_rows),
+        "elapsed_seconds": elapsed,
+        "document_workers": args.document_workers,
+        "max_workers": args.max_workers,
+        "error_type_counts": dict(Counter(str(row.get("error_type", "Error")) for row in error_rows)),
+        "zero_relation_docs_count": len(zero_relation_docs),
+        "zero_relation_doc_ids_preview": zero_relation_docs[:20],
+        "errors_preview": [
+            {
+                "document_id": row.get("document_id"),
+                "error_type": row.get("error_type"),
+                "error_message": row.get("error_message") or row.get("error"),
+                "artifact_dir": row.get("artifact_dir"),
+                "artifact_error_files": row.get("artifact_error_files", [])[:3],
+            }
+            for row in error_rows[:20]
+        ],
+    }
 
 
 def main() -> None:
@@ -813,65 +1007,111 @@ def main() -> None:
 
     results: List[Optional[Dict[str, Any]]] = [None] * len(records)
     workers = max(1, int(args.document_workers or 1))
+    progress = make_progress(len(records), "NeoOLAF documents", disable=args.no_tqdm)
 
-    if workers == 1:
-        for idx, record in enumerate(records):
-            out_idx, result = run_one_document(
-                args=args,
-                record=record,
-                index=idx,
-                guidance=guidance,
-                seed_ontology=seed_ontology,
-                run_stamp=run_stamp,
+    def handle_result(completed_no: int, out_idx: int, result: Dict[str, Any]) -> None:
+        """Store and log one document result."""
+        results[out_idx] = result
+        progress.update(1)
+        relation_count = relation_count_from_result(result)
+        runtime = result.get("runtime_seconds")
+        runtime_txt = f" time={runtime:.2f}s" if isinstance(runtime, (int, float)) else ""
+        if result.get("parsed_ok"):
+            msg = (
+                f"[{completed_no}/{len(records)}] {result['document_id']} ok "
+                f"relations={relation_count}{runtime_txt}"
             )
-            results[out_idx] = result
-            status = "ok" if result.get("parsed_ok") else "error"
-            print(f"[{out_idx + 1}/{len(records)}] {result['document_id']} {status}")
-    else:
-        with ThreadPoolExecutor(max_workers=workers) as executor:
-            future_to_idx = {
-                executor.submit(
-                    run_one_document,
+        else:
+            err_type = result.get("error_type", "Error")
+            err_msg = shorten_text(result.get("error_message") or result.get("error"))
+            msg = (
+                f"[{completed_no}/{len(records)}] {result['document_id']} error "
+                f"{err_type}: {err_msg} artifact={result.get('artifact_dir')}"
+            )
+        progress_write(msg, disable_tqdm=args.no_tqdm)
+        if (not result.get("parsed_ok")) and args.show_error_traceback:
+            progress_write(str(result.get("error_traceback") or ""), disable_tqdm=args.no_tqdm)
+        if (not result.get("parsed_ok")) and args.fail_fast:
+            raise RuntimeError(f"Fail-fast after document error: {result.get('document_id')} {result.get('error_message')}")
+
+    try:
+        if workers == 1:
+            for idx, record in enumerate(records):
+                out_idx, result = run_one_document(
                     args=args,
                     record=record,
                     index=idx,
                     guidance=guidance,
                     seed_ontology=seed_ontology,
                     run_stamp=run_stamp,
-                ): idx
-                for idx, record in enumerate(records)
-            }
-            completed = 0
-            for future in as_completed(future_to_idx):
-                idx = future_to_idx[future]
-                try:
-                    out_idx, result = future.result()
-                except Exception as exc:
-                    # This should be rare because run_one_document catches document errors.
-                    out_idx = idx
-                    result = make_error_result(
-                        records[idx],
-                        idx,
-                        method="neoolaf",
-                        error=exc,
-                        artifact_dir=None,
-                    )
-                results[out_idx] = result
-                completed += 1
-                status = "ok" if result.get("parsed_ok") else "error"
-                print(f"[{completed}/{len(records)}] {result['document_id']} {status}")
+                )
+                handle_result(idx + 1, out_idx, result)
+        else:
+            with ThreadPoolExecutor(max_workers=workers) as executor:
+                future_to_idx = {
+                    executor.submit(
+                        run_one_document,
+                        args=args,
+                        record=record,
+                        index=idx,
+                        guidance=guidance,
+                        seed_ontology=seed_ontology,
+                        run_stamp=run_stamp,
+                    ): idx
+                    for idx, record in enumerate(records)
+                }
+                completed = 0
+                for future in as_completed(future_to_idx):
+                    idx = future_to_idx[future]
+                    try:
+                        out_idx, result = future.result()
+                    except Exception as exc:
+                        # This should be rare because run_one_document catches document errors.
+                        out_idx = idx
+                        result = make_error_result(
+                            records[idx],
+                            idx,
+                            method="neoolaf",
+                            error=exc,
+                            artifact_dir=None,
+                            traceback_text=traceback.format_exc(),
+                        )
+                    completed += 1
+                    handle_result(completed, out_idx, result)
+    finally:
+        progress.close()
 
     final_rows = [row for row in results if row is not None]
     write_jsonl(args.output_jsonl_path, final_rows)
 
-    parsed_ok = sum(1 for row in final_rows if row.get("parsed_ok"))
-    total_relations = sum(len((row.get("prediction") or {}).get("relations") or []) for row in final_rows)
+    error_rows = [row for row in final_rows if not row.get("parsed_ok")]
+    error_log_path = Path(args.error_log_jsonl_path) if args.error_log_jsonl_path else default_error_log_path(args.output_jsonl_path)
+    if error_rows:
+        write_jsonl(error_log_path, error_rows)
+
     elapsed = time.time() - start
+    run_summary = build_run_summary(args=args, final_rows=final_rows, elapsed=elapsed)
+    summary_path = Path(args.summary_output_path) if args.summary_output_path else default_summary_path(args.output_jsonl_path)
+    summary_path.parent.mkdir(parents=True, exist_ok=True)
+    summary_path.write_text(json.dumps(run_summary, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    parsed_ok = run_summary["parsed_ok"]
+    total_relations = run_summary["relations"]
     print(
         "[NeoOLAF benchmark] finished "
         f"parsed_ok={parsed_ok}/{len(final_rows)} relations={total_relations} "
-        f"elapsed_seconds={elapsed:.2f} output={args.output_jsonl_path}"
+        f"failed={run_summary['failed']} zero_relation_docs={run_summary['zero_relation_docs_count']} "
+        f"elapsed_seconds={elapsed:.2f} output={args.output_jsonl_path} summary={summary_path}"
     )
+    if error_rows:
+        print(f"[NeoOLAF benchmark] error_log={error_log_path}")
+        print(f"[NeoOLAF benchmark] error_type_counts={run_summary['error_type_counts']}")
+        for err in run_summary["errors_preview"][:5]:
+            print(
+                "[NeoOLAF benchmark][error-preview] "
+                f"{err['document_id']} {err['error_type']}: {shorten_text(err['error_message'])} "
+                f"artifact={err['artifact_dir']}"
+            )
 
 
 if __name__ == "__main__":
