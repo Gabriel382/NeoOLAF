@@ -198,6 +198,31 @@ def write_document_error_report(
 # LLM backend
 # ---------------------------------------------------------------------------
 
+def compact_backend_debug(data: Dict[str, Any]) -> Dict[str, Any]:
+    """Return a compact, safe-to-log summary of an OpenAI-compatible response."""
+    choices = data.get("choices") or []
+    choice0 = choices[0] if choices else {}
+    message = choice0.get("message") or {}
+    usage = data.get("usage") or {}
+    content = message.get("content")
+    reasoning = message.get("reasoning")
+    reasoning_details = message.get("reasoning_details")
+    return {
+        "id": data.get("id"),
+        "model": data.get("model"),
+        "provider": data.get("provider"),
+        "finish_reason": choice0.get("finish_reason"),
+        "native_finish_reason": choice0.get("native_finish_reason"),
+        "message_keys": sorted(message.keys()) if isinstance(message, dict) else [],
+        "content_is_none": content is None,
+        "content_len": len(str(content or "")),
+        "has_reasoning": bool(reasoning),
+        "reasoning_len": len(str(reasoning or "")),
+        "has_reasoning_details": bool(reasoning_details),
+        "usage": usage,
+    }
+
+
 class OpenAICompatibleBackend:
     """Small backend implementing the interface expected by NeoOLAF layers.
 
@@ -215,13 +240,20 @@ class OpenAICompatibleBackend:
         host: str,
         api_key: str,
         timeout: int = 300,
-        max_tokens: int = 2048,
+        max_tokens: int = 4096,
+        reasoning_effort: Optional[str] = "minimal",
+        exclude_reasoning: bool = True,
+        dump_raw_responses: bool = False,
     ) -> None:
         self.backend_name = backend_name
         self.host = host.rstrip("/")
         self.api_key = api_key
         self.timeout = timeout
         self.max_tokens = max_tokens
+        self.reasoning_effort = reasoning_effort
+        self.exclude_reasoning = exclude_reasoning
+        self.dump_raw_responses = dump_raw_responses
+        self._call_index = 0
 
     def _chat_url(self) -> str:
         """Normalize host into a chat completions URL."""
@@ -252,6 +284,20 @@ class OpenAICompatibleBackend:
             "max_tokens": self.max_tokens,
         }
 
+        # OpenRouter exposes reasoning controls for thinking/reasoning models.
+        # This is especially important for gpt-oss providers: without this, a
+        # provider can spend the output budget on reasoning and return empty
+        # message.content even though the request succeeded.
+        if self.backend_name.lower() == "openrouter":
+            reasoning: Dict[str, Any] = {}
+            if self.reasoning_effort:
+                reasoning["effort"] = self.reasoning_effort
+            if self.exclude_reasoning:
+                reasoning["exclude"] = True
+            if reasoning:
+                payload["reasoning"] = reasoning
+
+        self._call_index += 1
         response = requests.post(
             self._chat_url(),
             headers=headers,
@@ -263,14 +309,34 @@ class OpenAICompatibleBackend:
 
         choices = data.get("choices") or []
         if not choices:
-            raise RuntimeError(f"No choices returned by backend {self.backend_name}: {data}")
+            raise RuntimeError(f"No choices returned by backend {self.backend_name}: {compact_backend_debug(data)}")
 
-        message = choices[0].get("message") or {}
+        choice0 = choices[0]
+        message = choice0.get("message") or {}
         content = message.get("content")
         if content is None:
-            content = choices[0].get("text")
-        if content is None:
-            raise RuntimeError(f"No content returned by backend {self.backend_name}: {data}")
+            content = choice0.get("text")
+
+        # Some OpenAI-compatible providers return content as a list of typed
+        # blocks. Normalize those into plain text before returning.
+        if isinstance(content, list):
+            content = "".join(
+                str(block.get("text") or block.get("content") or "")
+                if isinstance(block, dict)
+                else str(block)
+                for block in content
+            )
+
+        if content is None or not str(content).strip():
+            debug = compact_backend_debug(data)
+            raise RuntimeError(
+                "No final message.content returned by backend "
+                f"{self.backend_name}. This is not an API-key/credits error: "
+                "the request returned choices, but the final assistant content was empty. "
+                "For OpenRouter reasoning models, try --max-tokens 8192 "
+                "--openrouter-reasoning-effort minimal --openrouter-exclude-reasoning. "
+                f"Backend debug: {debug}"
+            )
         return str(content).strip()
 
     @staticmethod
@@ -560,6 +626,8 @@ def build_backend(args: argparse.Namespace) -> OpenAICompatibleBackend:
         api_key=args.api_key,
         timeout=args.request_timeout,
         max_tokens=args.max_tokens,
+        reasoning_effort=(args.openrouter_reasoning_effort or None),
+        exclude_reasoning=args.openrouter_exclude_reasoning,
     )
 
 
@@ -894,7 +962,25 @@ def parse_args() -> argparse.Namespace:
     # Runtime controls.
     parser.add_argument("--max-docs", type=int, default=None, help="Optional cap for quick tests.")
     parser.add_argument("--temperature", type=float, default=0.0)
-    parser.add_argument("--max-tokens", type=int, default=2048)
+    parser.add_argument("--max-tokens", type=int, default=4096)
+    parser.add_argument(
+        "--openrouter-reasoning-effort",
+        default="minimal",
+        choices=["xhigh", "high", "medium", "low", "minimal", "none", ""],
+        help="OpenRouter reasoning effort for reasoning models. Use minimal/none to avoid empty final content on gpt-oss providers.",
+    )
+    parser.add_argument(
+        "--openrouter-exclude-reasoning",
+        action="store_true",
+        default=True,
+        help="Request OpenRouter to exclude reasoning traces from the response. Enabled by default.",
+    )
+    parser.add_argument(
+        "--openrouter-include-reasoning",
+        dest="openrouter_exclude_reasoning",
+        action="store_false",
+        help="Debug option: allow reasoning traces to be returned by OpenRouter.",
+    )
     parser.add_argument("--request-timeout", type=int, default=300)
     parser.add_argument("--no-web-search", action="store_true", help="Disable web search in enrichment for speed/reproducibility.")
     parser.add_argument("--no-checkpoints", action="store_true")

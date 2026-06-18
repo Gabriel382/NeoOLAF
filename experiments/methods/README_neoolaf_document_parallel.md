@@ -82,3 +82,26 @@ neoolaf_document_error_traceback.txt
 The terminal now prints the error type, shortened message, artifact folder, number of predicted relations per successful document, and a final distribution of error types.
 
 For smoke tests with `--max-docs`, evaluate against a matching gold subset. Otherwise the evaluator will compare a 5-document prediction file against the full split and report thousands of `missing_predictions`.
+
+## OpenRouter / gpt-oss empty content guard
+
+If OpenRouter returns a successful response with choices but an empty `message.content`, this is usually not an API-key or credits issue. It can happen with reasoning models/providers when the output budget is consumed by reasoning tokens before a final JSON answer is emitted.
+
+The runner now adds OpenRouter reasoning controls by default and exposes:
+
+```bash
+--max-tokens 8192 \
+--openrouter-reasoning-effort minimal \
+--openrouter-exclude-reasoning
+```
+
+Recommended smoke-test settings for `openai/gpt-oss-20b` on OpenRouter:
+
+```bash
+--max-tokens 8192 \
+--openrouter-reasoning-effort minimal \
+--openrouter-exclude-reasoning \
+--document-workers 1
+```
+
+After the smoke test is stable, increase `--document-workers` to 2 or 4.
