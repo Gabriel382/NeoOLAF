@@ -1,0 +1,72 @@
+{
+  "document_id": "sample_doc",
+  "source_doc_json": "neoolaf_eval_kg_patch/sample_source_doc.json",
+  "ontology_path": "neoolaf_eval_kg_patch/sample_reference_ontology.ttl",
+  "relation_vocab_json": "neoolaf_eval_kg_patch/sample_relation_vocab.json",
+  "source_relation_vocab_json": null,
+  "relation_filter_mode": "list-only",
+  "relation_vocabulary_counts": {
+    "ontology_relation_count": 2,
+    "listed_relation_count": 3,
+    "allowed_relation_count": 3
+  },
+  "entity_count": 3,
+  "allowed_relation_count": 3,
+  "outputs": {
+    "evaluation_kg_local": "neoolaf_eval_kg_patch/sample_outputs/evaluation_kg_local.json",
+    "evaluation_kg_inferred": "neoolaf_eval_kg_patch/sample_outputs/evaluation_kg_inferred.json",
+    "evaluation_kg_combined": "neoolaf_eval_kg_patch/sample_outputs/evaluation_kg_combined.json",
+    "evaluation_projection_report": "neoolaf_eval_kg_patch/sample_outputs/evaluation_projection_report.json"
+  },
+  "reports": [
+    {
+      "source_name": "local",
+      "input_path": "neoolaf_eval_kg_patch/sample_kg_local.json",
+      "output_path": "neoolaf_eval_kg_patch/sample_outputs/evaluation_kg_local.json",
+      "total_triples": 2,
+      "accepted_triples": 1,
+      "rejected_triples": 1,
+      "repaired_entity_roles": 0,
+      "duplicate_triples": 0,
+      "projected_entities": 3,
+      "projected_relations": 1,
+      "rejected": [
+        {
+          "triple_index": 0,
+          "triple_id": "triple_00000",
+          "reasons": [
+            "invalid_predicate_relation",
+            "predicate_is_entity_label"
+          ],
+          "raw_subject": {
+            "id": "cand_r_00008",
+            "label": "Jack Gantos",
+            "type": "relation"
+          },
+          "raw_predicate": {
+            "id": "cand_r_00008",
+            "label": "Jack Gantos"
+          },
+          "raw_object": {
+            "id": "cand_e_00001",
+            "label": "Westmoreland County",
+            "type": "entity"
+          }
+        }
+      ]
+    },
+    {
+      "source_name": "inferred",
+      "input_path": "neoolaf_eval_kg_patch/sample_kg_inferred.json",
+      "output_path": "neoolaf_eval_kg_patch/sample_outputs/evaluation_kg_inferred.json",
+      "total_triples": 1,
+      "accepted_triples": 1,
+      "rejected_triples": 0,
+      "repaired_entity_roles": 0,
+      "duplicate_triples": 0,
+      "projected_entities": 2,
+      "projected_relations": 1,
+      "rejected": []
+    }
+  ]
+}

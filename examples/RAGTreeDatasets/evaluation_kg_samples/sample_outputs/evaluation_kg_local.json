@@ -1,0 +1,69 @@
+{
+  "source": "local",
+  "entities": [
+    {
+      "id": "entity_0",
+      "label": "Jack Gantos",
+      "type": "PER",
+      "aliases": []
+    },
+    {
+      "id": "entity_1",
+      "label": "Norvelt",
+      "type": "LOC",
+      "aliases": []
+    },
+    {
+      "id": "entity_2",
+      "label": "Westmoreland County",
+      "type": "LOC",
+      "aliases": []
+    }
+  ],
+  "relations": [
+    {
+      "id": "P19",
+      "label": "place of birth",
+      "aliases": [
+        "P19",
+        "birth place",
+        "born in",
+        "place of birth"
+      ]
+    }
+  ],
+  "triples": [
+    {
+      "triple_id": "local_00000",
+      "subject": {
+        "id": "entity_0",
+        "label": "Jack Gantos",
+        "type": "PER"
+      },
+      "predicate": {
+        "id": "P19",
+        "label": "place of birth"
+      },
+      "object": {
+        "id": "entity_1",
+        "label": "Norvelt",
+        "type": "LOC"
+      },
+      "source": "local",
+      "evidence": "The text says Jack Gantos was born in Norvelt.",
+      "confidence": 0.91,
+      "original_triple_id": "triple_00001"
+    }
+  ],
+  "projection": {
+    "input_path": "neoolaf_eval_kg_patch/sample_kg_local.json",
+    "strict": true,
+    "allowed_relation_count": 3,
+    "projected_entities": 3,
+    "projected_relations": 1,
+    "accepted_triples": 1,
+    "rejected_triples": 1,
+    "duplicate_triples": 0,
+    "repaired_entity_roles": 0
+  }
+}

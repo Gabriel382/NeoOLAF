@@ -1,0 +1,94 @@
+{
+  "source": "combined",
+  "entities": [
+    {
+      "id": "entity_0",
+      "label": "Jack Gantos",
+      "type": "PER",
+      "aliases": []
+    },
+    {
+      "id": "entity_1",
+      "label": "Norvelt",
+      "type": "LOC",
+      "aliases": []
+    },
+    {
+      "id": "entity_2",
+      "label": "Westmoreland County",
+      "type": "LOC",
+      "aliases": []
+    }
+  ],
+  "relations": [
+    {
+      "id": "P131",
+      "label": "located in the administrative territorial entity",
+      "aliases": [
+        "P131",
+        "administrative area",
+        "located in",
+        "located in the administrative territorial entity"
+      ]
+    },
+    {
+      "id": "P19",
+      "label": "place of birth",
+      "aliases": [
+        "P19",
+        "birth place",
+        "born in",
+        "place of birth"
+      ]
+    }
+  ],
+  "triples": [
+    {
+      "triple_id": "local_00000",
+      "subject": {
+        "id": "entity_0",
+        "label": "Jack Gantos",
+        "type": "PER"
+      },
+      "predicate": {
+        "id": "P19",
+        "label": "place of birth"
+      },
+      "object": {
+        "id": "entity_1",
+        "label": "Norvelt",
+        "type": "LOC"
+      },
+      "source": "local",
+      "evidence": "The text says Jack Gantos was born in Norvelt.",
+      "confidence": 0.91,
+      "original_triple_id": "triple_00001"
+    },
+    {
+      "triple_id": "inferred_00000",
+      "subject": {
+        "id": "entity_1",
+        "label": "Norvelt",
+        "type": "LOC"
+      },
+      "predicate": {
+        "id": "P131",
+        "label": "located in the administrative territorial entity"
+      },
+      "object": {
+        "id": "entity_2",
+        "label": "Westmoreland County",
+        "type": "LOC"
+      },
+      "source": "inferred",
+      "evidence": "Norvelt is located in Westmoreland County.",
+      "confidence": 0.88,
+      "original_triple_id": "triple_00000"
+    }
+  ],
+  "projection": {
+    "local_path": "neoolaf_eval_kg_patch/sample_outputs/evaluation_kg_local.json",
+    "inferred_path": "neoolaf_eval_kg_patch/sample_outputs/evaluation_kg_inferred.json",
+    "deduplicated_triples": 2
+  }
+}

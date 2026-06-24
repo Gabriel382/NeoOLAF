@@ -1,0 +1,63 @@
+{
+  "source": "inferred",
+  "entities": [
+    {
+      "id": "entity_1",
+      "label": "Norvelt",
+      "type": "LOC",
+      "aliases": []
+    },
+    {
+      "id": "entity_2",
+      "label": "Westmoreland County",
+      "type": "LOC",
+      "aliases": []
+    }
+  ],
+  "relations": [
+    {
+      "id": "P131",
+      "label": "located in the administrative territorial entity",
+      "aliases": [
+        "P131",
+        "administrative area",
+        "located in",
+        "located in the administrative territorial entity"
+      ]
+    }
+  ],
+  "triples": [
+    {
+      "triple_id": "inferred_00000",
+      "subject": {
+        "id": "entity_1",
+        "label": "Norvelt",
+        "type": "LOC"
+      },
+      "predicate": {
+        "id": "P131",
+        "label": "located in the administrative territorial entity"
+      },
+      "object": {
+        "id": "entity_2",
+        "label": "Westmoreland County",
+        "type": "LOC"
+      },
+      "source": "inferred",
+      "evidence": "Norvelt is located in Westmoreland County.",
+      "confidence": 0.88,
+      "original_triple_id": "triple_00000"
+    }
+  ],
+  "projection": {
+    "input_path": "neoolaf_eval_kg_patch/sample_kg_inferred.json",
+    "strict": true,
+    "allowed_relation_count": 3,
+    "projected_entities": 2,
+    "projected_relations": 1,
+    "accepted_triples": 1,
+    "rejected_triples": 0,
+    "duplicate_triples": 0,
+    "repaired_entity_roles": 0
+  }
+}
