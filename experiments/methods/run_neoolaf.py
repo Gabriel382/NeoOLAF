@@ -36,6 +36,67 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 import requests
 
+# ---------------------------------------------------------------------------
+# Optional offline Wikipedia policy
+# ---------------------------------------------------------------------------
+
+def _is_wikipedia_url(url: object) -> bool:
+    """Return True for Wikipedia/Wikimedia URLs that should be blocked in benchmark mode."""
+    try:
+        from urllib.parse import urlparse
+
+        hostname = (urlparse(str(url)).hostname or "").lower()
+    except Exception:
+        return False
+    return (
+        hostname == "wikipedia.org"
+        or hostname.endswith(".wikipedia.org")
+        or hostname == "wikimedia.org"
+        or hostname.endswith(".wikimedia.org")
+    )
+
+
+def install_wikipedia_blocker() -> None:
+    """Block Wikipedia lookups at runtime without touching NeoOLAF source code.
+
+    This is intentionally scoped to wikipedia.org / wikimedia.org. OpenRouter,
+    local files, and other HTTP endpoints remain untouched. The fake MediaWiki
+    response is empty-but-successful, so enrichment code can continue quickly.
+    """
+
+    if getattr(install_wikipedia_blocker, "_installed", False):
+        return
+
+    original_session_request = requests.sessions.Session.request
+
+    def offline_session_request(self, method, url, *args, **kwargs):  # type: ignore[no-untyped-def]
+        if not _is_wikipedia_url(url):
+            return original_session_request(self, method, url, *args, **kwargs)
+
+        response = requests.Response()
+        response.status_code = 200
+        response.url = str(url)
+        response.reason = "Wikipedia disabled by NeoOLAF benchmark policy"
+        response.headers["Content-Type"] = "application/json; charset=utf-8"
+        response._content = json.dumps(
+            {
+                "batchcomplete": "",
+                "query": {"search": [], "pages": {}},
+                "warnings": {
+                    "neoolaf": {
+                        "*": "Wikipedia lookup disabled by benchmark policy."
+                    }
+                },
+            }
+        ).encode("utf-8")
+        response.encoding = "utf-8"
+        return response
+
+    requests.sessions.Session.request = offline_session_request
+    install_wikipedia_blocker._installed = True  # type: ignore[attr-defined]
+    print("[NeoOLAF benchmark] Wikipedia/Wikimedia lookups disabled by runner policy.")
+
+
 # Allow this script to be called from notebooks located in sibling folders,
 # e.g. ../../experiments/methods/run_neoolaf.py.
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -983,6 +1044,16 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--request-timeout", type=int, default=300)
     parser.add_argument("--no-web-search", action="store_true", help="Disable web search in enrichment for speed/reproducibility.")
+    parser.add_argument(
+        "--disable-wikipedia-lookups",
+        action="store_true",
+        help="Block wikipedia.org/wikimedia.org HTTP calls inside this runner without changing NeoOLAF source.",
+    )
+    parser.add_argument(
+        "--offline-ontology-only",
+        action="store_true",
+        help="Benchmark mode: disable web enrichment and block Wikipedia/Wikimedia lookups.",
+    )
     parser.add_argument("--no-checkpoints", action="store_true")
     parser.add_argument("--no-chunk-checkpoints", action="store_true")
     parser.add_argument("--no-resume", action="store_true")
@@ -1063,6 +1134,13 @@ def build_run_summary(
 
 def main() -> None:
     args = parse_args()
+    if getattr(args, "offline_ontology_only", False):
+        args.no_web_search = True
+        args.disable_wikipedia_lookups = True
+    if getattr(args, "disable_wikipedia_lookups", False) or os.environ.get("NEOOLAF_DISABLE_WIKIPEDIA", "").strip().lower() in {"1", "true", "yes", "on"}:
+        install_wikipedia_blocker()
+    if args.no_web_search:
+        print("[NeoOLAF benchmark] Web-search enrichment disabled (--no-web-search).")
     start = time.time()
 
     records_all = load_jsonl(args.dataset_jsonl_path)
