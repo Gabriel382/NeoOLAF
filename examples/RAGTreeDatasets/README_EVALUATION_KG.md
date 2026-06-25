@@ -75,6 +75,22 @@ So the available fixed vocabulary inputs are:
 NeoOLAF remains free to add relations to its own generated ontology and native
 KG exports. The restriction applies only when creating `evaluation_kg*.json`.
 
+## Wikipedia-Free Benchmark Run
+
+The replacement notebook defaults to:
+
+```python
+DISABLE_WIKIPEDIA = True
+```
+
+It adds `experiments/methods/neoolaf_offline_runtime` to the child process
+`PYTHONPATH`. Python then loads `sitecustomize.py`, which intercepts only
+Wikipedia/Wikimedia requests and immediately returns an empty MediaWiki result.
+NeoOLAF source code is not modified, and OpenRouter requests are not blocked.
+
+This avoids Wikipedia rate-limit waits and prevents external entity enrichment
+from contaminating fixed-dataset DocRED evaluation.
+
 ## Strict Behavior
 
 The projector accepts a triple only if:
