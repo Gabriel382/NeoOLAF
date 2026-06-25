@@ -97,6 +97,54 @@ def install_wikipedia_blocker() -> None:
     print("[NeoOLAF benchmark] Wikipedia/Wikimedia lookups disabled by runner policy.")
 
 
+
+
+# ---------------------------------------------------------------------------
+# Offline source objects used by benchmark mode
+# ---------------------------------------------------------------------------
+
+class OfflineWikipediaSource:
+    """Wikipedia-compatible source that returns no external evidence.
+
+    This keeps Layer 2 alive without making network calls and without faking
+    MediaWiki HTTP responses. The shape matches WikipediaSource.search().
+    """
+
+    def search(self, term: str) -> Dict[str, Any]:
+        return {
+            "source": "wikipedia",
+            "term": term,
+            "found": False,
+            "aliases": [],
+            "summary": "",
+            "url": None,
+        }
+
+
+class OfflineWikidataSource:
+    """Wikidata-compatible source that returns no external evidence."""
+
+    def search(self, term: str, limit: int = 3) -> Dict[str, Any]:
+        return {
+            "source": "wikidata",
+            "term": term,
+            "results": [],
+            "aliases": [],
+            "labels": [],
+            "descriptions": [],
+        }
+
+
+class OfflineWebSearchSource:
+    """Web-search-compatible source that returns no external evidence."""
+
+    def search(self, term: str, max_results: int = 3) -> Dict[str, Any]:
+        return {
+            "source": "web",
+            "term": term,
+            "results": [],
+        }
+
 # Allow this script to be called from notebooks located in sibling folders,
 # e.g. ../../experiments/methods/run_neoolaf.py.
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -712,6 +760,9 @@ def build_pipeline(args: argparse.Namespace, backend: OpenAICompatibleBackend) -
         ),
         CandidateEnrichmentLayer(
             backend,
+            wikipedia_source=OfflineWikipediaSource() if args.disable_wikipedia_lookups else None,
+            wikidata_source=OfflineWikidataSource() if args.disable_wikipedia_lookups else None,
+            web_search_source=OfflineWebSearchSource() if args.no_web_search else None,
             max_expressions=args.max_expressions,
             use_web_search=not args.no_web_search,
             save_intermediate=True,
@@ -1047,7 +1098,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--disable-wikipedia-lookups",
         action="store_true",
-        help="Block wikipedia.org/wikimedia.org HTTP calls inside this runner without changing NeoOLAF source.",
+        help="Use offline Wikipedia/Wikidata source objects in Layer 2 without changing NeoOLAF source.",
     )
     parser.add_argument(
         "--offline-ontology-only",
@@ -1137,8 +1188,11 @@ def main() -> None:
     if getattr(args, "offline_ontology_only", False):
         args.no_web_search = True
         args.disable_wikipedia_lookups = True
-    if getattr(args, "disable_wikipedia_lookups", False) or os.environ.get("NEOOLAF_DISABLE_WIKIPEDIA", "").strip().lower() in {"1", "true", "yes", "on"}:
-        install_wikipedia_blocker()
+    env_disable_wiki = os.environ.get("NEOOLAF_DISABLE_WIKIPEDIA", "").strip().lower() in {"1", "true", "yes", "on"}
+    if env_disable_wiki:
+        args.disable_wikipedia_lookups = True
+    if args.disable_wikipedia_lookups:
+        print("[NeoOLAF benchmark] Wikipedia/Wikidata enrichment disabled by offline source objects.")
     if args.no_web_search:
         print("[NeoOLAF benchmark] Web-search enrichment disabled (--no-web-search).")
     start = time.time()
