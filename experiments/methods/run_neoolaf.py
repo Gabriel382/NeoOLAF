@@ -578,7 +578,7 @@ def title_from_record(record: Dict[str, Any], doc_id: str) -> str:
     return doc_id
 
 
-def record_to_document(record: Dict[str, Any], index: int) -> Document:
+def record_to_document(record: Dict[str, Any], index: int, args: Optional[argparse.Namespace] = None) -> Document:
     """Convert one normalized JSONL row into NeoOLAF's Document object."""
     doc_id = document_id_from_record(record, index)
     title = title_from_record(record, doc_id)
@@ -599,6 +599,7 @@ def record_to_document(record: Dict[str, Any], index: int) -> Document:
             "metadata": {
                 "dataset_type": record.get("type") or record.get("split"),
                 "original_keys": sorted(record.keys()),
+                "source_entities": source_entities_from_record(record),
             },
         }
     ]
@@ -670,6 +671,341 @@ def entity_items_from_record(record: Dict[str, Any]) -> List[Dict[str, Any]]:
         return [x for x in prediction["entities"] if isinstance(x, dict)]
     return []
 
+
+
+# ---------------------------------------------------------------------------
+# DocRED/RAGTree constrained vocabulary helpers
+# ---------------------------------------------------------------------------
+
+def normalize_key(value: object) -> str:
+    """Normalize labels for conservative exact matching."""
+    text = str(value or "").strip().lower()
+    text = re.sub(r"\s+", " ", text)
+    text = re.sub(r"^[\"'`]+|[\"'`]+$", "", text)
+    return text
+
+
+def split_relation_label(raw: object) -> Tuple[Optional[str], str, str]:
+    """Return (relation_id, relation_label, canonical_label)."""
+    text = str(raw or "").strip()
+    if not text:
+        return None, "", ""
+    m = re.match(r"^(P\d+)\s*:\s*(.+)$", text)
+    if m:
+        rel_id = m.group(1).strip()
+        rel_label = m.group(2).strip()
+        return rel_id, rel_label, f"{rel_id} : {rel_label}"
+    # Plain labels are allowed in JSON relation vocab files.
+    m = re.match(r"^(P\d+)$", text)
+    if m:
+        rel_id = m.group(1).strip()
+        return rel_id, rel_id, rel_id
+    return None, text, text
+
+
+def make_relation_spec(raw: object) -> Optional[Dict[str, Any]]:
+    """Normalize one relation vocabulary item."""
+    if isinstance(raw, dict):
+        source = raw.get("canonical") or raw.get("relation") or raw.get("label") or raw.get("name") or raw.get("id")
+        rel_id = raw.get("id") or raw.get("relation_id")
+        rel_label = raw.get("label") or raw.get("name") or raw.get("relation_label")
+        if rel_id and rel_label:
+            canonical = f"{str(rel_id).strip()} : {str(rel_label).strip()}"
+        else:
+            parsed_id, parsed_label, canonical = split_relation_label(source)
+            rel_id = rel_id or parsed_id
+            rel_label = rel_label or parsed_label
+    else:
+        rel_id, rel_label, canonical = split_relation_label(raw)
+    if not canonical:
+        return None
+    aliases = {canonical, rel_label}
+    if rel_id:
+        aliases.add(str(rel_id))
+    # Common model variants. These do not introduce new relations, they only map
+    # a generated label back to an allowed relation when the label is exact enough.
+    if str(rel_label).lower().startswith("part of"):
+        aliases.add("is part of")
+    if str(rel_label).lower() == "owned by":
+        aliases.add("owner")
+    return {
+        "id": str(rel_id).strip() if rel_id else None,
+        "label": str(rel_label).strip(),
+        "canonical": canonical,
+        "aliases": sorted(a for a in aliases if str(a).strip()),
+    }
+
+
+def merge_relation_specs(items: Iterable[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Deduplicate relation specs by ID when available, otherwise by canonical label."""
+    merged: Dict[str, Dict[str, Any]] = {}
+    for item in items:
+        if not item:
+            continue
+        key = item.get("id") or normalize_key(item.get("canonical"))
+        if not key:
+            continue
+        if key not in merged:
+            merged[key] = copy.deepcopy(item)
+        else:
+            aliases = set(merged[key].get("aliases") or []) | set(item.get("aliases") or [])
+            merged[key]["aliases"] = sorted(a for a in aliases if str(a).strip())
+            if not merged[key].get("label") and item.get("label"):
+                merged[key]["label"] = item["label"]
+            if not merged[key].get("canonical") and item.get("canonical"):
+                merged[key]["canonical"] = item["canonical"]
+    return sorted(merged.values(), key=lambda x: (str(x.get("id") or ""), str(x.get("canonical") or "")))
+
+
+def extract_relation_vocab_from_dataset(path: str | Path, type_filter: str = "all") -> List[Dict[str, Any]]:
+    """Extract only the allowed relation label set from a JSONL dataset.
+
+    This uses relation keys/labels only. It does not copy gold subject-object pairs.
+    For DocRED-style records, relation keys are strings such as "P127 : owned by".
+    """
+    specs: List[Dict[str, Any]] = []
+    for record in filter_records(load_jsonl(str(path)), type_filter):
+        value = record.get("relations") or record.get("gold_relations") or record.get("labels") or record.get("triples")
+        if isinstance(value, dict):
+            for key in value.keys():
+                spec = make_relation_spec(key)
+                if spec:
+                    specs.append(spec)
+        elif isinstance(value, list):
+            for rel in value:
+                if isinstance(rel, dict):
+                    raw = rel.get("relation") or rel.get("predicate") or rel.get("label") or rel.get("r")
+                else:
+                    raw = rel
+                spec = make_relation_spec(raw)
+                if spec:
+                    specs.append(spec)
+    return merge_relation_specs(specs)
+
+
+def extract_relation_vocab_from_json(path: str | Path) -> List[Dict[str, Any]]:
+    """Load allowed relations from an explicit JSON/JSONL vocabulary file."""
+    path = Path(path)
+    specs: List[Dict[str, Any]] = []
+    if path.suffix.lower() == ".jsonl":
+        for row in load_jsonl(str(path)):
+            spec = make_relation_spec(row)
+            if spec:
+                specs.append(spec)
+    else:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(data, dict):
+            data = data.get("relations") or data.get("allowed_relations") or data.get("vocabulary") or []
+        for item in data if isinstance(data, list) else []:
+            spec = make_relation_spec(item)
+            if spec:
+                specs.append(spec)
+    return merge_relation_specs(specs)
+
+
+def extract_relation_vocab_from_ontology(path: str | Path) -> List[Dict[str, Any]]:
+    """Extract owl:ObjectProperty/rdf:Property labels from a Turtle/RDF file.
+
+    The Re-DocRED ontology files often contain many classes for PER/ORG/LOC/MISC
+    and may contain no relation properties. In that case this returns an empty
+    list and the caller can fall back to the dataset/list vocabulary.
+    """
+    path = Path(path)
+    if not path.is_file():
+        return []
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    specs: List[Dict[str, Any]] = []
+
+    # Dependency-free Turtle block parser: look only at subjects typed as properties.
+    for block in re.split(r"\.\s*(?:\n|$)", text):
+        if not re.search(r"\b(?:owl:ObjectProperty|rdf:Property|owl:DatatypeProperty)\b", block):
+            continue
+        subj_match = re.search(r"^\s*(<[^>]+>|[A-Za-z_][\w.-]*:[\w.-]+)", block.strip())
+        label_match = re.search(r"rdfs:label\s+\"([^\"]+)\"", block)
+        if not subj_match:
+            continue
+        subject = subj_match.group(1).strip("<>")
+        rel_id = subject.rsplit("#", 1)[-1].rsplit("/", 1)[-1]
+        label = label_match.group(1).strip() if label_match else rel_id
+        spec = make_relation_spec({"id": rel_id, "label": label})
+        if spec:
+            specs.append(spec)
+    return merge_relation_specs(specs)
+
+
+def load_allowed_relation_specs(args: argparse.Namespace, records_all: Optional[List[Dict[str, Any]]] = None) -> List[Dict[str, Any]]:
+    """Load relation vocabulary according to CLI policy."""
+    source = str(getattr(args, "relation_vocab_source", "auto") or "auto").lower()
+    gathered: List[Dict[str, Any]] = []
+
+    def add_from_json() -> None:
+        if getattr(args, "relation_vocab_json", None):
+            gathered.extend(extract_relation_vocab_from_json(args.relation_vocab_json))
+
+    def add_from_dataset() -> None:
+        dataset_path = getattr(args, "relation_vocab_dataset_path", None) or getattr(args, "dataset_jsonl_path", None)
+        if dataset_path:
+            gathered.extend(extract_relation_vocab_from_dataset(dataset_path, getattr(args, "type_filter", "all")))
+
+    def add_from_ontology() -> None:
+        ontology_path = getattr(args, "relation_vocab_ontology_path", None) or getattr(args, "ontology_path", None)
+        if ontology_path:
+            gathered.extend(extract_relation_vocab_from_ontology(ontology_path))
+
+    if source == "json":
+        add_from_json()
+    elif source == "dataset":
+        add_from_dataset()
+    elif source == "ontology":
+        add_from_ontology()
+    elif source == "auto":
+        add_from_json()
+        add_from_ontology()
+        if not gathered:
+            add_from_dataset()
+    elif source == "union":
+        add_from_json(); add_from_ontology(); add_from_dataset()
+    else:
+        raise ValueError(f"Unsupported --relation-vocab-source: {source}")
+
+    specs = merge_relation_specs(gathered)
+    out_path = getattr(args, "relation_vocab_output_path", None)
+    if out_path:
+        Path(out_path).parent.mkdir(parents=True, exist_ok=True)
+        Path(out_path).write_text(
+            json.dumps({"source": source, "relations": specs}, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+    return specs
+
+
+def relation_alias_index(allowed_relations: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    index: Dict[str, Dict[str, Any]] = {}
+    for rel in allowed_relations or []:
+        for alias in [rel.get("canonical"), rel.get("id"), rel.get("label"), *(rel.get("aliases") or [])]:
+            key = normalize_key(alias)
+            if key and key not in index:
+                index[key] = rel
+    return index
+
+
+def map_relation_to_allowed(label: object, allowed_relations: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+    if not allowed_relations:
+        return None
+    idx = relation_alias_index(allowed_relations)
+    key = normalize_key(label)
+    if key in idx:
+        return idx[key]
+    # Conservative cleanup for model outputs like "is part of".
+    key2 = re.sub(r"^is\s+", "", key)
+    if key2 in idx:
+        return idx[key2]
+    return None
+
+
+def source_entities_from_record(record: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Return source entity clusters with IDs, canonical labels, aliases and types."""
+    entities = record.get("entities")
+    result: List[Dict[str, Any]] = []
+    if isinstance(entities, dict):
+        for ent_id, ent in entities.items():
+            if not isinstance(ent, dict):
+                continue
+            mentions = ent.get("mentions") or []
+            aliases = []
+            for mention in mentions:
+                if isinstance(mention, dict):
+                    label = mention.get("trigger_word") or mention.get("name") or mention.get("text")
+                    if label and str(label).strip():
+                        aliases.append(str(label).strip())
+            canonical = aliases[0] if aliases else str(ent_id)
+            result.append(
+                {
+                    "id": str(ent_id),
+                    "label": canonical,
+                    "type": str(ent.get("type") or "entity"),
+                    "aliases": sorted(dict.fromkeys(aliases)),
+                }
+            )
+    elif isinstance(entities, list):
+        for i, ent in enumerate(entities):
+            if not isinstance(ent, dict):
+                continue
+            ent_id = str(ent.get("id") or ent.get("entity_id") or f"entity_{i:05d}")
+            label = str(ent.get("label") or ent.get("name") or ent.get("text") or ent_id)
+            aliases = ent.get("aliases") if isinstance(ent.get("aliases"), list) else []
+            aliases = [label, *[str(x) for x in aliases]]
+            result.append(
+                {
+                    "id": ent_id,
+                    "label": label,
+                    "type": str(ent.get("type") or ent.get("entity_type") or "entity"),
+                    "aliases": sorted(dict.fromkeys(a for a in aliases if a)),
+                }
+            )
+    return result
+
+
+def entity_alias_index(source_entities: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    idx: Dict[str, Dict[str, Any]] = {}
+    for ent in source_entities or []:
+        for alias in [ent.get("id"), ent.get("label"), *(ent.get("aliases") or [])]:
+            key = normalize_key(alias)
+            if key and key not in idx:
+                idx[key] = ent
+    return idx
+
+
+def map_label_to_source_entity(label: object, source_entities: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+    key = normalize_key(label)
+    if not key:
+        return None
+    # Never map type names as entity labels.
+    if key in {"per", "person", "org", "organization", "loc", "location", "misc", "entity", "institution", "time", "num"}:
+        return None
+    return entity_alias_index(source_entities).get(key)
+
+
+def build_docred_control_block(record: Dict[str, Any], allowed_relations: List[Dict[str, Any]], *, include_entities: bool = True) -> str:
+    """Build a source-entity/relation-vocabulary control block prepended to the document."""
+    lines = [
+        "DOCRED CONTROLLED EXTRACTION MODE.",
+        "Use only the SOURCE ENTITIES listed below as relation heads and tails.",
+        "Do not use entity types such as ORG, LOC, PER, MISC, person, location, institution, or entity as node labels.",
+        "Use only the ALLOWED RELATIONS listed below as predicates, exactly as written.",
+        "Do not invent open relation labels. If no allowed relation is supported by the text, output no relation.",
+        "",
+        "ALLOWED RELATIONS:",
+    ]
+    for rel in allowed_relations or []:
+        lines.append(f"- {rel.get('canonical')}")
+    if include_entities:
+        lines.extend(["", "SOURCE ENTITIES:"])
+        for ent in source_entities_from_record(record):
+            aliases = ", ".join(ent.get("aliases") or [])
+            lines.append(f"- {ent['id']} | {ent['type']} | {ent['label']} | aliases: {aliases}")
+    lines.extend(["", "DOCUMENT TEXT:"])
+    return "\n".join(lines)
+
+
+def inject_relation_constraints_into_guidance(guidance: Optional[UserGuidance], allowed_relations: List[Dict[str, Any]]) -> Optional[UserGuidance]:
+    """Add the allowed relation vocabulary to UserGuidance without changing NeoOLAF internals."""
+    if not allowed_relations:
+        return guidance
+    guidance = copy.deepcopy(guidance) if guidance is not None else UserGuidance()
+    allowed = [str(rel.get("canonical")) for rel in allowed_relations if rel.get("canonical")]
+    existing = list(getattr(guidance, "priority_relations", []) or [])
+    guidance.priority_relations = list(dict.fromkeys([*existing, *allowed]))
+    constraint_text = (
+        "DocRED constrained relation extraction. Use only the allowed relation labels listed in "
+        "priority_relations, exactly as written. Use source entity names/IDs from the document control block. "
+        "Do not invent predicates and do not use entity types as entity labels."
+    )
+    if getattr(guidance, "domain_focus", None):
+        guidance.domain_focus = f"{guidance.domain_focus}\n\n{constraint_text}"
+    else:
+        guidance.domain_focus = constraint_text
+    return guidance
 
 def add_few_shot_examples_from_dataset(
     guidance: Optional[UserGuidance],
@@ -848,45 +1184,127 @@ def evidence_to_text(evidence_items: Iterable[Any]) -> str:
     return " | ".join(dict.fromkeys(snippets))
 
 
-def state_to_canonical_prediction(state: PipelineState) -> Dict[str, Any]:
-    """Convert final NeoOLAF state into the canonical prediction schema."""
+def state_to_canonical_prediction(
+    state: PipelineState,
+    *,
+    source_entities: Optional[List[Dict[str, Any]]] = None,
+    allowed_relations: Optional[List[Dict[str, Any]]] = None,
+    constrained: bool = False,
+) -> Dict[str, Any]:
+    """Convert final NeoOLAF state into the canonical prediction schema.
+
+    In DocRED constrained mode, final relations are projected to source entity
+    IDs/labels and allowed relation IDs/labels. Native NeoOLAF KG artifacts stay
+    unchanged. Only the benchmark-facing canonical output is filtered.
+    """
+    source_entities = source_entities or []
+    allowed_relations = allowed_relations or []
     entities_by_label: Dict[Tuple[str, str], Dict[str, Any]] = {}
 
-    for candidate in list(state.entity_candidates or []) + list(state.event_candidates or []):
-        label = getattr(candidate, "canonical_label", "") or ""
-        if not label.strip():
-            continue
-        typ = getattr(candidate, "candidate_type", "entity") or "entity"
-        key = (label.strip(), str(typ).strip())
-        entities_by_label[key] = {
-            "label": label.strip(),
-            "type": str(typ).strip(),
-            "description": getattr(candidate, "definition", None) or "",
-        }
+    if constrained and source_entities:
+        for ent in source_entities:
+            entities_by_label[(ent["label"], ent["type"])] = {
+                "id": ent["id"],
+                "label": ent["label"],
+                "type": ent["type"],
+                "aliases": ent.get("aliases") or [],
+                "source": "source_document_entity",
+            }
+    else:
+        for candidate in list(state.entity_candidates or []) + list(state.event_candidates or []):
+            label = getattr(candidate, "canonical_label", "") or ""
+            if not label.strip():
+                continue
+            typ = getattr(candidate, "candidate_type", "entity") or "entity"
+            key = (label.strip(), str(typ).strip())
+            entities_by_label[key] = {
+                "label": label.strip(),
+                "type": str(typ).strip(),
+                "description": getattr(candidate, "definition", None) or "",
+            }
 
     relations: List[Dict[str, Any]] = []
-    for triple in state.candidate_triples or []:
-        head = getattr(triple, "subject_label", "") or ""
-        relation = getattr(triple, "predicate_label", "") or ""
-        tail = getattr(triple, "object_label", "") or ""
-        if not head.strip() or not relation.strip() or not tail.strip():
-            continue
-        relations.append(
-            {
-                "head": head.strip(),
-                "relation": relation.strip(),
-                "tail": tail.strip(),
-                "evidence": evidence_to_text(getattr(triple, "provenance", []))
-                or getattr(triple, "justification", "")
-                or "",
-            }
-        )
+    rejected: List[Dict[str, Any]] = []
+    seen_relation_keys: set[Tuple[str, str, str]] = set()
 
-    return {
+    for triple in state.candidate_triples or []:
+        raw_head = getattr(triple, "subject_label", "") or ""
+        raw_relation = getattr(triple, "predicate_label", "") or ""
+        raw_tail = getattr(triple, "object_label", "") or ""
+        if not raw_head.strip() or not raw_relation.strip() or not raw_tail.strip():
+            continue
+
+        evidence = evidence_to_text(getattr(triple, "provenance", [])) or getattr(triple, "justification", "") or ""
+
+        if constrained:
+            head_ent = map_label_to_source_entity(raw_head, source_entities)
+            tail_ent = map_label_to_source_entity(raw_tail, source_entities)
+            rel_spec = map_relation_to_allowed(raw_relation, allowed_relations)
+            reasons = []
+            if head_ent is None:
+                reasons.append("head_not_source_entity")
+            if tail_ent is None:
+                reasons.append("tail_not_source_entity")
+            if rel_spec is None:
+                reasons.append("relation_not_allowed")
+            if reasons:
+                rejected.append(
+                    {
+                        "head": str(raw_head),
+                        "relation": str(raw_relation),
+                        "tail": str(raw_tail),
+                        "reasons": reasons,
+                        "evidence": evidence,
+                    }
+                )
+                continue
+            key = (head_ent["id"], rel_spec.get("canonical") or rel_spec.get("label") or "", tail_ent["id"])
+            if key in seen_relation_keys:
+                continue
+            seen_relation_keys.add(key)
+            relations.append(
+                {
+                    "head_id": head_ent["id"],
+                    "head": head_ent["label"],
+                    "head_type": head_ent["type"],
+                    "relation_id": rel_spec.get("id"),
+                    "relation": rel_spec.get("canonical") or rel_spec.get("label"),
+                    "relation_label": rel_spec.get("label"),
+                    "tail_id": tail_ent["id"],
+                    "tail": tail_ent["label"],
+                    "tail_type": tail_ent["type"],
+                    "evidence": evidence,
+                    "raw_prediction": {
+                        "head": str(raw_head),
+                        "relation": str(raw_relation),
+                        "tail": str(raw_tail),
+                    },
+                }
+            )
+        else:
+            relations.append(
+                {
+                    "head": raw_head.strip(),
+                    "relation": raw_relation.strip(),
+                    "tail": raw_tail.strip(),
+                    "evidence": evidence,
+                }
+            )
+
+    prediction = {
         "entities": list(entities_by_label.values()),
         "relations": relations,
     }
-
+    if constrained:
+        prediction["projection_diagnostics"] = {
+            "constrained": True,
+            "allowed_relation_count": len(allowed_relations),
+            "source_entity_count": len(source_entities),
+            "accepted_relations": len(relations),
+            "rejected_triples": len(rejected),
+            "rejected_triples_preview": rejected[:20],
+        }
+    return prediction
 
 def raw_counts_from_state(state: PipelineState, prediction: Dict[str, Any]) -> Dict[str, int]:
     """Collect compact count diagnostics for one document."""
@@ -906,6 +1324,9 @@ def raw_counts_from_state(state: PipelineState, prediction: Dict[str, Any]) -> D
         "completion_candidates": len(state.completion_candidates or []),
         "canonical_entities": len(prediction.get("entities") or []),
         "canonical_relations": len(prediction.get("relations") or []),
+        "canonical_rejected_triples": int(((prediction.get("projection_diagnostics") or {}).get("rejected_triples") or 0)),
+        "allowed_relation_count": int(((prediction.get("projection_diagnostics") or {}).get("allowed_relation_count") or 0)),
+        "source_entity_count": int(((prediction.get("projection_diagnostics") or {}).get("source_entity_count") or 0)),
     }
 
 
@@ -955,7 +1376,7 @@ def run_one_document(
     artifact_dir = str(Path(args.artifacts_root) / safe_doc_id / f"run_{run_stamp}")
 
     try:
-        document = record_to_document(record, index)
+        document = record_to_document(record, index, args=args)
         backend = build_backend(args)
         pipeline = build_pipeline(args, backend)
 
@@ -982,7 +1403,12 @@ def run_one_document(
         final_state = runner.run(state)
         elapsed = time.time() - start
 
-        prediction = state_to_canonical_prediction(final_state)
+        prediction = state_to_canonical_prediction(
+            final_state,
+            source_entities=source_entities_from_record(record),
+            allowed_relations=list(getattr(args, "allowed_relation_specs", []) or []),
+            constrained=bool(getattr(args, "force_relation_vocabulary", False)),
+        )
         result = {
             "document_id": doc_id,
             "title": title_from_record(record, doc_id),
@@ -1030,6 +1456,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--model-name", required=True)
     parser.add_argument("--type-filter", default="all")
     parser.add_argument("--user-guidance-path", default=None)
+    parser.add_argument(
+        "--relation-vocab-source",
+        default="auto",
+        choices=["auto", "dataset", "ontology", "json", "union"],
+        help="Where to load the allowed relation vocabulary from. For DocRED, use dataset or auto.",
+    )
+    parser.add_argument("--relation-vocab-json", default=None, help="Optional explicit relation vocabulary JSON/JSONL.")
+    parser.add_argument("--relation-vocab-dataset-path", default=None, help="Optional JSONL path used only to extract relation labels.")
+    parser.add_argument("--relation-vocab-ontology-path", default=None, help="Optional ontology path used only to extract ObjectProperty labels.")
+    parser.add_argument("--relation-vocab-output-path", default=None, help="Optional output path for the resolved allowed relation vocabulary.")
+    parser.add_argument("--force-relation-vocabulary", action="store_true", help="Constrain prompts and canonical output to the allowed relation vocabulary.")
+    parser.add_argument("--source-entity-anchoring", action="store_true", help="Expose source entity IDs/labels in the document and constrain canonical output to them.")
     parser.add_argument("--few-shot-from-dataset", action="store_true")
     parser.add_argument("--few-shot-source-type", default="all")
     parser.add_argument("--few-shot-k", type=int, default=0)
@@ -1205,7 +1643,24 @@ def main() -> None:
     if not records:
         raise SystemExit("No records selected. Check --dataset-jsonl-path and --type-filter.")
 
+    allowed_relation_specs = load_allowed_relation_specs(args, records_all)
+    args.allowed_relation_specs = allowed_relation_specs
+    if allowed_relation_specs:
+        print(
+            f"[NeoOLAF benchmark] allowed_relations={len(allowed_relation_specs)} "
+            f"source={args.relation_vocab_source} force={args.force_relation_vocabulary}"
+        )
+        preview = ", ".join(str(x.get("canonical")) for x in allowed_relation_specs[:12])
+        print(f"[NeoOLAF benchmark] allowed_relations_preview={preview}")
+    elif args.force_relation_vocabulary:
+        raise SystemExit(
+            "--force-relation-vocabulary was set, but no allowed relations were loaded. "
+            "Use --relation-vocab-source dataset, --relation-vocab-json, or an ontology with ObjectProperty declarations."
+        )
+
     guidance = load_user_guidance(args.user_guidance_path)
+    if args.force_relation_vocabulary:
+        guidance = inject_relation_constraints_into_guidance(guidance, allowed_relation_specs)
     if args.few_shot_from_dataset:
         guidance = add_few_shot_examples_from_dataset(
             guidance,
