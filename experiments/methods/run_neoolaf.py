@@ -1361,6 +1361,322 @@ def state_to_canonical_prediction(
         }
     return prediction
 
+
+# ---------------------------------------------------------------------------
+# Direct DocRED constrained extraction helper
+# ---------------------------------------------------------------------------
+
+def compact_source_entities_for_prompt(source_entities: List[Dict[str, Any]], max_entities: Optional[int] = None) -> str:
+    """Render source entity clusters as a compact prompt table."""
+    rows: List[str] = []
+    entities = source_entities[: max_entities or len(source_entities)]
+    for ent in entities:
+        aliases = ", ".join(str(a) for a in (ent.get("aliases") or [])[:8] if str(a).strip())
+        rows.append(f"- {ent.get('id')} | {ent.get('type')} | {ent.get('label')} | aliases: {aliases}")
+    return "\n".join(rows)
+
+
+def compact_allowed_relations_for_prompt(allowed_relations: List[Dict[str, Any]], max_relations: Optional[int] = None) -> str:
+    """Render allowed relation vocabulary as a compact prompt table."""
+    rows: List[str] = []
+    rels = allowed_relations[: max_relations or len(allowed_relations)]
+    for rel in rels:
+        rel_id = rel.get("id") or ""
+        label = rel.get("label") or ""
+        canonical = rel.get("canonical") or label or rel_id
+        rows.append(f"- {rel_id} | {canonical}")
+    return "\n".join(rows)
+
+
+def build_docred_direct_extraction_messages(
+    record: Dict[str, Any],
+    allowed_relations: List[Dict[str, Any]],
+    *,
+    max_entities: Optional[int] = None,
+    max_relations: Optional[int] = None,
+) -> List[Dict[str, str]]:
+    """Build a direct constrained DocRED extraction prompt.
+
+    This prompt intentionally exposes only the source entity clusters and the
+    global allowed relation vocabulary. It does not expose gold pairs for the
+    current document.
+    """
+    doc_id = document_id_from_record(record, 0)
+    title = title_from_record(record, doc_id)
+    text = document_text_from_record(record)
+    source_entities = source_entities_from_record(record)
+
+    system = (
+        "You are a strict DocRED relation extraction system. "
+        "Extract document-level relations only between the provided source entity IDs. "
+        "Use only the provided DocRED relation vocabulary. "
+        "Do not invent entities. Do not invent predicates. "
+        "Do not use entity types such as ORG, LOC, PER, MISC, person, location, institution, or entity as nodes. "
+        "Return JSON only."
+    )
+
+    user = f"""
+Task: extract all relations supported by the document.
+
+Rules:
+1. Heads and tails must be entity IDs from SOURCE ENTITIES.
+2. Relations must be relation IDs from ALLOWED RELATIONS.
+3. Use aliases only to recognize mentions, but output entity IDs.
+4. Evidence must be a short quote or paraphrase from the document.
+5. Do not output a relation if the document does not support it.
+6. Do not use outside knowledge.
+7. If no relation is supported, return {{"relations": []}}.
+
+Output JSON schema:
+{{
+  "relations": [
+    {{
+      "head_id": "Event_...",
+      "relation_id": "P...",
+      "tail_id": "Event_...",
+      "evidence": "short evidence from the document"
+    }}
+  ]
+}}
+
+DOCUMENT ID: {doc_id}
+TITLE: {title}
+
+SOURCE ENTITIES:
+{compact_source_entities_for_prompt(source_entities, max_entities=max_entities)}
+
+ALLOWED RELATIONS:
+{compact_allowed_relations_for_prompt(allowed_relations, max_relations=max_relations)}
+
+DOCUMENT TEXT:
+{text}
+""".strip()
+
+    return [
+        {"role": "system", "content": system},
+        {"role": "user", "content": user},
+    ]
+
+
+def _relation_items_from_model_json(data: Any) -> List[Dict[str, Any]]:
+    """Normalize the direct extractor JSON payload into relation dictionaries."""
+    if isinstance(data, dict):
+        candidates = data.get("relations") or data.get("triples") or data.get("predictions") or []
+    elif isinstance(data, list):
+        candidates = data
+    else:
+        candidates = []
+    return [x for x in candidates if isinstance(x, dict)]
+
+
+def canonical_entities_from_source(source_entities: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Return benchmark-facing source entities without leaking gold relations."""
+    return [
+        {
+            "id": ent.get("id"),
+            "label": ent.get("label"),
+            "type": ent.get("type"),
+            "aliases": ent.get("aliases") or [],
+            "source": "source_document_entity",
+        }
+        for ent in source_entities
+    ]
+
+
+def validate_direct_docred_relations(
+    relation_items: List[Dict[str, Any]],
+    *,
+    source_entities: List[Dict[str, Any]],
+    allowed_relations: List[Dict[str, Any]],
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """Validate direct DocRED predictions against source entities and allowed relations."""
+    accepted: List[Dict[str, Any]] = []
+    rejected: List[Dict[str, Any]] = []
+    seen: set[Tuple[str, str, str]] = set()
+
+    for item in relation_items:
+        raw_head = (
+            item.get("head_id")
+            or item.get("head")
+            or item.get("subject_id")
+            or item.get("subject")
+            or item.get("source_id")
+            or item.get("source")
+            or item.get("h")
+        )
+        raw_tail = (
+            item.get("tail_id")
+            or item.get("tail")
+            or item.get("object_id")
+            or item.get("object")
+            or item.get("target_id")
+            or item.get("target")
+            or item.get("t")
+        )
+        raw_relation = (
+            item.get("relation_id")
+            or item.get("relation")
+            or item.get("predicate_id")
+            or item.get("predicate")
+            or item.get("label")
+            or item.get("r")
+        )
+        evidence = item.get("evidence") or item.get("justification") or item.get("sentence") or ""
+
+        head_ent = map_label_to_source_entity(raw_head, source_entities)
+        tail_ent = map_label_to_source_entity(raw_tail, source_entities)
+        rel_spec = map_relation_to_allowed(raw_relation, allowed_relations)
+
+        reasons: List[str] = []
+        if head_ent is None:
+            reasons.append("head_not_source_entity")
+        if tail_ent is None:
+            reasons.append("tail_not_source_entity")
+        if rel_spec is None:
+            reasons.append("relation_not_allowed")
+        if head_ent is not None and tail_ent is not None and head_ent.get("id") == tail_ent.get("id"):
+            reasons.append("self_relation_rejected")
+
+        if reasons:
+            rejected.append(
+                {
+                    "raw_prediction": item,
+                    "reasons": reasons,
+                    "head": raw_head,
+                    "relation": raw_relation,
+                    "tail": raw_tail,
+                }
+            )
+            continue
+
+        key = (str(head_ent["id"]), str(rel_spec.get("id") or rel_spec.get("canonical")), str(tail_ent["id"]))
+        if key in seen:
+            continue
+        seen.add(key)
+        accepted.append(
+            {
+                "head_id": head_ent["id"],
+                "head": head_ent["label"],
+                "head_type": head_ent["type"],
+                "relation_id": rel_spec.get("id"),
+                "relation": rel_spec.get("canonical") or rel_spec.get("label"),
+                "relation_label": rel_spec.get("label"),
+                "tail_id": tail_ent["id"],
+                "tail": tail_ent["label"],
+                "tail_type": tail_ent["type"],
+                "evidence": str(evidence).strip(),
+                "raw_prediction": item,
+                "source": "docred_direct_constrained_extraction",
+            }
+        )
+
+    return accepted, rejected
+
+
+def run_docred_direct_constrained_extraction(
+    *,
+    record: Dict[str, Any],
+    backend: OpenAICompatibleBackend,
+    args: argparse.Namespace,
+    artifact_dir: str,
+) -> Dict[str, Any]:
+    """Run one direct DocRED-constrained extraction call and return a prediction dict.
+
+    This is an optional benchmark adapter. It does not change NeoOLAF's native
+    layer outputs, KG files, or generated ontology. It only creates the final
+    DocRED-compatible canonical JSON view.
+    """
+    source_entities = source_entities_from_record(record)
+    allowed_relations = list(getattr(args, "allowed_relation_specs", []) or [])
+    messages = build_docred_direct_extraction_messages(
+        record,
+        allowed_relations,
+        max_entities=getattr(args, "docred_direct_max_entities", None),
+        max_relations=getattr(args, "docred_direct_max_relations", None),
+    )
+    raw_response = backend.chat(
+        args.model_name,
+        messages,
+        temperature=float(getattr(args, "docred_direct_temperature", 0.0) or 0.0),
+    )
+    parsed = backend.extract_json(raw_response)
+    relation_items = _relation_items_from_model_json(parsed)
+    accepted, rejected = validate_direct_docred_relations(
+        relation_items,
+        source_entities=source_entities,
+        allowed_relations=allowed_relations,
+    )
+
+    diagnostics = {
+        "mode": "docred_direct_constrained_extraction",
+        "source_entity_count": len(source_entities),
+        "allowed_relation_count": len(allowed_relations),
+        "raw_relation_items": len(relation_items),
+        "accepted_relations": len(accepted),
+        "rejected_relations": len(rejected),
+        "rejected_preview": rejected[:20],
+    }
+    prediction = {
+        "entities": canonical_entities_from_source(source_entities),
+        "relations": accepted,
+        "projection_diagnostics": diagnostics,
+    }
+
+    out_dir = Path(artifact_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "docred_direct_constrained_extraction.json").write_text(
+        json.dumps(
+            {
+                "document_id": document_id_from_record(record, 0),
+                "title": title_from_record(record, document_id_from_record(record, 0)),
+                "prediction": prediction,
+                "diagnostics": diagnostics,
+                "raw_response": raw_response,
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    return prediction
+
+
+def merge_canonical_predictions(base: Dict[str, Any], extra: Dict[str, Any]) -> Dict[str, Any]:
+    """Merge two canonical prediction views, deduplicating relation triples."""
+    merged = copy.deepcopy(base or {"entities": [], "relations": []})
+    base_entities = {str(e.get("id") or e.get("label")): e for e in merged.get("entities") or [] if isinstance(e, dict)}
+    for ent in extra.get("entities") or []:
+        if not isinstance(ent, dict):
+            continue
+        key = str(ent.get("id") or ent.get("label"))
+        if key and key not in base_entities:
+            base_entities[key] = ent
+    merged["entities"] = list(base_entities.values())
+
+    seen: set[Tuple[str, str, str]] = set()
+    relations: List[Dict[str, Any]] = []
+    for rel in list(merged.get("relations") or []) + list(extra.get("relations") or []):
+        if not isinstance(rel, dict):
+            continue
+        key = (
+            str(rel.get("head_id") or rel.get("head")),
+            str(rel.get("relation_id") or rel.get("relation")),
+            str(rel.get("tail_id") or rel.get("tail")),
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        relations.append(rel)
+    merged["relations"] = relations
+    merged["projection_diagnostics"] = {
+        "merged_prediction": True,
+        "base_diagnostics": base.get("projection_diagnostics") if isinstance(base, dict) else None,
+        "extra_diagnostics": extra.get("projection_diagnostics") if isinstance(extra, dict) else None,
+        "canonical_relations": len(relations),
+    }
+    return merged
+
 def raw_counts_from_state(state: PipelineState, prediction: Dict[str, Any]) -> Dict[str, int]:
     """Collect compact count diagnostics for one document."""
     return {
@@ -1382,6 +1698,9 @@ def raw_counts_from_state(state: PipelineState, prediction: Dict[str, Any]) -> D
         "projection_rejected_triples": int(((prediction.get("projection_diagnostics") or {}).get("rejected_triples") or 0)),
         "allowed_relation_count": int(((prediction.get("projection_diagnostics") or {}).get("allowed_relation_count") or 0)),
         "source_entity_count": int(((prediction.get("projection_diagnostics") or {}).get("source_entity_count") or 0)),
+        "docred_direct_raw_relation_items": int(((prediction.get("projection_diagnostics") or {}).get("raw_relation_items") or 0)),
+        "docred_direct_accepted_relations": int(((prediction.get("projection_diagnostics") or {}).get("accepted_relations") or 0)),
+        "docred_direct_rejected_relations": int(((prediction.get("projection_diagnostics") or {}).get("rejected_relations") or 0)),
     }
 
 
@@ -1464,6 +1783,18 @@ def run_one_document(
             allowed_relations=list(getattr(args, "allowed_relation_specs", []) or []),
             constrained=bool(getattr(args, "force_relation_vocabulary", False)),
         )
+        if getattr(args, "docred_direct_constrained_extraction", False):
+            direct_prediction = run_docred_direct_constrained_extraction(
+                record=record,
+                backend=backend,
+                args=args,
+                artifact_dir=artifact_dir,
+            )
+            mode = str(getattr(args, "docred_direct_output_mode", "replace") or "replace").lower()
+            if mode == "supplement":
+                prediction = merge_canonical_predictions(prediction, direct_prediction)
+            else:
+                prediction = direct_prediction
         result = {
             "document_id": doc_id,
             "title": title_from_record(record, doc_id),
@@ -1525,6 +1856,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--relation-vocab-output-path", default=None, help="Write the resolved allowed relation vocabulary here.")
     parser.add_argument("--force-relation-vocabulary", action="store_true", help="Force canonical output to use only allowed relation labels.")
     parser.add_argument("--source-entity-anchoring", action="store_true", help="Expose source entity IDs/labels and require source entities in constrained output.")
+    parser.add_argument("--docred-direct-constrained-extraction", action="store_true", help="Run an extra direct DocRED-constrained LLM extraction call for the final benchmark-facing canonical output.")
+    parser.add_argument("--docred-direct-output-mode", default="replace", choices=["replace", "supplement"], help="How to combine direct DocRED extraction with the native NeoOLAF projection.")
+    parser.add_argument("--docred-direct-max-entities", type=int, default=None, help="Optional cap on source entities shown to the direct DocRED extractor.")
+    parser.add_argument("--docred-direct-max-relations", type=int, default=None, help="Optional cap on allowed relations shown to the direct DocRED extractor.")
+    parser.add_argument("--docred-direct-temperature", type=float, default=0.0, help="Temperature for the direct DocRED-constrained extraction call.")
     parser.add_argument("--output-format", default="canonical", choices=["canonical"])
     parser.add_argument("--artifacts-root", default="./runs/neoolaf_artifacts")
 
@@ -1721,6 +2057,11 @@ def main() -> None:
     guidance = load_user_guidance(args.user_guidance_path)
     if args.force_relation_vocabulary:
         guidance = inject_relation_constraints_into_guidance(guidance, args.allowed_relation_specs)
+    if args.docred_direct_constrained_extraction:
+        print(
+            "[NeoOLAF benchmark] docred_direct_constrained_extraction=True "
+            f"mode={args.docred_direct_output_mode}"
+        )
     if args.few_shot_from_dataset:
         guidance = add_few_shot_examples_from_dataset(
             guidance,
