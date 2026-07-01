@@ -1714,7 +1714,26 @@ def merge_canonical_predictions(base: Dict[str, Any], extra: Dict[str, Any]) -> 
     return merged
 
 def raw_counts_from_state(state: PipelineState, prediction: Dict[str, Any]) -> Dict[str, int]:
-    """Collect compact count diagnostics for one document."""
+    """Collect compact count diagnostics for one document.
+
+    Keep this function defensive because benchmark adapters may attach
+    diagnostics in different shapes:
+    - projection_diagnostics directly on the canonical prediction;
+    - projection_diagnostics.extra_diagnostics when native and direct
+      predictions are merged;
+    - absent diagnostics for older/non-DocRED runs.
+    """
+    diagnostics: Dict[str, Any] = {}
+    if isinstance(prediction, dict):
+        raw_diag = prediction.get("projection_diagnostics") or {}
+        if isinstance(raw_diag, dict):
+            diagnostics.update(raw_diag)
+            extra_diag = raw_diag.get("extra_diagnostics")
+            if isinstance(extra_diag, dict):
+                # Direct DocRED extraction diagnostics live here when the
+                # direct prediction is merged with the native NeoOLAF view.
+                diagnostics.update(extra_diag)
+
     return {
         "linguistic_expressions": len(state.linguistic_expressions or []),
         "enriched_expressions": len(state.enriched_expressions or []),
@@ -1729,8 +1748,8 @@ def raw_counts_from_state(state: PipelineState, prediction: Dict[str, Any]) -> D
         "axiom_schema_candidates": len(state.axiom_schema_candidates or []),
         "general_axiom_candidates": len(state.general_axiom_candidates or []),
         "completion_candidates": len(state.completion_candidates or []),
-        "canonical_entities": len(prediction.get("entities") or []),
-        "canonical_relations": len(prediction.get("relations") or []),
+        "canonical_entities": len(prediction.get("entities") or []) if isinstance(prediction, dict) else 0,
+        "canonical_relations": len(prediction.get("relations") or []) if isinstance(prediction, dict) else 0,
         "projection_rejected_triples": int(diagnostics.get("rejected_triples") or 0),
         "allowed_relation_count": int(diagnostics.get("allowed_relation_count") or 0),
         "source_entity_count": int(diagnostics.get("source_entity_count") or 0),
