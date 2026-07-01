@@ -1458,6 +1458,29 @@ DOCUMENT TEXT:
     ]
 
 
+def normalize_relation_item(item: Any) -> Optional[Dict[str, Any]]:
+    """Normalize one relation-like object into a dictionary.
+
+    The direct DocRED extractor is instructed to return dictionaries, but small
+    open models sometimes return compact arrays such as:
+        [head_id, relation_id, tail_id]
+        [head_id, relation_id, tail_id, evidence]
+    This helper keeps the runner robust and prevents errors such as
+    AttributeError: 'list' object has no attribute 'get'.
+    """
+    if isinstance(item, dict):
+        return item
+    if isinstance(item, (list, tuple)) and len(item) >= 3:
+        return {
+            "head_id": item[0],
+            "relation_id": item[1],
+            "tail_id": item[2],
+            "evidence": item[3] if len(item) >= 4 else "",
+            "raw_sequence_prediction": list(item),
+        }
+    return None
+
+
 def _relation_items_from_model_json(data: Any) -> List[Dict[str, Any]]:
     """Normalize the direct extractor JSON payload into relation dictionaries."""
     if isinstance(data, dict):
@@ -1466,7 +1489,12 @@ def _relation_items_from_model_json(data: Any) -> List[Dict[str, Any]]:
         candidates = data
     else:
         candidates = []
-    return [x for x in candidates if isinstance(x, dict)]
+    normalized: List[Dict[str, Any]] = []
+    for item in candidates or []:
+        norm = normalize_relation_item(item)
+        if norm is not None:
+            normalized.append(norm)
+    return normalized
 
 
 def canonical_entities_from_source(source_entities: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -1494,7 +1522,11 @@ def validate_direct_docred_relations(
     rejected: List[Dict[str, Any]] = []
     seen: set[Tuple[str, str, str]] = set()
 
-    for item in relation_items:
+    for raw_item in relation_items:
+        item = normalize_relation_item(raw_item)
+        if item is None:
+            rejected.append({"raw_prediction": raw_item, "reasons": ["invalid_relation_item_type"]})
+            continue
         raw_head = (
             item.get("head_id")
             or item.get("head")
@@ -1522,6 +1554,10 @@ def validate_direct_docred_relations(
             or item.get("r")
         )
         evidence = item.get("evidence") or item.get("justification") or item.get("sentence") or ""
+        if isinstance(evidence, (list, tuple)):
+            evidence = " | ".join(str(x) for x in evidence)
+        elif isinstance(evidence, dict):
+            evidence = evidence.get("text") or evidence.get("snippet") or json.dumps(evidence, ensure_ascii=False)
 
         head_ent = map_label_to_source_entity(raw_head, source_entities)
         tail_ent = map_label_to_source_entity(raw_tail, source_entities)
@@ -1695,12 +1731,12 @@ def raw_counts_from_state(state: PipelineState, prediction: Dict[str, Any]) -> D
         "completion_candidates": len(state.completion_candidates or []),
         "canonical_entities": len(prediction.get("entities") or []),
         "canonical_relations": len(prediction.get("relations") or []),
-        "projection_rejected_triples": int(((prediction.get("projection_diagnostics") or {}).get("rejected_triples") or 0)),
-        "allowed_relation_count": int(((prediction.get("projection_diagnostics") or {}).get("allowed_relation_count") or 0)),
-        "source_entity_count": int(((prediction.get("projection_diagnostics") or {}).get("source_entity_count") or 0)),
-        "docred_direct_raw_relation_items": int(((prediction.get("projection_diagnostics") or {}).get("raw_relation_items") or 0)),
-        "docred_direct_accepted_relations": int(((prediction.get("projection_diagnostics") or {}).get("accepted_relations") or 0)),
-        "docred_direct_rejected_relations": int(((prediction.get("projection_diagnostics") or {}).get("rejected_relations") or 0)),
+        "projection_rejected_triples": int(diagnostics.get("rejected_triples") or 0),
+        "allowed_relation_count": int(diagnostics.get("allowed_relation_count") or 0),
+        "source_entity_count": int(diagnostics.get("source_entity_count") or 0),
+        "docred_direct_raw_relation_items": int(diagnostics.get("raw_relation_items") or 0),
+        "docred_direct_accepted_relations": int(diagnostics.get("accepted_relations") or 0),
+        "docred_direct_rejected_relations": int(diagnostics.get("rejected_relations") or 0),
     }
 
 
