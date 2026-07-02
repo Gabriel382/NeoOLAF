@@ -1388,12 +1388,52 @@ def compact_allowed_relations_for_prompt(allowed_relations: List[Dict[str, Any]]
     return "\n".join(rows)
 
 
+def filter_allowed_relations_for_direct_extractor(
+    allowed_relations: List[Dict[str, Any]],
+    *,
+    focus_relation_ids: Optional[str] = None,
+) -> List[Dict[str, Any]]:
+    """Optionally restrict the relation vocabulary shown to the direct DocRED extractor.
+
+    The full DocRED vocabulary is large (around 96 relations). In small smoke
+    tests this can make the model pick plausible-but-wrong Wikidata predicates
+    such as P276 instead of P159, or P170 instead of P175.
+
+    This filter is explicit and parameter-driven. It must not be populated from
+    the current document's gold pairs during evaluation. It is intended for
+    ablations such as "full vocabulary" vs. "task/subset vocabulary".
+    """
+    if not focus_relation_ids:
+        return allowed_relations
+    wanted = {x.strip() for x in str(focus_relation_ids).split(",") if x.strip()}
+    if not wanted:
+        return allowed_relations
+    filtered = [rel for rel in allowed_relations if str(rel.get("id") or rel.get("canonical") or "") in wanted or str(rel.get("id") or "") in wanted]
+    return filtered or allowed_relations
+
+
+def docred_relation_disambiguation_hints() -> str:
+    """Gold-free relation-selection hints for common DocRED confusions."""
+    return """
+Relation-selection hints for DocRED/Wikidata labels:
+- For organizations/broadcasters, "based in" or "headquartered in" usually means P159 : headquarters location, not P276 : location.
+- For a TV station/company "part of [Group]", prefer P127 : owned by when the tail is a media group/company; use P361 : part of only for true part-whole membership not ownership/control.
+- For P17 : country and P27 : country of citizenship, the tail should be a country entity such as Greece/United States/Brazil, not an adjective such as Greek/American/Brazilian.
+- For songs, "song by [artist]" means P175 : performer, not P170 : creator.
+- For songs/albums, record companies/labels are P264 : record label; release dates are P577 : publication date.
+- Avoid weak/peripheral relations unless they are central DocRED facts: P400 platform, P1344 participant of, P155 follows, P162 producer, P463 member of, and P112 founded by are often false positives in this benchmark unless the relation is explicitly the target fact.
+- Prefer canonical biographical/org facts when explicitly present: P19 place of birth, P569 date of birth, P570 date of death, P69 educated at, P108 employer, P749 parent organization, P355 subsidiary, P571 inception, P495 country of origin.
+- Output fewer high-confidence relations rather than many plausible peripheral ones.
+""".strip()
+
+
 def build_docred_direct_extraction_messages(
     record: Dict[str, Any],
     allowed_relations: List[Dict[str, Any]],
     *,
     max_entities: Optional[int] = None,
     max_relations: Optional[int] = None,
+    high_precision_hints: bool = True,
 ) -> List[Dict[str, str]]:
     """Build a direct constrained DocRED extraction prompt.
 
@@ -1405,6 +1445,7 @@ def build_docred_direct_extraction_messages(
     title = title_from_record(record, doc_id)
     text = document_text_from_record(record)
     source_entities = source_entities_from_record(record)
+    hints = docred_relation_disambiguation_hints() if high_precision_hints else ""
 
     system = (
         "You are a strict DocRED relation extraction system. "
@@ -1426,6 +1467,11 @@ Rules:
 5. Do not output a relation if the document does not support it.
 6. Do not use outside knowledge.
 7. If no relation is supported, return {{"relations": []}}.
+8. Prefer high precision: do not output peripheral or merely plausible relations.
+9. Choose the most specific DocRED/Wikidata relation, not a generic neighbor.
+
+RELATION DISAMBIGUATION HINTS:
+{hints}
 
 Output JSON schema:
 {{
@@ -1623,12 +1669,16 @@ def run_docred_direct_constrained_extraction(
     DocRED-compatible canonical JSON view.
     """
     source_entities = source_entities_from_record(record)
-    allowed_relations = list(getattr(args, "allowed_relation_specs", []) or [])
+    allowed_relations = filter_allowed_relations_for_direct_extractor(
+        list(getattr(args, "allowed_relation_specs", []) or []),
+        focus_relation_ids=getattr(args, "docred_direct_focus_relation_ids", None),
+    )
     messages = build_docred_direct_extraction_messages(
         record,
         allowed_relations,
         max_entities=getattr(args, "docred_direct_max_entities", None),
         max_relations=getattr(args, "docred_direct_max_relations", None),
+        high_precision_hints=not bool(getattr(args, "docred_direct_disable_hints", False)),
     )
     raw_response = backend.chat(
         args.model_name,
@@ -1647,6 +1697,8 @@ def run_docred_direct_constrained_extraction(
         "mode": "docred_direct_constrained_extraction",
         "source_entity_count": len(source_entities),
         "allowed_relation_count": len(allowed_relations),
+        "focus_relation_ids": getattr(args, "docred_direct_focus_relation_ids", None),
+        "high_precision_hints": not bool(getattr(args, "docred_direct_disable_hints", False)),
         "raw_relation_items": len(relation_items),
         "accepted_relations": len(accepted),
         "rejected_relations": len(rejected),
@@ -1916,6 +1968,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--docred-direct-max-entities", type=int, default=None, help="Optional cap on source entities shown to the direct DocRED extractor.")
     parser.add_argument("--docred-direct-max-relations", type=int, default=None, help="Optional cap on allowed relations shown to the direct DocRED extractor.")
     parser.add_argument("--docred-direct-temperature", type=float, default=0.0, help="Temperature for the direct DocRED-constrained extraction call.")
+    parser.add_argument("--docred-direct-focus-relation-ids", default=None, help="Optional comma-separated relation IDs to show to the direct extractor, e.g. P17,P27,P69. Do not derive this from test-document gold pairs for final evaluation.")
+    parser.add_argument("--docred-direct-disable-hints", action="store_true", help="Disable gold-free DocRED relation disambiguation hints in the direct extraction prompt.")
     parser.add_argument("--output-format", default="canonical", choices=["canonical"])
     parser.add_argument("--artifacts-root", default="./runs/neoolaf_artifacts")
 
@@ -2115,7 +2169,9 @@ def main() -> None:
     if args.docred_direct_constrained_extraction:
         print(
             "[NeoOLAF benchmark] docred_direct_constrained_extraction=True "
-            f"mode={args.docred_direct_output_mode}"
+            f"mode={args.docred_direct_output_mode} "
+            f"focus_relation_ids={args.docred_direct_focus_relation_ids} "
+            f"hints={not args.docred_direct_disable_hints}"
         )
     if args.few_shot_from_dataset:
         guidance = add_few_shot_examples_from_dataset(
