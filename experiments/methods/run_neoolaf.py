@@ -1284,6 +1284,112 @@ def inject_relation_constraints_into_guidance(
         guidance.domain_focus = f"{guidance.domain_focus}\n\n{constraint_text}"
     else:
         guidance.domain_focus = constraint_text
+    if raw_text_entity_relation_mode:
+        guidance = add_default_docred_relation_examples(guidance)
+    return guidance
+
+
+def _relation_example_key(example: RelationExample) -> Tuple[str, str, str, str]:
+    return (
+        normalize_key(getattr(example, "text", "")),
+        normalize_key(getattr(example, "source_label", "")),
+        normalize_key(getattr(example, "relation_label", "")),
+        normalize_key(getattr(example, "target_label", "")),
+    )
+
+
+def append_relation_example_once(guidance: UserGuidance, example: RelationExample) -> None:
+    """Append a relation example while avoiding duplicate prompt examples."""
+    existing = {_relation_example_key(x) for x in getattr(guidance, "relation_examples", []) or []}
+    if _relation_example_key(example) not in existing:
+        guidance.relation_examples.append(example)
+
+
+def add_default_docred_relation_examples(guidance: Optional[UserGuidance]) -> UserGuidance:
+    """Inject gold-free DocRED-style relation examples into NeoOLAF guidance.
+
+    These examples are schema examples, not document gold. They teach the native
+    NeoOLAF Layer 4 agent how the DocRED relation vocabulary should be used.
+    """
+    guidance = copy.deepcopy(guidance) if guidance is not None else UserGuidance()
+    examples = [
+        RelationExample(text="Acme TV is headquartered in Athens, Greece.", source_label="Acme TV", relation_label="P159 : headquarters location", target_label="Athens", explanation="Use P159 for an organization's headquarters/base city; use P17 separately for the country."),
+        RelationExample(text="Athens is a city in Greece.", source_label="Athens", relation_label="P17 : country", target_label="Greece", explanation="Use P17 when the tail is the country containing the entity."),
+        RelationExample(text="Jane Doe is an American saxophonist.", source_label="Jane Doe", relation_label="P27 : country of citizenship", target_label="United States", explanation="Nationality adjectives for people map to citizenship/country of citizenship."),
+        RelationExample(text="Jane Doe was born in Victoria on November 15, 1915 and died on February 3, 2008.", source_label="Jane Doe", relation_label="P19 : place of birth", target_label="Victoria", explanation="Use P19 for birth place; P569/P570 for birth/death dates."),
+        RelationExample(text="Jane Doe was born in Victoria on November 15, 1915 and died on February 3, 2008.", source_label="Jane Doe", relation_label="P569 : date of birth", target_label="November 15, 1915", explanation="Use P569 for the birth date."),
+        RelationExample(text="Jane Doe was born in Victoria on November 15, 1915 and died on February 3, 2008.", source_label="Jane Doe", relation_label="P570 : date of death", target_label="February 3, 2008", explanation="Use P570 for the death date."),
+        RelationExample(text="Jane Doe attended Central High School and Wiley College.", source_label="Jane Doe", relation_label="P69 : educated at", target_label="Wiley College", explanation="Use P69 for schools/universities attended by a person."),
+        RelationExample(text="Example Research Brazil is a subsidiary of Example Research, which is part of Example Corporation.", source_label="Example Research Brazil", relation_label="P749 : parent organization", target_label="Example Research", explanation="Use P749 when the head organization is a subsidiary/branch and the tail is its parent organization."),
+        RelationExample(text="Example Corporation has subsidiary Example Research Brazil.", source_label="Example Corporation", relation_label="P355 : subsidiary", target_label="Example Research Brazil", explanation="Use P355 from parent organization to subsidiary."),
+        RelationExample(text="Example Research Brazil was established in June 2010.", source_label="Example Research Brazil", relation_label="P571 : inception", target_label="June 2010", explanation="Use P571 for founding, establishment, launch, or inception date."),
+        RelationExample(text="Song X is a single by Artist Y, released on February 14, 2014 by Label L.", source_label="Song X", relation_label="P175 : performer", target_label="Artist Y", explanation="Use P175 for the performer/recording artist of a song or single."),
+        RelationExample(text="Song X is a single by Artist Y, released on February 14, 2014 by Label L.", source_label="Song X", relation_label="P264 : record label", target_label="Label L", explanation="Use P264 for a record label."),
+        RelationExample(text="Song X is a single by Artist Y, released on February 14, 2014 by Label L.", source_label="Song X", relation_label="P577 : publication date", target_label="February 14, 2014", explanation="Use P577 for release or publication date."),
+        RelationExample(text="State X contains County Y; City Z is located in County Y.", source_label="State X", relation_label="P150 : contains administrative territorial entity", target_label="County Y", explanation="Use P150 for an administrative unit containing another administrative unit."),
+        RelationExample(text="City Z is located in County Y, State X.", source_label="City Z", relation_label="P131 : located in the administrative territorial entity", target_label="County Y", explanation="Use P131 for city/county/state administrative containment, not for country tails."),
+        RelationExample(text="Brazil is in South America.", source_label="Brazil", relation_label="P30 : continent", target_label="South America", explanation="Use P30 when the tail is a continent."),
+    ]
+    for ex in examples:
+        append_relation_example_once(guidance, ex)
+    return guidance
+
+
+def build_neoolaf_self_refinement_guidance(
+    base_guidance: Optional[UserGuidance],
+    previous_state: PipelineState,
+    previous_prediction: Dict[str, Any],
+    *,
+    args: argparse.Namespace,
+) -> UserGuidance:
+    guidance = add_default_docred_relation_examples(base_guidance)
+    max_examples = int(getattr(args, "neoolaf_self_refinement_max_examples", 40) or 40)
+    added = 0
+    extra_focus = (
+        "NeoOLAF self-refinement pass: reuse only NeoOLAF's previous-pass entities, relation candidates, "
+        "candidate triples, and evidence as guidance. Re-run all NeoOLAF layers from the raw document text. "
+        "For each relation candidate, choose the single best supported source and target entity; do not connect "
+        "all co-mentioned entities in an evidence window. Prefer explicit document-level facts and the specific "
+        "DocRED relation labels from priority_relations."
+    )
+    if getattr(guidance, "domain_focus", None):
+        if extra_focus not in guidance.domain_focus:
+            guidance.domain_focus = guidance.domain_focus + "\n\n" + extra_focus
+    else:
+        guidance.domain_focus = extra_focus
+    for rel in (previous_prediction.get("relations") or []):
+        if not isinstance(rel, dict):
+            continue
+        h = str(rel.get("head") or "").strip(); t = str(rel.get("tail") or "").strip(); r = str(rel.get("relation") or rel.get("relation_id") or rel.get("relation_label") or "").strip(); ev = str(rel.get("evidence") or "").strip()
+        if not h or not t or not r:
+            continue
+        append_relation_example_once(guidance, RelationExample(text=ev[:700] if ev else f"{h} -- {r} -- {t}", source_label=h, relation_label=r, target_label=t, explanation="NeoOLAF previous-pass relation evidence; verify again from the raw text in this full self-refinement pass."))
+        added += 1
+        if added >= max_examples:
+            break
+    if added < max_examples:
+        entities_by_label: Dict[Tuple[str, str], Dict[str, Any]] = {}
+        for ent in previous_prediction.get("entities") or []:
+            if isinstance(ent, dict) and ent.get("label"):
+                entities_by_label[(str(ent.get("label")), str(ent.get("type") or "entity"))] = ent
+        allowed_relations = list(getattr(args, "allowed_relation_specs", []) or [])
+        mapper = getattr(args, "docred_native_relation_mapper", DEFAULT_DOCRED_NATIVE_RELATION_MAPPER)
+        for item in collect_native_relation_evidence_items(previous_state, include_internal=True):
+            src = str(item.get("native_source") or "")
+            if src == "relation_candidate_window_link" and added >= max(5, max_examples // 2):
+                continue
+            head_ent = map_label_to_predicted_entity(item.get("head"), entities_by_label); tail_ent = map_label_to_predicted_entity(item.get("tail"), entities_by_label)
+            if head_ent is None or tail_ent is None:
+                continue
+            h = str(head_ent.get("label") or item.get("head") or "").strip(); t = str(tail_ent.get("label") or item.get("tail") or "").strip(); r_raw = str(item.get("relation") or "").strip(); ev = str(item.get("evidence") or "").strip()
+            if not h or not t or not r_raw:
+                continue
+            spec, _info = map_native_neoolaf_relation_to_docred(raw_relation=r_raw, head_label=h, tail_label=t, evidence=ev, head_type=str(head_ent.get("type") or "entity"), tail_type=str(tail_ent.get("type") or "entity"), allowed_relations=allowed_relations, mapper=mapper, reject_peripheral=False)
+            rel_label = str((spec or {}).get("canonical") or r_raw)
+            append_relation_example_once(guidance, RelationExample(text=ev[:700] if ev else f"{h} -- {rel_label} -- {t}", source_label=h, relation_label=rel_label, target_label=t, explanation=f"NeoOLAF previous-pass native evidence source={src}; use only if supported again by the raw text."))
+            added += 1
+            if added >= max_examples:
+                break
     return guidance
 
 def add_few_shot_examples_from_dataset(
@@ -3570,43 +3676,43 @@ def run_one_document(
     artifact_dir = str(Path(args.artifacts_root) / safe_doc_id / f"run_{run_stamp}")
 
     try:
-        document = record_to_document(record, index, args=args)
-        backend = build_backend(args)
-        pipeline = build_pipeline(args, backend)
+        passes = max(1, int(getattr(args, "neoolaf_self_refinement_passes", 1) or 1))
+        guidance_current = copy.deepcopy(guidance)
+        final_state = None
+        prediction: Dict[str, Any] = {"entities": [], "relations": []}
+        elapsed = 0.0
+        backend = None
+        pass_summaries: List[Dict[str, Any]] = []
 
-        state = PipelineState(
-            document=document,
-            llm_model=args.model_name,
-            user_guidance=copy.deepcopy(guidance),
-            seed_ontology=seed_ontology,
-            artifact_dir=artifact_dir,
-        )
-
-        execution_config = ExecutionConfig(mode="document_mode")
-        runner = Runner(
-            pipeline=pipeline,
-            runs_root=artifact_dir,
-            verbose=args.verbose,
-            execution_config=execution_config,
-            max_workers=args.max_workers,
-            enable_checkpoints=not args.no_checkpoints,
-            save_chunk_checkpoints=not args.no_chunk_checkpoints,
-        )
-
-        start = time.time()
-        final_state = runner.run(state)
-        elapsed = time.time() - start
-
-        prediction = state_to_canonical_prediction(
-            final_state,
-            source_entities=source_entities_from_record(record),
-            allowed_relations=list(getattr(args, "allowed_relation_specs", []) or []),
-            constrained=bool(getattr(args, "force_relation_vocabulary", False)),
-            raw_text_entity_relation_mode=bool(getattr(args, "raw_text_entity_relation_mode", False)),
-            native_relation_mapping=bool(getattr(args, "docred_native_relation_mapping", False)),
-            relation_mapper=getattr(args, "docred_native_relation_mapper", DEFAULT_DOCRED_NATIVE_RELATION_MAPPER),
-            native_reject_peripheral=bool(getattr(args, "docred_native_reject_peripheral", False)),
-        )
+        for pass_idx in range(1, passes + 1):
+            pass_artifact_dir = artifact_dir if passes == 1 else str(Path(artifact_dir) / f"pass_{pass_idx:02d}")
+            document = record_to_document(record, index, args=args)
+            backend = build_backend(args)
+            pipeline = build_pipeline(args, backend)
+            state = PipelineState(document=document, llm_model=args.model_name, user_guidance=copy.deepcopy(guidance_current), seed_ontology=seed_ontology, artifact_dir=pass_artifact_dir)
+            execution_config = ExecutionConfig(mode="document_mode")
+            runner = Runner(pipeline=pipeline, runs_root=pass_artifact_dir, verbose=args.verbose, execution_config=execution_config, max_workers=args.max_workers, enable_checkpoints=not args.no_checkpoints, save_chunk_checkpoints=not args.no_chunk_checkpoints)
+            pass_start = time.time()
+            final_state = runner.run(state)
+            pass_elapsed = time.time() - pass_start
+            elapsed += pass_elapsed
+            prediction = state_to_canonical_prediction(final_state, source_entities=source_entities_from_record(record), allowed_relations=list(getattr(args, "allowed_relation_specs", []) or []), constrained=bool(getattr(args, "force_relation_vocabulary", False)), raw_text_entity_relation_mode=bool(getattr(args, "raw_text_entity_relation_mode", False)), native_relation_mapping=bool(getattr(args, "docred_native_relation_mapping", False)), relation_mapper=getattr(args, "docred_native_relation_mapper", DEFAULT_DOCRED_NATIVE_RELATION_MAPPER), native_reject_peripheral=bool(getattr(args, "docred_native_reject_peripheral", False)))
+            diag = prediction.get("projection_diagnostics") if isinstance(prediction, dict) else {}
+            pass_summaries.append({"pass": pass_idx, "runtime_seconds": pass_elapsed, "entities": len(prediction.get("entities") or []), "relations": len(prediction.get("relations") or []), "native_relation_evidence_items_seen": int((diag or {}).get("native_relation_evidence_items_seen") or 0) if isinstance(diag, dict) else 0, "native_relation_mapping_kept_or_mapped": int((diag or {}).get("native_relation_mapping_kept_or_mapped") or 0) if isinstance(diag, dict) else 0, "candidate_relation_assertions": len(final_state.candidate_relation_assertions or []), "candidate_triples": len(final_state.candidate_triples or [])})
+            if pass_idx < passes:
+                guidance_current = build_neoolaf_self_refinement_guidance(guidance_current, final_state, prediction, args=args)
+                try:
+                    Path(artifact_dir).mkdir(parents=True, exist_ok=True)
+                    (Path(artifact_dir) / f"self_refinement_guidance_pass_{pass_idx+1:02d}.json").write_text(json.dumps(asdict(guidance_current), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+                except Exception:
+                    pass
+        assert final_state is not None
+        assert backend is not None
+        if passes > 1:
+            diagnostics = prediction.setdefault("projection_diagnostics", {})
+            if isinstance(diagnostics, dict):
+                diagnostics["neoolaf_self_refinement_passes"] = passes
+                diagnostics["neoolaf_self_refinement_pass_summaries"] = pass_summaries
         if getattr(args, "raw_text_er_direct_fallback", False) and getattr(args, "raw_text_entity_relation_mode", False):
             raw_mode = str(getattr(args, "raw_text_er_direct_mode", "if_zero") or "if_zero").lower()
             should_run_raw_direct = raw_mode in {"replace", "supplement"} or (raw_mode == "if_zero" and not prediction.get("relations"))
@@ -3686,10 +3792,10 @@ def run_one_document(
             "method": "neoolaf",
             "parsed_ok": True,
             "prediction": prediction,
-            "raw_counts": raw_counts_from_state(final_state, prediction),
+            "raw_counts": {**raw_counts_from_state(final_state, prediction), "neoolaf_self_refinement_passes": passes, "neoolaf_self_refinement_pass_summaries": pass_summaries},
             "artifact_dir": artifact_dir,
             "runtime_seconds": elapsed,
-            "llm_call_policy": "full_pipeline_document_run",
+            "llm_call_policy": "full_pipeline_document_run" if passes == 1 else "full_pipeline_document_run_with_neoolaf_self_refinement",
         }
         return index, result
     except Exception as exc:
@@ -3775,6 +3881,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--docred-native-relation-mapping", action="store_true", help="Deterministically map native NeoOLAF relation labels to official DocRED relation IDs. Mapping only: no new triples and no gold/source entities.")
     parser.add_argument("--docred-native-relation-mapper-json", default=None, help="Optional per-model JSON mapping rules for native NeoOLAF relation labels to DocRED relation IDs.")
     parser.add_argument("--docred-native-reject-peripheral", action="store_true", help="Reject weak peripheral native triples during deterministic DocRED mapping.")
+    parser.add_argument("--neoolaf-self-refinement-passes", type=int, default=1, help="Run the full native NeoOLAF pipeline multiple times per document. Passes after the first receive only NeoOLAF previous-pass outputs as user guidance; no source/gold entities or gold triples are exposed.")
+    parser.add_argument("--neoolaf-self-refinement-max-examples", type=int, default=40, help="Maximum previous-pass NeoOLAF relation examples injected into each self-refinement pass.")
     parser.add_argument("--stop-after-layer", type=int, default=None, help="Optional last NeoOLAF layer index to run, inclusive. Leave unset for full NeoOLAF.")
     parser.add_argument("--raw-text-er-direct-fallback", action="store_true", help="In raw-text entity+relation mode, run a raw-text-only direct ER fallback if native NeoOLAF fails or returns zero relations.")
     parser.add_argument("--raw-text-er-direct-mode", default="if_zero", choices=["if_zero", "replace", "supplement"], help="How to use the raw-text direct ER fallback after a successful native run.")
@@ -4017,6 +4125,8 @@ def main() -> None:
         )
         if args.docred_native_relation_mapping:
             print("[NeoOLAF benchmark] native evidence mapper includes candidate_triples, assertions, ontology candidates, and relation_candidate_window_link items")
+    if int(getattr(args, "neoolaf_self_refinement_passes", 1) or 1) > 1:
+        print(f"[NeoOLAF benchmark] neoolaf_self_refinement_passes={args.neoolaf_self_refinement_passes} max_examples={args.neoolaf_self_refinement_max_examples} full_pipeline_each_pass=True")
         print(
             f"[NeoOLAF benchmark] stop_after_layer={args.stop_after_layer} "
             f"raw_text_er_direct_fallback={args.raw_text_er_direct_fallback} "

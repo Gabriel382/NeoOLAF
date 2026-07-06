@@ -31,6 +31,119 @@
   "hierarchy_min_confidence": 0.5,
   "concept_promotion_bias": 0.5,
   "typing_examples": [],
-  "relation_examples": [],
+  "relation_examples": [
+    {
+      "text": "Acme TV is headquartered in Athens, Greece.",
+      "source_label": "Acme TV",
+      "relation_label": "P159 : headquarters location",
+      "target_label": "Athens",
+      "explanation": "Use P159 for an organization's headquarters/base city; use P17 separately for the country."
+    },
+    {
+      "text": "Athens is a city in Greece.",
+      "source_label": "Athens",
+      "relation_label": "P17 : country",
+      "target_label": "Greece",
+      "explanation": "Use P17 when the tail is the country containing the entity."
+    },
+    {
+      "text": "Jane Doe is an American saxophonist.",
+      "source_label": "Jane Doe",
+      "relation_label": "P27 : country of citizenship",
+      "target_label": "United States",
+      "explanation": "Nationality adjectives for people map to citizenship/country of citizenship."
+    },
+    {
+      "text": "Jane Doe was born in Victoria on November 15, 1915 and died on February 3, 2008.",
+      "source_label": "Jane Doe",
+      "relation_label": "P19 : place of birth",
+      "target_label": "Victoria",
+      "explanation": "Use P19 for birth place; P569/P570 for birth/death dates."
+    },
+    {
+      "text": "Jane Doe was born in Victoria on November 15, 1915 and died on February 3, 2008.",
+      "source_label": "Jane Doe",
+      "relation_label": "P569 : date of birth",
+      "target_label": "November 15, 1915",
+      "explanation": "Use P569 for the birth date."
+    },
+    {
+      "text": "Jane Doe was born in Victoria on November 15, 1915 and died on February 3, 2008.",
+      "source_label": "Jane Doe",
+      "relation_label": "P570 : date of death",
+      "target_label": "February 3, 2008",
+      "explanation": "Use P570 for the death date."
+    },
+    {
+      "text": "Jane Doe attended Central High School and Wiley College.",
+      "source_label": "Jane Doe",
+      "relation_label": "P69 : educated at",
+      "target_label": "Wiley College",
+      "explanation": "Use P69 for schools/universities attended by a person."
+    },
+    {
+      "text": "Example Research Brazil is a subsidiary of Example Research, which is part of Example Corporation.",
+      "source_label": "Example Research Brazil",
+      "relation_label": "P749 : parent organization",
+      "target_label": "Example Research",
+      "explanation": "Use P749 when the head organization is a subsidiary/branch and the tail is its parent organization."
+    },
+    {
+      "text": "Example Corporation has subsidiary Example Research Brazil.",
+      "source_label": "Example Corporation",
+      "relation_label": "P355 : subsidiary",
+      "target_label": "Example Research Brazil",
+      "explanation": "Use P355 from parent organization to subsidiary."
+    },
+    {
+      "text": "Example Research Brazil was established in June 2010.",
+      "source_label": "Example Research Brazil",
+      "relation_label": "P571 : inception",
+      "target_label": "June 2010",
+      "explanation": "Use P571 for founding, establishment, launch, or inception date."
+    },
+    {
+      "text": "Song X is a single by Artist Y, released on February 14, 2014 by Label L.",
+      "source_label": "Song X",
+      "relation_label": "P175 : performer",
+      "target_label": "Artist Y",
+      "explanation": "Use P175 for the performer/recording artist of a song or single."
+    },
+    {
+      "text": "Song X is a single by Artist Y, released on February 14, 2014 by Label L.",
+      "source_label": "Song X",
+      "relation_label": "P264 : record label",
+      "target_label": "Label L",
+      "explanation": "Use P264 for a record label."
+    },
+    {
+      "text": "Song X is a single by Artist Y, released on February 14, 2014 by Label L.",
+      "source_label": "Song X",
+      "relation_label": "P577 : publication date",
+      "target_label": "February 14, 2014",
+      "explanation": "Use P577 for release or publication date."
+    },
+    {
+      "text": "State X contains County Y; City Z is located in County Y.",
+      "source_label": "State X",
+      "relation_label": "P150 : contains administrative territorial entity",
+      "target_label": "County Y",
+      "explanation": "Use P150 for an administrative unit containing another administrative unit."
+    },
+    {
+      "text": "City Z is located in County Y, State X.",
+      "source_label": "City Z",
+      "relation_label": "P131 : located in the administrative territorial entity",
+      "target_label": "County Y",
+      "explanation": "Use P131 for city/county/state administrative containment, not for country tails."
+    },
+    {
+      "text": "Brazil is in South America.",
+      "source_label": "Brazil",
+      "relation_label": "P30 : continent",
+      "target_label": "South America",
+      "explanation": "Use P30 when the tail is a continent."
+    }
+  ],
   "promotion_examples": []
 }
