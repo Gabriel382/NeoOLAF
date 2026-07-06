@@ -1527,12 +1527,48 @@ DOCUMENT TEXT:
 
 
 def normalize_raw_er_payload(data: Any) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """Normalize raw-text ER model JSON.
+
+    The preferred schema is dict-based, but OpenRouter/model outputs sometimes
+    return compact lists. Accept both so one malformed row does not crash or
+    silently erase all predictions.
+    """
     if isinstance(data, dict):
         entities = data.get("entities") or data.get("entity_candidates") or []
         relations = data.get("relations") or data.get("triples") or []
+    elif isinstance(data, list):
+        # Sometimes the model returns only a relation list.
+        entities, relations = [], data
     else:
         entities, relations = [], []
-    return [x for x in entities if isinstance(x, dict)], [x for x in relations if isinstance(x, dict)]
+
+    norm_entities: List[Dict[str, Any]] = []
+    for i, ent in enumerate(entities or [], start=1):
+        if isinstance(ent, dict):
+            norm_entities.append(ent)
+        elif isinstance(ent, (list, tuple)) and ent:
+            norm_entities.append(
+                {
+                    "entity_id": ent[0] if len(ent) > 0 else f"E{i}",
+                    "label": ent[1] if len(ent) > 1 else ent[0],
+                    "type": ent[2] if len(ent) > 2 else "entity",
+                }
+            )
+
+    norm_relations: List[Dict[str, Any]] = []
+    for rel in relations or []:
+        if isinstance(rel, dict):
+            norm_relations.append(rel)
+        elif isinstance(rel, (list, tuple)) and len(rel) >= 3:
+            norm_relations.append(
+                {
+                    "head_entity_id": rel[0],
+                    "relation_id": rel[1],
+                    "tail_entity_id": rel[2],
+                    "evidence": rel[3] if len(rel) > 3 else "",
+                }
+            )
+    return norm_entities, norm_relations
 
 
 def run_raw_text_er_direct_fallback(
@@ -3006,7 +3042,8 @@ def run_one_document(
         )
         if getattr(args, "raw_text_er_direct_fallback", False) and getattr(args, "raw_text_entity_relation_mode", False):
             raw_mode = str(getattr(args, "raw_text_er_direct_mode", "if_zero") or "if_zero").lower()
-            if raw_mode == "replace" or (raw_mode == "if_zero" and not prediction.get("relations")):
+            should_run_raw_direct = raw_mode in {"replace", "supplement"} or (raw_mode == "if_zero" and not prediction.get("relations"))
+            if should_run_raw_direct:
                 raw_direct_prediction = run_raw_text_er_direct_fallback(
                     record=record,
                     backend=backend,
@@ -3168,6 +3205,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--force-relation-vocabulary", action="store_true", help="Force canonical output to use only allowed relation labels.")
     parser.add_argument("--source-entity-anchoring", action="store_true", help="Expose source entity IDs/labels and require source entities in constrained output.")
     parser.add_argument("--raw-text-entity-relation-mode", action="store_true", help="Do not expose source entities. Predict entities and relations from raw text with native NeoOLAF; constrain only relation labels in canonical output.")
+    parser.add_argument("--stop-after-layer", type=int, default=None, help="Optional last NeoOLAF layer index to run, inclusive. Useful for raw entity+relation smoke tests, e.g. 5 to stop after candidate triples.")
+    parser.add_argument("--raw-text-er-direct-fallback", action="store_true", help="In raw-text entity+relation mode, run a raw-text-only direct ER fallback if native NeoOLAF fails or returns zero relations.")
+    parser.add_argument("--raw-text-er-direct-mode", default="if_zero", choices=["if_zero", "replace", "supplement"], help="How to use the raw-text direct ER fallback after a successful native run.")
+    parser.add_argument("--raw-text-er-direct-retries", type=int, default=2, help="Retry count for the raw-text direct ER fallback call.")
+    parser.add_argument("--raw-text-er-direct-retry-sleep", type=float, default=2.0, help="Seconds to sleep between raw-text direct ER fallback retries.")
+    parser.add_argument("--raw-text-er-direct-temperature", type=float, default=0.0, help="Temperature for the raw-text direct ER fallback call.")
+    parser.add_argument("--raw-text-er-direct-max-relations", type=int, default=None, help="Optional cap on allowed relation labels shown to the raw-text ER fallback.")
     parser.add_argument("--docred-direct-constrained-extraction", action="store_true", help="Run an extra direct DocRED-constrained LLM extraction call for the final benchmark-facing canonical output.")
     parser.add_argument("--docred-direct-output-mode", default="replace", choices=["replace", "supplement"], help="How to combine direct DocRED extraction with the native NeoOLAF projection.")
     parser.add_argument("--docred-direct-max-entities", type=int, default=None, help="Optional cap on source entities shown to the direct DocRED extractor.")
