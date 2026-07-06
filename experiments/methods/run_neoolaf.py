@@ -1030,6 +1030,157 @@ def map_relation_to_allowed(label: object, allowed_relations: List[Dict[str, Any
     return idx.get(key2)
 
 
+# ---------------------------------------------------------------------------
+# Native NeoOLAF -> DocRED mapping helpers (no extraction, no gold entities)
+# ---------------------------------------------------------------------------
+
+DEFAULT_DOCRED_NATIVE_RELATION_MAPPER: Dict[str, Any] = {
+    "description": "Gold-free mapping from native NeoOLAF relation labels to DocRED/Wikidata relation IDs. This is mapping/calibration only: it never creates a new triple and it never sees gold/source entity IDs.",
+    "aliases": {
+        "P17": ["country", "located in country", "is in country", "national country"],
+        "P19": ["place of birth", "born in", "birth place", "birthplace"],
+        "P27": ["country of citizenship", "citizenship", "nationality", "american", "brazilian", "greek"],
+        "P30": ["continent", "located in continent"],
+        "P69": ["educated at", "studied at", "attended", "graduated from", "education"],
+        "P108": ["employer", "worked at", "works at", "employed by", "taught at"],
+        "P127": ["owned by", "owner", "belongs to", "part of group", "part of the group", "controlled by"],
+        "P131": ["located in the administrative territorial entity", "located in administrative entity", "administrative territorial entity", "county", "state", "province"],
+        "P150": ["contains administrative territorial entity", "contains", "has administrative division"],
+        "P159": ["headquarters location", "headquartered in", "headquarters in", "based in", "seat in"],
+        "P162": ["producer", "produced by", "music producer"],
+        "P170": ["creator", "created by", "author", "written by"],
+        "P175": ["performer", "performed by", "sung by", "recorded by", "artist", "by artist"],
+        "P264": ["record label", "label", "released by label"],
+        "P276": ["location", "located at", "venue", "place"],
+        "P355": ["subsidiary", "has subsidiary", "child organization"],
+        "P361": ["part of", "is part of", "member of", "belongs to"],
+        "P400": ["platform", "available on", "software platform"],
+        "P463": ["member of", "member", "affiliated with"],
+        "P495": ["country of origin", "origin country"],
+        "P527": ["has part", "contains part"],
+        "P569": ["date of birth", "born on", "birth date"],
+        "P570": ["date of death", "died on", "death date"],
+        "P571": ["inception", "founded", "created in", "established", "launched in"],
+        "P577": ["publication date", "release date", "released on", "published on", "released"]
+    },
+    "country_like": ["greece", "greek", "united states", "u.s.", "usa", "brazil", "canada", "france", "ireland", "england", "japan"],
+    "continent_like": ["africa", "asia", "europe", "north america", "south america", "oceania", "antarctica"],
+    "org_cues": ["group", "company", "corporation", "corp", "inc", "research", "network", "university", "college", "school", "label", "entertainment"],
+    "work_cues": ["song", "single", "album", "film", "series", "track", "recording"],
+}
+
+
+def load_relation_mapper(args: argparse.Namespace) -> Dict[str, Any]:
+    mapper = copy.deepcopy(DEFAULT_DOCRED_NATIVE_RELATION_MAPPER)
+    path = getattr(args, "docred_native_relation_mapper_json", None)
+    if path:
+        p = Path(path)
+        if p.is_file():
+            data = json.loads(p.read_text(encoding="utf-8"))
+            for k, v in data.items():
+                if isinstance(v, dict) and isinstance(mapper.get(k), dict):
+                    merged = copy.deepcopy(mapper[k]); merged.update(v); mapper[k] = merged
+                else:
+                    mapper[k] = v
+    return mapper
+
+
+def relation_spec_by_id(allowed_relations: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    return {str(rel.get("id")): rel for rel in allowed_relations or [] if rel.get("id")}
+
+
+def label_has_any(label: object, words: Iterable[str]) -> bool:
+    key = normalize_key(label)
+    return any(normalize_key(w) and normalize_key(w) in key for w in words)
+
+
+def is_country_like(label: object, mapper: Dict[str, Any]) -> bool:
+    key = normalize_key(label)
+    if not key:
+        return False
+    countries = {normalize_key(x) for x in mapper.get("country_like", [])}
+    return key in countries or bool(re.fullmatch(r"(the )?(united states|u\.s\.|usa|brazil|greece|greek|france|canada|ireland|japan|china|india|germany|italy|spain|portugal|uk|united kingdom)", key))
+
+
+def is_continent_like(label: object, mapper: Dict[str, Any]) -> bool:
+    return normalize_key(label) in {normalize_key(x) for x in mapper.get("continent_like", [])}
+
+
+def relation_id_from_mapper_alias(label: object, mapper: Dict[str, Any]) -> Optional[str]:
+    key = normalize_key(label)
+    if not key:
+        return None
+    for rid, aliases in (mapper.get("aliases") or {}).items():
+        for alias in aliases or []:
+            a = normalize_key(alias)
+            if a and (key == a or a in key or key in a):
+                return str(rid)
+    return None
+
+
+def map_native_neoolaf_relation_to_docred(
+    *, raw_relation: object, head_label: object, tail_label: object, evidence: object,
+    head_type: object, tail_type: object, allowed_relations: List[Dict[str, Any]],
+    mapper: Dict[str, Any], reject_peripheral: bool = True,
+) -> Tuple[Optional[Dict[str, Any]], Dict[str, Any]]:
+    """Deterministically map/relabel/reject a native NeoOLAF triple relation.
+
+    This is not extraction: no new triple is added and no gold/source entity is used.
+    """
+    by_id = relation_spec_by_id(allowed_relations)
+    raw = normalize_key(raw_relation); ev = normalize_key(evidence)
+    ht = normalize_key(head_type); tt = normalize_key(tail_type)
+    exact = map_relation_to_allowed(raw_relation, allowed_relations)
+    mapped_id = exact.get("id") if exact else relation_id_from_mapper_alias(raw_relation, mapper)
+    reason = "exact_or_alias" if exact else "mapper_alias"
+    country_tail = is_country_like(tail_label, mapper)
+    continent_tail = is_continent_like(tail_label, mapper)
+    head_orgish = ("org" in ht) or label_has_any(head_label, mapper.get("org_cues", []))
+    tail_orgish = ("org" in tt) or label_has_any(tail_label, mapper.get("org_cues", []))
+    head_workish = label_has_any(head_label, mapper.get("work_cues", [])) or any(w in ev for w in ["song", "single", "album", "released", "record label"])
+    raw_ev = raw + " " + ev
+
+    if country_tail:
+        if mapped_id in {"P131", "P159", "P276", "P361"} or any(x in raw_ev for x in ["located", "based", "headquarter", "country"]):
+            mapped_id = "P17"; reason = "country_tail_to_P17"
+        if mapped_id == "P175":
+            mapped_id = "P27"; reason = "person_country_to_P27"
+    elif continent_tail:
+        mapped_id = "P30"; reason = "continent_tail_to_P30"
+    elif mapped_id == "P276" and any(x in raw_ev for x in ["headquarter", "based in", "headquartered"]):
+        mapped_id = "P159"; reason = "location_to_P159"
+    elif mapped_id == "P361" and head_orgish and tail_orgish:
+        mapped_id = "P749" if any(x in normalize_key(tail_label) for x in ["research", "ibm", "parent"]) else "P127"
+        reason = "org_part_of_to_specific_org_relation"
+
+    if head_workish:
+        if mapped_id == "P170" and any(x in raw_ev for x in ["song", "single", "performed", "sung", "recorded", " by "]):
+            mapped_id = "P175"; reason = "creator_to_performer_music"
+        if mapped_id == "P162" and reject_peripheral and not any(x in raw_ev for x in ["produced by", "producer", "production"]):
+            return None, {"action": "reject", "reason": "weak_producer_evidence", "raw_relation": str(raw_relation)}
+
+    if any(x in raw_ev for x in ["born on", "date of birth", "birth date"]):
+        mapped_id = "P569"; reason = "birth_date_rule"
+    elif any(x in raw_ev for x in ["died on", "date of death", "death date"]):
+        mapped_id = "P570"; reason = "death_date_rule"
+    elif any(x in raw_ev for x in ["born in", "birthplace", "place of birth"]):
+        mapped_id = "P19"; reason = "birth_place_rule"
+    elif any(x in raw_ev for x in ["studied at", "educated at", "attended", "graduated from"]):
+        mapped_id = "P69"; reason = "education_rule"
+    elif any(x in raw_ev for x in ["released", "publication date", "release date", "published"]):
+        mapped_id = "P577"; reason = "publication_date_rule"
+    elif any(x in raw_ev for x in ["record label", "label"]):
+        mapped_id = "P264"; reason = "record_label_rule"
+
+    if reject_peripheral and mapped_id == "P400" and not any(x in raw_ev for x in ["platform", "software", "available on", "released on"]):
+        return None, {"action": "reject", "reason": "weak_platform_evidence", "raw_relation": str(raw_relation)}
+    spec = by_id.get(str(mapped_id)) if mapped_id else None
+    if spec is None:
+        return None, {"action": "reject", "reason": "relation_not_in_allowed_vocab", "raw_relation": str(raw_relation), "mapped_id": mapped_id}
+    action = "kept" if exact and str(exact.get("id")) == str(spec.get("id")) else "mapped"
+    return spec, {"action": action, "reason": reason, "raw_relation": str(raw_relation), "mapped_id": spec.get("id")}
+
+
 def entity_alias_index(source_entities: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
     idx: Dict[str, Dict[str, Any]] = {}
     for ent in source_entities or []:
@@ -1080,12 +1231,18 @@ def build_raw_text_er_control_block(allowed_relations: List[Dict[str, Any]]) -> 
     """
     lines = [
         "RAW TEXT ENTITY AND RELATION EXTRACTION MODE.",
-        "First identify entities from the document text only.",
-        "Then extract relations between the entities you identified.",
+        "First identify canonical entities from the document text only, including aliases/coreference when clear.",
+        "Then extract relations only between the entities you identified.",
         "Do not use any source/gold entity inventory; none is provided.",
         "Use only the ALLOWED RELATIONS listed below as predicates, exactly as written.",
         "Prefer the full relation form, for example `P127 : owned by`, not only `owned by`.",
         "Do not invent predicates outside the allowed DocRED relation vocabulary.",
+        "DocRED relation policy hints:",
+        "- Use P159 for an organization's headquarters/base city, but P17 when the tail is a country.",
+        "- Use P27 for a person's citizenship/nationality, not generic country/location.",
+        "- Use P127/P749/P355 for ownership/parent/subsidiary; avoid generic P361 when a more specific org relation fits.",
+        "- Use P175 for song/work performer, P264 for record label, P577 for release/publication date.",
+        "- Use P19/P569/P570/P69 for birth place/date, death date, and education.",
         "If no allowed relation is supported by the text, output no relation.",
         "",
         "ALLOWED RELATIONS:",
@@ -1110,9 +1267,12 @@ def inject_relation_constraints_into_guidance(
     guidance.priority_relations = list(dict.fromkeys([*existing, *allowed]))
     if raw_text_entity_relation_mode:
         constraint_text = (
-            "DocRED raw-text entity and relation extraction. First identify entities from the raw document text, "
-            "then extract relations between those predicted entities. Use only the allowed DocRED relation labels "
-            "listed in priority_relations, exactly as written. Do not use any source/gold entity inventory."
+            "DocRED raw-text entity and relation extraction. First identify canonical entities and aliases from "
+            "the raw document text, then extract relations between those predicted entities. Use only the allowed "
+            "DocRED relation labels listed in priority_relations, exactly as written. Do not use any source/gold "
+            "entity inventory. Prefer specific DocRED relations: P159 for organization headquarters city, P17 for "
+            "country tails, P27 for person nationality, P127/P749/P355 for ownership/parent/subsidiary, P175/P264/P577 "
+            "for songs and releases, and P19/P569/P570/P69 for biography facts."
         )
     else:
         constraint_text = (
@@ -1313,6 +1473,9 @@ def state_to_canonical_prediction(
     allowed_relations: Optional[List[Dict[str, Any]]] = None,
     constrained: bool = False,
     raw_text_entity_relation_mode: bool = False,
+    native_relation_mapping: bool = False,
+    relation_mapper: Optional[Dict[str, Any]] = None,
+    native_reject_peripheral: bool = True,
 ) -> Dict[str, Any]:
     """Convert final NeoOLAF state into the canonical prediction schema.
 
@@ -1367,17 +1530,6 @@ def state_to_canonical_prediction(
                 # Raw-text entity+relation mode: keep NeoOLAF-predicted entity
                 # labels as endpoints. Gold/source IDs are intentionally not
                 # used here; the evaluator maps labels/aliases to gold clusters.
-                if reasons:
-                    rejected.append(
-                        {
-                            "head": str(raw_head),
-                            "relation": str(raw_relation),
-                            "tail": str(raw_tail),
-                            "reasons": reasons,
-                            "evidence": evidence,
-                        }
-                    )
-                    continue
                 head_label = str(raw_head).strip()
                 tail_label = str(raw_tail).strip()
                 head_type = "entity"
@@ -1387,6 +1539,34 @@ def state_to_canonical_prediction(
                         head_type = str(_ent.get("type") or _typ or "entity")
                     if normalize_key(_label) == normalize_key(tail_label):
                         tail_type = str(_ent.get("type") or _typ or "entity")
+
+                mapping_info: Dict[str, Any] = {"action": "exact_or_alias"}
+                if native_relation_mapping:
+                    rel_spec, mapping_info = map_native_neoolaf_relation_to_docred(
+                        raw_relation=raw_relation,
+                        head_label=head_label,
+                        tail_label=tail_label,
+                        evidence=evidence,
+                        head_type=head_type,
+                        tail_type=tail_type,
+                        allowed_relations=allowed_relations,
+                        mapper=relation_mapper or DEFAULT_DOCRED_NATIVE_RELATION_MAPPER,
+                        reject_peripheral=bool(native_reject_peripheral),
+                    )
+                    reasons = [] if rel_spec is not None else [mapping_info.get("reason") or "relation_mapping_rejected"]
+
+                if reasons:
+                    rejected.append(
+                        {
+                            "head": str(raw_head),
+                            "relation": str(raw_relation),
+                            "tail": str(raw_tail),
+                            "reasons": reasons,
+                            "evidence": evidence,
+                            "mapping_info": mapping_info,
+                        }
+                    )
+                    continue
                 if not any(normalize_key(e.get("label")) == normalize_key(head_label) for e in entities_by_label.values()):
                     entities_by_label[(head_label, head_type)] = {"label": head_label, "type": head_type, "source": "native_neoolaf_triple_endpoint"}
                 if not any(normalize_key(e.get("label")) == normalize_key(tail_label) for e in entities_by_label.values()):
@@ -1406,7 +1586,8 @@ def state_to_canonical_prediction(
                         "tail_type": tail_type,
                         "evidence": evidence,
                         "raw_prediction": {"head": str(raw_head), "relation": str(raw_relation), "tail": str(raw_tail)},
-                        "source": "native_neoolaf_raw_text_entity_relation",
+                        "mapping_info": mapping_info,
+                        "source": "native_neoolaf_raw_text_entity_relation_mapped" if native_relation_mapping else "native_neoolaf_raw_text_entity_relation",
                     }
                 )
                 continue
@@ -1467,6 +1648,9 @@ def state_to_canonical_prediction(
             "accepted_relations": len(relations),
             "rejected_triples": len(rejected),
             "rejected_triples_preview": rejected[:20],
+            "native_relation_mapping_enabled": bool(native_relation_mapping),
+            "native_relation_mapping_kept_or_mapped": sum(1 for r in relations if (r.get("mapping_info") or {}).get("action") in {"kept", "mapped"}),
+            "native_relation_mapping_rejected": len(rejected),
         }
     return prediction
 
@@ -2950,6 +3134,9 @@ def raw_counts_from_state(state: PipelineState, prediction: Dict[str, Any]) -> D
         "docred_direct_raw_relation_items": int(diagnostics.get("raw_relation_items") or 0),
         "docred_direct_accepted_relations": int(diagnostics.get("accepted_relations") or 0),
         "docred_direct_rejected_relations": int(diagnostics.get("rejected_relations") or 0),
+        "native_relation_mapping_enabled": int(bool(diagnostics.get("native_relation_mapping_enabled") or False)),
+        "native_relation_mapping_kept_or_mapped": int(diagnostics.get("native_relation_mapping_kept_or_mapped") or 0),
+        "native_relation_mapping_rejected": int(diagnostics.get("native_relation_mapping_rejected") or 0),
         "docred_calibration_relabelled": int(((diagnostics.get("calibration") or {}).get("relabelled") or 0)) if isinstance(diagnostics.get("calibration"), dict) else 0,
         "docred_calibration_rejected": int(((diagnostics.get("calibration") or {}).get("rejected") or 0)) if isinstance(diagnostics.get("calibration"), dict) else 0,
         "docred_zero_probe_enabled": int(bool((diagnostics.get("zero_relation_probes") or {}).get("enabled"))) if isinstance(diagnostics.get("zero_relation_probes"), dict) else 0,
@@ -3039,6 +3226,9 @@ def run_one_document(
             allowed_relations=list(getattr(args, "allowed_relation_specs", []) or []),
             constrained=bool(getattr(args, "force_relation_vocabulary", False)),
             raw_text_entity_relation_mode=bool(getattr(args, "raw_text_entity_relation_mode", False)),
+            native_relation_mapping=bool(getattr(args, "docred_native_relation_mapping", False)),
+            relation_mapper=getattr(args, "docred_native_relation_mapper", DEFAULT_DOCRED_NATIVE_RELATION_MAPPER),
+            native_reject_peripheral=bool(getattr(args, "docred_native_reject_peripheral", False)),
         )
         if getattr(args, "raw_text_er_direct_fallback", False) and getattr(args, "raw_text_entity_relation_mode", False):
             raw_mode = str(getattr(args, "raw_text_er_direct_mode", "if_zero") or "if_zero").lower()
@@ -3205,7 +3395,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--force-relation-vocabulary", action="store_true", help="Force canonical output to use only allowed relation labels.")
     parser.add_argument("--source-entity-anchoring", action="store_true", help="Expose source entity IDs/labels and require source entities in constrained output.")
     parser.add_argument("--raw-text-entity-relation-mode", action="store_true", help="Do not expose source entities. Predict entities and relations from raw text with native NeoOLAF; constrain only relation labels in canonical output.")
-    parser.add_argument("--stop-after-layer", type=int, default=None, help="Optional last NeoOLAF layer index to run, inclusive. Useful for raw entity+relation smoke tests, e.g. 5 to stop after candidate triples.")
+    parser.add_argument("--docred-native-relation-mapping", action="store_true", help="Deterministically map native NeoOLAF relation labels to official DocRED relation IDs. Mapping only: no new triples and no gold/source entities.")
+    parser.add_argument("--docred-native-relation-mapper-json", default=None, help="Optional per-model JSON mapping rules for native NeoOLAF relation labels to DocRED relation IDs.")
+    parser.add_argument("--docred-native-reject-peripheral", action="store_true", help="Reject weak peripheral native triples during deterministic DocRED mapping.")
+    parser.add_argument("--stop-after-layer", type=int, default=None, help="Optional last NeoOLAF layer index to run, inclusive. Leave unset for full NeoOLAF.")
     parser.add_argument("--raw-text-er-direct-fallback", action="store_true", help="In raw-text entity+relation mode, run a raw-text-only direct ER fallback if native NeoOLAF fails or returns zero relations.")
     parser.add_argument("--raw-text-er-direct-mode", default="if_zero", choices=["if_zero", "replace", "supplement"], help="How to use the raw-text direct ER fallback after a successful native run.")
     parser.add_argument("--raw-text-er-direct-retries", type=int, default=2, help="Retry count for the raw-text direct ER fallback call.")
@@ -3417,6 +3610,7 @@ def main() -> None:
         raise SystemExit("No records selected. Check --dataset-jsonl-path and --type-filter.")
 
     args.allowed_relation_specs = load_allowed_relation_specs(args)
+    args.docred_native_relation_mapper = load_relation_mapper(args)
     if args.allowed_relation_specs:
         print(
             f"[NeoOLAF benchmark] allowed_relations={len(args.allowed_relation_specs)} "
@@ -3439,6 +3633,11 @@ def main() -> None:
         )
     if args.raw_text_entity_relation_mode:
         print("[NeoOLAF benchmark] raw_text_entity_relation_mode=True source_entities_not_exposed=True")
+        print(
+            f"[NeoOLAF benchmark] docred_native_relation_mapping={args.docred_native_relation_mapping} "
+            f"reject_peripheral={args.docred_native_reject_peripheral} "
+            f"mapper_json={args.docred_native_relation_mapper_json}"
+        )
         print(
             f"[NeoOLAF benchmark] stop_after_layer={args.stop_after_layer} "
             f"raw_text_er_direct_fallback={args.raw_text_er_direct_fallback} "
