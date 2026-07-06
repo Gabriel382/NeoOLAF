@@ -1915,8 +1915,21 @@ def relation_specs_by_id(allowed_relations: List[Dict[str, Any]]) -> Dict[str, D
     return {str(rel.get("id")): rel for rel in allowed_relations or [] if rel.get("id")}
 
 
-def relation_spec_by_id(allowed_relations: List[Dict[str, Any]], relation_id: str) -> Optional[Dict[str, Any]]:
-    return relation_specs_by_id(allowed_relations).get(str(relation_id))
+def relation_spec_by_id(
+    allowed_relations: List[Dict[str, Any]],
+    relation_id: Optional[str] = None,
+) -> Any:
+    """Return relation spec lookup table or one spec.
+
+    Earlier patches used relation_spec_by_id(allowed_relations) as an index
+    builder, while scoring-calibration code used
+    relation_spec_by_id(allowed_relations, relation_id) as a lookup.
+    Support both call styles to avoid TypeError in Setting 2 native mapping.
+    """
+    by_id = relation_specs_by_id(allowed_relations)
+    if relation_id is None:
+        return by_id
+    return by_id.get(str(relation_id))
 
 
 def entity_text(ent: Dict[str, Any]) -> str:
