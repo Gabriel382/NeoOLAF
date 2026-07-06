@@ -1663,6 +1663,109 @@ def relation_candidate_to_evidence_item(obj: Any, source: str) -> Optional[Dict[
     }
 
 
+
+def entity_entries_from_state_for_window_linking(state: PipelineState) -> List[Dict[str, Any]]:
+    """Return NeoOLAF-predicted entities with aliases for evidence-window linking."""
+    entries: List[Dict[str, Any]] = []
+    for cand in list(state.entity_candidates or []) + list(state.event_candidates or []) + list(state.attribute_candidates or []):
+        label = get_any(cand, "canonical_label", "label", "name", default="")
+        if not label:
+            continue
+        typ = get_any(cand, "candidate_type", "type", "entity_type", default="entity") or "entity"
+        aliases = entity_aliases_from_candidate(cand)
+        aliases = sorted(dict.fromkeys([str(label), *aliases]))
+        entries.append({"label": str(label), "type": str(typ), "aliases": aliases})
+    return entries
+
+
+def relation_candidate_evidence_text(obj: Any) -> str:
+    """Extract evidence-like text from a relation candidate, including mentions."""
+    parts: List[str] = []
+    base = evidence_text_from_any(obj)
+    if base:
+        parts.append(base)
+    for m in get_any(obj, "mentions", default=[]) or []:
+        txt = get_any(m, "text", "trigger_word", "name", default="")
+        if txt:
+            parts.append(str(txt))
+        ev = get_any(m, "evidence", "provenance", default=None)
+        if ev:
+            try:
+                et = evidence_to_text(ev)
+                if et:
+                    parts.append(et)
+            except Exception:
+                pass
+    return " | ".join(dict.fromkeys(p.strip() for p in parts if str(p).strip()))
+
+
+def entities_mentioned_in_text(text: str, entries: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Find NeoOLAF-predicted entities whose aliases occur in the evidence text."""
+    t = normalize_key(text)
+    if not t:
+        return []
+    found: Dict[str, Dict[str, Any]] = {}
+    for ent in entries:
+        best = ""
+        for alias in ent.get("aliases") or []:
+            a = normalize_key(alias)
+            if len(a) < 3:
+                continue
+            if a in t and len(a) > len(best):
+                best = a
+        if best:
+            found[normalize_key(ent.get("label"))] = ent
+    return list(found.values())
+
+
+def evidence_window_relation_links_from_relation_candidates(state: PipelineState, *, max_pairs_per_candidate: int = 16) -> List[Dict[str, Any]]:
+    """Link relation candidates to co-mentioned NeoOLAF entities in the same evidence window.
+
+    This is deterministic mapping/assembly from NeoOLAF-native outputs:
+    relation candidates + predicted entities + their evidence. It does not use
+    source/gold entity inventories or document gold triples.
+    """
+    out: List[Dict[str, Any]] = []
+    entity_entries = entity_entries_from_state_for_window_linking(state)
+    for rc in state.relation_candidates or []:
+        rel = get_any(rc, "canonical_label", "normalized_label", "label", "name", default="") or label_from_node(rc)
+        if not rel:
+            continue
+        ev = relation_candidate_evidence_text(rc)
+        if not ev:
+            continue
+        ents = entities_mentioned_in_text(ev, entity_entries)
+        if len(ents) < 2:
+            continue
+        made = 0
+        for i, head in enumerate(ents):
+            for j, tail in enumerate(ents):
+                if i == j:
+                    continue
+                hlabel = str(head.get("label") or "").strip()
+                tlabel = str(tail.get("label") or "").strip()
+                if not hlabel or not tlabel or normalize_key(hlabel) == normalize_key(tlabel):
+                    continue
+                out.append(
+                    {
+                        "head": hlabel,
+                        "relation": str(rel).strip(),
+                        "tail": tlabel,
+                        "head_type": str(head.get("type") or "entity"),
+                        "tail_type": str(tail.get("type") or "entity"),
+                        "evidence": ev,
+                        "confidence": get_any(rc, "confidence", "score", default=None),
+                        "native_source": "relation_candidate_window_link",
+                        "native_raw": obj_to_plain_dict(rc),
+                    }
+                )
+                made += 1
+                if made >= max_pairs_per_candidate:
+                    break
+            if made >= max_pairs_per_candidate:
+                break
+    return out
+
 def collect_native_relation_evidence_items(state: PipelineState, *, include_internal: bool = False) -> List[Dict[str, Any]]:
     """Collect all NeoOLAF-native relation evidence available in the state.
 
@@ -1689,6 +1792,8 @@ def collect_native_relation_evidence_items(state: PipelineState, *, include_inte
             item = relation_candidate_to_evidence_item(obj, "ontology_relation_candidate")
             if item:
                 items.append(item)
+
+        items.extend(evidence_window_relation_links_from_relation_candidates(state))
 
     dedup: Dict[Tuple[str, str, str, str], Dict[str, Any]] = {}
     for item in items:
@@ -3910,6 +4015,8 @@ def main() -> None:
             f"reject_peripheral={args.docred_native_reject_peripheral} "
             f"mapper_json={args.docred_native_relation_mapper_json}"
         )
+        if args.docred_native_relation_mapping:
+            print("[NeoOLAF benchmark] native evidence mapper includes candidate_triples, assertions, ontology candidates, and relation_candidate_window_link items")
         print(
             f"[NeoOLAF benchmark] stop_after_layer={args.stop_after_layer} "
             f"raw_text_er_direct_fallback={args.raw_text_er_direct_fallback} "
