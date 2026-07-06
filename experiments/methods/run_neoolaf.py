@@ -1388,43 +1388,254 @@ def compact_allowed_relations_for_prompt(allowed_relations: List[Dict[str, Any]]
     return "\n".join(rows)
 
 
+DOCRED_RELATION_FAMILIES: Dict[str, set[str]] = {
+    "location": {"P17", "P131", "P150", "P30", "P19", "P159", "P276", "P495"},
+    "organization": {"P127", "P361", "P749", "P355", "P159", "P571", "P112", "P108"},
+    "person": {"P19", "P27", "P69", "P108", "P463", "P569", "P570"},
+    "creative_work": {"P175", "P170", "P162", "P264", "P577", "P155", "P495"},
+    "date_numeric": {"P569", "P570", "P571", "P577"},
+}
+
+DOCRED_HIGH_YIELD_RELATION_IDS: set[str] = {
+    "P17", "P27", "P69", "P159", "P127", "P361", "P175", "P264", "P577",
+    "P19", "P569", "P570", "P749", "P355", "P571", "P30", "P495", "P108",
+}
+
+COUNTRY_WORDS: set[str] = {
+    "greece", "greek", "united states", "american", "brazil", "brazilian", "canada", "canadian",
+    "france", "french", "england", "british", "united kingdom", "uk", "ireland", "irish",
+    "japan", "japanese", "china", "chinese", "germany", "german", "italy", "italian",
+    "spain", "spanish", "mexico", "mexican", "australia", "australian",
+}
+
+
+def relation_specs_by_id(allowed_relations: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    return {str(rel.get("id")): rel for rel in allowed_relations or [] if rel.get("id")}
+
+
+def relation_spec_by_id(allowed_relations: List[Dict[str, Any]], relation_id: str) -> Optional[Dict[str, Any]]:
+    return relation_specs_by_id(allowed_relations).get(str(relation_id))
+
+
+def entity_text(ent: Dict[str, Any]) -> str:
+    return " ".join([str(ent.get("label") or ""), *[str(a) for a in (ent.get("aliases") or [])]])
+
+
+def entity_is_country_like(ent: Dict[str, Any]) -> bool:
+    text = normalize_key(entity_text(ent))
+    return any(country in text for country in COUNTRY_WORDS)
+
+
+def entity_is_probably_creative_work(ent: Dict[str, Any]) -> bool:
+    text = normalize_key(entity_text(ent))
+    typ = normalize_key(ent.get("type"))
+    return typ == "misc" or any(w in text for w in ["song", "album", "single", "film", "episode", "book"])
+
+
+def infer_docred_relation_family_ids(record: Dict[str, Any], source_entities: List[Dict[str, Any]]) -> set[str]:
+    """Infer a gold-free relation subset from entity types and document trigger words."""
+    text = normalize_key(document_text_from_record(record))
+    title = normalize_key(title_from_record(record, document_id_from_record(record, 0)))
+    types = {normalize_key(ent.get("type")) for ent in source_entities}
+    labels = normalize_key(" ".join(entity_text(ent) for ent in source_entities))
+    ids: set[str] = set(DOCRED_HIGH_YIELD_RELATION_IDS)
+
+    if {"loc", "gpe", "location"} & types or any(w in text for w in ["city", "county", "state", "country", "province", "located", "born in"]):
+        ids |= DOCRED_RELATION_FAMILIES["location"]
+    if {"org", "organization"} & types or any(w in text for w in ["company", "group", "organization", "research", "headquartered", "based in", "subsidiary", "parent", "owned", "founded"]):
+        ids |= DOCRED_RELATION_FAMILIES["organization"]
+    if {"per", "person"} & types or any(w in text for w in ["born", "died", "educated", "graduated", "employer", "citizen", "nationality"]):
+        ids |= DOCRED_RELATION_FAMILIES["person"]
+    if any(w in (text + " " + title + " " + labels) for w in ["song", "single", "album", "rapper", "singer", "record label", "released", "publication", "producer", "performed", "film"]):
+        ids |= DOCRED_RELATION_FAMILIES["creative_work"]
+    if re.search(r"\b(?:18|19|20)\d{2}\b", text):
+        ids |= DOCRED_RELATION_FAMILIES["date_numeric"]
+    return ids
+
+
 def filter_allowed_relations_for_direct_extractor(
     allowed_relations: List[Dict[str, Any]],
     *,
     focus_relation_ids: Optional[str] = None,
+    record: Optional[Dict[str, Any]] = None,
+    relation_family_filter: bool = False,
 ) -> List[Dict[str, Any]]:
-    """Optionally restrict the relation vocabulary shown to the direct DocRED extractor.
+    """Restrict the relation vocabulary shown to the direct DocRED extractor.
 
-    The full DocRED vocabulary is large (around 96 relations). In small smoke
-    tests this can make the model pick plausible-but-wrong Wikidata predicates
-    such as P276 instead of P159, or P170 instead of P175.
-
-    This filter is explicit and parameter-driven. It must not be populated from
-    the current document's gold pairs during evaluation. It is intended for
-    ablations such as "full vocabulary" vs. "task/subset vocabulary".
+    This is gold-free. It uses either an explicit user-provided ID list or an
+    automatic subset inferred from entity types and document trigger words.
     """
-    if not focus_relation_ids:
-        return allowed_relations
-    wanted = {x.strip() for x in str(focus_relation_ids).split(",") if x.strip()}
-    if not wanted:
-        return allowed_relations
-    filtered = [rel for rel in allowed_relations if str(rel.get("id") or rel.get("canonical") or "") in wanted or str(rel.get("id") or "") in wanted]
-    return filtered or allowed_relations
+    if focus_relation_ids:
+        wanted = {x.strip() for x in str(focus_relation_ids).split(",") if x.strip()}
+        if wanted:
+            filtered = [rel for rel in allowed_relations if str(rel.get("id") or rel.get("canonical") or "") in wanted or str(rel.get("id") or "") in wanted]
+            return filtered or allowed_relations
+
+    if relation_family_filter and record is not None:
+        wanted = infer_docred_relation_family_ids(record, source_entities_from_record(record))
+        filtered = [rel for rel in allowed_relations if str(rel.get("id") or "") in wanted]
+        return filtered or allowed_relations
+
+    return allowed_relations
 
 
 def docred_relation_disambiguation_hints() -> str:
     """Gold-free relation-selection hints for common DocRED confusions."""
     return """
 Relation-selection hints for DocRED/Wikidata labels:
-- For organizations/broadcasters, "based in" or "headquartered in" usually means P159 : headquarters location, not P276 : location.
-- For a TV station/company "part of [Group]", prefer P127 : owned by when the tail is a media group/company; use P361 : part of only for true part-whole membership not ownership/control.
-- For P17 : country and P27 : country of citizenship, the tail should be a country entity such as Greece/United States/Brazil, not an adjective such as Greek/American/Brazilian.
-- For songs, "song by [artist]" means P175 : performer, not P170 : creator.
-- For songs/albums, record companies/labels are P264 : record label; release dates are P577 : publication date.
-- Avoid weak/peripheral relations unless they are central DocRED facts: P400 platform, P1344 participant of, P155 follows, P162 producer, P463 member of, and P112 founded by are often false positives in this benchmark unless the relation is explicitly the target fact.
-- Prefer canonical biographical/org facts when explicitly present: P19 place of birth, P569 date of birth, P570 date of death, P69 educated at, P108 employer, P749 parent organization, P355 subsidiary, P571 inception, P495 country of origin.
+- Location family:
+  * Use P159 : headquarters location for organizations/broadcasters "based in" or "headquartered in" a city.
+  * Use P17 : country when the tail is a country entity such as Greece/United States/Brazil.
+  * Use P27 : country of citizenship only for a person.
+  * Use P131 : located in the administrative territorial entity only for city/county/state containment, not for country facts.
+  * Use P495 : country of origin for creative works/products when the document states origin/nationality of the work.
+- Organization family:
+  * Use P127 : owned by for corporate ownership/control or "part of [media/corporate group]".
+  * Use P361 : part of only for explicit generic part-whole membership, not corporate ownership.
+  * Use P749 : parent organization and P355 : subsidiary only for explicit parent/subsidiary relations.
+  * Use P571 : inception for founding/start dates.
+- Person family:
+  * Use P19 : place of birth for "born in" places; P569/P570 for birth/death dates.
+  * Use P69 : educated at for schools/universities attended.
+  * Use P108 : employer only when employment/working for is explicit.
+- Creative-work family:
+  * For songs, "song by [artist]" means P175 : performer, not P170 : creator.
+  * Use P264 : record label for labels/record companies; P577 : publication date for release dates.
+  * Use P162 : producer only when the text explicitly says produced by/producer.
+  * Avoid P155 : follows unless the text explicitly states predecessor/follows.
+- Weak/peripheral relations to avoid unless explicit and central: P400 platform, P1344 participant of, P155 follows, P162 producer, P463 member of, P112 founded by.
 - Output fewer high-confidence relations rather than many plausible peripheral ones.
 """.strip()
+
+
+def docred_type_constraint_violation(rel: Dict[str, Any]) -> Optional[str]:
+    """Return a rejection reason if a relation violates common DocRED type constraints."""
+    rid = str(rel.get("relation_id") or "")
+    head_type = normalize_key(rel.get("head_type"))
+    tail_type = normalize_key(rel.get("tail_type"))
+    evidence = normalize_key(rel.get("evidence"))
+    head_text = normalize_key(str(rel.get("head") or "") + " " + str((rel.get("raw_prediction") or {}).get("head") or ""))
+    tail_text = normalize_key(str(rel.get("tail") or "") + " " + str((rel.get("raw_prediction") or {}).get("tail") or ""))
+
+    if rid == "P27" and head_type not in {"per", "person"}:
+        return "P27_requires_person_head"
+    if rid in {"P569", "P570"} and head_type not in {"per", "person"}:
+        return f"{rid}_requires_person_head"
+    if rid == "P175" and head_type in {"per", "person"}:
+        return "P175_requires_work_head_not_person"
+    if rid == "P162" and not any(w in evidence for w in ["producer", "produced by", "production"]):
+        return "P162_requires_explicit_producer_evidence"
+    if rid == "P155" and not any(w in evidence for w in ["follows", "preceded", "predecessor", "sequel"]):
+        return "P155_requires_explicit_sequence_evidence"
+    if rid == "P400" and not any(w in evidence for w in ["platform", "operating system", "software", "game platform"]):
+        return "P400_requires_explicit_platform_evidence"
+    if rid == "P131" and any(c in tail_text for c in COUNTRY_WORDS) and not any(w in evidence for w in ["administrative", "county", "state", "province", "municipality", "territorial"]):
+        return "P131_country_tail_without_admin_evidence"
+    if rid == "P463" and "member" not in evidence:
+        return "P463_requires_member_evidence"
+    if rid == "P112" and not any(w in evidence for w in ["founded", "founder", "founded by"]):
+        return "P112_requires_founder_evidence"
+    return None
+
+
+def calibrate_one_docred_relation(
+    rel: Dict[str, Any],
+    *,
+    allowed_relations: List[Dict[str, Any]],
+) -> Tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]]]:
+    """Deterministically relabel/reject common DocRED relation confusions.
+
+    Returns (new_relation_or_none, diagnostic_or_none). A None relation means
+    reject the predicted triple from the benchmark-facing output.
+    """
+    rid = str(rel.get("relation_id") or "")
+    head_type = normalize_key(rel.get("head_type"))
+    tail_type = normalize_key(rel.get("tail_type"))
+    evidence = normalize_key(rel.get("evidence"))
+    head = normalize_key(rel.get("head"))
+    tail = normalize_key(rel.get("tail"))
+    by_id = relation_specs_by_id(allowed_relations)
+
+    def relabel(new_id: str, reason: str) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+        new_rel = copy.deepcopy(rel)
+        spec = by_id.get(new_id)
+        if spec:
+            new_rel["relation_id"] = spec.get("id")
+            new_rel["relation"] = spec.get("canonical") or spec.get("label")
+            new_rel["relation_label"] = spec.get("label")
+        diag = {"action": "relabel", "from": rid, "to": new_id, "reason": reason, "raw": rel}
+        new_rel.setdefault("calibration", []).append(diag)
+        return new_rel, diag
+
+    def reject(reason: str) -> Tuple[None, Dict[str, Any]]:
+        return None, {"action": "reject", "relation_id": rid, "reason": reason, "raw": rel}
+
+    # Common confusions seen in the DocRED smoke tests.
+    if rid == "P276" and head_type in {"org", "organization"} and any(w in evidence for w in ["based in", "headquartered", "headquarters"]):
+        return relabel("P159", "organization_location_should_be_headquarters_location")
+    if rid == "P361" and head_type in {"org", "organization"} and any(w in evidence for w in ["part of", "belongs to", "owned by", "group"]):
+        return relabel("P127", "corporate_group_part_of_preferred_as_owned_by")
+    if rid == "P170" and head_type in {"misc", "work", "entity"} and any(w in evidence for w in ["song by", "single by", "performed by", "rapper", "singer"]):
+        return relabel("P175", "song_by_artist_should_be_performer")
+    if rid == "P131" and any(c in tail for c in COUNTRY_WORDS):
+        if head_type in {"per", "person"}:
+            return relabel("P27", "person_country_relation_should_be_citizenship")
+        if head_type in {"org", "organization", "loc", "location"}:
+            return relabel("P17", "country_tail_should_use_country_relation")
+        return reject("administrative_location_with_country_tail_rejected")
+    if rid == "P400" and head_type in {"org", "organization"} and tail_type in {"org", "organization"}:
+        return reject("platform_between_organizations_is_likely_subscription_service_false_positive")
+    if rid == "P1344":
+        return reject("participant_of_is_weak_peripheral_for_docred_smoke")
+
+    violation = docred_type_constraint_violation(rel)
+    if violation:
+        return reject(violation)
+    return rel, None
+
+
+def calibrate_docred_relations(
+    relations: List[Dict[str, Any]],
+    *,
+    allowed_relations: List[Dict[str, Any]],
+    enable_calibration: bool = True,
+    enable_strict_type_constraints: bool = True,
+) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
+    """Apply deterministic calibration/rejection and deduplicate triples."""
+    if not enable_calibration and not enable_strict_type_constraints:
+        return relations, {"enabled": False, "relabelled": 0, "rejected": 0, "diagnostics": []}
+
+    calibrated: List[Dict[str, Any]] = []
+    diagnostics: List[Dict[str, Any]] = []
+    seen: set[Tuple[str, str, str]] = set()
+    for rel in relations:
+        candidate = copy.deepcopy(rel)
+        diag: Optional[Dict[str, Any]] = None
+        if enable_calibration:
+            candidate, diag = calibrate_one_docred_relation(candidate, allowed_relations=allowed_relations)
+            if diag:
+                diagnostics.append(diag)
+        if candidate is not None and enable_strict_type_constraints:
+            violation = docred_type_constraint_violation(candidate)
+            if violation:
+                diagnostics.append({"action": "reject", "relation_id": candidate.get("relation_id"), "reason": violation, "raw": candidate})
+                candidate = None
+        if candidate is None:
+            continue
+        key = (str(candidate.get("head_id") or candidate.get("head")), str(candidate.get("relation_id") or candidate.get("relation")), str(candidate.get("tail_id") or candidate.get("tail")))
+        if key in seen:
+            continue
+        seen.add(key)
+        calibrated.append(candidate)
+
+    return calibrated, {
+        "enabled": True,
+        "input_relations": len(relations),
+        "output_relations": len(calibrated),
+        "relabelled": sum(1 for d in diagnostics if d.get("action") == "relabel"),
+        "rejected": sum(1 for d in diagnostics if d.get("action") == "reject"),
+        "diagnostics": diagnostics[:50],
+    }
 
 
 def build_docred_direct_extraction_messages(
@@ -1655,6 +1866,143 @@ def validate_direct_docred_relations(
     return accepted, rejected
 
 
+def call_docred_direct_json_with_retries(
+    *,
+    backend: OpenAICompatibleBackend,
+    args: argparse.Namespace,
+    model_name: str,
+    messages: List[Dict[str, str]],
+    fallback_messages: Optional[List[Dict[str, str]]] = None,
+) -> str:
+    """Call OpenRouter/OpenAI-compatible backend with retries for empty content."""
+    direct_retries = max(1, int(getattr(args, "docred_direct_retries", 3) or 3))
+    direct_temperature = float(getattr(args, "docred_direct_temperature", 0.0) or 0.0)
+    last_error: Optional[BaseException] = None
+    for attempt in range(1, direct_retries + 1):
+        attempt_messages = messages
+        if attempt > 1 and fallback_messages is not None:
+            attempt_messages = fallback_messages
+        try:
+            return backend.chat(model_name, attempt_messages, temperature=direct_temperature)
+        except Exception as exc:
+            last_error = exc
+            if attempt < direct_retries:
+                time.sleep(float(getattr(args, "docred_direct_retry_sleep", 2.0) or 2.0))
+    raise RuntimeError(
+        "DocRED direct constrained extraction failed after "
+        f"{direct_retries} attempt(s): {type(last_error).__name__}: {last_error}"
+    )
+
+
+def make_prediction_from_direct_items(
+    *,
+    record: Dict[str, Any],
+    relation_items: List[Dict[str, Any]],
+    allowed_relations: List[Dict[str, Any]],
+    args: argparse.Namespace,
+    mode_name: str,
+) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+    """Validate/calibrate direct relation items and return prediction + diagnostics."""
+    source_entities = source_entities_from_record(record)
+    accepted, rejected = validate_direct_docred_relations(
+        relation_items,
+        source_entities=source_entities,
+        allowed_relations=allowed_relations,
+    )
+    calibrated, calibration_diagnostics = calibrate_docred_relations(
+        accepted,
+        allowed_relations=allowed_relations,
+        enable_calibration=bool(getattr(args, "docred_calibrate_relations", False)),
+        enable_strict_type_constraints=bool(getattr(args, "docred_strict_type_constraints", False)),
+    )
+    diagnostics = {
+        "mode": mode_name,
+        "source_entity_count": len(source_entities),
+        "allowed_relation_count": len(allowed_relations),
+        "focus_relation_ids": getattr(args, "docred_direct_focus_relation_ids", None),
+        "relation_family_filter": bool(getattr(args, "docred_relation_family_filter", False)),
+        "high_precision_hints": not bool(getattr(args, "docred_direct_disable_hints", False)),
+        "raw_relation_items": len(relation_items),
+        "accepted_before_calibration": len(accepted),
+        "accepted_relations": len(calibrated),
+        "rejected_relations": len(rejected),
+        "rejected_preview": rejected[:20],
+        "calibration": calibration_diagnostics,
+    }
+    prediction = {
+        "entities": canonical_entities_from_source(source_entities),
+        "relations": calibrated,
+        "projection_diagnostics": diagnostics,
+    }
+    return prediction, diagnostics
+
+
+def build_docred_probe_messages(
+    record: Dict[str, Any],
+    allowed_relations: List[Dict[str, Any]],
+    *,
+    family_name: str,
+    max_entities: Optional[int] = None,
+    max_relations: Optional[int] = None,
+) -> List[Dict[str, str]]:
+    """Build a shorter targeted prompt for zero-relation recovery probes."""
+    doc_id = document_id_from_record(record, 0)
+    title = title_from_record(record, doc_id)
+    text = document_text_from_record(record)
+    source_entities = source_entities_from_record(record)
+    system = (
+        "You are a strict DocRED relation extraction verifier. Return JSON only. "
+        "Use only provided source entity IDs and allowed relation IDs."
+    )
+    user = f"""
+Targeted DocRED probe: {family_name}
+
+Find high-confidence relations from this family only. If none are explicit, return {{"relations": []}}.
+Output JSON only: {{"relations": [{{"head_id": "Event_...", "relation_id": "P...", "tail_id": "Event_...", "evidence": "..."}}]}}
+
+SOURCE ENTITIES:
+{compact_source_entities_for_prompt(source_entities, max_entities=max_entities)}
+
+ALLOWED RELATIONS:
+{compact_allowed_relations_for_prompt(allowed_relations, max_relations=max_relations)}
+
+TITLE: {title}
+DOCUMENT TEXT:
+{text}
+""".strip()
+    return [{"role": "system", "content": system}, {"role": "user", "content": user}]
+
+
+def zero_relation_probe_relation_subsets(
+    record: Dict[str, Any],
+    allowed_relations: List[Dict[str, Any]],
+    max_families: int = 3,
+) -> List[Tuple[str, List[Dict[str, Any]]]]:
+    """Choose a few relation-family subsets for zero-relation recovery."""
+    relevant_ids = infer_docred_relation_family_ids(record, source_entities_from_record(record))
+    by_id = relation_specs_by_id(allowed_relations)
+    scored: List[Tuple[int, str, set[str]]] = []
+    text = normalize_key(document_text_from_record(record) + " " + title_from_record(record, document_id_from_record(record, 0)))
+    triggers = {
+        "creative_work": ["song", "single", "album", "rapper", "record label", "released", "producer"],
+        "person": ["born", "died", "educated", "graduated", "employer", "citizen"],
+        "organization": ["company", "group", "research", "subsidiary", "parent", "headquartered", "based in", "founded"],
+        "location": ["city", "county", "state", "country", "located", "province"],
+    }
+    for family, ids in DOCRED_RELATION_FAMILIES.items():
+        if not (ids & relevant_ids):
+            continue
+        score = sum(1 for trig in triggers.get(family, []) if trig in text)
+        scored.append((score, family, ids & relevant_ids))
+    scored.sort(reverse=True)
+    subsets: List[Tuple[str, List[Dict[str, Any]]]] = []
+    for _, family, ids in scored[:max_families]:
+        rels = [by_id[rid] for rid in sorted(ids) if rid in by_id]
+        if rels:
+            subsets.append((family, rels))
+    return subsets
+
+
 def run_docred_direct_constrained_extraction(
     *,
     record: Dict[str, Any],
@@ -1662,16 +2010,18 @@ def run_docred_direct_constrained_extraction(
     args: argparse.Namespace,
     artifact_dir: str,
 ) -> Dict[str, Any]:
-    """Run one direct DocRED-constrained extraction call and return a prediction dict.
+    """Run direct DocRED-constrained extraction and optional calibration/probes.
 
-    This is an optional benchmark adapter. It does not change NeoOLAF's native
-    layer outputs, KG files, or generated ontology. It only creates the final
-    DocRED-compatible canonical JSON view.
+    This is a benchmark adapter only. It does not change NeoOLAF native layer
+    outputs, KG files, or generated ontology.
     """
     source_entities = source_entities_from_record(record)
+    base_allowed_relations = list(getattr(args, "allowed_relation_specs", []) or [])
     allowed_relations = filter_allowed_relations_for_direct_extractor(
-        list(getattr(args, "allowed_relation_specs", []) or []),
+        base_allowed_relations,
         focus_relation_ids=getattr(args, "docred_direct_focus_relation_ids", None),
+        record=record,
+        relation_family_filter=bool(getattr(args, "docred_relation_family_filter", False)),
     )
     messages = build_docred_direct_extraction_messages(
         record,
@@ -1680,35 +2030,83 @@ def run_docred_direct_constrained_extraction(
         max_relations=getattr(args, "docred_direct_max_relations", None),
         high_precision_hints=not bool(getattr(args, "docred_direct_disable_hints", False)),
     )
-    raw_response = backend.chat(
-        args.model_name,
-        messages,
-        temperature=float(getattr(args, "docred_direct_temperature", 0.0) or 0.0),
+    fallback_messages = build_docred_direct_extraction_messages(
+        record,
+        allowed_relations,
+        max_entities=getattr(args, "docred_direct_max_entities", None),
+        max_relations=getattr(args, "docred_direct_max_relations", None),
+        high_precision_hints=False,
+    )
+    raw_response = call_docred_direct_json_with_retries(
+        backend=backend,
+        args=args,
+        model_name=args.model_name,
+        messages=messages,
+        fallback_messages=fallback_messages,
     )
     parsed = backend.extract_json(raw_response)
     relation_items = _relation_items_from_model_json(parsed)
-    accepted, rejected = validate_direct_docred_relations(
-        relation_items,
-        source_entities=source_entities,
+    prediction, diagnostics = make_prediction_from_direct_items(
+        record=record,
+        relation_items=relation_items,
         allowed_relations=allowed_relations,
+        args=args,
+        mode_name="docred_direct_constrained_extraction",
     )
+    raw_responses: Dict[str, Any] = {"primary": raw_response}
 
-    diagnostics = {
-        "mode": "docred_direct_constrained_extraction",
-        "source_entity_count": len(source_entities),
-        "allowed_relation_count": len(allowed_relations),
-        "focus_relation_ids": getattr(args, "docred_direct_focus_relation_ids", None),
-        "high_precision_hints": not bool(getattr(args, "docred_direct_disable_hints", False)),
-        "raw_relation_items": len(relation_items),
-        "accepted_relations": len(accepted),
-        "rejected_relations": len(rejected),
-        "rejected_preview": rejected[:20],
-    }
-    prediction = {
-        "entities": canonical_entities_from_source(source_entities),
-        "relations": accepted,
-        "projection_diagnostics": diagnostics,
-    }
+    # If the high-precision extraction returns no relations, recover recall with
+    # a few short family-specific probes. This is still gold-free: families are
+    # inferred from entity types and trigger words, not gold pairs.
+    if (
+        bool(getattr(args, "docred_zero_relation_family_probes", False))
+        and not prediction.get("relations")
+    ):
+        probe_relation_items: List[Dict[str, Any]] = []
+        probe_diags: List[Dict[str, Any]] = []
+        max_probe_families = max(1, int(getattr(args, "docred_zero_relation_probe_max_families", 3) or 3))
+        for family_name, family_relations in zero_relation_probe_relation_subsets(record, allowed_relations, max_families=max_probe_families):
+            probe_messages = build_docred_probe_messages(
+                record,
+                family_relations,
+                family_name=family_name,
+                max_entities=getattr(args, "docred_direct_max_entities", None),
+                max_relations=getattr(args, "docred_direct_max_relations", None),
+            )
+            try:
+                probe_raw = call_docred_direct_json_with_retries(
+                    backend=backend,
+                    args=args,
+                    model_name=args.model_name,
+                    messages=probe_messages,
+                    fallback_messages=None,
+                )
+                raw_responses[f"probe_{family_name}"] = probe_raw
+                probe_parsed = backend.extract_json(probe_raw)
+                probe_items = _relation_items_from_model_json(probe_parsed)
+                probe_relation_items.extend(probe_items)
+                probe_diags.append({"family": family_name, "raw_relation_items": len(probe_items), "error": None})
+            except Exception as exc:
+                probe_diags.append({"family": family_name, "raw_relation_items": 0, "error": f"{type(exc).__name__}: {exc}"})
+        if probe_relation_items:
+            probe_prediction, probe_diagnostics = make_prediction_from_direct_items(
+                record=record,
+                relation_items=probe_relation_items,
+                allowed_relations=allowed_relations,
+                args=args,
+                mode_name="docred_zero_relation_family_probes",
+            )
+            prediction = merge_canonical_predictions(prediction, probe_prediction)
+            prediction.setdefault("projection_diagnostics", {})["zero_relation_probes"] = {
+                "enabled": True,
+                "probe_attempts": probe_diags,
+                "probe_diagnostics": probe_diagnostics,
+            }
+        else:
+            prediction.setdefault("projection_diagnostics", {})["zero_relation_probes"] = {
+                "enabled": True,
+                "probe_attempts": probe_diags,
+            }
 
     out_dir = Path(artifact_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -1718,8 +2116,8 @@ def run_docred_direct_constrained_extraction(
                 "document_id": document_id_from_record(record, 0),
                 "title": title_from_record(record, document_id_from_record(record, 0)),
                 "prediction": prediction,
-                "diagnostics": diagnostics,
-                "raw_response": raw_response,
+                "diagnostics": prediction.get("projection_diagnostics") or diagnostics,
+                "raw_responses": raw_responses,
             },
             ensure_ascii=False,
             indent=2,
@@ -1808,6 +2206,9 @@ def raw_counts_from_state(state: PipelineState, prediction: Dict[str, Any]) -> D
         "docred_direct_raw_relation_items": int(diagnostics.get("raw_relation_items") or 0),
         "docred_direct_accepted_relations": int(diagnostics.get("accepted_relations") or 0),
         "docred_direct_rejected_relations": int(diagnostics.get("rejected_relations") or 0),
+        "docred_calibration_relabelled": int(((diagnostics.get("calibration") or {}).get("relabelled") or 0)) if isinstance(diagnostics.get("calibration"), dict) else 0,
+        "docred_calibration_rejected": int(((diagnostics.get("calibration") or {}).get("rejected") or 0)) if isinstance(diagnostics.get("calibration"), dict) else 0,
+        "docred_zero_probe_enabled": int(bool((diagnostics.get("zero_relation_probes") or {}).get("enabled"))) if isinstance(diagnostics.get("zero_relation_probes"), dict) else 0,
     }
 
 
@@ -1891,17 +2292,62 @@ def run_one_document(
             constrained=bool(getattr(args, "force_relation_vocabulary", False)),
         )
         if getattr(args, "docred_direct_constrained_extraction", False):
-            direct_prediction = run_docred_direct_constrained_extraction(
-                record=record,
-                backend=backend,
-                args=args,
-                artifact_dir=artifact_dir,
-            )
-            mode = str(getattr(args, "docred_direct_output_mode", "replace") or "replace").lower()
-            if mode == "supplement":
-                prediction = merge_canonical_predictions(prediction, direct_prediction)
-            else:
-                prediction = direct_prediction
+            try:
+                direct_prediction = run_docred_direct_constrained_extraction(
+                    record=record,
+                    backend=backend,
+                    args=args,
+                    artifact_dir=artifact_dir,
+                )
+                mode = str(getattr(args, "docred_direct_output_mode", "replace") or "replace").lower()
+                if mode == "supplement":
+                    prediction = merge_canonical_predictions(prediction, direct_prediction)
+                else:
+                    prediction = direct_prediction
+            except Exception as exc:
+                fallback = str(getattr(args, "docred_direct_fallback_on_error", "native") or "native").lower()
+                error_payload = {
+                    "document_id": doc_id,
+                    "title": title_from_record(record, doc_id),
+                    "error_type": type(exc).__name__,
+                    "error_message": str(exc),
+                    "fallback": fallback,
+                }
+                Path(artifact_dir).mkdir(parents=True, exist_ok=True)
+                (Path(artifact_dir) / "docred_direct_constrained_extraction.error.json").write_text(
+                    json.dumps(error_payload, ensure_ascii=False, indent=2) + "\n",
+                    encoding="utf-8",
+                )
+                if fallback == "fail":
+                    raise
+                if fallback == "empty":
+                    prediction = {
+                        "entities": canonical_entities_from_source(source_entities_from_record(record)),
+                        "relations": [],
+                        "projection_diagnostics": {
+                            "mode": "docred_direct_constrained_extraction",
+                            "direct_extraction_error": True,
+                            "error_type": type(exc).__name__,
+                            "error_message": str(exc),
+                            "fallback": fallback,
+                            "source_entity_count": len(source_entities_from_record(record)),
+                            "allowed_relation_count": len(list(getattr(args, "allowed_relation_specs", []) or [])),
+                            "raw_relation_items": 0,
+                            "accepted_relations": 0,
+                            "rejected_relations": 0,
+                        },
+                    }
+                else:
+                    diagnostics = prediction.setdefault("projection_diagnostics", {})
+                    if isinstance(diagnostics, dict):
+                        diagnostics.update(
+                            {
+                                "direct_extraction_error": True,
+                                "error_type": type(exc).__name__,
+                                "error_message": str(exc),
+                                "fallback": fallback,
+                            }
+                        )
         result = {
             "document_id": doc_id,
             "title": title_from_record(record, doc_id),
@@ -1968,8 +2414,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--docred-direct-max-entities", type=int, default=None, help="Optional cap on source entities shown to the direct DocRED extractor.")
     parser.add_argument("--docred-direct-max-relations", type=int, default=None, help="Optional cap on allowed relations shown to the direct DocRED extractor.")
     parser.add_argument("--docred-direct-temperature", type=float, default=0.0, help="Temperature for the direct DocRED-constrained extraction call.")
+    parser.add_argument("--docred-direct-retries", type=int, default=3, help="Retry the direct DocRED extraction call when OpenRouter returns empty content or transient invalid responses.")
+    parser.add_argument("--docred-direct-retry-sleep", type=float, default=2.0, help="Seconds to sleep between direct DocRED extraction retries.")
+    parser.add_argument("--docred-direct-fallback-on-error", default="native", choices=["native", "empty", "fail"], help="What to do if the optional direct DocRED extraction fails after retries.")
     parser.add_argument("--docred-direct-focus-relation-ids", default=None, help="Optional comma-separated relation IDs to show to the direct extractor, e.g. P17,P27,P69. Do not derive this from test-document gold pairs for final evaluation.")
     parser.add_argument("--docred-direct-disable-hints", action="store_true", help="Disable gold-free DocRED relation disambiguation hints in the direct extraction prompt.")
+    parser.add_argument("--docred-relation-family-filter", action="store_true", help="Gold-free pre-prompt relation subset inferred from entity types and trigger words.")
+    parser.add_argument("--docred-calibrate-relations", action="store_true", help="Apply deterministic relabel/reject calibration for common DocRED relation confusions.")
+    parser.add_argument("--docred-verification-pass", action="store_true", help="Alias for --docred-calibrate-relations and --docred-strict-type-constraints; kept for notebook/readability.")
+    parser.add_argument("--docred-zero-relation-family-probes", action="store_true", help="If direct extraction returns zero relations, run targeted family probes.")
+    parser.add_argument("--docred-zero-relation-probe-max-families", type=int, default=3, help="Maximum number of targeted relation family probes after zero-relation extraction.")
+    parser.add_argument("--docred-strict-type-constraints", action="store_true", help="Reject common relation/type mismatches after extraction.")
     parser.add_argument("--output-format", default="canonical", choices=["canonical"])
     parser.add_argument("--artifacts-root", default="./runs/neoolaf_artifacts")
 
@@ -2122,6 +2577,9 @@ def build_run_summary(
 
 def main() -> None:
     args = parse_args()
+    if getattr(args, "docred_verification_pass", False):
+        args.docred_calibrate_relations = True
+        args.docred_strict_type_constraints = True
     if getattr(args, "offline_ontology_only", False):
         args.no_web_search = True
         args.disable_wikipedia_lookups = True
@@ -2171,7 +2629,9 @@ def main() -> None:
             "[NeoOLAF benchmark] docred_direct_constrained_extraction=True "
             f"mode={args.docred_direct_output_mode} "
             f"focus_relation_ids={args.docred_direct_focus_relation_ids} "
-            f"hints={not args.docred_direct_disable_hints}"
+            f"hints={not args.docred_direct_disable_hints} "
+            f"retries={args.docred_direct_retries} "
+            f"fallback={args.docred_direct_fallback_on_error}"
         )
     if args.few_shot_from_dataset:
         guidance = add_few_shot_examples_from_dataset(
