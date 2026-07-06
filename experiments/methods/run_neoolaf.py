@@ -584,7 +584,12 @@ def record_to_document(record: Dict[str, Any], index: int, args: Optional[argpar
     title = title_from_record(record, doc_id)
     text = document_text_from_record(record)
 
-    if args is not None and (getattr(args, "force_relation_vocabulary", False) or getattr(args, "source_entity_anchoring", False)):
+    if args is not None and getattr(args, "raw_text_entity_relation_mode", False):
+        # Raw-text ER mode: relation vocabulary is allowed, but no source/gold
+        # entity inventory is exposed to the model.
+        control = build_raw_text_er_control_block(list(getattr(args, "allowed_relation_specs", []) or []))
+        raw_text = f"{control}\n{text}"
+    elif args is not None and (getattr(args, "force_relation_vocabulary", False) or getattr(args, "source_entity_anchoring", False)):
         control = build_docred_control_block(
             record,
             list(getattr(args, "allowed_relation_specs", []) or []),
@@ -608,7 +613,7 @@ def record_to_document(record: Dict[str, Any], index: int, args: Optional[argpar
             "metadata": {
                 "dataset_type": record.get("type") or record.get("split"),
                 "original_keys": sorted(record.keys()),
-                "source_entities": source_entities_from_record(record),
+                **({} if (args is not None and getattr(args, "raw_text_entity_relation_mode", False)) else {"source_entities": source_entities_from_record(record)}),
             },
         }
     ]
@@ -1053,18 +1058,55 @@ def build_docred_control_block(record: Dict[str, Any], allowed_relations: List[D
     return "\n".join(lines)
 
 
-def inject_relation_constraints_into_guidance(guidance: Optional[UserGuidance], allowed_relations: List[Dict[str, Any]]) -> Optional[UserGuidance]:
+def build_raw_text_er_control_block(allowed_relations: List[Dict[str, Any]]) -> str:
+    """Build a control block for raw-text entity + relation extraction.
+
+    This mode intentionally does not expose source/gold entity IDs. It only
+    exposes the global relation vocabulary and asks NeoOLAF to discover
+    entities from the raw document text.
+    """
+    lines = [
+        "RAW TEXT ENTITY AND RELATION EXTRACTION MODE.",
+        "First identify entities from the document text only.",
+        "Then extract relations between the entities you identified.",
+        "Do not use any source/gold entity inventory; none is provided.",
+        "Use only the ALLOWED RELATIONS listed below as predicates, exactly as written.",
+        "Prefer the full relation form, for example `P127 : owned by`, not only `owned by`.",
+        "Do not invent predicates outside the allowed DocRED relation vocabulary.",
+        "If no allowed relation is supported by the text, output no relation.",
+        "",
+        "ALLOWED RELATIONS:",
+    ]
+    for rel in allowed_relations or []:
+        lines.append(f"- {rel.get('canonical')}")
+    lines.extend(["", "DOCUMENT TEXT:"])
+    return "\n".join(lines)
+
+
+def inject_relation_constraints_into_guidance(
+    guidance: Optional[UserGuidance],
+    allowed_relations: List[Dict[str, Any]],
+    *,
+    raw_text_entity_relation_mode: bool = False,
+) -> Optional[UserGuidance]:
     if not allowed_relations:
         return guidance
     guidance = copy.deepcopy(guidance) if guidance is not None else UserGuidance()
     allowed = [str(rel.get("canonical")) for rel in allowed_relations if rel.get("canonical")]
     existing = list(getattr(guidance, "priority_relations", []) or [])
     guidance.priority_relations = list(dict.fromkeys([*existing, *allowed]))
-    constraint_text = (
-        "DocRED constrained relation extraction. Use only the allowed DocRED relation labels listed in "
-        "priority_relations, exactly as written. Use source entity names/IDs from the document control block. "
-        "Do not invent predicates and do not use entity types as entity labels."
-    )
+    if raw_text_entity_relation_mode:
+        constraint_text = (
+            "DocRED raw-text entity and relation extraction. First identify entities from the raw document text, "
+            "then extract relations between those predicted entities. Use only the allowed DocRED relation labels "
+            "listed in priority_relations, exactly as written. Do not use any source/gold entity inventory."
+        )
+    else:
+        constraint_text = (
+            "DocRED constrained relation extraction. Use only the allowed DocRED relation labels listed in "
+            "priority_relations, exactly as written. Use source entity names/IDs from the document control block. "
+            "Do not invent predicates and do not use entity types as entity labels."
+        )
     if getattr(guidance, "domain_focus", None):
         guidance.domain_focus = f"{guidance.domain_focus}\n\n{constraint_text}"
     else:
@@ -1254,6 +1296,7 @@ def state_to_canonical_prediction(
     source_entities: Optional[List[Dict[str, Any]]] = None,
     allowed_relations: Optional[List[Dict[str, Any]]] = None,
     constrained: bool = False,
+    raw_text_entity_relation_mode: bool = False,
 ) -> Dict[str, Any]:
     """Convert final NeoOLAF state into the canonical prediction schema.
 
@@ -1299,16 +1342,65 @@ def state_to_canonical_prediction(
         evidence = evidence_to_text(getattr(triple, "provenance", [])) or getattr(triple, "justification", "") or ""
 
         if constrained:
-            head_ent = map_label_to_source_entity(raw_head, source_entities)
-            tail_ent = map_label_to_source_entity(raw_tail, source_entities)
             rel_spec = map_relation_to_allowed(raw_relation, allowed_relations)
             reasons: List[str] = []
+            if rel_spec is None:
+                reasons.append("relation_not_allowed")
+
+            if raw_text_entity_relation_mode:
+                # Raw-text entity+relation mode: keep NeoOLAF-predicted entity
+                # labels as endpoints. Gold/source IDs are intentionally not
+                # used here; the evaluator maps labels/aliases to gold clusters.
+                if reasons:
+                    rejected.append(
+                        {
+                            "head": str(raw_head),
+                            "relation": str(raw_relation),
+                            "tail": str(raw_tail),
+                            "reasons": reasons,
+                            "evidence": evidence,
+                        }
+                    )
+                    continue
+                head_label = str(raw_head).strip()
+                tail_label = str(raw_tail).strip()
+                head_type = "entity"
+                tail_type = "entity"
+                for (_label, _typ), _ent in entities_by_label.items():
+                    if normalize_key(_label) == normalize_key(head_label):
+                        head_type = str(_ent.get("type") or _typ or "entity")
+                    if normalize_key(_label) == normalize_key(tail_label):
+                        tail_type = str(_ent.get("type") or _typ or "entity")
+                if not any(normalize_key(e.get("label")) == normalize_key(head_label) for e in entities_by_label.values()):
+                    entities_by_label[(head_label, head_type)] = {"label": head_label, "type": head_type, "source": "native_neoolaf_triple_endpoint"}
+                if not any(normalize_key(e.get("label")) == normalize_key(tail_label) for e in entities_by_label.values()):
+                    entities_by_label[(tail_label, tail_type)] = {"label": tail_label, "type": tail_type, "source": "native_neoolaf_triple_endpoint"}
+                key = (head_label, rel_spec.get("canonical") or rel_spec.get("label") or "", tail_label)
+                if key in seen:
+                    continue
+                seen.add(key)
+                relations.append(
+                    {
+                        "head": head_label,
+                        "head_type": head_type,
+                        "relation_id": rel_spec.get("id"),
+                        "relation": rel_spec.get("canonical") or rel_spec.get("label"),
+                        "relation_label": rel_spec.get("label"),
+                        "tail": tail_label,
+                        "tail_type": tail_type,
+                        "evidence": evidence,
+                        "raw_prediction": {"head": str(raw_head), "relation": str(raw_relation), "tail": str(raw_tail)},
+                        "source": "native_neoolaf_raw_text_entity_relation",
+                    }
+                )
+                continue
+
+            head_ent = map_label_to_source_entity(raw_head, source_entities)
+            tail_ent = map_label_to_source_entity(raw_tail, source_entities)
             if head_ent is None:
                 reasons.append("head_not_source_entity")
             if tail_ent is None:
                 reasons.append("tail_not_source_entity")
-            if rel_spec is None:
-                reasons.append("relation_not_allowed")
             if reasons:
                 rejected.append(
                     {
@@ -1353,6 +1445,7 @@ def state_to_canonical_prediction(
     if constrained:
         prediction["projection_diagnostics"] = {
             "constrained": True,
+            "raw_text_entity_relation_mode": bool(raw_text_entity_relation_mode),
             "allowed_relation_count": len(allowed_relations),
             "source_entity_count": len(source_entities),
             "accepted_relations": len(relations),
@@ -2720,6 +2813,7 @@ def run_one_document(
             source_entities=source_entities_from_record(record),
             allowed_relations=list(getattr(args, "allowed_relation_specs", []) or []),
             constrained=bool(getattr(args, "force_relation_vocabulary", False)),
+            raw_text_entity_relation_mode=bool(getattr(args, "raw_text_entity_relation_mode", False)),
         )
         if getattr(args, "docred_direct_constrained_extraction", False):
             try:
@@ -2839,6 +2933,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--relation-vocab-output-path", default=None, help="Write the resolved allowed relation vocabulary here.")
     parser.add_argument("--force-relation-vocabulary", action="store_true", help="Force canonical output to use only allowed relation labels.")
     parser.add_argument("--source-entity-anchoring", action="store_true", help="Expose source entity IDs/labels and require source entities in constrained output.")
+    parser.add_argument("--raw-text-entity-relation-mode", action="store_true", help="Do not expose source entities. Predict entities and relations from raw text with native NeoOLAF; constrain only relation labels in canonical output.")
     parser.add_argument("--docred-direct-constrained-extraction", action="store_true", help="Run an extra direct DocRED-constrained LLM extraction call for the final benchmark-facing canonical output.")
     parser.add_argument("--docred-direct-output-mode", default="replace", choices=["replace", "supplement"], help="How to combine direct DocRED extraction with the native NeoOLAF projection.")
     parser.add_argument("--docred-direct-max-entities", type=int, default=None, help="Optional cap on source entities shown to the direct DocRED extractor.")
@@ -3059,7 +3154,13 @@ def main() -> None:
 
     guidance = load_user_guidance(args.user_guidance_path)
     if args.force_relation_vocabulary:
-        guidance = inject_relation_constraints_into_guidance(guidance, args.allowed_relation_specs)
+        guidance = inject_relation_constraints_into_guidance(
+            guidance,
+            args.allowed_relation_specs,
+            raw_text_entity_relation_mode=bool(getattr(args, "raw_text_entity_relation_mode", False)),
+        )
+    if args.raw_text_entity_relation_mode:
+        print("[NeoOLAF benchmark] raw_text_entity_relation_mode=True source_entities_not_exposed=True")
     if args.docred_direct_constrained_extraction:
         print(
             "[NeoOLAF benchmark] docred_direct_constrained_extraction=True "
