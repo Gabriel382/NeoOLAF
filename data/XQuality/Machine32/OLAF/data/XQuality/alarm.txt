@@ -1,0 +1,1133 @@
+8 Alarms and messages
+
+8.1 Introduction
+
+Alarms and messages are divided into two main categories:
+1 CNC alarms and messages, for which we refer to the service manual of the Fanuc CNC series ........
+2 PLC interface alarms and messages, described below.
+
+The messages and alarms issued by the PLC indicate the detection of a
+problem that may compromise the correct operation of the machine and
+the machining cycle. Depending on the effect they produce, they are
+classified as:
+
+- alarms with immediate and controlled stop: the machine is stopped and
+  the axes and spindles are locked at maximum torque in controlled mode;
+- alarms and messages with stop at end of cycle: the machine is stopped
+  when the M01 function is triggered;
+- read-only messages: these are used to draw the operator's attention to
+  a particular circumstance without modifying the machine's operating
+  status.
+
+By pressing the "MESSAGE" key, the screen page is accessed where the
+number and text can be seen: the alarm is acknowledged with the
+"RESET PRG" key: in this way, the program is rewound and it will only
+be possible to restart the program from the beginning if the causes
+no longer persist.
+
+8.2 List of alarms and description
+
+8.2.1 Alarm No. 1001
+8.2.2 Alarm No. 1002
+8.2.3 Alarm No. 1003
+
+Alarm No.:              1001
+text:                    EMERGENCY ACTIVE
+type:                    Standard: (selected)   Optional: 
+effect:                  Alarm with immediate and controlled stop, opening of the
+                         hardware enable to the axis/spindle power supply unit and
+                         CNC in emergency
+cause:                   Indicates that the emergency push-button has been pressed
+intervention:            Release the button and press the machine start key.
+                         See page 5 of the electrical diagram, input X8.4
+person in charge
+of intervention:        operator/maintenance person
+
+Alarm No.:              1002
+text:                    MACHINE OFF CIRCUIT
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop, opening of the
+                         hardware enable to the axis/spindle power supply unit
+cause:                   Indicates that the power circuits have not been activated;
+                         in this condition the machine cannot operate at all.
+intervention:            Press the machine start key.
+                         See page 5 of the electrical diagram, input X2.0
+person in charge
+of intervention:        operator/maintenance person
+
+Alarm No.:              1003
+text:                    SLIDING DOOR OPEN
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop, opening of the
+                         hardware enable to the axis/spindle power supply unit
+cause:                   At the start of the cycle the sliding door is open.
+intervention:            Check that the door is in an admitted condition.
+                         See page 19 of the electrical diagram, input X3.3
+person in charge
+of intervention:        operator/maintenance person
+
+8.2.4 Alarm No. 1004
+8.2.5 Alarm No. 1005
+8.2.6 Alarm No. 1008
+
+Alarm No.:              1004
+text:                    SLIDING DOOR UNLOCKED
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   At the start of the cycle the sliding door is not in a safe
+                         condition.
+intervention:            Release the door unlocking button before commanding the
+                         start of the cycle.
+                         See page 19 of the electrical diagram, input X3.2
+person in charge
+of intervention:        operator
+
+Alarm No.:              1005
+text:                    SIDE GUARDS OPEN
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop, opening of the
+                         hardware enable to the axis/spindle power supply unit
+cause:                   The side guards are open.
+intervention:            Check that the side guards are closed, check the
+                         interlocks.
+                         See page 7 of the electrical diagram, input X2.5
+person in charge
+of intervention:        operator/maintenance person
+
+Alarm No.:              1008
+text:                    THERMOMAGNETIC SWITCHES STOP AT END OF CYCLE
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with stop at end of cycle
+cause:                   A thermal switch of the auxiliary motors has tripped, with
+                         low priority.
+intervention:            Check and reset the circuit breakers and/or the
+                         thermomagnetic switches.
+                         See page 7 of the electrical diagram, input X2.4
+                         (0 = ALARM, 1 = OK)
+person in charge
+of intervention:        maintenance person
+
+8.2.7 Alarm No. 1009
+8.2.8 Alarm No. 1011
+8.2.9 Alarm No. 1012
+
+Alarm No.:              1009
+text:                    THERMOMAGNETIC SWITCHES IMMEDIATE STOP
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   A thermal switch of the auxiliary motors has tripped, with
+                         high priority.
+intervention:            Check and reset the circuit breakers and/or the
+                         thermomagnetic switches.
+                         See page 7 of the electrical diagram, input X2.3
+                         (0 = ALARM, 1 = OK)
+person in charge
+of intervention:        maintenance person
+
+Alarm No.:              1011
+text:                    LOW COOLANT FLOW
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with stop at end of cycle.
+cause:                   Insufficient coolant quantity in the linear motor cooling
+                         circuit.
+intervention:            Check the liquid level in the cooling circuit.
+                         Check PLC input X4.6 on page 84 of the electrical diagram
+                         and the indication on the chiller display.
+person in charge
+of intervention:        maintenance person
+
+Alarm No.:              1012
+text:                    HIGH COOLANT TEMPERATURE
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with stop at end of cycle.
+cause:                   The chiller is unable to lower the temperature of the linear
+                         motor.
+intervention:            Check correct operation of the chiller compressor.
+                         Check PLC input X4.7 on page 84 of the electrical diagram
+                         and the indication on the chiller display.
+person in charge
+of intervention:        maintenance person
+
+8.2.10 Alarm No. 1013
+8.2.11 Alarm No. 1017
+8.2.12 Alarm No. 1018
+
+alarm No.:              1013
+text:                    PSM POWER SUPPLY ANOMALY
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop, deactivation of
+                         the hardware enable of the axis/spindle power supply unit
+cause:                   Hardware problems concerning the axes and spindles.
+intervention:            Note the error code of the power supply unit marked A2831
+                         and consult the service manual of the Fanuc CNC 160i-TB
+                         for more information
+person in charge
+of intervention:        maintenance person
+
+Alarm No.:              1017
+text:                    CABINET OVERHEATING
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   The thermostat is not set correctly, the fan or the air
+                         conditioner is not working, the electrical cabinet is too
+                         hot.
+intervention:            Check the thermostat, the fan, or the air conditioner.
+                         See page 7 of the electrical diagram, input X4.3
+                         (0 = ALARM, 1 = OK)
+person in charge
+of intervention:        maintenance person
+
+Alarm No.:              1018
+text:                    LOW PRESSURE
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   The pressure of the pneumatic installation is not
+                         sufficient for normal machine operation, or the line
+                         pressure switch is not set correctly.
+intervention:            Check the line pressure and the pressure switch setting.
+                         See page 65 of the electrical diagram, input X3.5
+                         (0 = ALARM, 1 = OK)
+person in charge
+of intervention:        maintenance person
+
+8.2.13 Alarm No. 1020
+8.2.14 Alarm No. 1021
+
+Alarm No.:              1020
+text:                    PROGRAMMING ERROR
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   An attempt was made to execute a program block
+                         containing an M function in one of the following
+                         situations, which are not permitted:
+                         - spindle rotation while the contouring function is active;
+                         - spindle orientation while the rigid tapping function or
+                           spindle synchronization is active;
+                         - spindle contouring mode while the rigid tapping function
+                           or spindle synchronization is active;
+                         - spindle rotation while the rigid tapping function is
+                           active;
+                         - spindle synchronization while the rigid tapping function
+                           or spindle orientation is active;
+                         - rigid tapping while the spindle synchronization function
+                           is active;
+                         - activation of contouring mode from a channel other than
+                           the one the spindle belongs to.
+intervention:            Modify the program in order to prevent any erroneous
+                         situation.
+person in charge
+of intervention:        programmer
+
+Alarm No.:              1021
+text:                    "S" CODE MANDATORY
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   An attempt was made to execute a program block
+                         containing the spindle rotation M function (M3, M4, M73,
+                         M74, M203, M204, M273, M274) without having specified the
+                         "S" speed argument.
+intervention:            Correct the program so as to insert the "S" argument
+person in charge
+of intervention:        programmer
+
+8.2.15 Alarm No. 1022
+8.2.16 Alarm No. 1026
+8.2.17 Alarm No. 1027
+
+Alarm No.:              1022
+text:                    "S" CODE MANDATORY
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   An attempt was made to execute a program block
+                         containing the spindle orientation M function (M19, M219)
+                         without having specified the "B" argument concerning the
+                         positioning angle.
+intervention:            Correct the program so as to insert the "B" argument
+person in charge
+of intervention:        programmer
+
+Alarm No.:              1026
+text:                    CARRIAGE PROGRAM NUMBER DIFFERENT
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   At the start of the cycle execution it was noted that the
+                         program number selected in the channel is different.
+intervention:            Check the program numbers, or, if it was necessary to
+                         execute different programs, disable the check on the
+                         "CARRIAGE MANAGEMENT" user page
+person in charge
+of intervention:        tool setter
+
+Alarm No.:              1027
+text:                    PROGRAM NOT REWOUND
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   When the R.A.Z. (reset) key was pressed or automatic mode
+                         was selected, the rewinding was not performed correctly.
+intervention:            Press the R.A.Z. key and check that the programs start
+                         from the first block.
+person in charge
+of intervention:        operator
+
+8.2.18 Alarm No. 1030
+8.2.19 Alarm No. 1031
+8.2.20 Alarm No. 1034
+
+Alarm No.:              1030
+text:                    PROGRAM M560
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   The R.A.Z. key was pressed while the X2 axis had migrated
+                         to channel 1; in this case the axis is returned to channel
+                         2 without the tool offsets being reset to zero
+                         beforehand.
+intervention:            Program the M560 function in both channels to restore
+                         correct operation of the T function.
+person in charge
+of intervention:        tool setter
+
+Alarm No.:              1031
+text:                    SWITCH THE CNC OFF AND ON
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   The emergency stop button was pressed while the X2 axis
+                         had migrated to channel 1, or the migration-in-progress
+                         signal suddenly dropped.
+intervention:            Switch the CNC off and on to restore normal operation.
+person in charge
+of intervention:        tool setter
+
+Alarm No.:              1034
+text:                    X-AXIS BRAKE LOCKED
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   Insufficient air pressure for the pneumatic release of the
+                         X1 axis, whose movement is forbidden.
+intervention:            Check the line pressure and the pressure switch
+                         calibration;
+                         See page 65 of the electrical diagram, input X3.5
+                         (0 = ALARM, 1 = OK)
+person in charge
+of intervention:        maintenance person
+
+8.2.21 Alarm No. 1039
+8.2.22 Alarm No. 1040
+8.2.23 Alarm No. 1041
+
+Alarm No.:              1039
+text:                    SPINDLE ORIENTATION ANOMALY
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   After programming the orientation, the main spindle did
+                         not reach the defined position within the 1-second time
+                         limit.
+intervention:            Check for any mechanical resistance to spindle rotation,
+                         note the error code on the drive identified with the code
+                         A2721, and consult the Fanuc CNC 160i-TB service manual
+person in charge
+of intervention:        maintenance person
+
+Alarm No.:              1040
+text:                    CHUCK OPEN
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   An attempt was made to start the automatic cycle with the
+                         main spindle chuck open.
+intervention:            Exit automatic mode and close the chuck.
+person in charge
+of intervention:        tool setter
+
+Alarm No.:              1041
+text:                    CHUCK OPENING ANOMALY
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   On the opening command, the chuck did not open within the
+                         5-second time limit.
+intervention:            Check for any mechanical resistance; if the chuck was open
+                         despite the alarm, check the setting of the micro-sensor
+                         at input X3.0, page 15 of the electrical diagram.
+person in charge
+of intervention:        maintenance person
+
+8.2.24 Alarm No. 1042
+8.2.25 Alarm No. 1043
+8.2.26 Alarm No. 1044
+
+Alarm No.:              1042
+text:                    CHUCK CLOSING ANOMALY
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   On the closing command, the chuck did not close within
+                         the 5-second time limit.
+intervention:            Check for any mechanical resistance; if the chuck was
+                         closed despite the alarm, check the setting of the
+                         micro-sensor at input X3.0, page 15 of the electrical
+                         diagram.
+person in charge
+of intervention:        maintenance person
+
+Alarm No.:              1043
+text:                    CHUCK OPENING NOT ENABLED
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   The conditions for opening the chuck are not met, e.g.
+                         the spindle is stopped, or the spindle rotation function
+                         with open chuck has not been programmed (M33)
+intervention:            Ensure that the spindle is stopped, or that the M33
+                         function is present in the program.
+person in charge
+of intervention:        operator/programmer
+
+Alarm No.:              1044
+text:                    CHUCK WIRING ERROR
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   On the opening command, the micro-sensor signaled that
+                         the chuck was closed, or, on the closing command, the
+                         micro-sensor signaled that the chuck was open.
+intervention:            Check the wiring or pneumatic connections.
+person in charge
+of intervention:        maintenance person
+
+8.2.27 Alarm No. 1045
+8.2.28 Alarm No. 1046
+
+Alarm No.:              1045
+text:                    MAIN COOLANT ALARM
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   The flow control device does not signal the presence of
+                         coolant, as a result of the M08 function being
+                         programmed
+intervention:            Check the presence of coolant, the hydraulic connections,
+                         the M1171 pump; if no problem is detected, check input
+                         X4.2, page 11 of the electrical diagram (0 = no coolant
+                         present, 1 = coolant flowing)
+person in charge
+of intervention:        maintenance person
+
+Alarm No.:              1046
+text:                    AUXILIARY COOLANT ALARM
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   The flow control device does not signal the presence of
+                         coolant, as a result of the M208 function being
+                         programmed
+intervention:            Check the presence of coolant, the hydraulic connections,
+                         the coolant flow solenoid valves, the M1671 pump; if no
+                         problem is detected, check input X4.1, page 16 of the
+                         electrical diagram (0 = no coolant present, 1 = coolant
+                         flowing)
+person in charge
+of intervention:        maintenance person
+
+8.2.29 Alarm No. 1048
+8.2.30 Alarm No. 1049
+8.2.31 Alarm No. 1051
+
+Alarm No.:              1048
+text:                    PART NOT EJECTED
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   The part was not ejected by the sub-spindle after the
+                         chuck was opened.
+intervention:            Manually remove the part from the sub-spindle; if it is
+                         not jammed, check input X5.0, page 71 of the electrical
+                         diagram
+                         NOTE:
+                         In the case of rear part ejection, disable the check from
+                         the "MACHINE MANAGEMENT" user page
+person in charge
+of intervention:        operator/maintenance person
+
+Alarm No.:              1049
+text:                    PART ABSENT
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with immediate and controlled stop
+cause:                   On machines equipped with a controlled ejector, this
+                         alarm is issued when, with the chuck closed and the part
+                         present, the part-ejected micro-sensor is detected.
+intervention:            Check the clamping elements: if a part is present, check
+                         input X5.0, page 71 of the electrical diagram (0 = part
+                         present, 1 = part ejected)
+person in charge
+of intervention:        maintenance person
+
+Alarm No.:              1051
+text:                    PART UNLOADING ANOMALY
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   Indicates that the part unloader is not in the commanded
+                         position, or that this position is not reached within the
+                         set time.
+intervention:            Check that the unloader is not mechanically obstructed;
+                         if the part unloader reaches the commanded position but
+                         the alarm persists, this means the CNC is not receiving
+                         the signals from the position micro-sensor.
+person in charge
+of intervention:        operator/maintenance person
+
+8.2.32 Alarm No. 1052
+8.2.33 Alarm No. 1055
+8.2.34 Alarm No. 1060
+
+Alarm No.:              1052
+text:                    PART UNLOADER FORWARD
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   An attempt was made to start the cycle with the part
+                         unloader in the forward position.
+intervention:            Retract the part unloader using the M521 function
+person in charge
+of intervention:        operator/maintenance person
+
+Alarm No.:              1055
+text:                    AXES Z2-Y2 IN COLLISION ZONE
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   The command configured for the mentioned axes causes
+                         them to collide with each other.
+intervention:            Move the axes away from the collision zone manually and
+                         clear the alarm.
+person in charge
+of intervention:        operator/tool setter
+
+Alarm No.:              1060
+text:                    BAR FEEDER ANOMALY
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with immediate and controlled stop
+cause:                   The bar feeder is off-circuit and is not sending the
+                         "ready" signal to the machine's CNC.
+intervention:            Check the connections, consult the bar feeder
+                         documentation for details of the anomaly.
+person in charge
+of intervention:        operator/maintenance person
+
+8.2.35 Alarm No. 1061
+8.2.36 Alarm No. 1062
+8.2.37 Alarm No. 1063
+
+Alarm No.:              1061
+text:                    TIP 1: BREAKAGE
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with immediate and controlled stop
+cause:                   Tool monitoring device No. 1 detected breakage of the
+                         tip.
+intervention:            Replace the tool. If the tool is not broken, check the
+                         calibration of the device.
+person in charge
+of intervention:        tool setter/maintenance person
+
+Alarm No.:              1062
+text:                    TIP 2: BREAKAGE
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with immediate and controlled stop
+cause:                   Tool monitoring device No. 1 is not working
+intervention:            Check the probe stroke and connections, consult the
+                         device documentation for details of the anomaly.
+person in charge
+of intervention:        operator/maintenance person
+
+Alarm No.:              1063
+text:                    TIP 2: BREAKAGE
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with immediate and controlled stop
+cause:                   Tool monitoring device No. 2 detected breakage of the
+                         tip.
+intervention:            Replace the tool. If the tool is not broken, check the
+                         calibration of the device.
+person in charge
+of intervention:        tool setter/maintenance person
+
+8.2.38 Alarm No. 1064
+8.2.39 Alarm No. 1065
+8.2.40 Alarm No. 1066
+
+Alarm No.:              1064
+text:                    TIP 2: CHECK ANOMALY
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with immediate and controlled stop
+cause:                   Tool monitoring device No. 2 is not working
+intervention:            Check the probe stroke and connections, consult the
+                         device documentation for details of the anomaly.
+person in charge
+of intervention:        operator/maintenance person
+
+Alarm No.:              1065
+text:                    TIP 3: BREAKAGE
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with immediate and controlled stop
+cause:                   Tool monitoring device No. 3 detected breakage of the
+                         tip.
+intervention:            Replace the tool. If the tool is not broken, check the
+                         calibration of the device.
+person in charge
+of intervention:        tool setter/maintenance person
+
+Alarm No.:              1066
+text:                    TIP 3: CHECK ANOMALY
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with immediate and controlled stop
+cause:                   Tool monitoring device No. 3 is not working.
+intervention:            Check the probe stroke and connections, consult the
+                         device documentation for details of the anomaly.
+person in charge
+of intervention:        operator/maintenance person
+
+8.2.41 Alarm No. 1067
+8.2.42 Alarm No. 1068
+8.2.43 Alarm No. 1070
+
+Alarm No.:              1067
+text:                    TIP 4: BREAKAGE
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with immediate and controlled stop
+cause:                   Tool monitoring device No. 4 detected breakage of the
+                         tip.
+intervention:            Replace the tool. If the tool is not broken, check the
+                         calibration of the device.
+person in charge
+of intervention:        tool setter/maintenance person
+
+Alarm No.:              1068
+text:                    TIP 4: CHECK ANOMALY
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with immediate and controlled stop
+cause:                   Tool monitoring device No. 4 is not working,
+intervention:            Check the probe stroke and connections, consult the
+                         device documentation for details of the anomaly.
+person in charge
+of intervention:        operator/maintenance person
+
+Alarm No.:              1070
+text:                    CDS: IMMEDIATE STOP
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with immediate and controlled stop
+cause:                   The external coolant system (CDS) has encountered a
+                         problem that prevents continuing operation.
+intervention:            Check the anomaly on the CDS operator panel and consult
+                         the documentation. If there is no indication, check the
+                         connections with the lathe.
+person in charge
+of intervention:        maintenance person
+
+8.2.44 Alarm No. 1071
+8.2.45 Alarm No. 1072
+8.2.46 Alarm No. 1078
+
+Alarm No.:              1071
+text:                    CDS: STOP AT END OF CYCLE
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with immediate and controlled stop
+cause:                   The external coolant system (CDS) has encountered a
+                         problem that does not require immediate intervention.
+intervention:            Check the anomaly on the CDS operating panel and consult
+                         the documentation. If there is no indication, check the
+                         connections with the lathe.
+person in charge
+of intervention:        maintenance person
+
+Alarm No.:              1072
+text:                    CDS: WAITING DUE TO EXCESSIVE FEED
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with immediate and controlled stop
+cause:                   The external coolant system (CDS) delayed more than one
+                         minute in validating the axis feed enable; in this
+                         situation the work cycle must be stopped.
+intervention:            Check the anomaly on the CDS operator panel and consult
+                         the documentation.
+person in charge
+of intervention:        maintenance person
+
+Alarm No.:              1078
+text:                    SISTER TOOL: STOP AT END OF CYCLE
+type:                    Standard:               Optional: (selected)
+effect:                  At the end of the cycle (M01), stops automatic execution
+                         of the program.
+cause:                   The sister tool management program found that the
+                         target part count for one or more tools has been
+                         reached.
+intervention:            Check the expired tool on the SISTER TOOL page, replace
+                         the insert and reload the defined part count.
+person in charge
+of intervention:        operator
+
+8.2.47 Alarm No. 1079
+8.2.48 Alarm No. 1080
+8.2.49 Alarm No. 1081
+
+Alarm No.:              1079
+text:                    LOAD MONITOR: FEED DIFFERENT FROM 100%
+type:                    Standard:               Optional: (selected)
+effect:                  Alarms or messages with stop at end of cycle.
+cause:                   The Load Monitor tool monitoring system detected that
+                         the feed-rate override is set to a percentage other than
+                         100%, which causes a current draw different from the
+                         nominal value.
+intervention:            Set the override to 100% and repeat the cycle.
+person in charge
+of intervention:        operator
+
+Alarm No.:              1080
+text:                    LOAD MONITOR: IMMEDIATE STOP
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with immediate and controlled stop
+cause:                   The Load Monitor tool monitoring system detected tool
+                         breakage.
+intervention:            Replace the tool, or, if it is not broken, check the
+                         system calibration settings described in the application
+                         documentation.
+person in charge
+of intervention:        tool setter
+
+Alarm No.:              1081
+text:                    LOAD MONITOR: STOP AT END OF CYCLE
+type:                    Standard:               Optional: (selected)
+effect:                  Alarms or messages with stop at end of cycle.
+cause:                   The Load Monitor tool monitoring system detected tool
+                         wear.
+intervention:            Replace the tool, or, in case of insufficient wear,
+                         check the system calibration settings described in the
+                         application documentation.
+person in charge
+of intervention:        tool setter
+
+8.2.50 Alarm No. 1082
+8.2.51 Alarm No. 1083
+8.2.52 Alarm No. 1084
+
+Alarm No.:              1082
+text:                    LOAD MONITOR: STOP AT END OF BLOCK
+type:                    Standard:               Optional: (selected)
+effect:                  Alarm with stop at end of block.
+cause:                   The Load Monitor tool monitoring system detected the
+                         absence of a tool.
+intervention:            Mount the tool or, if present, check the system
+                         calibration settings described in the application
+                         documentation.
+person in charge
+of intervention:        tool setter
+
+Alarm No.:              1083
+text:                    AUTOMATIC STOP IN PROGRESS
+type:                    Standard: (selected)   Optional:
+effect:                  Alarms or messages with stop at end of cycle
+cause:                   The set time or the target production count has been
+                         reached, or the lathe is in an alarm condition with
+                         automatic stop activated; when the time specified on the
+                         user page for automatic stop expires, the power supply to
+                         the lathe will be cut off.
+intervention:            If you wish to interrupt the stop sequence, press R.A.Z.
+                         (RESET) and disable the scheduled stop on the user page.
+person in charge
+of intervention:        operator
+
+Alarm No.:              1084
+text:                    MAINTENANCE MANDATORY
+type:                    Standard: (selected)   Optional:
+effect:                  Alarms or messages with stop at end of cycle
+cause:                   The time set by one or more maintenance counters has
+                         elapsed, so the cycle cannot continue.
+intervention:            Perform the maintenance operations for the affected
+                         items and confirm the operation on the "MAINTENANCE" user
+                         page; at this point it is possible to resume the cycle.
+person in charge
+of intervention:        maintenance person
+
+8.3 List of messages and description
+
+8.3.1 Message No. 2001
+8.3.2 Message No. 2002
+8.3.3 Message No. 2020
+
+message No.:             2001
+text:                    CNC BATTERY EXHAUSTED
+type:                    Standard: (selected)   Optional:
+effect:                  Display only message
+cause:                   The buffer battery that powers the CNC memory while the
+                         machine is switched off is exhausted.
+intervention:            Replace the battery with the machine powered on to avoid
+                         losing the stored data.
+
+message No.:             2002
+text:                    MACHINE IN TOOLING MODE
+type:                    Standard: (selected)   Optional:
+effect:                  Display only message
+cause:                   Tooling mode has been selected
+intervention:            The axes can be moved both with the door closed and with
+                         the door open, using the two-hand control.
+person in charge
+of intervention:        tool setter
+
+message No.:             2020
+text:                    LOW LEVEL OF LOSS LUBRICATION OIL
+type:                    Standard: (selected)   Optional:
+effect:                  Display only message
+cause:                   Indicates that the lubrication oil level is below the
+                         minimum.
+intervention:            Top up the oil. If it was not insufficient, check input
+                         X2.6, page 14 of the electrical diagram (0 = level below
+                         minimum, 1 = level above minimum)
+person in charge
+of intervention:        maintenance person
+
+8.3.4 Message No. 2021
+8.3.5 Message No. 2022
+8.3.6 Message No. 2023
+
+message No.:             2021
+text:                    LOSS LUBRICATION: PRESSURE NOT REACHED
+type:                    Standard: (selected)   Optional:
+effect:                  Display only message
+cause:                   Indicates that pressure was not restored in the
+                         lubrication system, which should occur between one oil
+                         pulse and the next.
+intervention:            Check the operation of the pump or any faults in the
+                         pressure switch.
+                         Input X2.7, page 14 of the electrical diagram.
+person in charge
+of intervention:        maintenance person
+
+message No.:             2022
+text:                    CHIP CONVEYOR OVERLOAD
+type:                    Standard: (selected)   Optional:
+effect:                  Display only message
+cause:                   Excessive machining residue is preventing the chip
+                         conveyor from operating.
+intervention:            Remove material from the chip evacuation area.
+                         Input X4.4, page 13 of the electrical diagram.
+person in charge
+of intervention:        operator
+
+message No.:             2023
+text:                    CHIP CONVEYOR BLOCKED
+type:                    Standard: (selected)   Optional:
+effect:                  Display only message
+cause:                   Despite attempts made in automatic mode to clear the
+                         jam, the conveyor or auger remains stuck.
+intervention:            Find the cause of the jam in the conveyor or auger and
+                         clear it.
+                         Input X4.4, page 13 of the electrical diagram.
+person in charge
+of intervention:        operator
+
+8.3.7 Message No. 2024
+8.3.8 Message No. 2040
+8.3.9 Message No. 2041
+
+message No.:             2024
+text:                    OVERLOAD MONITORING DEVICE FAILURE
+type:                    Standard: (selected)   Optional:
+effect:                  Display only message
+cause:                   The behavior of the "chip conveyor overload monitoring
+                         device" is abnormal, for which reason the logic system
+                         considers it to be faulty.
+intervention:            Ensure that this device is working correctly.
+person in charge
+of intervention:        maintenance person
+
+message No.:             2040
+text:                    BAR FEEDER: BAR CHANGE PHASE
+type:                    Standard: (selected)   Optional:
+effect:                  Display only message
+cause:                   Informs the operator that the machining cycle is
+                         suspended, waiting for the bar change to complete.
+intervention:            When the bar change is complete, the message clears
+                         automatically.
+person in charge
+of intervention:        no intervention required
+
+message No.:             2041
+text:                    BAR FEEDER: BAR MAGAZINE EMPTY
+type:                    Standard: (selected)   Optional:
+effect:                  Display only message
+cause:                   Informs the operator that the bar feeder's bar magazine
+                         is nearly empty.
+intervention:            Add new bars to the magazine.
+person in charge
+of intervention:        operator
+
+8.3.10 Message No. 2050
+8.3.11 Message No. 2051
+8.3.12 Message No. 2060
+
+message No.:             2050
+text:                    CDS: MESSAGE OR NOTICE SIGNAL
+type:                    Standard:               Optional: (selected)
+effect:                  Display only message
+cause:                   The external coolant system (CDS) requests non-immediate
+                         maintenance.
+intervention:            Check the type of maintenance requested on the CDS
+                         operator panel and consult the documentation; if there
+                         is no indication, check the connections with the lathe.
+person in charge
+of intervention:        maintenance person
+
+message No.:             2051
+text:                    CDS: WAITING FOR FEED ENABLE
+type:                    Standard:               Optional: (selected)
+effect:                  Display only message
+cause:                   This message indicates that when the timer masking the
+                         axis feed stop has expired the set time, the lathe is
+                         still waiting for authorization from the external coolant
+                         device (CDS)
+intervention:            Once authorization is received from the CDS, the message
+                         clears automatically.
+person in charge
+of intervention:        
+
+message No.:             2060
+text:                    AUTOMATIC STOP: SET TIME REACHED
+type:                    Standard: (selected)   Optional:
+effect:                  Display only message
+cause:                   The machine stop time has been reached; if the condition
+                         persists, the programs will be stopped together with the
+                         M01 function and the stop phase will begin (see alarm
+                         No. 1083)
+intervention:            It is possible to interrupt the stop phase by changing
+                         the stop time from the appropriate user page.
+person in charge
+of intervention:        operator
+
+8.3.13 Message No. 2061
+8.3.14 Message No. 2062
+8.3.15 Message No. 2065
+
+message No.:             2061
+text:                    SET PRODUCTION REACHED
+type:                    Standard: (selected)   Optional:
+effect:                  Display only message
+cause:                   The quantity of parts set on the "PRODUCTION DATA" page
+                         has been reached; if the condition persists, the
+                         programs will be stopped together with the M01 function
+                         and the stop phase will begin (see alarm No. 1083).
+intervention:            It is possible to interrupt the stop phase by changing
+                         the target part count from the appropriate user page.
+person in charge
+of intervention:        tool setter
+
+message No.:             2062
+text:                    AUTOMATIC STOP: MACHINE IN ALARM
+type:                    Standard: (selected)   Optional:
+effect:                  Display only message
+cause:                   The AUTOMATIC STOP function has been activated via the
+                         corresponding user page, the set time has been reached,
+                         or an alarm has occurred; as a result the machine stop
+                         phase has started.
+intervention:            Wait for the main switch to trip, then switch it back
+                         on and start the machine.
+person in charge
+of intervention:        
+
+message No.:             2065
+text:                    MAINTENANCE NOTICE
+type:                    Standard: (selected)   Optional:
+effect:                  Display only message
+cause:                   Warns that one of the maintenance parameters is about to
+                         run out
+intervention:            Check on the "MAINTENANCE" page which of the listed
+                         items requires maintenance
+person in charge
+of intervention:        maintenance person
+
+8.3.16 Alarm No. 3001 to 3003
+8.3.17 Alarm No. 3004
+8.3.18 Alarm No. 3005
+
+message No.:             3001 to 3003
+text:                    TORQUE REDUCTION <X, Z, Y> ERRONEOUS
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   The torque reduction requested for the indicated axis is
+                         outside the allowed limits.
+intervention:            Modify the programmed reduction value.
+person in charge
+of intervention:        programmer
+
+message No.:             3004
+text:                    WARNING VERTICAL AXIS
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   Torque reduction is requested for a vertical axis; this
+                         is not permitted.
+intervention:            Modify the program
+person in charge
+of intervention:        programmer
+
+message No.:             3005
+text:                    AXIS NOT PRESENT
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   Torque reduction is requested for an axis that is not
+                         present in the Path.
+intervention:            Modify the program
+person in charge
+of intervention:        programmer
+
+8.3.19 Alarm No. 3006 to 3008
+8.3.20 Alarm No. 3009 to 3011
+8.3.21 Alarm No. 3012
+
+message No.:             3006 - 3008
+text:                    AXIS <X, Z, Y> NOT IN POSITION
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   The axis subject to torque reduction did NOT reach the
+                         programmed position due to an obstacle encountered along
+                         its path.
+intervention:            Check the machining process and remove the obstacle.
+person in charge
+of intervention:        programmer
+
+message No.:             3009 - 3011
+text:                    AXIS <X, Z, Y> NOT AGAINST STOP
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   The axis subject to torque reduction, once it has
+                         reached the position, shows NO following error, and
+                         therefore cannot be resting against the part
+intervention:            Check the machining process and review the program.
+person in charge
+of intervention:        programmer
+
+message No.:             3012
+text:                    FEED ERRONEOUS OR MISSING
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   G84, G88, G188 were programmed without the F parameter
+                         indicating the feed rate, or it was specified with an
+                         erroneous value.
+intervention:            Check the program and modify the instruction.
+person in charge
+of intervention:        programmer
+
+8.3.22 Alarm No. 3013 to 3015
+8.3.23 Alarm No. 3016
+8.3.24 Alarm No. 3020
+
+message No.:             3013 - 3015
+text:                    AXIS <X, Z, Y> NOT PROGRAMMED
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   When programming one of the functions G88, G84, G188,
+                         the X, Z, or Y parameter respectively was omitted.
+intervention:            Check the program and modify the instruction.
+person in charge
+of intervention:        programmer
+
+message No.:             3016
+text:                    POLYGON TURNING MICRO-SENSOR NOT OK
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   The G305 polygon-turning-with-phased-milling function
+                         searched unsuccessfully for the reference micro-sensor
+                         and stopped as a result.
+intervention:            Check correct operation of the polygon turning reference
+                         micro-sensor. PLC input X5.4, page 28 of the electrical
+                         diagram.
+person in charge
+of intervention:        Maintenance person
+
+message No.:             3020
+text:                    PROGRAMMING ERROR
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   
+intervention:            
+person in charge
+of intervention:        
+
+8.3.25 Alarm No. 3021
+8.3.26 Alarm No. 3028
+8.3.27 Alarm No. 3029
+
+message No.:             3021
+text:                    T OFFSET NOT ACTIVATED
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   
+intervention:            
+person in charge
+of intervention:        programmer
+
+message No.:             3028
+text:                    G CODE NOT VALID
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   Programming the G10 L50 function is not permitted.
+intervention:            Delete this function from the program.
+person in charge
+of intervention:        programmer
+
+message No.:             3029
+text:                    CDS OPTION NOT ACTIVATED
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   The G304 function has not been activated on the user
+                         page,
+intervention:            Activate the CDS device on the user page.
+person in charge
+of intervention:        programmer
+
+8.3.28 Alarm No. 3030
+8.3.29 Alarm No. 3031 to 3034
+8.3.30 Alarm No. 3035
+
+message No.:             3030
+text:                    CDS CONFIGURATION ERROR
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   The high-pressure unit has not been configured
+                         correctly on the user page.
+intervention:            Configure the CDS device on the user page.
+person in charge
+of intervention:        programmer
+
+message No.:             3031 - 3034
+text:                    CARRIAGE <1, 2, 3, 4> DISABLED
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   The G303 masked-time reload function cannot operate if
+                         carriage 2 has been disabled on the user page.
+intervention:            Activate carriage 2 from the user page.
+person in charge
+of intervention:        programmer
+
+message No.:             3035
+text:                    9000 OPTIONS NOT ACTIVATED
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   The G188 function was programmed on a machine model
+                         that does not have the Y2 axis.
+intervention:            Delete the G188 function from the program.
+person in charge
+of intervention:        programmer
+
+8.3.31 Alarm No. 3036 to 3038
+
+message No.:             3036 - 3038
+text:                    AXIS <X, Z, Y> FOLLOWING ERROR
+type:                    Standard: (selected)   Optional:
+effect:                  Alarm with program interruption, axes and spindles
+                         stopped.
+cause:                   With the G300 function the torque was reduced to such an
+                         extent that the axis fails to reach the required
+                         dimension.
+intervention:            Increase the torque of the indicated axis
+person in charge
+of intervention:        programmer

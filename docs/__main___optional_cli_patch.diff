@@ -1,0 +1,68 @@
+diff --git a/src/neoolaf/evaluation/__main__.py b/src/neoolaf/evaluation/__main__.py
+index 0000000..0000000 100644
+--- a/src/neoolaf/evaluation/__main__.py
++++ b/src/neoolaf/evaluation/__main__.py
+@@
+ def build_parser() -> argparse.ArgumentParser:
+@@
+     batch_parser.add_argument("--output", required=True)
++
++    robust_ablation_parser = subparsers.add_parser(
++        "ablation-robust",
++        help="Evaluate prefix stop-after-layer outputs with robust coverage-efficiency metrics",
++    )
++    robust_ablation_parser.add_argument(
++        "--prefix-runs-dir",
++        required=True,
++        help="Directory containing prefix_stop_after_* output folders",
++    )
++    robust_ablation_parser.add_argument("--gold", required=True, help="XQuality gold JSON path")
++    robust_ablation_parser.add_argument("--output", required=True, help="Output directory")
++    robust_ablation_parser.add_argument(
++        "--profile",
++        default="xquality_relaxed_recall",
++        help="Evaluation profile label to write in reports",
++    )
++    robust_ablation_parser.add_argument(
++        "--final-export-dir",
++        default=None,
++        help="Optional native NeoOLAF final export folder to compare against prefixes",
++    )
++    robust_ablation_parser.add_argument(
++        "--min-triples",
++        type=int,
++        default=1,
++        help="Minimum raw triples required to evaluate a prefix folder",
++    )
++    robust_ablation_parser.add_argument(
++        "--strict-completed-marker",
++        action="store_true",
++        help="Evaluate only folders with a positive COMPLETED.json marker",
++    )
++    robust_ablation_parser.add_argument("--no-plots", action="store_true", help="Disable plot generation")
+ 
+     return parser
+@@
+     if args.command == "batch-evaluate":
+@@
+         compare_runs(output_root, output_root / "comparison")
+         return
++
++    if args.command == "ablation-robust":
++        from neoolaf.evaluation.runners.evaluate_ablation_robust import (
++            evaluate_prefix_stop_after_layer_ablation,
++        )
++
++        evaluate_prefix_stop_after_layer_ablation(
++            prefix_runs_dir=args.prefix_runs_dir,
++            gold_path=args.gold,
++            output_dir=args.output,
++            profile=args.profile,
++            final_export_dir=args.final_export_dir,
++            min_triples=args.min_triples,
++            strict_completed_marker=args.strict_completed_marker,
++            make_plots=not args.no_plots,
++        )
++        return
+ 
+     parser.error(f"Unknown command: {args.command}")
