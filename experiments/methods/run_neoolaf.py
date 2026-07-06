@@ -1,1063 +1,1345 @@
+#!/usr/bin/env python
+"""Run NeoOLAF on RAGTree-style JSONL datasets.
+
+This script is intentionally a thin benchmark wrapper around the NeoOLAF
+library. It keeps one independent NeoOLAF pipeline execution per document,
+while adding dataset-level conveniences used by the RAGTree comparison setup:
+
+- RAGTree JSONL loading and type filtering;
+- one large document chunk by default, for "no chunk" benchmark mode;
+- user guidance loaded from JSON;
+- optional few-shot examples extracted from the dataset;
+- one fixed ontology per dataset;
+- canonical JSONL prediction export;
+- parallel document execution through --document-workers;
+- existing NeoOLAF intra-document/chunk worker support through --max-workers.
+
+The goal is not to create a new method. The goal is to run the same NeoOLAF
+code/library with a benchmark profile and document-level parallelism.
+"""
 from __future__ import annotations
 
 import argparse
-import dataclasses
-import datetime as dt
+import copy
+import hashlib
 import json
 import os
-import random
 import re
 import sys
+import time
 import traceback
+from collections import Counter
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from dataclasses import asdict, is_dataclass
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Tuple
 
-from tqdm.auto import tqdm
+import requests
+
+# ---------------------------------------------------------------------------
+# Optional offline Wikipedia policy
+# ---------------------------------------------------------------------------
+
+def _is_wikipedia_url(url: object) -> bool:
+    """Return True for Wikipedia/Wikimedia URLs that should be blocked in benchmark mode."""
+    try:
+        from urllib.parse import urlparse
+
+        hostname = (urlparse(str(url)).hostname or "").lower()
+    except Exception:
+        return False
+    return (
+        hostname == "wikipedia.org"
+        or hostname.endswith(".wikipedia.org")
+        or hostname == "wikimedia.org"
+        or hostname.endswith(".wikimedia.org")
+    )
 
 
-# ============================================================
-# Resolve project paths
-# ============================================================
+def install_wikipedia_blocker() -> None:
+    """Block Wikipedia lookups at runtime without touching NeoOLAF source code.
 
+    This is intentionally scoped to wikipedia.org / wikimedia.org. OpenRouter,
+    local files, and other HTTP endpoints remain untouched. The fake MediaWiki
+    response is empty-but-successful, so enrichment code can continue quickly.
+    """
+
+    if getattr(install_wikipedia_blocker, "_installed", False):
+        return
+
+    original_session_request = requests.sessions.Session.request
+
+    def offline_session_request(self, method, url, *args, **kwargs):  # type: ignore[no-untyped-def]
+        if not _is_wikipedia_url(url):
+            return original_session_request(self, method, url, *args, **kwargs)
+
+        response = requests.Response()
+        response.status_code = 200
+        response.url = str(url)
+        response.reason = "Wikipedia disabled by NeoOLAF benchmark policy"
+        response.headers["Content-Type"] = "application/json; charset=utf-8"
+        response._content = json.dumps(
+            {
+                "batchcomplete": "",
+                "query": {"search": [], "pages": {}},
+                "warnings": {
+                    "neoolaf": {
+                        "*": "Wikipedia lookup disabled by benchmark policy."
+                    }
+                },
+            }
+        ).encode("utf-8")
+        response.encoding = "utf-8"
+        return response
+
+    requests.sessions.Session.request = offline_session_request
+    install_wikipedia_blocker._installed = True  # type: ignore[attr-defined]
+    print("[NeoOLAF benchmark] Wikipedia/Wikimedia lookups disabled by runner policy.")
+
+
+
+
+# ---------------------------------------------------------------------------
+# Offline source objects used by benchmark mode
+# ---------------------------------------------------------------------------
+
+class OfflineWikipediaSource:
+    """Wikipedia-compatible source that returns no external evidence.
+
+    This keeps Layer 2 alive without making network calls and without faking
+    MediaWiki HTTP responses. The shape matches WikipediaSource.search().
+    """
+
+    def search(self, term: str) -> Dict[str, Any]:
+        return {
+            "source": "wikipedia",
+            "term": term,
+            "found": False,
+            "aliases": [],
+            "summary": "",
+            "url": None,
+        }
+
+
+class OfflineWikidataSource:
+    """Wikidata-compatible source that returns no external evidence."""
+
+    def search(self, term: str, limit: int = 3) -> Dict[str, Any]:
+        return {
+            "source": "wikidata",
+            "term": term,
+            "results": [],
+            "aliases": [],
+            "labels": [],
+            "descriptions": [],
+        }
+
+
+class OfflineWebSearchSource:
+    """Web-search-compatible source that returns no external evidence."""
+
+    def search(self, term: str, max_results: int = 3) -> Dict[str, Any]:
+        return {
+            "source": "web",
+            "term": term,
+            "results": [],
+        }
+
+# Allow this script to be called from notebooks located in sibling folders,
+# e.g. ../../experiments/methods/run_neoolaf.py.
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-SRC_PATH = PROJECT_ROOT / "src"
-COMMON_DIR = PROJECT_ROOT / "experiments" / "common"
+SRC_ROOT = PROJECT_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
 
-if str(SRC_PATH) not in sys.path:
-    sys.path.insert(0, str(SRC_PATH))
-
-if str(COMMON_DIR) not in sys.path:
-    sys.path.insert(0, str(COMMON_DIR))
-
-
-# ============================================================
-# Local common imports
-# ============================================================
-
-from jsonl_adapter import count_documents, iter_documents  # type: ignore
-
-
-# ============================================================
-# NeoOLAF imports
-# ============================================================
-
+from neoolaf.core.execution_config import ExecutionConfig
 from neoolaf.core.pipeline import Pipeline
 from neoolaf.core.pipeline_state import PipelineState
 from neoolaf.core.runner import Runner
-from neoolaf.core.execution_config import ExecutionConfig
-
-from neoolaf.domain.documents import Document
+from neoolaf.domain.documents import Document, DocumentChunk
 from neoolaf.domain.user_guidance import (
-    UserGuidance,
-    TypingExample,
-    RelationExample,
-    PromotionExample,
     NegativeExample,
+    PromotionExample,
+    RelationExample,
+    TypingExample,
+    UserGuidance,
 )
-
-from neoolaf.resources.llm_backends.openai_backend import OpenAIBackend
-from neoolaf.resources.llm_backends.ollama_backend import OllamaBackend
-from neoolaf.resources.translation.deep_translator_backend import DeepTranslatorBackend
-
-from neoolaf.resources.knowledge_sources.wordnet_source import WordNetSource
-from neoolaf.resources.knowledge_sources.wikipedia_source import WikipediaSource
-from neoolaf.resources.knowledge_sources.wikidata_source import WikidataSource
-from neoolaf.resources.knowledge_sources.web_search_source import WebSearchSource
-
-from neoolaf.ontology.factory import build_seed_ontology
-
-from neoolaf.grounding.rag.registry import RetrievalRegistry
-from neoolaf.grounding.rag.engine import SemanticRAGEngine
-from neoolaf.grounding.rag.adapters.neoolaf_semantic_rag_adapter import NeoOLAFSemanticRAGAdapter
-from neoolaf.grounding.rag.spaces.ontology_space import OntologySpace
-from neoolaf.grounding.rag.spaces.artifact_space import ArtifactSpace
-from neoolaf.grounding.rag.spaces.web_space import WebSpace
-from neoolaf.grounding.rag.spaces.wikidata_space import WikidataSpace
-from neoolaf.grounding.rag.spaces.wikipedia_space import WikipediaSpace
-from neoolaf.grounding.rag.spaces.wordnet_space import WordNetSpace
-
 from neoolaf.layers.layer00_preprocessing.component import PreprocessingLayer
-from neoolaf.layers.layer01_linguistic_expression_extraction.component import LinguisticExpressionExtractionLayer
+from neoolaf.layers.layer01_linguistic_expression_extraction.component import (
+    LinguisticExpressionExtractionLayer,
+)
 from neoolaf.layers.layer02_candidate_enrichment.component import CandidateEnrichmentLayer
-from neoolaf.layers.layer03_candidate_typing_resolution.component import CandidateTypingResolutionLayer
-from neoolaf.layers.layer04_candidate_relation_extraction.component import CandidateRelationExtractionLayer
-from neoolaf.layers.layer05_candidate_triple_generation.component import CandidateTripleGenerationLayer
-from neoolaf.layers.layer06_concept_relation_induction.component import ConceptRelationInductionLayer
+from neoolaf.layers.layer03_candidate_typing_resolution.component import (
+    CandidateTypingResolutionLayer,
+)
+from neoolaf.layers.layer04_candidate_relation_extraction.component import (
+    CandidateRelationExtractionLayer,
+)
+from neoolaf.layers.layer05_candidate_triple_generation.component import (
+    CandidateTripleGenerationLayer,
+)
+from neoolaf.layers.layer06_concept_relation_induction.component import (
+    ConceptRelationInductionLayer,
+)
 from neoolaf.layers.layer07_hierarchisation.component import HierarchisationLayer
-from neoolaf.layers.layer08_axiom_schemata_extraction.component import AxiomSchemataExtractionLayer
-from neoolaf.layers.layer09_general_axiom_extraction.component import GeneralAxiomExtractionLayer
+from neoolaf.layers.layer08_axiom_schemata_extraction.component import (
+    AxiomSchemataExtractionLayer,
+)
+from neoolaf.layers.layer09_general_axiom_extraction.component import (
+    GeneralAxiomExtractionLayer,
+)
 from neoolaf.layers.layer10_validation_reasoning.component import ValidationReasoningLayer
 from neoolaf.layers.layer11_inference_completion.component import InferenceCompletionLayer
 from neoolaf.layers.layer12_serialization.component import SerializationLayer
+from neoolaf.ontology.loader import SeedOntologyLoader
 
 
-# ============================================================
-# Generic helpers
-# ============================================================
+# ---------------------------------------------------------------------------
+# Progress/error helpers
+# ---------------------------------------------------------------------------
 
-def normalize_text_field(value: Any) -> str:
-    """Convert a possibly missing field into a clean string."""
-    if value is None:
-        return ""
-    return str(value).strip()
+class _NullProgress:
+    """Tiny tqdm-compatible fallback used when tqdm is unavailable."""
 
+    def __init__(self, total: int = 0, desc: str = "") -> None:
+        self.total = total
+        self.desc = desc
 
-def ensure_parent_dir(path: Path) -> None:
-    """Create parent directory if needed."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-
-
-def append_jsonl(path: Path, row: Dict[str, Any]) -> None:
-    """Append one JSON object as one JSONL line."""
-    ensure_parent_dir(path)
-    with path.open("a", encoding="utf-8") as f:
-        f.write(json.dumps(row, ensure_ascii=False) + "\n")
-
-
-def read_json_if_exists(path: str | Path | None) -> Any:
-    """Read JSON file if path is provided and exists."""
-    if path is None:
+    def update(self, n: int = 1) -> None:
         return None
 
-    path_str = str(path).strip()
-    if not path_str:
+    def close(self) -> None:
         return None
 
-    json_path = Path(path_str)
 
-    if not json_path.exists():
-        raise FileNotFoundError(f"JSON file not found: {json_path}")
+def make_progress(total: int, desc: str, *, disable: bool = False) -> Any:
+    """Return a tqdm progress bar when available, otherwise a silent fallback."""
+    if disable:
+        return _NullProgress(total=total, desc=desc)
+    try:
+        from tqdm.auto import tqdm  # type: ignore
 
-    with json_path.open("r", encoding="utf-8") as f:
-        return json.load(f)
+        return tqdm(total=total, desc=desc, unit="doc")
+    except Exception:
+        return _NullProgress(total=total, desc=desc)
 
 
-def load_dotenv_file(env_path: Path) -> None:
-    """Minimal .env loader."""
-    if not env_path.exists():
+def progress_write(message: str, *, disable_tqdm: bool = False) -> None:
+    """Write messages without breaking tqdm output when tqdm is installed."""
+    if not disable_tqdm:
+        try:
+            from tqdm.auto import tqdm  # type: ignore
+
+            tqdm.write(message)
+            return
+        except Exception:
+            pass
+    print(message)
+
+
+def shorten_text(value: Any, limit: int = 280) -> str:
+    """Compact long error messages for terminal logs."""
+    text = str(value or "").replace("\n", " ").strip()
+    if len(text) > limit:
+        return text[: limit - 3] + "..."
+    return text
+
+
+def collect_artifact_error_files(artifact_dir: Optional[str], *, limit: int = 8) -> List[Dict[str, Any]]:
+    """Collect compact previews of error-like files created by layer artifacts."""
+    if not artifact_dir:
+        return []
+    root = Path(artifact_dir)
+    if not root.exists():
+        return []
+
+    candidates: List[Path] = []
+    for pattern in ["**/*error*.txt", "**/*error*.json", "**/raw_response*.txt", "**/prompt*.txt"]:
+        candidates.extend(root.glob(pattern))
+
+    # Keep newest and avoid duplicates.
+    unique = sorted(set(candidates), key=lambda p: p.stat().st_mtime if p.exists() else 0, reverse=True)
+    previews: List[Dict[str, Any]] = []
+    for path in unique[:limit]:
+        preview = ""
+        try:
+            if path.is_file():
+                preview = path.read_text(encoding="utf-8", errors="replace")[:1200]
+        except Exception as exc:
+            preview = f"<could not read preview: {exc}>"
+        previews.append(
+            {
+                "path": str(path),
+                "size_bytes": path.stat().st_size if path.exists() else None,
+                "preview": preview,
+            }
+        )
+    return previews
+
+
+def write_document_error_report(
+    artifact_dir: Optional[str],
+    *,
+    doc_id: str,
+    error: Exception,
+    traceback_text: str,
+) -> None:
+    """Persist a detailed per-document error report in the document artifact folder."""
+    if not artifact_dir:
         return
-
-    for line in env_path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-
-        key, value = line.split("=", 1)
-        key = key.strip()
-        value = value.strip().strip('"').strip("'")
-
-        if key and key not in os.environ:
-            os.environ[key] = value
-
-
-def safe_filename(value: str, max_len: int = 120) -> str:
-    """Create a filesystem-safe name."""
-    value = normalize_text_field(value)
-    value = re.sub(r"[^A-Za-z0-9._-]+", "_", value)
-    value = value.strip("_")
-
-    if not value:
-        value = "document"
-
-    return value[:max_len]
+    root = Path(artifact_dir)
+    root.mkdir(parents=True, exist_ok=True)
+    report = {
+        "document_id": doc_id,
+        "error_type": type(error).__name__,
+        "error_message": str(error),
+        "traceback": traceback_text,
+        "artifact_error_files": collect_artifact_error_files(artifact_dir),
+    }
+    (root / "neoolaf_document_error_report.json").write_text(
+        json.dumps(report, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    (root / "neoolaf_document_error_traceback.txt").write_text(traceback_text, encoding="utf-8")
 
 
-def safe_document_id(doc: Dict[str, Any], fallback_index: int) -> str:
-    """Return a robust document id."""
-    doc_id = normalize_text_field(doc.get("document_id"))
+# ---------------------------------------------------------------------------
+# LLM backend
+# ---------------------------------------------------------------------------
 
-    if doc_id:
-        return doc_id
+def compact_backend_debug(data: Dict[str, Any]) -> Dict[str, Any]:
+    """Return a compact, safe-to-log summary of an OpenAI-compatible response."""
+    choices = data.get("choices") or []
+    choice0 = choices[0] if choices else {}
+    message = choice0.get("message") or {}
+    usage = data.get("usage") or {}
+    content = message.get("content")
+    reasoning = message.get("reasoning")
+    reasoning_details = message.get("reasoning_details")
+    return {
+        "id": data.get("id"),
+        "model": data.get("model"),
+        "provider": data.get("provider"),
+        "finish_reason": choice0.get("finish_reason"),
+        "native_finish_reason": choice0.get("native_finish_reason"),
+        "message_keys": sorted(message.keys()) if isinstance(message, dict) else [],
+        "content_is_none": content is None,
+        "content_len": len(str(content or "")),
+        "has_reasoning": bool(reasoning),
+        "reasoning_len": len(str(reasoning or "")),
+        "has_reasoning_details": bool(reasoning_details),
+        "usage": usage,
+    }
 
-    title = normalize_text_field(doc.get("title"))
 
-    if title:
-        return f"doc_{fallback_index:07d}_{title}"
+class OpenAICompatibleBackend:
+    """Small backend implementing the interface expected by NeoOLAF layers.
 
-    return f"doc_{fallback_index:07d}"
+    NeoOLAF's current layer constructors expect an object with:
+    - chat(model, messages, temperature) -> str
+    - extract_json(text) -> dict/list
 
-
-def build_document_text(doc: Dict[str, Any]) -> str:
+    This backend works with OpenAI-compatible APIs such as OpenRouter and vLLM.
     """
-    Build document text from common fields.
 
-    Priority:
-    1. text
-    2. sentences
-    3. tokens
-    """
-    text = normalize_text_field(doc.get("text"))
+    def __init__(
+        self,
+        *,
+        backend_name: str,
+        host: str,
+        api_key: str,
+        timeout: int = 300,
+        max_tokens: int = 4096,
+        reasoning_effort: Optional[str] = "minimal",
+        exclude_reasoning: bool = True,
+        dump_raw_responses: bool = False,
+    ) -> None:
+        self.backend_name = backend_name
+        self.host = host.rstrip("/")
+        self.api_key = api_key
+        self.timeout = timeout
+        self.max_tokens = max_tokens
+        self.reasoning_effort = reasoning_effort
+        self.exclude_reasoning = exclude_reasoning
+        self.dump_raw_responses = dump_raw_responses
+        self._call_index = 0
 
-    if text:
-        return text
+    def _chat_url(self) -> str:
+        """Normalize host into a chat completions URL."""
+        host = self.host
+        if host.endswith("/chat/completions"):
+            return host
+        if host.endswith("/v1"):
+            return f"{host}/chat/completions"
+        if host.endswith("/api"):
+            return f"{host}/v1/chat/completions"
+        return f"{host}/v1/chat/completions"
 
-    sentences = doc.get("sentences")
+    def chat(
+        self,
+        model: str,
+        messages: List[Dict[str, str]],
+        temperature: float = 0.0,
+    ) -> str:
+        """Call an OpenAI-compatible chat endpoint."""
+        headers = {"Content-Type": "application/json"}
+        if self.api_key:
+            headers["Authorization"] = f"Bearer {self.api_key}"
 
-    if isinstance(sentences, list) and sentences:
-        merged = "\n".join(str(x).strip() for x in sentences if str(x).strip())
+        payload: Dict[str, Any] = {
+            "model": model,
+            "messages": messages,
+            "temperature": temperature,
+            "max_tokens": self.max_tokens,
+        }
 
-        if merged.strip():
-            return merged
+        # OpenRouter exposes reasoning controls for thinking/reasoning models.
+        # This is especially important for gpt-oss providers: without this, a
+        # provider can spend the output budget on reasoning and return empty
+        # message.content even though the request succeeded.
+        if self.backend_name.lower() == "openrouter":
+            reasoning: Dict[str, Any] = {}
+            if self.reasoning_effort:
+                reasoning["effort"] = self.reasoning_effort
+            if self.exclude_reasoning:
+                reasoning["exclude"] = True
+            if reasoning:
+                payload["reasoning"] = reasoning
 
-    tokens = doc.get("tokens")
+        self._call_index += 1
+        response = requests.post(
+            self._chat_url(),
+            headers=headers,
+            json=payload,
+            timeout=self.timeout,
+        )
+        response.raise_for_status()
+        data = response.json()
 
-    if isinstance(tokens, list) and tokens:
-        rebuilt_sentences: List[str] = []
+        choices = data.get("choices") or []
+        if not choices:
+            raise RuntimeError(f"No choices returned by backend {self.backend_name}: {compact_backend_debug(data)}")
 
-        for sent in tokens:
-            if isinstance(sent, list):
-                rebuilt = " ".join(str(tok) for tok in sent).strip()
+        choice0 = choices[0]
+        message = choice0.get("message") or {}
+        content = message.get("content")
+        if content is None:
+            content = choice0.get("text")
 
-                if rebuilt:
-                    rebuilt_sentences.append(rebuilt)
+        # Some OpenAI-compatible providers return content as a list of typed
+        # blocks. Normalize those into plain text before returning.
+        if isinstance(content, list):
+            content = "".join(
+                str(block.get("text") or block.get("content") or "")
+                if isinstance(block, dict)
+                else str(block)
+                for block in content
+            )
 
-        if rebuilt_sentences:
-            return "\n".join(rebuilt_sentences)
+        if content is None or not str(content).strip():
+            debug = compact_backend_debug(data)
+            raise RuntimeError(
+                "No final message.content returned by backend "
+                f"{self.backend_name}. This is not an API-key/credits error: "
+                "the request returned choices, but the final assistant content was empty. "
+                "For OpenRouter reasoning models, try --max-tokens 8192 "
+                "--openrouter-reasoning-effort minimal --openrouter-exclude-reasoning. "
+                f"Backend debug: {debug}"
+            )
+        return str(content).strip()
 
-    return ""
+    @staticmethod
+    def extract_json(text: str) -> Any:
+        """Robust JSON extractor shared by all layers."""
+        if text is None:
+            raise ValueError("Could not parse JSON from model output because it is None.")
+        text = str(text).strip()
+        if not text:
+            raise ValueError("Could not parse JSON from model output because it is empty.")
+
+        fenced = re.search(r"```json\s*(.*?)\s*```", text, re.DOTALL | re.IGNORECASE)
+        if fenced:
+            return json.loads(fenced.group(1))
+
+        fenced_any = re.search(r"```\s*(.*?)\s*```", text, re.DOTALL)
+        if fenced_any:
+            return json.loads(fenced_any.group(1))
+
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError:
+            pass
+
+        # Prefer the earliest valid top-level array/object candidate.
+        candidates = []
+        for pattern in [r"(\[.*\])", r"(\{.*\})"]:
+            match = re.search(pattern, text, re.DOTALL)
+            if match:
+                candidates.append(match.group(1))
+        for candidate in candidates:
+            try:
+                return json.loads(candidate)
+            except json.JSONDecodeError:
+                continue
+
+        raise ValueError("Could not parse JSON from model output.")
 
 
-def load_processed_ids(output_jsonl_path: Path) -> Set[str]:
-    """Load already processed ids from output JSONL for resume mode."""
-    processed: Set[str] = set()
+# ---------------------------------------------------------------------------
+# Dataset/guidance helpers
+# ---------------------------------------------------------------------------
 
-    if not output_jsonl_path.exists():
-        return processed
+def safe_filename(value: str, max_len: int = 80) -> str:
+    """Create a stable filesystem-safe identifier."""
+    value = str(value or "document").strip()
+    cleaned = re.sub(r"[^A-Za-z0-9_.-]+", "_", value).strip("_")
+    digest = hashlib.md5(value.encode("utf-8")).hexdigest()[:16]
+    if not cleaned:
+        cleaned = "document"
+    return f"{cleaned[:max_len]}_{digest}"
 
-    with output_jsonl_path.open("r", encoding="utf-8") as f:
-        for line in f:
+
+def load_jsonl(path: str | Path) -> List[Dict[str, Any]]:
+    """Load a JSONL file into memory."""
+    records: List[Dict[str, Any]] = []
+    with open(path, "r", encoding="utf-8") as f:
+        for line_no, line in enumerate(f, start=1):
             line = line.strip()
-
             if not line:
                 continue
-
             try:
-                row = json.loads(line)
-                doc_id = normalize_text_field(row.get("document_id"))
-
-                if doc_id:
-                    processed.add(doc_id)
-
-            except Exception:
-                continue
-
-    return processed
+                records.append(json.loads(line))
+            except json.JSONDecodeError as exc:
+                raise ValueError(f"Invalid JSONL at line {line_no} in {path}: {exc}") from exc
+    return records
 
 
-def to_jsonable(value: Any) -> Any:
-    """
-    Convert dataclasses and complex objects into JSON-serializable structures.
-
-    This is used only for compact raw summaries/debug output.
-    """
-    if dataclasses.is_dataclass(value):
-        return {k: to_jsonable(v) for k, v in dataclasses.asdict(value).items()}
-
-    if isinstance(value, dict):
-        return {str(k): to_jsonable(v) for k, v in value.items()}
-
-    if isinstance(value, (list, tuple, set)):
-        return [to_jsonable(x) for x in value]
-
-    if isinstance(value, (str, int, float, bool)) or value is None:
-        return value
-
-    return str(value)
+def filter_records(records: List[Dict[str, Any]], type_filter: str) -> List[Dict[str, Any]]:
+    """Filter dataset rows by type/split, preserving 'all'."""
+    if not type_filter or type_filter.lower() == "all":
+        return records
+    wanted = type_filter.lower()
+    return [r for r in records if str(r.get("type") or r.get("split") or "").lower() == wanted]
 
 
-# ============================================================
-# Backend handling
-# ============================================================
+def flatten_sentences(sentences: Any) -> str:
+    """Flatten common sentence representations into document text."""
+    if not sentences:
+        return ""
+    lines: List[str] = []
+    for idx, sentence in enumerate(sentences):
+        if isinstance(sentence, str):
+            text = sentence
+        elif isinstance(sentence, list):
+            text = " ".join(str(tok) for tok in sentence)
+        elif isinstance(sentence, dict):
+            if "text" in sentence:
+                text = str(sentence["text"])
+            elif "tokens" in sentence:
+                text = " ".join(str(tok) for tok in sentence.get("tokens") or [])
+            else:
+                text = json.dumps(sentence, ensure_ascii=False)
+        else:
+            text = str(sentence)
+        lines.append(f"[{idx}] {text}")
+    return "\n".join(lines)
 
-class OpenAIBackendCompatAdapter:
-    """
-    Adapter around NeoOLAF OpenAIBackend.
 
-    NeoOLAF layers call:
-        backend.chat(model=..., messages=..., temperature=...)
+def document_text_from_record(record: Dict[str, Any]) -> str:
+    """Recover the best full-document text field from a normalized row."""
+    for key in ["text", "raw_text", "document", "content", "abstract"]:
+        value = record.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    sentence_text = flatten_sentences(record.get("sentences") or record.get("sents"))
+    if sentence_text.strip():
+        return sentence_text.strip()
+    tokens = record.get("tokens")
+    if isinstance(tokens, list):
+        return " ".join(str(t) for t in tokens)
+    return json.dumps(record, ensure_ascii=False)
 
-    Some external code may call:
-        backend.chat(model_name=..., messages=..., max_tokens=...)
 
-    This adapter accepts both.
-    """
+def document_id_from_record(record: Dict[str, Any], index: int) -> str:
+    """Recover a stable document identifier from a normalized row."""
+    for key in ["document_id", "doc_id", "id", "pmid", "article_id"]:
+        value = record.get(key)
+        if value is not None and str(value).strip():
+            return str(value)
+    return f"doc_{index:06d}"
 
-    def __init__(self, backend: OpenAIBackend) -> None:
-        self.backend = backend
 
-    def chat(
-        self,
-        model: Optional[str] = None,
-        messages: Optional[List[Dict[str, str]]] = None,
-        temperature: float = 0.0,
-        timeout: Optional[int] = None,
-        max_tokens: Optional[int] = None,
-        model_name: Optional[str] = None,
-        **_: Any,
-    ) -> str:
-        """Forward chat call to NeoOLAF OpenAIBackend."""
-        selected_model = model or model_name
+def title_from_record(record: Dict[str, Any], doc_id: str) -> str:
+    """Recover a readable document title."""
+    for key in ["title", "name"]:
+        value = record.get(key)
+        if value is not None and str(value).strip():
+            return str(value)
+    return doc_id
 
-        if not selected_model:
-            raise ValueError("No model/model_name provided to backend.chat().")
 
-        if messages is None:
-            raise ValueError("No messages provided to backend.chat().")
+def record_to_document(record: Dict[str, Any], index: int, args: Optional[argparse.Namespace] = None) -> Document:
+    """Convert one normalized JSONL row into NeoOLAF's Document object."""
+    doc_id = document_id_from_record(record, index)
+    title = title_from_record(record, doc_id)
+    text = document_text_from_record(record)
 
-        return self.backend.chat(
-            model=selected_model,
-            messages=messages,
-            temperature=temperature,
-            timeout=timeout,
-            max_tokens=max_tokens,
+    if args is not None and (getattr(args, "force_relation_vocabulary", False) or getattr(args, "source_entity_anchoring", False)):
+        control = build_docred_control_block(
+            record,
+            list(getattr(args, "allowed_relation_specs", []) or []),
+            include_entities=bool(getattr(args, "source_entity_anchoring", False)),
         )
+        raw_text = f"{control}\n{text}"
+    else:
+        raw_text = f"{title}\n\n{text}" if title and title not in text[:200] else text
 
-    @staticmethod
-    def extract_json(text: str) -> Any:
-        """Expose OpenAIBackend JSON extraction helper."""
-        return OpenAIBackend.extract_json(text)
-
-
-class OllamaBackendCompatAdapter:
-    """
-    Adapter around NeoOLAF OllamaBackend.
-
-    It keeps the NeoOLAF expected interface while tolerating max_tokens/model_name.
-    """
-
-    def __init__(self, backend: OllamaBackend) -> None:
-        self.backend = backend
-
-    def chat(
-        self,
-        model: Optional[str] = None,
-        messages: Optional[List[Dict[str, str]]] = None,
-        temperature: float = 0.0,
-        model_name: Optional[str] = None,
-        **_: Any,
-    ) -> str:
-        """Forward chat call to NeoOLAF OllamaBackend."""
-        selected_model = model or model_name
-
-        if not selected_model:
-            raise ValueError("No model/model_name provided to backend.chat().")
-
-        if messages is None:
-            raise ValueError("No messages provided to backend.chat().")
-
-        return self.backend.chat(
-            model=selected_model,
-            messages=messages,
-            temperature=temperature,
-        )
-
-    @staticmethod
-    def extract_json(text: str) -> Any:
-        """Expose OllamaBackend JSON extraction helper."""
-        return OllamaBackend.extract_json(text)
-
-
-def normalize_openai_compatible_host(backend_name: str, host: str) -> str:
-    """
-    Normalize host for NeoOLAF OpenAIBackend.
-
-    NeoOLAF OpenAIBackend appends:
-        /v1/chat/completions
-
-    Therefore:
-    - vLLM host http://localhost:8000/v1 must become http://localhost:8000
-    - OpenRouter host https://openrouter.ai/api should stay https://openrouter.ai/api
-    """
-    host = host.rstrip("/")
-    backend_name = backend_name.strip().lower()
-
-    if backend_name == "vllm" and host.endswith("/v1"):
-        host = host[:-3].rstrip("/")
-
-    return host
-
-
-def build_neoolaf_backend(
-    backend_name: str,
-    host: str,
-    api_key: str,
-    timeout: int,
-    max_retries: int,
-    retry_wait_seconds: float,
-    referer: str,
-    title: str,
-) -> Any:
-    """Build vllm/openrouter/ollama backend accepted by NeoOLAF layers."""
-    backend_name = backend_name.strip().lower()
-
-    if backend_name == "ollama":
-        return OllamaBackendCompatAdapter(
-            OllamaBackend(
-                host=host,
-                timeout=timeout,
-            )
-        )
-
-    if backend_name in {"vllm", "openrouter"}:
-        normalized_host = normalize_openai_compatible_host(backend_name, host)
-
-        return OpenAIBackendCompatAdapter(
-            OpenAIBackend(
-                host=normalized_host,
-                api_key=api_key or "dummy",
-                timeout=timeout,
-                max_retries=max_retries,
-                retry_wait_seconds=retry_wait_seconds,
-                referer=referer or None,
-                title=title or None,
-                retry_on_empty=True,
-            )
-        )
-
-    raise ValueError(
-        f"Unsupported backend_name={backend_name}. "
-        "Use one of: vllm, openrouter, ollama."
+    doc = Document(
+        doc_id=doc_id,
+        source_path=f"{safe_filename(doc_id)}.jsonl",
+        raw_text=raw_text,
     )
+    doc.content_blocks = [
+        {
+            "type": "normalized_jsonl_document",
+            "title": title,
+            "document_id": doc_id,
+            "text": text,
+            "metadata": {
+                "dataset_type": record.get("type") or record.get("split"),
+                "original_keys": sorted(record.keys()),
+                "source_entities": source_entities_from_record(record),
+            },
+        }
+    ]
+    return doc
 
 
-# ============================================================
-# UserGuidance and few-shot handling
-# ============================================================
-
-def build_default_guidance() -> UserGuidance:
-    """Build a generic guidance object for document-level KG construction."""
-    return UserGuidance(
-        domain_focus=(
-            "document-level knowledge graph construction from text, including named entities, "
-            "events, concepts, and explicit relations supported by the document"
-        ),
-        abstraction_level=(
-            "Extract concrete named entities as entities, explicit events or states as events, "
-            "and relation phrases as relations. Keep labels close to the wording or ontology labels "
-            "used by the dataset when possible."
-        ),
-        priority_relations=[],
-        population_policy=(
-            "Keep document-specific named entities as individuals. Promote stable recurrent patterns "
-            "only when clearly supported."
-        ),
-        event_modeling_preference=(
-            "Treat explicit events, states, actions, and causal situations as events when relevant. "
-            "Treat persons, organizations, locations, dates, quantities, and domain objects as entities."
-        ),
-        ontology_depth="balanced",
-    )
-
-
-def parse_typing_examples(items: Any) -> List[TypingExample]:
-    """Parse typing examples from JSON."""
-    out: List[TypingExample] = []
-
-    if not isinstance(items, list):
-        return out
-
-    for item in items:
-        if not isinstance(item, dict):
-            continue
-
-        text = normalize_text_field(item.get("text"))
-        expected_type = normalize_text_field(item.get("expected_type"))
-
-        if not text or not expected_type:
-            continue
-
-        out.append(
-            TypingExample(
-                text=text,
-                expected_type=expected_type,
-                explanation=item.get("explanation"),
-            )
-        )
-
-    return out
-
-
-def parse_relation_examples(items: Any) -> List[RelationExample]:
-    """Parse relation examples from JSON."""
-    out: List[RelationExample] = []
-
-    if not isinstance(items, list):
-        return out
-
-    for item in items:
-        if not isinstance(item, dict):
-            continue
-
-        text = normalize_text_field(item.get("text"))
-        source_label = normalize_text_field(item.get("source_label"))
-        relation_label = normalize_text_field(item.get("relation_label"))
-        target_label = normalize_text_field(item.get("target_label"))
-
-        if not source_label or not relation_label or not target_label:
-            continue
-
-        if not text:
-            text = f"{source_label} {relation_label} {target_label}"
-
-        out.append(
-            RelationExample(
-                text=text,
-                source_label=source_label,
-                relation_label=relation_label,
-                target_label=target_label,
-                explanation=item.get("explanation"),
-            )
-        )
-
-    return out
-
-
-def parse_promotion_examples(items: Any) -> List[PromotionExample]:
-    """Parse promotion examples from JSON."""
-    out: List[PromotionExample] = []
-
-    if not isinstance(items, list):
-        return out
-
-    for item in items:
-        if not isinstance(item, dict):
-            continue
-
-        text = normalize_text_field(item.get("text"))
-
-        if not text:
-            continue
-
-        out.append(
-            PromotionExample(
-                text=text,
-                promote=bool(item.get("promote", True)),
-                promoted_label=item.get("promoted_label"),
-                explanation=item.get("explanation"),
-            )
-        )
-
-    return out
-
-
-def parse_negative_examples(items: Any) -> List[NegativeExample]:
-    """Parse negative examples from JSON."""
-    out: List[NegativeExample] = []
-
-    if not isinstance(items, list):
-        return out
-
-    for item in items:
-        if not isinstance(item, dict):
-            continue
-
-        text = normalize_text_field(item.get("text"))
-
-        if not text:
-            continue
-
-        out.append(
-            NegativeExample(
-                text=text,
-                explanation=item.get("explanation"),
-                target_layer=item.get("target_layer"),
-            )
-        )
-
-    return out
-
-
-def parse_user_guidance_json(data: Any) -> UserGuidance:
-    """
-    Parse UserGuidance from a JSON object.
-
-    Supported fields:
-    - domain_focus
-    - abstraction_level
-    - priority_relations
-    - population_policy
-    - event_modeling_preference
-    - ontology_depth
-    - promotion_min_confidence
-    - hierarchy_min_confidence
-    - concept_promotion_bias
-    - typing_examples
-    - relation_examples
-    - promotion_examples
-    - negative_examples
-    """
-    if not isinstance(data, dict):
-        raise ValueError("User guidance JSON must be an object.")
+def load_user_guidance(path: Optional[str]) -> Optional[UserGuidance]:
+    """Load a UserGuidance JSON file into the NeoOLAF dataclass format."""
+    if not path:
+        return None
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
 
     guidance = UserGuidance(
         domain_focus=data.get("domain_focus"),
         abstraction_level=data.get("abstraction_level"),
-        priority_relations=data.get("priority_relations") or [],
+        priority_relations=list(data.get("priority_relations") or []),
         population_policy=data.get("population_policy"),
         event_modeling_preference=data.get("event_modeling_preference"),
         ontology_depth=data.get("ontology_depth", "balanced"),
-        promotion_min_confidence=float(data.get("promotion_min_confidence", 0.50)),
-        hierarchy_min_confidence=float(data.get("hierarchy_min_confidence", 0.50)),
-        concept_promotion_bias=float(data.get("concept_promotion_bias", 0.50)),
-        typing_examples=parse_typing_examples(data.get("typing_examples", [])),
-        relation_examples=parse_relation_examples(data.get("relation_examples", [])),
-        promotion_examples=parse_promotion_examples(data.get("promotion_examples", [])),
-        negative_examples=parse_negative_examples(data.get("negative_examples", [])),
+        promotion_min_confidence=float(data.get("promotion_min_confidence", 0.5)),
+        hierarchy_min_confidence=float(data.get("hierarchy_min_confidence", 0.5)),
+        concept_promotion_bias=float(data.get("concept_promotion_bias", 0.5)),
     )
 
+    for item in data.get("typing_examples") or []:
+        guidance.typing_examples.append(TypingExample(**item))
+    for item in data.get("relation_examples") or []:
+        guidance.relation_examples.append(RelationExample(**item))
+    for item in data.get("promotion_examples") or []:
+        guidance.promotion_examples.append(PromotionExample(**item))
+    for item in data.get("negative_examples") or []:
+        guidance.negative_examples.append(NegativeExample(**item))
     return guidance
 
 
-def load_user_guidance(user_guidance_path: str | Path | None) -> UserGuidance:
-    """Load user guidance JSON or fallback to generic guidance."""
-    data = read_json_if_exists(user_guidance_path)
+def source_entities_from_record(record: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Return source entity clusters with IDs, canonical labels, aliases, and types.
 
-    if data is None:
-        return build_default_guidance()
-
-    return parse_user_guidance_json(data)
-
-
-def add_xquality_style_few_shots(guidance: UserGuidance, few_shots: List[Dict[str, Any]], max_examples: int) -> None:
+    Supports the DocRED/RAGTree dictionary schema:
+        entities = {entity_id: {type: ..., mentions: [{trigger_word: ...}]}}
+    and common list-based schemas.
     """
-    Add XQuality-style few-shot examples.
+    entities = record.get("entities")
+    result: List[Dict[str, Any]] = []
 
-    Expected shape:
-    {
-      "alarm_label": "...",
-      "triples": [
-        {"node_1": "...", "relation": "...", "node_2": "..."}
-      ]
-    }
-    """
-    for example in few_shots[:max_examples]:
-        if not isinstance(example, dict):
-            continue
-
-        alarm_label = normalize_text_field(example.get("alarm_label"))
-
-        if alarm_label:
-            guidance.typing_examples.append(
-                TypingExample(text=alarm_label, expected_type="event")
+    if isinstance(entities, dict):
+        for ent_id, ent in entities.items():
+            if not isinstance(ent, dict):
+                continue
+            aliases: List[str] = []
+            mentions = ent.get("mentions") or []
+            if isinstance(mentions, list):
+                for mention in mentions:
+                    if isinstance(mention, dict):
+                        label = mention.get("trigger_word") or mention.get("name") or mention.get("text")
+                        if label and str(label).strip():
+                            aliases.append(str(label).strip())
+            canonical = aliases[0] if aliases else str(ent_id)
+            result.append(
+                {
+                    "id": str(ent_id),
+                    "label": canonical,
+                    "type": str(ent.get("type") or "entity"),
+                    "aliases": sorted(dict.fromkeys(a for a in aliases if a)),
+                }
             )
-            guidance.promotion_examples.append(
-                PromotionExample(
-                    text=alarm_label,
-                    promote=True,
-                    promoted_label=alarm_label.title().replace(" ", ""),
+
+    elif isinstance(entities, list):
+        for i, ent in enumerate(entities):
+            if isinstance(ent, dict):
+                ent_id = str(ent.get("id") or ent.get("entity_id") or f"entity_{i:05d}")
+                label = str(ent.get("label") or ent.get("name") or ent.get("text") or ent_id)
+                aliases = ent.get("aliases") if isinstance(ent.get("aliases"), list) else []
+                aliases = [label, *[str(x) for x in aliases if str(x).strip()]]
+                result.append(
+                    {
+                        "id": ent_id,
+                        "label": label,
+                        "type": str(ent.get("type") or ent.get("entity_type") or "entity"),
+                        "aliases": sorted(dict.fromkeys(a for a in aliases if a)),
+                    }
                 )
-            )
-
-        triples = example.get("triples", [])
-
-        if isinstance(triples, list):
-            for triple in triples[:8]:
-                if not isinstance(triple, dict):
-                    continue
-
-                src = normalize_text_field(triple.get("node_1") or triple.get("head") or triple.get("source"))
-                rel = normalize_text_field(triple.get("relation") or triple.get("rel") or triple.get("predicate"))
-                tgt = normalize_text_field(triple.get("node_2") or triple.get("tail") or triple.get("target"))
-
-                if src and rel and tgt:
-                    guidance.relation_examples.append(
-                        RelationExample(
-                            text=f"{src} {rel} {tgt}",
-                            source_label=src,
-                            relation_label=rel,
-                            target_label=tgt,
-                        )
+            elif isinstance(ent, list) and ent:
+                # DocRED vertexSet-like cluster.
+                first = next((x for x in ent if isinstance(x, dict)), None)
+                if first:
+                    label = first.get("name") or first.get("text") or first.get("trigger_word") or f"entity_{i:05d}"
+                    aliases = []
+                    for m in ent:
+                        if isinstance(m, dict):
+                            a = m.get("name") or m.get("text") or m.get("trigger_word")
+                            if a:
+                                aliases.append(str(a).strip())
+                    result.append(
+                        {
+                            "id": str(first.get("id") or first.get("entity_id") or f"entity_{i:05d}"),
+                            "label": str(label),
+                            "type": str(first.get("type") or "entity"),
+                            "aliases": sorted(dict.fromkeys(a for a in aliases if a)),
+                        }
                     )
+    return result
 
 
-def add_guidance_style_few_shots(guidance: UserGuidance, few_shots: Any) -> None:
+def source_entity_index(record: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
+    """Index source entities by ID and alias."""
+    index: Dict[str, Dict[str, Any]] = {}
+    for ent in source_entities_from_record(record):
+        for raw in [ent.get("id"), ent.get("label"), *(ent.get("aliases") or [])]:
+            key = normalize_key(raw)
+            if key and key not in index:
+                index[key] = ent
+    return index
+
+
+def relation_items_from_record(record: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Recover relation-like items from common dataset/prediction schemas.
+
+    Crucially supports DocRED/RAGTree dictionaries of the form:
+        relations = {"P127 : owned by": [[head_id, tail_id], ...]}
+
+    This function returns only examples/vocabulary views. It never copies gold
+    pairs into predictions.
     """
-    Add few-shots that already use guidance-like fields.
-
-    Supported keys:
-    - typing_examples
-    - relation_examples
-    - promotion_examples
-    - negative_examples
-    """
-    if isinstance(few_shots, dict):
-        guidance.typing_examples.extend(parse_typing_examples(few_shots.get("typing_examples", [])))
-        guidance.relation_examples.extend(parse_relation_examples(few_shots.get("relation_examples", [])))
-        guidance.promotion_examples.extend(parse_promotion_examples(few_shots.get("promotion_examples", [])))
-        guidance.negative_examples.extend(parse_negative_examples(few_shots.get("negative_examples", [])))
-
-    elif isinstance(few_shots, list):
-        for item in few_shots:
-            if isinstance(item, dict) and any(
-                key in item for key in ["typing_examples", "relation_examples", "promotion_examples", "negative_examples"]
-            ):
-                add_guidance_style_few_shots(guidance, item)
-
-
-def enrich_guidance_with_few_shots(
-    guidance: UserGuidance,
-    few_shot_path: str | Path | None,
-    few_shot_k: int,
-) -> UserGuidance:
-    """Load and inject few-shot examples into UserGuidance."""
-    few_shots = read_json_if_exists(few_shot_path)
-
-    if few_shots is None:
-        return guidance
-
-    # Case 1: JSON object already containing UserGuidance-style examples.
-    add_guidance_style_few_shots(guidance, few_shots)
-
-    # Case 2: XQuality-style list of alarm/triple examples.
-    if isinstance(few_shots, list):
-        add_xquality_style_few_shots(guidance, few_shots, max_examples=few_shot_k)
-
-    return guidance
-
-
-def select_dataset_few_shot_examples(
-    dataset_jsonl_path: Path,
-    current_document_id: str,
-    type_filter: str,
-    few_shot_k: int,
-    seed: int = 42,
-) -> List[Dict[str, Any]]:
-    """
-    Select few-shot examples from the same dataset.
-
-    This is optional and used only when --few-shot-from-dataset is enabled.
-    It builds simple relation examples from gold labels.
-    """
-    if few_shot_k <= 0:
-        return []
-
-    rng = random.Random(seed)
-    reservoir: List[Dict[str, Any]] = []
-    seen = 0
-
-    for doc in iter_documents(dataset_jsonl_path, type_filter=type_filter):
-        document_id = normalize_text_field(doc.get("document_id"))
-
-        if document_id == current_document_id:
-            continue
-
-        relations = doc.get("relations", [])
-
-        has_relations = (
-            (isinstance(relations, list) and len(relations) > 0)
-            or (isinstance(relations, dict) and len(relations) > 0)
-        )
-
-        if not has_relations:
-            continue
-
-        seen += 1
-
-        if len(reservoir) < few_shot_k:
-            reservoir.append(doc)
-        else:
-            j = rng.randint(1, seen)
-
-            if j <= few_shot_k:
-                reservoir[j - 1] = doc
-
-    return reservoir
-
-
-def add_dataset_examples_to_guidance(
-    guidance: UserGuidance,
-    examples: List[Dict[str, Any]],
-    max_relations_per_doc: int = 8,
-) -> None:
-    """Inject simple relation examples from normalized dataset entries."""
-    for doc in examples:
-        relations = doc.get("relations", [])
-
-        if isinstance(relations, list):
-            for rel in relations[:max_relations_per_doc]:
-                if not isinstance(rel, dict):
-                    continue
-
-                head = normalize_text_field(rel.get("head_text") or rel.get("head"))
-                tail = normalize_text_field(rel.get("tail_text") or rel.get("tail"))
-                label = normalize_text_field(rel.get("relation") or rel.get("rel"))
-
-                if head and label and tail:
-                    guidance.relation_examples.append(
-                        RelationExample(
-                            text=f"{head} {label} {tail}",
-                            source_label=head,
-                            relation_label=label,
-                            target_label=tail,
-                        )
-                    )
-
-        # Original DocRED-like format is usually already normalized by iter_documents.
-        # This fallback is kept for safety.
-        elif isinstance(relations, dict):
-            entities = doc.get("entities", {})
-            id_to_label: Dict[str, str] = {}
-
-            if isinstance(entities, dict):
-                for entity_id, entity_info in entities.items():
-                    if not isinstance(entity_info, dict):
-                        continue
-
-                    mentions = entity_info.get("mentions", [])
-
-                    if isinstance(mentions, list) and mentions:
-                        mention = mentions[0]
-
-                        if isinstance(mention, dict):
-                            trigger = normalize_text_field(mention.get("trigger_word"))
-
-                            if trigger:
-                                id_to_label[str(entity_id)] = trigger
-
-            relation_count = 0
-
-            for rel_label, pairs in relations.items():
-                if relation_count >= max_relations_per_doc:
-                    break
-
+    for key in ["relations", "gold_relations", "labels", "triples"]:
+        value = record.get(key)
+        if isinstance(value, dict):
+            ent_idx = source_entity_index(record)
+            rows: List[Dict[str, Any]] = []
+            for rel_label, pairs in value.items():
                 if not isinstance(pairs, list):
                     continue
-
                 for pair in pairs:
-                    if relation_count >= max_relations_per_doc:
-                        break
-
-                    if not isinstance(pair, (list, tuple)) or len(pair) != 2:
+                    head = tail = None
+                    if isinstance(pair, (list, tuple)) and len(pair) >= 2:
+                        head, tail = pair[0], pair[1]
+                    elif isinstance(pair, dict):
+                        head = pair.get("head") or pair.get("subject") or pair.get("source") or pair.get("h") or pair.get("head_id")
+                        tail = pair.get("tail") or pair.get("object") or pair.get("target") or pair.get("t") or pair.get("tail_id")
+                    else:
                         continue
+                    head_ent = ent_idx.get(normalize_key(head))
+                    tail_ent = ent_idx.get(normalize_key(tail))
+                    rows.append(
+                        {
+                            "head": head_ent["label"] if head_ent else str(head),
+                            "head_id": str(head_ent["id"]) if head_ent else str(head),
+                            "tail": tail_ent["label"] if tail_ent else str(tail),
+                            "tail_id": str(tail_ent["id"]) if tail_ent else str(tail),
+                            "relation": str(rel_label),
+                        }
+                    )
+            return rows
+        if isinstance(value, list):
+            return [x for x in value if isinstance(x, dict)]
 
-                    src = id_to_label.get(str(pair[0]), "")
-                    tgt = id_to_label.get(str(pair[1]), "")
-                    rel_name = normalize_text_field(rel_label)
-
-                    if src and rel_name and tgt:
-                        guidance.relation_examples.append(
-                            RelationExample(
-                                text=f"{src} {rel_name} {tgt}",
-                                source_label=src,
-                                relation_label=rel_name,
-                                target_label=tgt,
-                            )
-                        )
-                        relation_count += 1
-
-
-# ============================================================
-# NeoOLAF pipeline construction
-# ============================================================
-
-def build_semantic_rag_adapter(
-    state: PipelineState,
-    llm_backend: Any,
-    model_name: str,
-    use_web_search: bool,
-    wikipedia_source: WikipediaSource,
-    wikidata_source: WikidataSource,
-    wordnet_source: WordNetSource,
-    web_search_source: WebSearchSource,
-) -> NeoOLAFSemanticRAGAdapter:
-    """Build SemanticRAG adapter for one document state."""
-    registry = RetrievalRegistry()
-
-    if state.seed_ontology is not None:
-        registry.register(OntologySpace(state.seed_ontology))
-
-    registry.register(ArtifactSpace(state))
-    registry.register(WikidataSpace(wikidata_source))
-    registry.register(WikipediaSpace(wikipedia_source))
-    registry.register(WordNetSpace(wordnet_source))
-
-    if use_web_search:
-        registry.register(WebSpace(web_search_source))
-
-    semantic_rag_engine = SemanticRAGEngine(
-        registry=registry,
-        ollama_backend=llm_backend,
-        model_name=model_name,
-    )
-
-    return NeoOLAFSemanticRAGAdapter(semantic_rag_engine)
+    prediction = record.get("prediction")
+    if isinstance(prediction, dict) and isinstance(prediction.get("relations"), list):
+        return [x for x in prediction["relations"] if isinstance(x, dict)]
+    return []
 
 
-def build_neoolaf_pipeline(
-    llm_backend: Any,
-    model_name: str,
-    state: PipelineState,
-    chunk_size: Optional[int],
-    chunk_overlap: int,
-    translate_to_english: bool,
-    use_web_search: bool,
-    max_chunks: Optional[int],
-    max_expressions: Optional[int],
-    max_relation_mentions: Optional[int],
-    max_workers: int,
-    verbose: bool,
-    output_subdir: str,
-    base_uri: str,
-    wikipedia_source: WikipediaSource,
-    wikidata_source: WikidataSource,
-    wordnet_source: WordNetSource,
-    web_search_source: WebSearchSource,
-) -> Tuple[Pipeline, ExecutionConfig]:
-    """Build the full NeoOLAF pipeline and execution config."""
-    translator = DeepTranslatorBackend(max_chars=4000) if translate_to_english else None
+def entity_items_from_record(record: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Recover entity-like items from common dataset/prediction schemas."""
+    for key in ["entities", "mentions", "vertexSet"]:
+        value = record.get(key)
+        if isinstance(value, list):
+            # DocRED vertexSet is a list of mention clusters.
+            if key == "vertexSet":
+                entities: List[Dict[str, Any]] = []
+                for cluster in value:
+                    if isinstance(cluster, list) and cluster:
+                        first = cluster[0]
+                        if isinstance(first, dict):
+                            label = first.get("name") or first.get("text")
+                            ent_type = first.get("type", "entity")
+                            if label:
+                                entities.append({"label": label, "type": ent_type})
+                return entities
+            return [x for x in value if isinstance(x, dict)]
+    prediction = record.get("prediction")
+    if isinstance(prediction, dict) and isinstance(prediction.get("entities"), list):
+        return [x for x in prediction["entities"] if isinstance(x, dict)]
+    return []
 
-    rag_adapter = build_semantic_rag_adapter(
-        state=state,
-        llm_backend=llm_backend,
-        model_name=model_name,
-        use_web_search=use_web_search,
-        wikipedia_source=wikipedia_source,
-        wikidata_source=wikidata_source,
-        wordnet_source=wordnet_source,
-        web_search_source=web_search_source,
-    )
-
-    pipeline = Pipeline(
-        layers=[
-            PreprocessingLayer(
-                chunk_size=chunk_size,
-                overlap=chunk_overlap,
-                translate=translate_to_english,
-                translator=translator,
-                verbose=verbose,
-            ),
-            LinguisticExpressionExtractionLayer(
-                ollama_backend=llm_backend,
-                max_chunks=max_chunks,
-                temperature=0.0,
-                verbose=verbose,
-            ),
-            CandidateEnrichmentLayer(
-                ollama_backend=llm_backend,
-                wikipedia_source=wikipedia_source,
-                wikidata_source=wikidata_source,
-                wordnet_source=wordnet_source,
-                web_search_source=web_search_source,
-                max_expressions=max_expressions,
-                use_web_search=use_web_search,
-                rag_adapter=rag_adapter,
-                verbose=verbose,
-            ),
-            CandidateTypingResolutionLayer(
-                ollama_backend=llm_backend,
-                max_expressions=max_expressions,
-                temperature=0.0,
-                rag_adapter=rag_adapter,
-                verbose=verbose,
-            ),
-            CandidateRelationExtractionLayer(
-                ollama_backend=llm_backend,
-                max_relation_mentions=max_relation_mentions,
-                temperature=0.0,
-                rag_adapter=rag_adapter,
-                verbose=verbose,
-            ),
-            CandidateTripleGenerationLayer(
-                max_assertions=None,
-                verbose=verbose,
-            ),
-            ConceptRelationInductionLayer(
-                ollama_backend=llm_backend,
-                max_concept_inputs=None,
-                max_relation_inputs=None,
-                temperature=0.0,
-                rag_adapter=rag_adapter,
-                verbose=verbose,
-            ),
-            HierarchisationLayer(
-                ollama_backend=llm_backend,
-                max_concept_pairs=None,
-                max_relation_pairs=None,
-                temperature=0.0,
-                rag_adapter=rag_adapter,
-                verbose=verbose,
-            ),
-            AxiomSchemataExtractionLayer(
-                ollama_backend=llm_backend,
-                max_relation_schema_inputs=None,
-                max_subclass_inputs=None,
-                temperature=0.0,
-                rag_adapter=rag_adapter,
-                verbose=verbose,
-            ),
-            GeneralAxiomExtractionLayer(
-                ollama_backend=llm_backend,
-                max_schema_inputs=None,
-                max_description_inputs=None,
-                temperature=0.0,
-                verbose=verbose,
-            ),
-            ValidationReasoningLayer(
-                max_triples=None,
-                verbose=verbose,
-            ),
-            InferenceCompletionLayer(
-                max_inferred_triples=None,
-                verbose=verbose,
-            ),
-            SerializationLayer(
-                output_subdir=output_subdir,
-                base_uri=base_uri,
-                verbose=verbose,
-            ),
-        ],
-        verbose=verbose,
-        continue_from_last=False,
-    )
-
-    execution_config = ExecutionConfig(
-        mode="chunk_iterative_mode",
-        chunk_loop_enabled=True,
-        chunk_layer_names=[
-            "layer01_linguistic_expression_extraction",
-            "layer02_candidate_enrichment",
-            "layer03_candidate_typing_resolution",
-            "layer04_candidate_relation_extraction",
-            "layer05_candidate_triple_generation",
-        ],
-        global_layer_names=[
-            "layer06_concept_relation_induction",
-            "layer07_hierarchisation",
-            "layer08_axiom_schemata_extraction",
-            "layer09_general_axiom_extraction",
-            "layer10_validation_reasoning",
-            "layer11_inference_completion",
-            "layer12_serialization",
-        ],
-        max_chunks=max_chunks,
-    )
-
-    return pipeline, execution_config
+def normalize_key(value: object) -> str:
+    """Normalize labels for conservative exact matching."""
+    text = str(value or "").strip().lower()
+    text = re.sub(r"\s+", " ", text)
+    text = re.sub(r"^[\"'`]+|[\"'`]+$", "", text)
+    return text
 
 
-# ============================================================
-# Canonicalization for eval_relations.py
-# ============================================================
 
-def evidence_to_text(evidence_items: Any) -> str:
-    """Convert NeoOLAF evidence/provenance list into a compact evidence string."""
-    if not evidence_items:
-        return ""
+# ---------------------------------------------------------------------------
+# DocRED/RAGTree constrained vocabulary helpers
+# ---------------------------------------------------------------------------
 
-    snippets: List[str] = []
+def split_relation_label(raw: object) -> Tuple[Optional[str], str, str]:
+    """Return (relation_id, plain_label, canonical_label)."""
+    text = str(raw or "").strip()
+    if not text:
+        return None, "", ""
+    m = re.match(r"^(P\d+)\s*:\s*(.+)$", text)
+    if m:
+        rel_id = m.group(1).strip()
+        rel_label = m.group(2).strip()
+        return rel_id, rel_label, f"{rel_id} : {rel_label}"
+    m = re.match(r"^(P\d+)$", text)
+    if m:
+        rel_id = m.group(1).strip()
+        return rel_id, rel_id, rel_id
+    return None, text, text
 
-    for item in evidence_items:
-        if dataclasses.is_dataclass(item):
-            item_dict = dataclasses.asdict(item)
-        elif isinstance(item, dict):
-            item_dict = item
+
+def make_relation_spec(raw: object) -> Optional[Dict[str, Any]]:
+    """Normalize one allowed relation specification."""
+    if isinstance(raw, dict):
+        source = raw.get("canonical") or raw.get("relation") or raw.get("label") or raw.get("name") or raw.get("id")
+        rel_id = raw.get("id") or raw.get("relation_id")
+        rel_label = raw.get("label") or raw.get("name") or raw.get("relation_label")
+        if rel_id and rel_label:
+            canonical = f"{str(rel_id).strip()} : {str(rel_label).strip()}"
         else:
-<<<<<<< HEAD
-            text = normalize_text_field(item)
-            if text:
-                snippets.append(text)
-=======
+            parsed_id, parsed_label, canonical = split_relation_label(source)
+            rel_id = rel_id or parsed_id
+            rel_label = rel_label or parsed_label
+    else:
+        rel_id, rel_label, canonical = split_relation_label(raw)
+
+    if not canonical:
+        return None
+    aliases = {canonical, rel_label}
+    if rel_id:
+        aliases.add(str(rel_id))
+
+    # Conservative aliases for common surface forms, still mapped only to
+    # relations that exist in the allowed vocabulary.
+    plain = normalize_key(rel_label)
+    if plain == "part of":
+        aliases.add("is part of")
+    if plain == "owned by":
+        aliases.update({"owner", "part of", "is part of"})
+    if plain == "headquarters location":
+        aliases.update({"based in", "headquartered in", "headquarters in"})
+    if plain == "place of birth":
+        aliases.update({"born in", "was born in"})
+    if plain == "educated at":
+        aliases.update({"attended", "graduated from", "studied at"})
+    if plain == "publication date":
+        aliases.update({"released on", "release date", "released"})
+    if plain == "performer":
+        aliases.update({"by", "performed by", "sung by", "recorded by"})
+    return {
+        "id": str(rel_id).strip() if rel_id else None,
+        "label": str(rel_label).strip(),
+        "canonical": canonical,
+        "aliases": sorted(a for a in aliases if str(a).strip()),
+    }
+
+
+def merge_relation_specs(items: Iterable[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    merged: Dict[str, Dict[str, Any]] = {}
+    for item in items:
+        if not isinstance(item, dict) or not item:
+            continue
+        key = item.get("id") or normalize_key(item.get("canonical"))
+        if not key:
+            continue
+        if key not in merged:
+            merged[key] = copy.deepcopy(item)
+        else:
+            aliases = set(merged[key].get("aliases") or []) | set(item.get("aliases") or [])
+            merged[key]["aliases"] = sorted(a for a in aliases if str(a).strip())
+            for field in ["id", "label", "canonical"]:
+                if not merged[key].get(field) and item.get(field):
+                    merged[key][field] = item[field]
+    return sorted(merged.values(), key=lambda x: (str(x.get("id") or ""), str(x.get("canonical") or "")))
+
+
+def extract_relation_vocab_from_dataset(path: str | Path, type_filter: str = "all") -> List[Dict[str, Any]]:
+    """Extract only the allowed relation vocabulary from a JSONL dataset.
+
+    This reads relation keys/labels only, never gold subject-object pairs.
+    """
+    specs: List[Dict[str, Any]] = []
+    for record in filter_records(load_jsonl(str(path)), type_filter):
+        value = record.get("relations") or record.get("gold_relations") or record.get("labels") or record.get("triples")
+        if isinstance(value, dict):
+            for key in value.keys():
+                spec = make_relation_spec(key)
+                if spec:
+                    specs.append(spec)
+        elif isinstance(value, list):
+            for rel in value:
+                raw = None
+                if isinstance(rel, dict):
+                    raw = rel.get("relation") or rel.get("predicate") or rel.get("label") or rel.get("r")
+                elif isinstance(rel, str):
+                    raw = rel
+                spec = make_relation_spec(raw)
+                if spec:
+                    specs.append(spec)
+    return merge_relation_specs(specs)
+
+
+def extract_relation_vocab_from_json(path: str | Path) -> List[Dict[str, Any]]:
+    path = Path(path)
+    specs: List[Dict[str, Any]] = []
+    if not path.is_file():
+        return []
+    if path.suffix.lower() == ".jsonl":
+        for row in load_jsonl(str(path)):
+            spec = make_relation_spec(row)
+            if spec:
+                specs.append(spec)
+    else:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(data, dict):
+            data = data.get("relations") or data.get("allowed_relations") or data.get("vocabulary") or []
+        if isinstance(data, list):
+            for item in data:
+                spec = make_relation_spec(item)
+                if spec:
+                    specs.append(spec)
+    return merge_relation_specs(specs)
+
+
+def extract_relation_vocab_from_ontology(path: str | Path) -> List[Dict[str, Any]]:
+    """Extract relation properties from a Turtle/RDF ontology if they exist."""
+    path = Path(path)
+    if not path.is_file():
+        return []
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    specs: List[Dict[str, Any]] = []
+    for block in re.split(r"\.\s*(?:\n|$)", text):
+        if not re.search(r"\b(a|rdf:type)\s+(owl:ObjectProperty|rdf:Property|owl:DatatypeProperty)\b", block):
+            continue
+        label_match = re.search(r"rdfs:label\s+\"([^\"]+)\"", block)
+        subject_match = re.match(r"\s*(<[^>]+>|[A-Za-z_][\w.-]*:[\w.-]+)", block)
+        raw_label = label_match.group(1) if label_match else None
+        raw_id = None
+        if subject_match:
+            subject = subject_match.group(1).strip("<>")
+            raw_id = subject.rsplit("#", 1)[-1].rsplit("/", 1)[-1]
+        if raw_label or raw_id:
+            specs.append(make_relation_spec({"id": raw_id, "label": raw_label or raw_id}))
+    return merge_relation_specs(specs)
+
+
+def load_allowed_relation_specs(args: argparse.Namespace) -> List[Dict[str, Any]]:
+    source = str(getattr(args, "relation_vocab_source", "auto") or "auto").lower()
+    gathered: List[Dict[str, Any]] = []
+    use_json = source in {"json", "union", "auto"}
+    use_dataset = source in {"dataset", "union", "auto"}
+    use_ontology = source in {"ontology", "union", "auto"}
+
+    if use_json and getattr(args, "relation_vocab_json", None):
+        gathered.extend(extract_relation_vocab_from_json(args.relation_vocab_json))
+    if use_dataset:
+        dataset_path = getattr(args, "relation_vocab_dataset_path", None) or getattr(args, "dataset_jsonl_path", None)
+        if dataset_path:
+            gathered.extend(extract_relation_vocab_from_dataset(dataset_path, getattr(args, "type_filter", "all")))
+    if use_ontology:
+        ontology_path = getattr(args, "relation_vocab_ontology_path", None) or getattr(args, "ontology_path", None)
+        if ontology_path:
+            gathered.extend(extract_relation_vocab_from_ontology(ontology_path))
+
+    specs = merge_relation_specs(gathered)
+    out_path = getattr(args, "relation_vocab_output_path", None)
+    if out_path:
+        Path(out_path).parent.mkdir(parents=True, exist_ok=True)
+        Path(out_path).write_text(
+            json.dumps({"source": source, "count": len(specs), "relations": specs}, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+    return specs
+
+
+def relation_alias_index(allowed_relations: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    idx: Dict[str, Dict[str, Any]] = {}
+    for rel in allowed_relations or []:
+        for alias in [rel.get("id"), rel.get("label"), rel.get("canonical"), *(rel.get("aliases") or [])]:
+            key = normalize_key(alias)
+            if key and key not in idx:
+                idx[key] = rel
+    return idx
+
+
+def map_relation_to_allowed(label: object, allowed_relations: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+    if not allowed_relations:
+        return None
+    key = normalize_key(label)
+    if not key:
+        return None
+    idx = relation_alias_index(allowed_relations)
+    if key in idx:
+        return idx[key]
+    key2 = re.sub(r"^is\s+", "", key)
+    return idx.get(key2)
+
+
+def entity_alias_index(source_entities: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    idx: Dict[str, Dict[str, Any]] = {}
+    for ent in source_entities or []:
+        for alias in [ent.get("id"), ent.get("label"), *(ent.get("aliases") or [])]:
+            key = normalize_key(alias)
+            if key and key not in idx:
+                idx[key] = ent
+    return idx
+
+
+def map_label_to_source_entity(label: object, source_entities: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+    key = normalize_key(label)
+    if not key:
+        return None
+    if key in {"per", "person", "org", "organization", "loc", "location", "misc", "entity", "institution", "time", "num"}:
+        return None
+    return entity_alias_index(source_entities).get(key)
+
+
+def build_docred_control_block(record: Dict[str, Any], allowed_relations: List[Dict[str, Any]], *, include_entities: bool = True) -> str:
+    lines = [
+        "DOCRED CONTROLLED EXTRACTION MODE.",
+        "Use only the SOURCE ENTITIES listed below as relation heads and tails.",
+        "Do not use entity types such as ORG, LOC, PER, MISC, person, location, institution, or entity as node labels.",
+        "Use only the ALLOWED RELATIONS listed below as predicates, exactly as written.",
+        "Prefer the full relation form, for example `P127 : owned by`, not only `owned by`.",
+        "Do not invent open relation labels. If no allowed relation is supported by the text, output no relation.",
+        "",
+        "ALLOWED RELATIONS:",
+    ]
+    for rel in allowed_relations or []:
+        lines.append(f"- {rel.get('canonical')}")
+    if include_entities:
+        lines.extend(["", "SOURCE ENTITIES:"])
+        for ent in source_entities_from_record(record):
+            aliases = ", ".join(ent.get("aliases") or [])
+            lines.append(f"- {ent['id']} | {ent['type']} | {ent['label']} | aliases: {aliases}")
+    lines.extend(["", "DOCUMENT TEXT:"])
+    return "\n".join(lines)
+
+
+def inject_relation_constraints_into_guidance(guidance: Optional[UserGuidance], allowed_relations: List[Dict[str, Any]]) -> Optional[UserGuidance]:
+    if not allowed_relations:
+        return guidance
+    guidance = copy.deepcopy(guidance) if guidance is not None else UserGuidance()
+    allowed = [str(rel.get("canonical")) for rel in allowed_relations if rel.get("canonical")]
+    existing = list(getattr(guidance, "priority_relations", []) or [])
+    guidance.priority_relations = list(dict.fromkeys([*existing, *allowed]))
+    constraint_text = (
+        "DocRED constrained relation extraction. Use only the allowed DocRED relation labels listed in "
+        "priority_relations, exactly as written. Use source entity names/IDs from the document control block. "
+        "Do not invent predicates and do not use entity types as entity labels."
+    )
+    if getattr(guidance, "domain_focus", None):
+        guidance.domain_focus = f"{guidance.domain_focus}\n\n{constraint_text}"
+    else:
+        guidance.domain_focus = constraint_text
+    return guidance
+
+def add_few_shot_examples_from_dataset(
+    guidance: Optional[UserGuidance],
+    records: List[Dict[str, Any]],
+    *,
+    source_type: str,
+    k: int,
+) -> UserGuidance:
+    """Add compact few-shot examples derived from dataset rows."""
+    guidance = copy.deepcopy(guidance) if guidance is not None else UserGuidance()
+    candidates = filter_records(records, source_type)
+    if k is not None and k > 0:
+        candidates = candidates[:k]
+
+    for record in candidates:
+        text = document_text_from_record(record)
+        short_text = text[:600].replace("\n", " ")
+
+        for entity in entity_items_from_record(record)[:20]:
+            label = entity.get("label") or entity.get("name") or entity.get("text")
+            ent_type = entity.get("type") or entity.get("entity_type") or "entity"
+            if label:
+                guidance.typing_examples.append(
+                    TypingExample(
+                        text=str(label),
+                        expected_type=str(ent_type),
+                        explanation="Few-shot entity/type example extracted from the dataset.",
+                    )
+                )
+
+        for rel in relation_items_from_record(record)[:30]:
+            head = rel.get("head") or rel.get("subject") or rel.get("source") or rel.get("h")
+            tail = rel.get("tail") or rel.get("object") or rel.get("target") or rel.get("t")
+            relation = rel.get("relation") or rel.get("label") or rel.get("predicate") or rel.get("r")
+            evidence = rel.get("evidence") or rel.get("evidence_text") or short_text
+            if isinstance(head, dict):
+                head = head.get("label") or head.get("name") or head.get("text") or head.get("id")
+            if isinstance(tail, dict):
+                tail = tail.get("label") or tail.get("name") or tail.get("text") or tail.get("id")
+            if head and tail and relation:
+                guidance.relation_examples.append(
+                    RelationExample(
+                        text=str(evidence)[:600],
+                        source_label=str(head),
+                        relation_label=str(relation),
+                        target_label=str(tail),
+                        explanation="Few-shot relation example extracted from the dataset.",
+                    )
+                )
+
+    return guidance
+
+
+# ---------------------------------------------------------------------------
+# Pipeline construction and output conversion
+# ---------------------------------------------------------------------------
+
+def build_backend(args: argparse.Namespace) -> OpenAICompatibleBackend:
+    """Create a fresh backend instance for one document worker."""
+    return OpenAICompatibleBackend(
+        backend_name=args.backend_name,
+        host=args.host,
+        api_key=args.api_key,
+        timeout=args.request_timeout,
+        max_tokens=args.max_tokens,
+        reasoning_effort=(args.openrouter_reasoning_effort or None),
+        exclude_reasoning=args.openrouter_exclude_reasoning,
+    )
+
+
+def build_pipeline(args: argparse.Namespace, backend: OpenAICompatibleBackend) -> Pipeline:
+    """Build the full NeoOLAF pipeline using the existing library layers."""
+    layers = [
+        PreprocessingLayer(
+            chunk_size=args.chunk_size,
+            overlap=args.chunk_overlap,
+            enable_chunking=True,
+            translate=False,
+            save_intermediate=True,
+            verbose=args.verbose,
+        ),
+        LinguisticExpressionExtractionLayer(
+            backend,
+            max_chunks=args.max_chunks,
+            temperature=args.temperature,
+            save_intermediate=True,
+            verbose=args.verbose,
+        ),
+        CandidateEnrichmentLayer(
+            backend,
+            wikipedia_source=OfflineWikipediaSource() if args.disable_wikipedia_lookups else None,
+            wikidata_source=OfflineWikidataSource() if args.disable_wikipedia_lookups else None,
+            web_search_source=OfflineWebSearchSource() if args.no_web_search else None,
+            max_expressions=args.max_expressions,
+            use_web_search=not args.no_web_search,
+            save_intermediate=True,
+            verbose=args.verbose,
+        ),
+        CandidateTypingResolutionLayer(
+            backend,
+            max_expressions=args.max_expressions,
+            temperature=args.temperature,
+            save_intermediate=True,
+            verbose=args.verbose,
+        ),
+        CandidateRelationExtractionLayer(
+            backend,
+            max_relation_mentions=args.max_relation_mentions,
+            temperature=args.temperature,
+            save_intermediate=True,
+            verbose=args.verbose,
+        ),
+        CandidateTripleGenerationLayer(
+            max_assertions=args.max_relation_mentions,
+            save_intermediate=True,
+            verbose=args.verbose,
+        ),
+        ConceptRelationInductionLayer(
+            backend,
+            max_concept_inputs=args.max_concept_inputs,
+            max_relation_inputs=args.max_relation_inputs,
+            temperature=args.temperature,
+            save_intermediate=True,
+            verbose=args.verbose,
+        ),
+        HierarchisationLayer(
+            backend,
+            max_concept_pairs=args.max_concept_pairs,
+            max_relation_pairs=args.max_relation_pairs,
+            temperature=args.temperature,
+            save_intermediate=True,
+            verbose=args.verbose,
+        ),
+        AxiomSchemataExtractionLayer(
+            backend,
+            max_relation_schema_inputs=args.max_relation_schema_inputs,
+            max_subclass_inputs=args.max_subclass_inputs,
+            temperature=args.temperature,
+            save_intermediate=True,
+            verbose=args.verbose,
+        ),
+        GeneralAxiomExtractionLayer(
+            backend,
+            max_schema_inputs=args.max_schema_inputs,
+            max_description_inputs=args.max_description_inputs,
+            temperature=args.temperature,
+            save_intermediate=True,
+            verbose=args.verbose,
+        ),
+        ValidationReasoningLayer(
+            max_triples=args.max_triples,
+            save_intermediate=True,
+            verbose=args.verbose,
+        ),
+        InferenceCompletionLayer(
+            max_inferred_triples=args.max_inferred_triples,
+            save_intermediate=True,
+            verbose=args.verbose,
+        ),
+        SerializationLayer(
+            output_subdir="exports",
+            save_intermediate=True,
+            verbose=args.verbose,
+        ),
+    ]
+    return Pipeline(layers=layers, verbose=args.verbose, continue_from_last=not args.no_resume)
+
+
+def evidence_to_text(evidence_items: Iterable[Any]) -> str:
+    """Convert NeoOLAF evidence objects into a compact evidence string."""
+    snippets: List[str] = []
+    for ev in evidence_items or []:
+        snippet = getattr(ev, "snippet", None)
+        if snippet:
+            snippets.append(str(snippet))
+    return " | ".join(dict.fromkeys(snippets))
+
+
+def state_to_canonical_prediction(
+    state: PipelineState,
+    *,
+    source_entities: Optional[List[Dict[str, Any]]] = None,
+    allowed_relations: Optional[List[Dict[str, Any]]] = None,
+    constrained: bool = False,
+) -> Dict[str, Any]:
+    """Convert final NeoOLAF state into the canonical prediction schema.
+
+    In constrained DocRED mode, this is only a benchmark-facing projection.
+    Native NeoOLAF KG/ontology artifacts stay unchanged.
+    """
+    source_entities = source_entities or []
+    allowed_relations = allowed_relations or []
+    entities_by_label: Dict[Tuple[str, str], Dict[str, Any]] = {}
+
+    if constrained and source_entities:
+        for ent in source_entities:
+            entities_by_label[(ent["label"], ent["type"])] = {
+                "id": ent["id"],
+                "label": ent["label"],
+                "type": ent["type"],
+                "aliases": ent.get("aliases") or [],
+                "source": "source_document_entity",
+            }
+    else:
+        for candidate in list(state.entity_candidates or []) + list(state.event_candidates or []):
+            label = getattr(candidate, "canonical_label", "") or ""
+            if not str(label).strip():
+                continue
+            typ = getattr(candidate, "candidate_type", "entity") or "entity"
+            key = (str(label).strip(), str(typ).strip())
+            entities_by_label[key] = {
+                "label": str(label).strip(),
+                "type": str(typ).strip(),
+                "description": getattr(candidate, "definition", None) or "",
+            }
+
+    relations: List[Dict[str, Any]] = []
+    rejected: List[Dict[str, Any]] = []
+    seen: set[Tuple[str, str, str]] = set()
+
+    for triple in state.candidate_triples or []:
+        raw_head = getattr(triple, "subject_label", "") or ""
+        raw_relation = getattr(triple, "predicate_label", "") or ""
+        raw_tail = getattr(triple, "object_label", "") or ""
+        if not str(raw_head).strip() or not str(raw_relation).strip() or not str(raw_tail).strip():
+            continue
+        evidence = evidence_to_text(getattr(triple, "provenance", [])) or getattr(triple, "justification", "") or ""
+
+        if constrained:
+            head_ent = map_label_to_source_entity(raw_head, source_entities)
+            tail_ent = map_label_to_source_entity(raw_tail, source_entities)
+            rel_spec = map_relation_to_allowed(raw_relation, allowed_relations)
+            reasons: List[str] = []
+            if head_ent is None:
+                reasons.append("head_not_source_entity")
+            if tail_ent is None:
+                reasons.append("tail_not_source_entity")
+            if rel_spec is None:
+                reasons.append("relation_not_allowed")
+            if reasons:
+                rejected.append(
+                    {
+                        "head": str(raw_head),
+                        "relation": str(raw_relation),
+                        "tail": str(raw_tail),
+                        "reasons": reasons,
+                        "evidence": evidence,
+                    }
+                )
+                continue
+            key = (head_ent["id"], rel_spec.get("canonical") or rel_spec.get("label") or "", tail_ent["id"])
+            if key in seen:
+                continue
+            seen.add(key)
+            relations.append(
+                {
+                    "head_id": head_ent["id"],
+                    "head": head_ent["label"],
+                    "head_type": head_ent["type"],
+                    "relation_id": rel_spec.get("id"),
+                    "relation": rel_spec.get("canonical") or rel_spec.get("label"),
+                    "relation_label": rel_spec.get("label"),
+                    "tail_id": tail_ent["id"],
+                    "tail": tail_ent["label"],
+                    "tail_type": tail_ent["type"],
+                    "evidence": evidence,
+                    "raw_prediction": {"head": str(raw_head), "relation": str(raw_relation), "tail": str(raw_tail)},
+                }
+            )
+        else:
             relations.append(
                 {
                     "head": str(raw_head).strip(),
@@ -1558,79 +1840,32 @@ def validate_direct_docred_relations(
                     "tail": raw_tail,
                 }
             )
->>>>>>> d746806 (docred - relation and openrouter patch)
             continue
 
-        for key in ["text", "snippet", "sentence", "content"]:
-            value = normalize_text_field(item_dict.get(key))
-            if value:
-                snippets.append(value)
-                break
+        key = (str(head_ent["id"]), str(rel_spec.get("id") or rel_spec.get("canonical")), str(tail_ent["id"]))
+        if key in seen:
+            continue
+        seen.add(key)
+        accepted.append(
+            {
+                "head_id": head_ent["id"],
+                "head": head_ent["label"],
+                "head_type": head_ent["type"],
+                "relation_id": rel_spec.get("id"),
+                "relation": rel_spec.get("canonical") or rel_spec.get("label"),
+                "relation_label": rel_spec.get("label"),
+                "tail_id": tail_ent["id"],
+                "tail": tail_ent["label"],
+                "tail_type": tail_ent["type"],
+                "evidence": str(evidence).strip(),
+                "raw_prediction": item,
+                "source": "docred_direct_constrained_extraction",
+            }
+        )
 
-    return " | ".join(snippets[:3])
-
-
-<<<<<<< HEAD
-def candidate_to_canonical_entity(candidate: Any) -> Optional[Dict[str, str]]:
-    """Convert a NeoOLAF candidate into evaluator-compatible entity format."""
-    label = normalize_text_field(getattr(candidate, "canonical_label", ""))
-    candidate_type = normalize_text_field(getattr(candidate, "candidate_type", ""))
-    definition = normalize_text_field(getattr(candidate, "definition", ""))
-
-    if not label:
-        return None
-
-    return {
-        "label": label,
-        "type": candidate_type,
-        "description": definition,
-    }
+    return accepted, rejected
 
 
-def triple_to_canonical_relation(triple: Any) -> Optional[Dict[str, str]]:
-    """Convert a NeoOLAF CandidateTriple into evaluator-compatible relation format."""
-    head = normalize_text_field(getattr(triple, "subject_label", ""))
-    relation = normalize_text_field(getattr(triple, "predicate_label", ""))
-    tail = normalize_text_field(getattr(triple, "object_label", ""))
-    justification = normalize_text_field(getattr(triple, "justification", ""))
-
-    provenance_text = evidence_to_text(getattr(triple, "provenance", []))
-    evidence = justification or provenance_text
-
-    if not head or not relation or not tail:
-        return None
-
-    return {
-        "head": head,
-        "relation": relation,
-        "tail": tail,
-        "evidence": evidence,
-    }
-
-
-def canonicalize_neoolaf_state(
-    final_state: PipelineState,
-    document_id: str,
-    title: str,
-    doc_type: str,
-) -> Dict[str, Any]:
-    """Convert final NeoOLAF state into eval_relations.py-compatible row."""
-    canonical_entities: List[Dict[str, str]] = []
-    canonical_relations: List[Dict[str, str]] = []
-
-    seen_entities: Set[Tuple[str, str]] = set()
-    seen_relations: Set[Tuple[str, str, str]] = set()
-
-    candidate_groups = [
-        final_state.entity_candidates,
-        final_state.event_candidates,
-        final_state.attribute_candidates,
-    ]
-
-    for group in candidate_groups:
-        for candidate in group:
-            entity = candidate_to_canonical_entity(candidate)
-=======
 def call_docred_direct_json_with_retries(
     *,
     backend: OpenAICompatibleBackend,
@@ -1891,64 +2126,65 @@ def run_docred_direct_constrained_extraction(
         encoding="utf-8",
     )
     return prediction
->>>>>>> d746806 (docred - relation and openrouter patch)
 
-            if entity is None:
-                continue
 
-            key = (
-                entity["label"].lower(),
-                entity["type"].lower(),
-            )
-
-            if key not in seen_entities:
-                seen_entities.add(key)
-                canonical_entities.append(entity)
-
-    for triple in final_state.candidate_triples:
-        relation = triple_to_canonical_relation(triple)
-
-        if relation is None:
+def merge_canonical_predictions(base: Dict[str, Any], extra: Dict[str, Any]) -> Dict[str, Any]:
+    """Merge two canonical prediction views, deduplicating relation triples."""
+    merged = copy.deepcopy(base or {"entities": [], "relations": []})
+    base_entities = {str(e.get("id") or e.get("label")): e for e in merged.get("entities") or [] if isinstance(e, dict)}
+    for ent in extra.get("entities") or []:
+        if not isinstance(ent, dict):
             continue
+        key = str(ent.get("id") or ent.get("label"))
+        if key and key not in base_entities:
+            base_entities[key] = ent
+    merged["entities"] = list(base_entities.values())
 
+    seen: set[Tuple[str, str, str]] = set()
+    relations: List[Dict[str, Any]] = []
+    for rel in list(merged.get("relations") or []) + list(extra.get("relations") or []):
+        if not isinstance(rel, dict):
+            continue
         key = (
-            relation["head"].lower(),
-            relation["relation"].lower(),
-            relation["tail"].lower(),
+            str(rel.get("head_id") or rel.get("head")),
+            str(rel.get("relation_id") or rel.get("relation")),
+            str(rel.get("tail_id") or rel.get("tail")),
         )
+        if key in seen:
+            continue
+        seen.add(key)
+        relations.append(rel)
+    merged["relations"] = relations
+    merged["projection_diagnostics"] = {
+        "merged_prediction": True,
+        "base_diagnostics": base.get("projection_diagnostics") if isinstance(base, dict) else None,
+        "extra_diagnostics": extra.get("projection_diagnostics") if isinstance(extra, dict) else None,
+        "canonical_relations": len(relations),
+    }
+    return merged
 
-        if key not in seen_relations:
-            seen_relations.add(key)
-            canonical_relations.append(relation)
+def raw_counts_from_state(state: PipelineState, prediction: Dict[str, Any]) -> Dict[str, int]:
+    """Collect compact count diagnostics for one document.
+
+    Keep this function defensive because benchmark adapters may attach
+    diagnostics in different shapes:
+    - projection_diagnostics directly on the canonical prediction;
+    - projection_diagnostics.extra_diagnostics when native and direct
+      predictions are merged;
+    - absent diagnostics for older/non-DocRED runs.
+    """
+    diagnostics: Dict[str, Any] = {}
+    if isinstance(prediction, dict):
+        raw_diag = prediction.get("projection_diagnostics") or {}
+        if isinstance(raw_diag, dict):
+            diagnostics.update(raw_diag)
+            extra_diag = raw_diag.get("extra_diagnostics")
+            if isinstance(extra_diag, dict):
+                # Direct DocRED extraction diagnostics live here when the
+                # direct prediction is merged with the native NeoOLAF view.
+                diagnostics.update(extra_diag)
 
     return {
-<<<<<<< HEAD
-        "document_id": document_id,
-        "title": title,
-        "type": doc_type,
-        "method": "neoolaf",
-        "parsed_ok": True,
-        "prediction": {
-            "entities": canonical_entities,
-            "relations": canonical_relations,
-        },
-        "raw_counts": {
-            "linguistic_expressions": len(final_state.linguistic_expressions),
-            "enriched_expressions": len(final_state.enriched_expressions),
-            "entity_candidates": len(final_state.entity_candidates),
-            "event_candidates": len(final_state.event_candidates),
-            "attribute_candidates": len(final_state.attribute_candidates),
-            "relation_candidates": len(final_state.relation_candidates),
-            "candidate_relation_assertions": len(final_state.candidate_relation_assertions),
-            "candidate_triples": len(final_state.candidate_triples),
-            "concept_candidates": len(final_state.concept_candidates),
-            "ontology_relation_candidates": len(final_state.ontology_relation_candidates),
-            "completion_candidates": len(final_state.completion_candidates),
-            "canonical_entities": len(canonical_entities),
-            "canonical_relations": len(canonical_relations),
-        },
-        "artifact_dir": final_state.artifact_dir,
-=======
         "linguistic_expressions": len(state.linguistic_expressions or []),
         "enriched_expressions": len(state.enriched_expressions or []),
         "entity_candidates": len(state.entity_candidates or []),
@@ -1973,32 +2209,23 @@ def run_docred_direct_constrained_extraction(
         "docred_calibration_relabelled": int(((diagnostics.get("calibration") or {}).get("relabelled") or 0)) if isinstance(diagnostics.get("calibration"), dict) else 0,
         "docred_calibration_rejected": int(((diagnostics.get("calibration") or {}).get("rejected") or 0)) if isinstance(diagnostics.get("calibration"), dict) else 0,
         "docred_zero_probe_enabled": int(bool((diagnostics.get("zero_relation_probes") or {}).get("enabled"))) if isinstance(diagnostics.get("zero_relation_probes"), dict) else 0,
->>>>>>> d746806 (docred - relation and openrouter patch)
     }
 
 
-def build_raw_neoolaf_summary(final_state: PipelineState) -> Dict[str, Any]:
-    """Build compact raw debug summary from final NeoOLAF state."""
+def make_error_result(
+    record: Dict[str, Any],
+    index: int,
+    *,
+    method: str,
+    error: Exception | str,
+    artifact_dir: Optional[str] = None,
+    traceback_text: str = "",
+) -> Dict[str, Any]:
+    """Return a canonical error row instead of crashing the full dataset run."""
+    doc_id = document_id_from_record(record, index)
+    error_type = type(error).__name__ if isinstance(error, Exception) else "Error"
+    error_message = str(error)
     return {
-<<<<<<< HEAD
-        "artifact_dir": final_state.artifact_dir,
-        "document_chunks": len(final_state.document.chunks),
-        "linguistic_expressions": len(final_state.linguistic_expressions),
-        "enriched_expressions": len(final_state.enriched_expressions),
-        "entity_candidates": len(final_state.entity_candidates),
-        "event_candidates": len(final_state.event_candidates),
-        "attribute_candidates": len(final_state.attribute_candidates),
-        "relation_candidates": len(final_state.relation_candidates),
-        "candidate_relation_assertions": len(final_state.candidate_relation_assertions),
-        "candidate_triples": len(final_state.candidate_triples),
-        "concept_candidates": len(final_state.concept_candidates),
-        "ontology_relation_candidates": len(final_state.ontology_relation_candidates),
-        "axiom_schema_candidates": len(final_state.axiom_schema_candidates),
-        "general_axiom_candidates": len(final_state.general_axiom_candidates),
-        "completion_candidates": len(final_state.completion_candidates),
-        "candidate_triples_preview": [
-            to_jsonable(x) for x in final_state.candidate_triples[:20]
-=======
         "document_id": doc_id,
         "title": title_from_record(record, doc_id),
         "type": record.get("type") or record.get("split"),
@@ -2344,280 +2571,10 @@ def build_run_summary(
                 "artifact_error_files": row.get("artifact_error_files", [])[:3],
             }
             for row in error_rows[:20]
->>>>>>> d746806 (docred - relation and openrouter patch)
         ],
     }
 
 
-<<<<<<< HEAD
-def make_output_row(
-    canonical_row: Dict[str, Any],
-    final_state: Optional[PipelineState],
-    output_format: str,
-) -> Dict[str, Any]:
-    """Select row format to write."""
-    output_format = output_format.strip().lower()
-
-    if output_format == "canonical":
-        return canonical_row
-
-    if output_format == "raw":
-        if final_state is None:
-            return canonical_row
-
-        return {
-            "document_id": canonical_row.get("document_id", ""),
-            "title": canonical_row.get("title", ""),
-            "type": canonical_row.get("type", ""),
-            "method": "neoolaf",
-            "status": "ok",
-            "raw_neoolaf": build_raw_neoolaf_summary(final_state),
-        }
-
-    if output_format == "both":
-        if final_state is not None:
-            canonical_row["raw_neoolaf"] = build_raw_neoolaf_summary(final_state)
-
-        return canonical_row
-
-    raise ValueError("output_format must be one of: raw, canonical, both")
-
-
-# ============================================================
-# Per-document execution
-# ============================================================
-
-def run_one_document(
-    doc_idx: int,
-    doc: Dict[str, Any],
-    dataset_jsonl_path: Path,
-    ontology_path: Path,
-    llm_backend: Any,
-    model_name: str,
-    base_guidance: UserGuidance,
-    few_shot_from_dataset: bool,
-    few_shot_k: int,
-    few_shot_source_type: str,
-    seed_ontology: Any,
-    artifacts_root: Path,
-    chunk_size: int,
-    chunk_overlap: int,
-    translate_to_english: bool,
-    use_web_search: bool,
-    max_chunks: Optional[int],
-    max_expressions: Optional[int],
-    max_relation_mentions: Optional[int],
-    max_workers: int,
-    enable_checkpoints: bool,
-    save_chunk_checkpoints: bool,
-    output_subdir: str,
-    base_uri: str,
-    verbose: bool,
-    debug: bool,
-) -> Tuple[Dict[str, Any], PipelineState]:
-    """Run NeoOLAF for one JSONL document."""
-    document_id = normalize_text_field(doc.get("document_id"))
-    title = normalize_text_field(doc.get("title"))
-    doc_type = normalize_text_field(doc.get("type"))
-    full_text = build_document_text(doc)
-
-    if not full_text:
-        raise ValueError(f"Document {document_id} has empty text.")
-
-    # Make per-document guidance copy by JSON round-trip through dataclasses.
-    guidance = to_jsonable(base_guidance)
-    guidance = parse_user_guidance_json(guidance)
-
-    if few_shot_from_dataset:
-        examples = select_dataset_few_shot_examples(
-            dataset_jsonl_path=dataset_jsonl_path,
-            current_document_id=document_id,
-            type_filter=few_shot_source_type,
-            few_shot_k=few_shot_k,
-            seed=42,
-        )
-        add_dataset_examples_to_guidance(guidance, examples)
-
-    document = Document(
-        doc_id=document_id,
-        source_path=str(dataset_jsonl_path),
-        raw_text=full_text,
-    )
-
-    state = PipelineState(
-        document=document,
-        llm_model=model_name,
-        user_guidance=guidance,
-        seed_ontology=seed_ontology,
-    )
-
-    # Build sources once per document to avoid state leakage.
-    wordnet_source = WordNetSource()
-    wikipedia_source = WikipediaSource(language="en")
-    wikidata_source = WikidataSource(language="en")
-    web_search_source = WebSearchSource()
-
-    pipeline, execution_config = build_neoolaf_pipeline(
-        llm_backend=llm_backend,
-        model_name=model_name,
-        state=state,
-        chunk_size=chunk_size,
-        chunk_overlap=chunk_overlap,
-        translate_to_english=translate_to_english,
-        use_web_search=use_web_search,
-        max_chunks=max_chunks,
-        max_expressions=max_expressions,
-        max_relation_mentions=max_relation_mentions,
-        max_workers=max_workers,
-        verbose=verbose,
-        output_subdir=output_subdir,
-        base_uri=base_uri,
-        wikipedia_source=wikipedia_source,
-        wikidata_source=wikidata_source,
-        wordnet_source=wordnet_source,
-        web_search_source=web_search_source,
-    )
-
-    document_artifacts_root = artifacts_root / safe_filename(document_id)
-
-    runner = Runner(
-        pipeline=pipeline,
-        runs_root=str(document_artifacts_root),
-        verbose=verbose,
-        execution_config=execution_config,
-        max_workers=max_workers,
-        enable_checkpoints=enable_checkpoints,
-        save_chunk_checkpoints=save_chunk_checkpoints,
-    )
-
-    if debug:
-        print("\n" + "=" * 80)
-        print(f"[DEBUG] NeoOLAF document #{doc_idx}")
-        print(f"[DEBUG] document_id: {document_id}")
-        print(f"[DEBUG] title      : {title}")
-        print(f"[DEBUG] type       : {doc_type}")
-        print(f"[DEBUG] chars      : {len(full_text)}")
-        print(f"[DEBUG] artifacts  : {document_artifacts_root}")
-        print("=" * 80)
-
-    final_state = runner.run(state)
-
-    canonical_row = canonicalize_neoolaf_state(
-        final_state=final_state,
-        document_id=document_id,
-        title=title,
-        doc_type=doc_type,
-    )
-
-    return canonical_row, final_state
-
-
-# ============================================================
-# Dataset runner
-# ============================================================
-
-def run_neoolaf_dataset(
-    dataset_jsonl_path: str | Path,
-    ontology_path: str | Path,
-    output_jsonl_path: str | Path,
-    backend_name: str,
-    host: str,
-    model_name: str,
-    api_key: str = "dummy",
-    type_filter: str = "all",
-    few_shot_path: str = "",
-    user_guidance_path: str = "",
-    few_shot_from_dataset: bool = False,
-    few_shot_source_type: str = "all",
-    few_shot_k: int = 3,
-    output_format: str = "canonical",
-    artifacts_root: str | Path = "./runs/neoolaf_artifacts",
-    chunk_size: int = 5000,
-    chunk_overlap: int = 0,
-    translate_to_english: bool = False,
-    use_web_search: bool = False,
-    max_chunks: Optional[int] = None,
-    max_expressions: Optional[int] = None,
-    max_relation_mentions: Optional[int] = None,
-    max_workers: int = 14,
-    enable_checkpoints: bool = True,
-    save_chunk_checkpoints: bool = True,
-    resume: bool = True,
-    timeout: int = 900,
-    max_retries: int = 5,
-    retry_wait_seconds: float = 5.0,
-    referer: str = "http://localhost",
-    title: str = "NeoOLAF-Benchmark",
-    output_subdir: str = "data/exports",
-    base_uri: str = "http://neoolaf.org/resource/",
-    verbose: bool = False,
-    debug: bool = False,
-) -> Dict[str, Any]:
-    """Run NeoOLAF line by line on a JSONL dataset."""
-    dataset_jsonl_path = Path(dataset_jsonl_path)
-    ontology_path = Path(ontology_path)
-    output_jsonl_path = Path(output_jsonl_path)
-    artifacts_root = Path(artifacts_root)
-
-    if not dataset_jsonl_path.exists():
-        raise FileNotFoundError(f"Dataset JSONL not found: {dataset_jsonl_path}")
-
-    if not ontology_path.exists():
-        raise FileNotFoundError(f"Ontology file not found: {ontology_path}")
-
-    output_format = output_format.strip().lower()
-
-    if output_format not in {"raw", "canonical", "both"}:
-        raise ValueError("output_format must be one of: raw, canonical, both")
-
-    ensure_parent_dir(output_jsonl_path)
-    artifacts_root.mkdir(parents=True, exist_ok=True)
-
-    processed_ids: Set[str] = set()
-
-    if resume:
-        processed_ids = load_processed_ids(output_jsonl_path)
-
-    llm_backend = build_neoolaf_backend(
-        backend_name=backend_name,
-        host=host,
-        api_key=api_key,
-        timeout=timeout,
-        max_retries=max_retries,
-        retry_wait_seconds=retry_wait_seconds,
-        referer=referer,
-        title=title,
-    )
-
-    base_guidance = load_user_guidance(user_guidance_path)
-    base_guidance = enrich_guidance_with_few_shots(
-        guidance=base_guidance,
-        few_shot_path=few_shot_path,
-        few_shot_k=few_shot_k,
-    )
-
-    seed_ontology = build_seed_ontology(str(ontology_path))
-
-    total_docs = count_documents(dataset_jsonl_path, type_filter=type_filter)
-    docs_iter = iter_documents(dataset_jsonl_path, type_filter=type_filter)
-
-    start_time = dt.datetime.now()
-    seen = 0
-    done = 0
-    skipped_resume = 0
-    failed = 0
-
-    for row_idx, doc in enumerate(
-        tqdm(docs_iter, total=total_docs, desc="NeoOLAF docs", unit="doc"),
-        start=1,
-    ):
-        seen += 1
-        document_id = safe_document_id(doc, row_idx)
-
-        if document_id in processed_ids:
-            skipped_resume += 1
-            continue
-=======
 def main() -> None:
     args = parse_args()
     if getattr(args, "docred_verification_pass", False):
@@ -2634,41 +2591,14 @@ def main() -> None:
     if args.no_web_search:
         print("[NeoOLAF benchmark] Web-search enrichment disabled (--no-web-search).")
     start = time.time()
->>>>>>> d746806 (docred - relation and openrouter patch)
 
+    # Avoid mixing stale errors from previous smoke tests with the current run.
+    if args.error_log_jsonl_path:
         try:
-            doc = dict(doc)
-            doc["document_id"] = document_id
+            Path(args.error_log_jsonl_path).unlink(missing_ok=True)
+        except Exception:
+            pass
 
-<<<<<<< HEAD
-            canonical_row, final_state = run_one_document(
-                doc_idx=row_idx,
-                doc=doc,
-                dataset_jsonl_path=dataset_jsonl_path,
-                ontology_path=ontology_path,
-                llm_backend=llm_backend,
-                model_name=model_name,
-                base_guidance=base_guidance,
-                few_shot_from_dataset=few_shot_from_dataset,
-                few_shot_k=few_shot_k,
-                few_shot_source_type=few_shot_source_type,
-                seed_ontology=seed_ontology,
-                artifacts_root=artifacts_root,
-                chunk_size=chunk_size,
-                chunk_overlap=chunk_overlap,
-                translate_to_english=translate_to_english,
-                use_web_search=use_web_search,
-                max_chunks=max_chunks,
-                max_expressions=max_expressions,
-                max_relation_mentions=max_relation_mentions,
-                max_workers=max_workers,
-                enable_checkpoints=enable_checkpoints,
-                save_chunk_checkpoints=save_chunk_checkpoints,
-                output_subdir=output_subdir,
-                base_uri=base_uri,
-                verbose=verbose,
-                debug=debug,
-=======
     records_all = load_jsonl(args.dataset_jsonl_path)
     records = filter_records(records_all, args.type_filter)
     if args.max_docs is not None:
@@ -2735,273 +2665,98 @@ def main() -> None:
             msg = (
                 f"[{completed_no}/{len(records)}] {result['document_id']} ok "
                 f"relations={relation_count}{runtime_txt}"
->>>>>>> d746806 (docred - relation and openrouter patch)
             )
-
-            output_row = make_output_row(
-                canonical_row=canonical_row,
-                final_state=final_state,
-                output_format=output_format,
-            )
-
-            append_jsonl(output_jsonl_path, output_row)
-            done += 1
-
-        except KeyboardInterrupt:
-            raise
-
-        except Exception as e:
-            failed += 1
-
-            error_row = {
-                "document_id": document_id,
-                "title": normalize_text_field(doc.get("title")),
-                "type": normalize_text_field(doc.get("type")),
-                "method": "neoolaf",
-                "parsed_ok": False,
-                "prediction": {
-                    "entities": [],
-                    "relations": [],
-                },
-                "raw_counts": {
-                    "canonical_entities": 0,
-                    "canonical_relations": 0,
-                },
-                "error": str(e),
-            }
-
-            if output_format == "both":
-                error_row["traceback"] = traceback.format_exc()
-            elif output_format == "raw":
-                error_row = {
-                    "document_id": document_id,
-                    "title": normalize_text_field(doc.get("title")),
-                    "type": normalize_text_field(doc.get("type")),
-                    "method": "neoolaf",
-                    "status": "error",
-                    "error": str(e),
-                    "traceback": traceback.format_exc() if debug else "",
-                }
-
-            append_jsonl(output_jsonl_path, error_row)
-
-            if debug:
-                print(f"\n[DEBUG] ERROR on document {document_id}: {e}")
-                traceback.print_exc()
-
-    end_time = dt.datetime.now()
-
-    return {
-        "dataset_jsonl_path": str(dataset_jsonl_path),
-        "ontology_path": str(ontology_path),
-        "output_jsonl_path": str(output_jsonl_path),
-        "backend_name": backend_name,
-        "host": host,
-        "model_name": model_name,
-        "type_filter": type_filter,
-        "few_shot_path": few_shot_path,
-        "user_guidance_path": user_guidance_path,
-        "few_shot_from_dataset": few_shot_from_dataset,
-        "few_shot_source_type": few_shot_source_type,
-        "few_shot_k": few_shot_k,
-        "output_format": output_format,
-        "artifacts_root": str(artifacts_root),
-        "chunk_size": chunk_size,
-        "chunk_overlap": chunk_overlap,
-        "translate_to_english": translate_to_english,
-        "use_web_search": use_web_search,
-        "max_chunks": max_chunks,
-        "max_expressions": max_expressions,
-        "max_relation_mentions": max_relation_mentions,
-        "max_workers": max_workers,
-        "enable_checkpoints": enable_checkpoints,
-        "save_chunk_checkpoints": save_chunk_checkpoints,
-        "resume": resume,
-        "seen": seen,
-        "done": done,
-        "skipped_resume": skipped_resume,
-        "failed": failed,
-        "started_at": start_time.isoformat(),
-        "finished_at": end_time.isoformat(),
-        "elapsed_seconds": (end_time - start_time).total_seconds(),
-    }
-
-
-# ============================================================
-# CLI
-# ============================================================
-
-def parse_optional_int(value: str) -> Optional[int]:
-    """Parse optional integer CLI values."""
-    value = str(value).strip()
-
-    if value.lower() in {"", "none", "null"}:
-        return None
-
-    return int(value)
-
-
-def build_argparser() -> argparse.ArgumentParser:
-    """Build CLI parser."""
-    parser = argparse.ArgumentParser(
-        description="Run NeoOLAF on a JSONL dataset line-by-line."
-    )
-
-    parser.add_argument("--dataset-jsonl-path", required=True, help="Path to input JSONL dataset.")
-    parser.add_argument("--ontology-path", required=True, help="Path to ontology file.")
-    parser.add_argument("--output-jsonl-path", required=True, help="Path to output JSONL predictions.")
-
-    parser.add_argument(
-        "--backend-name",
-        required=True,
-        choices=["vllm", "openrouter", "ollama"],
-        help="Backend type.",
-    )
-    parser.add_argument("--host", required=True, help="Backend host URL.")
-    parser.add_argument("--api-key", default="dummy", help="API key for OpenAI-compatible backends.")
-    parser.add_argument("--model-name", required=True, help="Model name exposed by backend.")
-
-    parser.add_argument("--type-filter", default="all", help='Filter by "type". Use "all" for no filter.')
-
-    parser.add_argument(
-        "--few-shot-path",
-        default="",
-        help="Optional JSON file containing few-shot examples.",
-    )
-    parser.add_argument(
-        "--user-guidance-path",
-        default="",
-        help="Optional JSON file containing UserGuidance fields.",
-    )
-    parser.add_argument(
-        "--few-shot-from-dataset",
-        action="store_true",
-        help="Sample few-shot relation examples directly from the gold JSONL dataset.",
-    )
-    parser.add_argument(
-        "--few-shot-source-type",
-        default="all",
-        help='Type used to sample dataset few-shots. Use "all" for no filter.',
-    )
-    parser.add_argument("--few-shot-k", type=int, default=3, help="Number of few-shot examples.")
-
-    parser.add_argument(
-        "--output-format",
-        default="canonical",
-        choices=["raw", "canonical", "both"],
-        help=(
-            "Output JSONL format. "
-            "'canonical' writes eval_relations.py-compatible predictions; "
-            "'raw' writes compact NeoOLAF debug summaries; "
-            "'both' writes canonical predictions plus compact raw debug summaries."
-        ),
-    )
-
-    parser.add_argument(
-        "--artifacts-root",
-        default="./runs/neoolaf_artifacts",
-        help="Directory where NeoOLAF internal run artifacts/checkpoints are stored.",
-    )
-
-    parser.add_argument("--chunk-size", type=parse_optional_int, default=5000)
-    parser.add_argument("--chunk-overlap", type=int, default=0)
-    parser.add_argument("--max-chunks", type=parse_optional_int, default=None)
-    parser.add_argument("--max-expressions", type=parse_optional_int, default=None)
-    parser.add_argument("--max-relation-mentions", type=parse_optional_int, default=None)
-    parser.add_argument("--max-workers", type=int, default=14)
-
-    parser.add_argument(
-        "--translate-to-english",
-        action="store_true",
-        help="Enable DeepTranslator translation to English during preprocessing.",
-    )
-    parser.add_argument(
-        "--use-web-search",
-        action="store_true",
-        help="Enable web search source in NeoOLAF enrichment/RAG.",
-    )
-
-    parser.add_argument("--timeout", type=int, default=900)
-    parser.add_argument("--max-retries", type=int, default=5)
-    parser.add_argument("--retry-wait-seconds", type=float, default=5.0)
-
-    parser.add_argument("--referer", default="http://localhost")
-    parser.add_argument("--title", default="NeoOLAF-Benchmark")
-
-    parser.add_argument("--output-subdir", default="data/exports")
-    parser.add_argument("--base-uri", default="http://neoolaf.org/resource/")
-
-    parser.add_argument("--no-resume", action="store_true", help="Disable resume mode.")
-    parser.add_argument("--no-checkpoints", action="store_true", help="Disable NeoOLAF checkpoints.")
-    parser.add_argument("--no-chunk-checkpoints", action="store_true", help="Disable chunk checkpoints.")
-
-    parser.add_argument("--verbose", action="store_true", help="Enable NeoOLAF verbose mode.")
-    parser.add_argument("--debug", action="store_true", help="Print debug traces on failures.")
-
-    parser.add_argument(
-        "--env-path",
-        default="",
-        help="Optional .env path. If omitted, PROJECT_ROOT/.env is loaded when available.",
-    )
-
-    return parser
-
-
-def main() -> None:
-    """CLI entry point."""
-    parser = build_argparser()
-    args = parser.parse_args()
-
-    env_path = Path(args.env_path) if args.env_path else PROJECT_ROOT / ".env"
-    load_dotenv_file(env_path)
-
-    # If the user passes an empty API key but env vars exist, use them.
-    api_key = args.api_key
-    if not api_key or api_key == "dummy":
-        if args.backend_name == "openrouter":
-            api_key = os.getenv("OPENROUTER_API_KEY", api_key)
         else:
-            api_key = os.getenv("OPENAI_API_KEY", api_key)
+            err_type = result.get("error_type", "Error")
+            err_msg = shorten_text(result.get("error_message") or result.get("error"))
+            msg = (
+                f"[{completed_no}/{len(records)}] {result['document_id']} error "
+                f"{err_type}: {err_msg} artifact={result.get('artifact_dir')}"
+            )
+        progress_write(msg, disable_tqdm=args.no_tqdm)
+        if (not result.get("parsed_ok")) and args.show_error_traceback:
+            progress_write(str(result.get("error_traceback") or ""), disable_tqdm=args.no_tqdm)
+        if (not result.get("parsed_ok")) and args.fail_fast:
+            raise RuntimeError(f"Fail-fast after document error: {result.get('document_id')} {result.get('error_message')}")
 
-    summary = run_neoolaf_dataset(
-        dataset_jsonl_path=args.dataset_jsonl_path,
-        ontology_path=args.ontology_path,
-        output_jsonl_path=args.output_jsonl_path,
-        backend_name=args.backend_name,
-        host=args.host,
-        model_name=args.model_name,
-        api_key=api_key,
-        type_filter=args.type_filter,
-        few_shot_path=args.few_shot_path,
-        user_guidance_path=args.user_guidance_path,
-        few_shot_from_dataset=args.few_shot_from_dataset,
-        few_shot_source_type=args.few_shot_source_type,
-        few_shot_k=args.few_shot_k,
-        output_format=args.output_format,
-        artifacts_root=args.artifacts_root,
-        chunk_size=args.chunk_size,
-        chunk_overlap=args.chunk_overlap,
-        translate_to_english=args.translate_to_english,
-        use_web_search=args.use_web_search,
-        max_chunks=args.max_chunks,
-        max_expressions=args.max_expressions,
-        max_relation_mentions=args.max_relation_mentions,
-        max_workers=args.max_workers,
-        enable_checkpoints=not args.no_checkpoints,
-        save_chunk_checkpoints=not args.no_chunk_checkpoints,
-        resume=not args.no_resume,
-        timeout=args.timeout,
-        max_retries=args.max_retries,
-        retry_wait_seconds=args.retry_wait_seconds,
-        referer=args.referer,
-        title=args.title,
-        output_subdir=args.output_subdir,
-        base_uri=args.base_uri,
-        verbose=args.verbose,
-        debug=args.debug,
+    try:
+        if workers == 1:
+            for idx, record in enumerate(records):
+                out_idx, result = run_one_document(
+                    args=args,
+                    record=record,
+                    index=idx,
+                    guidance=guidance,
+                    seed_ontology=seed_ontology,
+                    run_stamp=run_stamp,
+                )
+                handle_result(idx + 1, out_idx, result)
+        else:
+            with ThreadPoolExecutor(max_workers=workers) as executor:
+                future_to_idx = {
+                    executor.submit(
+                        run_one_document,
+                        args=args,
+                        record=record,
+                        index=idx,
+                        guidance=guidance,
+                        seed_ontology=seed_ontology,
+                        run_stamp=run_stamp,
+                    ): idx
+                    for idx, record in enumerate(records)
+                }
+                completed = 0
+                for future in as_completed(future_to_idx):
+                    idx = future_to_idx[future]
+                    try:
+                        out_idx, result = future.result()
+                    except Exception as exc:
+                        # This should be rare because run_one_document catches document errors.
+                        out_idx = idx
+                        result = make_error_result(
+                            records[idx],
+                            idx,
+                            method="neoolaf",
+                            error=exc,
+                            artifact_dir=None,
+                            traceback_text=traceback.format_exc(),
+                        )
+                    completed += 1
+                    handle_result(completed, out_idx, result)
+    finally:
+        progress.close()
+
+    final_rows = [row for row in results if row is not None]
+    write_jsonl(args.output_jsonl_path, final_rows)
+
+    error_rows = [row for row in final_rows if not row.get("parsed_ok")]
+    error_log_path = Path(args.error_log_jsonl_path) if args.error_log_jsonl_path else default_error_log_path(args.output_jsonl_path)
+    if error_rows:
+        write_jsonl(error_log_path, error_rows)
+
+    elapsed = time.time() - start
+    run_summary = build_run_summary(args=args, final_rows=final_rows, elapsed=elapsed)
+    summary_path = Path(args.summary_output_path) if args.summary_output_path else default_summary_path(args.output_jsonl_path)
+    summary_path.parent.mkdir(parents=True, exist_ok=True)
+    summary_path.write_text(json.dumps(run_summary, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    parsed_ok = run_summary["parsed_ok"]
+    total_relations = run_summary["relations"]
+    print(
+        "[NeoOLAF benchmark] finished "
+        f"parsed_ok={parsed_ok}/{len(final_rows)} relations={total_relations} "
+        f"failed={run_summary['failed']} zero_relation_docs={run_summary['zero_relation_docs_count']} "
+        f"elapsed_seconds={elapsed:.2f} output={args.output_jsonl_path} summary={summary_path}"
     )
-
-    print(json.dumps(summary, indent=2, ensure_ascii=False))
+    if error_rows:
+        print(f"[NeoOLAF benchmark] error_log={error_log_path}")
+        print(f"[NeoOLAF benchmark] error_type_counts={run_summary['error_type_counts']}")
+        for err in run_summary["errors_preview"][:5]:
+            print(
+                "[NeoOLAF benchmark][error-preview] "
+                f"{err['document_id']} {err['error_type']}: {shorten_text(err['error_message'])} "
+                f"artifact={err['artifact_dir']}"
+            )
 
 
 if __name__ == "__main__":
