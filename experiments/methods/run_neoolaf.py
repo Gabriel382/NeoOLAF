@@ -450,37 +450,50 @@ class OpenAICompatibleBackend:
 
     @staticmethod
     def extract_json(text: str) -> Any:
-        """Robust JSON extractor shared by all layers."""
+        """Robust JSON extractor shared by all layers.
+
+        Provider responses sometimes contain extra prose, markdown fences,
+        duplicated JSON, or trailing partial text. This parser tries clean JSON
+        first, then scans for the first valid object/array using raw_decode.
+        """
         if text is None:
             raise ValueError("Could not parse JSON from model output because it is None.")
         text = str(text).strip()
         if not text:
             raise ValueError("Could not parse JSON from model output because it is empty.")
 
-        fenced = re.search(r"```json\s*(.*?)\s*```", text, re.DOTALL | re.IGNORECASE)
-        if fenced:
-            return json.loads(fenced.group(1))
-
-        fenced_any = re.search(r"```\s*(.*?)\s*```", text, re.DOTALL)
-        if fenced_any:
-            return json.loads(fenced_any.group(1))
+        for pattern in [r"```json\s*(.*?)\s*```", r"```\s*(.*?)\s*```"]:
+            fenced = re.search(pattern, text, re.DOTALL | re.IGNORECASE)
+            if fenced:
+                payload = fenced.group(1).strip()
+                try:
+                    return json.loads(payload)
+                except json.JSONDecodeError:
+                    text = payload
 
         try:
             return json.loads(text)
         except json.JSONDecodeError:
             pass
 
-        # Prefer the earliest valid top-level array/object candidate.
-        candidates = []
-        for pattern in [r"(\[.*\])", r"(\{.*\})"]:
-            match = re.search(pattern, text, re.DOTALL)
-            if match:
-                candidates.append(match.group(1))
-        for candidate in candidates:
+        decoder = json.JSONDecoder()
+        for start, ch in enumerate(text):
+            if ch not in "[{":
+                continue
             try:
-                return json.loads(candidate)
+                obj, _end = decoder.raw_decode(text[start:])
+                return obj
             except json.JSONDecodeError:
                 continue
+
+        for open_ch, close_ch in [("{", "}"), ("[", "]")]:
+            start = text.find(open_ch)
+            end = text.rfind(close_ch)
+            if start != -1 and end != -1 and end > start:
+                try:
+                    return json.loads(text[start : end + 1])
+                except json.JSONDecodeError:
+                    continue
 
         raise ValueError("Could not parse JSON from model output.")
 
@@ -1277,6 +1290,9 @@ def build_pipeline(args: argparse.Namespace, backend: OpenAICompatibleBackend) -
             verbose=args.verbose,
         ),
     ]
+    stop_after_layer = getattr(args, "stop_after_layer", None)
+    if stop_after_layer is not None and stop_after_layer >= 0:
+        layers = layers[: min(len(layers), int(stop_after_layer) + 1)]
     return Pipeline(layers=layers, verbose=args.verbose, continue_from_last=not args.no_resume)
 
 
@@ -1452,6 +1468,179 @@ def state_to_canonical_prediction(
             "rejected_triples": len(rejected),
             "rejected_triples_preview": rejected[:20],
         }
+    return prediction
+
+
+# ---------------------------------------------------------------------------
+# Raw-text entity+relation fallback helper (no source entity inventory)
+# ---------------------------------------------------------------------------
+
+def build_raw_text_er_messages(
+    record: Dict[str, Any],
+    allowed_relations: List[Dict[str, Any]],
+    *,
+    max_relations: Optional[int] = None,
+) -> List[Dict[str, str]]:
+    """Prompt the model to extract entities and relations from raw text only."""
+    doc_id = document_id_from_record(record, 0)
+    title = title_from_record(record, doc_id)
+    text = document_text_from_record(record)
+    rel_lines = compact_allowed_relations_for_prompt(allowed_relations, max_relations=max_relations)
+    system = (
+        "You are a strict DocRED-style entity and relation extraction system. "
+        "Extract entities from the raw document text, then relations between those entities. "
+        "Use only the provided global DocRED relation vocabulary. Return JSON only."
+    )
+    user = f"""
+Extract entities and relations from the document text only.
+
+Rules:
+1. Do not use any gold/source entity inventory; none is provided.
+2. Create local entity IDs E1, E2, E3, ... for the entities you find.
+3. Entity types must be one of PER, ORG, LOC, MISC, TIME, NUM when possible.
+4. Relation heads and tails must use your local entity IDs.
+5. Relations must use relation IDs from ALLOWED RELATIONS only.
+6. Use aliases/coreference when obvious, but keep one canonical entity per real-world object.
+7. Include short evidence from the document.
+8. Return valid JSON only. No markdown.
+
+Output schema:
+{{
+  "entities": [
+    {{"entity_id": "E1", "label": "canonical name", "type": "ORG", "aliases": ["alias"], "evidence": "..."}}
+  ],
+  "relations": [
+    {{"head_entity_id": "E1", "relation_id": "P159", "tail_entity_id": "E2", "evidence": "..."}}
+  ]
+}}
+
+DOCUMENT ID: {doc_id}
+TITLE: {title}
+
+ALLOWED RELATIONS:
+{rel_lines}
+
+DOCUMENT TEXT:
+{text}
+""".strip()
+    return [{"role": "system", "content": system}, {"role": "user", "content": user}]
+
+
+def normalize_raw_er_payload(data: Any) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    if isinstance(data, dict):
+        entities = data.get("entities") or data.get("entity_candidates") or []
+        relations = data.get("relations") or data.get("triples") or []
+    else:
+        entities, relations = [], []
+    return [x for x in entities if isinstance(x, dict)], [x for x in relations if isinstance(x, dict)]
+
+
+def run_raw_text_er_direct_fallback(
+    *,
+    record: Dict[str, Any],
+    backend: OpenAICompatibleBackend,
+    args: argparse.Namespace,
+    artifact_dir: str,
+) -> Dict[str, Any]:
+    """Fallback extraction from raw text only: predicts entities and relations."""
+    allowed_relations = list(getattr(args, "allowed_relation_specs", []) or [])
+    retries = int(getattr(args, "raw_text_er_direct_retries", 2) or 0)
+    last_error: Optional[str] = None
+    raw_response = ""
+    parsed: Any = {"entities": [], "relations": []}
+    for attempt in range(retries + 1):
+        try:
+            messages = build_raw_text_er_messages(
+                record,
+                allowed_relations,
+                max_relations=getattr(args, "raw_text_er_direct_max_relations", None),
+            )
+            raw_response = backend.chat(
+                args.model_name,
+                messages,
+                temperature=float(getattr(args, "raw_text_er_direct_temperature", 0.0) or 0.0),
+            )
+            parsed = backend.extract_json(raw_response)
+            break
+        except Exception as exc:
+            last_error = f"{type(exc).__name__}: {exc}"
+            if attempt < retries:
+                time.sleep(float(getattr(args, "raw_text_er_direct_retry_sleep", 2.0) or 0.0))
+
+    raw_entities, raw_relations = normalize_raw_er_payload(parsed)
+    entity_by_id: Dict[str, Dict[str, Any]] = {}
+    entities: List[Dict[str, Any]] = []
+    for i, ent in enumerate(raw_entities, start=1):
+        eid = str(ent.get("entity_id") or ent.get("id") or f"E{i}").strip()
+        label = str(ent.get("label") or ent.get("name") or ent.get("text") or eid).strip()
+        etype = str(ent.get("type") or ent.get("entity_type") or "entity").strip()
+        aliases = ent.get("aliases") if isinstance(ent.get("aliases"), list) else []
+        aliases = sorted(dict.fromkeys([label, *[str(a).strip() for a in aliases if str(a).strip()]]))
+        out_ent = {"id": eid, "label": label, "type": etype, "aliases": aliases, "source": "raw_text_direct_entity"}
+        entities.append(out_ent)
+        for alias in [eid, label, *aliases]:
+            entity_by_id.setdefault(normalize_key(alias), out_ent)
+
+    relations: List[Dict[str, Any]] = []
+    rejected: List[Dict[str, Any]] = []
+    seen: set[Tuple[str, str, str]] = set()
+    for item in raw_relations:
+        raw_h = item.get("head_entity_id") or item.get("head_id") or item.get("head") or item.get("subject") or item.get("h")
+        raw_t = item.get("tail_entity_id") or item.get("tail_id") or item.get("tail") or item.get("object") or item.get("t")
+        raw_r = item.get("relation_id") or item.get("relation") or item.get("predicate") or item.get("r")
+        h_ent = entity_by_id.get(normalize_key(raw_h))
+        t_ent = entity_by_id.get(normalize_key(raw_t))
+        rel_spec = map_relation_to_allowed(raw_r, allowed_relations)
+        reasons: List[str] = []
+        if h_ent is None:
+            reasons.append("head_not_predicted_entity")
+        if t_ent is None:
+            reasons.append("tail_not_predicted_entity")
+        if rel_spec is None:
+            reasons.append("relation_not_allowed")
+        if h_ent is not None and t_ent is not None and h_ent.get("id") == t_ent.get("id"):
+            reasons.append("self_relation_rejected")
+        if reasons:
+            rejected.append({"raw_prediction": item, "reasons": reasons})
+            continue
+        key = (str(h_ent["id"]), str(rel_spec.get("id") or rel_spec.get("canonical")), str(t_ent["id"]))
+        if key in seen:
+            continue
+        seen.add(key)
+        relations.append(
+            {
+                "head_id": h_ent["id"],
+                "head": h_ent["label"],
+                "head_type": h_ent.get("type"),
+                "relation_id": rel_spec.get("id"),
+                "relation": rel_spec.get("canonical") or rel_spec.get("label"),
+                "relation_label": rel_spec.get("label"),
+                "tail_id": t_ent["id"],
+                "tail": t_ent["label"],
+                "tail_type": t_ent.get("type"),
+                "evidence": str(item.get("evidence") or item.get("justification") or "").strip(),
+                "raw_prediction": item,
+                "source": "raw_text_direct_fallback",
+            }
+        )
+
+    diagnostics = {
+        "mode": "raw_text_entity_relation_direct_fallback",
+        "attempt_error": last_error,
+        "raw_entities": len(raw_entities),
+        "raw_relations": len(raw_relations),
+        "accepted_entities": len(entities),
+        "accepted_relations": len(relations),
+        "rejected_relations": len(rejected),
+        "rejected_preview": rejected[:20],
+    }
+    prediction = {"entities": entities, "relations": relations, "projection_diagnostics": diagnostics}
+    out_dir = Path(artifact_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "raw_text_er_direct_fallback.json").write_text(
+        json.dumps({"prediction": prediction, "diagnostics": diagnostics, "raw_response": raw_response}, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     return prediction
 
 
@@ -2815,6 +3004,20 @@ def run_one_document(
             constrained=bool(getattr(args, "force_relation_vocabulary", False)),
             raw_text_entity_relation_mode=bool(getattr(args, "raw_text_entity_relation_mode", False)),
         )
+        if getattr(args, "raw_text_er_direct_fallback", False) and getattr(args, "raw_text_entity_relation_mode", False):
+            raw_mode = str(getattr(args, "raw_text_er_direct_mode", "if_zero") or "if_zero").lower()
+            if raw_mode == "replace" or (raw_mode == "if_zero" and not prediction.get("relations")):
+                raw_direct_prediction = run_raw_text_er_direct_fallback(
+                    record=record,
+                    backend=backend,
+                    args=args,
+                    artifact_dir=artifact_dir,
+                )
+                if raw_mode == "supplement":
+                    prediction = merge_canonical_predictions(prediction, raw_direct_prediction)
+                else:
+                    prediction = raw_direct_prediction
+
         if getattr(args, "docred_direct_constrained_extraction", False):
             try:
                 direct_prediction = run_docred_direct_constrained_extraction(
@@ -2893,6 +3096,37 @@ def run_one_document(
             error=exc,
             traceback_text=traceback_text,
         )
+
+        if getattr(args, "raw_text_entity_relation_mode", False) and getattr(args, "raw_text_er_direct_fallback", False):
+            try:
+                backend = build_backend(args)
+                prediction = run_raw_text_er_direct_fallback(
+                    record=record,
+                    backend=backend,
+                    args=args,
+                    artifact_dir=artifact_dir,
+                )
+                result = {
+                    "document_id": doc_id,
+                    "title": title_from_record(record, doc_id),
+                    "type": record.get("type") or record.get("split"),
+                    "method": "neoolaf_raw_text_native_with_direct_fallback",
+                    "parsed_ok": True,
+                    "prediction": prediction,
+                    "raw_counts": {
+                        "canonical_entities": len(prediction.get("entities") or []),
+                        "canonical_relations": len(prediction.get("relations") or []),
+                        "native_error_recovered": 1,
+                    },
+                    "artifact_dir": artifact_dir,
+                    "runtime_seconds": None,
+                    "native_error_type": type(exc).__name__,
+                    "native_error_message": str(exc),
+                }
+                return index, result
+            except Exception:
+                pass
+
         return index, make_error_result(
             record,
             index,
@@ -3161,6 +3395,11 @@ def main() -> None:
         )
     if args.raw_text_entity_relation_mode:
         print("[NeoOLAF benchmark] raw_text_entity_relation_mode=True source_entities_not_exposed=True")
+        print(
+            f"[NeoOLAF benchmark] stop_after_layer={args.stop_after_layer} "
+            f"raw_text_er_direct_fallback={args.raw_text_er_direct_fallback} "
+            f"mode={args.raw_text_er_direct_mode}"
+        )
     if args.docred_direct_constrained_extraction:
         print(
             "[NeoOLAF benchmark] docred_direct_constrained_extraction=True "
