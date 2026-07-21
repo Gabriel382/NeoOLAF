@@ -1,0 +1,45 @@
+schema_version: 1
+id: my_friend
+name: My Friend
+author: Your Name
+license: MIT
+kind: sprite2d
+preview: preview.png
+default_state: idle
+default_emotion: neutral
+transition_ms: 120
+
+emotions:
+  idle:
+    frames: idle
+    speaking_frames: idle
+    fps: 5
+  listening:
+    frames: listening
+    speaking_frames: listening
+    fps: 6
+  thinking:
+    frames: thinking
+    speaking_frames: thinking
+    fps: 7
+  speaking:
+    frames: speaking
+    speaking_frames: speaking
+    fps: 9
+  happy:
+    frames: happy
+    speaking_frames: happy
+    fps: 9
+    loop: false
+    return_to: idle
+    hold_ms: 1200
+  error:
+    frames: error
+    speaking_frames: error
+    fps: 8
+    loop: false
+    return_to: idle
+    hold_ms: 1000
+
+metadata:
+  notes: Replace every sample PNG with your own transparent artwork.
