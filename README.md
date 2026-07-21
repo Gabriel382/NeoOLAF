@@ -385,3 +385,60 @@ Contributions are welcome from:
 ## 📜 License
 
 MIT License.
+---
+
+## 🔒 Publication-Compatible Pipeline and NeoOLAF Studio Integration
+
+The scientific implementation associated with the KES 2026 work is identified as:
+
+- **Pipeline ID:** `neoolaf-kes-2026`
+- **Layer contract:** `L0-L12`
+- **Recommended tag:** `v0.1.0-kes2026`
+
+The semantic layers, prompts, profiles, domain models, and existing serializers remain the authoritative scientific pipeline. External applications should not call or modify individual layers.
+
+NeoOLAF now exposes a small **read-only run inspection API** intended for tools such as the separate **NeoOLAF Studio** repository:
+
+```python
+from neoolaf.integration import inspect_run, load_final_state
+
+snapshot = inspect_run("runs/my_run")
+print(snapshot.status)
+print(snapshot.exports)
+
+# JSON state files are always preferred. Pickle loading requires explicit trust.
+state = load_final_state("runs/my_run")
+```
+
+CLI equivalents:
+
+```bash
+neoolaf version --format json
+neoolaf inspect-run --run-dir runs/my_run --format json --integrity
+```
+
+These operations never write to the inspected run. NeoOLAF Studio is expected to create any derived provenance, RDF, Cytoscape, retrieval, or Neo4j artifacts in its own storage area.
+
+### Trusted checkpoint warning
+
+Historical NeoOLAF runs may only contain a gzipped pickle checkpoint for their final complete state. Because pickle is unsafe for arbitrary uploads, checkpoint loading is disabled by default:
+
+```python
+state = load_final_state(
+    "runs/trusted_local_run",
+    allow_trusted_checkpoint=True,
+)
+```
+
+Enable this only for a checkpoint produced locally by the inspected NeoOLAF run.
+
+### Clean source archives
+
+Use the guarded source-archive script instead of manually zipping the working tree:
+
+```bash
+python scripts/build_source_archive.py \
+  --output dist/NeoOLAF-source.zip
+```
+
+The script excludes `.env`, local runs, checkpoints, virtual environments, caches, and probable embedded API credentials.

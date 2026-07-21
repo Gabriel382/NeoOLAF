@@ -17,6 +17,8 @@ from neoolaf.domain.documents import Document
 from neoolaf.resources.llm_backends.chat_compat import ChatCompatBackend
 from neoolaf.grounding.rag.factory import build_rag_backend
 from neoolaf.profiles.profile_loader import load_document_profile
+from neoolaf.cli.inspect import add_inspect_parser, inspect_command
+from neoolaf.cli.version import add_version_parser, version_command
 
 
 def _parse_skip_layers(value: str | None) -> list[int | str]:
@@ -175,6 +177,11 @@ def build_parser() -> argparse.ArgumentParser:
     run_parser.add_argument("--max-expressions-layer03", type=int, default=None, help="Optional expression limit for Layer 3 debugging/ablation.")
     run_parser.add_argument("--layer02-failed-expressions-file", default=None, help="Optional failed_expressions.json from a previous Layer 2 run. When provided, Layer 2 only reruns the listed expressions.")
     run_parser.add_argument("--layer03-failed-items-file", default=None, help="Optional failed_items.json from a previous Layer 3 run. When provided, Layer 3 only reruns the listed items.")
+
+    # Read-only integration commands. These parsers do not alter the existing
+    # `run` command or instantiate any scientific layer.
+    add_inspect_parser(subparsers)
+    add_version_parser(subparsers)
 
     return parser
 
@@ -526,6 +533,14 @@ def main() -> None:
 
     if args.command == "run":
         run_command(args)
+        return
+
+    if args.command == "inspect-run":
+        inspect_command(args)
+        return
+
+    if args.command == "version":
+        version_command(args)
         return
 
     raise ValueError(f"Unknown command: {args.command}")
