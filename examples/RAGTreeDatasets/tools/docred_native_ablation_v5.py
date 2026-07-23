@@ -80,6 +80,43 @@ PriorityOntologyRAGAdapter = v4.PriorityOntologyRAGAdapter
 CanonicalizingCandidateTypingResolutionLayer = v4.CanonicalizingCandidateTypingResolutionLayer
 
 
+def _csv_cell(value: Any) -> Any:
+    """Serialize structured values predictably for CSV output."""
+    if isinstance(value, (dict, list, tuple, set)):
+        return json.dumps(value, ensure_ascii=False, sort_keys=True, default=str)
+    return value
+
+
+def write_csv_rows(path: str | Path, rows: Iterable[dict[str, Any]]) -> None:
+    """Write heterogeneous dictionaries without dropping optional audit fields.
+
+    Projection rows are intentionally heterogeneous: ambiguous projections add
+    ``candidate_entity_ids`` while exact projections do not. Deriving the CSV
+    schema from only the first row therefore crashes on later ambiguous rows.
+    This helper builds a stable union of all keys and serializes structured cells.
+    """
+    rows = list(rows)
+    if not rows:
+        return
+    fieldnames: list[str] = []
+    seen: set[str] = set()
+    for row in rows:
+        for key in row:
+            if key not in seen:
+                seen.add(key)
+                fieldnames.append(key)
+    normalized = [
+        {key: _csv_cell(row.get(key)) for key in fieldnames}
+        for row in rows
+    ]
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(normalized)
+
+
 def _dedup(values: Iterable[Any]) -> list[str]:
     result: list[str] = []
     seen: set[str] = set()
@@ -887,10 +924,7 @@ def write_entity_projection_audit(
     analysis_dir = Path(run_dir) / "analysis"
     analysis_dir.mkdir(parents=True, exist_ok=True)
     write_json(analysis_dir / "entity_projection_audit_v5.json", rows)
-    if rows:
-        with (analysis_dir / "entity_projection_audit_v5.csv").open("w", encoding="utf-8", newline="") as handle:
-            writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
-            writer.writeheader(); writer.writerows(rows)
+    write_csv_rows(analysis_dir / "entity_projection_audit_v5.csv", rows)
     return rows
 
 
@@ -920,10 +954,7 @@ def write_cumulative_evaluation_v5(
         })
     analysis_dir = Path(run_dir) / "analysis"
     write_json(analysis_dir / "cumulative_strict_evaluation_v5.json", rows)
-    if rows:
-        with (analysis_dir / "cumulative_strict_evaluation_v5.csv").open("w", encoding="utf-8", newline="") as handle:
-            writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
-            writer.writeheader(); writer.writerows(rows)
+    write_csv_rows(analysis_dir / "cumulative_strict_evaluation_v5.csv", rows)
     return rows
 
 
@@ -1025,10 +1056,7 @@ def write_relation_trace_v5(
         })
     analysis_dir = run_dir / "analysis"
     write_json(analysis_dir / "gold_relation_trace_v5.json", rows)
-    if rows:
-        with (analysis_dir / "gold_relation_trace_v5.csv").open("w", encoding="utf-8", newline="") as handle:
-            writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
-            writer.writeheader(); writer.writerows(rows)
+    write_csv_rows(analysis_dir / "gold_relation_trace_v5.csv", rows)
     return rows
 
 
@@ -1074,10 +1102,7 @@ def write_native_views_v5(
     }
     for name, rows in files.items():
         write_json(analysis_dir / f"{name}.json", rows)
-        if rows:
-            with (analysis_dir / f"{name}.csv").open("w", encoding="utf-8", newline="") as handle:
-                writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
-                writer.writeheader(); writer.writerows(rows)
+        write_csv_rows(analysis_dir / f"{name}.csv", rows)
     return files
 
 
