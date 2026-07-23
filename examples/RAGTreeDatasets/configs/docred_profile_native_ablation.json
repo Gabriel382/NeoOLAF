@@ -1,0 +1,341 @@
+{
+  "profile_name": "docred_native_document_relation_ablation",
+  "description": "DocRED profile for a native, full NeoOLAF layer-by-layer diagnostic. It does not expose gold entities or gold relations to the pipeline and does not add a direct extraction call.",
+  "language": {
+    "source": "en",
+    "target": "en",
+    "translate": false,
+    "translate_in_preprocessing": false,
+    "llm_translate_inside_extraction": false
+  },
+  "chunking": {
+    "strategies": [
+      "fixed"
+    ],
+    "preferred_unit_for_extraction": "chunk",
+    "whole_document_preferred": true,
+    "chunk_size": 16000,
+    "overlap": 0,
+    "max_safe_chunk_chars": 24000,
+    "context_safety_note": "Notebook keeps the whole document in one chunk when safe."
+  },
+  "layers": {
+    "layer01_linguistic_expression_extraction": {
+      "strategy": "generic",
+      "max_concurrency": 1,
+      "rag_enabled": false
+    },
+    "layer02_candidate_enrichment": {
+      "strategy": "generic_llm_enrichment",
+      "max_concurrency": 4,
+      "max_expressions": null,
+      "use_web_search": false
+    },
+    "layer03_candidate_typing_resolution": {
+      "strategy": "ontology_aware_role_based_typing",
+      "max_concurrency": 1,
+      "max_expressions": null
+    },
+    "layer04_candidate_relation_extraction": {
+      "strategy": "generic_llm_relation_extraction",
+      "max_concurrency": 4,
+      "max_relation_mentions": null
+    },
+    "layer05_candidate_triple_generation": {
+      "strategy": "ontology_aware_assertion_to_triples",
+      "max_concurrency": 4
+    },
+    "layer06_concept_relation_induction": {
+      "strategy": "ontology_aware_triple_concept_relation_induction",
+      "max_concurrency": 4,
+      "description": "Existing deterministic NeoOLAF strategy; consumes only native candidates/triples."
+    },
+    "layer07_hierarchisation": {
+      "strategy": "ontology_aware_parent_hint_hierarchy",
+      "max_concurrency": 4
+    },
+    "layer08_axiom_schemata_extraction": {
+      "strategy": "ontology_aware_axiom_schema_generation",
+      "max_concurrency": 4
+    },
+    "layer09_general_axiom_extraction": {
+      "strategy": "ontology_aware_schema_to_general_axioms",
+      "max_concurrency": 4
+    },
+    "layer10_validation_reasoning": {
+      "strategy": "ontology_aware_validation_reasoning",
+      "max_concurrency": 4
+    },
+    "layer11_inference_completion": {
+      "strategy": "ontology_aware_semantic_completion",
+      "max_concurrency": 4
+    },
+    "layer12_serialization": {
+      "max_concurrency": 4
+    }
+  },
+  "relations": {
+    "allowed": [],
+    "canonical_identifier": "Wikidata property ID",
+    "property_count": 96,
+    "catalog_path": "examples/RAGTreeDatasets/ontology/docred_relation_catalog.json",
+    "ontology_property_count": 96
+  },
+  "rag": {
+    "backend": "balanced_ontology_schema_retrieval",
+    "top_k": 8,
+    "allowed_spaces": {
+      "layer02_candidate_enrichment": [
+        "ontology"
+      ],
+      "layer03_candidate_typing_resolution": [
+        "ontology"
+      ],
+      "layer04_candidate_relation_extraction": [
+        "ontology"
+      ],
+      "layer06_concept_relation_induction": [
+        "ontology"
+      ],
+      "layer07_hierarchisation": [
+        "ontology"
+      ],
+      "layer08_axiom_schemata_extraction": [
+        "ontology"
+      ]
+    },
+    "query_expansions": {
+      "based in": [
+        "headquarters location",
+        "location",
+        "located in the administrative territorial entity"
+      ],
+      "headquartered in": [
+        "headquarters location"
+      ],
+      "part of": [
+        "owned by",
+        "parent organization",
+        "part of"
+      ],
+      "subsidiary of": [
+        "parent organization",
+        "owned by"
+      ],
+      "member of": [
+        "member of",
+        "part of"
+      ],
+      "relaunch": [
+        "inception",
+        "start time",
+        "publication date"
+      ],
+      "relaunched in": [
+        "inception",
+        "start time"
+      ],
+      "available on": [
+        "platform",
+        "original broadcaster"
+      ],
+      "country": [
+        "country",
+        "country of citizenship"
+      ],
+      "greek": [
+        "country",
+        "original language of film or TV show",
+        "languages spoken written or signed"
+      ],
+      "introduced": [
+        "developer",
+        "operator"
+      ],
+      "introducing": [
+        "developer",
+        "operator"
+      ]
+    }
+  },
+  "ontology_linking": {
+    "seed_ontology": "examples/RAGTreeDatasets/ontology/docred_redocred_neoolaf_compatible.ttl",
+    "canonical_property_prefix": "http://www.wikidata.org/prop/direct/",
+    "preserve_named_entity_surface_forms": true,
+    "prefer_property_ids_over_labels": true,
+    "node_roles": {
+      "entity": {
+        "candidate_family": "entity",
+        "class_label": "Entity",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "named_entity": {
+        "candidate_family": "entity",
+        "class_label": "Entity",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "organization": {
+        "candidate_family": "entity",
+        "class_label": "ORG",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "organisation": {
+        "candidate_family": "entity",
+        "class_label": "ORG",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "location": {
+        "candidate_family": "entity",
+        "class_label": "LOC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "country": {
+        "candidate_family": "entity",
+        "class_label": "LOC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "city": {
+        "candidate_family": "entity",
+        "class_label": "LOC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "date": {
+        "candidate_family": "entity",
+        "class_label": "TIME",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "time": {
+        "candidate_family": "entity",
+        "class_label": "TIME",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "number": {
+        "candidate_family": "entity",
+        "class_label": "NUM",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "language": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "attribute": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "content_type": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "program_type": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "dubbing_method": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "content_delivery_method": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "process_relevant_term": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "process-relevant_term": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "event": {
+        "candidate_family": "event",
+        "class_label": "Event",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "relation": {
+        "candidate_family": "relation",
+        "class_label": "Relation",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": false
+      },
+      "relation_bearing_expression": {
+        "candidate_family": "relation",
+        "class_label": "Relation",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": false
+      },
+      "relation-bearing_expression": {
+        "candidate_family": "relation",
+        "class_label": "Relation",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": false
+      }
+    },
+    "preserve_layer01_surface_form_as_candidate_label": true,
+    "do_not_merge_distinct_named_mentions_by_generic_type": true
+  },
+  "evaluation": {
+    "dataset": "DocRED",
+    "strict_relation_match": true,
+    "gold_is_analysis_only": true,
+    "report_native_and_mapped_outputs_separately": true
+  },
+  "orchestration": {
+    "mode": "pipeline",
+    "document_workers": 1,
+    "max_concurrency_layer01": 1,
+    "max_concurrency_layer02": 4,
+    "max_concurrency_layer03": 4,
+    "max_concurrency_layer04": 4,
+    "max_concurrency_layer05": 4,
+    "max_concurrency_layer06": 4,
+    "max_concurrency_layer07": 4,
+    "max_concurrency_layer08": 4,
+    "max_concurrency_layer09": 4,
+    "max_concurrency_layer10": 4,
+    "max_concurrency_layer11": 4,
+    "max_concurrency_layer12": 4,
+    "retry_failed_calls": 2,
+    "retry_sleep_seconds": 2.0
+  },
+  "anti_cheating": {
+    "direct_docred_extraction": false,
+    "raw_text_direct_fallback": false,
+    "source_entity_anchoring": false,
+    "gold_relation_hints": false,
+    "post_extraction_relation_closure": false,
+    "src_changes": false
+  },
+  "diagnostics": {
+    "trace_from_layer01": true,
+    "separate_native_from_mapped": true,
+    "record_valid_but_unannotated_relations": true,
+    "note": "Layer 3 uses the existing role-based strategy so canonical labels remain source mentions rather than generic class names."
+  }
+}

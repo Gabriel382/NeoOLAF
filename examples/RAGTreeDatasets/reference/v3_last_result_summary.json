@@ -1,0 +1,28 @@
+{
+  "source": "User-executed v3 notebook analyzed before v4 patch",
+  "strict_evaluation": {
+    "predicted": 4,
+    "gold": 7,
+    "true_positive": 0,
+    "false_positive": 4,
+    "false_negative": 7,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  "runtime_seconds": 107.9,
+  "diagnosis": [
+    "Ontology retrieval worked, but Layer 2 selected overly generic or wrong canonical properties.",
+    "Layer 1 sometimes collapsed date and location into one broad relation expression.",
+    "Layer 3 counts were inflated by 21 mention-free relation vocabulary candidates.",
+    "Layer 2 called the LLM for ordinary nodes, increasing runtime.",
+    "P577 publication date was incorrectly attached to Athens metropolitan area."
+  ],
+  "v4_response": [
+    "Structured one-pair relation instances at Layer 1.",
+    "Relation-only contrastive Layer 2 calls.",
+    "No empty relation candidates.",
+    "Exact endpoint Layer 4 resolution with native fallback.",
+    "Coarse type/range validation."
+  ]
+}

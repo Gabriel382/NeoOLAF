@@ -1,0 +1,2732 @@
+# Copyright (c) 2025 Robert Bosch GmbH
+# SPDX-License-Identifier: CC-BY-SA-4.0
+
+# This source code is derived from Re-DocRED
+#   (https://github.com/tonytan48/Re-DocRED/blob/main/evaluation.py)
+# Copyright (c) 2023 tonytan48, licensed under the MIT license,
+# cf. 3rd-party-licenses.txt file in the root directory of this source tree.
+
+
+@prefix dr: <https://github.com/boschresearch/growlrag_semantics2025/data/Re-DocRED/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dr:BLANK a owl:Class ;
+    rdfs:label "BLANK" ;
+    rdfs:comment "Represents a placeholder or unknown entity in DocRED" .
+
+dr:NUM a owl:Class ;
+    rdfs:label "NUM" ;
+    rdfs:comment "A number, quantity, or countable concept." .
+
+dr:TIME a owl:Class ;
+    rdfs:label "TIME" ;
+    rdfs:comment "A temporal point or period such as a date or historical time." .
+
+wdt:P1001 a rdf:Property ;
+    rdfs:label "applies to jurisdiction" ;
+    rdfs:comment "the item (institution, law, public office, public register...) or statement belongs to or has power over or applies to the value (a territorial jurisdiction: a country, state, municipality, ...)" ;
+    rdfs:domain wd:Q11204,
+        wd:Q178706,
+        wd:Q180684,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q41710,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q95074 ;
+    rdfs:range wd:Q2221906,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q7275,
+        wd:Q781132 .
+
+wdt:P102 a rdf:Property ;
+    rdfs:label "member of political party" ;
+    rdfs:comment "the political party of which a person is or has been a member or otherwise affiliated" ;
+    rdfs:domain wd:Q2424752,
+        wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q15265344,
+        wd:Q18011141,
+        wd:Q327333,
+        wd:Q41710,
+        wd:Q5107,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q783794 .
+
+wdt:P1056 a rdf:Property ;
+    rdfs:label "product or material produced" ;
+    rdfs:comment "material or product produced by an organization, industry, facility, or process" ;
+    rdfs:domain wd:Q1137109,
+        wd:Q7397,
+        wd:Q783794 ;
+    rdfs:range wd:Q2031291,
+        wd:Q241317,
+        wd:Q7397,
+        wd:Q7889 .
+
+wdt:P108 a rdf:Property ;
+    rdfs:label "employer" ;
+    rdfs:comment "person or organization for which the subject works or worked" ;
+    rdfs:domain wd:Q16334295,
+        wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q1137109,
+        wd:Q12973014,
+        wd:Q15265344,
+        wd:Q17334923,
+        wd:Q178706,
+        wd:Q2385804,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q783794 .
+
+wdt:P112 a rdf:Property ;
+    rdfs:label "founded by" ;
+    rdfs:comment "founder or co-founder of this organization, religion, place or entity" ;
+    rdfs:domain wd:Q10864048,
+        wd:Q1137109,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q17334923,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q18127,
+        wd:Q188451,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q41710,
+        wd:Q623109,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q783794,
+        wd:Q7889 ;
+    rdfs:range wd:Q6581097,
+        wd:Q783794,
+        wd:Q95074 .
+
+wdt:P118 a rdf:Property ;
+    rdfs:label "league or competition" ;
+    rdfs:comment "league or competition in which team or player has played, or in which an event occurs" ;
+    rdfs:domain wd:Q12973014,
+        wd:Q17334923,
+        wd:Q178706,
+        wd:Q2385804,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q623109,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q783794,
+        wd:Q95074 ;
+    rdfs:range wd:Q12973014,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q2031291,
+        wd:Q231002,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q623109,
+        wd:Q781132,
+        wd:Q7889 .
+
+wdt:P1198 a rdf:Property ;
+    rdfs:label "unemployment rate" ;
+    rdfs:domain wd:Q5107 ;
+    rdfs:range xsd:float .
+
+wdt:P123 a rdf:Property ;
+    rdfs:label "publisher" ;
+    rdfs:comment "organization or person responsible for publishing books, periodicals, printed music, podcasts, games or software" ;
+    rdfs:domain wd:Q11204,
+        wd:Q1190554,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q18011141,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q386724,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7397,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q1137109,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q18127,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q783794,
+        wd:Q95074 .
+
+wdt:P127 a rdf:Property ;
+    rdfs:label "owned by" ;
+    rdfs:comment "owner of the subject" ;
+    rdfs:domain wd:Q1137109,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q15275719,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18127,
+        wd:Q2031291,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q3024240,
+        wd:Q386724,
+        wd:Q41710,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q7275,
+        wd:Q7397,
+        wd:Q783794,
+        wd:Q7889 ;
+    rdfs:range wd:Q10864048,
+        wd:Q1137109,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q178706,
+        wd:Q18127,
+        wd:Q2385804,
+        wd:Q241317,
+        wd:Q327333,
+        wd:Q41710,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q95074 .
+
+wdt:P131 a rdf:Property ;
+    rdfs:label "located in the administrative territorial entity" ;
+    rdfs:comment "the item is located on the territory of the following administrative entity. " ;
+    rdfs:domain wd:Q10864048,
+        wd:Q11204,
+        wd:Q1137109,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q15324,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q180684,
+        wd:Q18127,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q2188189,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q2424752,
+        wd:Q2431196,
+        wd:Q27096213,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q386724,
+        wd:Q41710,
+        wd:Q5107,
+        wd:Q56061,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q95074 ;
+    rdfs:range wd:Q10864048,
+        wd:Q11204,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q27096213,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q56061,
+        wd:Q7275 .
+
+wdt:P1336 a rdf:Property ;
+    rdfs:label "territory claimed by" ;
+    rdfs:comment "administrative divisions that claim control of a given area" ;
+    rdfs:domain wd:Q3024240,
+        wd:Q5107,
+        wd:Q56061 ;
+    rdfs:range wd:Q3024240,
+        wd:Q5107 .
+
+wdt:P1344 a rdf:Property ;
+    rdfs:label "participant in" ;
+    rdfs:comment "event in which a person or organization was/is a participant; inverse of P710 or P1923" ;
+    rdfs:domain wd:Q11204,
+        wd:Q12973014,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q198,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q41710,
+        wd:Q4406616,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q95074 ;
+    rdfs:range xsd:dateTime,
+        wd:Q11204,
+        wd:Q1190554,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q180684,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q482994,
+        wd:Q623109,
+        wd:Q7275,
+        wd:Q7725310,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q95074 .
+
+wdt:P136 a rdf:Property ;
+    rdfs:label "genre" ;
+    rdfs:comment "creative work's genre or an artist's field of work (P101). Use main subject (P921) to relate creative works to their topic" ;
+    rdfs:domain wd:Q11204,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18127,
+        wd:Q188451,
+        wd:Q2424752,
+        wd:Q2728698,
+        wd:Q41710,
+        wd:Q482994,
+        wd:Q6581097,
+        wd:Q783794,
+        wd:Q95074 ;
+    rdfs:range wd:Q17376908,
+        wd:Q188451,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q482994,
+        wd:Q783794 .
+
+wdt:P1365 a rdf:Property ;
+    rdfs:label "replaces" ;
+    rdfs:comment "person, state or item replaced. Use \"structure replaces\" (P1398) for structures." ;
+    rdfs:domain wd:Q2221906,
+        wd:Q3024240,
+        wd:Q5107,
+        wd:Q7278 ;
+    rdfs:range wd:Q3024240,
+        wd:Q5107,
+        wd:Q56061 .
+
+wdt:P1366 a rdf:Property ;
+    rdfs:label "replaced by" ;
+    rdfs:comment "other person or item which continues the item by replacing it in its role. " ;
+    rdfs:domain wd:Q3024240,
+        wd:Q5107,
+        wd:Q56061 ;
+    rdfs:range wd:Q2221906,
+        wd:Q3024240,
+        wd:Q5107,
+        wd:Q7278 .
+
+wdt:P137 a rdf:Property ;
+    rdfs:label "operator" ;
+    rdfs:comment "person, profession, organization or entity that operates the equipment, facility, or service" ;
+    rdfs:domain wd:Q11204,
+        wd:Q15324,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q18011141,
+        wd:Q180684,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q2385804,
+        wd:Q2424752,
+        wd:Q27096213,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q4406616,
+        wd:Q5107,
+        wd:Q781132,
+        wd:Q7889,
+        wd:Q95074 ;
+    rdfs:range wd:Q12973014,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q2385804,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q5107,
+        wd:Q7275,
+        wd:Q781132,
+        wd:Q783794 .
+
+wdt:P1376 a rdf:Property ;
+    rdfs:label "capital of" ;
+    rdfs:comment "country, state, department, canton or other administrative division of which the municipality is the governmental seat" ;
+    rdfs:domain wd:Q17334923,
+        wd:Q2221906,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107 ;
+    rdfs:range wd:Q2221906,
+        wd:Q231002,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q56061 .
+
+wdt:P140 a rdf:Property ;
+    rdfs:label "religion or worldview" ;
+    rdfs:comment "religion of a person, organization or religious building, or associated with this subject" ;
+    rdfs:domain wd:Q178706,
+        wd:Q18011141,
+        wd:Q180684,
+        wd:Q198,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q41710,
+        wd:Q6581097,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q10864048,
+        wd:Q178706,
+        wd:Q180684,
+        wd:Q41710,
+        wd:Q9174 .
+
+wdt:P1412 a rdf:Property ;
+    rdfs:label "languages spoken, written or signed" ;
+    rdfs:comment "language(s) that a person or a people speaks, writes or signs, including the native language(s)" ;
+    rdfs:domain wd:Q16334295,
+        wd:Q5107,
+        wd:Q56061,
+        wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q16334295,
+        wd:Q17376908,
+        wd:Q231002,
+        wd:Q3024240,
+        wd:Q5107,
+        wd:Q56061,
+        wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P1441 a rdf:Property ;
+    rdfs:label "present in work" ;
+    rdfs:comment "this (fictional or fictionalized) entity, place, or person appears in that work as part of the narration" ;
+    rdfs:domain wd:Q12973014,
+        wd:Q18011141,
+        wd:Q198,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q41710,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q56061,
+        wd:Q6581097,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q95074 ;
+    rdfs:range wd:Q11204,
+        wd:Q14897293,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q18011141,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q2728698,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 .
+
+wdt:P150 a rdf:Property ;
+    rdfs:label "contains the administrative territorial entity" ;
+    rdfs:comment "(list of) direct subdivisions of an administrative territorial entity" ;
+    rdfs:domain wd:Q10864048,
+        wd:Q11204,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q27096213,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q56061,
+        wd:Q7275,
+        wd:Q7278 ;
+    rdfs:range wd:Q10864048,
+        wd:Q17334923,
+        wd:Q2221906,
+        wd:Q27096213,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q56061,
+        wd:Q623109,
+        wd:Q7275,
+        wd:Q783794,
+        wd:Q95074 .
+
+wdt:P155 a rdf:Property ;
+    rdfs:label "follows" ;
+    rdfs:comment "immediately prior item in a series of which the subject is a part, preferably use as qualifier of P179 " ;
+    rdfs:domain wd:Q1137109,
+        wd:Q14897293,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q386724,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q7397,
+        wd:Q781132,
+        wd:Q7889,
+        wd:Q9174 ;
+    rdfs:range xsd:dateTime,
+        wd:Q11204,
+        wd:Q12973014,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q386724,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q7397,
+        wd:Q7725310,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 .
+
+wdt:P156 a rdf:Property ;
+    rdfs:label "followed by" ;
+    rdfs:comment "immediately following item in a series of which the subject is a part, preferably use as qualifier of P179 [if the subject has been replaced, e.g. political offices, use \"replaced by\" (P1366)]" ;
+    rdfs:domain wd:Q11204,
+        wd:Q12973014,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q386724,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q7397,
+        wd:Q7725310,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range xsd:dateTime,
+        wd:Q1137109,
+        wd:Q14897293,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q386724,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q7397,
+        wd:Q781132,
+        wd:Q7889,
+        wd:Q9174 .
+
+wdt:P159 a rdf:Property ;
+    rdfs:label "headquarters location" ;
+    rdfs:comment "city or town where an organization's headquarters is or has been situated. Use P276 qualifier for specific building" ;
+    rdfs:domain wd:Q1137109,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q18127,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q571,
+        wd:Q781132,
+        wd:Q783794 ;
+    rdfs:range wd:Q15265344,
+        wd:Q17334923,
+        wd:Q178706,
+        wd:Q2221906,
+        wd:Q2385804,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107 .
+
+wdt:P161 a rdf:Property ;
+    rdfs:label "cast member" ;
+    rdfs:comment "actor in the subject production " ;
+    rdfs:domain wd:Q11204,
+        wd:Q14897293,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q2431196,
+        wd:Q386724,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P162 a rdf:Property ;
+    rdfs:label "producer" ;
+    rdfs:comment "person(s) who produced the film, musical work, theatrical production, etc. (for film, this does not include executive producers, associate producers, etc.) " ;
+    rdfs:domain wd:Q11204,
+        wd:Q1190554,
+        wd:Q14897293,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q2728698,
+        wd:Q386724,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q1137109,
+        wd:Q178706,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q95074 .
+
+wdt:P166 a rdf:Property ;
+    rdfs:label "award received" ;
+    rdfs:comment "award or recognition received by a person, organization or creative work" ;
+    rdfs:domain wd:Q15275719,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q198,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q3024240,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7889,
+        wd:Q95074 ;
+    rdfs:range wd:Q1190554,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q18127,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q2431196,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q7725310,
+        wd:Q781132,
+        wd:Q7889,
+        wd:Q9174 .
+
+wdt:P17 a rdf:Property ;
+    rdfs:label "country" ;
+    rdfs:comment "sovereign state that this item is in (not to be used for human beings)" ;
+    rdfs:domain wd:Q10864048,
+        wd:Q11204,
+        wd:Q1137109,
+        wd:Q1190554,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q180684,
+        wd:Q18127,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q2431196,
+        wd:Q27096213,
+        wd:Q2728698,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q386724,
+        wd:Q41710,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q56061,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q7397,
+        wd:Q7725310,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q17376908,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q41710,
+        wd:Q5107,
+        wd:Q7275,
+        wd:Q7278 .
+
+wdt:P170 a rdf:Property ;
+    rdfs:label "creator" ;
+    rdfs:comment "maker of this creative work or other object (where no more specific property exists)" ;
+    rdfs:domain wd:Q14897293,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17376908,
+        wd:Q198,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q2728698,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q1137109,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q95074 .
+
+wdt:P171 a rdf:Property ;
+    rdfs:label "parent taxon" ;
+    rdfs:comment "closest parent taxon of the taxon in question" ;
+    rdfs:domain wd:Q17376908,
+        wd:Q2424752 ;
+    rdfs:range wd:Q12973014,
+        wd:Q16334298,
+        wd:Q17376908 .
+
+wdt:P172 a rdf:Property ;
+    rdfs:label "ethnic group" ;
+    rdfs:comment "subject's ethnicity (consensus is that a VERY high standard of proof is needed for this field to be used. In general this means 1) the subject claims it themselves, or 2) it is widely agreed on by scholars, or 3) is fictional and portrayed as such)" ;
+    rdfs:domain wd:Q2221906,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q231002,
+        wd:Q3024240,
+        wd:Q41710,
+        wd:Q5107 .
+
+wdt:P175 a rdf:Property ;
+    rdfs:label "performer" ;
+    rdfs:comment "actor, musician, band or other performer associated with this role or musical work" ;
+    rdfs:domain wd:Q11204,
+        wd:Q1190554,
+        wd:Q14897293,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q2431196,
+        wd:Q2728698,
+        wd:Q386724,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7397,
+        wd:Q7725310,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q1137109,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q18127,
+        wd:Q198,
+        wd:Q215380,
+        wd:Q327333,
+        wd:Q41710,
+        wd:Q4406616,
+        wd:Q623109,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q95074 .
+
+wdt:P176 a rdf:Property ;
+    rdfs:label "manufacturer" ;
+    rdfs:comment "(main or final) manufacturer or producer of this product" ;
+    rdfs:domain wd:Q17376908,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q7397,
+        wd:Q783794,
+        wd:Q7889 ;
+    rdfs:range wd:Q1137109,
+        wd:Q178706,
+        wd:Q783794 .
+
+wdt:P178 a rdf:Property ;
+    rdfs:label "developer" ;
+    rdfs:comment "organization or person that developed the item" ;
+    rdfs:domain wd:Q1137109,
+        wd:Q1190554,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q386724,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7397,
+        wd:Q7889,
+        wd:Q9174 ;
+    rdfs:range wd:Q1137109,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q178706,
+        wd:Q2385804,
+        wd:Q241317,
+        wd:Q623109,
+        wd:Q7275,
+        wd:Q783794,
+        wd:Q95074 .
+
+wdt:P179 a rdf:Property ;
+    rdfs:label "part of the series" ;
+    rdfs:comment "series which contains the subject" ;
+    rdfs:domain wd:Q11204,
+        wd:Q14897293,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q2424752,
+        wd:Q2728698,
+        wd:Q386724,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7397,
+        wd:Q7889,
+        wd:Q9174 ;
+    rdfs:range wd:Q15324,
+        wd:Q17376908,
+        wd:Q18011141,
+        wd:Q198,
+        wd:Q2188189,
+        wd:Q2424752,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7397,
+        wd:Q7889,
+        wd:Q9174 .
+
+wdt:P19 a rdf:Property ;
+    rdfs:label "place of birth" ;
+    rdfs:comment "most specific known birth location of a person, animal or fictional character" ;
+    rdfs:domain wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q10864048,
+        wd:Q17334923,
+        wd:Q2221906,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q56061,
+        wd:Q783794 .
+
+wdt:P190 a rdf:Property ;
+    rdfs:label "twinned administrative body" ;
+    rdfs:comment "twin towns, sister cities, twinned municipalities and other localities that have a partnership or cooperative agreement, either legally or informally acknowledged by their governments" .
+
+wdt:P194 a rdf:Property ;
+    rdfs:label "legislative body" ;
+    rdfs:comment "legislative body governing this entity; political institution with elected representatives, such as a parliament/legislature or council" ;
+    rdfs:domain wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q7275 ;
+    rdfs:range wd:Q178706,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q7275,
+        wd:Q7278 .
+
+wdt:P20 a rdf:Property ;
+    rdfs:label "place of death" ;
+    rdfs:comment "most specific known (e.g. city instead of country, or hospital instead of city) death location of a person, animal or fictional character" ;
+    rdfs:domain wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q10864048,
+        wd:Q17334923,
+        wd:Q2221906,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107 .
+
+wdt:P205 a rdf:Property ;
+    rdfs:label "basin country" ;
+    rdfs:comment "country that have drainage to/from or border the body of water" ;
+    rdfs:domain wd:Q2221906,
+        wd:Q3024240,
+        wd:Q5107 ;
+    rdfs:range wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107 .
+
+wdt:P206 a rdf:Property ;
+    rdfs:label "located in or next to body of water" ;
+    rdfs:comment "body of water on or next to which a place is located" ;
+    rdfs:domain wd:Q12973014,
+        wd:Q17334923,
+        wd:Q2221906,
+        wd:Q27096213,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107 ;
+    rdfs:range wd:Q17334923,
+        wd:Q2221906,
+        wd:Q27096213,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q56061 .
+
+wdt:P22 a rdf:Property ;
+    rdfs:label "father" ;
+    rdfs:comment "male parent of the subject. For stepfather, use \"stepparent\" (P3448)" ;
+    rdfs:domain wd:Q3024240,
+        wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q623109,
+        wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P241 a rdf:Property ;
+    rdfs:label "military branch" ;
+    rdfs:comment "branch to which this military unit, award, office, or person belongs, e.g. Royal Navy" ;
+    rdfs:domain wd:Q11204,
+        wd:Q15265344,
+        wd:Q18011141,
+        wd:Q198,
+        wd:Q231002,
+        wd:Q5107,
+        wd:Q6581097,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q95074 ;
+    rdfs:range wd:Q12973014,
+        wd:Q18011141,
+        wd:Q3624078,
+        wd:Q7275,
+        wd:Q781132 .
+
+wdt:P25 a rdf:Property ;
+    rdfs:label "mother" ;
+    rdfs:comment "female parent of the subject. " ;
+    rdfs:domain wd:Q3024240,
+        wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P26 a rdf:Property ;
+    rdfs:label "spouse" ;
+    rdfs:comment "the subject has the object as their spouse (husband, wife, partner, etc.)." ;
+    rdfs:domain wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P264 a rdf:Property ;
+    rdfs:label "record label" ;
+    rdfs:comment "brand and trademark associated with the marketing of subject music recordings and music videos" ;
+    rdfs:domain wd:Q11204,
+        wd:Q1137109,
+        wd:Q1190554,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q14897293,
+        wd:Q15265344,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q18011141,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q2431196,
+        wd:Q327333,
+        wd:Q386724,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7397,
+        wd:Q7725310,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q1137109,
+        wd:Q12973014,
+        wd:Q15265344,
+        wd:Q178706,
+        wd:Q18127,
+        wd:Q482994,
+        wd:Q7275,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q95074 .
+
+wdt:P27 a rdf:Property ;
+    rdfs:label "country of citizenship" ;
+    rdfs:comment "the object is a country that recognizes the subject as its citizen" ;
+    rdfs:domain wd:Q16334295,
+        wd:Q17334923,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q17376908,
+        wd:Q231002,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q41710,
+        wd:Q5107,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q781132 .
+
+wdt:P272 a rdf:Property ;
+    rdfs:label "production company" ;
+    rdfs:comment "company that produced this film, audio or performing arts work" ;
+    rdfs:domain wd:Q15324,
+        wd:Q17376908,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q2431196,
+        wd:Q2728698,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7889,
+        wd:Q95074 ;
+    rdfs:range wd:Q1137109,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q18127,
+        wd:Q188451,
+        wd:Q2031291,
+        wd:Q2385804,
+        wd:Q327333,
+        wd:Q7275,
+        wd:Q783794 .
+
+wdt:P276 a rdf:Property ;
+    rdfs:label "location" ;
+    rdfs:comment "location of the object, structure or event. " ;
+    rdfs:domain wd:Q11204,
+        wd:Q1190554,
+        wd:Q12973014,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q180684,
+        wd:Q198,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q2424752,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q781132,
+        wd:Q7889,
+        wd:Q95074 ;
+    rdfs:range wd:Q15265344,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q2221906,
+        wd:Q2385804,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q781132 .
+
+wdt:P279 a rdf:Property ;
+    rdfs:label "subclass of" ;
+    rdfs:comment "this item is a subclass (subset) of that item; ALL instances of this item are instances of that item; different from P31 (instance of), e.g.: volcano is a subclass of mountain (and an instance of volcanic landform); Everest is an instance of mountain" ;
+    rdfs:domain wd:Q14897293,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q2188189,
+        wd:Q2385804,
+        wd:Q2424752,
+        wd:Q3024240,
+        wd:Q41710,
+        wd:Q482994,
+        wd:Q7397,
+        wd:Q9174 ;
+    rdfs:range wd:Q11204,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q2424752,
+        wd:Q41710,
+        wd:Q482994,
+        wd:Q7397,
+        wd:Q9174 .
+
+wdt:P30 a rdf:Property ;
+    rdfs:label "continent" ;
+    rdfs:comment "continent of which the subject is a part" ;
+    rdfs:domain wd:Q17334923,
+        wd:Q178706,
+        wd:Q2221906,
+        wd:Q2385804,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q41710,
+        wd:Q5107,
+        wd:Q56061,
+        wd:Q623109,
+        wd:Q6581097,
+        wd:Q7278 ;
+    rdfs:range wd:Q5107 .
+
+wdt:P31 a rdf:Property ;
+    rdfs:label "instance of" ;
+    rdfs:comment "type to which this subject corresponds/belongs. Different from P279 (subclass of); for example: K2 is an instance of mountain; volcanoes form a subclass of mountains, and the volcano is a type (instance) of volcanic landform" ;
+    rdfs:domain wd:Q1190554,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q2188189,
+        wd:Q2221906,
+        wd:Q2385804,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q7725310,
+        wd:Q7889,
+        wd:Q9174 ;
+    rdfs:range wd:Q1320047,
+        wd:Q14897293,
+        wd:Q17376908,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q2188189,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q2431196,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7889,
+        wd:Q9174 .
+
+wdt:P3373 a rdf:Property ;
+    rdfs:label "sibling" ;
+    rdfs:comment "the subject and the object have at least one common parent (brother, sister, etc. including half-siblings)" ;
+    rdfs:domain wd:Q16334295,
+        wd:Q3024240,
+        wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q16334295,
+        wd:Q3024240,
+        wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P35 a rdf:Property ;
+    rdfs:label "head of state" ;
+    rdfs:comment "official with the highest formal authority in a country/state" ;
+    rdfs:domain wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q781132 ;
+    rdfs:range wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P355 a rdf:Property ;
+    rdfs:label "has subsidiary" ;
+    rdfs:comment "subsidiary of a company or organization; generally a fully owned separate corporation. " ;
+    rdfs:domain wd:Q1137109,
+        wd:Q15265344,
+        wd:Q178706,
+        wd:Q18127,
+        wd:Q2385804,
+        wd:Q41710,
+        wd:Q623109,
+        wd:Q7275,
+        wd:Q781132,
+        wd:Q783794 ;
+    rdfs:range wd:Q1137109,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q15275719,
+        wd:Q178706,
+        wd:Q18127,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q241317,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q386724,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q7275,
+        wd:Q781132,
+        wd:Q783794 .
+
+wdt:P36 a rdf:Property ;
+    rdfs:label "capital" ;
+    rdfs:comment "seat of government of a country, province, state or other type of administrative territorial entity" ;
+    rdfs:domain wd:Q2221906,
+        wd:Q231002,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q56061 ;
+    rdfs:range wd:Q17334923,
+        wd:Q2221906,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107 .
+
+wdt:P361 a rdf:Property ;
+    rdfs:label "part of" ;
+    rdfs:comment "object of which the subject is a part (if this subject is already part of object A which is a part of object B, then please only make the subject part of object A), inverse property of \"has part\"" ;
+    rdfs:domain wd:Q10864048,
+        wd:Q11204,
+        wd:Q1190554,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q2424752,
+        wd:Q2728698,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q386724,
+        wd:Q41710,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q7397,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q11204,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q14897293,
+        wd:Q15265344,
+        wd:Q15324,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q180684,
+        wd:Q18127,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q27096213,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q386724,
+        wd:Q41710,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q7397,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 .
+
+wdt:P364 a rdf:Property ;
+    rdfs:label "original language of film or TV show" ;
+    rdfs:comment "language in which a film or a performance work was originally created. Deprecated for written works and songs." ;
+    rdfs:domain wd:Q11204,
+        wd:Q15275719,
+        wd:Q17376908,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q3624078,
+        wd:Q386724,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7889,
+        wd:Q95074 ;
+    rdfs:range wd:Q17376908,
+        wd:Q3024240,
+        wd:Q5107 .
+
+wdt:P37 a rdf:Property ;
+    rdfs:label "official language" ;
+    rdfs:comment "language designated as official by this item" ;
+    rdfs:domain wd:Q17376908,
+        wd:Q231002,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q56061 ;
+    rdfs:range wd:Q17376908,
+        wd:Q231002,
+        wd:Q3024240,
+        wd:Q41710,
+        wd:Q5107 .
+
+wdt:P39 a rdf:Property ;
+    rdfs:label "position held" ;
+    rdfs:comment "subject currently or formerly holds the object position or public office" ;
+    rdfs:domain wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q17376908,
+        wd:Q2031291,
+        wd:Q3024240,
+        wd:Q6581097,
+        wd:Q781132,
+        wd:Q95074 .
+
+wdt:P40 a rdf:Property ;
+    rdfs:label "child" ;
+    rdfs:comment "subject has object as child. Do not use for stepchildren?use \"relative\" (P1038), qualified with \"type of kinship\" (P1039)" ;
+    rdfs:domain wd:Q623109,
+        wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q3024240,
+        wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P400 a rdf:Property ;
+    rdfs:label "platform" ;
+    rdfs:comment "platform for which a work was developed or released, or the specific platform version of a software product" ;
+    rdfs:domain wd:Q1190554,
+        wd:Q17376908,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q2424752,
+        wd:Q386724,
+        wd:Q482994,
+        wd:Q6581097,
+        wd:Q7397,
+        wd:Q7889 ;
+    rdfs:range wd:Q1137109,
+        wd:Q1190554,
+        wd:Q15265344,
+        wd:Q2031291,
+        wd:Q241317,
+        wd:Q7397,
+        wd:Q7889 .
+
+wdt:P403 a rdf:Property ;
+    rdfs:label "mouth of the watercourse" ;
+    rdfs:comment "the body of water to which the watercourse drains" ;
+    rdfs:domain wd:Q17334923,
+        wd:Q2221906,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q56061 ;
+    rdfs:range wd:Q17334923,
+        wd:Q2221906,
+        wd:Q27096213,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q56061 .
+
+wdt:P449 a rdf:Property ;
+    rdfs:label "original broadcaster" ;
+    rdfs:comment "network(s) or service(s) that originally broadcast a radio or television program" ;
+    rdfs:domain wd:Q14897293,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q7889 ;
+    rdfs:range xsd:dateTime,
+        wd:Q12973014,
+        wd:Q15265344,
+        wd:Q17376908,
+        wd:Q188451,
+        wd:Q2031291,
+        wd:Q2385804,
+        wd:Q327333,
+        wd:Q7275,
+        wd:Q783794 .
+
+wdt:P463 a rdf:Property ;
+    rdfs:label "member of" ;
+    rdfs:comment "organization, club or musical group to which the subject belongs. " ;
+    rdfs:domain wd:Q12973014,
+        wd:Q16334295,
+        wd:Q178706,
+        wd:Q2385804,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q41710,
+        wd:Q5107,
+        wd:Q6581097,
+        wd:Q783794,
+        wd:Q95074 ;
+    rdfs:range wd:Q11204,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q18127,
+        wd:Q198,
+        wd:Q2385804,
+        wd:Q2728698,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q41710,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q95074 .
+
+wdt:P488 a rdf:Property ;
+    rdfs:label "chairperson" ;
+    rdfs:comment "presiding member of an organization, group or body" ;
+    rdfs:domain wd:Q15265344,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q2385804,
+        wd:Q2728698,
+        wd:Q327333,
+        wd:Q41710,
+        wd:Q7278,
+        wd:Q783794 ;
+    rdfs:range wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P495 a rdf:Property ;
+    rdfs:label "country of origin" ;
+    rdfs:comment "country of origin of this item (creative work, food, phrase, product, etc.)" ;
+    rdfs:domain wd:Q11204,
+        wd:Q14897293,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q2728698,
+        wd:Q386724,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q7397,
+        wd:Q7725310,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q17376908,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q7275 .
+
+wdt:P50 a rdf:Property ;
+    rdfs:label "author" ;
+    rdfs:comment "main creator(s) of a written work (use on works, not humans)" ;
+    rdfs:domain wd:Q11204,
+        wd:Q14897293,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q2728698,
+        wd:Q386724,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7278,
+        wd:Q7725310,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P527 a rdf:Property ;
+    rdfs:label "has part(s)" ;
+    rdfs:comment "part of this subject; inverse property of \"part of\" (P361). See also \"has parts of the class\" (P2670)." ;
+    rdfs:domain wd:Q11204,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q14897293,
+        wd:Q15265344,
+        wd:Q15324,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q180684,
+        wd:Q18127,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q27096213,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q386724,
+        wd:Q41710,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q7397,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q10864048,
+        wd:Q11204,
+        wd:Q1190554,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q14897293,
+        wd:Q15265344,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q2424752,
+        wd:Q2728698,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q386724,
+        wd:Q41710,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q7397,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 .
+
+wdt:P54 a rdf:Property ;
+    rdfs:label "member of sports team" ;
+    rdfs:comment "sports teams or clubs that the subject represents or represented" ;
+    rdfs:domain wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q1137109,
+        wd:Q12973014,
+        wd:Q15265344,
+        wd:Q178706,
+        wd:Q2385804,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q41710,
+        wd:Q5107,
+        wd:Q623109,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q783794 .
+
+wdt:P551 a rdf:Property ;
+    rdfs:label "residence" ;
+    rdfs:comment "the place where the person is or has been, resident" ;
+    rdfs:domain wd:Q5107,
+        wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q2221906,
+        wd:Q3024240,
+        wd:Q5107 .
+
+wdt:P569 a rdf:Property ;
+    rdfs:label "date of birth" ;
+    rdfs:comment "date on which the subject was born" ;
+    rdfs:domain wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range xsd:dateTime .
+
+wdt:P57 a rdf:Property ;
+    rdfs:label "director" ;
+    rdfs:comment "director(s) of film, TV-series, stageplay, video game or similar" ;
+    rdfs:domain wd:Q11204,
+        wd:Q14897293,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q2431196,
+        wd:Q2728698,
+        wd:Q386724,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7725310,
+        wd:Q7889,
+        wd:Q95074 ;
+    rdfs:range wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P570 a rdf:Property ;
+    rdfs:label "date of death" ;
+    rdfs:comment "date on which the subject died" ;
+    rdfs:domain wd:Q16334295,
+        wd:Q17334923,
+        wd:Q180684,
+        wd:Q482994,
+        wd:Q56061,
+        wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range xsd:dateTime .
+
+wdt:P571 a rdf:Property ;
+    rdfs:label "inception" ;
+    rdfs:comment "time when an entity begins to exist; for date of official opening use P1619" ;
+    rdfs:domain wd:Q10864048,
+        wd:Q11204,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q180684,
+        wd:Q18127,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q2424752,
+        wd:Q2728698,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q386724,
+        wd:Q41710,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q56061,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7397,
+        wd:Q7725310,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range xsd:dateTime .
+
+wdt:P576 a rdf:Property ;
+    rdfs:label "dissolved, abolished or demolished date" ;
+    rdfs:comment "point in time at which the subject (organisation, building) ceased to exist" ;
+    rdfs:domain wd:Q12973014,
+        wd:Q178706,
+        wd:Q18127,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q623109,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q781132,
+        wd:Q783794 ;
+    rdfs:range xsd:dateTime .
+
+wdt:P577 a rdf:Property ;
+    rdfs:label "publication date" ;
+    rdfs:comment "date or point in time when a work was first published or released" ;
+    rdfs:domain wd:Q11204,
+        wd:Q1190554,
+        wd:Q14897293,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q2431196,
+        wd:Q2728698,
+        wd:Q386724,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7397,
+        wd:Q7725310,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range xsd:dateTime .
+
+wdt:P58 a rdf:Property ;
+    rdfs:label "screenwriter" ;
+    rdfs:comment "person(s) who wrote the script for subject item" ;
+    rdfs:domain wd:Q14897293,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17376908,
+        wd:Q198,
+        wd:Q215380,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q2728698,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7725310,
+        wd:Q7889,
+        wd:Q95074 ;
+    rdfs:range wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P580 a rdf:Property ;
+    rdfs:label "start time" ;
+    rdfs:comment "time an entity begins to exist or a statement starts being valid" ;
+    rdfs:domain wd:Q11204,
+        wd:Q1190554,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q198,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q7889 ;
+    rdfs:range xsd:dateTime .
+
+wdt:P582 a rdf:Property ;
+    rdfs:label "end time" ;
+    rdfs:comment "moment when an entity ceases to exist and a statement stops being entirely valid or no longer be true" ;
+    rdfs:domain wd:Q1190554,
+        wd:Q15324,
+        wd:Q180684,
+        wd:Q198,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q327333,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q7889 ;
+    rdfs:range xsd:dateTime .
+
+wdt:P585 a rdf:Property ;
+    rdfs:label "point in time" ;
+    rdfs:comment "date something took place, existed or a statement was true; for providing time use the \"refine date\" property (P4241)" ;
+    rdfs:domain wd:Q11204,
+        wd:Q1190554,
+        wd:Q178706,
+        wd:Q180684,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q2188189,
+        wd:Q2221906,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q7889 ;
+    rdfs:range xsd:dateTime .
+
+wdt:P6 a rdf:Property ;
+    rdfs:label "head of government" ;
+    rdfs:comment "head of the executive power of this town, city, municipality, state, country, or other governmental body" ;
+    rdfs:domain wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107 ;
+    rdfs:range wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P607 a rdf:Property ;
+    rdfs:label "conflict" ;
+    rdfs:comment "battles, wars or other military engagements in which the person or item participated" ;
+    rdfs:domain wd:Q11204,
+        wd:Q12973014,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q18011141,
+        wd:Q198,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q41710,
+        wd:Q4406616,
+        wd:Q5107,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q95074 ;
+    rdfs:range wd:Q198,
+        wd:Q2424752,
+        wd:Q781132,
+        wd:Q95074 .
+
+wdt:P674 a rdf:Property ;
+    rdfs:label "characters" ;
+    rdfs:comment "characters which appear in this item (like plays, operas, operettas, books, comics, films, TV series, video games)" ;
+    rdfs:domain wd:Q11204,
+        wd:Q14897293,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q2728698,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q198,
+        wd:Q482994,
+        wd:Q6581097,
+        wd:Q7889,
+        wd:Q95074 .
+
+wdt:P676 a rdf:Property ;
+    rdfs:label "lyricist" ;
+    rdfs:comment "author of song lyrics" ;
+    rdfs:domain wd:Q15324,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q198,
+        wd:Q215380,
+        wd:Q231002,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q7889 ;
+    rdfs:range wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P69 a rdf:Property ;
+    rdfs:label "educated at" ;
+    rdfs:comment "educational institution attended by subject" ;
+    rdfs:domain wd:Q3024240,
+        wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q15265344,
+        wd:Q178706,
+        wd:Q2221906,
+        wd:Q2385804,
+        wd:Q3024240,
+        wd:Q5107,
+        wd:Q623109,
+        wd:Q7278,
+        wd:Q781132 .
+
+wdt:P706 a rdf:Property ;
+    rdfs:label "located in/on physical feature" ;
+    rdfs:comment "located on the specified (geo)physical feature." ;
+    rdfs:domain wd:Q17334923,
+        wd:Q2221906,
+        wd:Q2424752,
+        wd:Q27096213,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107,
+        wd:Q56061 ;
+    rdfs:range wd:Q17334923,
+        wd:Q2221906,
+        wd:Q27096213,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107 .
+
+wdt:P710 a rdf:Property ;
+    rdfs:label "participant" ;
+    rdfs:comment "person, group of people or organization (object) that actively takes/took part in an event or process (subject). " ;
+    rdfs:domain wd:Q11204,
+        wd:Q1190554,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q180684,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q482994,
+        wd:Q623109,
+        wd:Q7275,
+        wd:Q7725310,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q95074 ;
+    rdfs:range wd:Q11204,
+        wd:Q12973014,
+        wd:Q15324,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q198,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q41710,
+        wd:Q4406616,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q7278,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q95074 .
+
+wdt:P737 a rdf:Property ;
+    rdfs:label "influenced by" ;
+    rdfs:comment "the subject (person, idea, etc.) was influenced or inspired by this object entity, e.g. \"Heidegger was influenced by Aristotle\"" ;
+    rdfs:domain wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q6581097,
+        wd:Q9174,
+        wd:Q95074 .
+
+wdt:P740 a rdf:Property ;
+    rdfs:label "location of formation" ;
+    rdfs:comment "location where a group or organization was formed" ;
+    rdfs:domain wd:Q1137109,
+        wd:Q12973014,
+        wd:Q15265344,
+        wd:Q17376908,
+        wd:Q18127,
+        wd:Q482994,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q95074 ;
+    rdfs:range wd:Q17334923,
+        wd:Q2221906,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107 .
+
+wdt:P749 a rdf:Property ;
+    rdfs:label "parent organization" ;
+    rdfs:comment "parent organization of an organization, opposite of subsidiaries (P355)" ;
+    rdfs:domain wd:Q1137109,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q15275719,
+        wd:Q178706,
+        wd:Q18127,
+        wd:Q231002,
+        wd:Q2385804,
+        wd:Q241317,
+        wd:Q3024240,
+        wd:Q327333,
+        wd:Q386724,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q623109,
+        wd:Q7275,
+        wd:Q781132,
+        wd:Q783794 ;
+    rdfs:range wd:Q1137109,
+        wd:Q15265344,
+        wd:Q178706,
+        wd:Q18127,
+        wd:Q2385804,
+        wd:Q41710,
+        wd:Q623109,
+        wd:Q7275,
+        wd:Q781132,
+        wd:Q783794 .
+
+wdt:P800 a rdf:Property ;
+    rdfs:label "notable work" ;
+    rdfs:comment "notable scientific, artistic or literary work, or other work of significance among subject's works" ;
+    rdfs:domain wd:Q1137109,
+        wd:Q12973014,
+        wd:Q1320047,
+        wd:Q15265344,
+        wd:Q17334923,
+        wd:Q17376908,
+        wd:Q178706,
+        wd:Q18011141,
+        wd:Q18127,
+        wd:Q198,
+        wd:Q215380,
+        wd:Q327333,
+        wd:Q41710,
+        wd:Q4406616,
+        wd:Q623109,
+        wd:Q6581097,
+        wd:Q7275,
+        wd:Q781132,
+        wd:Q783794,
+        wd:Q95074 ;
+    rdfs:range wd:Q11204,
+        wd:Q1190554,
+        wd:Q14897293,
+        wd:Q15275719,
+        wd:Q15324,
+        wd:Q16334298,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q241317,
+        wd:Q2424752,
+        wd:Q2431196,
+        wd:Q2728698,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q386724,
+        wd:Q4406616,
+        wd:Q482994,
+        wd:Q5107,
+        wd:Q571,
+        wd:Q6581097,
+        wd:Q7278,
+        wd:Q7397,
+        wd:Q7725310,
+        wd:Q783794,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 .
+
+wdt:P807 a rdf:Property ;
+    rdfs:label "separated from" ;
+    rdfs:comment "subject was founded or started by separating from identified object" ;
+    rdfs:domain wd:Q5107,
+        wd:Q783794 ;
+    rdfs:range wd:Q178706,
+        wd:Q3624078,
+        wd:Q41710 .
+
+wdt:P840 a rdf:Property ;
+    rdfs:label "narrative location" ;
+    rdfs:comment "the narrative of the work is set in this location" ;
+    rdfs:domain wd:Q11204,
+        wd:Q16334298,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q198,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q7889,
+        wd:Q9174,
+        wd:Q95074 ;
+    rdfs:range wd:Q17334923,
+        wd:Q2221906,
+        wd:Q3024240,
+        wd:Q3624078,
+        wd:Q5107 .
+
+wdt:P86 a rdf:Property ;
+    rdfs:label "composer" ;
+    rdfs:comment "person(s) who wrote the music [for lyricist, use \"lyrics by\" (P676)]" ;
+    rdfs:domain wd:Q11204,
+        wd:Q1190554,
+        wd:Q17376908,
+        wd:Q180684,
+        wd:Q188451,
+        wd:Q198,
+        wd:Q2031291,
+        wd:Q215380,
+        wd:Q2188189,
+        wd:Q231002,
+        wd:Q2424752,
+        wd:Q386724,
+        wd:Q482994,
+        wd:Q571,
+        wd:Q7725310,
+        wd:Q7889,
+        wd:Q95074 ;
+    rdfs:range wd:Q6581097,
+        wd:Q95074 .
+
+wdt:P937 a rdf:Property ;
+    rdfs:label "work location" ;
+    rdfs:comment "location where persons or organisations were actively participating in employment, business or other work" ;
+    rdfs:domain wd:Q6581097,
+        wd:Q95074 ;
+    rdfs:range wd:Q17334923,
+        wd:Q2221906,
+        wd:Q3024240,
+        wd:Q5107 .
+
+wd:Q43229 a owl:Class ;
+    rdfs:label "organization" ;
+    rdfs:comment "social entity established to meet needs or pursue goals" .
+
+wd:Q5 a owl:Class ;
+    rdfs:label "human" ;
+    rdfs:comment "any member of Homo sapiens, unique extant species of the genus Homo" .
+
+wd:Q618123 a owl:Class ;
+    rdfs:label "geographical feature" ;
+    rdfs:comment "components of planets that can be geographically located" .
+
+dr:PER a owl:Class ;
+    rdfs:label "PER" ;
+    rdfs:comment "A human being." ;
+    owl:equivalentClass wd:Q5 .
+
+dr:LOC a owl:Class ;
+    rdfs:label "LOC" ;
+    rdfs:comment "A location-based entity such as cities, countries, or landmarks." ;
+    owl:equivalentClass wd:Q618123 .
+
+wd:Q16334295 a owl:Class ;
+    rdfs:label "group of humans" ;
+    rdfs:comment "any set of human beings" ;
+    rdfs:subClassOf dr:PER .
+
+wd:Q2431196 a owl:Class ;
+    rdfs:label "audiovisual work" ;
+    rdfs:comment "creative work possessing both a sound and a visual component" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q10864048 a owl:Class ;
+    rdfs:label "first-level administrative division" ;
+    rdfs:comment "administrative division directly subordinate to or under administration of a national government" ;
+    rdfs:subClassOf dr:LOC .
+
+wd:Q27096213 a owl:Class ;
+    rdfs:label "geographic entity" ;
+    rdfs:comment "relatively stationary place or entity that can be geographically identified, located, or described" ;
+    rdfs:subClassOf dr:LOC .
+
+dr:ORG a owl:Class ;
+    rdfs:label "ORG" ;
+    rdfs:comment "An organization such as a company or institution." ;
+    owl:equivalentClass wd:Q43229 .
+
+wd:Q16334298 a owl:Class ;
+    rdfs:label "group of living things" ;
+    rdfs:comment "set of live physical entities of any nature" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q7725310 a owl:Class ;
+    rdfs:label "series of creative works" ;
+    rdfs:comment "ordered set of creative works" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q2728698 a owl:Class ;
+    rdfs:label "religious belief" ;
+    rdfs:comment "idea or tenet that is part of a faith; refers to attitudes towards mythological, supernatural, or spiritual aspects of a religion; is usually codified" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q1190554 a owl:Class ;
+    rdfs:label "occurrence" ;
+    rdfs:comment "occurrence of a fact or object in space-time; instantiation of a property in an object" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q15275719 a owl:Class ;
+    rdfs:label "recurring event" ;
+    rdfs:comment "event recurring at an interval" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q1320047 a owl:Class ;
+    rdfs:label "book publisher" ;
+    rdfs:comment "publishing house whose sole or main output is books / texts" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q14897293 a owl:Class ;
+    rdfs:label "fictional entity" ;
+    rdfs:comment "entity that only exists in a work of fiction" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q4406616 a owl:Class ;
+    rdfs:label "concrete object" ;
+    rdfs:comment "a particular or specific instance of an entity. To describe tangible or physical objects use Q223557" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q56061 a owl:Class ;
+    rdfs:label "administrative territorial entity" ;
+    rdfs:comment "territorial entity for administration purposes, with or without its own local government" ;
+    rdfs:subClassOf dr:LOC .
+
+wd:Q18127 a owl:Class ;
+    rdfs:label "record label" ;
+    rdfs:comment "brand and trademark associated with the marketing of music recordings and music videos" ;
+    rdfs:subClassOf dr:ORG .
+
+dr:MISC a owl:Class ;
+    rdfs:label "MISC" ;
+    rdfs:comment "A miscellaneous entity that doesn't fall under standard categories." .
+
+wd:Q241317 a owl:Class ;
+    rdfs:label "computing platform" ;
+    rdfs:comment "environment in which a piece of software is executed" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q7397 a owl:Class ;
+    rdfs:label "software" ;
+    rdfs:comment "non-tangible executable component of a computer" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q1137109 a owl:Class ;
+    rdfs:label "video game publisher" ;
+    rdfs:comment "company that publishes video games" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q188451 a owl:Class ;
+    rdfs:label "music genre" ;
+    rdfs:comment "category that identifies pieces of music as belonging to a shared tradition or set of conventions" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q215380 a owl:Class ;
+    rdfs:label "musical group" ;
+    rdfs:comment "musical ensemble which performs music" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q2188189 a owl:Class ;
+    rdfs:label "musical work" ;
+    rdfs:comment "generic term for any work of art related to music, i.e. songs, compositions, groups of compositions, sheet music, melodies, albums, musical films, etc." ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q386724 a owl:Class ;
+    rdfs:label "work" ;
+    rdfs:comment "intellectual or artistic creation" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q18011141 a owl:Class ;
+    rdfs:label "fictional military organization" ;
+    rdfs:comment "military organization which only appears in works of fiction" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q7278 a owl:Class ;
+    rdfs:label "political party" ;
+    rdfs:comment "organization that seeks to influence government policy and actions and be elected to directly take part on government or legislation" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q623109 a owl:Class ;
+    rdfs:label "sports league" ;
+    rdfs:comment "group of sports teams or individual athletes that compete against each other" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q15265344 a owl:Class ;
+    rdfs:label "broadcaster" ;
+    rdfs:comment "organization responsible for production and transmission of radio and television programs" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q9174 a owl:Class ;
+    rdfs:label "religion" ;
+    rdfs:comment "social-cultural system" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q17334923 a owl:Class ;
+    rdfs:label "physical location" ;
+    rdfs:comment "property describing the position of something in space" ;
+    rdfs:subClassOf dr:LOC .
+
+wd:Q41710 a owl:Class ;
+    rdfs:label "ethnic group" ;
+    rdfs:comment "socially defined category of people who identify with each other" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q2385804 a owl:Class ;
+    rdfs:label "educational institution" ;
+    rdfs:comment "institution that provides education" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q12973014 a owl:Class ;
+    rdfs:label "sports team" ;
+    rdfs:comment "individual team that plays sports" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q180684 a owl:Class ;
+    rdfs:label "conflict" ;
+    rdfs:comment "friction, disagreement, or discord within a group or between different groups" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q11204 a owl:Class ;
+    rdfs:label "legislature" ;
+    rdfs:comment "kind of deliberative assembly with the power to pass, amend, and repeal laws" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q781132 a owl:Class ;
+    rdfs:label "military branch" ;
+    rdfs:comment "subdivision of the armed forces of a sovereign nation" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q2221906 a owl:Class ;
+    rdfs:label "geographic location" ;
+    rdfs:comment "point, line or area on or near Earth" ;
+    rdfs:subClassOf dr:LOC .
+
+wd:Q327333 a owl:Class ;
+    rdfs:label "government agency" ;
+    rdfs:comment "organisational part of a government responsible for specific public services, such as health, judiciary, education, transportation, foreign affairs, etc" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q15324 a owl:Class ;
+    rdfs:label "body of water" ;
+    rdfs:comment "any significant accumulation of water, generally on a planet's surface" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q2031291 a owl:Class ;
+    rdfs:label "musical release" ;
+    rdfs:comment "collection of musical recordings released in a specific format for consumption" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q178706 a owl:Class ;
+    rdfs:label "institution" ;
+    rdfs:comment "structure or mechanism of social order and cooperation governing the behaviour of a set of individuals within a given community" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q571 a owl:Class ;
+    rdfs:label "book" ;
+    rdfs:comment "medium for recording information (words or images) typically on bound pages or more abstractly in electronic or audio form" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q7275 a owl:Class ;
+    rdfs:label "state" ;
+    rdfs:comment "organised community living under a system of government; either a sovereign state, constituent state, or federated state" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q2424752 a owl:Class ;
+    rdfs:label "product" ;
+    rdfs:comment "anything that can be offered to a market" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q783794 a owl:Class ;
+    rdfs:label "company" ;
+    rdfs:comment "legal entity representing an association of people, whether natural, legal or a mixture of both, with a specific objective" ;
+    rdfs:subClassOf dr:ORG .
+
+wd:Q3624078 a owl:Class ;
+    rdfs:label "sovereign state" ;
+    rdfs:comment "state that has the highest authority over a territory" ;
+    rdfs:subClassOf dr:LOC .
+
+wd:Q7889 a owl:Class ;
+    rdfs:label "video game" ;
+    rdfs:comment "electronic game with user interface and visual feedback" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q198 a owl:Class ;
+    rdfs:label "war" ;
+    rdfs:comment "organized and prolonged violent conflict between states" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q482994 a owl:Class ;
+    rdfs:label "album" ;
+    rdfs:comment "grouping of album releases by an artist usually released at the same time with the same title and tracks but in different formats for consumption (digital, CD, LP)" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q231002 a owl:Class ;
+    rdfs:label "nationality" ;
+    rdfs:comment "a legal identification of a person in international law, establishing the person as a subject, a national, of a sovereign state" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q17376908 a owl:Class ;
+    rdfs:label "languoid" ;
+    rdfs:comment "language, variety of a language, or group of languages" ;
+    rdfs:subClassOf dr:MISC .
+
+wd:Q5107 a owl:Class ;
+    rdfs:label "continent" ;
+    rdfs:comment "large landmass identified by convention" ;
+    rdfs:subClassOf dr:LOC .
+
+wd:Q6581097 a owl:Class ;
+    rdfs:label "male" ;
+    rdfs:comment "to be used in \"sex or gender\" (P21) to indicate that the human subject is a male or \"semantic gender\" (P10339) to indicate that a word refers to a male person" ;
+    rdfs:subClassOf dr:PER .
+
+wd:Q3024240 a owl:Class ;
+    rdfs:label "historical country" ;
+    rdfs:comment "country, state or territory that once existed" ;
+    rdfs:subClassOf dr:LOC .
+
+wd:Q95074 a owl:Class ;
+    rdfs:label "character" ;
+    rdfs:comment "fictional human or non-human character in a narrative work of art" ;
+    rdfs:subClassOf dr:PER .
+

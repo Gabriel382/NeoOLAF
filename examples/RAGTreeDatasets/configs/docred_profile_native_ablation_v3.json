@@ -1,0 +1,668 @@
+{
+  "profile_name": "docred_native_document_relation_ablation_v3",
+  "description": "Fast native DocRED diagnostic with explicit input-level relation guidance, ontology-canonical relation promotion, per-layer token/time limits, and parallel Layer 2/4 execution. No src changes and no extra extraction task.",
+  "language": {
+    "source": "en",
+    "target": "en",
+    "translate": false,
+    "translate_in_preprocessing": false,
+    "llm_translate_inside_extraction": false
+  },
+  "chunking": {
+    "strategies": [
+      "fixed"
+    ],
+    "preferred_unit_for_extraction": "chunk",
+    "whole_document_preferred": true,
+    "chunk_size": 16000,
+    "overlap": 0,
+    "max_safe_chunk_chars": 24000,
+    "context_safety_note": "Notebook keeps the whole document in one chunk when safe."
+  },
+  "layers": {
+    "layer01_linguistic_expression_extraction": {
+      "strategy": "generic",
+      "max_concurrency": 1,
+      "rag_enabled": false,
+      "max_output_tokens": 4096,
+      "request_timeout_seconds": 180,
+      "response_hard_cap_chars": 24000
+    },
+    "layer02_candidate_enrichment": {
+      "strategy": "generic_llm_enrichment",
+      "max_concurrency": 12,
+      "max_expressions": null,
+      "use_web_search": false,
+      "retry_failed_calls": 1,
+      "max_output_tokens": 768,
+      "request_timeout_seconds": 90,
+      "response_hard_cap_chars": 12000
+    },
+    "layer03_candidate_typing_resolution": {
+      "strategy": "ontology_aware_role_based_typing",
+      "max_concurrency": 1,
+      "max_expressions": null
+    },
+    "layer04_candidate_relation_extraction": {
+      "strategy": "generic_llm_relation_extraction",
+      "max_concurrency": 8,
+      "max_relation_mentions": null,
+      "retry_failed_calls": 1,
+      "max_attempts_per_relation": 2,
+      "retry_wait_seconds": 1.0,
+      "max_output_tokens": 512,
+      "request_timeout_seconds": 90,
+      "response_hard_cap_chars": 8000
+    },
+    "layer05_candidate_triple_generation": {
+      "strategy": "ontology_aware_assertion_to_triples",
+      "max_concurrency": 4
+    },
+    "layer06_concept_relation_induction": {
+      "strategy": "ontology_aware_triple_concept_relation_induction",
+      "max_concurrency": 4,
+      "description": "Existing deterministic NeoOLAF strategy; consumes only native candidates/triples."
+    },
+    "layer07_hierarchisation": {
+      "strategy": "ontology_aware_parent_hint_hierarchy",
+      "max_concurrency": 4
+    },
+    "layer08_axiom_schemata_extraction": {
+      "strategy": "ontology_aware_axiom_schema_generation",
+      "max_concurrency": 4
+    },
+    "layer09_general_axiom_extraction": {
+      "strategy": "ontology_aware_schema_to_general_axioms",
+      "max_concurrency": 4
+    },
+    "layer10_validation_reasoning": {
+      "strategy": "ontology_aware_validation_reasoning",
+      "max_concurrency": 4
+    },
+    "layer11_inference_completion": {
+      "strategy": "ontology_aware_semantic_completion",
+      "max_concurrency": 4
+    },
+    "layer12_serialization": {
+      "max_concurrency": 4
+    }
+  },
+  "relations": {
+    "allowed": [
+      "P17 : country",
+      "P27 : country of citizenship",
+      "P30 : continent",
+      "P31 : instance of",
+      "P69 : educated at",
+      "P108 : employer",
+      "P127 : owned by",
+      "P131 : located in the administrative territorial entity",
+      "P150 : contains the administrative territorial entity",
+      "P159 : headquarters location",
+      "P175 : performer",
+      "P264 : record label",
+      "P355 : has subsidiary",
+      "P361 : part of",
+      "P463 : member of",
+      "P527 : has part(s)",
+      "P569 : date of birth",
+      "P570 : date of death",
+      "P571 : inception",
+      "P577 : publication date",
+      "P749 : parent organization"
+    ],
+    "canonical_identifier": "Wikidata property ID",
+    "property_count": 96,
+    "catalog_path": "examples/RAGTreeDatasets/ontology/docred_relation_catalog.json",
+    "ontology_property_count": 96,
+    "priority_ids": [
+      "P17",
+      "P27",
+      "P30",
+      "P31",
+      "P69",
+      "P108",
+      "P127",
+      "P131",
+      "P150",
+      "P159",
+      "P175",
+      "P264",
+      "P355",
+      "P361",
+      "P463",
+      "P527",
+      "P569",
+      "P570",
+      "P571",
+      "P577",
+      "P749"
+    ]
+  },
+  "rag": {
+    "backend": "priority_property_first_ontology_schema_retrieval",
+    "top_k": 10,
+    "allowed_spaces": {
+      "layer02_candidate_enrichment": [
+        "ontology"
+      ],
+      "layer03_candidate_typing_resolution": [
+        "ontology"
+      ],
+      "layer04_candidate_relation_extraction": [
+        "ontology"
+      ],
+      "layer06_concept_relation_induction": [
+        "ontology"
+      ],
+      "layer07_hierarchisation": [
+        "ontology"
+      ],
+      "layer08_axiom_schemata_extraction": [
+        "ontology"
+      ]
+    },
+    "query_expansions": {
+      "based in": [
+        "headquarters location",
+        "location",
+        "located in the administrative territorial entity"
+      ],
+      "headquartered in": [
+        "headquarters location"
+      ],
+      "part of": [
+        "owned by",
+        "parent organization",
+        "part of"
+      ],
+      "subsidiary of": [
+        "parent organization",
+        "owned by"
+      ],
+      "member of": [
+        "member of",
+        "part of"
+      ],
+      "relaunch": [
+        "inception",
+        "start time",
+        "publication date"
+      ],
+      "relaunched in": [
+        "inception",
+        "start time"
+      ],
+      "available on": [
+        "platform",
+        "original broadcaster"
+      ],
+      "country": [
+        "country",
+        "country of citizenship"
+      ],
+      "greek": [
+        "country",
+        "P17",
+        "original language of film or TV show"
+      ],
+      "introduced": [
+        "developer",
+        "operator"
+      ],
+      "introducing": [
+        "developer",
+        "operator"
+      ],
+      "free to air television network": [
+        "instance of",
+        "country",
+        "headquarters location"
+      ],
+      "media group": [
+        "owned by",
+        "parent organization",
+        "has subsidiary",
+        "part of"
+      ],
+      "the country": [
+        "country"
+      ],
+      "metropolitan area": [
+        "located in the administrative territorial entity",
+        "country"
+      ],
+      "consortium": [
+        "member of",
+        "part of"
+      ],
+      "established": [
+        "inception"
+      ],
+      "founded": [
+        "inception",
+        "founded by"
+      ]
+    },
+    "priority_property_ids": [
+      "P17",
+      "P27",
+      "P30",
+      "P31",
+      "P69",
+      "P108",
+      "P127",
+      "P131",
+      "P150",
+      "P159",
+      "P175",
+      "P264",
+      "P355",
+      "P361",
+      "P463",
+      "P527",
+      "P569",
+      "P570",
+      "P571",
+      "P577",
+      "P749"
+    ]
+  },
+  "ontology_linking": {
+    "seed_ontology": "examples/RAGTreeDatasets/ontology/docred_redocred_neoolaf_compatible.ttl",
+    "canonical_property_prefix": "http://www.wikidata.org/prop/direct/",
+    "preserve_named_entity_surface_forms": true,
+    "prefer_property_ids_over_labels": true,
+    "node_roles": {
+      "entity": {
+        "candidate_family": "entity",
+        "class_label": "Entity",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "named_entity": {
+        "candidate_family": "entity",
+        "class_label": "Entity",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "organization": {
+        "candidate_family": "entity",
+        "class_label": "ORG",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "organisation": {
+        "candidate_family": "entity",
+        "class_label": "ORG",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "location": {
+        "candidate_family": "entity",
+        "class_label": "LOC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "country": {
+        "candidate_family": "entity",
+        "class_label": "LOC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "city": {
+        "candidate_family": "entity",
+        "class_label": "LOC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "date": {
+        "candidate_family": "entity",
+        "class_label": "TIME",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "time": {
+        "candidate_family": "entity",
+        "class_label": "TIME",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "number": {
+        "candidate_family": "entity",
+        "class_label": "NUM",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "language": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "attribute": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "content_type": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "program_type": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "dubbing_method": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "content_delivery_method": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "process_relevant_term": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "process-relevant_term": {
+        "candidate_family": "entity",
+        "class_label": "MISC",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "event": {
+        "candidate_family": "event",
+        "class_label": "Event",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false
+      },
+      "relation": {
+        "candidate_family": "relation",
+        "class_label": "Relation",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true
+      },
+      "relation_bearing_expression": {
+        "candidate_family": "relation",
+        "class_label": "Relation",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true
+      },
+      "relation-bearing_expression": {
+        "candidate_family": "relation",
+        "class_label": "Relation",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true
+      }
+    },
+    "preserve_layer01_surface_form_as_candidate_label": true,
+    "do_not_merge_distinct_named_mentions_by_generic_type": true,
+    "relation_roles": {
+      "P17 : country": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P17",
+        "property_label": "country",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q10864048, http://www.wikidata.org/entity/Q11204, http://www.wikidata.org/entity/Q1137109, http://www.wikidata.org/entity/Q1190554, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q15275719, http://www.wikidata.org/entity/Q15324, http://www.wikidata.org/entity/Q16334298, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18011141, http://www.wikidata.org/entity/Q180684, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q188451, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q2031291, http://www.wikidata.org/entity/Q215380, http://www.wikidata.org/entity/Q2188189, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q241317, http://www.wikidata.org/entity/Q2424752, http://www.wikidata.org/entity/Q2431196, http://www.wikidata.org/entity/Q27096213, http://www.wikidata.org/entity/Q2728698, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q386724, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q4406616, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q5107",
+        "range": "http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7278",
+        "definition": "sovereign state that this item is in (not to be used for human beings)",
+        "synonyms": []
+      },
+      "P27 : country of citizenship": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P27",
+        "property_label": "country of citizenship",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q16334295, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18011141, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q95074",
+        "range": "http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7278, http://www.wikidata.org/entity/Q781132",
+        "definition": "the object is a country that recognizes the subject as its citizen",
+        "synonyms": []
+      },
+      "P30 : continent": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P30",
+        "property_label": "continent",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q56061, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7278",
+        "range": "http://www.wikidata.org/entity/Q5107",
+        "definition": "continent of which the subject is a part",
+        "synonyms": []
+      },
+      "P31 : instance of": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P31",
+        "property_label": "instance of",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q1190554, http://www.wikidata.org/entity/Q15275719, http://www.wikidata.org/entity/Q15324, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q2031291, http://www.wikidata.org/entity/Q2188189, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q7725310, http://www.wikidata.org/entity/Q7889, http://www.wikidata.org/entity/Q9174",
+        "range": "http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q14897293, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q2031291, http://www.wikidata.org/entity/Q2188189, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q2431196, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7889, http://www.wikidata.org/entity/Q9174",
+        "definition": "type to which this subject corresponds/belongs. Different from P279 (subclass of); for example: K2 is an instance of mountain; volcanoes form a subclass of mountains, and the volcano is a type (instance) of volcanic landform",
+        "synonyms": []
+      },
+      "P69 : educated at": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P69",
+        "property_label": "educated at",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q95074",
+        "range": "http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q7278, http://www.wikidata.org/entity/Q781132",
+        "definition": "educational institution attended by subject",
+        "synonyms": []
+      },
+      "P108 : employer": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P108",
+        "property_label": "employer",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q16334295, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q95074",
+        "range": "http://www.wikidata.org/entity/Q1137109, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7278, http://www.wikidata.org/entity/Q783794",
+        "definition": "person or organization for which the subject works or worked",
+        "synonyms": []
+      },
+      "P127 : owned by": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P127",
+        "property_label": "owned by",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q1137109, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q15275719, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q2031291, http://www.wikidata.org/entity/Q2188189, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q241317, http://www.wikidata.org/entity/Q2424752, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q386724, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q4406616, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7397, http://www.wikidata.org/entity/Q783794, http://www.wikidata.org/entity/Q7889",
+        "range": "http://www.wikidata.org/entity/Q10864048, http://www.wikidata.org/entity/Q1137109, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q241317, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7278, http://www.wikidata.org/entity/Q781132, http://www.wikidata.org/entity/Q783794, http://www.wikidata.org/entity/Q95074",
+        "definition": "owner of the subject",
+        "synonyms": []
+      },
+      "P131 : located in the administrative territorial entity": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P131",
+        "property_label": "located in the administrative territorial entity",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q10864048, http://www.wikidata.org/entity/Q11204, http://www.wikidata.org/entity/Q1137109, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q15324, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18011141, http://www.wikidata.org/entity/Q180684, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q2031291, http://www.wikidata.org/entity/Q2188189, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q2424752, http://www.wikidata.org/entity/Q2431196, http://www.wikidata.org/entity/Q27096213, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q386724, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q56061, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7278, http://www.wikidata.org/entity/Q781132, http://www.wikidata.org/entity/Q783794, http://www.wikidata.org/entity/Q95074",
+        "range": "http://www.wikidata.org/entity/Q10864048, http://www.wikidata.org/entity/Q11204, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q27096213, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q56061, http://www.wikidata.org/entity/Q7275",
+        "definition": "the item is located on the territory of the following administrative entity. ",
+        "synonyms": []
+      },
+      "P150 : contains the administrative territorial entity": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P150",
+        "property_label": "contains the administrative territorial entity",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q10864048, http://www.wikidata.org/entity/Q11204, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q27096213, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q56061, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7278",
+        "range": "http://www.wikidata.org/entity/Q10864048, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q27096213, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q56061, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q783794, http://www.wikidata.org/entity/Q95074",
+        "definition": "(list of) direct subdivisions of an administrative territorial entity",
+        "synonyms": []
+      },
+      "P159 : headquarters location": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P159",
+        "property_label": "headquarters location",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q1137109, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18011141, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q781132, http://www.wikidata.org/entity/Q783794",
+        "range": "http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q5107",
+        "definition": "city or town where an organization's headquarters is or has been situated. Use P276 qualifier for specific building",
+        "synonyms": []
+      },
+      "P175 : performer": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P175",
+        "property_label": "performer",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q11204, http://www.wikidata.org/entity/Q1190554, http://www.wikidata.org/entity/Q14897293, http://www.wikidata.org/entity/Q15324, http://www.wikidata.org/entity/Q16334298, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q180684, http://www.wikidata.org/entity/Q188451, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q2031291, http://www.wikidata.org/entity/Q215380, http://www.wikidata.org/entity/Q2188189, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q241317, http://www.wikidata.org/entity/Q2424752, http://www.wikidata.org/entity/Q2431196, http://www.wikidata.org/entity/Q2728698, http://www.wikidata.org/entity/Q386724, http://www.wikidata.org/entity/Q4406616, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7397, http://www.wikidata.org/entity/Q7725310, http://www.wikidata.org/entity/Q7889, http://www.wikidata.org/entity/Q9174, http://www.wikidata.org/entity/Q95074",
+        "range": "http://www.wikidata.org/entity/Q1137109, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18011141, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q215380, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q4406616, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q781132, http://www.wikidata.org/entity/Q783794, http://www.wikidata.org/entity/Q95074",
+        "definition": "actor, musician, band or other performer associated with this role or musical work",
+        "synonyms": []
+      },
+      "P264 : record label": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P264",
+        "property_label": "record label",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q11204, http://www.wikidata.org/entity/Q1137109, http://www.wikidata.org/entity/Q1190554, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q14897293, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q15324, http://www.wikidata.org/entity/Q16334298, http://www.wikidata.org/entity/Q18011141, http://www.wikidata.org/entity/Q180684, http://www.wikidata.org/entity/Q188451, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q2031291, http://www.wikidata.org/entity/Q215380, http://www.wikidata.org/entity/Q2188189, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q241317, http://www.wikidata.org/entity/Q2424752, http://www.wikidata.org/entity/Q2431196, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q386724, http://www.wikidata.org/entity/Q4406616, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7397, http://www.wikidata.org/entity/Q7725310, http://www.wikidata.org/entity/Q781132, http://www.wikidata.org/entity/Q783794, http://www.wikidata.org/entity/Q7889, http://www.wikidata.org/entity/Q9174, http://www.wikidata.org/entity/Q95074",
+        "range": "http://www.wikidata.org/entity/Q1137109, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q783794, http://www.wikidata.org/entity/Q7889, http://www.wikidata.org/entity/Q95074",
+        "definition": "brand and trademark associated with the marketing of subject music recordings and music videos",
+        "synonyms": []
+      },
+      "P355 : has subsidiary": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P355",
+        "property_label": "has subsidiary",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q1137109, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q781132, http://www.wikidata.org/entity/Q783794",
+        "range": "http://www.wikidata.org/entity/Q1137109, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q15275719, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q241317, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q386724, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q781132, http://www.wikidata.org/entity/Q783794",
+        "definition": "subsidiary of a company or organization; generally a fully owned separate corporation. ",
+        "synonyms": []
+      },
+      "P361 : part of": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P361",
+        "property_label": "part of",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q10864048, http://www.wikidata.org/entity/Q11204, http://www.wikidata.org/entity/Q1190554, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q15275719, http://www.wikidata.org/entity/Q15324, http://www.wikidata.org/entity/Q16334298, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18011141, http://www.wikidata.org/entity/Q180684, http://www.wikidata.org/entity/Q188451, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q2031291, http://www.wikidata.org/entity/Q215380, http://www.wikidata.org/entity/Q2188189, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q2424752, http://www.wikidata.org/entity/Q2728698, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q386724, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7278, http://www.wikidata.org/entity/Q7397, http://www",
+        "range": "http://www.wikidata.org/entity/Q11204, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q14897293, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q15324, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18011141, http://www.wikidata.org/entity/Q180684, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q188451, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q2031291, http://www.wikidata.org/entity/Q215380, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q241317, http://www.wikidata.org/entity/Q2424752, http://www.wikidata.org/entity/Q27096213, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q386724, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q4406616, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7278, http://www.wikidata.org/entity/Q7397, http://www.wikidata.org/entity/Q781132, http://www.wikidata.org/entity/Q783794, http://www.wikid",
+        "definition": "object of which the subject is a part (if this subject is already part of object A which is a part of object B, then please only make the subject part of object A), inverse property of \"has part\"",
+        "synonyms": []
+      },
+      "P463 : member of": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P463",
+        "property_label": "member of",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q16334295, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q783794, http://www.wikidata.org/entity/Q95074",
+        "range": "http://www.wikidata.org/entity/Q11204, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18011141, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q2728698, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7278, http://www.wikidata.org/entity/Q781132, http://www.wikidata.org/entity/Q783794, http://www.wikidata.org/entity/Q95074",
+        "definition": "organization, club or musical group to which the subject belongs. ",
+        "synonyms": []
+      },
+      "P527 : has part(s)": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P527",
+        "property_label": "has part(s)",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q11204, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q14897293, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q15324, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18011141, http://www.wikidata.org/entity/Q180684, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q188451, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q2031291, http://www.wikidata.org/entity/Q215380, http://www.wikidata.org/entity/Q2188189, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q241317, http://www.wikidata.org/entity/Q2424752, http://www.wikidata.org/entity/Q27096213, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q386724, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q4406616, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7278, http://www.wikidata.org/entity/Q7397, http://www.wikidata.org/entity/Q781132, http://www.wiki",
+        "range": "http://www.wikidata.org/entity/Q10864048, http://www.wikidata.org/entity/Q11204, http://www.wikidata.org/entity/Q1190554, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q14897293, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q15275719, http://www.wikidata.org/entity/Q15324, http://www.wikidata.org/entity/Q16334298, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18011141, http://www.wikidata.org/entity/Q180684, http://www.wikidata.org/entity/Q188451, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q2031291, http://www.wikidata.org/entity/Q215380, http://www.wikidata.org/entity/Q2188189, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q2424752, http://www.wikidata.org/entity/Q2728698, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q386724, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7278, http:/",
+        "definition": "part of this subject; inverse property of \"part of\" (P361). See also \"has parts of the class\" (P2670).",
+        "synonyms": []
+      },
+      "P569 : date of birth": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P569",
+        "property_label": "date of birth",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q95074",
+        "range": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "definition": "date on which the subject was born",
+        "synonyms": []
+      },
+      "P570 : date of death": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P570",
+        "property_label": "date of death",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q16334295, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q180684, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q56061, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q95074",
+        "range": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "definition": "date on which the subject died",
+        "synonyms": []
+      },
+      "P571 : inception": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P571",
+        "property_label": "inception",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q10864048, http://www.wikidata.org/entity/Q11204, http://www.wikidata.org/entity/Q12973014, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q15275719, http://www.wikidata.org/entity/Q15324, http://www.wikidata.org/entity/Q17334923, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18011141, http://www.wikidata.org/entity/Q180684, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q2031291, http://www.wikidata.org/entity/Q215380, http://www.wikidata.org/entity/Q2188189, http://www.wikidata.org/entity/Q2221906, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q2424752, http://www.wikidata.org/entity/Q2728698, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q3624078, http://www.wikidata.org/entity/Q386724, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q5107, http://www.wikidata.org/entity/Q56061, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q7397, http://www.wikidata.org/entity/Q7725310, http://www.wikidata.org/entity/Q781132, http://www.w",
+        "range": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "definition": "time when an entity begins to exist; for date of official opening use P1619",
+        "synonyms": []
+      },
+      "P577 : publication date": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P577",
+        "property_label": "publication date",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q11204, http://www.wikidata.org/entity/Q1190554, http://www.wikidata.org/entity/Q14897293, http://www.wikidata.org/entity/Q15275719, http://www.wikidata.org/entity/Q15324, http://www.wikidata.org/entity/Q16334298, http://www.wikidata.org/entity/Q17376908, http://www.wikidata.org/entity/Q180684, http://www.wikidata.org/entity/Q188451, http://www.wikidata.org/entity/Q198, http://www.wikidata.org/entity/Q2031291, http://www.wikidata.org/entity/Q215380, http://www.wikidata.org/entity/Q2188189, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q241317, http://www.wikidata.org/entity/Q2424752, http://www.wikidata.org/entity/Q2431196, http://www.wikidata.org/entity/Q2728698, http://www.wikidata.org/entity/Q386724, http://www.wikidata.org/entity/Q4406616, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q6581097, http://www.wikidata.org/entity/Q7397, http://www.wikidata.org/entity/Q7725310, http://www.wikidata.org/entity/Q783794, http://www.wikidata.org/entity/Q7889, http://www.wikidata.org/entity/Q9174, http://www.wikidata.org/entity/Q95074",
+        "range": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "definition": "date or point in time when a work was first published or released",
+        "synonyms": []
+      },
+      "P749 : parent organization": {
+        "property_uri": "http://www.wikidata.org/prop/direct/P749",
+        "property_label": "parent organization",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "http://www.wikidata.org/entity/Q1137109, http://www.wikidata.org/entity/Q1320047, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q15275719, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q231002, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q241317, http://www.wikidata.org/entity/Q3024240, http://www.wikidata.org/entity/Q327333, http://www.wikidata.org/entity/Q386724, http://www.wikidata.org/entity/Q482994, http://www.wikidata.org/entity/Q571, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q781132, http://www.wikidata.org/entity/Q783794",
+        "range": "http://www.wikidata.org/entity/Q1137109, http://www.wikidata.org/entity/Q15265344, http://www.wikidata.org/entity/Q178706, http://www.wikidata.org/entity/Q18127, http://www.wikidata.org/entity/Q2385804, http://www.wikidata.org/entity/Q41710, http://www.wikidata.org/entity/Q623109, http://www.wikidata.org/entity/Q7275, http://www.wikidata.org/entity/Q781132, http://www.wikidata.org/entity/Q783794",
+        "definition": "parent organization of an organization, opposite of subsidiaries (P355)",
+        "synonyms": []
+      }
+    }
+  },
+  "evaluation": {
+    "dataset": "DocRED",
+    "strict_relation_match": true,
+    "gold_is_analysis_only": true,
+    "report_native_and_mapped_outputs_separately": true
+  },
+  "orchestration": {
+    "mode": "pipeline",
+    "document_workers": 1,
+    "max_concurrency_layer01": 1,
+    "max_concurrency_layer02": 12,
+    "max_concurrency_layer03": 4,
+    "max_concurrency_layer04": 8,
+    "max_concurrency_layer05": 4,
+    "max_concurrency_layer06": 4,
+    "max_concurrency_layer07": 4,
+    "max_concurrency_layer08": 4,
+    "max_concurrency_layer09": 4,
+    "max_concurrency_layer10": 4,
+    "max_concurrency_layer11": 4,
+    "max_concurrency_layer12": 4,
+    "retry_failed_calls": 1,
+    "retry_sleep_seconds": 1.0
+  },
+  "anti_cheating": {
+    "direct_docred_extraction": false,
+    "raw_text_direct_fallback": false,
+    "source_entity_anchoring": false,
+    "gold_relation_hints": false,
+    "post_extraction_relation_closure": false,
+    "src_changes": false
+  },
+  "diagnostics": {
+    "trace_from_layer01": true,
+    "separate_native_from_mapped": true,
+    "record_valid_but_unannotated_relations": true,
+    "note": "Layer 3 uses the existing role-based strategy so canonical labels remain source mentions rather than generic class names.",
+    "cumulative_strict_evaluation_per_layer": true,
+    "log_json_parse_failures": true,
+    "log_response_caps": true,
+    "distinguish_schema_availability_from_predicate_mentions": true,
+    "input_task_guidance_is_metadata_not_source_text": true
+  }
+}

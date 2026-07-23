@@ -1,0 +1,193 @@
+{
+  "domain_focus": "DocRED document-level relation extraction from Wikipedia-style text. Treat the entire document as one semantic unit. Extract only useful DocRED endpoint mentions and relation-bearing spans; avoid peripheral topical phrases that cannot participate in a target relation. Preserve proper names, dates, countries, cities, organizations, persons, works, aliases, pronouns, demonyms and cross-sentence evidence. TARGET RELATION PLAYBOOK: P17 country (subject non-human entity/place -> sovereign country); P27 country of citizenship (person -> country of citizenship); P30 continent (place/country -> continent); P31 instance of (instance -> class/type); P69 educated at (person -> educational institution attended); P108 employer (person -> employer); P127 owned by (owned entity/organization -> owner or owning group); P131 located in the administrative territorial entity (place/entity -> containing administrative territorial entity); P150 contains the administrative territorial entity (administrative entity -> directly contained subdivision); P159 headquarters location (organization -> headquarters/base city or location); P175 performer (creative work -> performer); P264 record label (musical work/artist -> record label); P355 has subsidiary (parent organization -> subsidiary); P361 part of (part/item -> larger whole or series; use only when a more specific corporate property is not supported); P463 member of (person/organization -> organization or consortium of which it is a member); P527 has part(s) (whole -> component/part); P569 date of birth (person -> birth date); P570 date of death (person -> death date); P571 inception (organization/work/event -> inception or establishment date); P577 publication date (creative work -> publication/release date); P749 parent organization (subsidiary/branch -> parent organization) IMPORTANT RELATION-INSTANCE RULE: Layer 4 produces at most one assertion per relation mention, so extract separate relation-bearing expressions for each independently supported source-target pair.",
+  "abstraction_level": "shallow, entity-centric, exact-surface, ontology-canonical relation extraction",
+  "priority_relations": [
+    "P17 : country",
+    "P27 : country of citizenship",
+    "P30 : continent",
+    "P31 : instance of",
+    "P69 : educated at",
+    "P108 : employer",
+    "P127 : owned by",
+    "P131 : located in the administrative territorial entity",
+    "P150 : contains the administrative territorial entity",
+    "P159 : headquarters location",
+    "P175 : performer",
+    "P264 : record label",
+    "P355 : has subsidiary",
+    "P361 : part of",
+    "P463 : member of",
+    "P527 : has part(s)",
+    "P569 : date of birth",
+    "P570 : date of death",
+    "P571 : inception",
+    "P577 : publication date",
+    "P749 : parent organization"
+  ],
+  "population_policy": "Named entities are instances and must keep their source surface labels; never rename them to generic labels such as entity, organization, location, date or country. Relation-bearing expressions must be linked to one canonical DocRED property whenever ontology evidence supports it. REQUIRED HINT CONTRACT FOR RELATIONS: ontology_hints must contain \"controlled_relation:Pxxx : canonical label\" and \"promote_to_ontology:true\"; include domain/range hints when available and preserve the lexical phrase as an alias. Corporate disambiguation: membership=P463; explicit owner/owned-by=P127; subsidiary-to-parent=P749; parent-to-subsidiary=P355; generic part-whole=P361 only when no more specific corporate property is supported. For organization + stated base/headquarters city prefer P159. Use P17 for non-human entity/place to country and P27 only for people. Controlled high-confidence document-level inference is allowed for aliases/coreference, demonyms, “the country”, and common city-country containment; mark such links as inferred in the justification. Do not add a second extractor, source anchoring, closure rules, or gold-derived facts. Because Layer 4 is one-assertion-per-relation-mention, do not collapse several relation instances into one generic predicate candidate; preserve a separate evidence-bearing relation expression for each pair, including separate temporal and locative spans from the same sentence.",
+  "event_modeling_preference": "DocRED is entity-centric. Dates and locations remain endpoint entities. Extract a relation span with enough wording to retain all arguments, e.g. “was relaunched ... in” rather than separating the predicate from its date/location evidence. It is acceptable to extract the same source token as both an endpoint mention and relation evidence when a demonym or apposition supports a relation.",
+  "ontology_depth": "shallow",
+  "promotion_min_confidence": 0.35,
+  "hierarchy_min_confidence": 0.5,
+  "concept_promotion_bias": 0.15,
+  "typing_examples": [
+    {
+      "text": "Northstar Television",
+      "expected_type": "entity",
+      "explanation": "Keep the exact organization mention."
+    },
+    {
+      "text": "Harbor City",
+      "expected_type": "entity",
+      "explanation": "Keep the exact location mention."
+    },
+    {
+      "text": "12 May 2011",
+      "expected_type": "entity",
+      "explanation": "A date is a relation endpoint."
+    },
+    {
+      "text": "is based in",
+      "expected_type": "relation",
+      "explanation": "Relation-bearing organization-to-location phrase."
+    },
+    {
+      "text": "is part of the media group",
+      "expected_type": "relation",
+      "explanation": "Corporate relation phrase requiring ontology disambiguation."
+    },
+    {
+      "text": "Greek broadcaster",
+      "expected_type": "relation",
+      "explanation": "The demonym can be retained as evidence for a country relation while the named broadcaster remains an entity."
+    }
+  ],
+  "relation_examples": [
+    {
+      "text": "Northstar Television is based in Harbor City.",
+      "source_label": "Northstar Television",
+      "relation_label": "P159 : headquarters location",
+      "target_label": "Harbor City",
+      "explanation": "Organization-to-base-city direction. Keep the exact entities and canonicalize the predicate to P159."
+    },
+    {
+      "text": "Harbor City is in Republic Z.",
+      "source_label": "Harbor City",
+      "relation_label": "P17 : country",
+      "target_label": "Republic Z",
+      "explanation": "Use P17 for a non-human place/entity to its sovereign country."
+    },
+    {
+      "text": "Northstar Television is part of Northstar Media Group.",
+      "source_label": "Northstar Television",
+      "relation_label": "P127 : owned by",
+      "target_label": "Northstar Media Group",
+      "explanation": "In a corporate/group context, test ownership or parent-organization semantics before generic P361."
+    },
+    {
+      "text": "Northstar Research Europe is a subsidiary of Northstar Research.",
+      "source_label": "Northstar Research Europe",
+      "relation_label": "P749 : parent organization",
+      "target_label": "Northstar Research",
+      "explanation": "Subsidiary-to-parent direction."
+    },
+    {
+      "text": "Northstar Research has subsidiary Northstar Research Europe.",
+      "source_label": "Northstar Research",
+      "relation_label": "P355 : has subsidiary",
+      "target_label": "Northstar Research Europe",
+      "explanation": "Parent-to-subsidiary direction."
+    },
+    {
+      "text": "The broadcaster is a member of the Digital Networks Alliance.",
+      "source_label": "The broadcaster",
+      "relation_label": "P463 : member of",
+      "target_label": "Digital Networks Alliance",
+      "explanation": "Membership is not ownership, parent organization, or generic part-of."
+    },
+    {
+      "text": "The institute was established in June 2010.",
+      "source_label": "The institute",
+      "relation_label": "P571 : inception",
+      "target_label": "June 2010",
+      "explanation": "Organization-to-establishment-date direction."
+    },
+    {
+      "text": "Alex Morgan studied at Central College.",
+      "source_label": "Alex Morgan",
+      "relation_label": "P69 : educated at",
+      "target_label": "Central College",
+      "explanation": "Person-to-school direction."
+    },
+    {
+      "text": "The single was performed by Artist Q.",
+      "source_label": "The single",
+      "relation_label": "P175 : performer",
+      "target_label": "Artist Q",
+      "explanation": "Creative-work-to-performer direction."
+    },
+    {
+      "text": "The single was released by Aurora Records.",
+      "source_label": "The single",
+      "relation_label": "P264 : record label",
+      "target_label": "Aurora Records",
+      "explanation": "Musical-work-to-record-label direction."
+    }
+  ],
+  "promotion_examples": [
+    {
+      "text": "P159 : headquarters location",
+      "promote": true,
+      "promoted_label": "P159 : headquarters location",
+      "explanation": "Canonical DocRED relation schemas are promoted."
+    },
+    {
+      "text": "Northstar Television",
+      "promote": false,
+      "promoted_label": "Northstar Television",
+      "explanation": "Named instances are not promoted to ontology classes."
+    }
+  ],
+  "negative_examples": [
+    {
+      "text": "Northstar Television -> entity",
+      "explanation": "Do not replace a named entity with a generic class label.",
+      "target_layer": "layer03"
+    },
+    {
+      "text": "12 May 2011 -> relation",
+      "explanation": "Dates are endpoints, not predicates.",
+      "target_layer": "layer03"
+    },
+    {
+      "text": "member of -> owned by",
+      "explanation": "Membership and ownership are distinct.",
+      "target_layer": "layer04"
+    },
+    {
+      "text": "organization is part of a corporate group -> always P361",
+      "explanation": "Test P127/P749/P355 before generic P361.",
+      "target_layer": "layer04"
+    },
+    {
+      "text": "city + country co-occur with no evidence or common-knowledge support",
+      "explanation": "Do not invent uncertain geographic links.",
+      "target_layer": "layer04"
+    },
+    {
+      "text": "extract every topical phrase in the article",
+      "explanation": "Keep Layer 1 focused on target endpoints and relation spans to reduce cost and noise.",
+      "target_layer": "layer01"
+    },
+    {
+      "text": "omit a country because it appears in a later sentence",
+      "explanation": "The whole document is the semantic unit.",
+      "target_layer": "layer01"
+    },
+    {
+      "text": "one generic country relation mention for several different source entities",
+      "explanation": "Preserve separate evidence expressions so native Layer 4 can evaluate each endpoint pair.",
+      "target_layer": "layer01"
+    }
+  ]
+}

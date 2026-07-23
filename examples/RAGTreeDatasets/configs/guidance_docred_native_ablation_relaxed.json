@@ -1,0 +1,206 @@
+{
+  "domain_focus": "DocRED document-level relation extraction from Wikipedia-style text. Run native NeoOLAF end to end. Layer 1 must extract every explicit named mention, date, country/location mention, organization, person, work, language/nationality expression and relation-bearing phrase that may be a relation endpoint or predicate. Keep source surface forms exactly. Use the supplied DocRED ontology as schema guidance.",
+  "abstraction_level": "shallow, entity-centric, document-level factual extraction",
+  "priority_relations": [
+    "P17 : country",
+    "P27 : country of citizenship",
+    "P30 : continent",
+    "P31 : instance of",
+    "P69 : educated at",
+    "P108 : employer",
+    "P127 : owned by",
+    "P131 : located in the administrative territorial entity",
+    "P150 : contains the administrative territorial entity",
+    "P159 : headquarters location",
+    "P175 : performer",
+    "P264 : record label",
+    "P355 : has subsidiary",
+    "P361 : part of",
+    "P463 : member of",
+    "P527 : has part(s)",
+    "P569 : date of birth",
+    "P570 : date of death",
+    "P571 : inception",
+    "P577 : publication date",
+    "P749 : parent organization"
+  ],
+  "population_policy": "Preserve each distinct source mention as its own candidate unless the text clearly gives aliases/coreference. Never canonicalize Skai-like named mentions to generic labels such as entity, organization, location, language, date, or country. Put type/class information only in ontology hints. Keep dates, demonyms, cities and countries available as endpoints. Do not generate an extra benchmark-facing extraction outside NeoOLAF.",
+  "event_modeling_preference": "DocRED is entity-centric. Dates, locations, organizations, persons, works, languages, demonyms and other annotated mentions must remain node candidates. Relation-bearing verbal/prepositional phrases remain relation candidates.",
+  "ontology_depth": "shallow",
+  "promotion_min_confidence": 0.2,
+  "hierarchy_min_confidence": 0.4,
+  "concept_promotion_bias": 0.1,
+  "typing_examples": [
+    {
+      "text": "Northstar Television",
+      "expected_type": "entity",
+      "explanation": "Keep the exact organization mention; its class belongs in ontology hints."
+    },
+    {
+      "text": "Harbor City",
+      "expected_type": "entity",
+      "explanation": "Keep the exact location mention."
+    },
+    {
+      "text": "12 May 2011",
+      "expected_type": "entity",
+      "explanation": "A date mention can be a relation endpoint and should not become a relation."
+    },
+    {
+      "text": "is based in",
+      "expected_type": "relation",
+      "explanation": "Connects an organization to a headquarters or location endpoint."
+    },
+    {
+      "text": "is part of",
+      "expected_type": "relation",
+      "explanation": "Ontology and context decide between parent organization, owned by, part of, or membership."
+    },
+    {
+      "text": "was founded in",
+      "expected_type": "relation",
+      "explanation": "Connects an organization to an inception date or founding location depending on endpoint."
+    }
+  ],
+  "relation_examples": [
+    {
+      "text": "Northstar Television is based in Harbor City.",
+      "source_label": "Northstar Television",
+      "relation_label": "P159 : headquarters location",
+      "target_label": "Harbor City",
+      "explanation": "Use headquarters location for an organization's stated base/headquarters city."
+    },
+    {
+      "text": "Harbor City is in Republic Z.",
+      "source_label": "Harbor City",
+      "relation_label": "P17 : country",
+      "target_label": "Republic Z",
+      "explanation": "Use country when the object is the sovereign state containing a non-human entity or place."
+    },
+    {
+      "text": "Northstar Television is owned by Northstar Media Group.",
+      "source_label": "Northstar Television",
+      "relation_label": "P127 : owned by",
+      "target_label": "Northstar Media Group",
+      "explanation": "Use owned by only when ownership is stated or strongly expressed."
+    },
+    {
+      "text": "Northstar Research Europe is a subsidiary of Northstar Research.",
+      "source_label": "Northstar Research Europe",
+      "relation_label": "P749 : parent organization",
+      "target_label": "Northstar Research",
+      "explanation": "Use parent organization from subsidiary/branch to parent."
+    },
+    {
+      "text": "Northstar Research has subsidiary Northstar Research Europe.",
+      "source_label": "Northstar Research",
+      "relation_label": "P355 : has subsidiary",
+      "target_label": "Northstar Research Europe",
+      "explanation": "Use P355 in parent-to-subsidiary direction."
+    },
+    {
+      "text": "The broadcaster is a member of the Digital Networks Alliance.",
+      "source_label": "The broadcaster",
+      "relation_label": "P463 : member of",
+      "target_label": "Digital Networks Alliance",
+      "explanation": "Membership differs from ownership or part-of."
+    },
+    {
+      "text": "Alex Morgan was born on 4 March 1970 in Lake Town.",
+      "source_label": "Alex Morgan",
+      "relation_label": "P569 : date of birth",
+      "target_label": "4 March 1970",
+      "explanation": "Use date of birth for the date endpoint."
+    },
+    {
+      "text": "Alex Morgan studied at Central College.",
+      "source_label": "Alex Morgan",
+      "relation_label": "P69 : educated at",
+      "target_label": "Central College",
+      "explanation": "Use educated at for schools and universities attended."
+    },
+    {
+      "text": "The single was performed by Artist Q and released on 7 June 2014 by Aurora Records.",
+      "source_label": "The single",
+      "relation_label": "P175 : performer",
+      "target_label": "Artist Q",
+      "explanation": "Use performer for the artist of a musical work."
+    },
+    {
+      "text": "The single was released by Aurora Records.",
+      "source_label": "The single",
+      "relation_label": "P264 : record label",
+      "target_label": "Aurora Records",
+      "explanation": "Use record label for the label associated with the recording."
+    }
+  ],
+  "promotion_examples": [
+    {
+      "text": "Northstar Television",
+      "promote": false,
+      "promoted_label": "Northstar Television",
+      "explanation": "Preserve instance identity."
+    }
+  ],
+  "negative_examples": [
+    {
+      "text": "Northstar Television -> entity",
+      "explanation": "Do not replace a named entity with a generic class label.",
+      "target_layer": "layer03"
+    },
+    {
+      "text": "12 May 2011 -> relation",
+      "explanation": "Dates are endpoints/values, not relation-bearing expressions.",
+      "target_layer": "layer03"
+    },
+    {
+      "text": "based in -> P17 country",
+      "explanation": "For organization + city, prefer P159 when the text states its base/headquarters.",
+      "target_layer": "layer04"
+    },
+    {
+      "text": "member of -> owned by",
+      "explanation": "Membership, ownership, parent organization and generic part-of are distinct.",
+      "target_layer": "layer04"
+    },
+    {
+      "text": "infer a relation only because two entities co-occur",
+      "explanation": "Require textual support, coreference, or defensible ontology-backed entailment.",
+      "target_layer": "layer04"
+    },
+    {
+      "text": "Northstar Media Group + Northstar Television -> one candidate called entity",
+      "explanation": "Do not merge distinct named organizations by shared type.",
+      "target_layer": "layer03"
+    },
+    {
+      "text": "Harbor City -> location",
+      "explanation": "Keep Harbor City as the canonical node label and store LOC/location only as a type hint.",
+      "target_layer": "layer03"
+    },
+    {
+      "text": "omit Republic Z because it occurs in a later sentence",
+      "explanation": "The whole document is the semantic unit; retain all explicit named endpoints.",
+      "target_layer": "layer01"
+    }
+  ],
+  "layer_specific_instructions": {
+    "layer01_linguistic_expression_extraction": [
+      "Extract all explicit proper names and aliases, including country names mentioned later in the document.",
+      "Extract complete dates as endpoint expressions.",
+      "Extract demonyms or language adjectives when they can support country, citizenship, or language relations.",
+      "Extract linking phrases close to the source wording, including copular, appositional, possessive, membership, ownership and location expressions.",
+      "Do not omit a mention merely because another alias or pronoun refers to the same entity."
+    ],
+    "layer03_candidate_typing_resolution": [
+      "The document profile preserves source surface forms deterministically.",
+      "Class/type labels belong in ontology hints and must not replace the candidate name.",
+      "Distinct named mentions must not be merged merely because they share ORG, LOC, PER, MISC, TIME or another class."
+    ],
+    "layer04_candidate_relation_extraction": [
+      "Choose endpoints among the exact candidates from the complete document.",
+      "Use ontology properties, domains, ranges and relation descriptions to disambiguate direction and meaning.",
+      "A valid relation may be expressed across sentences through explicit aliases/coreference, but do not invent instance facts absent from the document or retrieval context."
+    ]
+  }
+}
