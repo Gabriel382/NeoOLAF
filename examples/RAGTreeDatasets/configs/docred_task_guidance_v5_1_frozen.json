@@ -1,0 +1,668 @@
+{
+  "task": "Native NeoOLAF DocRED document-level relation extraction v5. Metadata guidance only; no gold entity inventory or relation pairs.",
+  "relation_inventory_source": "examples/RAGTreeDatasets/ontology/docred_redocred_neoolaf_compatible.ttl",
+  "allowed_relation_ids": [
+    "P6",
+    "P17",
+    "P19",
+    "P20",
+    "P22",
+    "P25",
+    "P26",
+    "P27",
+    "P30",
+    "P31",
+    "P35",
+    "P36",
+    "P37",
+    "P39",
+    "P40",
+    "P50",
+    "P54",
+    "P57",
+    "P58",
+    "P69",
+    "P86",
+    "P102",
+    "P108",
+    "P112",
+    "P118",
+    "P123",
+    "P127",
+    "P131",
+    "P136",
+    "P137",
+    "P140",
+    "P150",
+    "P155",
+    "P156",
+    "P159",
+    "P161",
+    "P162",
+    "P166",
+    "P170",
+    "P171",
+    "P172",
+    "P175",
+    "P176",
+    "P178",
+    "P179",
+    "P190",
+    "P194",
+    "P205",
+    "P206",
+    "P241",
+    "P264",
+    "P272",
+    "P276",
+    "P279",
+    "P355",
+    "P361",
+    "P364",
+    "P400",
+    "P403",
+    "P449",
+    "P463",
+    "P488",
+    "P495",
+    "P527",
+    "P551",
+    "P569",
+    "P570",
+    "P571",
+    "P576",
+    "P577",
+    "P580",
+    "P582",
+    "P585",
+    "P607",
+    "P674",
+    "P676",
+    "P706",
+    "P710",
+    "P737",
+    "P740",
+    "P749",
+    "P800",
+    "P807",
+    "P840",
+    "P937",
+    "P1001",
+    "P1056",
+    "P1198",
+    "P1336",
+    "P1344",
+    "P1365",
+    "P1366",
+    "P1376",
+    "P1412",
+    "P1441",
+    "P3373"
+  ],
+  "priority_relation_ids": [
+    "P17",
+    "P27",
+    "P30",
+    "P31",
+    "P69",
+    "P108",
+    "P127",
+    "P131",
+    "P150",
+    "P159",
+    "P175",
+    "P264",
+    "P355",
+    "P361",
+    "P463",
+    "P527",
+    "P569",
+    "P570",
+    "P571",
+    "P577",
+    "P749"
+  ],
+  "priority_relation_specs": [
+    {
+      "relation_id": "P17",
+      "label": "country",
+      "definition": "sovereign state that this item is in (not to be used for human beings)",
+      "direction": "subject non-human entity/place -> sovereign country"
+    },
+    {
+      "relation_id": "P27",
+      "label": "country of citizenship",
+      "definition": "the object is a country that recognizes the subject as its citizen",
+      "direction": "person -> country of citizenship"
+    },
+    {
+      "relation_id": "P30",
+      "label": "continent",
+      "definition": "continent of which the subject is a part",
+      "direction": "place/country -> continent"
+    },
+    {
+      "relation_id": "P31",
+      "label": "instance of",
+      "definition": "type to which this subject corresponds/belongs. Different from P279 (subclass of); for example: K2 is an instance of mountain; volcanoes form a subclass of mountains, and the volcano is a type (instance) of volcanic landform",
+      "direction": "instance -> class/type"
+    },
+    {
+      "relation_id": "P69",
+      "label": "educated at",
+      "definition": "educational institution attended by subject",
+      "direction": "person -> educational institution attended"
+    },
+    {
+      "relation_id": "P108",
+      "label": "employer",
+      "definition": "person or organization for which the subject works or worked",
+      "direction": "person -> employer"
+    },
+    {
+      "relation_id": "P127",
+      "label": "owned by",
+      "definition": "owner of the subject",
+      "direction": "owned entity/organization -> owner or owning group"
+    },
+    {
+      "relation_id": "P131",
+      "label": "located in the administrative territorial entity",
+      "definition": "the item is located on the territory of the following administrative entity. ",
+      "direction": "place/entity -> containing administrative territorial entity"
+    },
+    {
+      "relation_id": "P150",
+      "label": "contains the administrative territorial entity",
+      "definition": "(list of) direct subdivisions of an administrative territorial entity",
+      "direction": "administrative entity -> directly contained subdivision"
+    },
+    {
+      "relation_id": "P159",
+      "label": "headquarters location",
+      "definition": "city or town where an organization's headquarters is or has been situated. Use P276 qualifier for specific building",
+      "direction": "organization -> headquarters/base city or location"
+    },
+    {
+      "relation_id": "P175",
+      "label": "performer",
+      "definition": "actor, musician, band or other performer associated with this role or musical work",
+      "direction": "creative work -> performer"
+    },
+    {
+      "relation_id": "P264",
+      "label": "record label",
+      "definition": "brand and trademark associated with the marketing of subject music recordings and music videos",
+      "direction": "musical work/artist -> record label"
+    },
+    {
+      "relation_id": "P355",
+      "label": "has subsidiary",
+      "definition": "subsidiary of a company or organization; generally a fully owned separate corporation. ",
+      "direction": "parent organization -> subsidiary"
+    },
+    {
+      "relation_id": "P361",
+      "label": "part of",
+      "definition": "object of which the subject is a part (if this subject is already part of object A which is a part of object B, then please only make the subject part of object A), inverse property of \"has part\"",
+      "direction": "part/item -> larger whole or series; use only when a more specific corporate property is not supported"
+    },
+    {
+      "relation_id": "P463",
+      "label": "member of",
+      "definition": "organization, club or musical group to which the subject belongs. ",
+      "direction": "person/organization -> organization or consortium of which it is a member"
+    },
+    {
+      "relation_id": "P527",
+      "label": "has part(s)",
+      "definition": "part of this subject; inverse property of \"part of\" (P361). See also \"has parts of the class\" (P2670).",
+      "direction": "whole -> component/part"
+    },
+    {
+      "relation_id": "P569",
+      "label": "date of birth",
+      "definition": "date on which the subject was born",
+      "direction": "person -> birth date"
+    },
+    {
+      "relation_id": "P570",
+      "label": "date of death",
+      "definition": "date on which the subject died",
+      "direction": "person -> death date"
+    },
+    {
+      "relation_id": "P571",
+      "label": "inception",
+      "definition": "time when an entity begins to exist; for date of official opening use P1619",
+      "direction": "organization/work/event -> inception or establishment date"
+    },
+    {
+      "relation_id": "P577",
+      "label": "publication date",
+      "definition": "date or point in time when a work was first published or released",
+      "direction": "creative work -> publication/release date"
+    },
+    {
+      "relation_id": "P749",
+      "label": "parent organization",
+      "definition": "parent organization of an organization, opposite of subsidiaries (P355)",
+      "direction": "subsidiary/branch -> parent organization"
+    }
+  ],
+  "canonical_relation_format": "Pxxx : ontology label",
+  "relation_instance_format": "SOURCE || LEXICAL RELATION PHRASE || TARGET",
+  "layer_guidance": {
+    "layer01": {
+      "goal": "Extract exact endpoint nodes and one structured relation instance per independently supported pair.",
+      "explicit_relations": "Extract direct statements from the article.",
+      "controlled_inference": "Also allow high-confidence demonym, alias/coreference, “the country”, and common city-country containment links. Mark them inferred in justification.",
+      "separation_rule": "A clause containing both a date and a location must yield two different relation instances.",
+      "do_not": "Do not select P-IDs, do not emit topical phrases, do not merge pairs, and do not invent obscure geography.",
+      "country_coverage_check": "Before returning, identify country anchors and verify every supported non-human ORG/LOC -> sovereign country pair has a separate relation instance.",
+      "country_subjects": "Consider the main organization, named corporate/parent group, and named cities/locations. Use explicit text, demonyms, the-country coreference, or only very high-confidence city-country knowledge.",
+      "country_endpoint_normalization": "Use a canonical country noun as endpoint when an unambiguous demonym is normalized. Explain that the relation is inferred.",
+      "country_predicate_contract": "Use exactly one of: is in country; demonym implies country; the country refers to."
+    },
+    "layer02": {
+      "goal": "For each structured relation instance, select exactly one canonical ontology property or found=false.",
+      "selection": "Use source type, target type, direction, specificity, definition, domain and range.",
+      "specificity": "Prefer P159 over P131 for an organization explicitly based/headquartered in a city; prefer P127/P749 over generic P361 in corporate ownership/parent contexts; use P571 for organization establishment/relaunch dates and P577 only for publication/release dates of creative works.",
+      "output_contract": "controlled_relation:Pxxx : label; promote_to_ontology:true; preserve source_label and target_label hints.",
+      "compact_prompt": "Use at most five ontology properties selected from ontology RAG plus predicate-specific candidates. Do not send the full relation inventory to the classifier.",
+      "corporate_guardrail": "ORG part of a corporate/media group -> P127 owned by unless explicit subsidiary/branch/division/laboratory wording supports P749. P361 is fallback only.",
+      "organization_location_guardrail": "ORG based/headquartered in city -> P159. For this DocRED profile, an organization launched/relaunched in its operating/base city also maps to P159 rather than generic P276/P131.",
+      "country_guardrail": "Non-human ORG/LOC to sovereign country -> P17, never P27."
+    },
+    "layer04": {
+      "goal": "Resolve the exact source and target candidates already named by Layer 1 and linked by Layer 2.",
+      "validation": "Reject endpoint pairs that violate coarse DocRED types or ontology range, such as P577 to a location.",
+      "fallback": "Use the native parallel Layer 4 LLM task only when exact endpoint labels cannot be resolved.",
+      "projection_note": "Benchmark mention normalization occurs only after the native run and never changes native candidates or triples."
+    }
+  },
+  "contrastive_rules": [
+    {
+      "context": "ORG is based/headquartered in CITY",
+      "prefer": "P159 headquarters location",
+      "avoid": "P131 administrative containment unless the statement is about territorial containment; P276 only for a generic event/object location.",
+      "candidate_relation_ids": [
+        "P159",
+        "P131",
+        "P276"
+      ]
+    },
+    {
+      "context": "ORG is part of a corporate/media group",
+      "prefer": "P127 owned by or P749 parent organization when ownership/parent semantics are supported",
+      "avoid": "P361 generic part of as the first choice.",
+      "candidate_relation_ids": [
+        "P127",
+        "P749",
+        "P361"
+      ]
+    },
+    {
+      "context": "ORG is a member of consortium/association",
+      "prefer": "P463 member of",
+      "avoid": "P127, P749, P361.",
+      "candidate_relation_ids": [
+        "P463",
+        "P361"
+      ]
+    },
+    {
+      "context": "ORG was established/founded/relaunched on DATE",
+      "prefer": "P571 inception",
+      "avoid": "P577 publication date.",
+      "candidate_relation_ids": [
+        "P571",
+        "P577",
+        "P580"
+      ]
+    },
+    {
+      "context": "creative work was published/released on DATE",
+      "prefer": "P577 publication date",
+      "avoid": "P571 unless the subject is the organization/event itself.",
+      "candidate_relation_ids": [
+        "P577",
+        "P571"
+      ]
+    },
+    {
+      "context": "non-human entity/place belongs to sovereign country",
+      "prefer": "P17 country",
+      "avoid": "P27 country of citizenship, which is for people.",
+      "candidate_relation_ids": [
+        "P17",
+        "P27"
+      ]
+    },
+    {
+      "context": "place is inside administrative entity",
+      "prefer": "P131",
+      "avoid": "P159 unless source is an organization and target is its headquarters/base.",
+      "candidate_relation_ids": [
+        "P131",
+        "P159",
+        "P276"
+      ]
+    }
+  ],
+  "relation_instance_examples": [
+    {
+      "text": "Northstar Television is based in Harbor City.",
+      "expressions": [
+        "Northstar Television",
+        "Harbor City",
+        "Northstar Television || is based in || Harbor City"
+      ],
+      "note": "The relation instance is separate from endpoint expressions."
+    },
+    {
+      "text": "Northstar Institute was established in June 2010 in Harbor City.",
+      "expressions": [
+        "Northstar Institute",
+        "June 2010",
+        "Harbor City",
+        "Northstar Institute || was established in || June 2010",
+        "Northstar Institute || was established in || Harbor City"
+      ],
+      "note": "Separate temporal and locative pairs."
+    },
+    {
+      "text": "The broadcaster is a member of the Digital Networks Alliance.",
+      "expressions": [
+        "The broadcaster || is a member of || Digital Networks Alliance"
+      ],
+      "note": "Membership is its own pair."
+    },
+    {
+      "text": "Northstar Television is a Zetan broadcaster.",
+      "expressions": [
+        "Northstar Television || Zetan demonym implies country || Republic Z"
+      ],
+      "note": "Controlled inferred relation; mark inferred and explain the demonym."
+    }
+  ],
+  "relation_examples": [
+    {
+      "text": "Northstar Television is based in Harbor City.",
+      "source_label": "Northstar Television",
+      "relation_label": "P159 : headquarters location",
+      "target_label": "Harbor City",
+      "explanation": "Organization-to-base-city direction. Keep the exact entities and canonicalize the predicate to P159.",
+      "candidate_relation_ids": [
+        "P159"
+      ]
+    },
+    {
+      "text": "Harbor City is in Republic Z.",
+      "source_label": "Harbor City",
+      "relation_label": "P17 : country",
+      "target_label": "Republic Z",
+      "explanation": "Use P17 for a non-human place/entity to its sovereign country.",
+      "candidate_relation_ids": [
+        "P17"
+      ]
+    },
+    {
+      "text": "Northstar Television is part of Northstar Media Group.",
+      "source_label": "Northstar Television",
+      "relation_label": "P127 : owned by",
+      "target_label": "Northstar Media Group",
+      "explanation": "In a corporate/group context, test ownership or parent-organization semantics before generic P361.",
+      "candidate_relation_ids": [
+        "P127"
+      ]
+    },
+    {
+      "text": "Northstar Research Europe is a subsidiary of Northstar Research.",
+      "source_label": "Northstar Research Europe",
+      "relation_label": "P749 : parent organization",
+      "target_label": "Northstar Research",
+      "explanation": "Subsidiary-to-parent direction.",
+      "candidate_relation_ids": [
+        "P749"
+      ]
+    },
+    {
+      "text": "Northstar Research has subsidiary Northstar Research Europe.",
+      "source_label": "Northstar Research",
+      "relation_label": "P355 : has subsidiary",
+      "target_label": "Northstar Research Europe",
+      "explanation": "Parent-to-subsidiary direction.",
+      "candidate_relation_ids": [
+        "P355"
+      ]
+    },
+    {
+      "text": "The broadcaster is a member of the Digital Networks Alliance.",
+      "source_label": "The broadcaster",
+      "relation_label": "P463 : member of",
+      "target_label": "Digital Networks Alliance",
+      "explanation": "Membership is not ownership, parent organization, or generic part-of.",
+      "candidate_relation_ids": [
+        "P463"
+      ]
+    },
+    {
+      "text": "The institute was established in June 2010.",
+      "source_label": "The institute",
+      "relation_label": "P571 : inception",
+      "target_label": "June 2010",
+      "explanation": "Organization-to-establishment-date direction.",
+      "candidate_relation_ids": [
+        "P571"
+      ]
+    },
+    {
+      "text": "Alex Morgan studied at Central College.",
+      "source_label": "Alex Morgan",
+      "relation_label": "P69 : educated at",
+      "target_label": "Central College",
+      "explanation": "Person-to-school direction.",
+      "candidate_relation_ids": [
+        "P69"
+      ]
+    },
+    {
+      "text": "The single was performed by Artist Q.",
+      "source_label": "The single",
+      "relation_label": "P175 : performer",
+      "target_label": "Artist Q",
+      "explanation": "Creative-work-to-performer direction.",
+      "candidate_relation_ids": [
+        "P175"
+      ]
+    },
+    {
+      "text": "The single was released by Aurora Records.",
+      "source_label": "The single",
+      "relation_label": "P264 : record label",
+      "target_label": "Aurora Records",
+      "explanation": "Musical-work-to-record-label direction.",
+      "candidate_relation_ids": [
+        "P264"
+      ]
+    },
+    {
+      "text": "Northstar Broadcasting was relaunched in Harbor City.",
+      "source_label": "Northstar Broadcasting",
+      "relation_label": "P159 : headquarters location",
+      "target_label": "Harbor City",
+      "explanation": "For this DocRED profile, an organization launch/relaunch city is treated as its base/headquarters location rather than generic event location.",
+      "candidate_relation_ids": [
+        "P159",
+        "P276",
+        "P131"
+      ]
+    },
+    {
+      "text": "Northstar Television is part of Northstar Media Group.",
+      "source_label": "Northstar Television",
+      "relation_label": "P127 : owned by",
+      "target_label": "Northstar Media Group",
+      "explanation": "Corporate/media-group part-of wording maps to ownership; reserve P749 for explicit subsidiary/branch/unit wording.",
+      "candidate_relation_ids": [
+        "P127",
+        "P749",
+        "P361"
+      ]
+    }
+  ],
+  "inference_policy": "Controlled document-level inference is allowed for explicit aliases/coreference, unambiguous demonyms, phrases such as “the country”, and very high-confidence city-country containment. Country propagation is performed in the single native Layer 1 call; no post-run closure creates relations.",
+  "anti_leakage": "No gold entity clusters, gold relation pairs, or facts copied from this evaluation document are present in guidance.",
+  "country_propagation_examples": [
+    {
+      "text": "Northstar TV is a Zetan broadcaster based in Harbor City, Republic Z. It is part of Northstar Media Group, one of the largest media groups in the country.",
+      "expected_relation_instances": [
+        "Northstar TV || demonym implies country || Republic Z",
+        "Harbor City || is in country || Republic Z",
+        "Northstar Media Group || the country refers to || Republic Z"
+      ],
+      "note": "One country relation per supported non-human subject; all facts are contained in the synthetic sentence."
+    },
+    {
+      "text": "Aster Institute opened in Paris and is a French research organization.",
+      "expected_relation_instances": [
+        "Aster Institute || demonym implies country || France",
+        "Paris || is in country || France"
+      ],
+      "note": "The city-country link is permitted because it is universally known and confidence is high."
+    }
+  ],
+  "relation_instance_examples_v5": [
+    {
+      "text": "Northstar Television is based in Harbor City.",
+      "expressions": [
+        "Northstar Television",
+        "Harbor City",
+        "Northstar Television || is based in || Harbor City"
+      ],
+      "note": "Exact endpoints plus one relation instance."
+    },
+    {
+      "text": "Northstar Institute was established in June 2010 in Harbor City.",
+      "expressions": [
+        "Northstar Institute",
+        "June 2010",
+        "Harbor City",
+        "Northstar Institute || was established on || June 2010",
+        "Northstar Institute || was established in || Harbor City"
+      ],
+      "note": "Temporal and locative pairs are separate."
+    },
+    {
+      "text": "Northstar Television is part of Northstar Media Group.",
+      "expressions": [
+        "Northstar Television",
+        "Northstar Media Group",
+        "Northstar Television || is part of the corporate group || Northstar Media Group"
+      ],
+      "note": "Corporate group wording remains explicit so Layer 2 can distinguish P127 from P749/P361."
+    },
+    {
+      "text": "The broadcaster is a member of the Digital Networks Alliance.",
+      "expressions": [
+        "The broadcaster || is a member of || Digital Networks Alliance"
+      ],
+      "note": "Membership is a separate pair."
+    }
+  ],
+  "predicate_candidate_sets": [
+    {
+      "triggers": [
+        "based in",
+        "headquartered in",
+        "base in"
+      ],
+      "candidate_relation_ids": [
+        "P159",
+        "P131",
+        "P276"
+      ]
+    },
+    {
+      "triggers": [
+        "relaunched in",
+        "launched in",
+        "opened in"
+      ],
+      "candidate_relation_ids": [
+        "P159",
+        "P276",
+        "P131"
+      ]
+    },
+    {
+      "triggers": [
+        "part of the corporate group",
+        "part of",
+        "media group"
+      ],
+      "candidate_relation_ids": [
+        "P127",
+        "P749",
+        "P361"
+      ]
+    },
+    {
+      "triggers": [
+        "subsidiary of",
+        "branch of",
+        "division of",
+        "laboratory of"
+      ],
+      "candidate_relation_ids": [
+        "P749",
+        "P127",
+        "P361"
+      ]
+    },
+    {
+      "triggers": [
+        "member of"
+      ],
+      "candidate_relation_ids": [
+        "P463",
+        "P361"
+      ]
+    },
+    {
+      "triggers": [
+        "relaunched on",
+        "established on",
+        "founded on"
+      ],
+      "candidate_relation_ids": [
+        "P571",
+        "P580",
+        "P577"
+      ]
+    },
+    {
+      "triggers": [
+        "demonym implies country",
+        "is in country",
+        "the country refers to",
+        "has country"
+      ],
+      "candidate_relation_ids": [
+        "P17",
+        "P27",
+        "P131"
+      ]
+    },
+    {
+      "triggers": [
+        "available on"
+      ],
+      "candidate_relation_ids": [
+        "P400",
+        "P449"
+      ]
+    }
+  ]
+}

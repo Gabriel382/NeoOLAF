@@ -624,7 +624,24 @@ def merge_input_task_guidance(guidance: UserGuidance, record: dict[str, Any]) ->
             str(item.get("target_label") or ""),
         )
         if all(key) and key not in existing_examples:
-            guidance.relation_examples.append(RelationExample(**item))
+            # ``task_guidance.relation_examples`` may carry experiment-only
+            # metadata (for example ``candidate_relation_ids``) used by the
+            # compact DocRED prompt builder.  ``RelationExample`` intentionally
+            # contains only the stable NeoOLAF guidance contract, so construct
+            # it explicitly instead of forwarding every input key.
+            guidance.relation_examples.append(
+                RelationExample(
+                    text=key[0],
+                    relation_label=key[1],
+                    source_label=key[2],
+                    target_label=key[3],
+                    explanation=(
+                        str(item.get("explanation"))
+                        if item.get("explanation") is not None
+                        else None
+                    ),
+                )
+            )
             existing_examples.add(key)
     return guidance
 

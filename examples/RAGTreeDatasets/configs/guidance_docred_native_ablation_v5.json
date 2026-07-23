@@ -1,0 +1,194 @@
+{
+  "domain_focus": "Open-domain DocRED document-level relation extraction with country-aware coverage and compact ontology classification using the supplied 96-property ontology.",
+  "abstraction_level": "shallow, exact named instances, ontology-canonical relations",
+  "priority_relations": [
+    "P17 : country",
+    "P27 : country of citizenship",
+    "P30 : continent",
+    "P31 : instance of",
+    "P69 : educated at",
+    "P108 : employer",
+    "P127 : owned by",
+    "P131 : located in the administrative territorial entity",
+    "P150 : contains the administrative territorial entity",
+    "P159 : headquarters location",
+    "P175 : performer",
+    "P264 : record label",
+    "P355 : has subsidiary",
+    "P361 : part of",
+    "P463 : member of",
+    "P527 : has part(s)",
+    "P569 : date of birth",
+    "P570 : date of death",
+    "P571 : inception",
+    "P577 : publication date",
+    "P749 : parent organization"
+  ],
+  "population_policy": "Keep exact named endpoints as instances. The single native Layer 1 call may emit controlled country relations when supported. Promote only document-supported relation candidates linked to a P-ID. No post-run closure or direct extractor.",
+  "event_modeling_preference": "Dates and locations remain endpoint entities. One relation instance must represent exactly one source-predicate-target pair. Separate temporal and locative relations from the same sentence.",
+  "ontology_depth": "shallow",
+  "promotion_min_confidence": 0.35,
+  "hierarchy_min_confidence": 0.5,
+  "concept_promotion_bias": 0.15,
+  "typing_examples": [
+    {
+      "text": "Northstar Television",
+      "expected_type": "entity",
+      "explanation": "Exact organization endpoint."
+    },
+    {
+      "text": "12 May 2011",
+      "expected_type": "entity",
+      "explanation": "Date endpoint."
+    },
+    {
+      "text": "Northstar Television || is based in || Harbor City",
+      "expected_type": "relation",
+      "explanation": "One structured relation instance."
+    }
+  ],
+  "relation_examples": [
+    {
+      "text": "Northstar Television is based in Harbor City.",
+      "source_label": "Northstar Television",
+      "relation_label": "P159 : headquarters location",
+      "target_label": "Harbor City",
+      "explanation": "Organization-to-base-city direction. Keep the exact entities and canonicalize the predicate to P159."
+    },
+    {
+      "text": "Harbor City is in Republic Z.",
+      "source_label": "Harbor City",
+      "relation_label": "P17 : country",
+      "target_label": "Republic Z",
+      "explanation": "Use P17 for a non-human place/entity to its sovereign country."
+    },
+    {
+      "text": "Northstar Television is part of Northstar Media Group.",
+      "source_label": "Northstar Television",
+      "relation_label": "P127 : owned by",
+      "target_label": "Northstar Media Group",
+      "explanation": "In a corporate/group context, test ownership or parent-organization semantics before generic P361."
+    },
+    {
+      "text": "Northstar Research Europe is a subsidiary of Northstar Research.",
+      "source_label": "Northstar Research Europe",
+      "relation_label": "P749 : parent organization",
+      "target_label": "Northstar Research",
+      "explanation": "Subsidiary-to-parent direction."
+    },
+    {
+      "text": "Northstar Research has subsidiary Northstar Research Europe.",
+      "source_label": "Northstar Research",
+      "relation_label": "P355 : has subsidiary",
+      "target_label": "Northstar Research Europe",
+      "explanation": "Parent-to-subsidiary direction."
+    },
+    {
+      "text": "The broadcaster is a member of the Digital Networks Alliance.",
+      "source_label": "The broadcaster",
+      "relation_label": "P463 : member of",
+      "target_label": "Digital Networks Alliance",
+      "explanation": "Membership is not ownership, parent organization, or generic part-of."
+    },
+    {
+      "text": "The institute was established in June 2010.",
+      "source_label": "The institute",
+      "relation_label": "P571 : inception",
+      "target_label": "June 2010",
+      "explanation": "Organization-to-establishment-date direction."
+    },
+    {
+      "text": "Alex Morgan studied at Central College.",
+      "source_label": "Alex Morgan",
+      "relation_label": "P69 : educated at",
+      "target_label": "Central College",
+      "explanation": "Person-to-school direction."
+    },
+    {
+      "text": "The single was performed by Artist Q.",
+      "source_label": "The single",
+      "relation_label": "P175 : performer",
+      "target_label": "Artist Q",
+      "explanation": "Creative-work-to-performer direction."
+    },
+    {
+      "text": "The single was released by Aurora Records.",
+      "source_label": "The single",
+      "relation_label": "P264 : record label",
+      "target_label": "Aurora Records",
+      "explanation": "Musical-work-to-record-label direction."
+    },
+    {
+      "text": "Aster TV is a Lydian broadcaster. Port Azure is its base city in Lydia. Aster Media is one of the largest media groups in the country.",
+      "source_label": "Aster Media",
+      "relation_label": "P17 : country",
+      "target_label": "Lydia",
+      "explanation": "The-country coreference can support a group-to-country relation when the antecedent is unambiguous."
+    },
+    {
+      "text": "Aster TV is part of Aster Media Group.",
+      "source_label": "Aster TV",
+      "relation_label": "P127 : owned by",
+      "target_label": "Aster Media Group",
+      "explanation": "Corporate/media-group part-of wording maps to ownership. P749 requires explicit subsidiary, branch, division, laboratory, or unit wording."
+    },
+    {
+      "text": "Aster Broadcasting was relaunched in Port Azure.",
+      "source_label": "Aster Broadcasting",
+      "relation_label": "P159 : headquarters location",
+      "target_label": "Port Azure",
+      "explanation": "In the DocRED profile, an organization launch/relaunch city is interpreted as its operating/base location."
+    }
+  ],
+  "promotion_examples": [
+    {
+      "text": "P159 : headquarters location",
+      "promote": true,
+      "promoted_label": "P159 : headquarters location",
+      "explanation": "Promote a relation only when a document relation instance selected it."
+    },
+    {
+      "text": "Northstar Television",
+      "promote": false,
+      "promoted_label": "Northstar Television",
+      "explanation": "Named instances remain instances."
+    }
+  ],
+  "negative_examples": [
+    {
+      "text": "Northstar Television -> entity",
+      "explanation": "Do not replace names with generic labels.",
+      "target_layer": "layer03"
+    },
+    {
+      "text": "one broad expression containing both a date and location",
+      "explanation": "Create separate source-predicate-target relation instances.",
+      "target_layer": "layer01"
+    },
+    {
+      "text": "P577 publication date -> city",
+      "explanation": "Reject because the range must be temporal.",
+      "target_layer": "layer04"
+    },
+    {
+      "text": "all 96 ontology properties as mention-free relation candidates",
+      "explanation": "The vocabulary stays in the seed ontology and retrieval index, not the document candidate set.",
+      "target_layer": "layer03"
+    },
+    {
+      "text": "corporate group part-of -> P749 without branch/subsidiary wording",
+      "explanation": "Prefer P127; P749 is for explicit organizational child/parent units.",
+      "target_layer": "layer02"
+    },
+    {
+      "text": "full 96-property inventory repeated in every Layer 2 prompt",
+      "explanation": "Use ontology RAG plus a compact top-five candidate list.",
+      "target_layer": "layer02"
+    },
+    {
+      "text": "post-run country closure creates missing triples",
+      "explanation": "Forbidden. Country relations must originate in the native Layer 1 relation instances.",
+      "target_layer": "analysis"
+    }
+  ]
+}
