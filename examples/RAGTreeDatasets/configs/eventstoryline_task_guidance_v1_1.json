@@ -1,0 +1,136 @@
+{
+  "dataset": "EventStoryLine",
+  "allowed_relation_ids": [
+    "PRECONDITION",
+    "FALLING_ACTION"
+  ],
+  "ignored_gold_relation_keys": [
+    "null"
+  ],
+  "event_key_contract": "S{sent_id}[{token_start}:{token_end}]::{exact trigger tokens}",
+  "relation_instance_contract": "SOURCE_EVENT_KEY || lexical relation cue || TARGET_EVENT_KEY",
+  "relation_specs": [
+    {
+      "relation_id": "PRECONDITION",
+      "label": "PRECONDITION",
+      "direction": "source event establishes, enables, motivates, or is required for the target event",
+      "definition": "A directed event-event relation where the source is a prerequisite, enabling condition, motivating circumstance, or necessary setup for the target.",
+      "positive_cues": [
+        "enables",
+        "requires",
+        "because",
+        "after",
+        "to begin",
+        "in order to",
+        "condition for",
+        "motivates",
+        "allows"
+      ],
+      "negative_note": "Do not choose merely because the source is mentioned earlier. Semantic dependency is required."
+    },
+    {
+      "relation_id": "FALLING_ACTION",
+      "label": "FALLING_ACTION",
+      "direction": "source event is connected to a downstream, follow-up, consequence, continuation, aftermath, or elaborating event represented by the target",
+      "definition": "A directed storyline relation linking an event to a subsequent/downstream consequence, continuation, aftermath, or narratively dependent event when PRECONDITION is not the better interpretation.",
+      "positive_cues": [
+        "then",
+        "followed by",
+        "resulted in",
+        "led to",
+        "afterwards",
+        "continued with",
+        "subsequently",
+        "aftermath",
+        "consequence"
+      ],
+      "negative_note": "Do not invert the pair and do not use this as a generic co-occurrence label."
+    }
+  ],
+  "layer_guidance": {
+    "layer01": {
+      "goal": "Extract exact event mentions and directed relation instances from the whole document.",
+      "event_mentions": [
+        "Use only events/states/actions explicitly evoked by a trigger span in one indexed sentence.",
+        "Represent every event mention as S{sentence}[start:end]::trigger using zero-based token offsets and end-exclusive spans.",
+        "Keep repeated trigger words as distinct event mentions when sentence or offsets differ.",
+        "Do not output people, organizations, locations, dates, or objects as endpoint candidates unless the phrase itself evokes an event/state."
+      ],
+      "relations": [
+        "Create one SOURCE || lexical cue || TARGET expression per supported directed event pair.",
+        "Use only PRECONDITION-like or FALLING_ACTION-like relations; unrelated event co-occurrence is not a relation.",
+        "Do not output the canonical relation ID in Layer 1. Layer 2 selects it.",
+        "Every relation endpoint must also exist as an event_mention expression.",
+        "Use the indexed token table, not guessed character positions."
+      ]
+    },
+    "layer02": {
+      "goal": "Choose exactly PRECONDITION or FALLING_ACTION for one already extracted event pair, or found=false.",
+      "rules": [
+        "Use semantic direction, not sentence order alone.",
+        "PRECONDITION is preferred when the source enables, motivates, requires, or sets up the target.",
+        "FALLING_ACTION is preferred for a downstream consequence, continuation, aftermath, or follow-up relation.",
+        "Choose found=false for mere topical co-occurrence, duplicate wording, or unsupported direction."
+      ]
+    },
+    "layer04": {
+      "goal": "Resolve exact event keys to their native event candidates and preserve the Layer 2 direction.",
+      "rules": [
+        "Both endpoints must be event candidates.",
+        "Never swap source and target to improve apparent plausibility.",
+        "Reject a relation when either indexed event key cannot be resolved uniquely."
+      ]
+    }
+  },
+  "synthetic_relation_examples": [
+    {
+      "text": "The court order required the defendant to enter treatment.",
+      "source_label": "S0[1:3]::court order",
+      "relation_label": "PRECONDITION",
+      "target_label": "S0[8:10]::enter treatment",
+      "explanation": "The order establishes a required condition for entering treatment."
+    },
+    {
+      "text": "The collision was followed by an investigation.",
+      "source_label": "S0[1:2]::collision",
+      "relation_label": "FALLING_ACTION",
+      "target_label": "S0[6:7]::investigation",
+      "explanation": "The investigation is a downstream follow-up to the collision."
+    },
+    {
+      "text": "Hiring counsel enabled the appeal to proceed.",
+      "source_label": "S0[0:2]::Hiring counsel",
+      "relation_label": "PRECONDITION",
+      "target_label": "S0[4:7]::appeal to proceed",
+      "explanation": "The first event enables the second."
+    },
+    {
+      "text": "The announcement triggered protests, followed by arrests.",
+      "source_label": "S0[1:2]::announcement",
+      "relation_label": "FALLING_ACTION",
+      "target_label": "S0[7:8]::arrests",
+      "explanation": "The arrests are part of the downstream storyline after the announcement."
+    }
+  ],
+  "negative_examples": [
+    {
+      "text": "S2[4:5]::meeting and S5[9:10]::speech occur in the same article",
+      "explanation": "Co-occurrence alone is not a relation."
+    },
+    {
+      "text": "Lindsay Lohan",
+      "explanation": "A person is not an event endpoint."
+    },
+    {
+      "text": "May 3, 2013",
+      "explanation": "A date is not an event endpoint."
+    },
+    {
+      "text": "null",
+      "explanation": "The dataset's null key is excluded from the relation vocabulary and evaluation."
+    }
+  ],
+  "seed_ontology": "OWL-Time (data/ontology/OWLTime/time.ttl)",
+  "seed_ontology_role": "Temporal grounding only; PRECONDITION and FALLING_ACTION remain the controlled normalized benchmark relation labels.",
+  "evaluation_scope": "All normalized EventStoryLine records; null relation pairs excluded."
+}

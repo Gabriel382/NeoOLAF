@@ -1,0 +1,270 @@
+{
+  "profile_name": "eventstoryline_native_event_relation_ablation_v1_1_owltime",
+  "description": "One-document EventStoryLine native NeoOLAF experiment using the same OWL-Time seed ontology as RAGTree, exact indexed event mentions, one whole-document Layer 1 call, parallel two-class controlled relation linking in Layer 2, deterministic event endpoint resolution in Layer 4, full Layer 0-12 artifacts, and strict evaluation after execution.",
+  "language": {
+    "source": "en",
+    "target": "en",
+    "translate": false,
+    "translate_in_preprocessing": false,
+    "llm_translate_inside_extraction": false
+  },
+  "chunking": {
+    "strategies": [
+      "fixed"
+    ],
+    "preferred_unit_for_extraction": "chunk",
+    "whole_document_preferred": true,
+    "chunk_size": 18000,
+    "overlap": 0,
+    "max_safe_chunk_chars": 26000
+  },
+  "layers": {
+    "layer01_linguistic_expression_extraction": {
+      "strategy": "eventstoryline_indexed_event_relation_extraction",
+      "max_concurrency": 1,
+      "rag_enabled": false,
+      "max_output_tokens": 8192,
+      "request_timeout_seconds": 180,
+      "response_hard_cap_chars": 52000
+    },
+    "layer02_candidate_enrichment": {
+      "strategy": "eventstoryline_two_relation_contrastive",
+      "max_concurrency": 16,
+      "max_expressions": null,
+      "use_web_search": false,
+      "retry_failed_calls": 1,
+      "max_output_tokens": 384,
+      "request_timeout_seconds": 60,
+      "response_hard_cap_chars": 5000,
+      "deterministic_node_enrichment": true,
+      "llm_relation_enrichment_only": true,
+      "compact_candidate_cap": 2
+    },
+    "layer03_candidate_typing_resolution": {
+      "strategy": "ontology_aware_role_based_typing",
+      "max_concurrency": 1,
+      "max_expressions": null,
+      "inject_empty_relation_schema_candidates": false
+    },
+    "layer04_candidate_relation_extraction": {
+      "strategy": "structured_exact_then_native_parallel_fallback",
+      "max_concurrency": 8,
+      "max_relation_mentions": null,
+      "retry_failed_calls": 0,
+      "max_attempts_per_relation": 1,
+      "retry_wait_seconds": 0.5,
+      "max_output_tokens": 384,
+      "request_timeout_seconds": 60,
+      "response_hard_cap_chars": 6000,
+      "deterministic_exact_endpoint_resolution": true,
+      "event_to_event_validation": true
+    },
+    "layer05_candidate_triple_generation": {
+      "strategy": "ontology_aware_assertion_to_triples",
+      "max_concurrency": 4
+    },
+    "layer06_concept_relation_induction": {
+      "strategy": "ontology_aware_triple_concept_relation_induction",
+      "max_concurrency": 4
+    },
+    "layer07_hierarchisation": {
+      "strategy": "ontology_aware_parent_hint_hierarchy",
+      "max_concurrency": 4
+    },
+    "layer08_axiom_schemata_extraction": {
+      "strategy": "ontology_aware_axiom_schema_generation",
+      "max_concurrency": 4
+    },
+    "layer09_general_axiom_extraction": {
+      "strategy": "ontology_aware_schema_to_general_axioms",
+      "max_concurrency": 4
+    },
+    "layer10_validation_reasoning": {
+      "strategy": "ontology_aware_validation_reasoning",
+      "max_concurrency": 4
+    },
+    "layer11_inference_completion": {
+      "strategy": "ontology_aware_semantic_completion",
+      "max_concurrency": 4
+    },
+    "layer12_serialization": {
+      "max_concurrency": 4
+    }
+  },
+  "relations": {
+    "allowed": [],
+    "canonical_identifier": "EventStoryLine relation label",
+    "property_count": 2,
+    "catalog_path": "examples/RAGTreeDatasets/ontology/eventstoryline_relation_catalog.json",
+    "ontology_property_count": null,
+    "priority_ids": [
+      "PRECONDITION",
+      "FALLING_ACTION"
+    ],
+    "allowed_inventory_location": "controlled task relation catalog + task guidance; OWL-Time is the external seed ontology and target relations may be induced as ontology deltas"
+  },
+  "rag": {
+    "backend": "owl_time_seed_plus_controlled_eventstoryline_task_schema",
+    "top_k": 4,
+    "allowed_spaces": {
+      "layer02_candidate_enrichment": [
+        "ontology"
+      ],
+      "layer03_candidate_typing_resolution": [
+        "ontology"
+      ],
+      "layer04_candidate_relation_extraction": [
+        "ontology"
+      ],
+      "layer06_concept_relation_induction": [
+        "ontology"
+      ],
+      "layer07_hierarchisation": [
+        "ontology"
+      ],
+      "layer08_axiom_schemata_extraction": [
+        "ontology"
+      ]
+    },
+    "query_expansions": {
+      "precondition": [
+        "before",
+        "temporal entity",
+        "interval",
+        "has beginning",
+        "has end"
+      ],
+      "prerequisite": [
+        "before",
+        "temporal relation",
+        "interval"
+      ],
+      "enable": [
+        "before",
+        "temporal entity",
+        "interval"
+      ],
+      "require": [
+        "before",
+        "temporal entity"
+      ],
+      "falling action": [
+        "after",
+        "temporal entity",
+        "interval"
+      ],
+      "follow": [
+        "after",
+        "temporal relation",
+        "interval"
+      ],
+      "aftermath": [
+        "after",
+        "temporal entity"
+      ],
+      "consequence": [
+        "after",
+        "temporal relation"
+      ],
+      "continuation": [
+        "after",
+        "interval",
+        "temporal entity"
+      ]
+    }
+  },
+  "ontology_linking": {
+    "seed_ontology": "../ragtree/data/ontology/OWLTime/time.ttl",
+    "preserve_event_keys": true,
+    "prefer_relation_ids_over_surface_cues": true,
+    "node_roles": {
+      "event_mention": {
+        "candidate_family": "event",
+        "class_uri": "https://w3id.org/neoolaf/eventstoryline/Event",
+        "class_label": "Event",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false,
+        "definition": "Exact mention-level event instance."
+      },
+      "relation_instance": {
+        "candidate_family": "relation",
+        "class_label": "Event relation instance",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true
+      }
+    },
+    "relation_roles": {
+      "PRECONDITION": {
+        "property_uri": "https://w3id.org/neoolaf/eventstoryline/precondition",
+        "property_label": "PRECONDITION",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "https://w3id.org/neoolaf/eventstoryline/Event",
+        "range": "https://w3id.org/neoolaf/eventstoryline/Event",
+        "definition": "A directed event-event relation where the source is a prerequisite, enabling condition, motivating circumstance, or necessary setup for the target.",
+        "synonyms": [
+          "prerequisite",
+          "enables",
+          "condition for"
+        ]
+      },
+      "FALLING_ACTION": {
+        "property_uri": "https://w3id.org/neoolaf/eventstoryline/fallingAction",
+        "property_label": "FALLING_ACTION",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true,
+        "domain": "https://w3id.org/neoolaf/eventstoryline/Event",
+        "range": "https://w3id.org/neoolaf/eventstoryline/Event",
+        "definition": "A directed storyline relation linking an event to a subsequent/downstream consequence, continuation, aftermath, or narratively dependent event when PRECONDITION is not the better interpretation.",
+        "synonyms": [
+          "follow-up",
+          "aftermath",
+          "consequence",
+          "continuation"
+        ]
+      }
+    },
+    "seed_ontology_role": "External OWL-Time grounding resource, matching the RAGTree EventStoryLine experiment.",
+    "task_relation_schema": "examples/RAGTreeDatasets/ontology/eventstoryline_relation_catalog.json",
+    "task_relation_schema_role": "Controlled benchmark relation IDs and definitions used for mapping and ontology evolution; not a replacement seed ontology."
+  },
+  "eventstoryline_type_constraints": {
+    "PRECONDITION": {
+      "source": [
+        "EVENT"
+      ],
+      "target": [
+        "EVENT"
+      ]
+    },
+    "FALLING_ACTION": {
+      "source": [
+        "EVENT"
+      ],
+      "target": [
+        "EVENT"
+      ]
+    }
+  },
+  "layer02_compact_candidate_cap": 2,
+  "orchestration": {
+    "retry_failed_calls": 1,
+    "retry_sleep_seconds": 1.0
+  },
+  "benchmark_projection": {
+    "enabled": true,
+    "gold_available_to_pipeline": false,
+    "stage": "analysis_after_layer12",
+    "exact_span_first": true,
+    "fallback_unique_trigger": true,
+    "create_relations": false,
+    "same_seed_ontology_as_ragtree": true
+  },
+  "anti_cheating": {
+    "direct_eventstoryline_extraction": false,
+    "source_event_anchoring": false,
+    "gold_pair_hints": false,
+    "post_run_relation_invention": false,
+    "gold_available_during_pipeline": false
+  }
+}
