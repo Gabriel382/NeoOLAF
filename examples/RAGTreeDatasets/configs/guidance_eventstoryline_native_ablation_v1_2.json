@@ -1,0 +1,102 @@
+{
+  "domain_focus": "EventStoryLine document-level event mention and directed storyline relation extraction, grounded with the same OWL-Time seed ontology used in RAGTree, using a two-phase validated event-inventory then closed-pair workflow.",
+  "abstraction_level": "exact event mentions with sentence/token identity; shallow ontology-canonical event relations",
+  "priority_relations": [
+    "PRECONDITION",
+    "FALLING_ACTION"
+  ],
+  "population_policy": "Keep each indexed event mention as an instance. Use OWL-Time only as the external temporal grounding resource. Promote only document-supported relation candidates canonically mapped to PRECONDITION or FALLING_ACTION from the controlled task schema. Ignore null. No post-run relation invention.",
+  "event_modeling_preference": "Events are mention-level instances identified by sentence index and zero-based end-exclusive token span. Repeated lexical triggers remain distinct when their indexed spans differ. OWL-Time does not supply gold event mentions or gold relation pairs. Complete phrasal verbs and tokenized hyphen compounds are preserved. Connective-only and auxiliary-only spans are rejected. Relation endpoints must reference the validated closed event inventory.",
+  "ontology_depth": "OWL-Time seed grounding plus shallow controlled task-relation induction",
+  "promotion_min_confidence": 0.35,
+  "hierarchy_min_confidence": 0.5,
+  "concept_promotion_bias": 0.1,
+  "typing_examples": [
+    {
+      "text": "S3[24:26]::checked into",
+      "expected_type": "event",
+      "explanation": "An exact event mention instance with sentence and token identity."
+    },
+    {
+      "text": "S3[24:26]::checked into || enables || S3[39:40]::stay",
+      "expected_type": "relation",
+      "explanation": "A directed relation instance connecting two exact event mentions."
+    },
+    {
+      "text": "S5[9:12]::rear - ended",
+      "expected_type": "event",
+      "explanation": "A complete tokenized hyphenated event trigger; the incomplete span rear - is invalid."
+    },
+    {
+      "text": "S5[26:27]::then",
+      "expected_type": "reject",
+      "explanation": "A discourse connective alone is not an event mention."
+    }
+  ],
+  "relation_examples": [
+    {
+      "text": "The court order required the defendant to enter treatment.",
+      "source_label": "S0[1:3]::court order",
+      "relation_label": "PRECONDITION",
+      "target_label": "S0[8:10]::enter treatment",
+      "explanation": "The order establishes a required condition for entering treatment."
+    },
+    {
+      "text": "The collision was followed by an investigation.",
+      "source_label": "S0[1:2]::collision",
+      "relation_label": "FALLING_ACTION",
+      "target_label": "S0[6:7]::investigation",
+      "explanation": "The investigation is a downstream follow-up to the collision."
+    },
+    {
+      "text": "Hiring counsel enabled the appeal to proceed.",
+      "source_label": "S0[0:2]::Hiring counsel",
+      "relation_label": "PRECONDITION",
+      "target_label": "S0[4:7]::appeal to proceed",
+      "explanation": "The first event enables the second."
+    },
+    {
+      "text": "The announcement triggered protests, followed by arrests.",
+      "source_label": "S0[1:2]::announcement",
+      "relation_label": "FALLING_ACTION",
+      "target_label": "S0[7:8]::arrests",
+      "explanation": "The arrests are part of the downstream storyline after the announcement."
+    }
+  ],
+  "promotion_examples": [
+    {
+      "text": "PRECONDITION",
+      "promote": true,
+      "promoted_label": "PRECONDITION",
+      "explanation": "Promote only when a document relation instance selected this controlled ontology property."
+    },
+    {
+      "text": "S3[24:26]::checked into",
+      "promote": false,
+      "promoted_label": "S3[24:26]::checked into",
+      "explanation": "Event mentions remain instances rather than ontology classes."
+    }
+  ],
+  "negative_examples": [
+    {
+      "text": "S2[4:5]::meeting and S5[9:10]::speech occur in the same article",
+      "explanation": "Co-occurrence alone is not a relation.",
+      "target_layer": "layer01"
+    },
+    {
+      "text": "Lindsay Lohan",
+      "explanation": "A person is not an event endpoint.",
+      "target_layer": "layer01"
+    },
+    {
+      "text": "May 3, 2013",
+      "explanation": "A date is not an event endpoint.",
+      "target_layer": "layer01"
+    },
+    {
+      "text": "null",
+      "explanation": "The dataset's null key is excluded from the relation vocabulary and evaluation.",
+      "target_layer": "layer01"
+    }
+  ]
+}
