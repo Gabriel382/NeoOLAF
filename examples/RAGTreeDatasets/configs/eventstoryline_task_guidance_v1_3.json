@@ -1,0 +1,187 @@
+{
+  "dataset": "EventStoryLine",
+  "allowed_relation_ids": [
+    "PRECONDITION",
+    "FALLING_ACTION"
+  ],
+  "ignored_gold_relation_keys": [
+    "null"
+  ],
+  "event_key_contract": "S{sent_id}[{token_start}:{token_end}]::{exact trigger tokens}",
+  "relation_instance_contract": "SOURCE_EVENT_KEY || lexical relation cue || TARGET_EVENT_KEY",
+  "relation_specs": [
+    {
+      "relation_id": "PRECONDITION",
+      "label": "PRECONDITION",
+      "direction": "source event establishes, enables, motivates, or is required for the target event",
+      "definition": "A directed event-event relation where the source is a prerequisite, enabling condition, motivating circumstance, or necessary setup for the target.",
+      "positive_cues": [
+        "enables",
+        "requires",
+        "because",
+        "after",
+        "to begin",
+        "in order to",
+        "condition for",
+        "motivates",
+        "allows"
+      ],
+      "negative_note": "Do not choose merely because the source is mentioned earlier. Semantic dependency is required."
+    },
+    {
+      "relation_id": "FALLING_ACTION",
+      "label": "FALLING_ACTION",
+      "direction": "source event is connected to a downstream, follow-up, consequence, continuation, aftermath, or elaborating event represented by the target",
+      "definition": "A directed storyline relation linking an event to a subsequent/downstream consequence, continuation, aftermath, or narratively dependent event when PRECONDITION is not the better interpretation.",
+      "positive_cues": [
+        "then",
+        "followed by",
+        "resulted in",
+        "led to",
+        "afterwards",
+        "continued with",
+        "subsequently",
+        "aftermath",
+        "consequence"
+      ],
+      "negative_note": "Do not invert the pair and do not use this as a generic co-occurrence label."
+    }
+  ],
+  "layer_guidance": {
+    "layer01": {
+      "goal": "Extract a high-recall exact event inventory with parallel sentence passes and whole-document coverage reviews, then generate directed EventStoryLine PLOT_LINK candidates from a closed inventory in complete source batches.",
+      "event_mentions": [
+        "Extract explicit eventive verbs, participles, infinitival events, complete phrasal verbs, eventive nouns and nominalizations, processes, occurrences, and explicit states/conditions.",
+        "Process every story sentence independently, then perform whole-document coverage reviews for missed nominals, states, embedded predicates, and repeated mentions.",
+        "Represent each mention as S{sentence}[start:end]::trigger using zero-based end-exclusive source-token offsets.",
+        "Keep repeated lexical triggers as distinct mentions whenever their indexed spans differ.",
+        "Preserve complete phrasal verbs, multi-token expressions, and every tokenized component of hyphenated triggers.",
+        "Reject people, organizations, locations, dates, objects, URLs, publication metadata, connective-only spans, auxiliary-only spans, and inferred events not explicitly evoked.",
+        "Do not use a gold event lexicon, gold event count, gold spans, or gold relation pairs."
+      ],
+      "relations": [
+        "Generate candidate PLOT_LINK pairs only after the event inventory is validated and closed.",
+        "Cover every source event through bounded parallel source batches; endpoints must reference closed-inventory IDs.",
+        "Treat PLOT_LINK as broader than strict causality: setup, enabling context, motivation, consequence, continuation, aftermath, follow-up, elaboration, and headline/body narrative development may qualify.",
+        "Include supported cross-sentence and repeated-mention links, while rejecting mere co-occurrence or sentence order alone.",
+        "Use a lexical relation cue rather than PRECONDITION or FALLING_ACTION; Layer 2 selects the canonical relation.",
+        "Preserve source-to-target direction and never invent, alter, or swap event spans."
+      ],
+      "phases": {
+        "phase_a1": "Parallel sentence-level exhaustive event inventory extraction.",
+        "phase_a2": "Two whole-document missing-event reviews over the validated union.",
+        "phase_b": "Parallel source-batched PLOT_LINK proposal generation over the closed event inventory."
+      }
+    },
+    "layer02": {
+      "goal": "Choose exactly PRECONDITION or FALLING_ACTION for one already extracted event pair, or found=false.",
+      "rules": [
+        "EventStoryLine PLOT_LINK is broader than strict physical causality; use narrative dependency supported by the document.",
+        "PRECONDITION is preferred when the source is rising-action context that enables, motivates, requires, prepares, or sets up the target.",
+        "FALLING_ACTION is preferred when the target is a consequence, continuation, aftermath, follow-up, elaboration, or downstream narrative development.",
+        "Cross-sentence and repeated-mention links are allowed when semantically supported.",
+        "Choose found=false for mere topical co-occurrence, unsupported direction, or a pair lacking narrative dependency."
+      ]
+    },
+    "layer04": {
+      "goal": "Resolve exact event keys to their native event candidates and preserve the Layer 2 direction.",
+      "rules": [
+        "Both endpoints must be event candidates.",
+        "Never swap source and target to improve apparent plausibility.",
+        "Reject a relation when either indexed event key cannot be resolved uniquely."
+      ]
+    }
+  },
+  "synthetic_relation_examples": [
+    {
+      "text": "The court order required the defendant to enter treatment.",
+      "source_label": "S0[1:3]::court order",
+      "relation_label": "PRECONDITION",
+      "target_label": "S0[8:10]::enter treatment",
+      "explanation": "The order establishes a required condition for entering treatment."
+    },
+    {
+      "text": "The collision was followed by an investigation.",
+      "source_label": "S0[1:2]::collision",
+      "relation_label": "FALLING_ACTION",
+      "target_label": "S0[6:7]::investigation",
+      "explanation": "The investigation is a downstream follow-up to the collision."
+    },
+    {
+      "text": "Hiring counsel enabled the appeal to proceed.",
+      "source_label": "S0[0:2]::Hiring counsel",
+      "relation_label": "PRECONDITION",
+      "target_label": "S0[4:7]::appeal to proceed",
+      "explanation": "The first event enables the second."
+    },
+    {
+      "text": "The announcement triggered protests, followed by arrests.",
+      "source_label": "S0[1:2]::announcement",
+      "relation_label": "FALLING_ACTION",
+      "target_label": "S0[7:8]::arrests",
+      "explanation": "The arrests are part of the downstream storyline after the announcement."
+    }
+  ],
+  "negative_examples": [
+    {
+      "text": "S2[4:5]::meeting and S5[9:10]::speech occur in the same article",
+      "explanation": "Co-occurrence alone is not a relation."
+    },
+    {
+      "text": "Lindsay Lohan",
+      "explanation": "A person is not an event endpoint."
+    },
+    {
+      "text": "May 3, 2013",
+      "explanation": "A date is not an event endpoint."
+    },
+    {
+      "text": "null",
+      "explanation": "The dataset's null key is excluded from the relation vocabulary and evaluation."
+    }
+  ],
+  "seed_ontology": "OWL-Time (data/ontology/OWLTime/time.ttl)",
+  "seed_ontology_role": "Temporal grounding only; PRECONDITION and FALLING_ACTION remain the controlled normalized benchmark relation labels.",
+  "evaluation_scope": "All 443 normalized EventStoryLine records (type full + test); null pairs excluded.",
+  "event_span_examples": [
+    {
+      "tokens": [
+        "checked",
+        "into"
+      ],
+      "correct": "S3[24:26]::checked into",
+      "incorrect": [
+        "S3[24:25]::checked",
+        "S3[25:26]::into"
+      ],
+      "rule": "Keep the phrasal-verb particle inside the event trigger."
+    },
+    {
+      "tokens": [
+        "rear",
+        "-",
+        "ended"
+      ],
+      "correct": "S5[9:12]::rear - ended",
+      "incorrect": [
+        "S5[9:11]::rear -",
+        "S5[9:10]::rear"
+      ],
+      "rule": "Keep every tokenized component of a hyphenated event trigger."
+    },
+    {
+      "tokens": [
+        "on",
+        "her",
+        "way"
+      ],
+      "correct": "S4[43:46]::on her way",
+      "incorrect": [
+        "S4[43:44]::on"
+      ],
+      "rule": "A multi-token state/event expression may begin with a function word when the complete span is eventive."
+    }
+  ],
+  "version": "1.3",
+  "development_note": "The one-document document is used for profile development. Freeze this v1.3 profile before the five-document smoke and full 443-document evaluation."
+}
