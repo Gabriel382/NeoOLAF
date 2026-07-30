@@ -1,0 +1,25 @@
+@prefix esl: <https://w3id.org/neoolaf/eventstoryline/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/neoolaf/eventstoryline> a owl:Ontology ;
+    rdfs:label "NeoOLAF EventStoryLine experiment ontology"@en ;
+    rdfs:comment "Task-specific seed schema for mention-level events and the PRECONDITION and FALLING_ACTION relations. It contains no document instances or gold event pairs."@en .
+
+esl:Event a owl:Class ;
+    rdfs:label "Event"@en ;
+    rdfs:comment "A mention-level event, action, process, or state evoked in a document."@en .
+
+esl:precondition a owl:ObjectProperty ;
+    rdfs:label "PRECONDITION"@en ;
+    rdfs:comment "The source event establishes, enables, motivates, or is required for the target event."@en ;
+    rdfs:domain esl:Event ;
+    rdfs:range esl:Event .
+
+esl:fallingAction a owl:ObjectProperty ;
+    rdfs:label "FALLING_ACTION"@en ;
+    rdfs:comment "The source event is linked to a downstream consequence, continuation, aftermath, follow-up, or narratively dependent target event."@en ;
+    rdfs:domain esl:Event ;
+    rdfs:range esl:Event .
