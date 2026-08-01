@@ -1,0 +1,355 @@
+{
+  "dataset": "EventStoryLine",
+  "allowed_relation_ids": [
+    "PRECONDITION",
+    "FALLING_ACTION"
+  ],
+  "ignored_gold_relation_keys": [
+    "null"
+  ],
+  "event_key_contract": "S{sent_id}[{token_start}:{token_end}]::{exact trigger tokens}",
+  "relation_instance_contract": "UNORDERED_EVENT_A_KEY || potentially related || UNORDERED_EVENT_B_KEY at Layer 1; Layer 2 evaluates both directed source-to-target checklists and materializes only a final controlled positive relation.",
+  "relation_specs": [
+    {
+      "relation_id": "PRECONDITION",
+      "label": "PRECONDITION",
+      "direction": "source event establishes, enables, motivates, or is required for the target event",
+      "definition": "A directed event-event relation where the source is a prerequisite, enabling condition, motivating circumstance, or necessary setup for the target.",
+      "positive_cues": [
+        "enables",
+        "requires",
+        "because",
+        "after",
+        "to begin",
+        "in order to",
+        "condition for",
+        "motivates",
+        "allows"
+      ],
+      "negative_note": "Do not choose merely because the source is mentioned earlier. Semantic dependency is required."
+    },
+    {
+      "relation_id": "FALLING_ACTION",
+      "label": "FALLING_ACTION",
+      "direction": "source event is connected to a downstream, follow-up, consequence, continuation, aftermath, or elaborating event represented by the target",
+      "definition": "A directed storyline relation linking an event to a subsequent/downstream consequence, continuation, aftermath, or narratively dependent event when PRECONDITION is not the better interpretation.",
+      "positive_cues": [
+        "then",
+        "followed by",
+        "resulted in",
+        "led to",
+        "afterwards",
+        "continued with",
+        "subsequently",
+        "aftermath",
+        "consequence"
+      ],
+      "negative_note": "Do not invert the pair and do not use this as a generic co-occurrence label."
+    }
+  ],
+  "layer_guidance": {
+    "layer01": {
+      "goal": "Extract a high-recall inventory of shortest complete atomic EventStoryLine triggers, audit broad spans, then deterministically construct the closed unordered pair pool without gold relations.",
+      "event_mentions": [
+        "Use the shortest complete lexical trigger, not the full clause or noun phrase.",
+        "Strip auxiliaries, negation, subjects, objects, determiners and complements from the event span.",
+        "Keep required phrasal particles and all tokenized components of a hyphenated lexical trigger.",
+        "Split a broad phrase only when it explicitly contains multiple independently eventive trigger heads.",
+        "Extract eventive verbs, participles, infinitives, nouns, nominalizations, processes, occurrences and explicit states.",
+        "Preserve repeated mentions as distinct when sentence/token spans differ.",
+        "Validate every returned span against source tokens and run a final source-only atomicity audit.",
+        "Do not use gold event IDs, counts, spans or relation pairs."
+      ],
+      "relations": [
+        "Construct unordered candidate pairs only after the event inventory is validated and closed.",
+        "Use exhaustive unordered pairs when the event inventory has at most 25 events; otherwise use the broad hybrid policy covering same/nearby sentences, discourse-cue windows, repeated triggers, and headline-to-body pairs.",
+        "Pair construction provides candidate coverage only. It never predicts PRECONDITION or FALLING_ACTION.",
+        "Preserve exact event keys and never invent, alter, merge, or swap event spans.",
+        "Gold event IDs, gold relation pairs, counts, labels per pair, and gold-derived lexical hints are forbidden."
+      ],
+      "phases": {
+        "phase_a1": "Parallel sentence-level atomic trigger extraction.",
+        "phase_a2": "Three whole-document missing-trigger reviews.",
+        "phase_a3": "Final source-only KEEP/DROP/REPLACE/SPLIT atomic span audit.",
+        "phase_b": "Deterministic adaptive unordered pair construction; no relation-generation LLM call."
+      }
+    },
+    "layer02": {
+      "goal": "For one fixed source event, classify every candidate target as PRECONDITION, FALLING_ACTION, or NONE in the fixed source-to-target direction.",
+      "allowed_decisions": [
+        "PRECONDITION",
+        "FALLING_ACTION",
+        "NONE"
+      ],
+      "rules": [
+        "The request direction is fixed: classify only SOURCE to TARGET. If only TARGET to SOURCE is supported, output NONE; the reverse is evaluated in the target source request.",
+        "PRECONDITION means the fixed source directly establishes, enables, motivates, requires, prepares, or sets up the target.",
+        "FALLING_ACTION means the target is directly presented as consequence, continuation, aftermath, follow-up, elaboration, or downstream narrative development of the fixed source.",
+        "EventStoryLine direction is narrative and annotation-specific; do not replace it with naive physical causality or sentence order.",
+        "Headline/body reformulations, legal setup, repeated descriptions, and immediate narrative aftermath may be direct links.",
+        "Never infer a transitive relation: A-B and B-C do not justify A-C.",
+        "Chronology, co-occurrence, shared topic, and world knowledge are insufficient.",
+        "Return every listed target exactly once. Missing targets receive one focused recovery request.",
+        "Every positive cites source and target sentence IDs. Evidence formatting is repaired non-destructively and does not erase a valid semantic decision.",
+        "Broad false-NONE review and destructive positive verification are disabled.",
+        "Only opposite-direction positive conflicts receive compact adjudication.",
+        "NONE and invalid outputs never enter Layer 3. OWL-Time remains the seed ontology but does not override source-text relation classification."
+      ]
+    },
+    "layer04": {
+      "goal": "Resolve exact event keys to their native event candidates and preserve the Layer 2 direction.",
+      "rules": [
+        "Both endpoints must be event candidates.",
+        "Never swap source and target to improve apparent plausibility.",
+        "Reject a relation when either indexed event key cannot be resolved uniquely."
+      ]
+    }
+  },
+  "synthetic_relation_examples": [
+    {
+      "text": "A permit directly allowed construction to begin.",
+      "source_label": "permit approval",
+      "relation_label": "PRECONDITION",
+      "target_label": "construction began",
+      "explanation": "Direct enabling setup."
+    },
+    {
+      "text": "The bridge collapsed, followed by an emergency inspection.",
+      "source_label": "bridge collapse",
+      "relation_label": "FALLING_ACTION",
+      "target_label": "emergency inspection",
+      "explanation": "Direct downstream follow-up."
+    },
+    {
+      "text": "The headline announced an investigation; the body said officials began examining the incident.",
+      "source_label": "headline announcement",
+      "relation_label": "FALLING_ACTION",
+      "target_label": "body examination",
+      "explanation": "Direct headline/body narrative development."
+    },
+    {
+      "text": "Officials threatened arrest unless the person entered treatment.",
+      "source_label": "arrest threat",
+      "relation_label": "PRECONDITION",
+      "target_label": "entering treatment",
+      "explanation": "Direct motivating/required setup."
+    },
+    {
+      "text": "A enabled B, and B caused C.",
+      "source_label": "A",
+      "relation_label": "NONE",
+      "target_label": "C",
+      "explanation": "No transitive closure without a direct A-C statement."
+    }
+  ],
+  "negative_examples": [
+    {
+      "text": "S2[4:5]::meeting and S5[9:10]::speech occur in the same article",
+      "explanation": "Co-occurrence alone is not a relation."
+    },
+    {
+      "text": "Lindsay Lohan",
+      "explanation": "A person is not an event endpoint."
+    },
+    {
+      "text": "May 3, 2013",
+      "explanation": "A date is not an event endpoint."
+    },
+    {
+      "text": "null",
+      "explanation": "The dataset's null key is excluded from the relation vocabulary and evaluation."
+    },
+    {
+      "text": "A and C are connected only through B.",
+      "explanation": "Transitive plausibility is excluded."
+    },
+    {
+      "text": "A happened before B.",
+      "explanation": "Temporal order alone is insufficient."
+    }
+  ],
+  "seed_ontology": "OWL-Time (data/ontology/OWLTime/time.ttl)",
+  "seed_ontology_role": "Temporal grounding only; PRECONDITION and FALLING_ACTION remain the controlled normalized benchmark relation labels.",
+  "evaluation_scope": "All 443 normalized EventStoryLine records (type full + test); null pairs excluded. One-document v1.4 remains the development document before smoke-5.",
+  "event_span_examples": [
+    {
+      "tokens": [
+        "checked",
+        "into"
+      ],
+      "correct": "S3[24:26]::checked into",
+      "incorrect": [
+        "S3[24:25]::checked",
+        "S3[25:26]::into"
+      ],
+      "rule": "Keep the phrasal-verb particle inside the event trigger."
+    },
+    {
+      "tokens": [
+        "rear",
+        "-",
+        "ended"
+      ],
+      "correct": "S5[9:12]::rear - ended",
+      "incorrect": [
+        "S5[9:11]::rear -",
+        "S5[9:10]::rear"
+      ],
+      "rule": "Keep every tokenized component of a hyphenated event trigger."
+    },
+    {
+      "tokens": [
+        "on",
+        "her",
+        "way"
+      ],
+      "correct": "S4[43:46]::on her way",
+      "incorrect": [
+        "S4[43:44]::on"
+      ],
+      "rule": "A multi-token state/event expression may begin with a function word when the complete span is eventive."
+    },
+    {
+      "tokens": [
+        "was",
+        "not",
+        "operating"
+      ],
+      "correct": "operating",
+      "incorrect": [
+        "was not operating"
+      ],
+      "rule": "Remove auxiliary and negation."
+    },
+    {
+      "tokens": [
+        "reckless",
+        "driving",
+        "conviction"
+      ],
+      "correct": "conviction",
+      "incorrect": [
+        "reckless driving conviction"
+      ],
+      "rule": "Use the atomic eventive noun head."
+    },
+    {
+      "tokens": [
+        "fraud",
+        "investigation",
+        "case"
+      ],
+      "correct": [
+        "investigation",
+        "case"
+      ],
+      "rule": "Split only when both heads independently evoke events."
+    }
+  ],
+  "version": "1.6",
+  "development_note": "v1.6 keeps atomic event extraction and full candidate coverage, while replacing five-way pair batches, broad false-NONE review, and destructive verification with complete source-centric directed checklists.",
+  "five_way_schema_examples": [
+    {
+      "pair_id": "EX1",
+      "event_a": "permit approval",
+      "event_b": "construction began",
+      "context": "The permit approval allowed construction to begin.",
+      "output": {
+        "pair_id": "EX1",
+        "decision": "A_PRECONDITION_B",
+        "evidence_sentence_ids": [
+          0,
+          1
+        ],
+        "evidence_text": "permit approval allowed construction to begin",
+        "reason": "A enables B.",
+        "confidence": 0.95
+      }
+    },
+    {
+      "pair_id": "EX2",
+      "event_a": "bridge collapse",
+      "event_b": "emergency inspection",
+      "context": "The bridge collapsed, followed by an emergency inspection.",
+      "output": {
+        "pair_id": "EX2",
+        "decision": "A_FALLING_ACTION_B",
+        "evidence_sentence_ids": [
+          0,
+          1
+        ],
+        "evidence_text": "followed by an emergency inspection",
+        "reason": "B is downstream from A.",
+        "confidence": 0.94
+      }
+    },
+    {
+      "pair_id": "EX3",
+      "event_a": "press conference",
+      "event_b": "rainfall",
+      "context": "Both are mentioned, with no narrative dependency.",
+      "output": {
+        "pair_id": "EX3",
+        "decision": "NONE",
+        "evidence_sentence_ids": [],
+        "evidence_text": "",
+        "reason": "Co-occurrence is insufficient.",
+        "confidence": 0.91
+      }
+    },
+    {
+      "pair_id": "EX4",
+      "event_a": "construction began",
+      "event_b": "permit approval",
+      "context": "The permit approval allowed construction to begin.",
+      "output": {
+        "pair_id": "EX4",
+        "decision": "B_PRECONDITION_A",
+        "evidence_sentence_ids": [
+          0,
+          1
+        ],
+        "evidence_text": "permit approval allowed construction",
+        "reason": "The supplied order is reversed.",
+        "confidence": 0.96
+      }
+    }
+  ],
+  "source_centric_schema_examples": [
+    {
+      "source": "arrest threat",
+      "target": "treatment began",
+      "context": "Officials warned of arrest unless treatment began.",
+      "relation": "PRECONDITION",
+      "reason": "The fixed source directly motivates or requires the target."
+    },
+    {
+      "source": "arrest",
+      "target": "violated",
+      "context": "The arrest was followed by a finding that the order had been violated.",
+      "relation": "FALLING_ACTION",
+      "reason": "The target is presented as the next narrative development from the fixed source."
+    },
+    {
+      "source": "headline announcement",
+      "target": "body realization",
+      "context": "The headline announces the event and the body realizes or elaborates it.",
+      "relation": "FALLING_ACTION",
+      "reason": "Headline-to-body narrative development."
+    },
+    {
+      "source": "permit approval",
+      "target": "rainfall",
+      "context": "Rainfall is merely mentioned elsewhere.",
+      "relation": "NONE",
+      "reason": "No direct source-to-target PLOT_LINK."
+    },
+    {
+      "source": "A",
+      "target": "C",
+      "context": "A enabled B and B caused C, without directly linking A and C.",
+      "relation": "NONE",
+      "reason": "No transitive closure."
+    }
+  ]
+}
