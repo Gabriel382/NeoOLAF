@@ -1,0 +1,157 @@
+{
+  "domain_focus": "EventStoryLine atomic event-mention extraction and direct PLOT_LINK relation learning with OWL-Time as secondary temporal grounding.",
+  "abstraction_level": "exact event mentions with sentence/token identity; shallow ontology-canonical event relations",
+  "priority_relations": [
+    "PRECONDITION",
+    "FALLING_ACTION"
+  ],
+  "population_policy": "Keep every validated indexed event mention as an instance. Build the relation candidate pool deterministically from the closed event inventory. Use OWL-Time only as secondary support. Materialize only evidence-supported five-way decisions mapped to PRECONDITION or FALLING_ACTION; filter NONE and invalid decisions before Layer 3. Ignore null and invent nothing after the run.",
+  "event_modeling_preference": "Use the shortest complete atomic lexical trigger. Remove auxiliaries, negation, arguments and surrounding noun-phrase material; preserve required phrasal particles and hyphen tokens; keep repeated spans distinct.",
+  "ontology_depth": "OWL-Time seed grounding plus shallow controlled task-relation induction",
+  "promotion_min_confidence": 0.35,
+  "hierarchy_min_confidence": 0.5,
+  "concept_promotion_bias": 0.1,
+  "typing_examples": [
+    {
+      "text": "S3[24:26]::checked into",
+      "expected_type": "event",
+      "explanation": "An exact event mention instance with sentence and token identity."
+    },
+    {
+      "text": "S3[24:26]::checked into || enables || S3[39:40]::stay",
+      "expected_type": "relation",
+      "explanation": "A directed relation instance connecting two exact event mentions."
+    },
+    {
+      "text": "S5[9:12]::rear - ended",
+      "expected_type": "event",
+      "explanation": "A complete tokenized hyphenated event trigger; the incomplete span rear - is invalid."
+    },
+    {
+      "text": "S5[26:27]::then",
+      "expected_type": "reject",
+      "explanation": "A discourse connective alone is not an event mention."
+    }
+  ],
+  "relation_examples": [
+    {
+      "text": "The court order required the defendant to enter treatment.",
+      "source_label": "S0[1:3]::court order",
+      "relation_label": "PRECONDITION",
+      "target_label": "S0[8:10]::enter treatment",
+      "explanation": "The order establishes a required condition for entering treatment."
+    },
+    {
+      "text": "The collision was followed by an investigation.",
+      "source_label": "S0[1:2]::collision",
+      "relation_label": "FALLING_ACTION",
+      "target_label": "S0[6:7]::investigation",
+      "explanation": "The investigation is a downstream follow-up to the collision."
+    },
+    {
+      "text": "Hiring counsel enabled the appeal to proceed.",
+      "source_label": "S0[0:2]::Hiring counsel",
+      "relation_label": "PRECONDITION",
+      "target_label": "S0[4:7]::appeal to proceed",
+      "explanation": "The first event enables the second."
+    },
+    {
+      "text": "The announcement triggered protests, followed by arrests.",
+      "source_label": "S0[1:2]::announcement",
+      "relation_label": "FALLING_ACTION",
+      "target_label": "S0[7:8]::arrests",
+      "explanation": "The arrests are part of the downstream storyline after the announcement."
+    },
+    {
+      "text": "A resignation was announced, and the departure followed later.",
+      "source_label": "S0[1:2]::resignation",
+      "relation_label": "FALLING_ACTION",
+      "target_label": "S0[7:8]::departure",
+      "explanation": "A downstream narrative development can be a PLOT_LINK even without a direct physical causal mechanism."
+    },
+    {
+      "text": "The authorization allowed the inspection to begin.",
+      "source_label": "S0[1:2]::authorization",
+      "relation_label": "PRECONDITION",
+      "target_label": "S0[4:7]::inspection to begin",
+      "explanation": "Administrative context sets up the later event."
+    },
+    {
+      "source": "headline investigation announcement",
+      "relation": "FALLING_ACTION",
+      "target": "body examination begins",
+      "why": "Headline/body elaboration may be a direct narrative development."
+    },
+    {
+      "source": "arrest threat",
+      "relation": "PRECONDITION",
+      "target": "entering treatment",
+      "why": "The threat directly motivates or requires the target."
+    },
+    {
+      "source": "vehicle crash",
+      "relation": "FALLING_ACTION",
+      "target": "false account",
+      "why": "The text explicitly presents the account as aftermath."
+    }
+  ],
+  "promotion_examples": [
+    {
+      "text": "PRECONDITION",
+      "promote": true,
+      "promoted_label": "PRECONDITION",
+      "explanation": "Promote only when a document relation instance selected this controlled ontology property."
+    },
+    {
+      "text": "S3[24:26]::checked into",
+      "promote": false,
+      "promoted_label": "S3[24:26]::checked into",
+      "explanation": "Event mentions remain instances rather than ontology classes."
+    }
+  ],
+  "negative_examples": [
+    {
+      "text": "S2[4:5]::meeting and S5[9:10]::speech occur in the same article",
+      "explanation": "Co-occurrence alone is not a relation.",
+      "target_layer": "layer01"
+    },
+    {
+      "text": "Lindsay Lohan",
+      "explanation": "A person is not an event endpoint.",
+      "target_layer": "layer01"
+    },
+    {
+      "text": "May 3, 2013",
+      "explanation": "A date is not an event endpoint.",
+      "target_layer": "layer01"
+    },
+    {
+      "text": "null",
+      "explanation": "The dataset's null key is excluded from the relation vocabulary and evaluation.",
+      "target_layer": "layer01"
+    },
+    {
+      "text": "S0[1:2]::announcement and S2[4:5]::rainfall are merely mentioned in the same story",
+      "explanation": "The correct five-way decision is NONE because co-occurrence and sentence order do not establish a PLOT_LINK.",
+      "target_layer": "layer02"
+    },
+    {
+      "text": "A enabled B and B caused C",
+      "explanation": "Do not infer A-C without a direct textual link."
+    },
+    {
+      "text": "Two events occur in chronological order",
+      "explanation": "Chronology alone is not a PLOT_LINK."
+    }
+  ],
+  "relation_decision_preference": {
+    "pair_scope": "Evaluate one unordered pair using only its local source context.",
+    "directness": "Predict only direct document-supported PLOT_LINKs. Never infer A-C from A-B and B-C.",
+    "direction": "Compare both directions explicitly.",
+    "precondition": "The source directly establishes, enables, motivates, requires, prepares or sets up the target.",
+    "falling_action": "The target is directly presented as consequence, continuation, aftermath, follow-up, elaboration or downstream narrative development.",
+    "none": "Use NONE for chronology, shared topic, world-knowledge plausibility, transitive chains, or unsupported links.",
+    "evidence": "Every positive must cite both endpoint sentences and grounded evidence text.",
+    "verification": "All positives receive a conservative second pass; structurally plausible NONE decisions receive a targeted annotation-pattern review."
+  }
+}
