@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-"""Native NeoOLAF one-document EventStoryLine experiment support, v1.5.
+"""Native NeoOLAF one-document EventStoryLine experiment support, v1.5.1 hotfix.
 
 This experiment-only module changes no file under ``src/neoolaf``. It preserves
 NeoOLAF Layers 0--12 and replaces only dataset-specific orchestration under
@@ -105,6 +105,124 @@ FIVE_WAY_DECISIONS = (
     "B_FALLING_ACTION_A",
     "NONE",
 )
+
+
+_GUIDANCE_TOP_LEVEL_FIELDS = {
+    "domain_focus",
+    "abstraction_level",
+    "priority_relations",
+    "population_policy",
+    "event_modeling_preference",
+    "ontology_depth",
+    "promotion_min_confidence",
+    "hierarchy_min_confidence",
+    "concept_promotion_bias",
+    "typing_examples",
+    "relation_examples",
+    "promotion_examples",
+    "negative_examples",
+}
+
+
+def _normalize_user_guidance_payload(data: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Return a loader-safe UserGuidance payload and a normalization audit.
+
+    The native loader constructs dataclasses with ``**item`` and therefore
+    rejects unknown example keys.  This experiment-side adapter accepts both
+    the native RelationExample schema and the compact legacy schema
+    ``source/relation/target/why``.  It changes no NeoOLAF source file.
+    """
+
+    if not isinstance(data, dict):
+        raise TypeError("User guidance JSON must contain an object at the top level.")
+
+    normalized = {key: data[key] for key in _GUIDANCE_TOP_LEVEL_FIELDS if key in data}
+    audit: list[dict[str, Any]] = []
+
+    depth_raw = str(normalized.get("ontology_depth", "balanced") or "balanced").strip().lower()
+    if depth_raw not in {"shallow", "balanced", "deep"}:
+        if "shallow" in depth_raw:
+            depth = "shallow"
+        elif "deep" in depth_raw:
+            depth = "deep"
+        else:
+            depth = "balanced"
+        audit.append({
+            "kind": "ontology_depth_normalized",
+            "original": normalized.get("ontology_depth"),
+            "normalized": depth,
+        })
+        normalized["ontology_depth"] = depth
+
+    relation_examples: list[dict[str, Any]] = []
+    for index, raw in enumerate(data.get("relation_examples") or []):
+        if not isinstance(raw, dict):
+            audit.append({"kind": "relation_example_dropped", "index": index, "reason": "not_an_object"})
+            continue
+
+        source_label = raw.get("source_label", raw.get("source"))
+        relation_label = raw.get("relation_label", raw.get("relation"))
+        target_label = raw.get("target_label", raw.get("target"))
+        explanation = raw.get("explanation", raw.get("why"))
+        text_value = raw.get("text")
+
+        if not text_value and source_label and target_label:
+            text_value = f"{source_label} is directly linked to {target_label}."
+
+        missing = [
+            name
+            for name, value in (
+                ("text", text_value),
+                ("source_label", source_label),
+                ("relation_label", relation_label),
+                ("target_label", target_label),
+            )
+            if value is None or not str(value).strip()
+        ]
+        if missing:
+            raise ValueError(
+                f"relation_examples[{index}] is missing required fields after normalization: {missing}"
+            )
+
+        item = {
+            "text": str(text_value).strip(),
+            "source_label": str(source_label).strip(),
+            "relation_label": str(relation_label).strip(),
+            "target_label": str(target_label).strip(),
+        }
+        if explanation is not None and str(explanation).strip():
+            item["explanation"] = str(explanation).strip()
+        relation_examples.append(item)
+
+        original_keys = sorted(raw)
+        native_keys = sorted(item)
+        if any(key in raw for key in ("source", "relation", "target", "why")) or set(original_keys) - {
+            "text", "source_label", "relation_label", "target_label", "explanation"
+        }:
+            audit.append({
+                "kind": "relation_example_normalized",
+                "index": index,
+                "original_keys": original_keys,
+                "normalized_keys": native_keys,
+            })
+
+    normalized["relation_examples"] = relation_examples
+    return normalized, audit
+
+
+def _prepare_user_guidance_for_native_loader(
+    guidance_path: Path,
+    run_dir: Path,
+) -> tuple[Path, list[dict[str, Any]]]:
+    """Write a validated, loader-safe copy of the experiment guidance."""
+
+    raw = read_json(guidance_path)
+    normalized, audit = _normalize_user_guidance_payload(raw)
+    write_json(run_dir / "input_user_guidance_raw.json", raw)
+    normalized_path = run_dir / "input_user_guidance_normalized.json"
+    write_json(normalized_path, normalized)
+    write_json(run_dir / "user_guidance_normalization_audit.json", audit)
+    return normalized_path, audit
 
 
 def layer_name(index: int) -> str:
@@ -1481,9 +1599,18 @@ def run_native_pipeline(
     profile_dict["_input_task_guidance"] = task_guidance
     profile_dict["_input_sentences"] = record.get("sentences") or []
     profile_dict["_input_tokens"] = record.get("tokens") or []
-    guidance = load_user_guidance(str(guidance_path)) or UserGuidance()
+    normalized_guidance_path, guidance_normalization_audit = _prepare_user_guidance_for_native_loader(
+        guidance_path, run_dir
+    )
+    guidance = load_user_guidance(str(normalized_guidance_path)) or UserGuidance()
     write_json(run_dir / "input_task_guidance.json", task_guidance)
     write_json(run_dir / "effective_user_guidance.json", asdict(guidance))
+    if verbose and guidance_normalization_audit:
+        print(
+            "User-guidance preflight normalized "
+            f"{len(guidance_normalization_audit)} item(s); see "
+            f"{run_dir / 'user_guidance_normalization_audit.json'}"
+        )
 
     seed_ontology = SeedOntologyLoader().load(str(ontology_path))
     ontology_class_count = len(seed_ontology.classes_by_uri)

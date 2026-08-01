@@ -7,7 +7,7 @@
   ],
   "population_policy": "Keep every validated indexed event mention as an instance. Build the relation candidate pool deterministically from the closed event inventory. Use OWL-Time only as secondary support. Materialize only evidence-supported five-way decisions mapped to PRECONDITION or FALLING_ACTION; filter NONE and invalid decisions before Layer 3. Ignore null and invent nothing after the run.",
   "event_modeling_preference": "Use the shortest complete atomic lexical trigger. Remove auxiliaries, negation, arguments and surrounding noun-phrase material; preserve required phrasal particles and hyphen tokens; keep repeated spans distinct.",
-  "ontology_depth": "OWL-Time seed grounding plus shallow controlled task-relation induction",
+  "ontology_depth": "shallow",
   "promotion_min_confidence": 0.35,
   "hierarchy_min_confidence": 0.5,
   "concept_promotion_bias": 0.1,
@@ -77,22 +77,25 @@
       "explanation": "Administrative context sets up the later event."
     },
     {
-      "source": "headline investigation announcement",
-      "relation": "FALLING_ACTION",
-      "target": "body examination begins",
-      "why": "Headline/body elaboration may be a direct narrative development."
+      "text": "headline investigation announcement is directly linked to body examination begins.",
+      "source_label": "headline investigation announcement",
+      "relation_label": "FALLING_ACTION",
+      "target_label": "body examination begins",
+      "explanation": "Headline/body elaboration may be a direct narrative development."
     },
     {
-      "source": "arrest threat",
-      "relation": "PRECONDITION",
-      "target": "entering treatment",
-      "why": "The threat directly motivates or requires the target."
+      "text": "arrest threat is directly linked to entering treatment.",
+      "source_label": "arrest threat",
+      "relation_label": "PRECONDITION",
+      "target_label": "entering treatment",
+      "explanation": "The threat directly motivates or requires the target."
     },
     {
-      "source": "vehicle crash",
-      "relation": "FALLING_ACTION",
-      "target": "false account",
-      "why": "The text explicitly presents the account as aftermath."
+      "text": "vehicle crash is directly linked to false account.",
+      "source_label": "vehicle crash",
+      "relation_label": "FALLING_ACTION",
+      "target_label": "false account",
+      "explanation": "The text explicitly presents the account as aftermath."
     }
   ],
   "promotion_examples": [
