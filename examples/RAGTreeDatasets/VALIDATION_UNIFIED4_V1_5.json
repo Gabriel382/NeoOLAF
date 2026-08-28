@@ -1,0 +1,29 @@
+{
+  "patch": "unified4-v1.5",
+  "checks": {
+    "patch_version_v15": true,
+    "frozen_layer1_class": true,
+    "relation_layer_v15": true,
+    "strict_verifier": true,
+    "skeptic": true,
+    "gold_isolation_guard": true,
+    "native_13_layer_base": true
+  },
+  "files_under_src_neoolaf": [],
+  "maven_layer1": "reuse frozen v1.4 audit if available; fallback unchanged v1.4",
+  "maven_layer2": "conservative coref + two sparse graph proposals + strict definition verifier + skeptic",
+  "safe_defaults": {
+    "RUN_PAID": false,
+    "RUN_MODE": "one_doc",
+    "RUN_DATASETS": [
+      "maven_ere"
+    ]
+  },
+  "validation": {
+    "all_python_files_compile": true,
+    "all_notebook_code_cells_compile": true,
+    "import_test_against_uploaded_NeoOLAF_snapshot": true,
+    "offline_self_test_ok": true,
+    "bundled_unchanged_v1_3_dependencies_for_portability": true
+  }
+}

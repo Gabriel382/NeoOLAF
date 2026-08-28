@@ -1,0 +1,31 @@
+{
+  "source": "maven_ere_neoolaf_native_unified_v1 task-specific relation schema",
+  "property_count": 2,
+  "class_count": 1,
+  "relations": [
+    {
+      "relation_id": "CAUSE",
+      "uri": "https://w3id.org/neoolaf/ragtree/maven/cause",
+      "label": "CAUSE",
+      "comment": "MAVEN-ERE causal relation where the target is effectively inevitable given the source event.",
+      "domain_uris": [
+        "https://w3id.org/neoolaf/ragtree/maven/Event"
+      ],
+      "range_uris": [
+        "https://w3id.org/neoolaf/ragtree/maven/Event"
+      ]
+    },
+    {
+      "relation_id": "PRECONDITION",
+      "uri": "https://w3id.org/neoolaf/ragtree/maven/precondition",
+      "label": "PRECONDITION",
+      "comment": "MAVEN-ERE causal relation where the target would not have happened without the source, although the source alone need not guarantee the target.",
+      "domain_uris": [
+        "https://w3id.org/neoolaf/ragtree/maven/Event"
+      ],
+      "range_uris": [
+        "https://w3id.org/neoolaf/ragtree/maven/Event"
+      ]
+    }
+  ]
+}

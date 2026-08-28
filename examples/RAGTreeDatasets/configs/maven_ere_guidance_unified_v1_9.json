@@ -1,0 +1,24 @@
+{
+  "domain_focus": "MAVEN-ERE v1.9: frozen high-recall event inventory; PRECONDITION-aware high-recall relation graph followed by calibrated directed adjudication.",
+  "abstraction_level": "Layer 1 remains frozen/reused from v1.4. Layer 2 keeps mention anchors distinct, proposes dependencies in three complementary whole-document passes, and performs one calibrated PRECONDITION/CAUSE adjudication without a destructive skeptic cascade.",
+  "priority_relations": [
+    "CAUSE",
+    "PRECONDITION"
+  ],
+  "population_policy": "Preserve all v1.4 event mentions. PRECONDITION may be direct or strongly implicit through enabling, purpose, plan, process, initiation/completion, or structural dependency when grounded in the document. CAUSE remains narrower. Gold is unavailable until post-L12 diagnostics/evaluation.",
+  "event_modeling_preference": "Use the shortest complete exact trigger; retain genuine multi-token predicates such as took place; do not conflate entity mentions with events.",
+  "ontology_depth": "shallow",
+  "promotion_min_confidence": 0.35,
+  "hierarchy_min_confidence": 0.5,
+  "concept_promotion_bias": 0.1,
+  "typing_examples": [],
+  "relation_examples": [],
+  "promotion_examples": [],
+  "negative_examples": [
+    {
+      "text": "A relation inferred only from world knowledge with no document support.",
+      "explanation": "Reject unsupported relation.",
+      "target_layer": "layer02_candidate_enrichment"
+    }
+  ]
+}

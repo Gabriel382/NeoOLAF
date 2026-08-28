@@ -1,0 +1,33 @@
+{
+  "dataset": "FinCausal",
+  "relation_specs": [
+    {
+      "relation_id": "CAUSE",
+      "definition": "Directed FinCausal relation from the causal fact/proposition to the effect fact/proposition; direction is semantic and independent of textual order."
+    }
+  ],
+  "layer_guidance": {
+    "layer01": {
+      "endpoint_unit": "complete source-grounded fact/proposition chunk",
+      "effect_quantification": "The effect is normally a quantified/measurable fact; the cause may be quantified or non-quantified.",
+      "text_order": "Never assign causal direction from textual order.",
+      "span_policy": "preserve exact source wording and long/noisy annotation-style spans",
+      "recall_policy": "high recall; include all plausible CAUSE/EFFECT facts before relation adjudication",
+      "quantified_effect_prior": "EFFECT is normally a quantified/measurable financial fact",
+      "connective_policy": "pure causal connectives generally stay outside endpoints"
+    },
+    "layer02": {
+      "decisions": [
+        "A_CAUSES_B",
+        "B_CAUSES_A",
+        "NONE"
+      ],
+      "direction": "semantic CAUSE→EFFECT regardless of textual order",
+      "no_event_trigger_reduction": true,
+      "multiple_pairs": "allow multiple supported causal pairs in one visible text",
+      "role_hints": "clear CAUSE/EFFECT role hints may deterministically seed a positive relation; ambiguous pairs are classified"
+    }
+  },
+  "gold_policy": "Gold entities and relations are loaded only after Layer 12.",
+  "patch_version": "unified4-v1.3"
+}

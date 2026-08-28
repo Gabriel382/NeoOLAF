@@ -1,0 +1,23 @@
+{
+  "domain_focus": "Financial causal fact/proposition extraction grounded by FIBO CorePlus.",
+  "abstraction_level": "benchmark endpoint identity first; shallow ontology construction",
+  "priority_relations": [
+    "CAUSE"
+  ],
+  "population_policy": "Extract only source-grounded benchmark-relevant endpoints and relation instances. Gold annotations and RAGTree ontology_links are unavailable during execution. NONE decisions are filtered before Layer 3.",
+  "event_modeling_preference": "Do not reduce FinCausal endpoints to atomic event triggers; preserve proposition/fact chunks.",
+  "ontology_depth": "shallow",
+  "promotion_min_confidence": 0.35,
+  "hierarchy_min_confidence": 0.5,
+  "concept_promotion_bias": 0.1,
+  "typing_examples": [],
+  "relation_examples": [],
+  "promotion_examples": [],
+  "negative_examples": [
+    {
+      "text": "A relation inferred only from world knowledge with no document support.",
+      "explanation": "Reject unsupported relation.",
+      "target_layer": "layer02_candidate_enrichment"
+    }
+  ]
+}

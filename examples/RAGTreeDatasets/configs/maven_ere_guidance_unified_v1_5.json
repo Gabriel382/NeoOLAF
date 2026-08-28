@@ -1,0 +1,24 @@
+{
+  "domain_focus": "MAVEN-ERE: frozen high-recall v1.4 event inventory; sparse and precision-oriented CAUSE/PRECONDITION relation induction.",
+  "abstraction_level": "Layer 1 is frozen/reused from v1.4 when available. Layer 2 consolidates clear coreference only for reasoning, proposes sparse dependency edges globally, then requires definition-specific verification and a skeptic.",
+  "priority_relations": [
+    "CAUSE",
+    "PRECONDITION"
+  ],
+  "population_policy": "Preserve all v1.4 event mentions. Do not enumerate all local event pairs. Relation edges must survive a sparse global proposal, a strict MAVEN definition test, and an independent false-positive skeptic. Gold remains unavailable until post-L12 evaluation.",
+  "event_modeling_preference": "Use the shortest complete exact trigger; retain genuine multi-token predicates such as took place; do not conflate entity mentions with events.",
+  "ontology_depth": "shallow",
+  "promotion_min_confidence": 0.35,
+  "hierarchy_min_confidence": 0.5,
+  "concept_promotion_bias": 0.1,
+  "typing_examples": [],
+  "relation_examples": [],
+  "promotion_examples": [],
+  "negative_examples": [
+    {
+      "text": "A relation inferred only from world knowledge with no document support.",
+      "explanation": "Reject unsupported relation.",
+      "target_layer": "layer02_candidate_enrichment"
+    }
+  ]
+}

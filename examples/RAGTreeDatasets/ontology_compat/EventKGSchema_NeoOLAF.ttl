@@ -1,0 +1,26 @@
+@prefix eventKG-s: <http://eventKG.l3s.uni-hannover.de/schema/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+eventKG-s:extractedFrom rdfs:domain sem:Core ;
+    rdfs:range rdf:Resource .
+
+eventKG-s:links rdfs:domain eventKG-s:Relation ;
+    rdfs:range xsd:nonNegativeInteger .
+
+eventKG-s:mentions rdfs:domain eventKG-s:Relation ;
+    rdfs:range xsd:nonNegativeInteger .
+
+<http://eventkg.l3s.uni-hannover.de/schema/Relation> a owl:Class .
+
+<http://eventkg.l3s.uni-hannover.de/schema/extractedFrom> a owl:ObjectProperty .
+
+<http://eventkg.l3s.uni-hannover.de/schema/links> a owl:ObjectProperty .
+
+<http://eventkg.l3s.uni-hannover.de/schema/mentions> a owl:ObjectProperty .
+
+eventKG-s:Relation rdfs:subClassOf sem:Role .
+

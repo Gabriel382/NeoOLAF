@@ -1,0 +1,24 @@
+{
+  "domain_focus": "MAVEN-ERE: exhaustive broad event mention inventory first; precision-oriented CAUSE/PRECONDITION extraction second.",
+  "abstraction_level": "Layer 1 maximizes exact source event-trigger recall including nominal/state events; Layer 2 requires verified causal dependence before subtype.",
+  "priority_relations": [
+    "CAUSE",
+    "PRECONDITION"
+  ],
+  "population_policy": "Extract all source-grounded event mentions. A deterministic source-token rescue pool is LLM-verified after the generative pass; keep mentions independent for recall. Relation existence uses two independent gates. Gold/coreference IDs remain unavailable until post-L12 evaluation.",
+  "event_modeling_preference": "Use the shortest complete exact trigger; retain genuine multi-token predicates such as took place; do not conflate entity mentions with events.",
+  "ontology_depth": "shallow",
+  "promotion_min_confidence": 0.35,
+  "hierarchy_min_confidence": 0.5,
+  "concept_promotion_bias": 0.1,
+  "typing_examples": [],
+  "relation_examples": [],
+  "promotion_examples": [],
+  "negative_examples": [
+    {
+      "text": "A relation inferred only from world knowledge with no document support.",
+      "explanation": "Reject unsupported relation.",
+      "target_layer": "layer02_candidate_enrichment"
+    }
+  ]
+}

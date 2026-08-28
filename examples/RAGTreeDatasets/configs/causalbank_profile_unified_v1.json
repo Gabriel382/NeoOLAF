@@ -1,0 +1,262 @@
+{
+  "profile_name": "causalbank_neoolaf_native_unified_v1_1",
+  "description": "RAGTree-normalized CausalBank lexical-node dense BECAUSE/THEREFORE graph extraction; WordNet Full is the external seed ontology.",
+  "language": {
+    "source": "en",
+    "target": "en",
+    "translate": false,
+    "translate_in_preprocessing": false,
+    "llm_translate_inside_extraction": false
+  },
+  "chunking": {
+    "strategies": [
+      "fixed"
+    ],
+    "preferred_unit_for_extraction": "chunk",
+    "whole_document_preferred": true,
+    "chunk_size": 18000,
+    "overlap": 0,
+    "max_safe_chunk_chars": 26000
+  },
+  "layers": {
+    "layer01_linguistic_expression_extraction": {
+      "strategy": "causalbank_no_gold_lexical_normalization",
+      "max_concurrency": 1,
+      "rag_enabled": false,
+      "max_output_tokens": 8192,
+      "request_timeout_seconds": 180,
+      "response_hard_cap_chars": 52000,
+      "phase_count": 2,
+      "structured_event_output": true,
+      "closed_inventory_relation_generation": false,
+      "deterministic_source_token_validation": true,
+      "bounded_span_repair": true,
+      "reject_connective_only_events": true,
+      "complete_phrasal_verbs": true,
+      "complete_hyphenated_triggers": true,
+      "sentence_workers": 8,
+      "coverage_review_passes": 3,
+      "relation_workers": 1,
+      "relation_source_batch_size": 1,
+      "skip_url_and_date_metadata_sentences": true,
+      "eventive_nominal_and_state_review": true,
+      "preserve_repeated_mentions": true,
+      "plot_link_broader_than_strict_causality": true,
+      "deterministic_unordered_pair_pool": true,
+      "pair_strategy": "adaptive",
+      "exhaustive_event_threshold": 25,
+      "hybrid_sentence_distance": 2,
+      "include_headline_body_pairs": true,
+      "relation_generation_llm_calls": 0,
+      "atomic_review_enabled": true,
+      "atomic_minimal_trigger_required": true,
+      "strip_auxiliary_negation_arguments": true,
+      "split_broad_multi_event_phrases": true,
+      "atomic_review_source_only": true
+    },
+    "layer02_candidate_enrichment": {
+      "strategy": "causalbank_record_family_plus_dense_pair_classification",
+      "max_concurrency": 4,
+      "max_expressions": null,
+      "use_web_search": false,
+      "retry_failed_calls": 1,
+      "max_output_tokens": 4096,
+      "request_timeout_seconds": 180,
+      "response_hard_cap_chars": 52000,
+      "deterministic_node_enrichment": true,
+      "llm_relation_enrichment_only": true,
+      "source_workers": 8,
+      "fixed_source_per_request": true,
+      "target_decisions": [
+        "BECAUSE",
+        "THEREFORE",
+        "NONE"
+      ],
+      "complete_target_checklist": true,
+      "missing_target_retry": true,
+      "evidence_required_for_positive": true,
+      "repair_evidence_format_non_destructively": true,
+      "direction_fixed_by_source_request": false,
+      "use_ontology_evidence": false,
+      "ontology_evidence_role": "disabled_for_relation_classification_seed_retained_downstream",
+      "closure_enabled": false,
+      "closure_max_pairs": 0,
+      "direct_link_only": false,
+      "forbid_transitive_inference": true,
+      "none_review_enabled": false,
+      "positive_verifier_enabled": false,
+      "conflict_adjudication_enabled": false,
+      "conflict_batch_size": 8,
+      "conflict_confidence_margin": 0.15,
+      "batch_cache": true,
+      "filter_none_before_layer03": true,
+      "deterministic_conflict_resolution": true,
+      "target_batch_size": 6,
+      "forward_textual_direction_only": false,
+      "plot_role_analysis_enabled": true,
+      "label_calibration_enabled": false,
+      "relax_narrative_links": true,
+      "allow_nonlocal_storyline_links_when_text_supported": true,
+      "forbid_automatic_transitive_closure": true,
+      "direction_conflicts_eliminated_by_forward_filter": true,
+      "pair_batch_size": 40
+    },
+    "layer03_candidate_typing_resolution": {
+      "strategy": "ontology_aware_role_based_typing",
+      "max_concurrency": 1,
+      "max_expressions": null,
+      "inject_empty_relation_schema_candidates": false
+    },
+    "layer04_candidate_relation_extraction": {
+      "strategy": "structured_exact_then_native_parallel_fallback",
+      "max_concurrency": 4,
+      "max_relation_mentions": null,
+      "retry_failed_calls": 0,
+      "max_attempts_per_relation": 1,
+      "retry_wait_seconds": 0.5,
+      "max_output_tokens": 384,
+      "request_timeout_seconds": 60,
+      "response_hard_cap_chars": 6000,
+      "deterministic_exact_endpoint_resolution": true,
+      "event_to_event_validation": true
+    },
+    "layer05_candidate_triple_generation": {
+      "strategy": "ontology_aware_assertion_to_triples",
+      "max_concurrency": 4
+    },
+    "layer06_concept_relation_induction": {
+      "strategy": "ontology_aware_triple_concept_relation_induction",
+      "max_concurrency": 4
+    },
+    "layer07_hierarchisation": {
+      "strategy": "ontology_aware_parent_hint_hierarchy",
+      "max_concurrency": 4
+    },
+    "layer08_axiom_schemata_extraction": {
+      "strategy": "ontology_aware_axiom_schema_generation",
+      "max_concurrency": 4
+    },
+    "layer09_general_axiom_extraction": {
+      "strategy": "ontology_aware_schema_to_general_axioms",
+      "max_concurrency": 4
+    },
+    "layer10_validation_reasoning": {
+      "strategy": "ontology_aware_validation_reasoning",
+      "max_concurrency": 4
+    },
+    "layer11_inference_completion": {
+      "strategy": "ontology_aware_semantic_completion",
+      "max_concurrency": 4
+    },
+    "layer12_serialization": {
+      "max_concurrency": 4
+    }
+  },
+  "relations": {
+    "allowed": [],
+    "canonical_identifier": "RAGTree normalized task relation label",
+    "property_count": 2,
+    "catalog_path": "examples/RAGTreeDatasets/ontology/causalbank_relation_catalog.json",
+    "priority_ids": [
+      "BECAUSE",
+      "THEREFORE"
+    ]
+  },
+  "rag": {
+    "top_k": 4,
+    "query_expansions": {},
+    "seed_ontology_role": "semantic grounding only; never gold supervision"
+  },
+  "ontology_linking": {
+    "node_roles": {
+      "lemma_node": {
+        "candidate_family": "entity",
+        "class_label": "Lexical Node",
+        "class_uri": "https://w3id.org/neoolaf/ragtree/causalbank/LexicalNode",
+        "ontology_status": "candidate_instance",
+        "promote_to_ontology": false,
+        "definition": "Dense lexical causal-context relation extraction for normalized CausalBank grounded by WordNet Full."
+      },
+      "relation_instance": {
+        "candidate_family": "relation",
+        "class_label": "Task Relation Instance",
+        "class_uri": "https://w3id.org/neoolaf/ragtree/RelationInstance",
+        "ontology_status": "candidate_relation",
+        "promote_to_ontology": true
+      }
+    },
+    "relation_roles": {
+      "BECAUSE": {
+        "property_uri": "https://w3id.org/neoolaf/ragtree/causalbank/because",
+        "property_label": "BECAUSE",
+        "ontology_status": "controlled_task_relation",
+        "promote_to_ontology": true,
+        "definition": "Reverse causal-context family in the RAGTree-normalized dense lexical CausalBank graph."
+      },
+      "THEREFORE": {
+        "property_uri": "https://w3id.org/neoolaf/ragtree/causalbank/therefore",
+        "property_label": "THEREFORE",
+        "ontology_status": "controlled_task_relation",
+        "promote_to_ontology": true,
+        "definition": "Forward causal-context family in the RAGTree-normalized dense lexical CausalBank graph."
+      }
+    }
+  },
+  "eventstoryline_type_constraints": {
+    "PRECONDITION": {
+      "source": [
+        "EVENT"
+      ],
+      "target": [
+        "EVENT"
+      ]
+    },
+    "FALLING_ACTION": {
+      "source": [
+        "EVENT"
+      ],
+      "target": [
+        "EVENT"
+      ]
+    }
+  },
+  "layer02_compact_candidate_cap": 2,
+  "orchestration": {
+    "retry_failed_calls": 1,
+    "retry_sleep_seconds": 1.0,
+    "document_workers": 1,
+    "layer_workers": 4
+  },
+  "benchmark_projection": {
+    "enabled": true,
+    "gold_available_to_pipeline": false,
+    "stage": "analysis_after_layer12",
+    "exact_span_first": true,
+    "fallback_unique_trigger": false,
+    "create_relations": false,
+    "same_seed_ontology_as_ragtree": true,
+    "layer01_closed_inventory": true,
+    "source_token_span_repair": true,
+    "sentence_parallel_event_inventory": true,
+    "whole_document_coverage_reviews": 3,
+    "source_batched_relation_generation": false,
+    "exact_span_only": true,
+    "deterministic_unordered_pair_pool": true,
+    "batched_five_way_classification": true,
+    "native_span_metrics": true,
+    "candidate_pool_recall_metrics": true,
+    "global_trigger_fallback": false,
+    "strict_native_span_metrics": true,
+    "development_relation_direction_prior": "record-level visible causal-pattern family (BECAUSE/THEREFORE) plus dense lexical pair coverage; no gold relation access"
+  },
+  "anti_cheating": {
+    "gold_entities_available_to_pipeline": false,
+    "gold_relations_available_to_pipeline": false,
+    "gold_ontology_links_available_to_pipeline": false,
+    "post_layer12_projection_only": true,
+    "no_direct_raw_text_extractor_outside_layers": true
+  },
+  "experiment_version": "unified4-v1.1",
+  "version": "1.1",
+  "development_note": "v1.1 corrects CausalBank to the full normalized relation vocabulary: BECAUSE and THEREFORE. The record family is inferred only from visible type/text; gold remains post-Layer-12 only."
+}

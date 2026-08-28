@@ -1,0 +1,24 @@
+{
+  "domain_focus": "MAVEN-ERE causal event-relation extraction: exhaustive event mentions, then CAUSE/PRECONDITION.",
+  "abstraction_level": "high-recall event mention endpoints first; causal relation existence/direction/subtype second",
+  "priority_relations": [
+    "CAUSE",
+    "PRECONDITION"
+  ],
+  "population_policy": "Extract all source-grounded event mentions, including eventive nouns, states and non-obviously-causal events. Keep mention endpoints independent for recall; post-Layer-12 evaluation maps mention spans to gold coreference clusters. Gold/coreference IDs are never exposed.",
+  "event_modeling_preference": "Use minimal exact event-trigger spans; do not infer direction from textual order.",
+  "ontology_depth": "shallow",
+  "promotion_min_confidence": 0.35,
+  "hierarchy_min_confidence": 0.5,
+  "concept_promotion_bias": 0.1,
+  "typing_examples": [],
+  "relation_examples": [],
+  "promotion_examples": [],
+  "negative_examples": [
+    {
+      "text": "A relation inferred only from world knowledge with no document support.",
+      "explanation": "Reject unsupported relation.",
+      "target_layer": "layer02_candidate_enrichment"
+    }
+  ]
+}

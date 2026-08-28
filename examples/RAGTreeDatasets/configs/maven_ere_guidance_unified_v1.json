@@ -1,0 +1,24 @@
+{
+  "domain_focus": "Event-centered causal relation extraction for MAVEN-ERE grounded by EventKG.",
+  "abstraction_level": "benchmark endpoint identity first; shallow ontology construction",
+  "priority_relations": [
+    "CAUSE",
+    "PRECONDITION"
+  ],
+  "population_policy": "Extract only source-grounded benchmark-relevant endpoints and relation instances. Gold annotations and RAGTree ontology_links are unavailable during execution. NONE decisions are filtered before Layer 3.",
+  "event_modeling_preference": "Use exact atomic event trigger spans and group only truly coreferent mentions into event-cluster endpoints.",
+  "ontology_depth": "shallow",
+  "promotion_min_confidence": 0.35,
+  "hierarchy_min_confidence": 0.5,
+  "concept_promotion_bias": 0.1,
+  "typing_examples": [],
+  "relation_examples": [],
+  "promotion_examples": [],
+  "negative_examples": [
+    {
+      "text": "A relation inferred only from world knowledge with no document support.",
+      "explanation": "Reject unsupported relation.",
+      "target_layer": "layer02_candidate_enrichment"
+    }
+  ]
+}

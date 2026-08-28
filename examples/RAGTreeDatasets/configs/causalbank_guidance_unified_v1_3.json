@@ -1,0 +1,24 @@
+{
+  "domain_focus": "Dense lexical causal-context relation extraction for normalized CausalBank grounded by WordNet Full.",
+  "abstraction_level": "benchmark endpoint identity and record-level causal-relation family first; shallow ontology construction",
+  "priority_relations": [
+    "BECAUSE",
+    "THEREFORE"
+  ],
+  "population_policy": "Maximize coverage of the normalized dense lexical causal-context graph. Derive lexical/stem nodes only from visible document tokens; for a known visible record family, connect every ordered non-self pair using BECAUSE or THEREFORE. No pair-level LLM pruning and no gold access.",
+  "event_modeling_preference": "Represent endpoints as canonical lexical/stem nodes, not proposition spans.",
+  "ontology_depth": "shallow",
+  "promotion_min_confidence": 0.35,
+  "hierarchy_min_confidence": 0.5,
+  "concept_promotion_bias": 0.1,
+  "typing_examples": [],
+  "relation_examples": [],
+  "promotion_examples": [],
+  "negative_examples": [
+    {
+      "text": "A relation inferred only from world knowledge with no document support.",
+      "explanation": "Reject unsupported relation.",
+      "target_layer": "layer02_candidate_enrichment"
+    }
+  ]
+}

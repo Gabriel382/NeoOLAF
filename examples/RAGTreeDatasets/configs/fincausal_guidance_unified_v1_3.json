@@ -1,0 +1,23 @@
+{
+  "domain_focus": "FinCausal financial cause/effect extraction with full proposition/fact endpoints and FIBO semantic grounding.",
+  "abstraction_level": "annotation-compatible full fact/proposition spans first; exact CAUSE→EFFECT relation second",
+  "priority_relations": [
+    "CAUSE"
+  ],
+  "population_policy": "Maximize source-grounded endpoint recall. Preserve complete clauses/sentences, including noisy visible prefixes. Effects are usually quantified financial facts; causes may be qualitative or quantified. Never use textual order to orient causality. Gold remains post-Layer-12 only.",
+  "event_modeling_preference": "Do not reduce FinCausal endpoints to atomic event triggers; model full fact/proposition chunks.",
+  "ontology_depth": "shallow",
+  "promotion_min_confidence": 0.35,
+  "hierarchy_min_confidence": 0.5,
+  "concept_promotion_bias": 0.1,
+  "typing_examples": [],
+  "relation_examples": [],
+  "promotion_examples": [],
+  "negative_examples": [
+    {
+      "text": "A relation inferred only from world knowledge with no document support.",
+      "explanation": "Reject unsupported relation.",
+      "target_layer": "layer02_candidate_enrichment"
+    }
+  ]
+}

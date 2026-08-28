@@ -1,0 +1,39 @@
+{
+  "dataset": "MAVEN-ERE",
+  "relation_specs": [
+    {
+      "relation_id": "CAUSE",
+      "definition": "Target is effectively inevitable given the source event."
+    },
+    {
+      "relation_id": "PRECONDITION",
+      "definition": "Target would not have happened without source; source alone need not guarantee target."
+    }
+  ],
+  "layer_guidance": {
+    "layer01": {
+      "endpoint_unit": "event coreference cluster",
+      "mention_unit": "exact atomic event trigger span",
+      "coreference": "Group only mentions of the same real-world event.",
+      "recall_policy": "exhaustive event mentions; include events unrelated to causality because relation filtering is Layer 2",
+      "coreference_policy": "keep singleton mention endpoints during extraction to avoid destructive under-merging; posthoc maps span to gold cluster",
+      "offset_policy": "exact zero-based/end-exclusive sentence token spans"
+    },
+    "layer02": {
+      "stage_a": "LINK vs NONE",
+      "stage_b": [
+        "CAUSE",
+        "PRECONDITION"
+      ],
+      "text_order": "Never use mention order as causal direction.",
+      "temporal_signal": "Real event-time BEFORE/OVERLAP plausibility is a candidate signal only; no gold temporal annotation is available.",
+      "closure": "Do not automatically add transitive closure.",
+      "decision": "direct five-way A_CAUSE_B / B_CAUSE_A / A_PRECONDITION_B / B_PRECONDITION_A / NONE",
+      "direction": "semantic event time/causal direction, never surface mention order",
+      "candidate_pool": "all local pairs up to sentence distance 4 plus a high-recall long-range proposal pass",
+      "precondition_prior": "PRECONDITION is common; do not force balanced CAUSE/PRECONDITION output"
+    }
+  },
+  "gold_policy": "Gold event clusters and causal relations are loaded only after Layer 12.",
+  "patch_version": "unified4-v1.3"
+}

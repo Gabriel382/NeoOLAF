@@ -1,0 +1,31 @@
+{
+  "dataset": "MAVEN-ERE",
+  "relation_specs": [
+    {
+      "relation_id": "CAUSE",
+      "definition": "Target is effectively inevitable given the source event."
+    },
+    {
+      "relation_id": "PRECONDITION",
+      "definition": "Target would not have happened without source; source alone need not guarantee target."
+    }
+  ],
+  "layer_guidance": {
+    "layer01": {
+      "endpoint_unit": "event coreference cluster",
+      "mention_unit": "exact atomic event trigger span",
+      "coreference": "Group only mentions of the same real-world event."
+    },
+    "layer02": {
+      "stage_a": "LINK vs NONE",
+      "stage_b": [
+        "CAUSE",
+        "PRECONDITION"
+      ],
+      "text_order": "Never use mention order as causal direction.",
+      "temporal_signal": "Real event-time BEFORE/OVERLAP plausibility is a candidate signal only; no gold temporal annotation is available.",
+      "closure": "Do not automatically add transitive closure."
+    }
+  },
+  "gold_policy": "Gold event clusters and causal relations are loaded only after Layer 12."
+}

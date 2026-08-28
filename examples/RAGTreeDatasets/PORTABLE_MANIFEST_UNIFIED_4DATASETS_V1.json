@@ -1,0 +1,35 @@
+{
+  "name": "NeoOLAF_RAGTreeDatasets_Unified4_v1_1_PATCH",
+  "scope": "examples/RAGTreeDatasets only",
+  "modifies_src_neoolaf": false,
+  "active_datasets": [
+    "EventStoryLine",
+    "FinCausal",
+    "MAVEN-ERE",
+    "CausalBank"
+  ],
+  "docred_active": false,
+  "native_layers": "0-12",
+  "paid_execution_default": false,
+  "gold_pipeline_visibility": false,
+  "post_layer12_gold_evaluation": true,
+  "ontology_mapping": {
+    "EventStoryLine": "RAGTree/data/ontology/OWLTime/time.ttl",
+    "FinCausal": "RAGTree/data/ontology/FIBO-CorePlus/fibo-core-plus.ttl",
+    "MAVEN-ERE": "RAGTree/data/ontology/EventKG/EventKGSchema.ttl",
+    "CausalBank": "RAGTree/data/ontology/WordNet-Full/wordnet.ttl"
+  },
+  "smoke5_policy": "one immutable five-record smoke set per dataset; completed records are not repeated on resume",
+  "eventstoryline_adapter": "v1.7",
+  "other_adapter_version": "unified-v1.1",
+  "patch_version": "1.1",
+  "causalbank_relation_vocabulary": [
+    "BECAUSE",
+    "THEREFORE"
+  ],
+  "eventkg_loader_fix_required": true,
+  "eventkg_expected_seed_counts": {
+    "classes_min": 1,
+    "properties_min": 3
+  }
+}

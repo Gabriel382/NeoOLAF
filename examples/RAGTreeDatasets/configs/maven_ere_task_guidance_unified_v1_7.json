@@ -1,0 +1,38 @@
+{
+  "dataset": "MAVEN-ERE",
+  "relation_specs": [
+    {
+      "relation_id": "CAUSE",
+      "definition": "Target is effectively inevitable given the source event."
+    },
+    {
+      "relation_id": "PRECONDITION",
+      "definition": "Target would not have happened without source; source alone need not guarantee target."
+    }
+  ],
+  "layer_guidance": {
+    "layer01": {
+      "endpoint_unit": "event coreference cluster",
+      "mention_unit": "exact atomic event trigger span",
+      "coreference": "Group only mentions of the same real-world event.",
+      "recall_policy": "FROZEN v1.4 behavior; reuse its validated exact-span inventory when available, otherwise execute the unchanged v1.4 extractor.",
+      "coreference_policy": "keep singleton mention endpoints during extraction to avoid destructive under-merging; posthoc maps span to gold cluster",
+      "offset_policy": "exact zero-based/end-exclusive sentence token spans",
+      "rescue_policy": "after generative extraction, verify a source-only over-complete lexical candidate pool, then perform one final missed-event review",
+      "span_repair": "repair only against visible source tokens; no gold IDs/types/relations"
+    },
+    "layer02": {
+      "event_input": "all frozen v1.4 event mentions; keep mention anchors distinct and do not delete or merge Layer-1 inventory",
+      "candidate_pool": "three complementary high-recall whole-document directed graph proposals (PRECONDITION dependency, process/goal structure, direct cause/result) plus bounded source-cue rescue",
+      "precondition_semantics": "target depends on source as prerequisite/enabling/initiating/supporting condition; strong implicit plan/process/purpose structure can count when document-grounded; do not require literal counterfactual wording",
+      "cause_semantics": "narrower direct bring-about/trigger/produce/result relation",
+      "adjudication": "single calibrated directed adjudicator; no skeptic cascade; accept DIRECT or STRONG_IMPLICIT positives above provenance-aware confidence threshold",
+      "direction": "semantic causal/dependency direction only; never textual mention order",
+      "opposite_direction": "prefer stronger direction; retain near-tied supported directions rather than reject both",
+      "closure": "no automatic transitive closure",
+      "gold": "unavailable to all pipeline stages; stage recall diagnostics are computed only post-L12"
+    }
+  },
+  "gold_policy": "Gold event clusters and causal relations are loaded only after Layer 12.",
+  "patch_version": "unified4-v1.7"
+}

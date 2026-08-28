@@ -1,0 +1,28 @@
+{
+  "dataset": "CausalBank",
+  "relation_specs": [
+    {
+      "relation_id": "BECAUSE",
+      "definition": "Reverse causal-context family: an effect/result is explained by a cause/reason. The normalized record graph is dense lexical context, not a single sparse proposition edge."
+    },
+    {
+      "relation_id": "THEREFORE",
+      "definition": "Forward causal-context family: a cause/reason leads to an effect/result. The normalized record graph is dense lexical context, not a single sparse proposition edge."
+    }
+  ],
+  "layer_guidance": {
+    "layer01": {
+      "endpoint_unit": "canonical lexical/stem node",
+      "source": "derive only from document tokens; do not read normalized gold entity inventory"
+    },
+    "layer02": {
+      "record_relation_family": "Choose BECAUSE/THEREFORE from visible type/text only.",
+      "dense_contract": "Emit every ordered non-self pair among independently recovered lexical nodes for the selected family.",
+      "pair_llm": "disabled; previous pair-level pruning caused severe under-generation",
+      "text_order": "irrelevant to pair orientation because the normalized graph is usually bidirectional/dense"
+    }
+  },
+  "projection": "After Layer 12 only, a predicted lexical label maps deterministically to EVENT_ + first16(md5(label)).",
+  "gold_policy": "Gold lexical nodes and BECAUSE/THEREFORE edges are loaded only after Layer 12.",
+  "patch_version": "unified4-v1.3"
+}

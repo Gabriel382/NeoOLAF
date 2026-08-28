@@ -1,0 +1,27 @@
+{
+  "dataset": "FinCausal",
+  "relation_specs": [
+    {
+      "relation_id": "CAUSE",
+      "definition": "Directed FinCausal relation from the causal fact/proposition to the effect fact/proposition; direction is semantic and independent of textual order."
+    }
+  ],
+  "layer_guidance": {
+    "layer01": {
+      "endpoint_unit": "fact/proposition span",
+      "effect_quantification": "The effect is normally a quantified/measurable fact; the cause may be quantified or non-quantified.",
+      "text_order": "Never assign causal direction from textual order.",
+      "span_policy": "Preserve source fact boundaries; connective-only material normally remains outside endpoint spans."
+    },
+    "layer02": {
+      "decisions": [
+        "A_CAUSES_B",
+        "B_CAUSES_A",
+        "NONE"
+      ],
+      "direction": "semantic causal direction only",
+      "no_event_trigger_reduction": true
+    }
+  },
+  "gold_policy": "Gold entities and relations are loaded only after Layer 12."
+}

@@ -1,0 +1,28 @@
+{
+  "patch": "unified4-v1.6",
+  "checks": {
+    "patch_version_v16": true,
+    "frozen_layer1_present": true,
+    "relation_layer_v16": true,
+    "no_relation_coref_merge": true,
+    "three_proposals": true,
+    "precondition_aware_adjudicator": true,
+    "v15_skeptic_removed": true,
+    "stage_gold_posthoc": true,
+    "gold_isolation_guard": true,
+    "native_pipeline_base": true,
+    "v16_reuses_v14_run_path": true
+  },
+  "files_under_src_neoolaf": [],
+  "maven_layer1": "frozen/reused v1.4 event inventory",
+  "maven_layer2": "singleton anchors + 3 high-recall proposals + PRECONDITION-aware adjudication; no skeptic",
+  "posthoc_diagnostics": "candidate/verifier/final recall after Layer12 only",
+  "safe_defaults": {
+    "RUN_PAID": false,
+    "RUN_MODE": "one_doc",
+    "RUN_DATASETS": [
+      "maven_ere"
+    ]
+  },
+  "import_self_test_output": "{\"cache_root\": \"/tmp/neoolaf_ragtree_unified4_v1_1\", \"causalbank\": \"deterministic all ordered non-self pairs; no pair-level LLM pruning\", \"causalbank_hash_a\": \"EVENT_0cc175b9c0f1b6a8\", \"causalbank_relations\": [\"BECAUSE\", \"THEREFORE\"], \"datasets\": [\"fincausal\", \"maven_ere\", \"causalbank\"], \"fincausal\": \"deterministic boundary union + role-hint pair fallback\", \"maven_ere\": \"frozen/reused v1.4 event inventory + singleton anchors + three high-recall graph proposals + PRECONDITION-aware adjudication + posthoc stage recall diagnostics\", \"ok\": true, \"patch_version\": \"unified4-v1.6\"}"
+}

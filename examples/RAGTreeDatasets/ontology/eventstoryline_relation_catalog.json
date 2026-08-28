@@ -1,0 +1,31 @@
+{
+  "source": "EventStoryLine task-specific relation schema",
+  "property_count": 2,
+  "class_count": 1,
+  "relations": [
+    {
+      "relation_id": "PRECONDITION",
+      "uri": "https://w3id.org/neoolaf/eventstoryline/precondition",
+      "label": "PRECONDITION",
+      "comment": "A directed event-event relation where the source is a prerequisite, enabling condition, motivating circumstance, or necessary setup for the target.",
+      "domain_uris": [
+        "https://w3id.org/neoolaf/eventstoryline/Event"
+      ],
+      "range_uris": [
+        "https://w3id.org/neoolaf/eventstoryline/Event"
+      ]
+    },
+    {
+      "relation_id": "FALLING_ACTION",
+      "uri": "https://w3id.org/neoolaf/eventstoryline/fallingAction",
+      "label": "FALLING_ACTION",
+      "comment": "A directed storyline relation linking an event to a subsequent/downstream consequence, continuation, aftermath, or narratively dependent event when PRECONDITION is not the better interpretation.",
+      "domain_uris": [
+        "https://w3id.org/neoolaf/eventstoryline/Event"
+      ],
+      "range_uris": [
+        "https://w3id.org/neoolaf/eventstoryline/Event"
+      ]
+    }
+  ]
+}
